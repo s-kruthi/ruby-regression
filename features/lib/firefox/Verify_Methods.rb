@@ -53,14 +53,14 @@ module Firefox
       end
     end
 
-    def WaitForAnElementByCSS(css)
+    def WaitForAnElementByCSS(css, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
           element = $driver.find_element(:css, "#{css}")
           element if element.displayed?
         }
-        select_item
+        select_item.text.include? "#{text}"
       rescue Exception => e
         puts e.message
         $driver.quit

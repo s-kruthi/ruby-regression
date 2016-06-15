@@ -41,5 +41,19 @@ module Firefox
       end
     end
 
+    def WaitForAnElementByCSSAndInputValue(css,value)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_element(:xpath, "#{css}")
+          element if element.displayed?
+        }
+        select_item.send_keys "#{css}"
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
   end
 end

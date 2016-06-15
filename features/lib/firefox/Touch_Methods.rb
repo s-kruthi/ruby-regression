@@ -13,6 +13,7 @@ module Firefox
         $driver.quit
       end
     end
+
     def WaitForAnElementByClassAndTouch(class_name)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -26,6 +27,7 @@ module Firefox
         $driver.quit
       end
     end
+
     def WaitForAnElementByXpathAndTouch(xpath)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -39,6 +41,7 @@ module Firefox
         $driver.quit
       end
     end
+
     def WaitForAnElementByTagNameAndTouch(tag_name)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -52,6 +55,22 @@ module Firefox
         $driver.quit
       end
     end
+
+    def WaitForAnElementByCSSAndTouch(css)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_element(:css, "#{css}")
+          element if element.displayed?
+        }
+        select_item.click
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
+
     def WaitForAnElementByLinkAndTouch(link)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -65,6 +84,7 @@ module Firefox
         $driver.quit
       end
     end
+
     def WaitForAnElementByLinkTextAndTouch(link_text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -94,4 +114,4 @@ module Firefox
     end
 
   end
-  end
+end
