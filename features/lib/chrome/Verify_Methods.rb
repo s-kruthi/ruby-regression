@@ -1,5 +1,6 @@
 module Chrome
   module Verify_Methods
+
     def VerifyAnElementExistById(id,text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -13,6 +14,7 @@ module Chrome
         $driver.quit
       end
     end
+
     def VerifyAnElementExistByClass(class_name,text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -26,6 +28,7 @@ module Chrome
         $driver.quit
       end
     end
+
     def VerifyAnElementExistByXPath(xpath,text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -39,6 +42,7 @@ module Chrome
         $driver.quit
       end
     end
+
     def VerifyAnElementExistByName(name,text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -52,14 +56,15 @@ module Chrome
         $driver.quit
       end
     end
-    def WaitForAnElementByCSS(css)
+
+    def WaitForAnElementByCSS(css, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
           element = $driver.find_element(:css, "#{css}")
           element if element.displayed?
         }
-        select_item
+        select_item.text.include? "#{text}"
       rescue Exception => e
         puts e.message
         $driver.quit
