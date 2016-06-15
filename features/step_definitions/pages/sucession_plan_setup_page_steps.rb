@@ -40,14 +40,14 @@ def GoToTheSuccessionSetupPageAsAdmin(succession_review_setup_path)
 end
 
 def DeleteTheFirstSuccessionPlanFromTheTable(dropdown,index_value)
-  4.times do
+5.times do
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(dropdown,index_value)
   sleep(1)
   TouchDelete()
   sleep(1)
   PressEnter()
-  sleep(1)
+  sleep(2)
   PressEnter()
-    end
+ end
 end
