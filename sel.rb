@@ -25,7 +25,6 @@
     
 
 
-
     begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_menu = wait.until {
@@ -38,6 +37,7 @@
         puts e.message
         $driver.quit
     end
+
     wait = Selenium::WebDriver::Wait.new(:timeout => 10)
     select_menu = wait.until {
         element = $driver.find_element(:id, 'summary')
