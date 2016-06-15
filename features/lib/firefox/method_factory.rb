@@ -7,5 +7,7 @@ module Firefox
     include ::Firefox::Touch_Methods
     include ::Firefox::Verify_Methods
     include ::Firefox::Wait_Methods
+    include ::Firefox::Input_Methods
+    include ::Firefox::Custom_Methods
   end
 end

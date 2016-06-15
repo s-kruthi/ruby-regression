@@ -1,5 +1,5 @@
 module Firefox
-  module Wait_Methods
+  module Verify_Methods
     def VerifyAnElementExistById(id,text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -13,40 +13,40 @@ module Firefox
         $driver.quit
       end
     end
-    def WaitForAnElementByClass(class_name)
+    def VerifyAnElementExistByClass(class_name,text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
           element = $driver.find_element(:class, "#{class_name}")
           element if element.displayed?
         }
-        select_item
+        select_item.text.include? "#{text}"
       rescue Exception => e
         puts e.message
         $driver.quit
       end
     end
-    def WaitForAnElementByXPath(xpath)
+    def VerifyAnElementExistByXPath(xpath,text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
           element = $driver.find_element(:xpath, "#{xpath}")
           element if element.displayed?
         }
-        select_item
+        select_item.text.include? "#{text}"
       rescue Exception => e
         puts e.message
         $driver.quit
       end
     end
-    def WaitForAnElementByName(name)
+    def VerifyAnElementExistByName(name,text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
           element = $driver.find_element(:name, "#{name}")
           element if element.displayed?
         }
-        select_item
+        select_item.text.include? "#{text}"
       rescue Exception => e
         puts e.message
         $driver.quit
