@@ -68,6 +68,8 @@ module Firefox
         puts e.message
         $driver.quit
       end
+    end
+
 
     def WaitForAnElementByLinkAndTouch(link)
       begin
@@ -112,4 +114,4 @@ module Firefox
     end
 
   end
-  end
+end
