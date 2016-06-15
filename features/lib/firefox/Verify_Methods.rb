@@ -53,7 +53,7 @@ module Firefox
       end
     end
 
-    def WaitForAnElementByCSS(css, text)
+    def VerifyAnElementExistByCSS(css, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
