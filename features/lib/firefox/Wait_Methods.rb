@@ -1,5 +1,6 @@
 module Firefox
   module Wait_Methods
+
     def WaitForAnElementById(id)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -13,6 +14,7 @@ module Firefox
         $driver.quit
       end
     end
+    
     def WaitForAnElementByClass(class_name)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -26,6 +28,7 @@ module Firefox
         $driver.quit
       end
     end
+    
     def WaitForAnElementByXPath(xpath)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -39,6 +42,7 @@ module Firefox
         $driver.quit
       end
     end
+    
     def WaitForAnElementByName(name)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)

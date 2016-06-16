@@ -14,15 +14,19 @@ module Firefox
         $driver.quit
       end
     end
+ 
     def PressEnter()
       $driver.action.send_keys(:enter).perform
     end
+ 
     def TouchDelete()
       element = $driver.find_element(:link, "Delete")
       element.click
     end
+
     def Wait(timeout)
       $driver.manage.timeouts.implicit_wait = timeout
     end
+ 
   end
 end
