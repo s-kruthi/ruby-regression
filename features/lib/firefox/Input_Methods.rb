@@ -1,5 +1,6 @@
 module Firefox
   module Input_Methods
+
     def WaitForAnElementByIdAndInputValue(id,value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -13,6 +14,7 @@ module Firefox
         $driver.quit
       end
     end
+    
     def WaitForAnElementByClassAndInputValue(class_name,value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)

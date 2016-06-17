@@ -1,5 +1,6 @@
 module Firefox
   module Touch_Methods
+
     def WaitForAnElementByIdAndTouch(id)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)

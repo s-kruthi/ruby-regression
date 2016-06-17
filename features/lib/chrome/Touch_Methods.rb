@@ -1,5 +1,6 @@
 module Chrome
   module Touch_Methods
+
     def WaitForAnElementByIdAndTouch(id)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -13,6 +14,7 @@ module Chrome
         $driver.quit
       end
     end
+    
     def WaitForAnElementByClassAndTouch(class_name)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -26,6 +28,7 @@ module Chrome
         $driver.quit
       end
     end
+    
     def WaitForAnElementByXpathAndTouch(xpath)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -39,6 +42,7 @@ module Chrome
         $driver.quit
       end
     end
+    
     def WaitForAnElementByTagNameAndTouch(tag_name)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -52,6 +56,7 @@ module Chrome
         $driver.quit
       end
     end
+    
     def WaitForAnElementByCSSAndTouch(css)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -65,6 +70,7 @@ module Chrome
         $driver.quit
       end
     end
+    
     def WaitForAnElementByLinkAndTouch(link)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -78,6 +84,7 @@ module Chrome
         $driver.quit
       end
     end
+    
     def WaitForAnElementByLinkTextAndTouch(link_text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -107,4 +114,4 @@ module Chrome
     end
 
   end
-  end
+end
