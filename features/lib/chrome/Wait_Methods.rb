@@ -65,6 +65,19 @@ module Chrome
         $driver.quit
       end
     end
+    def WaitForAnElementByLink(link)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_element(:link, "#{link}")
+          element if element.displayed?
+        }
+        select_item
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
 
   end
 end

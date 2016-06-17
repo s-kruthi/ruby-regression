@@ -21,6 +21,10 @@ module Firefox
       element = $driver.find_element(:link, "Delete")
       element.click
     end
+    def TouchHide()
+      element = $driver.find_element(:link, "Hide")
+      element.click
+    end
     def Wait(timeout)
       $driver.manage.timeouts.implicit_wait = timeout
     end
