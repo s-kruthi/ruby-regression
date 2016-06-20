@@ -18,7 +18,7 @@ Feature:
     And   I Should Be Able To Make It Back Visible Again
     And   I Should Be Able To Delete The Plan From the Table
 
-  @search
+  
   Scenario: Search a Succession
     Given I Am On The Succession Menu Page
     When  I Go To The Succession Landing Page
