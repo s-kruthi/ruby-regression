@@ -34,8 +34,8 @@ def TouchAdminMenu(admin_menu)
 end
 
 def GoToSuccessionLandingPage(succession_tab)
-  WaitForAnElementByLink(succession_tab)
-  WaitForAnElementByLinkAndTouch(succession_tab)
+  WaitForAnElementByXPath(succession_tab)
+  WaitForAnElementByXpathAndTouch(succession_tab)
 end
 
 def GoToTheSuccessionSetupPageAsAdmin(succession_review_setup_path)
@@ -64,7 +64,7 @@ def DeleteTheFirstSuccessionPlanFromTheTable(dropdown,index_value)
  # end
 end
 def DeleteTheFirstAssignedSuccessionPlanFromTheTable(dropdown,index_value)
-  sleep(1)
+  sleep(2)
   WaitForDropdownByClassAndTouchTheIndex(dropdown,index_value)
   sleep(1)
   TouchDelete()

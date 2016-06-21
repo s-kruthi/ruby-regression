@@ -1,7 +1,7 @@
 
 ADMIN_PROFILE_DROPDOWN = 'text-profile'
 ADMIN_COG = 'glyphicon-cog'
-SUCCESSION_EXPAND ='Succession'
+SUCCESSION_EXPAND ='/html/body/div[3]/div/div[7]/div[1]/h4/a'
 SUCCESSION_REVIEW_SETUP_PATH = '/html/body/div[3]/div/div[7]/div[2]/div/div[1]/a/h4/span'
 DROPDOWN = 'dropdown-toggle'
 NEW_PLAN_BTN ='/html/body/div[3]/div/div[2]/div[1]/div[1]/div/div/div[1]/button'
