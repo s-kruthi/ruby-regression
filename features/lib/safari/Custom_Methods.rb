@@ -1,4 +1,4 @@
-module Firefox
+module Safari
   module Custom_Methods
 
     def WaitForDropdownByClassAndTouchTheIndex(class_name,index_value)

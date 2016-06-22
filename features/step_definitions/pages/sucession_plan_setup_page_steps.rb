@@ -58,9 +58,9 @@ def DeleteTheFirstSuccessionPlanFromTheTable(dropdown,index_value)
   sleep(1)
   TouchDelete()
   sleep(1)
-  PressEnter()
+  PressEnterConfirm()
   sleep(2)
-  PressEnter()
+  PressEnterOK()
  # end
 end
 def DeleteTheFirstAssignedSuccessionPlanFromTheTable(dropdown,index_value)
@@ -69,7 +69,7 @@ def DeleteTheFirstAssignedSuccessionPlanFromTheTable(dropdown,index_value)
   sleep(1)
   TouchDelete()
   sleep(1)
-  PressEnter()
+  PressEnterConfirm()
 end
 
 def HideTheFirstSuccessionPlanFromTheTable(dropdown,index_value,hide_path)
@@ -78,9 +78,8 @@ def HideTheFirstSuccessionPlanFromTheTable(dropdown,index_value,hide_path)
   sleep(1)
   WaitForAnElementByXpathAndTouch(hide_path)
   sleep(1)
-  PressEnter()
+  PressEnterConfirm()
   sleep(2)
-  PressEnter()
 end
 
 def GoToTheShowHiddenScreenAndMakeThePlanVisible(show_hidden_btn,visible_btn,show_visible_btn)
@@ -88,7 +87,7 @@ def GoToTheShowHiddenScreenAndMakeThePlanVisible(show_hidden_btn,visible_btn,sho
   Wait(2)
   WaitForAnElementByXpathAndTouch(visible_btn)
   sleep(2)
-  PressEnter()
+  PressEnterConfirm()
   sleep(1)
   WaitForAnElementByXpathAndTouch(show_visible_btn)
   sleep(1)
@@ -105,5 +104,5 @@ end
 def VerifyTheMessageCannotBeDeletedExist(message_class,message_body )
   sleep(1)
   VerifyAnElementExistByClass(message_class, message_body)
-  PressEnter()
+  PressEnterOK()
 end

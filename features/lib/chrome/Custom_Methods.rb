@@ -14,8 +14,11 @@ module Chrome
         $driver.quit
       end
     end
-    def PressEnter()
-      $driver.action.send_keys(:enter).perform
+    def PressEnterConfirm()
+      $driver.find_element(:css, "[data-bb-handler='confirm']").click
+    end
+    def PressEnterOK()
+      $driver.find_element(:css, "[data-bb-handler='ok']").click
     end
     def TouchDelete()
       element = $driver.find_element(:link, "Delete")
