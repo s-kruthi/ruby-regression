@@ -22,10 +22,10 @@ def TouchLoginButton(tag_name)
   WaitForAnElementByTagNameAndTouch(tag_name)
 end
 
-def GoToTheSuccessionMenuPageAsAdmin(admin_menu,succession_tab)
-  WaitForAnElementByClass(admin_menu)
-  TouchAdminMenu(admin_menu)
-  GoToSuccessionLandingPage(succession_tab)
+def GoToTheSuccessionMenuPageAsAdmin(admin_cog,succession_expand)
+  WaitForAnElementByClass(admin_cog)
+  TouchAdminMenu(admin_cog)
+  GoToSuccessionLandingPage(succession_expand)
 end
 
 
@@ -33,9 +33,8 @@ def TouchAdminMenu(admin_menu)
   WaitForAnElementByClassAndTouch(admin_menu)
 end
 
-def GoToSuccessionLandingPage(succession_tab)
-  WaitForAnElementByXPath(succession_tab)
-  WaitForAnElementByXpathAndTouch(succession_tab)
+def GoToSuccessionLandingPage(succession_expand)
+  WaitForAnElementByPartialLinkTextAndTouch(succession_expand)
 end
 
 def GoToTheSuccessionSetupPageAsAdmin(succession_review_setup_path)

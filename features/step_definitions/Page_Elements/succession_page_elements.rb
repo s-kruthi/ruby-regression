@@ -1,18 +1,18 @@
 
-ADMIN_PROFILE_DROPDOWN = 'text-profile'
-ADMIN_COG = 'glyphicon-cog'
-SUCCESSION_EXPAND ='/html/body/div[3]/div/div[7]/div[1]/h4/a'
-SUCCESSION_REVIEW_SETUP_PATH = '/html/body/div[3]/div/div[7]/div[2]/div/div[1]/a/h4/span'
-DROPDOWN = 'dropdown-toggle'
-NEW_PLAN_BTN ='/html/body/div[3]/div/div[2]/div[1]/div[1]/div/div/div[1]/button'
+ADMIN_PROFILE_DROPDOWN = "text-profile"
+ADMIN_COG = "glyphicon-cog"
+SUCCESSION_EXPAND ="Succession"
+SUCCESSION_REVIEW_SETUP_PATH = "//span[contains(.,' Succession Review Setup')]"
+DROPDOWN = "dropdown-toggle"
+NEW_PLAN_BTN ="//button[contains(.,' New Plan')]"
 TITLE_ID = 'title'
-SAVE_BTN = '/html/body/div[3]/div/div[2]/div[1]/div/div/div/fieldset/div[3]/div/button[1]'
-SUCCESSION_REVIEW_LINK = 'Succession Review Setup'
-HIDE_PATH = '/html/body/div[3]/div/div[2]/div[1]/div[1]/table/tbody/tr[4]/td/div/div[2]/div/div[2]/ul/li[2]/a'
-SHOW_HIDDEN_BTN = '/html/body/div[3]/div/div[2]/div[1]/div[1]/div/div/div[2]/div/button'
-VISIBLE_BTN = '/html/body/div[3]/div/div[2]/div[1]/div[1]/table/tbody/tr[1]/td/div/div[2]/div/button'
-SHOW_VISIBLE_BTN = '/html/body/div[3]/div/div[2]/div[1]/div[1]/div/div/div[2]/div/button'
-SEARCH_FIELD = '/html/body/div[3]/div/div[2]/div[1]/div[1]/div/div/div[2]/div/div/div/input'
-SEARCH_BTN ='glyphicon-search'
-SEARCH_RESULT = 'truncate'
-MESSAGE_CLASS = 'bootbox-body'
+SAVE_BTN = "//button[contains(.,'Save')]"
+SUCCESSION_REVIEW_LINK = "Succession Review Setup"
+HIDE_PATH = "//span[@class='glyphicon glyphicon-eye-close']"
+SHOW_HIDDEN_BTN = "//button[contains(.,' Show Hidden')]"
+VISIBLE_BTN = "//button[@ng-click=' toggleVisible(item, 1)']"
+SHOW_VISIBLE_BTN = "//button[contains(.,' Show Visible')]"
+SEARCH_FIELD = "//input[@ng-model='search.searchText']"
+SEARCH_BTN = "glyphicon-search"
+SEARCH_RESULT = "truncate"
+MESSAGE_CLASS = "bootbox-body"

@@ -17,9 +17,6 @@ module Chrome
     #   caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => [ "--test-type" ]})
     #
     #   $driver = Selenium::WebDriver.for :remote,:url => "http://localhost:9515",:desired_capabilities => caps
-    #
-    #   chromedriver_path = File.join(File.absolute_path('../..', File.dirname(__FILE__)),"Desktop/shan_automation","chromedriver.exe")
-    #   $driver = Selenium::WebDriver.for :chrome
     #   #$driver.manage.window.move_to(300,400)
     #   #$driver.manage.window.resize_to(900, 1500)  use it for responsive web design
     #   #$driver.manage.window.resize_to(1200, 1500)
