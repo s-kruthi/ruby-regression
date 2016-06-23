@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8aa2944-8ec7-4027-b3eb-2599d44798ea" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/step_definitions/pages/sucession_plan_setup_page_steps.rb" afterPath="$PROJECT_DIR$/features/step_definitions/pages/sucession_plan_setup_page_steps.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/lib/device_method_factory.rb" afterPath="$PROJECT_DIR$/features/lib/device_method_factory.rb" />
     </list>
     <ignored path="shan_automation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,11 +72,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sucession_plan_setup_page_steps.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sucession_plan_setup_page_steps.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/features/step_definitions/pages/sucession_plan_setup_page_steps.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="389">
               <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="env.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/features/support/env.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="device_method_factory.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/features/lib/device_method_factory.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -88,26 +107,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
               <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Custom_Methods.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/lib/safari/Custom_Methods.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Touch_Methods.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/features/lib/firefox/Touch_Methods.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="26" column="22" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -159,6 +158,7 @@
         <option value="$PROJECT_DIR$/features/step_definitions/Page_Elements/succession_page_elements.rb" />
         <option value="$PROJECT_DIR$/features/tests/Succession_Plan_setup.feature" />
         <option value="$PROJECT_DIR$/features/step_definitions/pages/sucession_plan_setup_page_steps.rb" />
+        <option value="$PROJECT_DIR$/features/lib/device_method_factory.rb" />
       </list>
     </option>
   </component>
@@ -752,7 +752,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1466398731647</updated>
-      <workItem from="1466398732831" duration="24270000" />
+      <workItem from="1466398732831" duration="24623000" />
     </task>
     <servers />
   </component>
@@ -789,7 +789,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24270000" />
+    <option name="totallyTimeSpent" value="24623000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="817" extended-state="6" />
@@ -943,14 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/features/lib/device_method_factory.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/ruby/gems/2.3.0/gems/selenium-webdriver-2.53.0/lib/selenium/client/legacy_driver.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -979,14 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/features/support/env.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1099,6 +1083,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="389">
           <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/support/env.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/features/lib/device_method_factory.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
           <folding />
         </state>
       </provider>

@@ -20,5 +20,5 @@ class DeviceMethodFactory
     end
 
   end
-  STEP_PAUSE = (ENV['STEP_PAUSE'] || 2).to_f
+  #STEP_PAUSE = (ENV['STEP_PAUSE'] || 2).to_f
 end
