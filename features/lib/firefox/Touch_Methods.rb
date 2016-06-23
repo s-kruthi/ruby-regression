@@ -38,7 +38,7 @@ module Firefox
         }
         select_item.click
       rescue Exception => e
-        puts e.message
+        puts e.message + "#{xpath}"
         $driver.quit
       end
     end

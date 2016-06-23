@@ -24,7 +24,7 @@ module Chrome
       element = $driver.find_element(:link, "Delete")
       element.click
     end
-    def Wait(timeout)
+    def Wait_For(timeout)
       $driver.manage.timeouts.implicit_wait = timeout
     end
   end

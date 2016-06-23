@@ -12,7 +12,7 @@ end
 
 def LogInAndWaitForTheDashboard(tag_name,admin_menu)
   TouchLoginButton(tag_name)
-  Wait(3)
+  Wait_For(3)
   WaitForAnElementByClass(admin_menu)
   puts $driver.title
   sleep(1)
@@ -34,6 +34,7 @@ def TouchAdminMenu(admin_menu)
 end
 
 def GoToSuccessionLandingPage(succession_expand)
+  sleep(1)
   WaitForAnElementByPartialLinkTextAndTouch(succession_expand)
 end
 
@@ -42,11 +43,12 @@ def GoToTheSuccessionSetupPageAsAdmin(succession_review_setup_path)
 end
 
 def CreateANewSuccessionPlan(new_plan_btn,title_id,title_value,save_btn,succession_review_link)
+  sleep(1)
   WaitForAnElementByXpathAndTouch(new_plan_btn)
-  Wait(2)
+  Wait_For(2)
   WaitForAnElementByIdAndInputValue(title_id, title_value)
   WaitForAnElementByXpathAndTouch(save_btn)
-  Wait(3)
+  Wait_For(3)
   WaitForAnElementByLinkAndTouch(succession_review_link)
 end
 
@@ -83,7 +85,7 @@ end
 
 def GoToTheShowHiddenScreenAndMakeThePlanVisible(show_hidden_btn,visible_btn,show_visible_btn)
   WaitForAnElementByXpathAndTouch(show_hidden_btn)
-  Wait(2)
+  Wait_For(2)
   WaitForAnElementByXpathAndTouch(visible_btn)
   sleep(2)
   PressEnterConfirm()
@@ -95,7 +97,7 @@ end
 def SearchAndVerifyTheSuccessionReturnsSuccessfully(search_field,search_value,search_btn,search_result)
   sleep(1)
   WaitForAnElementByXpathAndInputValue(search_field,search_value)
-  Wait(3)
+  Wait_For(3)
   WaitForAnElementByClassAndTouch(search_btn)
   VerifyAnElementExistByClass(search_result,search_value)
 end
