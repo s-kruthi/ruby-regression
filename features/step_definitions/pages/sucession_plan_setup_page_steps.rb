@@ -43,7 +43,7 @@ def GoToTheSuccessionSetupPageAsAdmin(succession_review_setup_path)
 end
 
 def CreateANewSuccessionPlan(new_plan_btn,title_id,title_value,save_btn,succession_review_link)
-  sleep(1)
+  sleep(2)
   WaitForAnElementByXpathAndTouch(new_plan_btn)
   Wait_For(2)
   WaitForAnElementByIdAndInputValue(title_id, title_value)
