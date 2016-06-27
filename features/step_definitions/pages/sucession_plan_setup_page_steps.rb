@@ -53,7 +53,7 @@ def CreateANewSuccessionPlan(new_plan_btn,title_id,title_value,save_btn,successi
 end
 
 def DeleteTheFirstSuccessionPlanFromTheTable(dropdown,index_value)
- #50.times do
+ #2.times do
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(dropdown,index_value)
   sleep(1)

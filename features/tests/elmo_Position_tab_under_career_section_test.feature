@@ -3,13 +3,11 @@ Feature:
   I want to test if a user can successfully search for their preferable position and can compare it with their profile and
   research what areas they need suitable training in to achieve their preferred position
 
-
-  @enabled
-    Scenario: Positions Tab Is Enabled (Happy Path)
-      Given I Have Logged In As A Regular User
-      When  I Try To Navigate To The Positions Tab Under Careers Menu
-      And   I Verify The Tab Is Enabled
-      Then  I Should Be Able To See The Positions Tab With Search And Filter Options
+    @WIP
+  Scenario: List Positions Alphabetically
+    Given I Have Logged In As A Regular User
+    When  I Go To The Career Positions Section
+    Then  The Default Positions Should Be Returned In An Alphabetical Order
 
     Scenario: Search A Position Based On Default "Show All Positions" Filter
       Given I Am Under Positions Tab After Logging In As A Regular User

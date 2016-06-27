@@ -14,6 +14,19 @@ module Chrome
         $driver.quit
       end
     end
+    def VerifyAnElementExistByCSSAndIndex(css,text,index_value)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_elements(:css, "#{css}")[index_value]
+          element if element.displayed?
+        }
+        select_item.text.include? "#{text}"
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
     def PressEnterConfirm()
       $driver.find_element(:css, "[data-bb-handler='confirm']").click
     end
