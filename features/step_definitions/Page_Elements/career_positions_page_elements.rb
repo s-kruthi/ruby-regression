@@ -1,2 +1,6 @@
 CAREERS_TAB = "Careers"
 POSITIONS_LINK = "Positions"
+POS_SEARCH_FIELD = "search-field"
+POS_SEARCH_VALUE = "Area Manager"
+POS_SEARCH_BTN = "search-btn"
+POS_SEARCH_RESULT = "//td[contains(.,'Area Manager')]"
