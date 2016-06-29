@@ -50,7 +50,7 @@ module Firefox
           element = $driver.find_element(:xpath, "#{css}")
           element if element.displayed?
         }
-        select_item.send_keys "#{css}"
+        select_item.send_keys "#{value}"
       rescue Exception => e
         puts e.message
         $driver.quit

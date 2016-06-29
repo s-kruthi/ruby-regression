@@ -31,5 +31,17 @@ Given(/^I Have Logged In As A Specific User$/) do
 end
 
 And(/^I Try To Search A Position Based On Interested Positions$/) do
+  SelectAndSearchInterestedPositionsFromTheDropdown(POSITIONS_DROPDOWN_ID,DROPDOWN_RESULT_CLASS, 2)
+end
 
+Then(/^The Search Should Return The Interested Position Based On My Previous Selections$/) do
+  ValidateTheSearchResultReturnsTheInterestedPosition(INTERESTED_POSITION_PATH, INTERESTED_POSITION_VALUE)
+end
+
+And(/^I Try To Search A Position Based On Suggested Positions$/) do
+  SelectAndSearchSuggestedPositionsFromTheDropdown(POSITIONS_DROPDOWN_ID,DROPDOWN_RESULT_CLASS, 1)
+end
+
+Then(/^The Search Should Return The Suggested Positions Based On The Next Positions Within Two Steps$/) do
+  pending
 end

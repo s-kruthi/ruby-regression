@@ -9,7 +9,7 @@ class SortingException < Exception;
 end
 
 def WaitForThePositionsListingAndVerifyTheAlphabeticalSorting()
-<<<<<<< HEAD
+
   #get the element list of positions on the first page
   pos_items = $driver.find_elements(:tag_name, "tr")[1..10]
   #get the text for actual positions in that list
@@ -21,9 +21,8 @@ def WaitForThePositionsListingAndVerifyTheAlphabeticalSorting()
       puts "PASSED,SORTED ALPHABETICALLY!"
 
   else
-       #doing this just to fail this scenario as ruby wont fail , need to find a long term solution
-       puts "FAILED  Because the list is not sorted alphabetically"
-       $driver.find_element()
+    raise SortingException.new("FAILED! Not sorting alphabetically")
+
   end
 end
 
@@ -36,16 +35,20 @@ def SearchForAPositionAndVerifyTheResult(search_field,search_value,search_btn,se
   VerifyAnElementExistByXPath(search_result,search_value)
 end
 
-=======
-    pos_items = $driver.find_elements(:tag_name, "tr")[1..10]
-  compare_pos_items = pos_items.map { |list| list.text.split("\nCompare")}
-  new_pos_items = compare_pos_items.sort
-  if
-      (compare_pos_items == new_pos_items) == true
-  else
-    raise SortingException.new("Sorting does not exist!")
-   end
-
-
+def SelectAndSearchInterestedPositionsFromTheDropdown(positions_dropdown_ID,dropdown_result_class, index_value)
+  sleep(1)
+  WaitForAnElementByIdAndTouch(positions_dropdown_ID)
+  sleep(1)
+  WaitForDropdownByClassAndTouchTheIndex(dropdown_result_class, index_value)
 end
->>>>>>> a59dffdc1d29be5059aa59dcfe6df32516ab2f46
+
+def SelectAndSearchSuggestedPositionsFromTheDropdown(positions_dropdown_ID,dropdown_result_class, index_value)
+  sleep(1)
+  WaitForAnElementByIdAndTouch(positions_dropdown_ID)
+  sleep(1)
+  WaitForDropdownByClassAndTouchTheIndex(dropdown_result_class, index_value)
+end
+
+def ValidateTheSearchResultReturnsTheInterestedPosition(interested_pos_path, interested_pos_value)
+  VerifyAnElementExistByXPath(interested_pos_path, interested_pos_value)
+end
