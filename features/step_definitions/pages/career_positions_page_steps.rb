@@ -5,10 +5,14 @@ def GoToPositionsUnderCareersTab(careers_tab,positions_link)
   WaitForAnElementByPartialLinkTextAndTouch(positions_link)
 end
 
-class SortingException < Exception;
+class CustomException < Exception;
+  $sortingError = "The list is not sorted"
 end
 
 def WaitForThePositionsListingAndVerifyTheAlphabeticalSorting()
+<<<<<<< HEAD
+    pos_items = $driver.find_elements(:tag_name, "tr")[0..10]
+=======
 <<<<<<< HEAD
   #get the element list of positions on the first page
   pos_items = $driver.find_elements(:tag_name, "tr")[1..10]
@@ -38,14 +42,14 @@ end
 
 =======
     pos_items = $driver.find_elements(:tag_name, "tr")[1..10]
+>>>>>>> 43e13ae9305678fa1b1ae5af87c7bba790de9ab6
   compare_pos_items = pos_items.map { |list| list.text.split("\nCompare")}
   new_pos_items = compare_pos_items.sort
   if
       (compare_pos_items == new_pos_items) == true
   else
-    raise SortingException.new("Sorting does not exist!")
-   end
-
+              raise CustomException.new($sortingError)
+  end
 
 end
 >>>>>>> a59dffdc1d29be5059aa59dcfe6df32516ab2f46
