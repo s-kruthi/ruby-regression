@@ -17,3 +17,19 @@ Then(/^The Default Positions Should Be Returned In An Alphabetical Order$/) do
   WaitForThePositionsListingAndVerifyTheAlphabeticalSorting()
 end
 
+
+Then(/^The I Should Be Able To Search A Position By Typing The Keywords$/) do
+  SearchForAPositionAndVerifyTheResult(POS_SEARCH_FIELD,POS_SEARCH_VALUE,POS_SEARCH_BTN,POS_SEARCH_RESULT)
+end
+
+Given(/^I Have Logged In As A Specific User$/) do
+  startWebDriver
+  GoToTheLoginPage(ELMO_LANDING_PAGE)
+  EnterUsername(USER_NAME,SPECIFIC_USERNAME)
+  EnterPassword(PASS_WORD,EMO_ADMIN_PASSWORD)
+  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+end
+
+And(/^I Try To Search A Position Based On Interested Positions$/) do
+
+end
