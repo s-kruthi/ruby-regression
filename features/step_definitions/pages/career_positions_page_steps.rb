@@ -6,6 +6,7 @@ def GoToPositionsUnderCareersTab(careers_tab,positions_link)
 end
 
 class SortingException < Exception;
+
 end
 
 def WaitForThePositionsListingAndVerifyTheAlphabeticalSorting()
@@ -41,6 +42,7 @@ def SelectAndSearchInterestedPositionsFromTheDropdown(positions_dropdown_ID,drop
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(dropdown_result_class, index_value)
 end
+
 
 def SelectAndSearchSuggestedPositionsFromTheDropdown(positions_dropdown_ID,dropdown_result_class, index_value)
   sleep(1)
