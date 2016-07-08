@@ -1,4 +1,5 @@
 ELMO_LANDING_PAGE = 'https://tmsfull.elmotalent.com.au/dashboard'
+NEW_USER_EDIT_PAGE = 'https://staging1.dev.elmotalent.com.au/controlpanel/edit-user-password/20519'
 EMO_ADMIN_USERNAME = 'admin'
 EMO_ADMIN_PASSWORD = 'admin1234567'
 SPECIFIC_USERNAME = 'X1222347'

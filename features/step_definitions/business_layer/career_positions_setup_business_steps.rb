@@ -43,5 +43,5 @@ And(/^I Try To Search A Position Based On Suggested Positions$/) do
 end
 
 Then(/^The Search Should Return The Suggested Positions Based On The Next Positions Within Two Steps$/) do
-  pending
+  ValidateTheSearchReturnsNextTwoSuggestedPositions(SUGGESTED_POS_PATH1,SUGGESTED_POS_VALUE1, SUGGESTED_POS_PATH2,SUGGESTED_POS_VALUE2)
 end

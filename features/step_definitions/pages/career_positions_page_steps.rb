@@ -54,3 +54,8 @@ end
 def ValidateTheSearchResultReturnsTheInterestedPosition(interested_pos_path, interested_pos_value)
   VerifyAnElementExistByXPath(interested_pos_path, interested_pos_value)
 end
+
+def ValidateTheSearchReturnsNextTwoSuggestedPositions(suggested_pos_path1,suggested_pos_value1,suggested_pos_path2,suggested_pos_value2)
+  VerifyAnElementExistByXPath(suggested_pos_path1, suggested_pos_value1)
+  VerifyAnElementExistByXPath(suggested_pos_path2, suggested_pos_value2)
+end
