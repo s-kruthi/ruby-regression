@@ -1,4 +1,4 @@
-def GoToTheLoginPage(login_page)
+def GoToThePage(login_page)
   $driver.navigate.to(login_page)
 end
 
@@ -8,6 +8,10 @@ end
 
 def EnterPassword(password, value)
   WaitForAnElementByIdAndInputValue(password, value)
+end
+
+def EnterEmail(email, value)
+  WaitForAnElementByIdAndInputValue(email, value)
 end
 
 def LogInAndWaitForTheDashboard(tag_name,admin_menu)

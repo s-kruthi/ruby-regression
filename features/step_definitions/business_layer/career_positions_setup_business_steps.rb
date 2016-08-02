@@ -2,7 +2,7 @@
 
 Given(/^I Have Logged In As A Regular User$/) do
   startWebDriver
-  GoToTheLoginPage(ELMO_LANDING_PAGE)
+  GoToThePage(ELMO_LANDING_PAGE)
   EnterUsername(USER_NAME,EMO_ADMIN_USERNAME)
   EnterPassword(PASS_WORD,EMO_ADMIN_PASSWORD)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
@@ -24,7 +24,7 @@ end
 
 Given(/^I Have Logged In As A Specific User$/) do
   startWebDriver
-  GoToTheLoginPage(ELMO_LANDING_PAGE)
+  GoToThePage(ELMO_LANDING_PAGE)
   EnterUsername(USER_NAME,SPECIFIC_USERNAME)
   EnterPassword(PASS_WORD,EMO_ADMIN_PASSWORD)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)

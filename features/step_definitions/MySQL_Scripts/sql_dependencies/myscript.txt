@@ -22,8 +22,8 @@ contractor_company_id: NULL
               created: NULL
              modified: NULL
            lastAccess: NULL
-           last_login: NULL
-          last_logout: NULL
+           last_login: 1468307475
+          last_logout: 1468307481
           expiry_date: 0
            is_deleted: 0
          deleted_time: NULL
@@ -43,7 +43,7 @@ force_password_change: 0
           branding_id: NULL
         is_onboarding: 0
    onboarding_matched: 0
-          login_count: 0
+          login_count: 1
            start_date: NULL
              timezone: NULL
 *************************** 1. row ***************************
@@ -523,8 +523,575 @@ deleted_time: NULL
      path_id: /20519
   is_deleted: 0
 deleted_time: NULL
+*************************** 54. row ***************************
+          id: 102
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 55. row ***************************
+          id: 103
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 56. row ***************************
+          id: 113
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 57. row ***************************
+          id: 114
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 58. row ***************************
+          id: 115
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 59. row ***************************
+          id: 116
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 60. row ***************************
+          id: 117
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 61. row ***************************
+          id: 118
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 62. row ***************************
+          id: 119
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 63. row ***************************
+          id: 120
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 64. row ***************************
+          id: 124
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 65. row ***************************
+          id: 126
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 66. row ***************************
+          id: 128
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 67. row ***************************
+          id: 129
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 68. row ***************************
+          id: 132
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 69. row ***************************
+          id: 133
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 70. row ***************************
+          id: 134
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 71. row ***************************
+          id: 135
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 72. row ***************************
+          id: 136
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 73. row ***************************
+          id: 137
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 74. row ***************************
+          id: 150
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 75. row ***************************
+          id: 151
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 76. row ***************************
+          id: 153
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 77. row ***************************
+          id: 155
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 78. row ***************************
+          id: 156
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 79. row ***************************
+          id: 157
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 80. row ***************************
+          id: 158
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 81. row ***************************
+          id: 159
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 82. row ***************************
+          id: 160
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 83. row ***************************
+          id: 161
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 84. row ***************************
+          id: 162
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 85. row ***************************
+          id: 165
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 86. row ***************************
+          id: 334
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 87. row ***************************
+          id: 401
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 88. row ***************************
+          id: 402
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 89. row ***************************
+          id: 403
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 90. row ***************************
+          id: 404
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 91. row ***************************
+          id: 405
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 92. row ***************************
+          id: 406
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 93. row ***************************
+          id: 407
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 94. row ***************************
+          id: 408
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 95. row ***************************
+          id: 409
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 96. row ***************************
+          id: 410
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 97. row ***************************
+          id: 411
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 98. row ***************************
+          id: 412
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 99. row ***************************
+          id: 413
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 100. row ***************************
+          id: 414
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 101. row ***************************
+          id: 415
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 102. row ***************************
+          id: 416
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 103. row ***************************
+          id: 417
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 104. row ***************************
+          id: 418
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 105. row ***************************
+          id: 419
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 106. row ***************************
+          id: 421
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 107. row ***************************
+          id: 423
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 108. row ***************************
+          id: 425
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 109. row ***************************
+          id: 427
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 110. row ***************************
+          id: 429
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 111. row ***************************
+          id: 431
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 112. row ***************************
+          id: 433
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 113. row ***************************
+          id: 435
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 114. row ***************************
+          id: 437
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 115. row ***************************
+          id: 439
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
+*************************** 116. row ***************************
+          id: 440
+  trigger_id: User.PasswordChangedTrigger
+     user_id: 20519
+  sort_order: 1:111:20519
+   path_name: /111
+     path_id: /20519
+  is_deleted: 0
+deleted_time: NULL
 *************************** 1. row ***************************
-          id: 111
+          id: 547
         type: 1
       source: 1
      subject: Reset Password
@@ -536,7 +1103,7 @@ deleted_time: NULL
 
 <p><span style="font-size:14px">You can login to the FACS Performance Development System using this link:</span></p>
 
-<p><span style="font-size:14px">https://staging1.dev.elmotalent.com.au/security/change-password/sunburn@corp.com.au/6b6913e7bcc439630cc4beae9b064581</span></p>
+<p><span style="font-size:14px">https://staging1.dev.elmotalent.com.au/security/change-password/sunburn@corp.com.au/11d5c1e1a581110392f6a29009926fe7</span></p>
 
 <p><span style="font-size:14px">After clicking the link, you will be asked to create a new password for yourself.</span></p>
 
@@ -556,12 +1123,12 @@ FACS Performance Development System<br />
 <strong>E:&nbsp;</strong>FACS.PerformanceDevelopment@facs.nsw.gov.au</span></p>
     priority: 1
   recipients: a:3:{s:2:"to";a:1:{s:19:"sunburn@corp.com.au";s:8:"sun burn";}s:2:"cc";N;s:3:"bcc";N;}
-     context: a:1:{s:8:"schedule";i:124;}
+     context: a:1:{s:8:"schedule";i:575;}
   is_deleted: 0
 deleted_time: NULL
    fromEmail: a:1:{s:42:"FACSPerformanceDevelopment@facs.nsw.gov.au";s:28:"FACS Performance Development";}
   replyEmail: a:1:{s:42:"FACSPerformanceDevelopment@facs.nsw.gov.au";s:28:"FACS Performance Development";}
-created_time: 1467945544
+created_time: 1470101270
   fired_time: NULL
       status: 0
     branding: a:3:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#00205b";s:13:"menuFontColor";s:7:"#ffffff";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:1;}

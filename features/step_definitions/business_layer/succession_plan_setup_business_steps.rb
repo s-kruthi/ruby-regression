@@ -1,7 +1,7 @@
 
 Given(/^I Am On The Succession Menu Page$/) do
   startWebDriver
-  GoToTheLoginPage(ELMO_LANDING_PAGE)
+  GoToThePage(ELMO_LANDING_PAGE)
   EnterUsername(USER_NAME,EMO_ADMIN_USERNAME)
   EnterPassword(PASS_WORD,EMO_ADMIN_PASSWORD)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
@@ -49,5 +49,6 @@ end
 
 Then(/^I Am Returned With Cannot Be Deleted Message$/) do
   VerifyTheMessageCannotBeDeletedExist(MESSAGE_CLASS,MESSAGE_BODY)
+  $driver.quit
 end
 
