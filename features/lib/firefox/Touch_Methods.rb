@@ -71,7 +71,6 @@ module Firefox
       end
     end
 
-
     def WaitForAnElementByLinkAndTouch(link)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)

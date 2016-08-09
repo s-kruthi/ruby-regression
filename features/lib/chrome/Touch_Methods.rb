@@ -28,7 +28,7 @@ module Chrome
         $driver.quit
       end
     end
-    
+
     def WaitForAnElementByXpathAndTouch(xpath)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -70,7 +70,7 @@ module Chrome
         $driver.quit
       end
     end
-    
+
     def WaitForAnElementByLinkAndTouch(link)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
