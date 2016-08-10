@@ -14,22 +14,23 @@ end
 
 
 def EnterNewRecruitmentRequisitionDetails(pos_index_arrow,pos_index_arrow_id,pos_index_class,pos_index_class_id,loc_index_arrow,loc_index_arrow_id,loc_index_class,loc_index_class_id,num_of_position,num_position_input,calender_duedate,requisition_duedate,calender_done_btn)
-  sleep(1)
+  sleep(2)
   WaitForDropdownByClassAndTouchTheIndex(pos_index_arrow,pos_index_arrow_id)
-  Wait_For(1)
+  sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(pos_index_class,pos_index_class_id)
-  Wait_For(1)
+  sleep(1)
 
+  WaitForDropdownByClassAndTouchTheIndex(loc_index_arrow,loc_index_arrow_id)
+  sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(loc_index_class,loc_index_class_id)
-  Wait_For(1)
-  WaitForDropdownByClassAndTouchTheIndex(loc_index_class,loc_index_class_id)
-
+  sleep(1)
   WaitForAnElementByXpathAndInputValue(num_of_position,num_position_input)
-  Wait_For(1)
+  sleep(1)
 
   WaitForAnElementByXpathAndInputValue(calender_duedate,requisition_duedate)
-  Wait_For(1)
+  sleep(2)
   WaitForAnElementByXpathAndTouch(calender_done_btn)
+  sleep(2)
 end
 
 def CreateANewRecruitmentRequisition(save_btn)
