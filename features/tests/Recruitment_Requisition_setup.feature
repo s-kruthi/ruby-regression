@@ -1,6 +1,7 @@
 @Recruitment @requisition
 Feature:
   I want to be able to create a New Requisition Request
+
   @add
   Scenario: Create a Requisition
     Given I Am On The Recruitment Requisition Listing Page

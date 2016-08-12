@@ -1,5 +1,5 @@
 
-ADMIN_PROFILE_DROPDOWN = "text-profile"
+ADMIN_PROFILE_DROPDOWN = "dropdown-toggle"
 ADMIN_COG = "glyphicon-cog"
 SUCCESSION_EXPAND ="Succession"
 SUCCESSION_REVIEW_SETUP_PATH = "//span[contains(.,'Succession Review Setup')]"

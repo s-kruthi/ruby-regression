@@ -4,7 +4,6 @@ require 'active_record'
 require "selenium-webdriver"
 require "selenium/client"
 
-
 require "./features/lib/device_method_factory.rb"
 
 puts "CHANNEL = " + ENV["CHANNEL"]
