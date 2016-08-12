@@ -1,4 +1,3 @@
-
 @Career_Preference_scenarios
 Feature:
   I want to test if user can successfully add their career preferences by answering the default Questions
