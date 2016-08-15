@@ -1,9 +1,3 @@
-
-ADMIN_PROFILE_DROPDOWN = "dropdown-toggle"
-ADMIN_COG = "glyphicon-cog"
-SUCCESSION_EXPAND ="Succession"
-SUCCESSION_REVIEW_SETUP_PATH = "//span[contains(.,'Succession Review Setup')]"
-DROPDOWN = "dropdown-toggle"
 NEW_PLAN_BTN ="//button[contains(.,'New Plan')]"
 TITLE_ID = 'title'
 SAVE_BTN = "//button[contains(.,'Save')]"
