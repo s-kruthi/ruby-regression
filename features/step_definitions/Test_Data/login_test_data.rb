@@ -6,6 +6,9 @@ EMO_ADMIN_PASSWORD = 'admin1234567'
 SPECIFIC_USERNAME = 'X1222347'
 EMAIL_ADD = 'sunburn@corp.com.au'
 
-RECRUITMENT_LANDING_PAGE = 'https://staging3.dev.elmotalent.com.au/controlpanel/recruitment/requisition/requisition'
+REQUISITION_LANDING_PAGE = 'https://staging3.dev.elmotalent.com.au/controlpanel/recruitment/requisition/requisition'
 RECRUITMENT_ADMIN_USERNAME = 'admin'
 RECRUITMENT_ADMIN_PASSWORD = 'admin1234567'
+
+RECRUITMENT_LANDING_PAGE = 'https://staging3.dev.elmotalent.com.au/dashboard'
+RECRUITMENT_CANDIDATE_LANDING_PAGE = 'https://staging3.dev.elmotalent.com.au/admin/candidates/listAll'

@@ -3,7 +3,7 @@
 Feature:
   As a Company Administrator I want to test combinations of F2F activities to test if they were triggered successfully
 
-  @course @add @view
+  @course_add
   Scenario: Admin logging in to access F2F Activities (Happy Path)
     Given I Have Logged In as an Admin User
     When  I Access a Course that has F2F Activity
@@ -11,8 +11,7 @@ Feature:
     And   I Should Be Able to Add/Edit F2F Activities to the Course
 
 
-  @course @add @view
-
+  @course_view_sessions
   Scenario: Admin logging in to access F2F Sessions (Happy Path)
     Given I Have Logged In as an Admin User
     When  I Have Opened a F2F Activity

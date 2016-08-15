@@ -6,4 +6,3 @@ CONF_CHANGE_PASSWORD = 'user_password_second'
 LOGIN_BUTTON = 'button'
 RESET_BUTTON = "//button[@type='submit']"
 FORGOT_PASSWORD_LINK = "//a[contains(.,'Forgot Password')]"
-
