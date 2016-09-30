@@ -38,7 +38,7 @@ def TouchAdminMenu(admin_menu)
 end
 
 def GoToSuccessionLandingPage(succession_expand)
-  sleep(1)
+  sleep(4)
   WaitForAnElementByPartialLinkTextAndTouch(succession_expand)
 end
 
@@ -47,7 +47,7 @@ def GoToTheSuccessionSetupPageAsAdmin(succession_review_setup_path)
 end
 
 def CreateANewSuccessionPlan(new_plan_btn,title_id,title_value,save_btn,succession_review_link)
-  sleep(2)
+  sleep(3)
   WaitForAnElementByXpathAndTouch(new_plan_btn)
   Wait_For(2)
   WaitForAnElementByIdAndInputValue(title_id, title_value)

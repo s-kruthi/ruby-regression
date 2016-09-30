@@ -1,3 +1,4 @@
+DROPDOWN = "dropdown-toggle"
 NEW_PLAN_BTN ="//button[contains(.,'New Plan')]"
 TITLE_ID = 'title'
 SAVE_BTN = "//button[contains(.,'Save')]"

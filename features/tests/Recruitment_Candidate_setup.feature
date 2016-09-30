@@ -11,5 +11,5 @@ Feature:
     When I Click on New Candidate Button
     And I Enter New Candidate Details
     And I Click on The Save Button
-    Then  I Should Be Able To Create A New Candidate
+    Then I Should Be Able To Create A New Candidate
 

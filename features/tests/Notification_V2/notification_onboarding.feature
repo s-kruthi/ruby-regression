@@ -1,6 +1,6 @@
 @Notifications @smoke
 Feature:
-  As a user I want to test combinations of event notifications to test if they were triggered successfully
+  As a user I want to test combinations of on boarding notifications to test if they were triggered successfully
 
   @change_password
   Scenario: Reset User's password
@@ -11,6 +11,6 @@ Feature:
   @forgot_password
   Scenario: Forgot User password
     Given I Am On The Forgot Password Reset Section Of A Specific User
-    When I Successfully Trigger The Reset Password Email
-    Then I Should Be Instantly Notified With The Reset Forgot Password Email
+    When  I Successfully Trigger The Reset Password Email
+    Then  I Should Be Instantly Notified With The Reset Forgot Password Email
 

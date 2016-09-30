@@ -10,7 +10,7 @@ end
 
 
 When(/^I Go To The Career Positions Section$/) do
-  GoToPositionsUnderCareersTab(CAREERS_TAB,POSITIONS_LINK)
+  GoToPositionsUnderCareersTab(CAREERS_TAB, 1, POSITIONS_LINK)
 end
 
 Then(/^The Default Positions Should Be Returned In An Alphabetical Order$/) do

@@ -1,6 +1,6 @@
-def GoToPositionsUnderCareersTab(careers_tab,positions_link)
-  sleep(1)
-  WaitForAnElementByPartialLinkTextAndTouch(careers_tab)
+def GoToPositionsUnderCareersTab(careers_tab,index_value,positions_link)
+  sleep(3)
+  WaitForAnElementByIdAndTouchTheIndex(careers_tab,index_value)
   sleep(1)
   WaitForAnElementByPartialLinkTextAndTouch(positions_link)
 end

@@ -17,10 +17,10 @@ def EnterNewRecruitmentRequisitionDetails(pos_index_arrow,pos_index_arrow_id,pos
   WaitForDropdownByClassAndTouchTheIndex(pos_index_arrow,pos_index_arrow_id)
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(pos_index_class,pos_index_class_id)
-  sleep(1)
+  sleep(3)
 
   WaitForDropdownByClassAndTouchTheIndex(loc_index_arrow,loc_index_arrow_id)
-  sleep(1)
+  sleep(3)
   WaitForDropdownByClassAndTouchTheIndex(loc_index_class,loc_index_class_id)
   sleep(1)
   WaitForAnElementByXpathAndInputValue(num_of_position,num_position_input)

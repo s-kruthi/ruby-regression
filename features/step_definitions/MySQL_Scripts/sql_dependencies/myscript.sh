@@ -1,4 +1,4 @@
-#!/usr/bin/expect
+#!/usr/bin/expect -f
 spawn ssh -f -p 22 tester@54.66.150.255 -L 33060:basic-test.cxexixtaxuuy.ap-southeast-2.rds.amazonaws.com:3306 -N
 sleep 1
 expect "password: "

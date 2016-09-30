@@ -1,10 +1,9 @@
 module Firefox
   module Capabilities
     def self.set_up_selenium_web_driver
-      $driver = Selenium::WebDriver.for(:firefox)
-      $driver.manage.window.move_to(300,400)
-      #$driver.manage.window.resize_to(900, 1500)
-      # $driver.manage.window.resize_to(1200, 1500)
+      Selenium::WebDriver::Firefox::Binary.path = "/Applications/Firefox.app/Contents/MacOS/firefox"
+      $driver = Selenium::WebDriver.for :firefox, marionette: true
+      #$driver.manage.window.move_to(300,400)
       $driver.manage.window.maximize()
     end
   end

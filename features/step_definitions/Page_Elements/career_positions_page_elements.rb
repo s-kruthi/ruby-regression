@@ -1,4 +1,4 @@
-CAREERS_TAB = "Careers"
+CAREERS_TAB = "careers-link"
 POSITIONS_LINK = "Positions"
 POS_SEARCH_FIELD = "search-field"
 POS_SEARCH_VALUE = "Area Manager"

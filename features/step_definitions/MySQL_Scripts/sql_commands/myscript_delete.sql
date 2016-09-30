@@ -1,1 +1,0 @@
- delete from epms_log_message where subject like '%Reset Password%' or subject like '%Forgot Password%';

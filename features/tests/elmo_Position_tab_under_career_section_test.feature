@@ -13,7 +13,7 @@ Feature:
       Given I Have Logged In As A Regular User
       When  I Go To The Career Positions Section
       Then  The I Should Be Able To Search A Position By Typing The Keywords
-
+  @shanku
     Scenario: Search A Position Based On Default "Show Suggested Positions" Filter
       Given I Have Logged In As A Specific User
       When  I Go To The Career Positions Section

@@ -5,13 +5,12 @@ def GoToTheRecruitmentMenuPageAsAdmin(admin_cog,recruitment_expand)
 end
 
 def GoToRecruitmentCandidatesListingPage(recruitment_expand)
-  sleep(1)
+  sleep(2)
   WaitForAnElementByPartialLinkTextAndTouch(recruitment_expand)
 end
 
 def GoToCandidatesListingPage(recruitment_expand)
-  sleep(1)
-
+  sleep(2)
   WaitForAnElementByXpathAndTouch(recruitment_expand)
 end
 
@@ -43,6 +42,7 @@ end
 def CreateARandomEmailAddress()
   email_addrress = CANDIDATE[:EMAIL].to_s + ((Time.now).to_i).to_s + "@elmotalent.com.au"
   WaitForAnElementByIdAndInputValue(EMAIL_INPUT_ID,email_addrress)
+  puts email_addrress
 end
 
 def ClickOnSaveButton(candidate_save_btn)

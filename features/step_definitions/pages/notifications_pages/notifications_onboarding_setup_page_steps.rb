@@ -13,9 +13,9 @@ end
 def ConnectToDatabaseAndValidateTheChangePasswordTriggeredNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/change_password.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/password_change.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
-    trs = result.include?  ("subject: Reset Password") #true validate
+    trs = result.include?  ("subject: Password Change") #true validate
     prs = result.include?  ("trigger_id: User.PasswordChangedTrigger") #true validate
     if frs && trs && prs
       puts "Yay! Notification has been triggered"
@@ -27,7 +27,7 @@ def ConnectToDatabaseAndValidateTheChangePasswordTriggeredNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/myscript_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -44,9 +44,9 @@ end
 def ConnectToDatabaseAndValidateTheForgotPasswordTriggeredNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/forgot_password.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/password_forgot.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
-    trs = result.include?  ("subject: Forgot Password") #true validate
+    trs = result.include?  ("subject: Forgot Username or Password") #true validate
     prs = result.include?  ("trigger_id: User.ForgotUsernamePasswordTrigger") #true validate
     if frs && trs && prs
       puts "Yay! Notification has been triggered"
@@ -58,7 +58,7 @@ def ConnectToDatabaseAndValidateTheForgotPasswordTriggeredNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/myscript_delete.sql) #deletes the log files
+   %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
