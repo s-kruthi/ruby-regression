@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'active_record'
+require 'touch_action/selenium-webdriver'
 
 require "selenium-webdriver"
 #require "selenium/client"

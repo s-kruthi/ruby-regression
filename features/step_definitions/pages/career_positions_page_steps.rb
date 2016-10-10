@@ -59,3 +59,4 @@ def ValidateTheSearchReturnsNextTwoSuggestedPositions(suggested_pos_path1,sugges
   VerifyAnElementExistByXPath(suggested_pos_path1, suggested_pos_value1)
   VerifyAnElementExistByXPath(suggested_pos_path2, suggested_pos_value2)
 end
+

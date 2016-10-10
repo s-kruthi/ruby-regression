@@ -24,3 +24,6 @@ DOC_PASSWORD = 'tester'
 ####### manager's credentials ###########
 MANAGER_USERNAME = 'X1201531'
 MANAGER_PASSWORD = 'tester'
+
+####### employee profile details page ########
+EMPLOYEE_PROFILE_PAGE = "https://staging2.dev.elmotalent.com.au/controlpanel/user-profile/3472/payment"

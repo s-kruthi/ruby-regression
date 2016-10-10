@@ -31,7 +31,7 @@ def GrabThePathIDForAssignedUser(existing_assignment_path,view_button_path, view
   path_url = $driver.current_url
   path_id = path_url.split('/')[-1]
   $current_path_id = "/#{path_id}"
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='REBECCA' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Assigned' or subject like 'Document Due' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentAssignedTrigger' and trigger_id= 'Document.DocumentDueTrigger' or path_id='#{$current_path_id}' \\G;")
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Assigned' or subject like 'Document Due' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentAssignedTrigger' and trigger_id= 'Document.DocumentDueTrigger' or path_id='#{$current_path_id}' \\G;")
 end
 
 def DeleteTheExistingAssignedDocumentsForUser(dropdown,index_value)
@@ -97,7 +97,7 @@ def ConfirmAndCompleteDocument(enter_message_id, doc_comp_message, document_comp
   WaitForAnElementByIdAndInputValue(enter_message_id, doc_comp_message)
   WaitForAnElementByXpathAndTouch(document_complete)
   sleep(1)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='REBECCA' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Awaiting Approval' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentSubmittedTrigger' and path_id='#{$current_path_id}' \\G;")
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Awaiting Approval' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentSubmittedTrigger' and path_id='#{$current_path_id}' \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheDocumentAwaitingNotifications()
@@ -135,7 +135,7 @@ def GoToTheAwaitingApprovalSectionAndApproveTheDocument(doc_approval_path, doc_a
   WaitForAnElementByIdAndInputValue(enter_approval_message_id, approved_message)
   WaitForAnElementByXpathAndTouch(confirm_approval)
   sleep(3)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='REBECCA' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Approved' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentApprovedTrigger' and path_id='#{$current_path_id}' \\G;")
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Approved' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentApprovedTrigger' and path_id='#{$current_path_id}' \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheDocumentApprovedNotifications()
@@ -173,7 +173,7 @@ def GoToTheAwaitingApprovalSectionAndRejectTheDocument(doc_approval_path, doc_re
   WaitForAnElementByIdAndInputValue(enter_rejection_message_id, approved_message)
   WaitForAnElementByXpathAndTouch(confirm_reject)
   sleep(3)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='REBECCA' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Rejected' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentRejectedTrigger' and path_id='#{$current_path_id}' \\G;")
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Rejected' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentRejectedTrigger' and path_id='#{$current_path_id}' \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheDocumentRejectedNotifications()

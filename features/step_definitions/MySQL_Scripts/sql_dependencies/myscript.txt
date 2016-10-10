@@ -4,10 +4,10 @@
     second_manager_id: NULL
 contractor_company_id: NULL
              username: X1242341
-           identifier: REBECCA.AARON@elmodemo.com
+           identifier: X1242341
                  salt: 
              password: 4f82dda9df5537486ba883e24ad4f516
-           first_name: REBECCA
+           first_name: DontTouchAutomationUser
             last_name: AARON
                 email: REBECCA.AARON@elmodemo.com
             is_active: 1
@@ -23,8 +23,8 @@ contractor_company_id: NULL
               created: 1412139241
              modified: 1460481485
            lastAccess: NULL
-           last_login: 1474525811
-          last_logout: 1474614907
+           last_login: 1475196274
+          last_logout: 1475196281
           expiry_date: 0
              reg_type: manual
             confirmed: 1
@@ -43,11 +43,11 @@ force_password_change: 0
           branding_id: NULL
         is_onboarding: 0
    onboarding_matched: 0
-          login_count: 11
+          login_count: 12
            start_date: NULL
              timezone: NULL
 *************************** 1. row ***************************
-           id: 2124
+           id: 3453
          type: 1
   source_type: 1
       subject: Document Approved
@@ -57,43 +57,43 @@ force_password_change: 0
 &nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: Elders<br />
 &nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline<br />
 &nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_EMAIL: HRonline@elders.com.au<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_FIRSTNAME: REBECCA<br />
+&nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_FIRSTNAME: DontTouchAutomationUser<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_LASTNAME: AARON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_USERNAME: X1242341<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_MANAGER_FIRSTNAME: SIMON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_MANAGER_LASTNAME: COX<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/95?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/95</a><br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_FIRSTNAME: REBECCA<br />
+&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/105?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/105</a><br />
+&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_FIRSTNAME: DontTouchAutomationUser<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_LASTNAME: AARON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_MANAGER_FIRSTNAME: SIMON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_MANAGER_LASTNAME: COX<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_TITLE: cool stuff<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_DESCRIPTION: <p>dttrthrthrt</p><br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/95?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/95</a><br />
+&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/105?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/105</a><br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_WORKFLOW_ASSIGNEE_LASTNAME: <br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_WORKFLOW_ASSIGNEE_FIRSTNAME: <br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_APPROVED_COMMENT: Document approved</p>
     fromEmail: {"HRonline@elders.com.au":"HROnline"}
    replyEmail: {"HRonline@elders.com.au":"HROnline"}
-   recipients: {"to":{"REBECCA.AARON@elmodemo.com":"REBECCA AARON"},"cc":null,"bcc":null}
+   recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":null,"bcc":null}
 recipient_ids: /3472/
      priority: 1
- created_time: 1474941289
+ created_time: 1475725247
    fired_time: NULL
        status: 0
-      context: a:1:{s:8:"schedule";i:1491;}
+      context: a:1:{s:8:"schedule";i:2826;}
      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:1;s:4:"type";i:0;}
      template: NULL
    is_deleted: 0
  deleted_time: NULL
-    source_id: 1491
+    source_id: 2826
         count: 0
 *************************** 1. row ***************************
-          id: 1491
+          id: 2826
   trigger_id: Document.DocumentApprovedTrigger
      user_id: 3472
-  sort_order: 1:161-164:95-49
+  sort_order: 1:161-164:105-58
    path_name: /161
-     path_id: /95
+     path_id: /105
   is_deleted: 0
 deleted_time: NULL

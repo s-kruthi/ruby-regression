@@ -1,5 +1,5 @@
 SEARCH_TEMPLATE = 'cool stuff'
-SEARCH_USER = 'REBECCA AARON'
+SEARCH_USER = 'DontTouchAutomationUser AARON'
 
 #### user document submission ####
 STREET_NUM_VAL = '23'
