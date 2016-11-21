@@ -56,6 +56,10 @@ def CreateANewSuccessionPlan(new_plan_btn,title_id,title_value,save_btn,successi
   WaitForAnElementByLinkAndTouch(succession_review_link)
 end
 
+def SearchTheNewlyCreatedSuccessionPlan(search_path,search_value)
+  WaitForAnElementByXpathAndInputValue(search_path,search_value)
+end
+
 def DeleteTheFirstSuccessionPlanFromTheTable(dropdown,index_value)
  #2.times do
   sleep(1)

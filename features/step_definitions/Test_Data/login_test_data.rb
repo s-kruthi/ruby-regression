@@ -19,11 +19,11 @@ RECRUITMENT_CANDIDATE_LANDING_PAGE = 'https://staging3.dev.elmotalent.com.au/adm
 ####### user credentials ###########
 MY_DOCUMENT_PAGE = 'https://tmsfull.dev.elmotalent.com.au/documents'
 DOC_USERNAME = 'X1242341'
-DOC_PASSWORD = 'tester'
+DOC_PASSWORD = 'Tester1!'
 
 ####### manager's credentials ###########
 MANAGER_USERNAME = 'X1201531'
-MANAGER_PASSWORD = 'tester'
+MANAGER_PASSWORD = 'Tester1!'
 
 ####### employee profile details page ########
 EMPLOYEE_PROFILE_PAGE = "https://staging2.dev.elmotalent.com.au/controlpanel/user-profile/3472/payment"

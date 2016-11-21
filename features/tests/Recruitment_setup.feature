@@ -3,7 +3,7 @@
 Feature:
   I want to be able to create a New Requisition Request
 
-  @add
+  @add_req
   Scenario: Create a Requisition
     Given I Am On The Recruitment Requisition Listing Page
     When  I Click on New Requisition Button

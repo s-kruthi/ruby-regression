@@ -17,6 +17,8 @@ And(/^I Create A New Succession Plan$/) do
 end
 
 Then(/^I Should Be Able To Delete The Plan From the Table$/) do
+  sleep(2)
+  SearchTheNewlyCreatedSuccessionPlan(SEARCH_PATH,SEARCH_VALUE)
   DeleteTheFirstSuccessionPlanFromTheTable(DROPDOWN,11)
   $driver.quit
 end

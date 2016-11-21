@@ -53,7 +53,7 @@ end
 def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
     trs = result.include?  ("subject: Document Assigned") #true validate
     krs = result.include?  ("subject: Document Due") #true validate
@@ -69,7 +69,7 @@ def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -103,7 +103,7 @@ end
 def ConnectToDatabaseAndValidateTheDocumentAwaitingNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
     trs = result.include?  ("subject: Document Awaiting Approval") #true validate
     krs = result.include?  ("recipient_ids: /3472/") #true validate
@@ -118,7 +118,7 @@ def ConnectToDatabaseAndValidateTheDocumentAwaitingNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -141,7 +141,7 @@ end
 def ConnectToDatabaseAndValidateTheDocumentApprovedNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
     trs = result.include?  ("subject: Document Approved") #true validate
     krs = result.include?  ("recipient_ids: /3472/") #true validate
@@ -156,7 +156,7 @@ def ConnectToDatabaseAndValidateTheDocumentApprovedNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -179,7 +179,7 @@ end
 def ConnectToDatabaseAndValidateTheDocumentRejectedNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
     trs = result.include?  ("subject: Document Rejected") #true validate
     krs = result.include?  ("recipient_ids: /3472/") #true validate
@@ -194,7 +194,7 @@ def ConnectToDatabaseAndValidateTheDocumentRejectedNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_staging1 -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end

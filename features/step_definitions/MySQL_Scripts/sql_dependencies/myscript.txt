@@ -6,7 +6,7 @@ contractor_company_id: NULL
              username: X1242341
            identifier: X1242341
                  salt: 
-             password: 4f82dda9df5537486ba883e24ad4f516
+             password: 2c763172f276758229f4eda179a83f81
            first_name: DontTouchAutomationUser
             last_name: AARON
                 email: REBECCA.AARON@elmodemo.com
@@ -37,7 +37,7 @@ force_password_change: 0
           second_path: NULL
          second_depth: NULL
                locale: NULL
-        department_id: 1
+        department_id: NULL
           location_id: 1
           position_id: 3
           branding_id: NULL
@@ -46,12 +46,13 @@ force_password_change: 0
           login_count: 12
            start_date: NULL
              timezone: NULL
+                 type: 0
 *************************** 1. row ***************************
-           id: 3453
+           id: 4091
          type: 1
   source_type: 1
-      subject: Document Approved
-         body: <p>Document Approved<br />
+      subject: Document Rejected
+         body: <p>Document Rejected<br />
 &nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_NAME: Elders Rural Services<br />
 &nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: ELMO Talent Management System<br />
 &nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: Elders<br />
@@ -62,38 +63,38 @@ force_password_change: 0
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_USERNAME: X1242341<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_MANAGER_FIRSTNAME: SIMON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_MANAGER_LASTNAME: COX<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/105?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/105</a><br />
+&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/133?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/133</a><br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_FIRSTNAME: DontTouchAutomationUser<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_LASTNAME: AARON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_MANAGER_FIRSTNAME: SIMON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_MANAGER_LASTNAME: COX<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_TITLE: cool stuff<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_DESCRIPTION: <p>dttrthrthrt</p><br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/105?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/105</a><br />
+&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/133?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/133</a><br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_WORKFLOW_ASSIGNEE_LASTNAME: <br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_WORKFLOW_ASSIGNEE_FIRSTNAME: <br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_APPROVED_COMMENT: Document approved</p>
+&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_REJECT_MESSAGE: Document rejected</p>
     fromEmail: {"HRonline@elders.com.au":"HROnline"}
    replyEmail: {"HRonline@elders.com.au":"HROnline"}
    recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":null,"bcc":null}
 recipient_ids: /3472/
      priority: 1
- created_time: 1475725247
+ created_time: 1478740324
    fired_time: NULL
        status: 0
-      context: a:1:{s:8:"schedule";i:2826;}
+      context: a:1:{s:8:"schedule";i:3495;}
      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:1;s:4:"type";i:0;}
      template: NULL
    is_deleted: 0
  deleted_time: NULL
-    source_id: 2826
+    source_id: 3495
         count: 0
 *************************** 1. row ***************************
-          id: 2826
-  trigger_id: Document.DocumentApprovedTrigger
+          id: 3495
+  trigger_id: Document.DocumentRejectedTrigger
      user_id: 3472
-  sort_order: 1:161-164:105-58
+  sort_order: 1:161-164:133-71
    path_name: /161
-     path_id: /105
+     path_id: /133
   is_deleted: 0
 deleted_time: NULL

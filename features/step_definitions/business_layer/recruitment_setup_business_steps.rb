@@ -5,12 +5,11 @@ Given(/^I Am On The Recruitment Requisition Listing Page$/) do
   EnterUsername(USER_NAME,RECRUITMENT_ADMIN_USERNAME)
   EnterPassword(PASS_WORD,RECRUITMENT_ADMIN_PASSWORD)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
-  GoToRecruitmentRequisitionAddPage(NEW_REQUISITION_BTN)
-  sleep(2)
+  sleep(3)
 end
 
 When(/^I Click on New Requisition Button$/) do
-
+  GoToRecruitmentRequisitionAddPage(NEW_REQUISITION_BTN)
 end
 
 And(/^I Enter New Requisition Details$/) do

@@ -2,6 +2,7 @@ module Chrome
   module Capabilities
     def self.set_up_selenium_web_driver
       # File.join(File.absolute_path('../..', File.dirname(__FILE__)),"chromedriver.exe")
+      # it picks chromedriver from a default location /usr/local/bin/chromedriver,thus update your local chromedriver if need be
       $driver = Selenium::WebDriver.for :chrome
       $driver.manage.window.resize_to(1500, 1900)
       $driver.manage.window.maximize()
