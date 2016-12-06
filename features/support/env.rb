@@ -7,9 +7,9 @@ require "selenium-webdriver"
 
 require "./features/lib/device_method_factory.rb"
 
-puts "CHANNEL = " + ENV["CHANNEL"]
+puts "CHANNEL = " + ENV["CHANNEL"] #Enable this when using Windows
 
-#ENV['CHANNEL'] = 'chrome'
+#ENV['CHANNEL'] = 'chrome' #Enable this when using RubyMine IDE/MacOS
 
 WAIT_TIMEOUT = 5
 World(DeviceMethodFactory.for_channel(ENV['CHANNEL']))
