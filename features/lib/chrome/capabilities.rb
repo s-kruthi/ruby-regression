@@ -1,7 +1,7 @@
 module Chrome
   module Capabilities
     def self.set_up_selenium_web_driver
-      $driver = Selenium::WebDriver.for :chrome, driver_path: File.join(File.absolute_path('./drivers/', File.dirname(__FILE__)),"chromedriver")
+      $driver = Selenium::WebDriver.for :chrome, driver_path: File.join(File.absolute_path('../../../drivers/', File.dirname(__FILE__)),"chromedriver")
       $driver.manage.window.resize_to(1500, 1900)
       $driver.manage.window.maximize()
     end
