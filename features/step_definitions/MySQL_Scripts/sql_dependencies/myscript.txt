@@ -63,14 +63,14 @@ force_password_change: 0
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_USERNAME: X1242341<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_MANAGER_FIRSTNAME: SIMON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_MANAGER_LASTNAME: COX<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/133?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/133</a><br />
+&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: <a href="https://tmsfull.dev.elmodev.com/documents/view/133?_l=1">https://tmsfull.dev.elmodev.com/documents/view/133</a><br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_FIRSTNAME: DontTouchAutomationUser<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_LASTNAME: AARON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_MANAGER_FIRSTNAME: SIMON<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_MANAGER_LASTNAME: COX<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_TITLE: cool stuff<br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_DESCRIPTION: <p>dttrthrthrt</p><br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_LINK: <a href="https://tmsfull.dev.elmotalent.com.au/documents/view/133?_l=1">https://tmsfull.dev.elmotalent.com.au/documents/view/133</a><br />
+&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_LINK: <a href="https://tmsfull.dev.elmodev.com/documents/view/133?_l=1">https://tmsfull.dev.elmodev.com/documents/view/133</a><br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_WORKFLOW_ASSIGNEE_LASTNAME: <br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_WORKFLOW_ASSIGNEE_FIRSTNAME: <br />
 &nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_REJECT_MESSAGE: Document rejected</p>
