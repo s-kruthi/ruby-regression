@@ -1,4 +1,3 @@
-irb
 module Firefox
   module Capabilities
     def self.set_up_selenium_web_driver
