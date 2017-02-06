@@ -53,6 +53,25 @@ module Firefox
         $driver.quit
       end
     end
+    def VerifyAnElementExistByClassAndIndex(class_name,text,index_value)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_elements(:class, "#{class_name}")[index_value]
+          element if element.displayed?
+        }
+        expected_text = select_item.text.include? "#{text}"
+        if expected_text == true
+          puts "#{text} matched"
+        else
+          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/#{text}Screenshot.png")
+          raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+        end
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
     def PressEnterConfirm()
       $driver.find_element(:css, "[data-bb-handler='confirm']").click
     end

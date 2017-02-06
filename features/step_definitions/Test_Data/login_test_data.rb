@@ -26,4 +26,4 @@ MANAGER_USERNAME = 'X1201531'
 MANAGER_PASSWORD = 'Tester1!'
 
 ####### employee profile details page ########
-EMPLOYEE_PROFILE_PAGE = "https://staging2.dev.elmodev.com/controlpanel/user-profile/3472/payment"
+EMPLOYEE_PROFILE_PAGE = "https://staging4.dev.elmodev.com/controlpanel/user-profile/619/payment"

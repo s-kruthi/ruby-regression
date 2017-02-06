@@ -6,5 +6,5 @@ gem "selenium-webdriver"
 gem "cucumber"
 gem "rspec-expectations"
 gem "watir-webdriver"
-gem 'activerecord', '~> 4.2', '>= 4.2.6'
+gem 'activerecord', '~> 4.2.4', '>= 4.2.6'
 gem 'touch_action'
