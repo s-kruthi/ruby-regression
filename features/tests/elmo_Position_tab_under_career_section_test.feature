@@ -3,7 +3,7 @@ Feature:
   I want to test if a user can successfully search for their preferable position and can compare it with their profile and
   research what areas they need suitable training in to achieve their preferred position
 
-
+  @shanku
    Scenario: List Positions Alphabetically
       Given I Have Logged In As A Regular User
       When  I Go To The Career Positions Section
@@ -13,7 +13,7 @@ Feature:
       Given I Have Logged In As A Regular User
       When  I Go To The Career Positions Section
       Then  The I Should Be Able To Search A Position By Typing The Keywords
-  @shanku
+
     Scenario: Search A Position Based On Default "Show Suggested Positions" Filter
       Given I Have Logged In As A Specific User
       When  I Go To The Career Positions Section

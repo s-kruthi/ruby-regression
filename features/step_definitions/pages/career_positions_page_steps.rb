@@ -1,7 +1,7 @@
 def GoToPositionsUnderCareersTab(careers_tab,index_value,positions_link)
   sleep(3)
   WaitForAnElementByIdAndTouchTheIndex(careers_tab,index_value)
-  sleep(1)
+  sleep(3)
   WaitForAnElementByPartialLinkTextAndTouch(positions_link)
 end
 
@@ -10,9 +10,10 @@ class SortingException < Exception;
 end
 
 def WaitForThePositionsListingAndVerifyTheAlphabeticalSorting()
-
+  sleep(2)
   #get the element list of positions on the first page
   pos_items = $driver.find_elements(:tag_name, "tr")[1..10]
+  sleep(2)
   #get the text for actual positions in that list
   compare_pos_items = pos_items.map { |list| list.text.split("\nCompare")}
   #compare the listed positions with the sorted positions
