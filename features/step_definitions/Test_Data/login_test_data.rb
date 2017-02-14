@@ -1,4 +1,4 @@
-ELMO_LANDING_PAGE = 'https://tmsfull.dev.elmodev.com/dashboard'
+ELMO_LANDING_PAGE = 'https://staging4.dev.elmodev.com/dashboard'
 #NEW_USER_EDIT_PAGE = 'https://staging1.dev.elmodev.com/controlpanel/edit-user-password/20519'
 NEW_USER_EDIT_PAGE ='https://tmsfull.dev.elmodev.com/controlpanel/edit-user-password/3472'
 NEW_USER_LOGIN_PAGE = 'https://tmsfull.dev.elmodev.com'
@@ -8,6 +8,10 @@ EMO_ADMIN_USERNAME = 'admin'
 EMO_ADMIN_PASSWORD = 'admin1234567'
 SPECIFIC_USERNAME = 'X1222347'
 EMAIL_ADD = 'REBECCA.AARON@elmodemo.com'
+
+ELMO_COMP_ADMIN_USERNAME = 'admin.omar'
+ELMO_COMP_ADMIN_PASSWORD = 'Admin1234567'
+
 
 REQUISITION_LANDING_PAGE = 'https://staging3.dev.elmodev.com/controlpanel/recruitment/requisition/requisition'
 RECRUITMENT_ADMIN_USERNAME = 'admin'
