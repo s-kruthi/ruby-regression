@@ -4,6 +4,7 @@ def GoToPaymentDetailsSectionOfAParticularEmployee(employment_details_section)
 end
 
 def UnmaskAndViewRateAndSalaryDetailsForTheEmployee()
+  sleep(2)
   $driver.find_element(:xpath, "//button[@ng-mousedown='section.showRate = 1']").touch_action(:press,  hold: 300000)
   sleep(3)
   VerifyAnElementExistByClass("masked-value","$40.00 per hour\nShow")
