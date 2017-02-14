@@ -34,3 +34,15 @@ CONFIRM_APPROVE_BUTTON = "//button[contains(@data-trigger,'document-action-confi
 DOCUMENT_REJECT_BUTTON = "//button[@data-trigger='document-action-reject']"
 ENTER_REJECTION_MESSAGE_ID = 'documentRejectForm_message'
 CONFIRM_REJECT_BUTTON = "//button[@data-trigger='document-action-confirm-reject']"
+
+######### Documents Form page elements #############################
+
+DOCUMENTS_EXPAND = "//a[@href='#collapseDocuments']"
+DOCUMENTS_LIST_PATH = "//span[contains(.,'Form Templates')]"
+
+CREATE_FORM_TEMPLATE_BTN="//a[contains(.,'Create Form Template')]"
+
+FORM_TEMPLATE_TITLE = "//input[contains(@id,'title')]"
+FORM_TEMPLATE_CATEGORY = "//option[contains(.,'Documents')]"
+
+FORM_TEMPLATE_SAVE_BTN="//button[contains(.,'Save')]"

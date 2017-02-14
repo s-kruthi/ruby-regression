@@ -13,3 +13,8 @@ DOC_COMPLETE_MESSAGE = 'Document completed'
 APPROVAL_MESSAGE = 'Document approved'
 #### manager's document rejected ###
 REJECTION_MESSAGE = 'Document rejected'
+
+
+######### Documents Form template page data #############################
+
+FORM_TEMPLATE_TITLE_TEXT = "Test Form Template - DO NOT DELETE"
