@@ -20,17 +20,19 @@ def AssignTemplateToAUser(search_field_id, value, checkbox_id,assign_to_slctd_us
   WaitForAnElementByIdAndTouch(checkbox_id)
   sleep(1)
   WaitForAnElementByXpathAndTouch(assign_to_slctd_usr)
-  sleep(5)
+  sleep(7)
 end
 
 def GrabThePathIDForAssignedUser(existing_assignment_path,view_button_path, view_btn_index)
   WaitForAnElementByXpathAndTouch(existing_assignment_path)
   sleep(3)
   WaitForAnElementByXpathAndTouchTheIndex(view_button_path, view_btn_index)
-  sleep(2)
+  sleep(4)
   path_url = $driver.current_url
   path_id = path_url.split('/')[-1]
   $current_path_id = "/#{path_id}"
+  puts $current_path_id
+  #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Assigned' or subject like 'Document Due' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentAssignedTrigger' and trigger_id= 'Document.DocumentDueTrigger' or path_id='#{$current_path_id}' \\G;")
 end
 
@@ -56,9 +58,9 @@ def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
     result = %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
     trs = result.include?  ("subject: Document Assigned") #true validate
-    krs = result.include?  ("subject: Document Due") #true validate
+    # krs = result.include?  ("subject: Document Due") #true validate
     prs = result.include?  ("trigger_id: Document.DocumentAssignedTrigger") #true validate
-    mrs = result.include?  ("trigger_id: Document.DocumentDueTrigger") #true validate
+    # mrs = result.include?  ("trigger_id: Document.DocumentDueTrigger") #true validate
     if frs && trs && krs && prs && mrs
       puts "Yay! Notification has been triggered"
     else

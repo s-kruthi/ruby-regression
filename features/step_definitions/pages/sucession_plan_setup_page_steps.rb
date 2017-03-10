@@ -19,7 +19,7 @@ def LogInAndWaitForTheDashboard(tag_name,admin_menu)
   Wait_For(3)
   WaitForAnElementByClass(admin_menu)
   puts $driver.title
-  sleep(1)
+  sleep(3)
 end
 
 def TouchLoginButton(tag_name)

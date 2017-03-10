@@ -27,7 +27,7 @@ Given(/^I Have Assigned Many Documents To A User$/) do
 end
 
 Then(/^I Need To Delete The Assigned Documents As A TearDown Approach$/) do
-  DeleteTheExistingAssignedDocumentsForUser(DROPDOWN, 2)
+  DeleteTheExistingAssignedDocumentsForUser(DROPDOWN, 4)
 end
 Given(/^I Am On The My Document Page Of An User$/) do
   startWebDriver

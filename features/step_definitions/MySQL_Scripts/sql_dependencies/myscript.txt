@@ -1,100 +1,68 @@
 *************************** 1. row ***************************
-                   id: 3472
-           manager_id: 3456
-    second_manager_id: NULL
-contractor_company_id: NULL
-             username: X1242341
-           identifier: X1242341
-                 salt: 
-             password: 2c763172f276758229f4eda179a83f81
-           first_name: DontTouchAutomationUser
-            last_name: AARON
-                email: REBECCA.AARON@elmodemo.com
-            is_active: 1
-          is_notified: 1
-              is_elmo: 0
-          description: NULL
-            phoneWork: NULL
-            phoneHome: NULL
-               mobile: NULL
-                  fax: NULL
-                  img: 679
-         profileImage: 1dedc1da7e60d9a5115633a80daeac1e39f3c899.png
-              created: 1412139241
-             modified: 1460481485
-           lastAccess: NULL
-           last_login: 1475196274
-          last_logout: 1475196281
-          expiry_date: 0
-             reg_type: manual
-            confirmed: 1
-          confirm_key: NULL
-force_password_change: 0
-           is_deleted: 0
-         deleted_time: NULL
-                 path: /5098/5751/3456/
-                depth: 4
-          second_path: NULL
-         second_depth: NULL
-               locale: NULL
-        department_id: NULL
-          location_id: 1
-          position_id: 3
-          branding_id: NULL
-        is_onboarding: 0
-   onboarding_matched: 0
-          login_count: 12
-           start_date: NULL
-             timezone: NULL
-                 type: 0
+            id: 1216
+          type: 1
+   source_type: 1
+       subject: Leave Request Cancelled by Approver
+          body: <p>ICC Sydney</p>
+
+<p>Academy of Extraordinary</p>
+
+<p>ICC Sydney</p>
+
+<p>Rebecca Logan</p>
+
+<p>rlogan@iccsydney.com</p>
+
+<p>https://staging4.dev.elmodev.com/dashboard/leave/leave-request/91</p>
+
+<p>Annual Leave JT</p>
+
+<p>21/09/2017&nbsp;&nbsp;&nbsp;&nbsp; 22/09/2017</p>
+
+<p>1</p>
+
+<p>Donald Trump</p>
+
+<p>shanku mahanty</p>
+
+<p>&nbsp;</p>
+     fromEmail: {"rlogan@iccsydney.com":"Rebecca Logan"}
+    replyEmail: {"rlogan@iccsydney.com":"Rebecca Logan"}
+    recipients: {"to":{"dtrump@us-president.com":"Donald Trump"},"cc":{"shankumahanty@rediffmail.com":"shanku mahanty"},"bcc":null}
+      priority: 1
+  created_time: 1489107035
+    fired_time: NULL
+        status: 0
+       context: a:1:{s:8:"schedule";i:1308;}
+      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#f5f4f4";s:10:"menuColor1";s:7:"#387ce3";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:3;s:4:"type";i:0;}
+      template: NULL
+    is_deleted: 0
+  deleted_time: NULL
+ recipient_ids: /709/659/
+     source_id: 1308
+         count: 0
+attachment_ids: []
 *************************** 1. row ***************************
-           id: 4091
-         type: 1
-  source_type: 1
-      subject: Document Rejected
-         body: <p>Document Rejected<br />
-&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_NAME: Elders Rural Services<br />
-&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: ELMO Talent Management System<br />
-&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: Elders<br />
-&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline<br />
-&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_EMAIL: HRonline@elders.com.au<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_FIRSTNAME: DontTouchAutomationUser<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_LASTNAME: AARON<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_USERNAME: X1242341<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_MANAGER_FIRSTNAME: SIMON<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_RECIPIENT_MANAGER_LASTNAME: COX<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: <a href="https://tmsfull.dev.elmodev.com/documents/view/133?_l=1">https://tmsfull.dev.elmodev.com/documents/view/133</a><br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_FIRSTNAME: DontTouchAutomationUser<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_LASTNAME: AARON<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_MANAGER_FIRSTNAME: SIMON<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_ASSIGNEE_MANAGER_LASTNAME: COX<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_TITLE: cool stuff<br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_DESCRIPTION: <p>dttrthrthrt</p><br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_LINK: <a href="https://tmsfull.dev.elmodev.com/documents/view/133?_l=1">https://tmsfull.dev.elmodev.com/documents/view/133</a><br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_WORKFLOW_ASSIGNEE_LASTNAME: <br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_WORKFLOW_ASSIGNEE_FIRSTNAME: <br />
-&nbsp;&nbsp;&nbsp; PLACEHOLDER_DOCUMENT_REJECT_MESSAGE: Document rejected</p>
-    fromEmail: {"HRonline@elders.com.au":"HROnline"}
-   replyEmail: {"HRonline@elders.com.au":"HROnline"}
-   recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":null,"bcc":null}
-recipient_ids: /3472/
-     priority: 1
- created_time: 1478740324
-   fired_time: NULL
-       status: 0
-      context: a:1:{s:8:"schedule";i:3495;}
-     branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:1;s:4:"type";i:0;}
-     template: NULL
-   is_deleted: 0
- deleted_time: NULL
-    source_id: 3495
-        count: 0
-*************************** 1. row ***************************
-          id: 3495
-  trigger_id: Document.DocumentRejectedTrigger
-     user_id: 3472
-  sort_order: 1:161-164:133-71
-   path_name: /161
-     path_id: /133
+          id: 1082
+  trigger_id: Leave.LeaveRequestApproverCancellationTrigger
+     user_id: 709
+  sort_order: 1:4011-4015:91-265
+   path_name: /4011/4015/111
+     path_id: /91/265/659
   is_deleted: 0
 deleted_time: NULL
+*************************** 1. row ***************************
+            id: 265
+    request_id: 91
+       user_id: 659
+        action: 2
+         level: NULL
+        status: 7
+     is_active: 1
+  created_date: 1489107035
+finalized_date: NULL
+       comment: Need To Tear It Down For Automation
+       content: N;
+    is_deleted: 0
+  deleted_time: NULL
+ modified_date: 1489107035

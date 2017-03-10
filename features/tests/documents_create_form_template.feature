@@ -2,7 +2,7 @@
 Feature:
   I want to test if a Company Admin can successfully create a Form Template
 
-  @document1
+  @smoke
    Scenario: Create a Form Template
      Given I Have Logged In as a Company Admin
      When  I Go To The Documents Form Templates Section
