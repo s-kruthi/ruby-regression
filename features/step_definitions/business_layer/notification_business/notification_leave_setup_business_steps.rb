@@ -72,5 +72,22 @@ And(/^I Reject The Leave That My Employee has Requested For$/) do
 end
 
 Then(/^My Employee Should Be Instantly Notified About The Leave Request Rejection$/) do
-  pending
+  ConnectToDatabaseAndValidateTheLeaveRequestRejectedByApproverNotifications()
+end
+
+When(/^I Edit The Leave That Is Reopened Post Rejection By Approver$/) do
+  GoToEditLeavePageAndResubmitThePendingLeave(RESUBMIT_COMMENT)
+end
+
+Then(/^There Should Be An Instant Notification About Leave Resubmission$/) do
+  ConnectToDatabaseAndValidateTheLeaveRequestResubmissionNotifications()
+end
+
+And(/^I Reject And Close The Leave That My Employee has Requested For$/) do
+  GoToApprovalRequestPage()
+  ViewTheLeaveRequestAndRejectAndCloseIt(LEAVE_REQUEST_DROPDOWN,3,LEAVE_REJECT_AND_CLOSE_COMMENT)
+end
+
+Then(/^There Should Be An Instant Notification About Leave Rejection$/) do
+  ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
 end

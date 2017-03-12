@@ -38,3 +38,5 @@ LEAVE_PASSWORD_MANAGER = 'Tester1!'
 LEAVE_COMMENT = "Automation In Progress"
 CANCELLATION_REASON = "Need To Tear It Down For Automation"
 LEAVE_REJECT_COMMENT = "Need To Reject It For Automation"
+RESUBMIT_COMMENT = "Resubmitting For Automation"
+LEAVE_REJECT_AND_CLOSE_COMMENT = "Finally rejecting and closing it for Automation"
