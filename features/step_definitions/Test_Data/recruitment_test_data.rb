@@ -8,8 +8,8 @@ REQUISITION_MESSAGE_BODY = 'This is a test Requisition message.\n Please do not 
 #Recruitment New Candidate Test Data
 NEW_CANDIDATE_BTN_LABEL = 'New Candidate'
 CANDIDATE = Hash.new
-CANDIDATE[:FIRST] = "Test"
-CANDIDATE[:LAST] = "Team"
+CANDIDATE[:FIRST] = "Test #{SecureRandom.hex(5)}"
+CANDIDATE[:LAST] = "Team #{SecureRandom.hex(5)}"
 CANDIDATE[:EMAIL] = "test.team"
 CANDIDATE[:HOMEPHONE] = "80603700"
 CANDIDATE[:MOBILE] = "0430222301"
@@ -19,4 +19,4 @@ CANDIDATE[:POSTCODE] = "2022"
 CANDIDATE[:COUNTRY] = "Australia"
 CANDIDATE[:STATE] = "NSW"
 CANDIDATE[:TIMEZONE] = "Sydney"
-CANDIDATE[:PASSWORD] = "admin1234567"
+CANDIDATE[:PASSWORD] = "Tester1!"
