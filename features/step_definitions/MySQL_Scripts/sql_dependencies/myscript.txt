@@ -1,8 +1,8 @@
 *************************** 1. row ***************************
-            id: 1216
+            id: 1306
           type: 1
    source_type: 1
-       subject: Leave Request Cancelled by Approver
+       subject: Leave Rejection Notification
           body: <p>ICC Sydney</p>
 
 <p>Academy of Extraordinary</p>
@@ -13,7 +13,7 @@
 
 <p>rlogan@iccsydney.com</p>
 
-<p>https://staging4.dev.elmodev.com/dashboard/leave/leave-request/91</p>
+<p>https://staging4.dev.elmodev.com/dashboard/leave/leave-request/104</p>
 
 <p>Annual Leave JT</p>
 
@@ -25,44 +25,44 @@
 
 <p>shanku mahanty</p>
 
-<p>&nbsp;</p>
+<p>Finally rejecting and closing it for Automation</p>
      fromEmail: {"rlogan@iccsydney.com":"Rebecca Logan"}
     replyEmail: {"rlogan@iccsydney.com":"Rebecca Logan"}
     recipients: {"to":{"dtrump@us-president.com":"Donald Trump"},"cc":{"shankumahanty@rediffmail.com":"shanku mahanty"},"bcc":null}
       priority: 1
-  created_time: 1489107035
+  created_time: 1489358074
     fired_time: NULL
         status: 0
-       context: a:1:{s:8:"schedule";i:1308;}
+       context: a:1:{s:8:"schedule";i:1398;}
       branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#f5f4f4";s:10:"menuColor1";s:7:"#387ce3";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:3;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
  recipient_ids: /709/659/
-     source_id: 1308
+     source_id: 1398
          count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-          id: 1082
-  trigger_id: Leave.LeaveRequestApproverCancellationTrigger
+          id: 1172
+  trigger_id: Leave.LeaveRequestRejectTrigger
      user_id: 709
-  sort_order: 1:4011-4015:91-265
+  sort_order: 1:4011-4015:104-325
    path_name: /4011/4015/111
-     path_id: /91/265/659
+     path_id: /104/325/659
   is_deleted: 0
 deleted_time: NULL
 *************************** 1. row ***************************
-            id: 265
-    request_id: 91
+            id: 325
+    request_id: 104
        user_id: 659
-        action: 2
-         level: NULL
-        status: 7
-     is_active: 1
-  created_date: 1489107035
-finalized_date: NULL
-       comment: Need To Tear It Down For Automation
+        action: 3
+         level: 0
+        status: 3
+     is_active: 0
+  created_date: 1489358048
+finalized_date: 1489358074
+       comment: Finally rejecting and closing it for Automation
        content: N;
     is_deleted: 0
   deleted_time: NULL
- modified_date: 1489107035
+ modified_date: 1489358074

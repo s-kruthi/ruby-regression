@@ -145,8 +145,126 @@ end
 
 def ViewTheLeaveRequestAndRejectIt(dropdown_toggle,position,add_comment)
   WaitForDropdownByClassAndTouchTheIndex(dropdown_toggle,position)
-  $driver.find_element(:css, 'button[ng-click="viewRequest({id: 1})"]').click
+  $driver.find_element(:class, 'handle-view-request').click  #opens another tab, you now need to switch window for selenium to work
   sleep(4)
- # $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{add_comment}"
+  new_win_id = $driver.window_handles[1]
+  $driver.switch_to.window("#{new_win_id}")
+  sleep(1)
+  $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{add_comment}"
   $driver.find_element(:css, 'button[ng-click="rejectLeaveRequest()"]').click
+  sleep(2)
+  reject_path_url = $driver.current_url
+  rejected_path_id = reject_path_url.split('/')[-1]
+  $rejected_path_id = "#{rejected_path_id}"
+  puts $rejected_path_id
+  File.write('./features/step_definitions/Test_Data/stored_ids.rb', "REJECT_ID = #{rejected_path_id}")
+  load('./features/step_definitions/Test_Data/stored_ids.rb')
+  puts REJECT_ID
+  #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
+
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql', "use #{STAGING_DATABASE} ; \n
+ select*from epms_log_message where subject='Leave Rejection Notification' order by id desc LIMIT 1 \\G; \n
+ select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRejectTrigger' and user_id=709 order by id desc LIMIT 1 \\G; \n
+ select*from epms_leave_request_workflow where user_id='659' and status='2' and request_id='#{$rejected_path_id}' order by id desc \\G;" )
+end
+
+def ConnectToDatabaseAndValidateTheLeaveRequestRejectedByApproverNotifications()
+  StartTheTunnel()
+  begin
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    frs = result.include?  ("status: 2") #true validate for rejected status
+    krs = result.include?  ("user_id: 659") #true validate for manager cancelled the request
+    prs = result.include?  ("request_id: #{$rejected_path_id}") #true validate for latest rejected request id
+    trs = result.include?  ("subject: Leave Rejection Notification") #true validate
+    mrs = result.include?  ("trigger_id: Leave.LeaveRequestRejectTrigger") #true validate
+    qrs = result.include?  ("recipient_ids: /709/659/") #true validate that mail goes to both employee and manager
+    if frs && krs && prs && trs && mrs && qrs
+      puts "Yay! Notification has been triggered"
+    else
+      raise NotificationException.new("ERROR...Notifications were blocked !!!!!! ")
+    end
+
+  rescue
+    puts "not valid"
+
+  ensure
+    #%x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
+    $driver.quit
+  end
+end
+
+def GoToEditLeavePageAndResubmitThePendingLeave(add_comment)
+  puts REJECT_ID
+  WaitForAnElementByXpathAndTouch("//a[@href='/dashboard/leave/leave-request/#{REJECT_ID}']")
+  sleep(3)
+  $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{add_comment}"
+  $driver.find_element(:css, 'button[ng-click="postLeaveRequest()"]').click
+end
+
+def ConnectToDatabaseAndValidateTheLeaveRequestResubmissionNotifications()
+  StartTheTunnel()
+  begin
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_resubmitted.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    frs = result.include?  ("status: 1") #true validate for resubmitted status
+    krs = result.include?  ("user_id: 709") #true validate for employee resubmitted the request
+    trs = result.include?  ("subject: Leave Request Re-Submission") #true validate
+    mrs = result.include?  ("trigger_id: Leave.LeaveRequestReSubmissionTrigger") #true validate
+    qrs = result.include?  ("recipient_ids: /709/659/") #true validate that mail goes to both employee and manager
+    if frs && krs && trs && mrs && qrs
+      puts "Yay! Notification has been triggered"
+    else
+      raise NotificationException.new("ERROR...Notifications were blocked !!!!!! ")
+    end
+
+  rescue
+    puts "not valid"
+
+  ensure
+    #%x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
+    $driver.quit
+  end
+end
+
+def ViewTheLeaveRequestAndRejectAndCloseIt(dropdown_toggle,position,add_comment)
+  WaitForDropdownByClassAndTouchTheIndex(dropdown_toggle,position)
+  $driver.find_element(:class, 'handle-view-request').click  #opens another tab, you now need to switch window for selenium to work
+  sleep(5)
+  new_win_id = $driver.window_handles[1]
+  $driver.switch_to.window("#{new_win_id}")
+  sleep(1)
+  $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{add_comment}"
+  $driver.find_element(:css, 'button[ng-click="rejectAndCloseLeaveRequest()"]').click
+  sleep(2)
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql', "use #{STAGING_DATABASE} ; \n
+ select*from epms_log_message where subject='Leave Rejection Notification' order by id desc LIMIT 1 \\G; \n
+ select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRejectTrigger' and user_id=709 order by id desc LIMIT 1 \\G; \n
+ select*from epms_leave_request_workflow where user_id='659' and status='3' and request_id='#{REJECT_ID}' order by id desc \\G;")
+end
+
+def ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
+  StartTheTunnel()
+  begin
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    frs = result.include?  ("status: 3") #true validate for closed status
+    krs = result.include?  ("user_id: 659") #true validate for manager cancelled the request
+    prs = result.include?  ("request_id: #{REJECT_ID}") #true validate for latest rejected request id
+    trs = result.include?  ("subject: Leave Rejection Notification") #true validate
+    mrs = result.include?  ("trigger_id: Leave.LeaveRequestRejectTrigger") #true validate
+    qrs = result.include?  ("recipient_ids: /709/659/") #true validate that mail goes to both employee and manager
+    if frs && krs && prs && trs && mrs && qrs
+      puts "Yay! Notification has been triggered"
+    else
+      raise NotificationException.new("ERROR...Notifications were blocked !!!!!! ")
+    end
+
+  rescue
+    puts "not valid"
+
+  ensure
+    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
+    $driver.quit
+  end
 end
