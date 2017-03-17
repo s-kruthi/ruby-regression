@@ -1,14 +1,14 @@
 [
   {
-    "uri": "features/tests/Notification_V2/notification_leave_management.feature",
+    "uri": "features/tests/Notification_V2/notification_documents.feature",
     "id": "",
     "keyword": "Feature",
     "name": "",
-    "description": "  As a user I want to test combinations of Leave management notifications to test if they were triggered successfully",
+    "description": "  As a user I want to test combinations of document notifications to test if they were triggered successfully",
     "line": 2,
     "tags": [
       {
-        "name": "@Notifications_leave_management",
+        "name": "@Notifications_docs",
         "line": 1
       },
       {
@@ -18,15 +18,15 @@
     ],
     "elements": [
       {
-        "id": ";manger-rejects-the-leave-which-triggers-notification-to-the-employee",
+        "id": ";delete-assignments",
         "keyword": "Scenario",
-        "name": "Manger Rejects The Leave which triggers notification to the employee",
+        "name": "Delete Assignments",
         "description": "",
-        "line": 25,
+        "line": 6,
         "type": "scenario",
         "tags": [
           {
-            "name": "@Notifications_leave_management",
+            "name": "@Notifications_docs",
             "line": 1
           },
           {
@@ -34,185 +34,36 @@
             "line": 1
           },
           {
-            "name": "@leave_request_Rejected",
-            "line": 24
-          },
-          {
-            "name": "@group_by_3",
-            "line": 24
+            "name": "@delete_assigned_docs",
+            "line": 5
           }
         ],
         "steps": [
           {
             "keyword": "Given ",
-            "name": "An Employee Has Applied For A Leave Which Is Awaiting Approval",
-            "line": 26,
+            "name": "I Have Assigned Many Documents To A User",
+            "line": 7,
+            "output": [
+              "ELMO Talent Management System - Administration - Documents - Existing Assignments"
+            ],
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:34"
+              "location": "features/step_definitions/business_layer/notification_business/notifications_document_setup_business_steps.rb:21"
             },
             "result": {
-              "status": "failed",
-              "error_message": "not a file: \"/usr/bin/safaridriver\" (Selenium::WebDriver::Error::WebDriverError)\n./features/lib/safari/capabilities.rb:4:in `set_up_selenium_web_driver'\n./features/lib/safari/StartMethod.rb:4:in `startWebDriver'\n./features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:35:in `/^An Employee Has Applied For A Leave Which Is Awaiting Approval$/'\nfeatures/tests/Notification_V2/notification_leave_management.feature:26:in `Given An Employee Has Applied For A Leave Which Is Awaiting Approval'",
-              "duration": 131005956
-            }
-          },
-          {
-            "keyword": "When ",
-            "name": "I Am On The Managers Leave Management Page",
-            "line": 27,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:50"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "keyword": "And ",
-            "name": "I Reject The Leave That My Employee has Requested For",
-            "line": 28,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:69"
-            },
-            "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 8749318588
             }
           },
           {
             "keyword": "Then ",
-            "name": "My Employee Should Be Instantly Notified About The Leave Request Rejection",
-            "line": 29,
+            "name": "I Need To Delete The Assigned Documents As A TearDown Approach",
+            "line": 8,
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:74"
+              "location": "features/step_definitions/business_layer/notification_business/notifications_document_setup_business_steps.rb:29"
             },
             "result": {
-              "status": "skipped"
-            }
-          }
-        ]
-      },
-      {
-        "id": ";employee-resubmits-the-leave-which-triggers-notification",
-        "keyword": "Scenario",
-        "name": "Employee Resubmits The Leave which triggers notification",
-        "description": "",
-        "line": 32,
-        "type": "scenario",
-        "tags": [
-          {
-            "name": "@Notifications_leave_management",
-            "line": 1
-          },
-          {
-            "name": "@smoke",
-            "line": 1
-          },
-          {
-            "name": "@leave_request_resubmitted",
-            "line": 31
-          },
-          {
-            "name": "@group_by_3",
-            "line": 31
-          }
-        ],
-        "steps": [
-          {
-            "keyword": "Given ",
-            "name": "I Am On The New Leave Request Page",
-            "line": 33,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:2"
-            },
-            "result": {
-              "status": "failed",
-              "error_message": "not a file: \"/usr/bin/safaridriver\" (Selenium::WebDriver::Error::WebDriverError)\n./features/lib/safari/capabilities.rb:4:in `set_up_selenium_web_driver'\n./features/lib/safari/StartMethod.rb:4:in `startWebDriver'\n./features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:3:in `/^I Am On The New Leave Request Page$/'\nfeatures/tests/Notification_V2/notification_leave_management.feature:33:in `Given I Am On The New Leave Request Page'",
-              "duration": 215312
-            }
-          },
-          {
-            "keyword": "When ",
-            "name": "I Edit The Leave That Is Reopened Post Rejection By Approver",
-            "line": 34,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:78"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "keyword": "Then ",
-            "name": "There Should Be An Instant Notification About Leave Resubmission",
-            "line": 35,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:82"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          }
-        ]
-      },
-      {
-        "id": ";manager-finally-reject-and-close-the-leave-request-which-triggers-notification",
-        "keyword": "Scenario",
-        "name": "Manager Finally Reject And Close The Leave Request which triggers notification",
-        "description": "",
-        "line": 38,
-        "type": "scenario",
-        "tags": [
-          {
-            "name": "@Notifications_leave_management",
-            "line": 1
-          },
-          {
-            "name": "@smoke",
-            "line": 1
-          },
-          {
-            "name": "@leave_request_RejectedAndClosed",
-            "line": 37
-          },
-          {
-            "name": "@group_by_3",
-            "line": 37
-          }
-        ],
-        "steps": [
-          {
-            "keyword": "When ",
-            "name": "I Am On The Managers Leave Management Page",
-            "line": 39,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:50"
-            },
-            "result": {
-              "status": "failed",
-              "error_message": "not a file: \"/usr/bin/safaridriver\" (Selenium::WebDriver::Error::WebDriverError)\n./features/lib/safari/capabilities.rb:4:in `set_up_selenium_web_driver'\n./features/lib/safari/StartMethod.rb:4:in `startWebDriver'\n./features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:51:in `/^I Am On The Managers Leave Management Page$/'\nfeatures/tests/Notification_V2/notification_leave_management.feature:39:in `When I Am On The Managers Leave Management Page'",
-              "duration": 144659
-            }
-          },
-          {
-            "keyword": "And ",
-            "name": "I Reject And Close The Leave That My Employee has Requested For",
-            "line": 40,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:86"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "keyword": "Then ",
-            "name": "There Should Be An Instant Notification About Leave Rejection",
-            "line": 41,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:91"
-            },
-            "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 74304772
             }
           }
         ]

@@ -24,7 +24,9 @@ end
 
 def EnterNewCandidateDetails()
   WaitForAnElementByIdAndInputValue(FIRSTNAME_INPUT_ID,CANDIDATE[:FIRST])
+  puts "#{CANDIDATE[:FIRST]}"
   WaitForAnElementByIdAndInputValue(LASTNAME_INPUT_ID,CANDIDATE[:LAST])
+  puts "#{CANDIDATE[:LAST]}"
   CreateARandomEmailAddress()
   WaitForAnElementByIdAndInputValue(HOMEPHONE_INPUT_ID ,CANDIDATE[:HOMEPHONE])
   WaitForAnElementByIdAndInputValue(MOBILE_INPUT_ID,CANDIDATE[:MOBILE])
@@ -36,20 +38,24 @@ def EnterNewCandidateDetails()
   # WaitForAnElementByIdAndInputValue(TIMEZONE_INPUT_ID,CANDIDATE[:TIMEZONE])
   WaitForAnElementByIdAndInputValue(PASSWORD_INPUT_ID,CANDIDATE[:PASSWORD])
   WaitForAnElementByIdAndInputValue(PASSWORD_CONFIRM_INPUT_ID,CANDIDATE[:PASSWORD])
-
 end
 
 def CreateARandomEmailAddress()
   email_addrress = CANDIDATE[:EMAIL].to_s + ((Time.now).to_i).to_s + "@elmotalent.com.au"
   WaitForAnElementByIdAndInputValue(EMAIL_INPUT_ID,email_addrress)
   puts email_addrress
+  File.write('./features/step_definitions/Test_Data/stored_ids.rb', "TRANS1 =  \"#{email_addrress}\"")
+  load('./features/step_definitions/Test_Data/stored_ids.rb')
+  puts TRANS1
 end
 
 def ClickOnSaveButton(candidate_save_btn)
   WaitForAnElementByIdAndTouch(candidate_save_btn)
 end
 
-def VerifyANewCandidateHasBeenCreated(candidate_name_xpath,last_name,first_name)
-  VerifyAnElementExistByXPath(candidate_name_xpath,last_name)
-  VerifyAnElementExistByXPath(candidate_name_xpath,first_name)
+def VerifyANewCandidateHasBeenCreated(candidate_name_class,first_name)
+  WaitForAnElementByIdAndInputValue("keywordsSearchItemEnable",TRANS1)
+  WaitForAnElementByIdAndTouch("submit-filter-candidate")
+  sleep(2)
+  VerifyAnElementExistByClass(candidate_name_class,first_name)
 end

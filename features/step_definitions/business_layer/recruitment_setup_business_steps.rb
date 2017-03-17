@@ -59,7 +59,7 @@ end
 Then(/^I Should Be Able To Create A New Candidate$/) do
   GoToThePage(RECRUITMENT_CANDIDATE_LANDING_PAGE)
   sleep(2)
-  VerifyANewCandidateHasBeenCreated(CANDIDATE_NAME_XPATH,CANDIDATE[:LAST],CANDIDATE[:FIRST])
+  VerifyANewCandidateHasBeenCreated(CANDIDATE_NAME_CLASS,TRANS1)
   sleep(2)
   $driver.quit
 end

@@ -1,6 +1,6 @@
 def ClickNewRequestButtonAndGoToLeaveApplyPage()
   WaitForAnElementByXpathAndTouch("//a[@href='/dashboard/leave/leave-request']")
-  sleep(3)
+  sleep(5)
 end
 
 def SelectLeaveType(leave_type_dropdown,leave_type_class,leave_type_value)
