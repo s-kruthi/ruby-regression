@@ -8,7 +8,7 @@ EMO_ADMIN_USERNAME = 'shanadmin'
 EMO_ADMIN_PASSWORD = 'Tester1!'
 SPECIFIC_USERNAME = 'X1222347'
 EMAIL_ADD = 'REBECCA.AARON@elmodemo.com'
-ELMO_COMP_ADMIN_USERNAME = 'admin.omar'
+ELMO_COMP_ADMIN_USERNAME = 'company.omar'
 ELMO_COMP_ADMIN_PASSWORD = 'Admin1234567'
 ####### Recruitment user credentials ###########
 
@@ -19,7 +19,7 @@ RECRUITMENT_LANDING_PAGE = 'https://staging4.dev.elmodev.com/dashboard'
 RECRUITMENT_CANDIDATE_LANDING_PAGE = 'https://staging4.dev.elmodev.com/admin/candidates/listAll'
 
 ####### user credentials ###########
-MY_DOCUMENT_PAGE = 'https://tmsfull.dev.elmodev.com/documents'
+MY_DOCUMENT_PAGE = 'https://staging4.dev.elmodev.com/documents'
 DOC_USERNAME = 'X1242341'
 DOC_PASSWORD = 'Tester1!'
 ####### manager's credentials ###########

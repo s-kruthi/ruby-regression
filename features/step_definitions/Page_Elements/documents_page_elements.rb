@@ -42,7 +42,12 @@ DOCUMENTS_LIST_PATH = "//span[contains(.,'Form Templates')]"
 
 CREATE_FORM_TEMPLATE_BTN="//a[contains(.,'Create Form Template')]"
 
-FORM_TEMPLATE_TITLE = "//input[contains(@id,'title')]"
-FORM_TEMPLATE_CATEGORY = "//option[contains(.,'Documents')]"
-
+FORM_TEMP_TITLE = "//input[contains(@id,'title')]"
 FORM_TEMPLATE_SAVE_BTN="//button[contains(.,'Save')]"
+
+CAT_POS_INDEX_ARROW = "select2-arrow"
+CAT_POS_INDEX_CLASS = "select2-result"
+
+FORM_TEMP_SEARCH_BOX = "//input[contains(@id,'searchText')]"
+SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
+ACTION_ITEM = "Hide"

@@ -7,21 +7,32 @@ Given(/^I Have Logged In as a Company Admin$/) do
 end
 
 
-When(/^I Go To The Documents Form Templates Section$/) do
-  GoToTheDocumentsFormTemplatePageAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
+And(/^I Go To The Documents Form Templates Section$/) do
+  goToTheDocumentsFormTemplatePageAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
 end
 
+When(/^I click on Create Form Template Button$/) do
+  goToNewFormTemplateAddPage(CREATE_FORM_TEMPLATE_BTN)
+end
+
+And(/^I Enter New Form Template Details$/) do
+  enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT, CAT_POS_INDEX_ARROW, 0, CAT_POS_INDEX_CLASS, 3)
+  enterDescription(FORM_TEMP_DESC_TXT)
+end
 
 Then(/^I Should Be Able To Create A Form Template$/) do
-  CreateAFormTemplateAndVerify(CREATE_FORM_TEMPLATE_BTN, FORM_TEMPLATE_TITLE, FORM_TEMPLATE_TITLE_TEXT, FORM_TEMPLATE_CATEGORY, FORM_TEMPLATE_SAVE_BTN)
+  createAFormTemplateAndVerify(FORM_TEMPLATE_SAVE_BTN)
 end
 
 
-And(/^I Search For A Specific Form Template$/) do
-  SearchAFormTemplate()
+When(/^I Search For A Specific Form Template$/) do
+  searchforAForFormTemplate(FORM_TEMP_SEARCH_BOX, FORM_TEMP_TITLE_TXT, SEARCH_BTN_ID)
 end
 
-  Then(/^I Should Be Able To Hide A Specific Form Template$/) do
-  HideAFormTemplateAndVerify()
+
+Then(/^I Should Be Able To Hide A Specific Form Template$/) do
+  hideTheFirstFormTemplatePlanFromTheTable(DROPDOWN,3, ACTION_ITEM)
   $driver.quit
 end
+
+
