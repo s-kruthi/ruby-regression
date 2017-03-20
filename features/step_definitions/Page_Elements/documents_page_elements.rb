@@ -47,3 +47,7 @@ FORM_TEMPLATE_SAVE_BTN="//button[contains(.,'Save')]"
 
 CAT_POS_INDEX_ARROW = "select2-arrow"
 CAT_POS_INDEX_CLASS = "select2-result"
+
+FORM_TEMP_SEARCH_BOX = "//input[contains(@id,'searchText')]"
+SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
+ACTION_ITEM = "Hide"
