@@ -82,6 +82,10 @@ module Safari
       element = $driver.find_element(:link, "Delete")
       element.click
     end
+    def TouchCancel()
+      element = $driver.find_element(:link, "cancel")
+      element.click
+    end
     def Wait_For(timeout)
       $driver.manage.timeouts.implicit_wait = timeout
     end

@@ -1,8 +1,8 @@
 *************************** 1. row ***************************
-            id: 1535
+            id: 1582
           type: 1
    source_type: 1
-       subject: Leave Rejection Notification
+       subject: Leave Request Cancelled by Requester
           body: <p>ELMO</p>
 
 <p>ELMO</p>
@@ -13,7 +13,7 @@
 
 <p>noreply@elmolearning.com.au</p>
 
-<p>https://staging4.dev.elmodev.com/dashboard/leave/leave-request/153</p>
+<p>https://staging4.dev.elmodev.com/dashboard/leave/leave-request/163</p>
 
 <p>shanku long leave</p>
 
@@ -25,44 +25,51 @@
 
 <p>shanku mahanty</p>
 
-<p>Finally rejecting and closing it for Automation</p>
+<p>&nbsp;</p>
      fromEmail: {"noreply@elmolearning.com.au":"Admin"}
     replyEmail: {"noreply@elmolearning.com.au":"Admin"}
     recipients: {"to":{"dtrump@us-president.com":"Donald Trump"},"cc":{"shankumahanty@rediffmail.com":"shanku mahanty"},"bcc":null}
       priority: 1
-  created_time: 1489722333
+  created_time: 1489983959
     fired_time: NULL
         status: 0
-       context: a:1:{s:8:"schedule";i:1627;}
+       context: a:1:{s:8:"schedule";i:1679;}
       branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#f5f4f4";s:10:"menuColor1";s:7:"#387ce3";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:3;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
- recipient_ids: /709/659/
-     source_id: 1627
+ recipient_ids: /709/
+     source_id: 1679
          count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-          id: 1386
-  trigger_id: Leave.LeaveRequestRejectTrigger
+          id: 1437
+  trigger_id: Leave.LeaveRequestRequesterCancellationTrigger
      user_id: 709
-  sort_order: 1:4011-4015:153-469
-   path_name: /4011/4015/111
-     path_id: /153/469/659
+  sort_order: 1:4011-4015:163-497
+   path_name: /4011/4015
+     path_id: /163/497
   is_deleted: 0
 deleted_time: NULL
 *************************** 1. row ***************************
-            id: 469
-    request_id: 153
-       user_id: 659
-        action: 3
-         level: 0
-        status: 3
-     is_active: 0
-  created_date: 1489722297
-finalized_date: 1489722333
-       comment: Finally rejecting and closing it for Automation
-       content: N;
-    is_deleted: 0
-  deleted_time: NULL
- modified_date: 1489722333
+                 id: 163
+            user_id: 709
+          policy_id: 10
+            type_id: 7
+       created_date: 1489983939
+     finalized_date: NULL
+             action: 2
+             status: 7
+         total_hour: 1
+          total_day: 2
+      total_weekend: 0
+         is_deleted: 0
+       deleted_time: NULL
+    init_total_hour: 1
+      modified_date: 1489983959
+          task_date: 1489983959
+         start_date: 1505916000
+           end_date: 1506088799
+paycycle_start_date: 1505743200
+  paycycle_due_date: 1506347999
+             params: a:2:{s:20:"standardHoursPerWeek";s:2:"40";s:13:"stateEmployed";s:3:"NSW";}

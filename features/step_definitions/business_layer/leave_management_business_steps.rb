@@ -15,3 +15,12 @@ end
 Then(/^I Should Be Able To Successfully Create A New Leave Type$/) do
   pending
 end
+
+When(/^I Try To Create A New Leave Policy$/) do
+  GoToLeavePolicyUnderLeaveManagement(LEAVE_MGMT_ID)
+  CreateANewLeavePolicy()
+end
+
+Then(/^I Should Be Able To Successfully Create A New Leave Policy$/) do
+  pending
+end

@@ -1,9 +1,16 @@
 
 def GoToLeaveTypeUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
+end
 
+def CreateANewLeaveType()
 
 end
-def CreateANewLeaveType()
+
+def GoToLeavePolicyUnderLeaveManagement(leave_management_sec_id)
+  WaitForAnElementByIdAndTouch(leave_management_sec_id)
+end
+
+def CreateANewLeavePolicy()
 
 end

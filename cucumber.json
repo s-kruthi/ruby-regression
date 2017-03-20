@@ -1,14 +1,14 @@
 [
   {
-    "uri": "features/tests/Notification_V2/notification_documents.feature",
+    "uri": "features/tests/Notification_V2/notification_leave_management.feature",
     "id": "",
     "keyword": "Feature",
     "name": "",
-    "description": "  As a user I want to test combinations of document notifications to test if they were triggered successfully",
+    "description": "  As a user I want to test combinations of Leave management notifications to test if they were triggered successfully",
     "line": 2,
     "tags": [
       {
-        "name": "@Notifications_docs",
+        "name": "@Notifications_leave_management",
         "line": 1
       },
       {
@@ -18,15 +18,15 @@
     ],
     "elements": [
       {
-        "id": ";delete-assignments",
+        "id": ";employee-applies-for-leave-which-triggers-notification-to-both-employee-and-his/her-approver",
         "keyword": "Scenario",
-        "name": "Delete Assignments",
+        "name": "Employee Applies For Leave which triggers notification to both employee and his/her approver",
         "description": "",
         "line": 6,
         "type": "scenario",
         "tags": [
           {
-            "name": "@Notifications_docs",
+            "name": "@Notifications_leave_management",
             "line": 1
           },
           {
@@ -34,36 +34,136 @@
             "line": 1
           },
           {
-            "name": "@delete_assigned_docs",
+            "name": "@leave_request_submit",
+            "line": 5
+          },
+          {
+            "name": "@leave_request_action_reminder",
+            "line": 5
+          },
+          {
+            "name": "@group_by_1",
             "line": 5
           }
         ],
         "steps": [
           {
             "keyword": "Given ",
-            "name": "I Have Assigned Many Documents To A User",
+            "name": "I Am On The New Leave Request Page",
             "line": 7,
             "output": [
-              "ELMO Talent Management System - Administration - Documents - Existing Assignments"
+              "ELMO- Leave Management"
             ],
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notifications_document_setup_business_steps.rb:21"
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:2"
             },
             "result": {
               "status": "passed",
-              "duration": 8749318588
+              "duration": 11120268234
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I Apply For A Leave As An Employee",
+            "line": 8,
+            "output": [
+              "163"
+            ],
+            "match": {
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:11"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16480525150
             }
           },
           {
             "keyword": "Then ",
-            "name": "I Need To Delete The Assigned Documents As A TearDown Approach",
-            "line": 8,
+            "name": "I Should Be Instantly Notified About My Leave Request",
+            "line": 9,
+            "output": [
+              "modified permissions",
+              "SSH Tunneling Established",
+              "Yay! Notification has been triggered"
+            ],
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notifications_document_setup_business_steps.rb:29"
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:21"
             },
             "result": {
               "status": "passed",
-              "duration": 74304772
+              "duration": 3682320441
+            }
+          }
+        ]
+      },
+      {
+        "id": ";employee-cancels-the-leave-which-triggers-notification-to-the-employee",
+        "keyword": "Scenario",
+        "name": "Employee Cancels The Leave which triggers notification to the employee",
+        "description": "",
+        "line": 12,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@Notifications_leave_management",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@leave_request_cancelled_by_employee",
+            "line": 11
+          },
+          {
+            "name": "@group_by_1",
+            "line": 11
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I Am On The New Leave Request Page",
+            "line": 13,
+            "output": [
+              "ELMO- Leave Management"
+            ],
+            "match": {
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:2"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10639951567
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I Cancel The Leave That I have Requested For",
+            "line": 14,
+            "match": {
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:26"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3323531588
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I Should Be Instantly Notified About My Leave Request cancellation",
+            "line": 15,
+            "output": [
+              "modified permissions",
+              "SSH Tunneling Established",
+              "Yay! Notification has been triggered"
+            ],
+            "match": {
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:30"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4229886374
             }
           }
         ]
