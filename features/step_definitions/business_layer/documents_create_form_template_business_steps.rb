@@ -7,13 +7,21 @@ Given(/^I Have Logged In as a Company Admin$/) do
 end
 
 
-When(/^I Go To The Documents Form Templates Section$/) do
+And(/^I Go To The Documents Form Templates Section$/) do
   GoToTheDocumentsFormTemplatePageAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
 end
 
+When(/^I click on Create Form Template Button$/) do
+  GoToNewFormTemplateAddPage(CREATE_FORM_TEMPLATE_BTN)
+end
+
+And(/^I Enter New Form Template Details$/) do
+  EnterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT, CAT_POS_INDEX_ARROW, 0, CAT_POS_INDEX_CLASS, 3)
+  EnterDescription(FORM_TEMP_DESC_TXT)
+end
 
 Then(/^I Should Be Able To Create A Form Template$/) do
-  CreateAFormTemplateAndVerify(CREATE_FORM_TEMPLATE_BTN, FORM_TEMPLATE_TITLE, FORM_TEMPLATE_TITLE_TEXT, FORM_TEMPLATE_CATEGORY, FORM_TEMPLATE_SAVE_BTN)
+  CreateAFormTemplateAndVerify(FORM_TEMPLATE_SAVE_BTN)
 end
 
 

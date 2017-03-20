@@ -85,5 +85,40 @@ module Chrome
     def Wait_For(timeout)
       $driver.manage.timeouts.implicit_wait = timeout
     end
+
+    def useCKEditorToEnterDescription(text)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_element(:class, "cke_wysiwyg_frame")
+          element if element.displayed?
+        }
+        $driver.switch_to.frame(select_item)
+ #       sleep (1)
+
+        enter_txt = wait.until {
+          element = $driver.find_element(:tag_name, "body")
+          element if element.displayed?
+        }
+
+        enter_txt.send_keys(text)
+#        sleep (1)
+
+        $driver.switch_to.parent_frame
+        sleep (1)
+
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
+    def useSelect2InPutField(index_arrow_name, index_arrow_id, index_class_name, index_class_id)
+      begin
+        WaitForDropdownByClassAndTouchTheIndex(index_arrow_name, index_arrow_id)
+        WaitForDropdownByClassAndTouchTheIndex(index_class_name, index_class_id)
+      end
+    end
+
   end
 end

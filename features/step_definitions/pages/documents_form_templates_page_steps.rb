@@ -19,12 +19,21 @@ def GoToFormTemplateLandingPage(documents_list_path)
   sleep(2)
 end
 
-def CreateAFormTemplateAndVerify(form_temp_btn, form_temp_title, form_temp_title_text, form_temp_category, form_temp_save)
+def GoToNewFormTemplateAddPage(form_temp_btn)
   WaitForAnElementByXpathAndTouch(form_temp_btn)
-  sleep(2)
+end
+
+def EnterFormTemplateDetails(form_temp_title, form_temp_title_text, pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
   sleep(1)
-  WaitForAnElementByXpathAndTouch(form_temp_category)
+  useSelect2InPutField(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+end
+
+def EnterDescription(form_temp_desc_txt)
+  useCKEditorToEnterDescription(form_temp_desc_txt)
+end
+
+def CreateAFormTemplateAndVerify(form_temp_save)
   WaitForAnElementByXpathAndTouch(form_temp_save)
   sleep(4)
 end

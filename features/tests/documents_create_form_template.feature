@@ -5,8 +5,10 @@ Feature:
   @Create_a_form_template
    Scenario: Create a Form Template
      Given I Have Logged In as a Company Admin
-     When  I Go To The Documents Form Templates Section
-     Then  I Should Be Able To Create A Form Template
+     And  I Go To The Documents Form Templates Section
+     When I click on Create Form Template Button
+     And  I Enter New Form Template Details
+     Then I Should Be Able To Create A Form Template
 
   @Hide_a_form_template
     Scenario: Hide a Form Template

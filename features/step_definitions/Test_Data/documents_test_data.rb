@@ -17,4 +17,5 @@ REJECTION_MESSAGE = 'Document rejected'
 
 ######### Documents Form template page data #############################
 
-FORM_TEMPLATE_TITLE_TEXT = "Test Form Template - DO NOT DELETE"
+FORM_TEMP_TITLE_TXT = "Test Form Template - DO NOT DELETE"
+FORM_TEMP_DESC_TXT = "Test Form Template - DO NOT DELETE"
