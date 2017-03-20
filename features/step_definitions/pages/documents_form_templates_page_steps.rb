@@ -1,39 +1,54 @@
 
-def GoToTheDocumentsFormTemplatePageAsCompanyAdmin(admin_cog,documents_expand,documents_list_path)
+def goToTheDocumentsFormTemplatePageAsCompanyAdmin(admin_cog,documents_expand,documents_list_path)
   WaitForAnElementByClass(admin_cog)
   TouchAdminMenu(admin_cog)
   sleep(2)
-  GoToDocumentsSection(documents_expand)
+  goToDocumentsSection(documents_expand)
   sleep(2)
-  GoToFormTemplateLandingPage(documents_list_path)
+  goToFormTemplateLandingPage(documents_list_path)
 
 end
 
-def GoToDocumentsSection(documents_expand)
+def goToDocumentsSection(documents_expand)
   WaitForAnElementByXpathAndTouch(documents_expand)
 end
 
 
-def GoToFormTemplateLandingPage(documents_list_path)
+def goToFormTemplateLandingPage(documents_list_path)
   WaitForAnElementByXpathAndTouch(documents_list_path)
   sleep(2)
 end
 
-def CreateAFormTemplateAndVerify(form_temp_btn, form_temp_title, form_temp_title_text, form_temp_category, form_temp_save)
+def goToNewFormTemplateAddPage(form_temp_btn)
   WaitForAnElementByXpathAndTouch(form_temp_btn)
-  sleep(2)
+end
+
+def enterFormTemplateDetails(form_temp_title, form_temp_title_text, pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
   sleep(1)
-  WaitForAnElementByXpathAndTouch(form_temp_category)
+  useSelect2InPutField(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+end
+
+def enterDescription(form_temp_desc_txt)
+  useCKEditorToEnterDescription(form_temp_desc_txt)
+end
+
+def createAFormTemplateAndVerify(form_temp_save)
   WaitForAnElementByXpathAndTouch(form_temp_save)
-  sleep(4)
+  sleep(3)
 end
 
-
-def SearchAFormTemplate()
-
+def searchforAForFormTemplate(search_box_id, form_temp_search_txt, search_btn_id)
+  WaitForAnElementByXpathAndInputValue(search_box_id, form_temp_search_txt)
+  WaitForAnElementByXpathAndTouch(search_btn_id)
+  sleep(2)
 end
 
-def HideAFormTemplateAndVerify()
-
+def hideTheFirstFormTemplatePlanFromTheTable(class_name, index_value, partial_link_text)
+  WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
+  sleep(1)
+  WaitForAnElementByPartialLinkTextAndTouch(partial_link_text)
+  sleep (1)
+  PressEnterConfirm()
+  sleep(1)
 end
