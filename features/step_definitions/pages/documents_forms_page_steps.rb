@@ -1,11 +1,11 @@
 
-def goToTheDocumentsFormTemplatePageAsCompanyAdmin(admin_cog,documents_expand,documents_list_path)
+def goToTheDocumentsAsCompanyAdmin(admin_cog,documents_expand,documents_list_path)
   WaitForAnElementByClass(admin_cog)
   TouchAdminMenu(admin_cog)
   sleep(2)
   goToDocumentsSection(documents_expand)
   sleep(2)
-  goToFormTemplateLandingPage(documents_list_path)
+  goToItemLandingPage(documents_list_path)
 
 end
 
@@ -13,8 +13,7 @@ def goToDocumentsSection(documents_expand)
   WaitForAnElementByXpathAndTouch(documents_expand)
 end
 
-
-def goToFormTemplateLandingPage(documents_list_path)
+def goToItemLandingPage(documents_list_path)
   WaitForAnElementByXpathAndTouch(documents_list_path)
   sleep(2)
 end

@@ -15,8 +15,14 @@ APPROVAL_MESSAGE = 'Document approved'
 REJECTION_MESSAGE = 'Document rejected'
 
 
-######### Documents Form template page data #############################
+######### Document - Form template page data #############################
 
 FORM_TEMP_TITLE_TXT = "Test Form Template - DO NOT DELETE"
 FORM_TEMP_DESC_TXT = "Test Form Template Description - DO NOT DELETE"
+
+
+######### Document - Files page data #############################
+
+FILE_TITLE_TXT = "Test File - DO NOT DELETE"
+FILE_DESC_TXT = "Test File Description - DO NOT DELETE"
 
