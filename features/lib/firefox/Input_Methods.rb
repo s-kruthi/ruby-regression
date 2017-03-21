@@ -47,7 +47,7 @@ module Firefox
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
-          element = $driver.find_element(:xpath, "#{css}")
+          element = $driver.find_element(:css, "#{css}")
           element if element.displayed?
         }
         select_item.send_keys "#{value}"

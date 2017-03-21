@@ -10,7 +10,7 @@ end
 
 When(/^I Apply For A Leave As An Employee$/) do
   ClickNewRequestButtonAndGoToLeaveApplyPage()
-  SelectLeaveType(LEAVE_TYPE_DROPDOWN,LEAVE_TYPE_DROPDOWN_OPTION,1)
+  SelectLeaveType(LEAVE_TYPE_DROPDOWN,LEAVE_TYPE_DROPDOWN_OPTION,0)
   SelectStartDate("21/09/2017")
   SelectEndDate("22/09/2017")
   ModifyLeaveHours("1")
@@ -39,7 +39,7 @@ Given(/^An Employee Has Applied For A Leave Which Is Awaiting Approval$/) do
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
   sleep(3)
   ClickNewRequestButtonAndGoToLeaveApplyPage()
-  SelectLeaveType(LEAVE_TYPE_DROPDOWN,LEAVE_TYPE_DROPDOWN_OPTION,1)
+  SelectLeaveType(LEAVE_TYPE_DROPDOWN,LEAVE_TYPE_DROPDOWN_OPTION,0)
   SelectStartDate("21/09/2017")
   SelectEndDate("22/09/2017")
   ModifyLeaveHours("1")
