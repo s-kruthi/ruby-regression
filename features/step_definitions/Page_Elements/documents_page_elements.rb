@@ -35,7 +35,7 @@ DOCUMENT_REJECT_BUTTON = "//button[@data-trigger='document-action-reject']"
 ENTER_REJECTION_MESSAGE_ID = 'documentRejectForm_message'
 CONFIRM_REJECT_BUTTON = "//button[@data-trigger='document-action-confirm-reject']"
 
-######### Documents Form page elements #############################
+######### Document - Form page elements #############################
 
 DOCUMENTS_EXPAND = "//a[@href='#collapseDocuments']"
 DOCUMENTS_LIST_PATH = "//span[contains(.,'Form Templates')]"
@@ -51,3 +51,15 @@ CAT_POS_INDEX_CLASS = "select2-result"
 FORM_TEMP_SEARCH_BOX = "//input[contains(@id,'searchText')]"
 SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 ACTION_ITEM = "Hide"
+
+
+######### Document - Files page elements #############################
+
+DOCUMENTS_EXPAND = "//a[@href='#collapseDocuments']"
+FILES_LIST_PATH = "//span[contains(.,'Files')]"
+
+ADD_FILE_BTN = "//button[contains(.,'Add File')]"
+
+FILE_TITLE = "//input[contains(@id,'title')]"
+
+FILE_SEARCH_BOX = "//input[contains(@id,'searchText')]"
