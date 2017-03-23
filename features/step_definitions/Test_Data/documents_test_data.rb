@@ -26,3 +26,7 @@ FORM_TEMP_DESC_TXT = "Test Form Template Description - DO NOT DELETE"
 FILE_TITLE_TXT = "Test File - DO NOT DELETE"
 FILE_DESC_TXT = "Test File Description - DO NOT DELETE"
 
+filename = "sample.pdf"
+FILE_NAME = File.join(File.absolute_path("../../step_definitions/Test_Data/", File.dirname(__FILE__)), filename)
+
+FILE_LABEL_ID_INDEX = 3

@@ -9,6 +9,8 @@ Feature:
      And  I Go To The Documents Files Section
      When I click on Add File Button
      And  I Enter File Details
+     And  I Select A File
+     And  I Select Availability
      Then I Should Be Able To Create A File
 
   @file_search

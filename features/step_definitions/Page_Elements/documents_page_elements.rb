@@ -55,11 +55,13 @@ ACTION_ITEM = "Hide"
 
 ######### Document - Files page elements #############################
 
-DOCUMENTS_EXPAND = "//a[@href='#collapseDocuments']"
 FILES_LIST_PATH = "//span[contains(.,'Files')]"
 
 ADD_FILE_BTN = "//button[contains(.,'Add File')]"
+BROWSE_FILE_ID = "//input[@type='file']"
+FILE_ID = "//ul[@class='select2-choices']"
+FILE_LABEL_ID = "select2-results-dept-0"
 
 FILE_TITLE = "//input[contains(@id,'title')]"
-
 FILE_SEARCH_BOX = "//input[contains(@id,'searchText')]"
+AVAIL_DROPDOWN_OPTION = "//option[contains(., 'All Users')]"

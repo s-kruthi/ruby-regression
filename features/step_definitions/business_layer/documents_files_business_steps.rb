@@ -10,9 +10,17 @@ end
 And(/^I Enter File Details$/) do
   enterFileDetails(FILE_TITLE, FILE_TITLE_TXT, CAT_POS_INDEX_ARROW, 0, CAT_POS_INDEX_CLASS, 5)
   enterDescription(FILE_DESC_TXT)
-  selectALabel()
-  selectASampleFile()
+  selectALabel(FILE_ID, FILE_LABEL_ID, FILE_LABEL_ID_INDEX)
 end
+
+And(/^I Select A File$/) do
+  selectAfile(BROWSE_FILE_ID, FILE_NAME)
+end
+
+And(/^I Select Availability$/) do
+  selectFileAvailability(AVAIL_DROPDOWN_OPTION)
+end
+
 
 Then(/^I Should Be Able To Create A File$/) do
   createAFileAndVerify(FORM_TEMPLATE_SAVE_BTN)

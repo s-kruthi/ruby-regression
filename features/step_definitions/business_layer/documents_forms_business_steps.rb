@@ -8,7 +8,7 @@ end
 
 
 And(/^I Go To The Documents Form Templates Section$/) do
-  goToTheDocumentsFormTemplatePageAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
+  goToTheDocumentsAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
 end
 
 When(/^I click on Create Form Template Button$/) do
