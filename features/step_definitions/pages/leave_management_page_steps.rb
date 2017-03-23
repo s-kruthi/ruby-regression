@@ -96,11 +96,86 @@ def FillTheNewCompanyHolidayAndSave()
   puts $current_hol_id
 end
 
-def  FindTheCreatedHolidayAndDeleteIt()
+def FindTheCreatedHolidayAndDeleteIt()
   $driver.find_element(:link_text, 'Holiday Management').click
   sleep(3)
   $driver.find_elements(:class, "dropdown-toggle").last.click
   $driver.find_element(:css, %(a[ng-click="chl.deleteCompanyEvent(#{$current_hol_id})"])).click
   sleep(2)
   $driver.find_element(:css, "[data-bb-handler='success']").click
+end
+
+def GoToLeaveRequestUnderLeaveManagement(leave_management_sec_id,leave_requests_path)
+  WaitForAnElementByIdAndTouch(leave_management_sec_id)
+  WaitForAnElementByXpathAndTouch(leave_requests_path)
+  sleep(2)
+end
+def GoToLeaveBalanceUnderLeaveManagement(leave_management_sec_id)
+  WaitForAnElementByIdAndTouch(leave_management_sec_id)
+end
+
+def ApproveTheSubmittedLeaveRequest(approval_reason)
+  sleep(2)
+  $driver.find_element(:xpath, %(//a[@ng-href='/admin/leave/leave-request/#{RQST_PATH_ID}'])).click
+  sleep(3)
+  $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{approval_reason}"
+  $driver.find_element(:css, 'button[ng-click="approveLeaveRequest()"]').click
+  sleep(3)
+  $driver.navigate.back
+  sleep(2)
+  $driver.find_element(:xpath, "//a[contains(.,'Approved Request')]").click
+end
+
+def ModifyLeaveHrAndProcessTheLeaveRequest()
+  $driver.find_element(:xpath, "//a[contains(.,'Approved Request')]").click
+  sleep(2)
+  $driver.find_element(:xpath, "//input[@ng-model='lr.data.criteria.searchText']").send_keys("Donald Trump", :return)
+  sleep(1)
+  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
+  sleep(1)
+  $driver.find_element(:css, 'a[ng-click="lr.openLeaveRequestHrModification(request)"]').click #click modify hrs
+  sleep(2)
+  $driver.find_element(:css, 'input[ng-model="data.modification.totalHours"]').clear    #clear hrs
+  $driver.find_element(:css, 'input[ng-model="data.modification.totalHours"]').send_keys "0.5"    #enter new hrs
+  $driver.find_element(:css, 'textarea[ng-model="data.modification.comment"]').send_keys "automation hrs modified" #enter comment
+  $driver.find_element(:css, 'button[ng-click="postLeaveRequestModification()"]').click
+  sleep(3)
+  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
+  sleep(2)
+  $driver.find_element(:css, 'a[ng-click="lr.hrApproveLeaveRequest(request)"]').click #click approve to process
+  sleep(2)
+  PressEnterConfirm()
+  sleep(2)
+  $driver.find_element(:xpath, "//a[contains(.,'Processing Request')]").click #go to processing request tab
+  sleep(2)
+end
+
+def UnderProcessingTabCancelTheLeaveRequest()
+  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
+  sleep(2)
+  $driver.find_element(:css, 'a[ng-click="lr.openLeaveRequestCancellation(request)"]').click #cancel the processing request
+  sleep(2)
+  $driver.find_element(:css, 'textarea[ng-model="data.cancellation.comment"]').send_keys "automation processing leave cancelled"
+  $driver.find_element(:css, 'button[ng-click="postLeaveRequestCancellation()"]').click
+  sleep(2)
+end
+def GoToLeaveBalanceAndSearchTheEmployee()
+  sleep(2)
+  $driver.find_element(:xpath, "//span[contains(.,'Leave Balance & Import')]").click
+  sleep(2)
+  $driver.find_element(:xpath, "//input[@ng-model='lb.data.criteria.searchText']").send_keys("Donald Trump", :return)
+  sleep(1)
+end
+def CheckTheLeaveBucketReturnsTheExpectedAccruals()
+  FetchTheLeaveBucketForThatEmployee()
+  MatchTheExpectedLeaveBucketFromDatabase()
+end
+
+def FetchTheLeaveBucketForThatEmployee()
+  $annual_leave = $driver.find_elements(:class, "ng-binding")[8].text
+  puts "#{$annual_leave}"
+  $personal_leave = $driver.find_elements(:class, "ng-binding")[11].text
+  puts "#{$personal_leave}"
+  $limit_based = $driver.find_elements(:class, "ng-binding")[14].text
+  puts "#{$limit_based}"
 end

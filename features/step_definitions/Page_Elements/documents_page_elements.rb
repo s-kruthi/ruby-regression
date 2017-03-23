@@ -55,7 +55,7 @@ ACTION_ITEM = "Hide"
 
 ######### Document - Files page elements #############################
 
-DOCUMENTS_EXPAND = "//a[@href='#collapseDocuments']"
+# DOCUMENTS_EXPAND = "//a[@href='#collapseDocuments']"
 FILES_LIST_PATH = "//span[contains(.,'Files')]"
 
 ADD_FILE_BTN = "//button[contains(.,'Add File')]"
