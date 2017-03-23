@@ -36,3 +36,50 @@ end
 Then(/^I Should Be Able To Successfully Create A New Company Holiday$/) do
   FindTheCreatedHolidayAndDeleteIt()
 end
+
+When(/^I Log In As A Company Admin To Process A Leave Request$/) do
+  startWebDriver
+  GoToThePage(ADMIN_LANDING_PAGE)
+  EnterUsername(USER_NAME,LEAVE_COMPANY_ADMIN_USER)
+  EnterPassword(PASS_WORD,LEAVE_COMPANY_ADMIN_PASS)
+  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+  GoToLeaveRequestUnderLeaveManagement(LEAVE_MGMT_ID,LEAVE_REQUESTS_PATH)
+end
+
+And(/^I Approved The Submitted Request To Modify It Further$/) do
+  ApproveTheSubmittedLeaveRequest(LEAVE_APROVAL_COMMENT)
+  sleep(2)
+  ConnectToDatabaseAndValidateTheApprovedRequestSubmissionNotification()
+end
+
+Then(/^I Should Be Able To Successfully Process A Modified Leave Request$/) do
+  startWebDriver
+  GoToThePage(ADMIN_LANDING_PAGE)
+  EnterUsername(USER_NAME,LEAVE_COMPANY_ADMIN_USER)
+  EnterPassword(PASS_WORD,LEAVE_COMPANY_ADMIN_PASS)
+  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+  GoToLeaveRequestUnderLeaveManagement(LEAVE_MGMT_ID,LEAVE_REQUESTS_PATH)
+  ModifyLeaveHrAndProcessTheLeaveRequest()
+end
+
+And(/^I Should Be Able To Cancel The Request$/) do
+  UnderProcessingTabCancelTheLeaveRequest()
+end
+
+Given(/^I Have Logged In As A Company Admin To Check Leave Balance Section$/) do
+  startWebDriver
+  GoToThePage(ADMIN_LANDING_PAGE)
+  EnterUsername(USER_NAME,LEAVE_COMPANY_ADMIN_USER)
+  EnterPassword(PASS_WORD,LEAVE_COMPANY_ADMIN_PASS)
+  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+  GoToLeaveBalanceUnderLeaveManagement(LEAVE_MGMT_ID)
+end
+
+
+When(/^I Search For Leave Balance Of A Particular Employee$/) do
+  GoToLeaveBalanceAndSearchTheEmployee()
+end
+
+Then(/^I Should Be Able To Check The Correct Leave Balance$/) do
+  CheckTheLeaveBucketReturnsTheExpectedAccruals()
+end

@@ -16,3 +16,4 @@ NEW_POLICY_RQST_TTL = 'input[data-ng-model="lp.data.leavePolicy.title"]'
 LEAVE_POLICY_SEARCH_CS = 'input[ng-model="lp.data.criteria.searchText"]'
 HOLIDAY_MGMT_PATH = "//span[contains(.,'Holiday Management')]"
 ADD_NEW_HOLIDAY = "//a[@href='/admin/leave/company_holiday/create']"
+LEAVE_REQUESTS_PATH = "//span[contains(.,'Leave Requests')]"

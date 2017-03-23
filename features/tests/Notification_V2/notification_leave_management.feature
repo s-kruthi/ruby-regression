@@ -1,4 +1,4 @@
-@Notifications_leave_management @smoke
+@Notifications_leave_management @smoke @leaveManagement
 Feature:
   As a user I want to test combinations of Leave management notifications to test if they were triggered successfully
 

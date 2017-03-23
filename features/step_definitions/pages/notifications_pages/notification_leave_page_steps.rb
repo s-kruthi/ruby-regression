@@ -34,6 +34,9 @@ def SubmitLeaveRequest()
   path_id = path_url.split('/')[-1]
   $current_path_id = "#{path_id}"
   puts $current_path_id
+  File.write('./features/step_definitions/Test_Data/stored_ids.rb', "RQST_PATH_ID = #{path_id}")
+  load('./features/step_definitions/Test_Data/stored_ids.rb')
+  puts RQST_PATH_ID
   #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_submitted.sql', "use #{STAGING_DATABASE} ; \n
 select*from epms_user where email='dtrump@us-president.com' and first_name='Donald' and is_notified='1' \\G; \n
@@ -188,7 +191,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestRejectedByApproverNotifications()
     puts "not valid"
 
   ensure
-    #%x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -221,7 +224,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestResubmissionNotifications()
     puts "not valid"
 
   ensure
-    #%x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -264,6 +267,56 @@ def ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
 
   ensure
     %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
+    $driver.quit
+  end
+end
+
+def ConnectToDatabaseAndValidateTheApprovedRequestSubmissionNotification()
+  StartTheTunnel()
+  begin
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_approved.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    frs = result.include?  ("status: 4") #true validate for approver approved the request status
+    krs = result.include?  ("user_id: 709") #true validate for employee submitted the request
+    trs = result.include?  ("subject: leave approved") #true validate
+    mrs = result.include?  ("trigger_id: Leave.LeaveRequestApprovalTrigger") #true validate
+    qrs = result.include?  ("recipient_ids: /709/715/") #true validate that mail goes to both employee and manager
+    lrs = result.include?  ("id: #{RQST_PATH_ID}") #true validate for latest approved request id
+    if frs && krs && trs && mrs && qrs
+      puts "Yay! Notification has been triggered"
+    else
+      raise NotificationException.new("ERROR...Notifications were blocked !!!!!! ")
+    end
+
+  rescue
+    puts "not valid"
+
+  ensure
+    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
+    $driver.quit
+  end
+end
+
+def MatchTheExpectedLeaveBucketFromDatabase()
+  require_relative '../../../step_definitions/pages/leave_management_page_steps'
+  StartTheTunnel()
+  begin
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_bucket_check.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    frs = result.include?  ("balance: #{$annual_leave}") #true validate for first balance
+    krs = result.include?  ("balance: #{$personal_leave}") #true validate for 2nd balance
+    trs = result.include?  ("balance: #{$limit_based}") #true validate for 3rd balance
+    lrs = result.include?  ("user_id: 709") #true validate for that particular employee
+    if frs && krs && trs && lrs
+      puts "Yay! Leave Bucket On UI Matches The Database"
+    else
+      raise NotificationException.new("ERROR...Data #{frs} #{krs} #{trs} #{lrs} Not Matching!!!!!! ")
+    end
+
+  rescue
+    puts "not valid"
+
+  ensure
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
