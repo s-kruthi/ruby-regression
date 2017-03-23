@@ -1,4 +1,4 @@
-@documents_form_template
+@client_contracts
 
 Feature:
   I want to test if an ELMO Admin can successfully Manage Client Contracts
@@ -14,9 +14,9 @@ Feature:
   @client_contract_delete
     Scenario: Delete a Client Contract
       Given I Have Logged In as an ELMO Admin
-      And   I Go To The Documents Form Templates Section
-      When  I Search For A Specific Form Template
-      Then  I Should Be Able To Hide A Specific Form Template
+      And   I Go To The Contracts Section
+      When  I Search For A Specific Client Contract
+      Then  I Should Be Able To Hide A Specific Client Contract
 
 
 
