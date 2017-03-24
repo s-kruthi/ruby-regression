@@ -124,5 +124,35 @@ module Chrome
       end
     end
 
+    def browseFileSelect(browse_file_id, sample_filename)
+      begin
+        WaitForAnElementByXpathAndInputValue(browse_file_id, sample_filename)
+        sleep (1)
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
+    def selectAvailability(dropdown_option)
+      begin
+        WaitForAnElementByXpathAndTouch(dropdown_option)
+
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
+    def selectAvailability(dropdown_option)
+      begin
+        WaitForAnElementByXpathAndTouch(dropdown_option)
+
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
   end
 end

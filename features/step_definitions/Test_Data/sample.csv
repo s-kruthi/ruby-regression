@@ -1,0 +1,5 @@
+Username,"First Name","Last Name","Email Address","Manager First Name","Manager Last Name","Employment Status","Date of Hire",Department,Division,Position,"Date of birth",Position,Department,Location,Attendance,Score,Completion,Notes,Attachment
+u31,Fn31,Ln31,min.yan+u31pms_iccsydney@elmolearning.com.au,Fn212,Ln212,"Full Time",13/10/2014,"Human Resources","Human Resources","Director of Human Resources",26/08/1979,,"Human Resources",,"Fully Attended",A,Yes,,No
+u31,Fn31,Ln31,min.yan+u31pms_iccsydney@elmolearning.com.au,Fn212,Ln212,"Full Time",13/10/2014,"Human Resources","Human Resources","Director of Human Resources",26/08/1979,,"Human Resources",,"Partially Attended",B,No,,No
+test.omar1,test,omar1,test.omar1@elmolearning.com.au,"Company admin",omar,"Full Time",05/09/2016,"Human Resources","Learning and Development","Learning and Development Manager",,,,,"No Show",F,No,,No
+test1.omar,test1,omar,test1.omar@elmod,"Company admin",omar,,,,,,,,,,"Fully Attended",B,Yes,,No

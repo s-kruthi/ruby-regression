@@ -1,3 +1,4 @@
+#####General ELMO credentials ###############
 ELMO_LANDING_PAGE = 'https://staging4.dev.elmodev.com/dashboard'
 #NEW_USER_EDIT_PAGE = 'https://staging1.dev.elmodev.com/controlpanel/edit-user-password/20519'
 NEW_USER_EDIT_PAGE ='https://staging4.dev.elmodev.com/controlpanel/change-password/'
@@ -8,8 +9,11 @@ EMO_ADMIN_USERNAME = 'shanadmin'
 EMO_ADMIN_PASSWORD = 'Tester1!'
 SPECIFIC_USERNAME = 'X1222347'
 EMAIL_ADD = 'REBECCA.AARON@elmodemo.com'
-ELMO_COMP_ADMIN_USERNAME = 'company.omar'
-ELMO_COMP_ADMIN_PASSWORD = 'Admin1234567'
+COMP_ADMIN_USERNAME = 'company.omar'
+COMP_ADMIN_PASSWORD = 'Admin1234567'
+
+ELMO_ADMIN_USERNAME = 'admin.omar'
+ELMO_ADMIN_PASSWORD = 'Admin1234567'
 ####### Recruitment user credentials ###########
 
 REQUISITION_LANDING_PAGE = 'https://staging3.dev.elmodev.com/controlpanel/recruitment/requisition/requisition'
@@ -43,3 +47,11 @@ CANCELLATION_REASON = "Need To Tear It Down For Automation"
 LEAVE_REJECT_COMMENT = "Need To Reject It For Automation"
 RESUBMIT_COMMENT = "Resubmitting For Automation"
 LEAVE_REJECT_AND_CLOSE_COMMENT = "Finally rejecting and closing it for Automation"
+
+
+####### Client Contract credentials ########
+ADMIN_SETUP_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/login'
+ELMO_SETUP_ADMIN_USERNAME = 'admin'
+ELMO_SETUP_ADMIN_PASSWORD = 'admin'
+
+CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/client/contract'

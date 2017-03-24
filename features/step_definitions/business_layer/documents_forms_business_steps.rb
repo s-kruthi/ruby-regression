@@ -1,14 +1,14 @@
 Given(/^I Have Logged In as a Company Admin$/) do
   startWebDriver
   GoToThePage(ELMO_LANDING_PAGE)
-  EnterUsername(USER_NAME,ELMO_COMP_ADMIN_USERNAME)
-  EnterPassword(PASS_WORD,ELMO_COMP_ADMIN_PASSWORD)
+  EnterUsername(USER_NAME,COMP_ADMIN_USERNAME)
+  EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
 end
 
 
 And(/^I Go To The Documents Form Templates Section$/) do
-  goToTheDocumentsFormTemplatePageAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
+  goToTheDocumentsAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
 end
 
 When(/^I click on Create Form Template Button$/) do
@@ -22,6 +22,7 @@ end
 
 Then(/^I Should Be Able To Create A Form Template$/) do
   createAFormTemplateAndVerify(FORM_TEMPLATE_SAVE_BTN)
+  $driver.quit
 end
 
 

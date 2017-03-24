@@ -1,9 +1,9 @@
 @documents_form_template
 
 Feature:
-  I want to test if a Company Admin can successfully create a Form Template
+  I want to test if a Company Admin can successfully Manage Forms
 
-  @create_a_form_template
+  @form_template_create
    Scenario: Create a Form Template
      Given I Have Logged In as a Company Admin
      And  I Go To The Documents Form Templates Section
@@ -11,7 +11,7 @@ Feature:
      And  I Enter New Form Template Details
      Then I Should Be Able To Create A Form Template
 
-  @hide_a_form_template
+  @form_template_hide
     Scenario: Hide a Form Template
       Given I Have Logged In as a Company Admin
       And   I Go To The Documents Form Templates Section
