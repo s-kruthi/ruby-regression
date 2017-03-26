@@ -19,7 +19,7 @@ Feature:
     When  I Try To Create A New Company Holiday
     Then  I Should Be Able To Successfully Create A New Company Holiday
 
-  @ApprovedLeaveRequestNotification
+  @ApprovedLeaveRequestNotification @Notifications_leave_management
   Scenario: Modify The Work Hrs And Cancel A Submitted Request As A Company HR
     Given An Employee Has Applied For A Leave Which Is Awaiting Approval
     When  I Log In As A Company Admin To Process A Leave Request

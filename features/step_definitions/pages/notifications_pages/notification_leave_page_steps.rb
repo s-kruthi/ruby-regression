@@ -3,9 +3,10 @@ def ClickNewRequestButtonAndGoToLeaveApplyPage()
   sleep(5)
 end
 
-def SelectLeaveType(leave_type_dropdown,leave_type_class,leave_type_value)
-  WaitForAnElementByClassAndTouch(leave_type_dropdown)
-  WaitForDropdownByClassAndTouchTheIndex(leave_type_class,leave_type_value)
+def SelectLeaveType()
+  # WaitForAnElementByClassAndTouch(leave_type_dropdown)
+  # WaitForDropdownByClassAndTouchTheIndex(leave_type_class,leave_type_value)
+  $driver.find_elements(:css, 'option[data-ng-repeat="type in data.leaveManagementInfo.userLeaveTypes"]')[0].click
   sleep(2)
 end
 def SelectStartDate(start_date)
@@ -72,8 +73,11 @@ def ConnectToDatabaseAndValidateTheLeaveRequestNotifications()
 end
 
 def CancelTheLeaveRequestPendingForApproval(dropdown_toggle, position,cancellation_reason)
+  sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(dropdown_toggle,position)
+  sleep(1)
   EnterCommentAndCancelTheRequest(cancellation_reason)
+  sleep(1)
 end
 def EnterCommentAndCancelTheRequest(cancellation_reason)
   $driver.find_element(:css, 'a[ng-click="lr.openLeaveRequestCancellation(request)"]').click
@@ -119,6 +123,7 @@ def GoToApprovalRequestPage()
   $driver.find_element(:css, 'input[ng-model="lr.data.criteria.searchText"]').send_keys "Donald Trump"
   sleep(1)
   $driver.find_element(:css, 'button[ng-click="lr.getLeaveRequests()"]').click
+  sleep(1)
 end
 
 def ConnectToDatabaseAndValidateTheLeaveRequestCancelledByApproverNotifications()
