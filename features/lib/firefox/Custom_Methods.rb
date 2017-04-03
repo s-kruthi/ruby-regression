@@ -124,5 +124,26 @@ module Firefox
       end
     end
 
+    def browseFileSelect(browse_file_id, sample_filename)
+      begin
+        WaitForAnElementByXpathAndInputValue(browse_file_id, sample_filename)
+        sleep (1)
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
+    def selectFromDropDown(dropdown_option, dropdown_value)
+      begin
+        WaitForAnElementByXpathAndTouch(dropdown_option)
+        WaitForAnElementByXpathAndTouch(dropdown_value)
+
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
   end
 end

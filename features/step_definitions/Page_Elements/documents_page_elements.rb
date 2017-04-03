@@ -1,8 +1,5 @@
 SEARCH_FIELD_ID = 'searchForm_searchText'
-ACTION_BUTTON_PATH = "//button[contains(.,'
-            Actions 
-            Toggle Dropdown
-        ')]"
+ACTION_BUTTON_PATH = "//button[contains(.,'Actions Toggle Dropdown')]"
 ASSIGN_BUTTON_PATH = "//a[contains(@title,'Assign Template')]"
 USER_SEARCH_FIELD_ID = 'search-text'
 CHECKBOX_ID = 'check_0'
@@ -61,5 +58,8 @@ FILES_LIST_PATH = "//span[contains(.,'Files')]"
 ADD_FILE_BTN = "//button[contains(.,'Add File')]"
 
 FILE_TITLE = "//input[contains(@id,'title')]"
-
+FILE_ID = "//ul[contains(.,'Labels')]"
+FILE_LABEL_ID = "select2-result"
+BROWSE_FILE_ID = "//input[contains(@type,'file')]"
 FILE_SEARCH_BOX = "//input[contains(@id,'searchText')]"
+AVAIL_DROPDOWN_OPTION = "//select[@ng-model='selectedAvailability.type']"
