@@ -19,9 +19,9 @@ def selectAfile(browse_file_id, sample_filename)
   browseFileSelect(browse_file_id, sample_filename)
 end
 
-def selectFileAvailability(availability_id)
+def selectFileAvailability(availability_id, availability_value)
   sleep(1)
-  selectAvailability(availability_id)
+  selectFromDropDown(availability_id, availability_value)
 end
 
 def createAFileAndVerify(form_temp_save)

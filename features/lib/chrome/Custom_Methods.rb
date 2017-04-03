@@ -134,19 +134,10 @@ module Chrome
       end
     end
 
-    def selectAvailability(dropdown_option)
+    def selectFromDropDown(dropdown_option, dropdown_value)
       begin
         WaitForAnElementByXpathAndTouch(dropdown_option)
-
-      rescue Exception => e
-        puts e.message
-        $driver.quit
-      end
-    end
-
-    def selectAvailability(dropdown_option)
-      begin
-        WaitForAnElementByXpathAndTouch(dropdown_option)
+        WaitForAnElementByXpathAndTouch(dropdown_value)
 
       rescue Exception => e
         puts e.message

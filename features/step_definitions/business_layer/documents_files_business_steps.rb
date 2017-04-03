@@ -18,7 +18,7 @@ And(/^I Select A File$/) do
 end
 
 And(/^I Select Availability$/) do
-  selectFileAvailability(AVAIL_DROPDOWN_OPTION)
+  selectFileAvailability(AVAIL_DROPDOWN_OPTION, AVAIL_DROPDOWN_VALUE)
 end
 
 

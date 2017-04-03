@@ -47,34 +47,40 @@ def enterSubscriberUserValue(subscriber_number_id, subscriber_number_value)
 end
 
 def enterCurrencyValue(currency_option_id, currency_option_value)
-  WaitForAnElementByIdAndTouch(currency_option_id)
-  WaitForAnElementByCSSAndTouch(currency_option_value)
-  sleep(3)
-end
-
-def enterLicenseFee(license_fee_id, license_fee_value)
-  WaitForAnElementByXpathAndInputValue(license_fee_id, license_fee_value)
+  selectFromDropDown(currency_option_id, currency_option_value)
+  sleep(1)
 end
 
 def enterExcessFeeValue(excess_fee_id, excess_fee_value)
   WaitForAnElementByXpathAndInputValue(excess_fee_id, excess_fee_value)
 end
 
-def enterUserToleranceValue(user_tolerance_value)
-  WaitForAnElementByXpathAndInputValue(user_tolerance_value)
+def enterUserToleranceValue(user_tolerance_id, user_tolerance_value)
+  WaitForAnElementByXpathAndInputValue(user_tolerance_id, user_tolerance_value)
 end
 
 def enterProductsSelectionValue()
 end
 
-def enterTermsOfPaymentText(payment_terms_id, payment_terms_value)
+def enterExceptionsTermsOfPaymentText(payment_terms_id, payment_terms_value)
   WaitForAnElementByXpathAndInputValue(payment_terms_id, payment_terms_value)
 end
 
 
-# enterStorageAllocationValue()
-# enterBandwidthAllocationValue()
-# enterIsCreditCardClientValue()
+def enterStorageAllocationValue(storage_alloc_id, storage_alloc_value)
+  WaitForAnElementByXpathAndInputValue(storage_alloc_id, storage_alloc_value)
+end
+
+
+def enterBandwidthAllocationValue(bandwidth_alloc_id, bandwidth_alloc_value)
+  WaitForAnElementByXpathAndInputValue(bandwidth_alloc_id, bandwidth_alloc_value)
+end
+
+def enterIsCreditCardClientValue(is_cc_client_id, is_cc_client_value)
+  selectFromDropDown(is_cc_client_id, is_cc_client_value)
+  sleep(1)
+
+end
 
 def enterClientContractContactDetails(contact_firstname_id, contact_firstname_value, contact_lastname_id, contact_email_id, contact_email_value, contact_address_id, contact_address_value)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)

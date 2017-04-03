@@ -65,6 +65,7 @@ module Chrome
           element if element.displayed?
         }
         select_item.click
+        select_item.send_keys(:return)
       rescue Exception => e
         puts e.message
         $driver.quit
