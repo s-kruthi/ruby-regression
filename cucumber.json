@@ -14,19 +14,15 @@
       {
         "name": "@smoke",
         "line": 1
-      },
-      {
-        "name": "@leaveManagement",
-        "line": 1
       }
     ],
     "elements": [
       {
-        "id": ";manger-rejects-the-leave-which-triggers-notification-to-the-employee",
+        "id": ";modify-the-work-hrs-and-cancel-a-submitted-request-as-a-company-hr",
         "keyword": "Scenario",
-        "name": "Manger Rejects The Leave which triggers notification to the employee",
+        "name": "Modify The Work Hrs And Cancel A Submitted Request As A Company HR",
         "description": "",
-        "line": 25,
+        "line": 44,
         "type": "scenario",
         "tags": [
           {
@@ -38,237 +34,89 @@
             "line": 1
           },
           {
-            "name": "@leaveManagement",
-            "line": 1
+            "name": "@ApprovedLeaveRequestNotification",
+            "line": 43
           },
           {
-            "name": "@leave_request_Rejected",
-            "line": 24
-          },
-          {
-            "name": "@group_by_3",
-            "line": 24
+            "name": "@group_by_4",
+            "line": 43
           }
         ],
         "steps": [
           {
             "keyword": "Given ",
             "name": "An Employee Has Applied For A Leave Which Is Awaiting Approval",
-            "line": 26,
+            "line": 45,
             "output": [
               "Staging4- Leave Management",
-              "279",
-              "279"
+              "329",
+              "329"
             ],
             "match": {
               "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:34"
             },
             "result": {
               "status": "passed",
-              "duration": 28122337632
+              "duration": 27541627927
             }
           },
           {
             "keyword": "When ",
-            "name": "I Am On The Managers Leave Management Page",
-            "line": 27,
+            "name": "I Log In As A Company Admin To Process A Leave Request",
+            "line": 46,
             "output": [
-              "Staging4- Leave Management"
+              "Staging4 - Administration"
             ],
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:50"
+              "location": "features/step_definitions/business_layer/leave_management_business_steps.rb:40"
             },
             "result": {
               "status": "passed",
-              "duration": 11028788520
+              "duration": 9770352682
             }
           },
           {
             "keyword": "And ",
-            "name": "I Reject The Leave That My Employee has Requested For",
-            "line": 28,
-            "output": [
-              "279",
-              "279"
-            ],
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:69"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 12634182370
-            }
-          },
-          {
-            "keyword": "Then ",
-            "name": "My Employee Should Be Instantly Notified About The Leave Request Rejection",
-            "line": 29,
+            "name": "I Approved The Submitted Request To Modify It Further",
+            "line": 47,
             "output": [
               "modified permissions",
               "SSH Tunneling Established",
               "Yay! Notification has been triggered"
             ],
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:74"
+              "location": "features/step_definitions/business_layer/leave_management_business_steps.rb:49"
             },
             "result": {
               "status": "passed",
-              "duration": 3711226583
-            }
-          }
-        ]
-      },
-      {
-        "id": ";employee-resubmits-the-leave-which-triggers-notification",
-        "keyword": "Scenario",
-        "name": "Employee Resubmits The Leave which triggers notification",
-        "description": "",
-        "line": 32,
-        "type": "scenario",
-        "tags": [
-          {
-            "name": "@Notifications_leave_management",
-            "line": 1
-          },
-          {
-            "name": "@smoke",
-            "line": 1
-          },
-          {
-            "name": "@leaveManagement",
-            "line": 1
-          },
-          {
-            "name": "@leave_request_resubmitted",
-            "line": 31
-          },
-          {
-            "name": "@group_by_3",
-            "line": 31
-          }
-        ],
-        "steps": [
-          {
-            "keyword": "Given ",
-            "name": "I Am On The New Leave Request Page",
-            "line": 33,
-            "output": [
-              "Staging4- Leave Management"
-            ],
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:2"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 10920971652
-            }
-          },
-          {
-            "keyword": "When ",
-            "name": "I Edit The Leave That Is Reopened Post Rejection By Approver",
-            "line": 34,
-            "output": [
-              "279"
-            ],
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:78"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3324317201
+              "duration": 16716233726
             }
           },
           {
             "keyword": "Then ",
-            "name": "There Should Be An Instant Notification About Leave Resubmission",
-            "line": 35,
+            "name": "I Should Be Able To Successfully Process A Modified Leave Request",
+            "line": 48,
             "output": [
-              "modified permissions",
-              "SSH Tunneling Established",
-              "Yay! Notification has been triggered"
+              "Staging4 - Administration"
             ],
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:82"
+              "location": "features/step_definitions/business_layer/leave_management_business_steps.rb:55"
             },
             "result": {
               "status": "passed",
-              "duration": 3560282992
-            }
-          }
-        ]
-      },
-      {
-        "id": ";manager-finally-reject-and-close-the-leave-request-which-triggers-notification",
-        "keyword": "Scenario",
-        "name": "Manager Finally Reject And Close The Leave Request which triggers notification",
-        "description": "",
-        "line": 38,
-        "type": "scenario",
-        "tags": [
-          {
-            "name": "@Notifications_leave_management",
-            "line": 1
-          },
-          {
-            "name": "@smoke",
-            "line": 1
-          },
-          {
-            "name": "@leaveManagement",
-            "line": 1
-          },
-          {
-            "name": "@leave_request_RejectedAndClosed",
-            "line": 37
-          },
-          {
-            "name": "@group_by_3",
-            "line": 37
-          }
-        ],
-        "steps": [
-          {
-            "keyword": "When ",
-            "name": "I Am On The Managers Leave Management Page",
-            "line": 39,
-            "output": [
-              "Staging4- Leave Management"
-            ],
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:50"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 11171202403
+              "duration": 27556041166
             }
           },
           {
             "keyword": "And ",
-            "name": "I Reject And Close The Leave That My Employee has Requested For",
-            "line": 40,
+            "name": "I Should Be Able To Cancel The Request",
+            "line": 49,
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:86"
+              "location": "features/step_definitions/business_layer/leave_management_business_steps.rb:65"
             },
             "result": {
               "status": "passed",
-              "duration": 13640277489
-            }
-          },
-          {
-            "keyword": "Then ",
-            "name": "There Should Be An Instant Notification About Leave Rejection",
-            "line": 41,
-            "output": [
-              "modified permissions",
-              "SSH Tunneling Established",
-              "Yay! Notification has been triggered"
-            ],
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:91"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3694676629
+              "duration": 6251327995
             }
           }
         ]

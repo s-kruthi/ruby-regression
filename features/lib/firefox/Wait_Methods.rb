@@ -59,7 +59,7 @@ module Firefox
 
     def WaitForAnElementByCSS(css)
       begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        wait = Selenium::WebDriver::Wait.new(:timeout => 20)
         select_item = wait.until {
           element = $driver.find_element(:css, "#{css}")
           element if element.displayed?

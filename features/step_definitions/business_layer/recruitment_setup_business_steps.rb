@@ -63,3 +63,4 @@ Then(/^I Should Be Able To Create A New Candidate$/) do
   sleep(2)
   $driver.quit
 end
+

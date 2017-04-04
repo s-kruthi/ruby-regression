@@ -18,7 +18,7 @@ def FillTheLeaveTypeAndSave(leave_type_title_cs,leave_type_title_val,leave_type_
   WaitForAnElementByCSSAndTouch(leave_type_entitl_cs)
   sleep(1)
   $driver.find_elements( :tag_name => "option")[5].click #selects entitlement type annual
-  sleep(1)
+  sleep(3)
   $driver.find_element(:css, 'button[ng-click="lt.postLeaveType()"]').click
   sleep(3)
 end
@@ -26,9 +26,12 @@ def SearchTheCreatedLeaveTypeAndDeleteIt(search_leav_typ,leave_type_val)
   WaitForAnElementByCSSAndInputValue(search_leav_typ,leave_type_val)
   $driver.find_element(:css, 'button[ng-click="lt.getLeaveTypes()"]').click
   sleep(1)
-  $driver.find_element(:css, 'button[ng-click="lt.deleteLeaveType(leaveType.id)"]').click
+  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
+  $driver.find_element(:css, 'a[ng-click="lt.deleteLeaveType(leaveType.id)"]').click
   sleep(2)
   PressEnterConfirm()
+  sleep(2)
+  $driver.quit
 end
 def GoToLeavePolicyUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
@@ -55,7 +58,7 @@ def FillTheLeavePolicyAndSave(leave_policy_title_cs,leave_policy_title_val)
   $driver.find_element(:id, 'annualEntitlements').send_keys "4"
   $driver.find_element(:id, 'personalEntitlements').send_keys "2"
   $driver.find_elements( :tag_name => "option")[1].click #select work days as 5 days
-  sleep(1)
+  sleep(3)
   $driver.find_element(:css, 'button[ng-click="lp.postLeavePolicy()"]').click
   sleep(3)
 end
@@ -98,8 +101,8 @@ end
 
 def FindTheCreatedHolidayAndDeleteIt()
   $driver.find_element(:link_text, 'Holiday Management').click
-  sleep(3)
-  $driver.find_elements(:class, "dropdown-toggle").last.click
+  sleep(5)
+  $driver.find_elements(:xpath, "//button[@aria-expanded='true']").last.click
   $driver.find_element(:css, %(a[ng-click="chl.deleteCompanyEvent(#{$current_hol_id})"])).click
   sleep(2)
   $driver.find_element(:css, "[data-bb-handler='success']").click
@@ -171,6 +174,19 @@ def CheckTheLeaveBucketReturnsTheExpectedAccruals()
   MatchTheExpectedLeaveBucketFromDatabase()
 end
 
+# module Leave
+#   def Leave.annual_leave()
+#     puts $driver.find_elements(:class, "ng-binding")[8].text
+#   end
+#   def Leave.personal_leave()
+#    puts $driver.find_elements(:class, "ng-binding")[11].text
+#   end
+#   def Leave.limit_leave()
+#   puts $driver.find_elements(:class, "ng-binding")[14].text
+#   end
+# end
+
+
 def FetchTheLeaveBucketForThatEmployee()
   $annual_leave = $driver.find_elements(:class, "ng-binding")[8].text
   puts "#{$annual_leave}"
@@ -179,3 +195,4 @@ def FetchTheLeaveBucketForThatEmployee()
   $limit_based = $driver.find_elements(:class, "ng-binding")[14].text
   puts "#{$limit_based}"
 end
+

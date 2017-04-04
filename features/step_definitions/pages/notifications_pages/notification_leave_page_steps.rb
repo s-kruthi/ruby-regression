@@ -31,6 +31,11 @@ end
 def SubmitLeaveRequest()
   $driver.find_element(:css, 'button[ng-click="postLeaveRequest()"]').click
   sleep(3)
+  until ($driver.find_element(:css, 'b[ng-class="event.status|statusColor"]'))
+    sleep(3)
+    puts $driver.page_source()
+  end
+
   path_url = $driver.current_url
   path_id = path_url.split('/')[-1]
   $current_path_id = "#{path_id}"
@@ -305,9 +310,14 @@ end
 
 def MatchTheExpectedLeaveBucketFromDatabase()
   require_relative '../../../step_definitions/pages/leave_management_page_steps'
+  #include Leave
   StartTheTunnel()
   begin
     result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_bucket_check.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    # frs = result.include?  ("balance: #{Leave.annual_leave}") #true validate for first balance
+    # krs = result.include?  ("balance: #{Leave.personal_leave}") #true validate for first balance
+    # trs = result.include?  ("balance: #{Leave.limit_leave}") #true validate for first balance
+
     frs = result.include?  ("balance: #{$annual_leave}") #true validate for first balance
     krs = result.include?  ("balance: #{$personal_leave}") #true validate for 2nd balance
     trs = result.include?  ("balance: #{$limit_based}") #true validate for 3rd balance
@@ -320,7 +330,7 @@ def MatchTheExpectedLeaveBucketFromDatabase()
 
   rescue
     puts "not valid"
-
+    raise NotificationException.new("ERROR...Data #{frs} #{krs} #{trs} #{lrs} Not Matching!!!!!! ")
   ensure
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit

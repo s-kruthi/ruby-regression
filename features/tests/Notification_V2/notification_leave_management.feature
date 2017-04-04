@@ -1,4 +1,4 @@
-@Notifications_leave_management @smoke @leaveManagement
+@Notifications_leave_management @smoke
 Feature:
   As a user I want to test combinations of Leave management notifications to test if they were triggered successfully
 
@@ -39,3 +39,11 @@ Feature:
     When  I Am On The Managers Leave Management Page
     And   I Reject And Close The Leave That My Employee has Requested For
     Then  There Should Be An Instant Notification About Leave Rejection
+
+  @ApprovedLeaveRequestNotification @group_by_4
+  Scenario: Modify The Work Hrs And Cancel A Submitted Request As A Company HR
+    Given An Employee Has Applied For A Leave Which Is Awaiting Approval
+    When  I Log In As A Company Admin To Process A Leave Request
+    And   I Approved The Submitted Request To Modify It Further
+    Then  I Should Be Able To Successfully Process A Modified Leave Request
+    And   I Should Be Able To Cancel The Request

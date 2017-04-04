@@ -1,8 +1,8 @@
 *************************** 1. row ***************************
-            id: 2020
+            id: 2231
           type: 1
    source_type: 1
-       subject: Leave Rejection Notification
+       subject: leave approved
           body: <p>Staging4</p>
 
 <p>Staging4</p>
@@ -13,7 +13,7 @@
 
 <p>noreply@elmolearning.com.au</p>
 
-<p>https://staging4.dev.elmodev.com/dashboard/leave/leave-request/279</p>
+<p>https://staging4.dev.elmodev.com/dashboard/leave/leave-request/329</p>
 
 <p>Annual Leave</p>
 
@@ -25,44 +25,53 @@
 
 <p>shanku mahanty</p>
 
-<p>Finally rejecting and closing it for Automation</p>
+<p>Approving For Automation</p>
+
+<p>&nbsp;</p>
      fromEmail: {"noreply@elmolearning.com.au":"Admin"}
     replyEmail: {"noreply@elmolearning.com.au":"Admin"}
-    recipients: {"to":{"dtrump@us-president.com":"Donald Trump"},"cc":{"shankumahanty@rediffmail.com":"shanku mahanty"},"bcc":null}
+    recipients: {"to":{"dtrump@us-president.com":"Donald Trump"},"cc":{"shanadmin@automation.com.au":"shanku admin"},"bcc":null}
       priority: 1
-  created_time: 1490568913
+  created_time: 1491269757
     fired_time: NULL
         status: 0
-       context: a:1:{s:8:"schedule";i:2110;}
+       context: a:1:{s:8:"schedule";i:2322;}
       branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#f5f4f4";s:10:"menuColor1";s:7:"#387ce3";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:3;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
- recipient_ids: /709/659/
-     source_id: 2110
+ recipient_ids: /709/715/
+     source_id: 2322
          count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-          id: 1868
-  trigger_id: Leave.LeaveRequestRejectTrigger
+          id: 2079
+  trigger_id: Leave.LeaveRequestApprovalTrigger
      user_id: 709
-  sort_order: 1:4011-4015:279-858
+  sort_order: 1:4011-4015:329-1017
    path_name: /4011/4015/111
-     path_id: /279/858/659
+     path_id: /329/1017/715
   is_deleted: 0
 deleted_time: NULL
 *************************** 1. row ***************************
-            id: 858
-    request_id: 279
-       user_id: 659
-        action: 3
-         level: 0
-        status: 3
-     is_active: 0
-  created_date: 1490568887
-finalized_date: 1490568913
-       comment: Finally rejecting and closing it for Automation
-       content: N;
-    is_deleted: 0
-  deleted_time: NULL
- modified_date: 1490568913
+                 id: 329
+            user_id: 709
+          policy_id: 10
+            type_id: 2
+       created_date: 1491269738
+     finalized_date: NULL
+             action: 3
+             status: 4
+         total_hour: 1
+          total_day: 2
+      total_weekend: 0
+         is_deleted: 0
+       deleted_time: NULL
+    init_total_hour: 1
+      modified_date: 1491269757
+          task_date: 1491269738
+         start_date: 1505916000
+           end_date: 1506088799
+paycycle_start_date: 1505743200
+  paycycle_due_date: 1506347999
+             params: a:2:{s:20:"standardHoursPerWeek";s:2:"40";s:13:"stateEmployed";s:3:"NSW";}
