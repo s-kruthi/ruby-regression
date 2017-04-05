@@ -47,7 +47,8 @@ CAT_POS_INDEX_CLASS = "select2-result"
 
 FORM_TEMP_SEARCH_BOX = "//input[contains(@id,'searchText')]"
 SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
-ACTION_ITEM = "Hide"
+FILE_DROPDOWN = "dropdown-toggle"
+FILE_ACTION_ITEM = "Hide"
 
 
 ######### Document - Files page elements #############################
@@ -61,5 +62,10 @@ FILE_TITLE = "//input[contains(@id,'title')]"
 FILE_ID = "//ul[contains(.,'Labels')]"
 FILE_LABEL_ID = "select2-result"
 BROWSE_FILE_ID = "//input[contains(@type,'file')]"
-FILE_SEARCH_BOX = "//input[contains(@id,'searchText')]"
+# FILE_SEARCH_BOX = "//input[contains(@id,'searchText')]"
 AVAIL_DROPDOWN_OPTION = "//select[@ng-model='selectedAvailability.type']"
+
+
+FILE_TEMP_SEARCH_BOX = "//input[contains(@placeholder,'Search')]"
+FILE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
+FILE_ACTION_DELETE = "Delete"

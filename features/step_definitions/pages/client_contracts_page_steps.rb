@@ -16,7 +16,7 @@ end
 
 
 def enterSubDomainName(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
-  useSelect2InPutField(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+  select_from_select2_input(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
   sleep(1)
 end
 
@@ -47,7 +47,7 @@ def enterSubscriberUserValue(subscriber_number_id, subscriber_number_value)
 end
 
 def enterCurrencyValue(currency_option_id, currency_option_value)
-  selectFromDropDown(currency_option_id, currency_option_value)
+  select_from_drop_down(currency_option_id, currency_option_value)
   sleep(1)
 end
 
@@ -59,7 +59,10 @@ def enterUserToleranceValue(user_tolerance_id, user_tolerance_value)
   WaitForAnElementByXpathAndInputValue(user_tolerance_id, user_tolerance_value)
 end
 
-def enterProductsSelectionValue()
+def enterProductsSelectionValue(product_option_id, product_option_value_1, product_option_value_2, product_option_value_3)
+  select_from_drop_down(product_option_id, product_option_value_1)
+  select_from_drop_down(product_option_id, product_option_value_2)
+  select_from_drop_down(product_option_id, product_option_value_3)
 end
 
 def enterExceptionsTermsOfPaymentText(payment_terms_id, payment_terms_value)
@@ -77,34 +80,37 @@ def enterBandwidthAllocationValue(bandwidth_alloc_id, bandwidth_alloc_value)
 end
 
 def enterIsCreditCardClientValue(is_cc_client_id, is_cc_client_value)
-  selectFromDropDown(is_cc_client_id, is_cc_client_value)
+  select_from_drop_down(is_cc_client_id, is_cc_client_value)
   sleep(1)
 
 end
 
-def enterClientContractContactDetails(contact_firstname_id, contact_firstname_value, contact_lastname_id, contact_email_id, contact_email_value, contact_address_id, contact_address_value)
-  WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
-  sleep(1)
-  useSelect2InPutField(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+def enterClientContractContactDetails(contact_firstname_id, contact_firstname_value, contact_lastname_id, contact_lastname_value, contact_email_id, contact_email_value, contact_address_id, contact_address_value)
+  WaitForAnElementByXpathAndInputValue(contact_firstname_id, contact_firstname_value)
+  WaitForAnElementByXpathAndInputValue(contact_lastname_id, contact_lastname_value)
+  WaitForAnElementByXpathAndInputValue(contact_email_id, contact_email_value)
+  WaitForAnElementByXpathAndInputValue(contact_address_id, contact_address_value)
 end
 
-
-def createAClientContractAndVerify(form_temp_save)
+  def createAClientContract(form_temp_save)
   WaitForAnElementByXpathAndTouch(form_temp_save)
-  sleep(3)
 end
 
-def searchforAForFormTemplate(search_box_id, form_temp_search_txt, search_btn_id)
-  WaitForAnElementByXpathAndInputValue(search_box_id, form_temp_search_txt)
-  WaitForAnElementByXpathAndTouch(search_btn_id)
-  sleep(2)
+def searchForAclientContractAndVerify(search_field, search_value, search_btn, search_result)
+  WaitForAnElementByXpathAndInputValue(search_field,search_value)
+  Wait_For(3)
+  WaitForAnElementByXpathAndTouch(search_btn)
+  sleep (1)
+  VerifyAnElementExistByXPath(search_result,search_value)
+ end
+
+def verifySuccessMessage(success_alert_id, success_alert_value)
+  VerifyAnElementExistByXPath(success_alert_id,success_alert_value)
 end
 
-def hideTheFirstFormTemplatePlanFromTheTable(class_name, index_value, partial_link_text)
+def editAclientContract(class_name, index_value, partial_link_text)
   WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
   sleep(1)
   WaitForAnElementByPartialLinkTextAndTouch(partial_link_text)
-  sleep (1)
-  PressEnterConfirm()
-  sleep(1)
+  sleep( 1)
 end

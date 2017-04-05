@@ -54,4 +54,4 @@ ADMIN_SETUP_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/login'
 ELMO_SETUP_ADMIN_USERNAME = 'admin'
 ELMO_SETUP_ADMIN_PASSWORD = 'admin'
 
-CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/client/contract'
+CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/client/contract'
