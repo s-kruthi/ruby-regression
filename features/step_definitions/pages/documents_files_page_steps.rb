@@ -6,7 +6,7 @@ end
 def enterFileDetails(form_temp_title, form_temp_title_text, pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
   sleep(1)
-  useSelect2InPutField(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+  select_from_select2_input(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
 end
 
 def selectALabel(file_id, label_id, label_index)
@@ -16,12 +16,12 @@ end
 
 def selectAfile(browse_file_id, sample_filename)
   sleep(1)
-  browseFileSelect(browse_file_id, sample_filename)
+  browse_file_select(browse_file_id, sample_filename)
 end
 
 def selectFileAvailability(availability_id, availability_value)
   sleep(1)
-  selectFromDropDown(availability_id, availability_value)
+  select_from_drop_down(availability_id, availability_value)
 end
 
 def createAFileAndVerify(form_temp_save)

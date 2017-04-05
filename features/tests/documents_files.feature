@@ -17,13 +17,10 @@ Feature:
   Scenario: Delete an Existing File
     Given I Have Logged In as a Company Admin
     And   I Go To The Documents Files Section
-    When  I Search For A Specific File
-    Then  I Should Be Able To See The File In The Search Result
+    Then  I Should Be Able To Search For A Specific File
 
   @file_delete
     Scenario: Delete an Existing File
       Given I Have Logged In as a Company Admin
       And   I Go To The Documents Files Section
-      When  I Search For A Specific File
-      Then  I Should Be Able To See The File In The Search Result
-      And   I Should Be Able To Delete A Specific File
+      Then  I Should Be Able To Delete A Specific File

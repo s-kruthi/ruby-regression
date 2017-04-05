@@ -17,6 +17,3 @@ Feature:
       And   I Go To The Documents Form Templates Section
       When  I Search For A Specific Form Template
       Then  I Should Be Able To Hide A Specific Form Template
-
-
-

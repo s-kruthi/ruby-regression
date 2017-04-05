@@ -90,7 +90,7 @@ module Chrome
       $driver.manage.timeouts.implicit_wait = timeout
     end
 
-    def useCKEditorToEnterDescription(text)
+    def use_ckeditor_to_enter_description(text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
@@ -117,14 +117,14 @@ module Chrome
       end
     end
 
-    def useSelect2InPutField(index_arrow_name, index_arrow_id, index_class_name, index_class_id)
+    def select_from_select2_input(index_arrow_name, index_arrow_id, index_class_name, index_class_id)
       begin
         WaitForDropdownByClassAndTouchTheIndex(index_arrow_name, index_arrow_id)
         WaitForDropdownByClassAndTouchTheIndex(index_class_name, index_class_id)
       end
     end
 
-    def browseFileSelect(browse_file_id, sample_filename)
+    def browse_file_select(browse_file_id, sample_filename)
       begin
         WaitForAnElementByXpathAndInputValue(browse_file_id, sample_filename)
         sleep (1)
@@ -134,10 +134,11 @@ module Chrome
       end
     end
 
-    def selectFromDropDown(dropdown_option, dropdown_value)
+    def select_from_drop_down(dropdown_option, dropdown_value)
       begin
-        WaitForAnElementByXpathAndTouch(dropdown_option)
-        WaitForAnElementByXpathAndTouch(dropdown_value)
+        dropdown_list = $driver.find_element(:xpath, dropdown_option)
+        select_list = Selenium::WebDriver::Support::Select.new(dropdown_list)
+        select_list.select_by(:text, dropdown_value)
 
       rescue Exception => e
         puts e.message

@@ -21,21 +21,18 @@ And(/^I Select Availability$/) do
   selectFileAvailability(AVAIL_DROPDOWN_OPTION, AVAIL_DROPDOWN_VALUE)
 end
 
-
 Then(/^I Should Be Able To Create A File$/) do
   createAFileAndVerify(FORM_TEMPLATE_SAVE_BTN)
 end
 
-
-When(/^I Search For A Specific File$/) do
-  searchforAForFormTemplate(FORM_TEMP_SEARCH_BOX, FORM_TEMP_TITLE_TXT, SEARCH_BTN_ID)
+Then(/^I Should Be Able To Search For A Specific File$/) do
+    searchForAFileAndVerify(FILE_TEMP_SEARCH_BOX, FILE_TITLE_TXT, FILE_SEARCH_BTN_ID, FILE_SEARCH_RESULT)
+    sleep (1)
+    $driver.quit
 end
 
-
-Then(/^I Should Be Able To See The File In The Search Result$/) do
-  hideTheFirstFormTemplatePlanFromTheTable(DROPDOWN,3, ACTION_ITEM)
-end
-
-And(/^I Should Be Able To Delete A Specific File$/) do
+Then(/^I Should Be Able To Delete A Specific File$/) do
+  deleteTheFirstFileFromTheTable(FILE_DROPDOWN,3, FILE_ACTION_DELETE)
+  sleep(1)
   $driver.quit
 end
