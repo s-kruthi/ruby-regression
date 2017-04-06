@@ -13,10 +13,10 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "#{text} matched"
+          puts "MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/#{text}screenshot.png")
-          raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("ERROR: Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message
@@ -33,10 +33,10 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "#{text} matched"
+          puts "MATCHED: #{text} "
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/#{text}Screenshot.png")
-          raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("ERROR: Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message
@@ -53,10 +53,10 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "#{text} matched"
+          puts "MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/#{text}screenshot.png")
-          raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("ERROR: Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message
@@ -73,10 +73,10 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "#{text} matched"
+          puts "MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/#{text}screenshot.png")
-          raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("ERROR: Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message
@@ -93,10 +93,10 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "#{text} matched"
+          puts "MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/#{text}screenshot.png")
-          raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("ERROR: Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message

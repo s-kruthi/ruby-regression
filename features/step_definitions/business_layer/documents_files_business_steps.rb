@@ -22,7 +22,10 @@ And(/^I Select Availability$/) do
 end
 
 Then(/^I Should Be Able To Create A File$/) do
-  createAFileAndVerify(FORM_TEMPLATE_SAVE_BTN)
+  createAFile(FORM_TEMPLATE_SAVE_BTN)
+  sleep(1)
+  verifySuccessMessage(FILE_SAVE_SUCCESSFUL_ID, FILE_SAVE_SUCCESSFUL_VALUE)
+  $driver.quit
 end
 
 Then(/^I Should Be Able To Search For A Specific File$/) do
