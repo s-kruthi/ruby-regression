@@ -19,7 +19,16 @@ REJECTION_MESSAGE = 'Document rejected'
 
 FORM_TEMP_TITLE_TXT = "Test Form Template - DO NOT DELETE"
 FORM_TEMP_DESC_TXT = "Test Form Template Description - DO NOT DELETE"
+FORM_ACTION_ITEM = "Hide"
 
+######### Document - Document Categories page data #############################
+
+DOCUMENT_CATEGORY_TITLE_TEXT = "Test Document Category - DO NOT DELETE"
+DOCUMENT_CATEGORY_DESC_TXT = "Test Document Category Description - DO NOT DELETE"
+
+DOCUMENT_CAT_SAVE_SUCCESS_VALUE = "Successfully added new category"
+
+DOC_CAT_ACTION_ITEM = "Hide"
 
 ######### Document - Files page data #############################
 
@@ -34,3 +43,6 @@ FILE_LABEL_ID_INDEX = 3
 
 AVAIL_DROPDOWN_VALUE = "All Users"
 FILE_SEARCH_RESULT = "//td[contains(.,'Test File - DO NOT DELETE')]"
+FILE_ACTION_DELETE = "Delete"
+
+FILE_SAVE_SUCCESSFUL_VALUE = "Save successful"

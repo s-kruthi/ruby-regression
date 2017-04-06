@@ -24,7 +24,7 @@ def selectFileAvailability(availability_id, availability_value)
   select_from_drop_down(availability_id, availability_value)
 end
 
-def createAFileAndVerify(form_temp_save)
+def createAFile(form_temp_save)
     WaitForAnElementByXpathAndTouch(form_temp_save)
     sleep(3)
 end

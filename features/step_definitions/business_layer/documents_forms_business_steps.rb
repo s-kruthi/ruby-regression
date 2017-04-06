@@ -32,7 +32,32 @@ end
 
 
 Then(/^I Should Be Able To Hide A Specific Form Template$/) do
-  hideTheFirstFormTemplatePlanFromTheTable(DROPDOWN,3, ACTION_ITEM)
+  hideTheFirstFormTemplatePlanFromTheTable(FORM_DROPDOWN,3, FORM_ACTION_ITEM)
   $driver.quit
 end
 
+And(/^I Go To The Documents Categories Section$/) do
+  goToTheDocumentsAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_CAT_LIST_PATH)
+end
+
+When(/^I click on Add Category Button$/) do
+  goToNewDocumentCategoryPage(CREATE_DOCUMENT_CATEGORY_BTN)
+end
+
+And(/^I Enter New Document Category Details$/) do
+  enterDocumentCategoryDetails(DOCUMENT_CATEGORY_TITLE_ID, DOCUMENT_CATEGORY_TITLE_TEXT)
+  enterDescription(DOCUMENT_CATEGORY_DESC_TXT)
+end
+
+Then(/^I Should Be Able To Create A Document Category$/) do
+  createADocumentCategory(FORM_TEMPLATE_SAVE_BTN)
+  verifySuccessMessage(DOCUMENT_CAT_SAVE_SUCCESS_ID, DOCUMENT_CAT_SAVE_SUCCESS_VALUE)
+  $driver.quit
+end
+
+
+Then(/^I Should Be Able To Hide A Document Category$/) do
+  hideTheFirstDocumentCategoryFromTheTable(DOC_CAT_DROPDOWN,3, DOC_CAT_ACTION_ITEM)
+  sleep (1)
+  $driver.quit
+end
