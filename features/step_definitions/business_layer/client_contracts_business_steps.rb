@@ -73,7 +73,7 @@ Then(/^I Should Be Able To Search For A Specific Active Client Contract$/) do
   $driver.quit
 end
 
-When(/I Search For A Specific Active Client Contract$/) do
+When(/^I Search For A Specific Active Client Contract$/) do
   searchForAclientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT)
 end
 

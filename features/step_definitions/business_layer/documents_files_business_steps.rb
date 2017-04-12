@@ -9,7 +9,7 @@ end
 
 And(/^I Enter File Details$/) do
   enterFileDetails(FILE_TITLE, FILE_TITLE_TXT, CAT_POS_INDEX_ARROW, 0, CAT_POS_INDEX_CLASS, 5)
-  enterDescription(FILE_DESC_TXT)
+  enterDescription(FILE_DESC_TXT, 0)
   selectALabel(FILE_ID, FILE_LABEL_ID, FILE_LABEL_ID_INDEX)
 end
 

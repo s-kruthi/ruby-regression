@@ -17,11 +17,12 @@ end
 
 And(/^I Enter New Form Template Details$/) do
   enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT, CAT_POS_INDEX_ARROW, 0, CAT_POS_INDEX_CLASS, 3)
-  enterDescription(FORM_TEMP_DESC_TXT)
+  enterDescription(FORM_TEMP_DESC_TXT, 0)
 end
 
 Then(/^I Should Be Able To Create A Form Template$/) do
   createAFormTemplateAndVerify(FORM_TEMPLATE_SAVE_BTN)
+  findIdOfDocumentInstance()
   $driver.quit
 end
 
@@ -46,7 +47,7 @@ end
 
 And(/^I Enter New Document Category Details$/) do
   enterDocumentCategoryDetails(DOCUMENT_CATEGORY_TITLE_ID, DOCUMENT_CATEGORY_TITLE_TEXT)
-  enterDescription(DOCUMENT_CATEGORY_DESC_TXT)
+  enterDescription(DOCUMENT_CATEGORY_DESC_TXT, 0)
 end
 
 Then(/^I Should Be Able To Create A Document Category$/) do

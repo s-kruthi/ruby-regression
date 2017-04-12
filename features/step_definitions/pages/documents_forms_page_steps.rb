@@ -28,13 +28,22 @@ def enterFormTemplateDetails(form_temp_title, form_temp_title_text, pos_index_ar
   select_from_select2_input(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
 end
 
-def enterDescription(form_temp_desc_txt)
-  use_ckeditor_to_enter_description(form_temp_desc_txt)
+def enterDescription(form_temp_desc_txt, index_id)
+  use_ckeditor_to_enter_description(form_temp_desc_txt, index_id)
 end
 
 def createAFormTemplateAndVerify(form_temp_save)
   WaitForAnElementByXpathAndTouch(form_temp_save)
   sleep(3)
+end
+
+def findIdOfDocumentInstance()
+  sleep(1)
+  path_url = $driver.current_url
+  path_id = path_url.split('/')[-2]
+  $document_path_id = "/#{path_id}"
+  puts "Document Path ID: #{$document_path_id}"
+  sleep(1)
 end
 
 def searchforAForFormTemplate(search_box_id, form_temp_search_txt, search_btn_id)
