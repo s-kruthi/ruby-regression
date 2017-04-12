@@ -90,15 +90,14 @@ module Chrome
       $driver.manage.timeouts.implicit_wait = timeout
     end
 
-    def use_ckeditor_to_enter_description(text)
+    def use_ckeditor_to_enter_description(text, index_id)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
-          element = $driver.find_element(:class, "cke_wysiwyg_frame")
+          element = $driver.find_elements(:class, "cke_wysiwyg_frame")[index_id]
           element if element.displayed?
         }
         $driver.switch_to.frame(select_item)
- #       sleep (1)
 
         enter_txt = wait.until {
           element = $driver.find_element(:tag_name, "body")
@@ -106,7 +105,6 @@ module Chrome
         }
 
         enter_txt.send_keys(text)
-#        sleep (1)
 
         $driver.switch_to.parent_frame
         sleep (1)
