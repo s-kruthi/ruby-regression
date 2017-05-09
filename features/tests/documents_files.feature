@@ -1,7 +1,7 @@
 @documents_files
 
 Feature:
-  I want to test if a Company Admin can successfully create a Form Template
+  I want to test if a Company Admin can successfully create a Files
 
   @file_create
    Scenario: Create a New File

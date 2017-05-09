@@ -138,7 +138,7 @@ module Chrome
         select_list = Selenium::WebDriver::Support::Select.new(dropdown_list)
         select_list.select_by(:text, dropdown_value)
 
-      rescue Exception => e
+      rescue StandardError => e
         puts e.message
         $driver.quit
       end

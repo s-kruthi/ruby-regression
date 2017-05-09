@@ -1,5 +1,5 @@
 #####General ELMO credentials ###############
-ELMO_LANDING_PAGE = 'https://staging4.dev.elmodev.com/dashboard'
+ELMO_LANDING_PAGE = 'https://staging7.dev.elmodev.com/dashboard'
 #NEW_USER_EDIT_PAGE = 'https://staging1.dev.elmodev.com/controlpanel/edit-user-password/20519'
 NEW_USER_EDIT_PAGE ='https://staging4.dev.elmodev.com/controlpanel/change-password/'
 NEW_USER_LOGIN_PAGE = 'https://tmsfull.dev.elmodev.com'
@@ -55,3 +55,6 @@ ELMO_SETUP_ADMIN_USERNAME = 'admin'
 ELMO_SETUP_ADMIN_PASSWORD = 'admin'
 
 CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/client/contract'
+
+REPORTS_LANDING_PAGE = 'https://staging7.dev.elmodev.com/report#/?pageType=reportList'
+
