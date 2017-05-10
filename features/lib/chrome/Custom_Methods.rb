@@ -89,7 +89,15 @@ module Chrome
     def Wait_For(timeout)
       $driver.manage.timeouts.implicit_wait = timeout
     end
-
+    def Sleep_Until(method)
+      i=1
+      sleep(i)
+      puts loop do
+        i+=1
+        puts "#{i}"
+        break if method
+      end
+    end
     def use_ckeditor_to_enter_description(text, index_id)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -138,7 +146,7 @@ module Chrome
         select_list = Selenium::WebDriver::Support::Select.new(dropdown_list)
         select_list.select_by(:text, dropdown_value)
 
-      rescue StandardError => e
+      rescue Exception => e
         puts e.message
         $driver.quit
       end

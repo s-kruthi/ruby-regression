@@ -16,14 +16,17 @@ ELMO_ADMIN_USERNAME = 'admin.omar'
 ELMO_ADMIN_PASSWORD = 'Admin1234567'
 ####### Recruitment user credentials ###########
 
-REQUISITION_LANDING_PAGE = 'https://staging3.dev.elmodev.com/controlpanel/recruitment/requisition/requisition'
+REQUISITION_LANDING_PAGE = 'https://staging5.dev.elmodev.com/controlpanel/recruitment/requisition/requisition'
 RECRUITMENT_ADMIN_USERNAME = 'admin'
 RECRUITMENT_ADMIN_PASSWORD = 'admin1234567'
 RECRUITMENT_LANDING_PAGE = 'https://staging4.dev.elmodev.com/dashboard'
 RECRUITMENT_CANDIDATE_LANDING_PAGE = 'https://staging4.dev.elmodev.com/admin/candidates/listAll'
 
 ####### user credentials ###########
-MY_DOCUMENT_PAGE = 'https://staging4.dev.elmodev.com/documents'
+MY_DOCUMENT_PAGE = 'https://tmsfull.dev.elmodev.com/documents'
+DOCUMENT_ADMIN_PAGE = 'https://tmsfull.dev.elmodev.com/admin/'
+DOC_SEC_PROF_USER = 'autsecprousr'
+DOC_SEC_PROF_PASS = 'Tester1!'
 DOC_USERNAME = 'X1242341'
 DOC_PASSWORD = 'Tester1!'
 ####### manager's credentials ###########
@@ -54,7 +57,19 @@ ADMIN_SETUP_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/login'
 ELMO_SETUP_ADMIN_USERNAME = 'admin'
 ELMO_SETUP_ADMIN_PASSWORD = 'admin'
 
+<<<<<<< Updated upstream
 CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/client/contract'
 
 REPORTS_LANDING_PAGE = 'https://staging7.dev.elmodev.com/report#/?pageType=reportList'
 
+=======
+CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/client/contract'
+######### Learning -course credentials #######################
+ADMIN_COURSE_PAGE = 'https://staging7.dev.elmodev.com/admin/courses'
+ADMIN_COURSE_USER = 'autoadmin'
+ADMIN_COURSE_PASS = 'Tester1!'
+MANAGER_COURSE_USER = ''
+MANAGER_COURSE_PASS = ''
+EMPLOYEE_COURSE_USER = ''
+EMPLOYEE_COURSE_PASS = ''
+>>>>>>> Stashed changes

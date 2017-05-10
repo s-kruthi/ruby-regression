@@ -3,10 +3,11 @@ def SearchTheTemplateToBeAssigned(search_field_id, value)
   WaitForAnElementByIdAndInputValue(search_field_id, value)
   sleep(1)
   WaitForAnElementByXpathAndTouch( "//button[@title='Search']")
+  sleep(2)
 end
 
-def AssignTheTemplate(action_button_path,assign_button_path)
-  WaitForAnElementByXpathAndTouch(action_button_path)
+def AssignTheTemplate(action_button_class,ac_btn_val,assign_button_path)
+  WaitForDropdownByClassAndTouchTheIndex(action_button_class,ac_btn_val)
   sleep(1)
   WaitForAnElementByXpathAndTouch(assign_button_path)
 end
@@ -78,7 +79,7 @@ def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
 end
 
 def GoToTheParticularAssignedDocument()
-  sleep(1)
+  sleep(2)
   WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_path_id}']")
   sleep(2)
 end
@@ -126,11 +127,30 @@ def ConnectToDatabaseAndValidateTheDocumentAwaitingNotifications()
   end
 end
 
-def GoToTheAwaitingApprovalSectionAndApproveTheDocument(doc_approval_path, doc_approve_button, enter_approval_message_id, approved_message, confirm_approval)
+def VerifyTheSubmittedFormIsInLockedState()
+  sleep(3)
+  street_no = $driver.find_element(:id, "documentForm_form_field_181_street_no").attribute('disabled')
+  street = $driver.find_element(:id, "documentForm_form_field_181_street").attribute('disabled')
+  suburb = $driver.find_element(:id, "documentForm_form_field_181_suburb").attribute('disabled')
+  state = $driver.find_element(:id, "documentForm_form_field_181_state").attribute('disabled')
+  postcode = $driver.find_element(:id, "documentForm_form_field_181_postcode").attribute('disabled')
+  datepicker = $driver.find_element(:id, "documentForm_form_field_184_default").attribute('disabled')
+
+  if street_no && street && suburb && state && postcode && datepicker == "true"
+    puts "form template is locked"
+  else
+    raise NotificationException.new("ERROR...Unlocked form templates !!!!!! ")
+  end
+end
+def GoToTheAwaitingApprovalSection(doc_approval_path)
   sleep(1)
   WaitForAnElementByXpathAndTouch(doc_approval_path)
   sleep(4)
-  WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_path_id}']")
+  # WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_path_id}']")
+  WaitForAnElementByXpathAndTouch("//a[@href='/documents/view/221']")
+  sleep(1)
+end
+def GoToTheAwaitingApprovalSectionAndApproveTheDocument(doc_approve_button, enter_approval_message_id, approved_message, confirm_approval)
   sleep(3)
   WaitForAnElementByXpathAndTouch(doc_approve_button)
   sleep(1)

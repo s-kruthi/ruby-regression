@@ -5,7 +5,7 @@ Given(/^I Am On The New Leave Request Page$/) do
   EnterUsername(USER_NAME,LEAVE_USERNAME_EMPLOYEE)
   EnterPassword(PASS_WORD,LEAVE_PASSWORD_EMPLOYEE)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
-  sleep(3)
+  sleep(1)
 end
 
 When(/^I Apply For A Leave As An Employee$/) do
@@ -91,3 +91,4 @@ end
 Then(/^There Should Be An Instant Notification About Leave Rejection$/) do
   ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
 end
+

@@ -89,6 +89,15 @@ module Safari
     def Wait_For(timeout)
       $driver.manage.timeouts.implicit_wait = timeout
     end
+    def Sleep_Until(method)
+      i=1
+      sleep(i)
+      puts loop do
+        i+=1
+        puts "#{i}"
+        break if method
+      end
+    end
 
     def use_ckeditor_to_enter_description(text, index_id)
       begin

@@ -9,7 +9,7 @@ end
 When(/^I Successfully Assign A Template To A Candidate$/) do
   SearchTheTemplateToBeAssigned(SEARCH_FIELD_ID, SEARCH_TEMPLATE)
   sleep(2)
-  AssignTheTemplate(ACTION_BUTTON_PATH,ASSIGN_BUTTON_PATH)
+  AssignTheTemplate(ACTION_BUTTON_CLASS, 3 ,ASSIGN_BUTTON_PATH)
   AssignTemplateToAUser(USER_SEARCH_FIELD_ID, SEARCH_USER, CHECKBOX_ID, ASSIGN_TO_SCLTD_USR_BTN)
   GrabThePathIDForAssignedUser(EXISTING_ASSIGNMENT_PATH,VIEW_BUTTON_PATH, 0)
 end
@@ -56,7 +56,9 @@ Given(/^I Am On The My Document Page Of A Manager$/) do
 end
 
 When(/^I Review And Approve The Submitted Document$/) do
-  GoToTheAwaitingApprovalSectionAndApproveTheDocument(DOCUMENT_APPROVAL_PATH, DOCUMENT_APPROVE_BUTTON, ENTER_APPROVAL_MESSAGE_ID, APPROVAL_MESSAGE,CONFIRM_APPROVE_BUTTON)
+  GoToTheAwaitingApprovalSection(DOCUMENT_APPROVAL_PATH)
+  VerifyTheSubmittedFormIsInLockedState()
+  GoToTheAwaitingApprovalSectionAndApproveTheDocument(DOCUMENT_APPROVE_BUTTON, ENTER_APPROVAL_MESSAGE_ID, APPROVAL_MESSAGE,CONFIRM_APPROVE_BUTTON)
 end
 
 Then(/^The User Should Be Instantly Notified About The Document Being Approved$/) do
@@ -70,3 +72,4 @@ end
 Then(/^The User Should Be Instantly Notified About The Document Being Rejected$/) do
   ConnectToDatabaseAndValidateTheDocumentRejectedNotifications()
 end
+

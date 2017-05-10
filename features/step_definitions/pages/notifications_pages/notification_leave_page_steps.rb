@@ -30,11 +30,12 @@ def AddComment(add_comment)
 end
 def SubmitLeaveRequest()
   $driver.find_element(:css, 'button[ng-click="postLeaveRequest()"]').click
-  sleep(3)
-  until ($driver.find_element(:css, 'b[ng-class="event.status|statusColor"]'))
-    sleep(3)
-    puts $driver.page_source()
-  end
+  # sleep(3)
+  # until ($driver.find_element(:css, 'b[ng-class="event.status|statusColor"]'))
+  #   sleep(3)
+  #   puts $driver.page_source()
+  # end
+  Sleep_Until($driver.find_element(:css, 'b[ng-class="event.status|statusColor"]'))
 
   path_url = $driver.current_url
   path_id = path_url.split('/')[-1]

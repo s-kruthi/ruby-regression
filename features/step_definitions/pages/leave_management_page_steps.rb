@@ -4,6 +4,7 @@ def GoToLeaveTypeUnderLeaveManagement(leave_management_sec_id)
 end
 
 def CreateANewLeaveType(leave_type_path,add_new_leave_type)
+  sleep(2)
   WaitForAnElementByXpathAndTouch(leave_type_path)
   sleep(3)
   WaitForAnElementByClassAndTouch(add_new_leave_type)

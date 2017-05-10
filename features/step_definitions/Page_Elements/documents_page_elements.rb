@@ -1,5 +1,5 @@
 SEARCH_FIELD_ID = 'searchForm_searchText'
-ACTION_BUTTON_PATH = "//button[contains(.,'Actions Toggle Dropdown')]"
+ACTION_BUTTON_CLASS = "dropdown-toggle"
 ASSIGN_BUTTON_PATH = "//a[contains(@title,'Assign Template')]"
 USER_SEARCH_FIELD_ID = 'search-text'
 CHECKBOX_ID = 'check_0'
@@ -72,6 +72,7 @@ FILE_TITLE = "//input[contains(@id,'title')]"
 FILE_ID = "//ul[contains(.,'Labels')]"
 FILE_LABEL_ID = "select2-result"
 BROWSE_FILE_ID = "//input[contains(@type,'file')]"
+<<<<<<< Updated upstream
 AVAIL_DROPDOWN_OPTION = "//select[@ng-model='selectedAvailability.type']"
 
 
@@ -79,3 +80,12 @@ FILE_TEMP_SEARCH_BOX = "//input[contains(@placeholder,'Search')]"
 FILE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 
 FILE_SAVE_SUCCESSFUL_ID = "//div[contains(.,'Save successful')]"
+=======
+FILE_SEARCH_BOX = "//input[contains(@id,'searchText')]"
+AVAIL_DROPDOWN_OPTION = "//select[@ng-model='selectedAvailability.type']"
+##### Document admin #############
+DOCUMENT_PATH = "//a[@aria-controls='collapseDocuments']"
+DOC_TEXT = 'Documents'
+FORM_PATH = "//span[contains(.,'Forms')]"
+FORM_TEXT = 'Forms'
+>>>>>>> Stashed changes

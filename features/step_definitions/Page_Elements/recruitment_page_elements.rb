@@ -27,3 +27,16 @@ PASSWORD_INPUT_ID = "candidateProfileForm_password_first"
 PASSWORD_CONFIRM_INPUT_ID = "candidateProfileForm_password_second"
 SAVE_NEW_CANDIDATE_BTN = "candidateProfileForm_save"
 CANDIDATE_NAME_CLASS = "user-profile-brief"
+
+##### Requisition job ad creation ######
+MY_REQ_LINK = 'Automation-testing'
+JOB_AD_LINK = 'Job Ads'
+NEW_JOB_POST_LINK = 'New Post'
+SALARY_FROM = 'input[ng-model="jobAd.salaryFrom"]'
+SALARY_TO = 'input[ng-model="jobAd.salaryTo"]'
+JB_START_DATE_BTN = 'button[ng-click="openStartDate($event)"]'
+JB_START_DATE = 'button[ng-click="today()"]'
+JB_END_DATE = 'input[ng-model="jobAd.endDate"]'
+INT_CAR_BTN = 'isInternalEnable'
+EXT_CAR_BTN = 'toggleExternalEnable'
+SAVE_JOB = 'button[ng-click="save(addEditForm)"]'

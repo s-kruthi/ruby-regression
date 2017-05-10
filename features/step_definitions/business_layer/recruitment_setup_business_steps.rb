@@ -64,3 +64,26 @@ Then(/^I Should Be Able To Create A New Candidate$/) do
   $driver.quit
 end
 
+
+Given(/^I Am Under A Recruitment Requisition$/) do
+  startWebDriver
+  require_relative '../../../features/step_definitions/pages/sucession_plan_setup_page_steps'
+  GoToThePage(REQUISITION_LANDING_PAGE)
+  puts "#{$newme}"
+  EnterUsername(USER_NAME,"#{$newme}")
+  EnterPassword(PASS_WORD,'Tester1!')
+  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+  sleep(1)
+end
+
+And(/^I Try To Create A New Job Ad$/) do
+  GoToNewJobPostTabUnderARequisition(MY_REQ_LINK,JOB_AD_LINK,NEW_JOB_POST_LINK)
+end
+
+When(/^I Fill The Details Of A New Job Ad$/) do
+  AddTheJobDetailsAndSubmitIt(SALARY_FROM,SALARY_FROM_VALUE,SALARY_TO,SALARY_TO_VALUE,JB_START_DATE_BTN,JB_START_DATE,JB_END_DATE,JB_END_DATE_VALUE,INT_CAR_BTN,EXT_CAR_BTN)
+end
+
+Then(/^I Should be Able To Post The New Job$/) do
+  SaveTheJobAdAndGoToTheLandingPage(SAVE_JOB)
+end

@@ -18,11 +18,11 @@
     ],
     "elements": [
       {
-        "id": ";modify-the-work-hrs-and-cancel-a-submitted-request-as-a-company-hr",
+        "id": ";employee-applies-for-leave-which-triggers-notification-to-both-employee-and-his/her-approver",
         "keyword": "Scenario",
-        "name": "Modify The Work Hrs And Cancel A Submitted Request As A Company HR",
+        "name": "Employee Applies For Leave which triggers notification to both employee and his/her approver",
         "description": "",
-        "line": 44,
+        "line": 6,
         "type": "scenario",
         "tags": [
           {
@@ -34,89 +34,123 @@
             "line": 1
           },
           {
-            "name": "@ApprovedLeaveRequestNotification",
-            "line": 43
+            "name": "@leave_request_submit",
+            "line": 5
           },
           {
-            "name": "@group_by_4",
-            "line": 43
+            "name": "@leave_request_action_reminder",
+            "line": 5
+          },
+          {
+            "name": "@group_by_1",
+            "line": 5
           }
         ],
         "steps": [
           {
             "keyword": "Given ",
-            "name": "An Employee Has Applied For A Leave Which Is Awaiting Approval",
-            "line": 45,
+            "name": "I Am On The New Leave Request Page",
+            "line": 7,
             "output": [
-              "Staging4- Leave Management",
-              "329",
-              "329"
+              "timed out after 10 seconds (Unable to locate element: #username)",
+              "Failed to open TCP connection to 127.0.0.1:4444 (Connection refused - connect(2) for \"127.0.0.1\" port 4444)"
             ],
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:34"
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:2"
             },
             "result": {
-              "status": "passed",
-              "duration": 27541627927
+              "status": "failed",
+              "error_message": "Failed to open TCP connection to 127.0.0.1:4444 (Connection refused - connect(2) for \"127.0.0.1\" port 4444) (Errno::ECONNREFUSED)\n./features/lib/firefox/Input_Methods.rb:14:in `rescue in WaitForAnElementByIdAndInputValue'\n./features/lib/firefox/Input_Methods.rb:5:in `WaitForAnElementByIdAndInputValue'\n./features/step_definitions/pages/sucession_plan_setup_page_steps.rb:10:in `EnterPassword'\n./features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:6:in `/^I Am On The New Leave Request Page$/'\nfeatures/tests/Notification_V2/notification_leave_management.feature:7:in `Given I Am On The New Leave Request Page'",
+              "duration": 14111580427
             }
           },
           {
             "keyword": "When ",
-            "name": "I Log In As A Company Admin To Process A Leave Request",
-            "line": 46,
-            "output": [
-              "Staging4 - Administration"
-            ],
+            "name": "I Apply For A Leave As An Employee",
+            "line": 8,
             "match": {
-              "location": "features/step_definitions/business_layer/leave_management_business_steps.rb:40"
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:11"
             },
             "result": {
-              "status": "passed",
-              "duration": 9770352682
-            }
-          },
-          {
-            "keyword": "And ",
-            "name": "I Approved The Submitted Request To Modify It Further",
-            "line": 47,
-            "output": [
-              "modified permissions",
-              "SSH Tunneling Established",
-              "Yay! Notification has been triggered"
-            ],
-            "match": {
-              "location": "features/step_definitions/business_layer/leave_management_business_steps.rb:49"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 16716233726
+              "status": "skipped"
             }
           },
           {
             "keyword": "Then ",
-            "name": "I Should Be Able To Successfully Process A Modified Leave Request",
-            "line": 48,
-            "output": [
-              "Staging4 - Administration"
-            ],
+            "name": "I Should Be Instantly Notified About My Leave Request",
+            "line": 9,
             "match": {
-              "location": "features/step_definitions/business_layer/leave_management_business_steps.rb:55"
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:21"
             },
             "result": {
-              "status": "passed",
-              "duration": 27556041166
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": ";employee-cancels-the-leave-which-triggers-notification-to-the-employee",
+        "keyword": "Scenario",
+        "name": "Employee Cancels The Leave which triggers notification to the employee",
+        "description": "",
+        "line": 12,
+        "type": "scenario",
+        "tags": [
+          {
+            "name": "@Notifications_leave_management",
+            "line": 1
+          },
+          {
+            "name": "@smoke",
+            "line": 1
+          },
+          {
+            "name": "@leave_request_cancelled_by_employee",
+            "line": 11
+          },
+          {
+            "name": "@group_by_1",
+            "line": 11
+          }
+        ],
+        "steps": [
+          {
+            "keyword": "Given ",
+            "name": "I Am On The New Leave Request Page",
+            "line": 13,
+            "output": [
+              "timed out after 10 seconds (Unable to locate element: #username)",
+              "Failed to open TCP connection to 127.0.0.1:4444 (Connection refused - connect(2) for \"127.0.0.1\" port 4444)"
+            ],
+            "match": {
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:2"
+            },
+            "result": {
+              "status": "failed",
+              "error_message": "Failed to open TCP connection to 127.0.0.1:4444 (Connection refused - connect(2) for \"127.0.0.1\" port 4444) (Errno::ECONNREFUSED)\n./features/lib/firefox/Input_Methods.rb:14:in `rescue in WaitForAnElementByIdAndInputValue'\n./features/lib/firefox/Input_Methods.rb:5:in `WaitForAnElementByIdAndInputValue'\n./features/step_definitions/pages/sucession_plan_setup_page_steps.rb:10:in `EnterPassword'\n./features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:6:in `/^I Am On The New Leave Request Page$/'\nfeatures/tests/Notification_V2/notification_leave_management.feature:13:in `Given I Am On The New Leave Request Page'",
+              "duration": 12859398237
             }
           },
           {
-            "keyword": "And ",
-            "name": "I Should Be Able To Cancel The Request",
-            "line": 49,
+            "keyword": "When ",
+            "name": "I Cancel The Leave That I have Requested For",
+            "line": 14,
             "match": {
-              "location": "features/step_definitions/business_layer/leave_management_business_steps.rb:65"
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:26"
             },
             "result": {
-              "status": "passed",
-              "duration": 6251327995
+              "status": "skipped"
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I Should Be Instantly Notified About My Leave Request cancellation",
+            "line": 15,
+            "match": {
+              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:30"
+            },
+            "result": {
+              "status": "skipped"
             }
           }
         ]

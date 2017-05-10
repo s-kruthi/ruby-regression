@@ -1,5 +1,9 @@
 def GoToThePage(login_page)
   $driver.navigate.to(login_page)
+  # %x(jmeter -n -t /Users/shankumahanty/Desktop/JMETER_AUTO/Jmeter_tests/GeneralUserSurpriseMe.jmx -Jserver="staging5.dev.elmodev.com" -Jidentifier_manager="14739" -Jrole="3")
+  # email_user = File.new('/Users/shankumahanty/.jenkins/workspace/User-Creation-SurpriseMe/GeneralUserSurpriseMe.xml', 'rb').read.scan(/testfancy([^\/.]*)/).last[0]
+  # new_email_user = email_user.chomp("@mail")
+  # $newme = "testfancy#{new_email_user}"
 end
 
 def EnterUsername(username,value)

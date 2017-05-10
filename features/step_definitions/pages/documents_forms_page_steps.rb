@@ -99,3 +99,27 @@ def deleteTheFirstFileFromTheTable(class_name, index_value, partial_link_text)
   PressEnterConfirm()
   sleep(1)
 end
+
+def ValidateDocumentSectionisPresentUnderAdmin(document_path,doc_text,forms_path,form_text)
+  VerifyAnElementExistByXPath(document_path,doc_text)
+  WaitForAnElementByXpathAndTouch(document_path)
+  sleep(1)
+  VerifyAnElementExistByXPath(forms_path,form_text)
+end
+def GoToReportsTab()
+  sleep(1)
+  $driver.find_elements(:xpath, "//a[contains(.,'Reports')]")[1].click
+  sleep(2)
+  $driver.find_element(:xpath, "//a[@href='/report/view/30']").click
+  sleep(3)
+  new_win_id = $driver.window_handles[1]
+  $driver.switch_to.window("#{new_win_id}")
+  $driver.find_element(:class, 'select2-input').send_keys("shan-automation-secPP", :return)
+  sleep(4)
+  $driver.find_element(:class, 'select2-input').send_keys( :return)
+end
+
+def VerifyThePending()
+
+end
+

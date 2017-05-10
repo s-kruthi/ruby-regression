@@ -62,3 +62,29 @@ Then(/^I Should Be Able To Hide A Document Category$/) do
   sleep (1)
   $driver.quit
 end
+
+Given(/^I Have Logged In As An Employee With Security Profile Access$/) do
+  startWebDriver
+  GoToThePage(DOCUMENT_ADMIN_PAGE)
+  EnterUsername(USER_NAME,DOC_SEC_PROF_USER)
+  EnterPassword(PASS_WORD,DOC_SEC_PROF_PASS)
+  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+  ValidateDocumentSectionisPresentUnderAdmin(DOCUMENT_PATH, DOC_TEXT,FORM_PATH,FORM_TEXT)
+end
+
+When(/^I Try To Access Documents Under Reports Tab$/) do
+  GoToReportsTab()
+end
+
+Then(/^I Should Be Able To View Pending Form Templates$/) do
+  #VerifyThePending
+end
+
+When(/^I Have Revoked Access To View Doumnet Reports$/) do
+  pending
+end
+
+Then(/^I Shouldn't Be Able To View Reports Tab$/) do
+  pending
+
+end

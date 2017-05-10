@@ -1,0 +1,6 @@
+JIRA_USER = ''
+JIRA_PASS = ''
+JIRA_CARD_NO = ''
+SCENARIO_FEATURE_FILE = './features/tests/@@fetaurefilename'
+TIME_DUR = '1h'
+TIME_COMNT =''
