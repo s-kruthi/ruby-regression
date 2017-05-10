@@ -57,12 +57,11 @@ ADMIN_SETUP_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/login'
 ELMO_SETUP_ADMIN_USERNAME = 'admin'
 ELMO_SETUP_ADMIN_PASSWORD = 'admin'
 
-<<<<<<< Updated upstream
+
 CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/client/contract'
 
 REPORTS_LANDING_PAGE = 'https://staging7.dev.elmodev.com/report#/?pageType=reportList'
 
-=======
 CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/client/contract'
 ######### Learning -course credentials #######################
 ADMIN_COURSE_PAGE = 'https://staging7.dev.elmodev.com/admin/courses'
@@ -72,4 +71,4 @@ MANAGER_COURSE_USER = ''
 MANAGER_COURSE_PASS = ''
 EMPLOYEE_COURSE_USER = ''
 EMPLOYEE_COURSE_PASS = ''
->>>>>>> Stashed changes
+
