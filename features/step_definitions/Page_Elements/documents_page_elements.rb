@@ -73,9 +73,6 @@ FILE_ID = "//ul[contains(.,'Labels')]"
 FILE_LABEL_ID = "select2-result"
 BROWSE_FILE_ID = "//input[contains(@type,'file')]"
 
-AVAIL_DROPDOWN_OPTION = "//select[@ng-model='selectedAvailability.type']"
-
-
 FILE_TEMP_SEARCH_BOX = "//input[contains(@placeholder,'Search')]"
 FILE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 
