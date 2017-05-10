@@ -62,7 +62,6 @@ CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/client/contr
 
 REPORTS_LANDING_PAGE = 'https://staging7.dev.elmodev.com/report#/?pageType=reportList'
 
-CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/client/contract'
 ######### Learning -course credentials #######################
 ADMIN_COURSE_PAGE = 'https://staging7.dev.elmodev.com/admin/courses'
 ADMIN_COURSE_USER = 'autoadmin'
