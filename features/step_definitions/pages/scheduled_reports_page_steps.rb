@@ -24,6 +24,7 @@ def enterStartandEndDate(report_start_date_id, report_start_date_value, report_e
 end
 
 def selectAReport(cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, report_name_filter_index_value)
+  sleep (1)
   select_from_select2_input(cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, report_name_filter_index_value)
   sleep (1)
 end
@@ -77,4 +78,3 @@ def searchForAScheduledReport(schd_report_search_id, schd_reports_name_value, sc
   sleep (1)
   VerifyAnElementExistByXPath(schd_report_search_result_value,schd_reports_name_value)
 end
-

@@ -64,12 +64,12 @@ Then(/^I Should Be Able To Hide A Document Category$/) do
 end
 
 Given(/^I Have Logged In As An Employee With Security Profile Access$/) do
-  startWebDriver
-  GoToThePage(DOCUMENT_ADMIN_PAGE)
+   startWebDriver
+   GoToThePage(DOCUMENT_ADMIN_PAGE)
   EnterUsername(USER_NAME,DOC_SEC_PROF_USER)
   EnterPassword(PASS_WORD,DOC_SEC_PROF_PASS)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
-  ValidateDocumentSectionisPresentUnderAdmin(DOCUMENT_PATH, DOC_TEXT,FORM_PATH,FORM_TEXT)
+   ValidateDocumentSectionisPresentUnderAdmin(DOCUMENT_PATH, DOC_TEXT,FORM_PATH,FORM_TEXT)
 end
 
 When(/^I Try To Access Documents Under Reports Tab$/) do
@@ -77,14 +77,16 @@ When(/^I Try To Access Documents Under Reports Tab$/) do
 end
 
 Then(/^I Should Be Able To View Pending Form Templates$/) do
-  #VerifyThePending
+  VerifyThePendingFormTemplates()
 end
 
-When(/^I Have Revoked Access To View Doumnet Reports$/) do
-  pending
+When(/^I Have Revoked Access Through Role capability To View Doumnet Reports$/) do
+  RevokeDocumentViewAccessByUsingJmeterRubyService()
 end
 
 Then(/^I Shouldn't Be Able To View Reports Tab$/) do
-  pending
-
+  GoToThePage(DOCUMENT_ADMIN_PAGE)
+  CheckReportsTabisUnavailable()
+#'roleType[capabilities][report][223]'=>'223',
+  GrantBackDocumentViewAccessByUsingJmeterRubyService()
 end
