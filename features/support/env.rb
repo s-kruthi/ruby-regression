@@ -5,7 +5,8 @@ require 'securerandom'
 require 'waitutil'
 require "selenium-webdriver"
 require 'pry'
-#require "selenium/client"
+require 'rest-client'
+require 'ruby-jmeter'
 
 require "./features/lib/device_method_factory.rb"
 

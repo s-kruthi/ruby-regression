@@ -25,7 +25,7 @@ end
 
 def selectAReport(reports_name_id, cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, report_name_filter_index_value)
   WaitForAnElementByXpathAndTouch(reports_name_id)
-  sleep (1)
+  sleep (2)
   select_from_select2_input(cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, report_name_filter_index_value)
   sleep(3)
 end

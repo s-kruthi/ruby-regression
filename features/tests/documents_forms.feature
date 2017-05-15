@@ -18,7 +18,6 @@ Feature:
       When  I Search For A Specific Form Template
       Then  I Should Be Able To Hide A Specific Form Template
 
-
   @document_category_create
   Scenario: Create a Document Category
     Given I Have Logged In as a Company Admin
@@ -34,9 +33,13 @@ Feature:
     Then I Should Be Able To Hide A Document Category
 
   @bug-PMS-8579
+    # url : https://tmsfull.dev.elmodev.com
+    # security profile : document prms-shanku
+    # role type : shanku-automation-role-type
   Scenario: Invocare - onboarding admins cannot access the documents
     Given I Have Logged In As An Employee With Security Profile Access
     When  I Try To Access Documents Under Reports Tab
     Then  I Should Be Able To View Pending Form Templates
-    When  I Have Revoked Access To View Doumnet Reports
+    When  I Have Revoked Access Through Role capability To View Doumnet Reports
     Then  I Shouldn't Be Able To View Reports Tab
+
