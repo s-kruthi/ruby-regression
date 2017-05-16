@@ -22,3 +22,8 @@ SHOW_ALL_DATA_VALUE = "Enabled"
 SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_VALUE = "Scheduled report is saved successfully"
 
 SCHD_REPORT_SEARCH_RESULT_VALUE = "//td[contains(.,'This is a test. Please DO NOT modify')]"
+
+SCHD_REPORT_EDIT_BTN_VALUE = "//button[contains(.,'Edit')]"
+SCHD_REPORT_DELETE_BTN_VALUE = "//button[contains(.,'Delete')]"
+
+SCHD_REPORT_VERIFY_DELETE_SUCCESSFUL_VALUE = "Scheduled Report successfully deleted."

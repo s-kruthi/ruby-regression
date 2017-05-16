@@ -78,3 +78,16 @@ def searchForAScheduledReport(schd_report_search_id, schd_reports_name_value, sc
   sleep (1)
   VerifyAnElementExistByXPath(schd_report_search_result_value,schd_reports_name_value)
 end
+
+def editAScheduledReport(schd_report_edit_btn_id, schd_report_edit_btn_index_value)
+  WaitForAnElementByXpathAndTouchTheIndex(schd_report_edit_btn_id, schd_report_edit_btn_index_value)
+  sleep(1)
+end
+
+def deleteAScheduledReport(schd_report_delete_btn_value, schd_report_delete_index_value)
+  sleep(1)
+  WaitForAnElementByXpathAndTouchTheIndex(schd_report_delete_btn_value, schd_report_delete_index_value)
+  sleep (1)
+  PressEnterConfirm()
+  sleep (1)
+end

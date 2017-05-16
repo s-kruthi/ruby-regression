@@ -20,6 +20,7 @@ SHOW_ALL_DATA_ID =  "//select[contains(@data-ng-model,'report.showAllData')]"
 REPORTS_SAVE_BTN_ID = "//button[contains(.,'Save')]"
 
 SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_ID =  "//div[contains(@class,'alert ng-isolate-scope alert-success')]"
-
 SCHD_REPORT_SEARCH_ID = "//input[contains(@ng-keydown,'$event.which === 13 && getScheduledReports()')]"
 SCHD_REPORT_SEARCH_BTN_ID = "//button[@ng-click='getScheduledReports()']"
+
+SCHD_REPORT_VERIFY_DELETE_SUCCESSFUL_ID = "//div[@class='bootbox-body']"

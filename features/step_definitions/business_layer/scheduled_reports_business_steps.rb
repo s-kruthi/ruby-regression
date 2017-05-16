@@ -42,19 +42,24 @@ end
 Then(/^I Should Be Able To Search For A Specific Scheduled Report$/) do
   searchForAScheduledReportAndVerify(SCHD_REPORT_SEARCH_ID, SCHD_REPORTS_NAME_VALUE, SCHD_REPORT_SEARCH_BTN_ID, SCHD_REPORT_SEARCH_RESULT_VALUE)
   sleep(1)
+  $driver.quit
 end
 
 When(/^I Search For A Specific Scheduled Report$/) do
   searchForAScheduledReport(SCHD_REPORT_SEARCH_ID, SCHD_REPORTS_NAME_VALUE, SCHD_REPORT_SEARCH_BTN_ID, SCHD_REPORT_SEARCH_RESULT_VALUE)
 end
 
-Then(/^I Should Be Able To Hide That Specific Scheduled Report$/) do
-  hideAScheduledReport()
+Then(/^I Should Be Able To Edit That Specific Scheduled Report$/) do
+  editAScheduledReport(SCHD_REPORT_EDIT_BTN_VALUE, 0)      #Edit the 1st available reseult
+  $driver.quit
 end
 
 Then(/^I Should Be Able To Delete That Specific Scheduled Report$/) do
-  deleteAScheduledReport()
-  verifySuccessMessage(SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_ID, SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_VALUE)
+  deleteAScheduledReport(SCHD_REPORT_DELETE_BTN_VALUE, 0) #Delete the 1st available reseult)
+  sleep(2)
+  verifySuccessMessage(SCHD_REPORT_VERIFY_DELETE_SUCCESSFUL_ID, SCHD_REPORT_VERIFY_DELETE_SUCCESSFUL_VALUE)
+  sleep(1)
+  PressEnterOK()
   sleep(1)
   $driver.quit
   end

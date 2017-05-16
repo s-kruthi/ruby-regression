@@ -34,12 +34,3 @@ def searchforAFile(search_box_id, form_temp_search_txt, search_btn_id)
   WaitForAnElementByXpathAndTouch(search_btn_id)
   sleep(2)
 end
-
-def hideTheFirstFileFromTheTable(class_name, index_value, partial_link_text)
-  WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
-  sleep(1)
-  WaitForAnElementByPartialLinkTextAndTouch(partial_link_text)
-  sleep (1)
-  PressEnterConfirm()
-  sleep(1)
-end
