@@ -60,6 +60,7 @@ ELMO_SETUP_ADMIN_PASSWORD = 'admin'
 
 CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/client/contract'
 
+######## Scheduled Report landing page ###########
 REPORTS_LANDING_PAGE = 'https://staging7.dev.elmodev.com/report#/?pageType=reportList'
 
 ######### Learning -course credentials #######################

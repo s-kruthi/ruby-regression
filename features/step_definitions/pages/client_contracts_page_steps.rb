@@ -98,7 +98,7 @@ end
 
 def searchForAclientContractAndVerify(search_field, search_value, search_btn, search_result)
   WaitForAnElementByXpathAndInputValue(search_field,search_value)
-  Wait_For(3)
+  Wait_For(2)
   WaitForAnElementByXpathAndTouch(search_btn)
   sleep (1)
   VerifyAnElementExistByXPath(search_result,search_value)
