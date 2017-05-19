@@ -69,9 +69,10 @@ Given(/^I Am Under A Recruitment Requisition$/) do
   startWebDriver
   require_relative '../../../features/step_definitions/pages/sucession_plan_setup_page_steps'
   GoToThePage(REQUISITION_LANDING_PAGE)
-  puts "#{$newme}"
-  EnterUsername(USER_NAME,"#{$newme}")
-  EnterPassword(PASS_WORD,'Tester1!')
+  # puts "#{$newme}"
+  # EnterUsername(USER_NAME,"#{$newme}")
+  EnterUsername(USER_NAME,RECRUITMENT_COMP_USER)
+  EnterPassword(PASS_WORD,RECRUITMENT_COMP_PASS)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
   sleep(1)
 end
@@ -86,4 +87,9 @@ end
 
 Then(/^I Should be Able To Post The New Job$/) do
   SaveTheJobAdAndGoToTheLandingPage(SAVE_JOB)
+end
+
+And(/^I Have A New candidate Applied for A Position$/) do
+  SignupAndApplyAsACandidate()
+  #ApplyForTheJobAsAcandidate()
 end

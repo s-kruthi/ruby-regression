@@ -1,75 +1,98 @@
 [
   {
-    "uri": "features/tests/Notification_V2/notification_leave_management.feature",
+    "uri": "features/tests/documents_forms.feature",
     "id": "",
     "keyword": "Feature",
     "name": "",
-    "description": "  As a user I want to test combinations of Leave management notifications to test if they were triggered successfully",
-    "line": 2,
+    "description": "  I want to test if a Company Admin can successfully Manage Forms",
+    "line": 3,
     "tags": [
       {
-        "name": "@Notifications_leave_management",
-        "line": 1
-      },
-      {
-        "name": "@smoke",
+        "name": "@documents_forms",
         "line": 1
       }
     ],
     "elements": [
       {
-        "id": ";employee-applies-for-leave-which-triggers-notification-to-both-employee-and-his/her-approver",
+        "id": ";invocare---onboarding-admins-cannot-access-the-documents",
         "keyword": "Scenario",
-        "name": "Employee Applies For Leave which triggers notification to both employee and his/her approver",
+        "name": "Invocare - onboarding admins cannot access the documents",
         "description": "",
-        "line": 6,
+        "line": 39,
         "type": "scenario",
         "tags": [
           {
-            "name": "@Notifications_leave_management",
+            "name": "@documents_forms",
             "line": 1
           },
           {
-            "name": "@smoke",
-            "line": 1
+            "name": "@bug-PMS-8579",
+            "line": 35
+          }
+        ],
+        "comments": [
+          {
+            "value": "# url : https://tmsfull.dev.elmodev.com",
+            "line": 36
           },
           {
-            "name": "@leave_request_submit",
-            "line": 5
+            "value": "# security profile : document prms-shanku",
+            "line": 37
           },
           {
-            "name": "@leave_request_action_reminder",
-            "line": 5
-          },
-          {
-            "name": "@group_by_1",
-            "line": 5
+            "value": "# role type : shanku-automation-role-type",
+            "line": 38
           }
         ],
         "steps": [
           {
             "keyword": "Given ",
-            "name": "I Am On The New Leave Request Page",
-            "line": 7,
+            "name": "I Have Logged In As An Employee With Security Profile Access",
+            "line": 40,
             "output": [
-              "timed out after 10 seconds (Unable to locate element: #username)",
-              "Failed to open TCP connection to 127.0.0.1:4444 (Connection refused - connect(2) for \"127.0.0.1\" port 4444)"
+              "ELMO Talent Management System - Administration",
+              "MATCHED: Documents",
+              "MATCHED: Forms"
             ],
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:2"
+              "location": "features/step_definitions/business_layer/documents_forms_business_steps.rb:66"
             },
             "result": {
-              "status": "failed",
-              "error_message": "Failed to open TCP connection to 127.0.0.1:4444 (Connection refused - connect(2) for \"127.0.0.1\" port 4444) (Errno::ECONNREFUSED)\n./features/lib/firefox/Input_Methods.rb:14:in `rescue in WaitForAnElementByIdAndInputValue'\n./features/lib/firefox/Input_Methods.rb:5:in `WaitForAnElementByIdAndInputValue'\n./features/step_definitions/pages/sucession_plan_setup_page_steps.rb:10:in `EnterPassword'\n./features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:6:in `/^I Am On The New Leave Request Page$/'\nfeatures/tests/Notification_V2/notification_leave_management.feature:7:in `Given I Am On The New Leave Request Page'",
-              "duration": 14111580427
+              "status": "passed",
+              "duration": 9106833823
             }
           },
           {
             "keyword": "When ",
-            "name": "I Apply For A Leave As An Employee",
-            "line": 8,
+            "name": "I Try To Access Documents Under Reports Tab",
+            "line": 41,
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:11"
+              "location": "features/step_definitions/business_layer/documents_forms_business_steps.rb:75"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 11507004541
+            }
+          },
+          {
+            "keyword": "Then ",
+            "name": "I Should Be Able To View Pending Form Templates",
+            "line": 42,
+            "match": {
+              "location": "features/step_definitions/business_layer/documents_forms_business_steps.rb:79"
+            },
+            "result": {
+              "status": "failed",
+              "error_message": "Unable to locate element: .document\\-approval\\-status\\-2 (Selenium::WebDriver::Error::NoSuchElementError)\n./features/step_definitions/pages/documents_forms_page_steps.rb:124:in `VerifyThePendingFormTemplates'\n./features/step_definitions/business_layer/documents_forms_business_steps.rb:80:in `/^I Should Be Able To View Pending Form Templates$/'\nfeatures/tests/documents_forms.feature:42:in `Then I Should Be Able To View Pending Form Templates'",
+              "duration": 5021273830
+            }
+          },
+          {
+            "keyword": "When ",
+            "name": "I Have Revoked Access Through Role capability To View Doumnet Reports",
+            "line": 43,
+            "match": {
+              "location": "features/step_definitions/business_layer/documents_forms_business_steps.rb:83"
             },
             "result": {
               "status": "skipped"
@@ -77,77 +100,10 @@
           },
           {
             "keyword": "Then ",
-            "name": "I Should Be Instantly Notified About My Leave Request",
-            "line": 9,
+            "name": "I Shouldn't Be Able To View Reports Tab",
+            "line": 44,
             "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:21"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          }
-        ]
-      },
-      {
-        "id": ";employee-cancels-the-leave-which-triggers-notification-to-the-employee",
-        "keyword": "Scenario",
-        "name": "Employee Cancels The Leave which triggers notification to the employee",
-        "description": "",
-        "line": 12,
-        "type": "scenario",
-        "tags": [
-          {
-            "name": "@Notifications_leave_management",
-            "line": 1
-          },
-          {
-            "name": "@smoke",
-            "line": 1
-          },
-          {
-            "name": "@leave_request_cancelled_by_employee",
-            "line": 11
-          },
-          {
-            "name": "@group_by_1",
-            "line": 11
-          }
-        ],
-        "steps": [
-          {
-            "keyword": "Given ",
-            "name": "I Am On The New Leave Request Page",
-            "line": 13,
-            "output": [
-              "timed out after 10 seconds (Unable to locate element: #username)",
-              "Failed to open TCP connection to 127.0.0.1:4444 (Connection refused - connect(2) for \"127.0.0.1\" port 4444)"
-            ],
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:2"
-            },
-            "result": {
-              "status": "failed",
-              "error_message": "Failed to open TCP connection to 127.0.0.1:4444 (Connection refused - connect(2) for \"127.0.0.1\" port 4444) (Errno::ECONNREFUSED)\n./features/lib/firefox/Input_Methods.rb:14:in `rescue in WaitForAnElementByIdAndInputValue'\n./features/lib/firefox/Input_Methods.rb:5:in `WaitForAnElementByIdAndInputValue'\n./features/step_definitions/pages/sucession_plan_setup_page_steps.rb:10:in `EnterPassword'\n./features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:6:in `/^I Am On The New Leave Request Page$/'\nfeatures/tests/Notification_V2/notification_leave_management.feature:13:in `Given I Am On The New Leave Request Page'",
-              "duration": 12859398237
-            }
-          },
-          {
-            "keyword": "When ",
-            "name": "I Cancel The Leave That I have Requested For",
-            "line": 14,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:26"
-            },
-            "result": {
-              "status": "skipped"
-            }
-          },
-          {
-            "keyword": "Then ",
-            "name": "I Should Be Instantly Notified About My Leave Request cancellation",
-            "line": 15,
-            "match": {
-              "location": "features/step_definitions/business_layer/notification_business/notification_leave_setup_business_steps.rb:30"
+              "location": "features/step_definitions/business_layer/documents_forms_business_steps.rb:87"
             },
             "result": {
               "status": "skipped"

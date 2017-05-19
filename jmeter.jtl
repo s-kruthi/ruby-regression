@@ -4631,3 +4631,90 @@ timeStamp,elapsed,label,responseCode,threadName,success,bytes,grpThreads,allThre
 2017/05/15 14:44:45.741,255,visit admin page,200,ThreadGroup 1-1,true,120779,1,1,222,1,0,Shankus-MacBook-Pro.local,0
 2017/05/15 14:44:45.996,166,Goto edit a role type,200,ThreadGroup 1-1,true,84175,1,1,148,1,0,Shankus-MacBook-Pro.local,0
 2017/05/15 14:44:46.168,331,Save edited role type,200,ThreadGroup 1-1,true,33530,1,1,122,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:05.413,1414,landing page,200,ThreadGroup 1-1,true,6749,1,1,1414,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:06.842,1942,login,200,ThreadGroup 1-1,true,81472,1,1,101,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:08.785,1239,visit admin page,200,ThreadGroup 1-1,true,120787,1,1,1219,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:10.025,376,Goto edit a role type,200,ThreadGroup 1-1,true,84175,1,1,363,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:10.410,754,Save edited role type,200,ThreadGroup 1-1,true,33522,1,1,324,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:24.048,616,landing page,200,ThreadGroup 1-1,true,6749,1,1,615,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:24.676,886,login,200,ThreadGroup 1-1,true,81457,1,1,86,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:25.563,245,visit admin page,200,ThreadGroup 1-1,true,120787,1,1,224,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:25.809,182,Goto edit a role type,200,ThreadGroup 1-1,true,84168,1,1,166,1,0,Shankus-MacBook-Pro.local,0
+2017/05/16 12:04:25.997,941,Save edited role type,200,ThreadGroup 1-1,true,33522,1,1,119,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 15:34:15.620,1160,Home page,200,ThreadGroup 1-1,true,23666,1,1,1159,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 15:34:16.797,140,signup a new user,Non HTTP response code: java.net.UnknownHostException,ThreadGroup 1-1,false,2240,1,1,0,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 15:50:39.669,1598,Home page,500,ThreadGroup 1-1,false,452,1,1,1597,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 16:14:40.230,796,Home page,200,ThreadGroup 1-1,true,23674,1,1,795,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:14:41.043,244,signup a new user,200,ThreadGroup 1-1,true,368,1,1,244,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:19:04.704,552,Home page,200,ThreadGroup 1-1,true,23666,1,1,551,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:19:05.274,125,signup a new user,200,ThreadGroup 1-1,true,368,1,1,125,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:46:42.000,1377,Home page,200,ThreadGroup 1-1,true,23666,1,1,1375,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:46:43.395,136,signup a new user,200,ThreadGroup 1-1,true,368,1,1,136,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:54:52.217,683,Home page,200,ThreadGroup 1-1,true,23674,1,1,681,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:54:52.918,134,signup a new user,200,ThreadGroup 1-1,true,368,1,1,134,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:54:55.156,498,Go To Home page,200,ThreadGroup 1-1,true,36519,1,1,494,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:54:55.670,224,redirect to signin page,200,ThreadGroup 1-1,true,25681,1,1,55,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:54:55.896,214,login to apply,200,ThreadGroup 1-1,true,24741,1,1,50,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 16:54:56.111,69,submit the form,500,ThreadGroup 1-1,false,2807,1,1,69,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:07:48.635,716,Home page,200,ThreadGroup 1-1,true,23666,1,1,715,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:07:49.369,665,signup a new user,200,ThreadGroup 1-1,true,368,1,1,665,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:07:52.162,754,Go To Home page,200,ThreadGroup 1-1,true,36518,1,1,751,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:07:52.934,233,redirect to signin page,200,ThreadGroup 1-1,true,25681,1,1,57,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:07:53.168,678,login to apply,200,ThreadGroup 1-1,true,24714,1,1,60,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:07:53.846,72,submit the form,500,ThreadGroup 1-1,false,2807,1,1,72,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:20:06.204,3203,Home page,200,ThreadGroup 1-1,true,23666,1,1,2959,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:20:09.431,3429,signup a new user,500,ThreadGroup 1-1,false,2868,1,1,3429,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:20:14.932,2530,Go To Home page,200,ThreadGroup 1-1,true,36519,1,1,2302,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:20:17.482,2813,redirect to signin page,200,ThreadGroup 1-1,true,25689,1,1,897,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:20:20.296,5375,login to apply,200,ThreadGroup 1-1,true,24714,1,1,2398,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:20:25.672,1122,submit the form,500,ThreadGroup 1-1,false,2807,1,1,1122,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:21:48.239,997,Home page,200,ThreadGroup 1-1,true,23674,1,1,996,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:21:49.249,96,signup a new user,500,ThreadGroup 1-1,false,2868,1,1,96,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:21:51.456,507,Go To Home page,200,ThreadGroup 1-1,true,36519,1,1,504,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:21:51.978,223,redirect to signin page,200,ThreadGroup 1-1,true,25681,1,1,52,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:21:52.202,236,login to apply,200,ThreadGroup 1-1,true,24722,1,1,48,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:21:52.439,72,submit the form,500,ThreadGroup 1-1,false,2807,1,1,72,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:22:42.278,5377,Home page,200,ThreadGroup 1-1,true,23666,1,1,5376,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:22:47.666,153,signup a new user,500,ThreadGroup 1-1,false,2868,1,1,153,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:22:49.899,1980,Go To Home page,200,ThreadGroup 1-1,true,36519,1,1,1977,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:22:51.892,281,redirect to signin page,200,ThreadGroup 1-1,true,25681,1,1,54,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:22:52.174,350,login to apply,200,ThreadGroup 1-1,true,24714,1,1,171,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:22:52.525,65,submit the form,500,ThreadGroup 1-1,false,2807,1,1,65,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:23:47.193,5356,Home page,200,ThreadGroup 1-1,true,23666,1,1,5355,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:23:52.560,187,signup a new user,200,ThreadGroup 1-1,true,368,1,1,187,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:23:54.828,469,Go To Home page,200,ThreadGroup 1-1,true,36519,1,1,465,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:23:55.311,216,redirect to signin page,200,ThreadGroup 1-1,true,25689,1,1,52,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:23:55.528,222,login to apply,200,ThreadGroup 1-1,true,24714,1,1,58,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:23:55.751,73,submit the form,500,ThreadGroup 1-1,false,2807,1,1,73,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:31:14.406,2099,Home page,200,ThreadGroup 1-1,true,23666,1,1,2098,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:31:16.522,872,signup a new user,200,ThreadGroup 1-1,true,368,1,1,872,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:32:45.317,803,Home page,200,ThreadGroup 1-1,true,23666,1,1,802,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:32:46.136,127,signup a new user,200,ThreadGroup 1-1,true,368,1,1,127,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:46:04.769,1052,Home page,200,ThreadGroup 1-1,true,23666,1,1,1050,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:46:05.837,959,signup a new user,200,ThreadGroup 1-1,true,368,1,1,959,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:46:06.797,384,Visit profile page,200,ThreadGroup 1-1,true,51508,1,1,325,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:46:09.256,533,Go To Home page,200,ThreadGroup 1-1,true,36511,1,1,529,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:46:09.803,325,redirect to signin page,200,ThreadGroup 1-1,true,25681,1,1,79,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:46:10.129,320,login to apply,200,ThreadGroup 1-1,true,24729,1,1,80,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:46:10.450,108,submit the form,500,ThreadGroup 1-1,false,2807,1,1,108,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:48:34.706,776,Home page,200,ThreadGroup 1-1,true,23666,1,1,775,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:48:35.498,125,signup a new user,200,ThreadGroup 1-1,true,368,1,1,125,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:48:35.624,151,Visit profile page,200,ThreadGroup 1-1,true,51500,1,1,142,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:48:37.865,486,Go To Home page,200,ThreadGroup 1-1,true,36519,1,1,483,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:48:38.365,219,redirect to signin page,200,ThreadGroup 1-1,true,25689,1,1,52,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:48:38.585,215,login to apply,200,ThreadGroup 1-1,true,24737,1,1,51,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:48:38.800,65,submit the form,500,ThreadGroup 1-1,false,2807,1,1,65,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:53:37.560,1319,Home page,200,ThreadGroup 1-1,true,23666,1,1,1318,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:53:38.895,143,signup a new user,200,ThreadGroup 1-1,true,368,1,1,142,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:53:39.038,106,Visit profile page,200,ThreadGroup 1-1,true,51508,1,1,96,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:53:39.150,109,Go To Home page,200,ThreadGroup 1-1,true,31485,1,1,97,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:53:39.261,0,redirect to signin page,Non HTTP response code: java.net.URISyntaxException,ThreadGroup 1-1,false,1069,1,1,0,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:53:39.262,291,login to apply,200,ThreadGroup 1-1,true,52061,1,1,72,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:53:39.554,397,submit the form,200,ThreadGroup 1-1,true,356,1,1,397,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:59:45.607,782,Home page,200,ThreadGroup 1-1,true,23674,1,1,781,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:59:46.404,132,signup a new user,200,ThreadGroup 1-1,true,368,1,1,132,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:59:46.537,107,Visit profile page,200,ThreadGroup 1-1,true,51508,1,1,96,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:59:46.650,109,Go To Home page,200,ThreadGroup 1-1,true,31485,1,1,98,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:59:46.760,0,redirect to signin page,Non HTTP response code: java.net.URISyntaxException,ThreadGroup 1-1,false,1069,1,1,0,1,1,Shankus-MacBook-Pro.local,0
+2017/05/19 17:59:46.761,214,login to apply,200,ThreadGroup 1-1,true,52061,1,1,60,1,0,Shankus-MacBook-Pro.local,0
+2017/05/19 17:59:46.977,239,submit the form,200,ThreadGroup 1-1,true,356,1,1,239,1,0,Shankus-MacBook-Pro.local,0
