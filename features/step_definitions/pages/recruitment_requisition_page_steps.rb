@@ -68,3 +68,146 @@ end
 def SaveTheJobAdAndGoToTheLandingPage(save_job)
   WaitForAnElementByCSSAndTouch(save_job)
 end
+
+def SignupAndApplyAsACandidate()
+  sleep(1)
+  test_site = 'https://staging5.dev.elmodev.com'
+  jobADId = '50'
+  $email = '${__V(shantomate${__RandomString(7,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,)}@gmail.com)}'
+
+  test do
+    cookies policy: 'compatibility', clear_each_iteration: true
+    threads count: 1,loops: 1 do
+      visit name: 'Home page', url: "#{test_site}/careers/portal/login/"
+
+
+      visit name: 'signup a new user', url: "#{test_site}/careers/portal/register",
+            method: 'POST',fill_in: {
+              'candidateForm[email]' => "#{$email}",
+              'candidateForm[firstName]' => '${__V(open${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz,)})}',
+              'candidateForm[lastName]' => '${__V(source${__RandomString(4,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz,)})}',
+              'candidateForm[password][first]' => 'Tester1!',
+              'candidateForm[password][second]' => 'Tester1!'
+          } do
+      header name: 'X-Requested-With', value: 'XMLHttpRequest'
+      end
+      visit name: 'Visit profile page', url: "#{test_site}/careers/portal/view-profile" do
+        extract regex: '<div class="wrap-long-text">(.*?)</div>', name: 'new_email_id' , match_number: 1
+      end
+            visit name: 'Go To Home page', url: "#{test_site}/careers/portal/job/view/#{jobADId}" do
+              extract regex: 'redirectURL=(.*?)"', name: 'redirect_url' , match_number: 1
+            end
+            visit name: 'redirect to signin page', url: "#{test_site}/careers/portal/login",
+                  method: 'GET',fill_in: {
+                    'redirectURL' => '${redirect_url}'
+                }
+
+            visit name: 'login to apply', url: "#{test_site}/careers/portal/login_check",
+                  method: 'POST',fill_in: {
+                    _username:  '${new_email_id}',
+                    _password: 'Tester1!',
+                    _target_path:  "/careers/portal/job/apply/#{jobADId}#/step1?jobAdId=#{jobADId}&channel=external&source=2&referrerUrl="
+                }
+            visit name: 'submit the form', url: "#{test_site}/careers/job/apply/submit/#{jobADId}/0",
+                  method: 'POST',fill_in: {
+                    'jobApplication[resumeFile][name]' =>	"cookies.txt"	,
+            'jobApplication[resumeFile][encodedName]'	 => "upload/c2/8b/c28b081857e90b6836f6a386a8b609e29431d43c.txt"	,
+            'jobApplication[resumeFile][deleted]'  =>	"0",
+            'jobApplication[resumeFile][error]'  =>	"",
+            'jobApplication[resumeType]'  =>	"2"	,
+            'jobApplication[coverLetterType]' =>	"2"	,
+            'jobApplication[questions][1]'  =>	"yes"	,
+            'jobApplication[questions][3]'  =>	"28"	,
+            'jobApplication[questions][5]'  =>	"3"	,
+            'jobApplication[contactDetails][candidateProfileForm][deleted]'  =>	"0"	,
+            'jobApplication[contactDetails][candidateProfileForm][homePhone]'  =>	"04564556677"	,
+            'jobApplication[contactDetails][candidateProfileForm][mobile]' =>	"04564556677"	,
+            'jobApplication[contactDetails][candidateProfileForm][addressLine1]' =>	"george st"	,
+            'jobApplication[contactDetails][candidateProfileForm][addressLine2]' =>	"cbd"	,
+            'jobApplication[contactDetails][candidateProfileForm][suburb]' =>	"crown"	,
+            'jobApplication[contactDetails][candidateProfileForm][state]' =>	"NSW"	,
+            'jobApplication[contactDetails][candidateProfileForm][postcode]' =>	"2011"	,
+            'jobApplication[contactDetails][candidateProfileForm][country]' =>	"Australia"	,
+            'jobApplication[contactDetails][candidateProfileForm][step]' =>	"3"	,
+            'jobApplication[contactDetails][applicantId]' =>	"0"	,
+            'jobApplication[referrerUrl]' =>	"#{test_site}/careers/portal/jobs"	,
+            'jobApplication[coverLetter]' =>	"cookie.txt"	,
+            'jobApplication[displayAnswers][1]' =>	"yes"	,
+            'jobApplication[displayAnswers][3]' =>	"28"	,
+            'jobApplication[displayAnswers][5]' =>	"4"	,
+            'applicantId' =>	"0"	,
+            'portalUrl' =>	"portal"	,
+            'source' =>	"2"
+                }
+      view_results_tree
+
+    end
+  end.run(
+      path: './JMETER_AUTO/apache-jmeter-3.0/bin/',
+      file: './JMETER_AUTO/Jmeter_tests/newUserSignupApply.jmx',
+      properties: './JMETER_AUTO/apache-jmeter-3.0/bin/jmeter.properties')
+
+end
+
+#  def ApplyForTheJobAsAcandidate()
+#   sleep(1)
+#   test_site = 'https://staging5.dev.elmodev.com'
+#   jobADId = '50'
+#
+#   test do
+#     cookies policy: 'compatibility', clear_each_iteration: true
+#     threads count: 1,loops: 1 do
+#       visit name: 'Go To Home page', url: "#{test_site}/careers/portal/job/view/#{jobADId}" do
+#         extract regex: 'redirectURL=(.*?)"', name: 'redirect_url' , match_number: 1
+#       end
+#       visit name: 'redirect to signin page', url: "#{test_site}/careers/portal/login",
+#             method: 'GET',fill_in: {
+#               'redirectURL' => '${redirect_url}'
+#           }
+#
+#       visit name: 'login to apply', url: "#{test_site}/careers/portal/login_check",
+#             method: 'POST',fill_in: {
+#               _username:  '${new_email_id}',
+#               _password: 'Tester1!',
+#               _target_path:  "/careers/portal/job/apply/#{jobADId}#/step1?jobAdId=#{jobADId}&channel=external&source=2&referrerUrl="
+#           }
+#       visit name: 'submit the form', url: "#{test_site}/careers/job/apply/submit/#{jobADId}/0",
+#             method: 'POST',fill_in: {
+#               'jobApplication[resumeFile][name]' =>	"cookies.txt"	,
+#       'jobApplication[resumeFile][encodedName]'	 => "upload/c2/8b/c28b081857e90b6836f6a386a8b609e29431d43c.txt"	,
+#       'jobApplication[resumeFile][deleted]'  =>	"0",
+#       'jobApplication[resumeFile][error]'  =>	"",
+#       'jobApplication[resumeType]'  =>	"2"	,
+#       'jobApplication[coverLetterType]' =>	"2"	,
+#       'jobApplication[questions][1]'  =>	"yes"	,
+#       'jobApplication[questions][3]'  =>	"28"	,
+#       'jobApplication[questions][5]'  =>	"3"	,
+#       'jobApplication[contactDetails][candidateProfileForm][deleted]'  =>	"0"	,
+#       'jobApplication[contactDetails][candidateProfileForm][homePhone]'  =>	"04564556677"	,
+#       'jobApplication[contactDetails][candidateProfileForm][mobile]' =>	"04564556677"	,
+#       'jobApplication[contactDetails][candidateProfileForm][addressLine1]' =>	"george st"	,
+#       'jobApplication[contactDetails][candidateProfileForm][addressLine2]' =>	"cbd"	,
+#       'jobApplication[contactDetails][candidateProfileForm][suburb]' =>	"crown"	,
+#       'jobApplication[contactDetails][candidateProfileForm][state]' =>	"NSW"	,
+#       'jobApplication[contactDetails][candidateProfileForm][postcode]' =>	"2011"	,
+#       'jobApplication[contactDetails][candidateProfileForm][country]' =>	"Australia"	,
+#       'jobApplication[contactDetails][candidateProfileForm][step]' =>	"3"	,
+#       'jobApplication[contactDetails][applicantId]' =>	"0"	,
+#       'jobApplication[referrerUrl]' =>	"#{test_site}/careers/portal/jobs"	,
+#       'jobApplication[coverLetter]' =>	"cookie.txt"	,
+#       'jobApplication[displayAnswers][1]' =>	"yes"	,
+#       'jobApplication[displayAnswers][3]' =>	"28"	,
+#       'jobApplication[displayAnswers][5]' =>	"4"	,
+#       'applicantId' =>	"0"	,
+#       'portalUrl' =>	"portal"	,
+#       'source' =>	"2"
+#           }
+#
+#       view_results_tree
+#
+#     end
+#   end.run(
+#       path: './JMETER_AUTO/apache-jmeter-3.0/bin/',
+#       file: './JMETER_AUTO/Jmeter_tests/newApplyUser.jmx',
+#       properties: './JMETER_AUTO/apache-jmeter-3.0/bin/jmeter.properties')
+# end

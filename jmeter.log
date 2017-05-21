@@ -1,63 +1,63 @@
-2017/05/15 14:44:43 INFO  - jmeter.util.JMeterUtils: Setting Locale to en_US 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: Loading user properties from: /Users/shankumahanty/Desktop/shan_automation/JMETER_AUTO/apache-jmeter-3.0/bin/user.properties 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: Loading system properties from: /Users/shankumahanty/Desktop/shan_automation/JMETER_AUTO/apache-jmeter-3.0/bin/system.properties 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: Copyright (c) 1998-2016 The Apache Software Foundation 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: Version 3.0 r1743807 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: java.version=1.8.0_91 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: os.name=Mac OS X 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: os.arch=x86_64 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: os.version=10.11.3 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: file.encoding=UTF-8 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: Max memory     =514850816 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: Available Processors =8 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: Default Locale=English (United States) 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: JMeter  Locale=English (United States) 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: JMeterHome=/Users/shankumahanty/Desktop/shan_automation/JMETER_AUTO/apache-jmeter-3.0 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: user.dir  =/Users/shankumahanty/Desktop/shan_automation 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: PWD       =/Users/shankumahanty/Desktop/shan_automation 
-2017/05/15 14:44:43 INFO  - jmeter.JMeter: IP: 192.168.111.54 Name: Shankus-MacBook-Pro.local FullName: 192.168.111.54 
-2017/05/15 14:44:43 INFO  - jmeter.services.FileServer: Default base='/Users/shankumahanty/Desktop/shan_automation' 
-2017/05/15 14:44:43 INFO  - jmeter.services.FileServer: Set new base='/Users/shankumahanty/Desktop/shan_automation/./JMETER_AUTO/Jmeter_tests' 
-2017/05/15 14:44:44 INFO  - jmeter.save.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2 
-2017/05/15 14:44:44 INFO  - jmeter.save.SaveService: Using SaveService properties file encoding UTF-8 
-2017/05/15 14:44:44 INFO  - jmeter.save.SaveService: Using SaveService properties version 2.9 
-2017/05/15 14:44:44 INFO  - jmeter.save.SaveService: All converter versions present and correct 
-2017/05/15 14:44:44 INFO  - jmeter.save.SaveService: Loading file: ./JMETER_AUTO/Jmeter_tests/ChangeRoleType.jmx 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.control.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_ 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser 
-2017/05/15 14:44:44 INFO  - jmeter.JMeter: Creating summariser <summary> 
-2017/05/15 14:44:44 INFO  - jmeter.engine.StandardJMeterEngine: Running the test! 
-2017/05/15 14:44:44 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
-2017/05/15 14:44:44 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
-2017/05/15 14:44:44 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must contain the string: '.functions.' 
-2017/05/15 14:44:44 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must not contain the string: '.gui.' 
-2017/05/15 14:44:44 INFO  - jmeter.JMeter: Running test (1494823484265) 
-2017/05/15 14:44:44 INFO  - jmeter.engine.StandardJMeterEngine: Starting ThreadGroup: 1 : ThreadGroup 
-2017/05/15 14:44:44 INFO  - jmeter.engine.StandardJMeterEngine: Starting 1 threads for group ThreadGroup. 
-2017/05/15 14:44:44 INFO  - jmeter.engine.StandardJMeterEngine: Thread will continue on error 
-2017/05/15 14:44:44 INFO  - jmeter.threads.ThreadGroup: Starting thread group number 1 threads 1 ramp-up 1 perThread 1000.0 delayedStart=true 
-2017/05/15 14:44:44 INFO  - jmeter.threads.ThreadGroup: Started thread group number 1 
-2017/05/15 14:44:44 INFO  - jmeter.engine.StandardJMeterEngine: All thread groups have been started 
-2017/05/15 14:44:44 INFO  - jmeter.threads.JMeterThread: Thread started: ThreadGroup 1-1 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.sampler.HTTPHCAbstractImpl: Local host = Shankus-MacBook-Pro.local 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.sampler.HTTPHC4Impl: HTTP request retry count = 0 
-2017/05/15 14:44:44 INFO  - jmeter.samplers.SampleResult: Note: Sample TimeStamps are START times 
-2017/05/15 14:44:44 INFO  - jmeter.samplers.SampleResult: sampleresult.default.encoding is set to ISO-8859-1 
-2017/05/15 14:44:44 INFO  - jmeter.samplers.SampleResult: sampleresult.useNanoTime=true 
-2017/05/15 14:44:44 INFO  - jmeter.samplers.SampleResult: sampleresult.nanoThreadSleep=5000 
-2017/05/15 14:44:44 INFO  - jmeter.protocol.http.sampler.LazySchemeSocketFactory: Setting up HTTPS TrustAll Socket Factory 
-2017/05/15 14:44:44 INFO  - jmeter.util.JsseSSLManager: Using default SSL protocol: TLS 
-2017/05/15 14:44:44 INFO  - jmeter.util.JsseSSLManager: SSL session context: per-thread 
-2017/05/15 14:44:44 INFO  - jmeter.util.SSLManager: JmeterKeyStore Location:  type JKS 
-2017/05/15 14:44:44 INFO  - jmeter.util.SSLManager: KeyStore created OK 
-2017/05/15 14:44:44 WARN  - jmeter.util.SSLManager: Keystore file not found, loading empty keystore 
-2017/05/15 14:44:46 INFO  - jmeter.threads.JMeterThread: Thread is done: ThreadGroup 1-1 
-2017/05/15 14:44:46 INFO  - jmeter.threads.JMeterThread: Thread finished: ThreadGroup 1-1 
-2017/05/15 14:44:46 INFO  - jmeter.engine.StandardJMeterEngine: Notifying test listeners of end of test 
-2017/05/15 14:44:46 INFO  - jmeter.reporters.Summariser: summary =      5 in 00:00:02 =    2.2/s Avg:   420 Min:   166 Max:   838 Err:     0 (0.00%) 
+2017/05/19 17:59:45 INFO  - jmeter.util.JMeterUtils: Setting Locale to en_US 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: Loading user properties from: /Users/shankumahanty/Desktop/shan_automation/JMETER_AUTO/apache-jmeter-3.0/bin/user.properties 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: Loading system properties from: /Users/shankumahanty/Desktop/shan_automation/JMETER_AUTO/apache-jmeter-3.0/bin/system.properties 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: Copyright (c) 1998-2016 The Apache Software Foundation 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: Version 3.0 r1743807 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: java.version=1.8.0_91 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: os.name=Mac OS X 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: os.arch=x86_64 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: os.version=10.11.3 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: file.encoding=UTF-8 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: Max memory     =514850816 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: Available Processors =8 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: Default Locale=English (United States) 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: JMeter  Locale=English (United States) 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: JMeterHome=/Users/shankumahanty/Desktop/shan_automation/JMETER_AUTO/apache-jmeter-3.0 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: user.dir  =/Users/shankumahanty/Desktop/shan_automation 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: PWD       =/Users/shankumahanty/Desktop/shan_automation 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: IP: 192.168.111.54 Name: Shankus-MacBook-Pro.local FullName: 192.168.111.54 
+2017/05/19 17:59:45 INFO  - jmeter.services.FileServer: Default base='/Users/shankumahanty/Desktop/shan_automation' 
+2017/05/19 17:59:45 INFO  - jmeter.services.FileServer: Set new base='/Users/shankumahanty/Desktop/shan_automation/./JMETER_AUTO/Jmeter_tests' 
+2017/05/19 17:59:45 INFO  - jmeter.save.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2 
+2017/05/19 17:59:45 INFO  - jmeter.save.SaveService: Using SaveService properties file encoding UTF-8 
+2017/05/19 17:59:45 INFO  - jmeter.save.SaveService: Using SaveService properties version 2.9 
+2017/05/19 17:59:45 INFO  - jmeter.save.SaveService: All converter versions present and correct 
+2017/05/19 17:59:45 INFO  - jmeter.save.SaveService: Loading file: ./JMETER_AUTO/Jmeter_tests/newUserSignupApply.jmx 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.control.CookieManager: Settings: Delete null: true Check: true Allow variable: true Save: false Prefix: COOKIE_ 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.sampler.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: Creating summariser <summary> 
+2017/05/19 17:59:45 INFO  - jmeter.engine.StandardJMeterEngine: Running the test! 
+2017/05/19 17:59:45 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
+2017/05/19 17:59:45 INFO  - jmeter.samplers.SampleEvent: List of sample_variables: [] 
+2017/05/19 17:59:45 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must contain the string: '.functions.' 
+2017/05/19 17:59:45 INFO  - jmeter.engine.util.CompoundVariable: Note: Function class names must not contain the string: '.gui.' 
+2017/05/19 17:59:45 INFO  - jmeter.JMeter: Running test (1495180785502) 
+2017/05/19 17:59:45 INFO  - jmeter.engine.StandardJMeterEngine: Starting ThreadGroup: 1 : ThreadGroup 
+2017/05/19 17:59:45 INFO  - jmeter.engine.StandardJMeterEngine: Starting 1 threads for group ThreadGroup. 
+2017/05/19 17:59:45 INFO  - jmeter.engine.StandardJMeterEngine: Thread will continue on error 
+2017/05/19 17:59:45 INFO  - jmeter.threads.ThreadGroup: Starting thread group number 1 threads 1 ramp-up 1 perThread 1000.0 delayedStart=true 
+2017/05/19 17:59:45 INFO  - jmeter.threads.ThreadGroup: Started thread group number 1 
+2017/05/19 17:59:45 INFO  - jmeter.engine.StandardJMeterEngine: All thread groups have been started 
+2017/05/19 17:59:45 INFO  - jmeter.threads.JMeterThread: Thread started: ThreadGroup 1-1 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.sampler.HTTPHCAbstractImpl: Local host = Shankus-MacBook-Pro.local 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.sampler.HTTPHC4Impl: HTTP request retry count = 0 
+2017/05/19 17:59:45 INFO  - jmeter.samplers.SampleResult: Note: Sample TimeStamps are START times 
+2017/05/19 17:59:45 INFO  - jmeter.samplers.SampleResult: sampleresult.default.encoding is set to ISO-8859-1 
+2017/05/19 17:59:45 INFO  - jmeter.samplers.SampleResult: sampleresult.useNanoTime=true 
+2017/05/19 17:59:45 INFO  - jmeter.samplers.SampleResult: sampleresult.nanoThreadSleep=5000 
+2017/05/19 17:59:45 INFO  - jmeter.protocol.http.sampler.LazySchemeSocketFactory: Setting up HTTPS TrustAll Socket Factory 
+2017/05/19 17:59:45 INFO  - jmeter.util.JsseSSLManager: Using default SSL protocol: TLS 
+2017/05/19 17:59:45 INFO  - jmeter.util.JsseSSLManager: SSL session context: per-thread 
+2017/05/19 17:59:45 INFO  - jmeter.util.SSLManager: JmeterKeyStore Location:  type JKS 
+2017/05/19 17:59:45 INFO  - jmeter.util.SSLManager: KeyStore created OK 
+2017/05/19 17:59:45 WARN  - jmeter.util.SSLManager: Keystore file not found, loading empty keystore 
+2017/05/19 17:59:47 INFO  - jmeter.threads.JMeterThread: Thread is done: ThreadGroup 1-1 
+2017/05/19 17:59:47 INFO  - jmeter.threads.JMeterThread: Thread finished: ThreadGroup 1-1 
+2017/05/19 17:59:47 INFO  - jmeter.engine.StandardJMeterEngine: Notifying test listeners of end of test 
+2017/05/19 17:59:47 INFO  - jmeter.reporters.Summariser: summary =      7 in 00:00:02 =    4.1/s Avg:   226 Min:     0 Max:   782 Err:     1 (14.29%) 

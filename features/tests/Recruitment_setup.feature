@@ -21,10 +21,12 @@ Feature:
     Then I Should Be Able To Create A New Candidate
 
     @CreateJobAdd
-    Scenario: Add A Job Ad
-      Given I Am Under A Recruitment Requisition
-      And  I Try To Create A New Job Ad
-      When I Fill The Details Of A New Job Ad
-      Then I Should be Able To Post The New Job
-
-
+  Scenario: Add A Job Ad
+    Given I Am Under A Recruitment Requisition
+    And  I Try To Create A New Job Ad
+    When I Fill The Details Of A New Job Ad
+    Then I Should be Able To Post The New Job
+ @movecandidate
+  Scenario: Move Candidate To Not Suitable category
+    Given I Am Under A Recruitment Requisition
+    And I Have A New candidate Applied for A Position

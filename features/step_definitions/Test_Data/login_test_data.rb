@@ -21,6 +21,8 @@ RECRUITMENT_ADMIN_USERNAME = 'admin'
 RECRUITMENT_ADMIN_PASSWORD = 'admin1234567'
 RECRUITMENT_LANDING_PAGE = 'https://staging4.dev.elmodev.com/dashboard'
 RECRUITMENT_CANDIDATE_LANDING_PAGE = 'https://staging4.dev.elmodev.com/admin/candidates/listAll'
+RECRUITMENT_COMP_USER = 'rec_comp_admin'
+RECRUITMENT_COMP_PASS = 'Tester1!'
 
 ####### user credentials ###########
 MY_DOCUMENT_PAGE = 'https://tmsfull.dev.elmodev.com/documents'
