@@ -91,5 +91,5 @@ end
 
 And(/^I Have A New candidate Applied for A Position$/) do
   SignupAndApplyAsACandidate()
-  #ApplyForTheJobAsAcandidate()
+
 end

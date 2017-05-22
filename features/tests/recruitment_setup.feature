@@ -26,6 +26,7 @@ Feature:
     And  I Try To Create A New Job Ad
     When I Fill The Details Of A New Job Ad
     Then I Should be Able To Post The New Job
+
  @movecandidate
   Scenario: Move Candidate To Not Suitable category
     Given I Am Under A Recruitment Requisition

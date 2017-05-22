@@ -71,8 +71,8 @@ end
 
 def SignupAndApplyAsACandidate()
   sleep(1)
-  test_site = 'https://staging5.dev.elmodev.com'
-  jobADId = '50'
+  test_site = 'https://tmsfull.dev.elmodev.com'
+  jobADId = '46'
   $email = '${__V(shantomate${__RandomString(7,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,)}@gmail.com)}'
 
   test do

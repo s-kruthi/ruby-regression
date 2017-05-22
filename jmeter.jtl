@@ -4718,3 +4718,31 @@ timeStamp,elapsed,label,responseCode,threadName,success,bytes,grpThreads,allThre
 2017/05/19 17:59:46.760,0,redirect to signin page,Non HTTP response code: java.net.URISyntaxException,ThreadGroup 1-1,false,1069,1,1,0,1,1,Shankus-MacBook-Pro.local,0
 2017/05/19 17:59:46.761,214,login to apply,200,ThreadGroup 1-1,true,52061,1,1,60,1,0,Shankus-MacBook-Pro.local,0
 2017/05/19 17:59:46.977,239,submit the form,200,ThreadGroup 1-1,true,356,1,1,239,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:12:21.495,1330,Home page,200,ThreadGroup 1-1,true,23666,1,1,1329,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:12:22.841,2822,signup a new user,500,ThreadGroup 1-1,false,2909,1,1,2822,1,1,Shankus-MacBook-Pro.local,0
+2017/05/22 15:12:25.664,441,Visit profile page,200,ThreadGroup 1-1,true,24494,1,1,236,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:12:26.112,561,Go To Home page,200,ThreadGroup 1-1,true,36454,1,1,557,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:12:26.675,256,redirect to signin page,200,ThreadGroup 1-1,true,25681,1,1,68,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:12:26.932,240,login to apply,200,ThreadGroup 1-1,true,24729,1,1,56,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:12:27.174,72,submit the form,500,ThreadGroup 1-1,false,2807,1,1,72,1,1,Shankus-MacBook-Pro.local,0
+2017/05/22 15:14:41.596,1000,Home page,200,ThreadGroup 1-1,true,23674,1,1,999,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:14:42.612,256,signup a new user,500,ThreadGroup 1-1,false,2909,1,1,256,1,1,Shankus-MacBook-Pro.local,0
+2017/05/22 15:14:42.869,253,Visit profile page,200,ThreadGroup 1-1,true,24494,1,1,62,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:14:43.130,110,Go To Home page,200,ThreadGroup 1-1,true,36328,1,1,101,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:14:43.241,222,redirect to signin page,200,ThreadGroup 1-1,true,25681,1,1,50,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:14:43.464,221,login to apply,200,ThreadGroup 1-1,true,24729,1,1,48,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 15:14:43.687,85,submit the form,500,ThreadGroup 1-1,false,2807,1,1,85,1,1,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:13.647,1179,Home page,200,ThreadGroup 1-1,true,23482,1,1,1177,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:14.841,292,signup a new user,200,ThreadGroup 1-1,true,368,1,1,292,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:15.134,177,Visit profile page,200,ThreadGroup 1-1,true,51499,1,1,165,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:15.315,133,Go To Home page,200,ThreadGroup 1-1,true,31102,1,1,120,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:15.449,0,redirect to signin page,Non HTTP response code: java.net.URISyntaxException,ThreadGroup 1-1,false,1068,1,1,0,1,1,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:15.450,551,login to apply,200,ThreadGroup 1-1,true,53839,1,1,72,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:16.002,783,submit the form,200,ThreadGroup 1-1,true,356,1,1,783,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:52.470,582,Home page,200,ThreadGroup 1-1,true,23482,1,1,581,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:53.063,155,signup a new user,200,ThreadGroup 1-1,true,368,1,1,155,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:53.219,118,Visit profile page,200,ThreadGroup 1-1,true,51499,1,1,112,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:53.342,106,Go To Home page,200,ThreadGroup 1-1,true,31118,1,1,98,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:53.449,0,redirect to signin page,Non HTTP response code: java.net.URISyntaxException,ThreadGroup 1-1,false,1068,1,1,0,1,1,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:53.450,197,login to apply,200,ThreadGroup 1-1,true,53855,1,1,60,1,0,Shankus-MacBook-Pro.local,0
+2017/05/22 16:59:53.648,194,submit the form,200,ThreadGroup 1-1,true,356,1,1,194,1,0,Shankus-MacBook-Pro.local,0
