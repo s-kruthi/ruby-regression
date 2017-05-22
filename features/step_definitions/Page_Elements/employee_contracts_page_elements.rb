@@ -13,6 +13,11 @@ EMP_CONTRACT_CAT_RESULT_ID = "select2-result-selectable"
 EMP_CONTRACT_SAVE_BTN = "//button[contains(.,'Save')]"
 EMP_CONTRACT_DESC_TEXT_ID = "//textarea[contains(@id,'description_0')]"
 
+EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
+
+EMP_CONTRACT_SEARCH_RESULT = "//td[contains(.,'Staging4')]"
+
+
 # CLIENT_CONTRACT_ID = "//input[contains(@id,'contractCode')]"
 # CLIENT_CONTRACT_STATUS_ID = "//label[contains(.,'Inactive')]"
 # CONTRACT_START_DATE_ID = "//input[contains(@id,'contractStartDate')]"

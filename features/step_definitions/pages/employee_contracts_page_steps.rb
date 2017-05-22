@@ -1,5 +1,5 @@
 
-def  goToEmployeeContractsPageAsCompanyAdmin(admin_cog, employee_contracts_tab, employee_contract_list_path)
+def  go_to_employee_contracts_page_as_company_admin(admin_cog, employee_contracts_tab, employee_contract_list_path)
   WaitForAnElementByClass(admin_cog)
   TouchAdminMenu(admin_cog)
   sleep(2)
@@ -8,39 +8,32 @@ def  goToEmployeeContractsPageAsCompanyAdmin(admin_cog, employee_contracts_tab, 
   goToItemLandingPage(employee_contract_list_path)
 end
 
-def goToNewEmployeeContractsPage(employee_new_contract_btn)
+def go_to_new_employee_contracts_page(employee_new_contract_btn)
   WaitForAnElementByXpathAndTouch(employee_new_contract_btn)
 end
 
-def enterEmployeeContractTitle(emp_contract_title_id, emp_contract_title_value)
+def enter_employee_contract_title(emp_contract_title_id, emp_contract_title_value)
   WaitForAnElementByXpathAndInputValue(emp_contract_title_id, emp_contract_title_value)
 end
 
-def enterContractDescriptionText(emp_contract_desc_text_id, emp_contract_desc_value)
+def enter_contract_description_text(emp_contract_desc_text_id, emp_contract_desc_value)
   WaitForAnElementByXpathAndInputValue(emp_contract_desc_text_id, emp_contract_desc_value)
 end
 
-def selectEmployeeContractCategory(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+def select_employee_contract_category(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
   select_from_select2_input(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
   sleep(1)
 end
 
-def enterContractDescription(contract_desc_value, contract_desc_index)
+def enter_contract_description(contract_desc_value, contract_desc_index)
   use_ckeditor_to_enter_description(contract_desc_value, contract_desc_index)
 end
 
-# enterEmployeeContractHeader()
-# enterEmployeeContractHeaderImage()
-# enterEmployeeContractBody()
-# enterEmployeeContractFooter()
-# enterEmployeeContractFooterImage()
-
-
-def enterContractCode(contract_id, contract_value)
-  WaitForAnElementByXpathAndInputValue(contract_id, contract_value)
-end
-
-def createAnEmployeeContract(emp_contract_save_btn)
+# def enter_contract_code(contract_id, contract_value)
+#   WaitForAnElementByXpathAndInputValue(contract_id, contract_value)
+# end
+#
+def create_an_employee_contract(emp_contract_save_btn)
   WaitForAnElementByXpathAndTouch(emp_contract_save_btn)
 end
 
