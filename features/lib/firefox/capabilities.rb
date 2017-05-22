@@ -5,6 +5,7 @@ module Firefox
       $driver = Selenium::WebDriver.for :firefox, marionette: true, driver_path: File.join(File.absolute_path('../../../drivers/', File.dirname(__FILE__)),"geckodriver")
       #$driver = Selenium::WebDriver.for :firefox, marionette: true
       #$driver.manage.window.move_to(300,400)
+      $driver.switch_to.window($driver.window_handles[0])
       $driver.manage.window.maximize()
     end
   end
