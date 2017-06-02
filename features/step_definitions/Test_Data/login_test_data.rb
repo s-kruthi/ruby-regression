@@ -16,8 +16,7 @@ ELMO_ADMIN_USERNAME = 'admin.omar'
 ELMO_ADMIN_PASSWORD = 'Admin1234567'
 ####### Recruitment user credentials ###########
 
-#REQUISITION_LANDING_PAGE = 'https://staging5.dev.elmodev.com/controlpanel/recruitment/requisition/requisition'
-REQUISITION_LANDING_PAGE = 'https://tmsfull.dev.elmodev.com/controlpanel/recruitment/requisition/requisition'
+REQUISITION_LANDING_PAGE = 'https://staging5.dev.elmodev.com/controlpanel/recruitment/requisition/requisition'
 RECRUITMENT_ADMIN_USERNAME = 'admin'
 RECRUITMENT_ADMIN_PASSWORD = 'admin1234567'
 RECRUITMENT_LANDING_PAGE = 'https://staging4.dev.elmodev.com/dashboard'

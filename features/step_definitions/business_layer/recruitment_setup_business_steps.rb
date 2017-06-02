@@ -93,3 +93,12 @@ And(/^I Have A New candidate Applied for A Position$/) do
   SignupAndApplyAsACandidate()
 
 end
+
+When(/^I Move The Candidate From New To Notsuitable Category$/) do
+  CheckTheCandidateAppearsUnderNewStatus(NEW_STATUS)
+  MoveTheCandidateFromNewToNotSuitable(ADD_TO_NOTSUITABLE)
+end
+
+Then(/^I Should Be Able To View The Candidate Under Unsuccessful Category$/) do
+  VerifyThecandidateAppearsUnderNotSuitableCategory()
+end

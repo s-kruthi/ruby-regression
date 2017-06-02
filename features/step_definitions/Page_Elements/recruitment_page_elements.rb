@@ -40,3 +40,6 @@ JB_END_DATE = 'input[ng-model="jobAd.endDate"]'
 INT_CAR_BTN = 'isInternalEnable'
 EXT_CAR_BTN = 'toggleExternalEnable'
 SAVE_JOB = 'button[ng-click="save(addEditForm)"]'
+################### status Under requisition ##################
+NEW_STATUS = '[ng-click="applyStatusFilter(data.status_new)"]'
+ADD_TO_NOTSUITABLE = 'a[ng-click="markNotSuitable([jobapp.id])"]'

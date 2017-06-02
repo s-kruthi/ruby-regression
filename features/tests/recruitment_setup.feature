@@ -31,3 +31,6 @@ Feature:
   Scenario: Move Candidate To Not Suitable category
     Given I Am Under A Recruitment Requisition
     And I Have A New candidate Applied for A Position
+   When I Move The Candidate From New To Notsuitable Category
+   Then I Should Be Able To View The Candidate Under Unsuccessful Category
+

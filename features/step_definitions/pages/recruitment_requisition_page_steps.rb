@@ -71,8 +71,8 @@ end
 
 def SignupAndApplyAsACandidate()
   sleep(1)
-  test_site = 'https://tmsfull.dev.elmodev.com'
-  jobADId = '46'
+  test_site = 'https://staging5.dev.elmodev.com'
+  jobADId = '54'
   $email = '${__V(shantomate${__RandomString(7,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,)}@gmail.com)}'
 
   test do
@@ -149,65 +149,34 @@ def SignupAndApplyAsACandidate()
 
 end
 
-#  def ApplyForTheJobAsAcandidate()
-#   sleep(1)
-#   test_site = 'https://staging5.dev.elmodev.com'
-#   jobADId = '50'
-#
-#   test do
-#     cookies policy: 'compatibility', clear_each_iteration: true
-#     threads count: 1,loops: 1 do
-#       visit name: 'Go To Home page', url: "#{test_site}/careers/portal/job/view/#{jobADId}" do
-#         extract regex: 'redirectURL=(.*?)"', name: 'redirect_url' , match_number: 1
-#       end
-#       visit name: 'redirect to signin page', url: "#{test_site}/careers/portal/login",
-#             method: 'GET',fill_in: {
-#               'redirectURL' => '${redirect_url}'
-#           }
-#
-#       visit name: 'login to apply', url: "#{test_site}/careers/portal/login_check",
-#             method: 'POST',fill_in: {
-#               _username:  '${new_email_id}',
-#               _password: 'Tester1!',
-#               _target_path:  "/careers/portal/job/apply/#{jobADId}#/step1?jobAdId=#{jobADId}&channel=external&source=2&referrerUrl="
-#           }
-#       visit name: 'submit the form', url: "#{test_site}/careers/job/apply/submit/#{jobADId}/0",
-#             method: 'POST',fill_in: {
-#               'jobApplication[resumeFile][name]' =>	"cookies.txt"	,
-#       'jobApplication[resumeFile][encodedName]'	 => "upload/c2/8b/c28b081857e90b6836f6a386a8b609e29431d43c.txt"	,
-#       'jobApplication[resumeFile][deleted]'  =>	"0",
-#       'jobApplication[resumeFile][error]'  =>	"",
-#       'jobApplication[resumeType]'  =>	"2"	,
-#       'jobApplication[coverLetterType]' =>	"2"	,
-#       'jobApplication[questions][1]'  =>	"yes"	,
-#       'jobApplication[questions][3]'  =>	"28"	,
-#       'jobApplication[questions][5]'  =>	"3"	,
-#       'jobApplication[contactDetails][candidateProfileForm][deleted]'  =>	"0"	,
-#       'jobApplication[contactDetails][candidateProfileForm][homePhone]'  =>	"04564556677"	,
-#       'jobApplication[contactDetails][candidateProfileForm][mobile]' =>	"04564556677"	,
-#       'jobApplication[contactDetails][candidateProfileForm][addressLine1]' =>	"george st"	,
-#       'jobApplication[contactDetails][candidateProfileForm][addressLine2]' =>	"cbd"	,
-#       'jobApplication[contactDetails][candidateProfileForm][suburb]' =>	"crown"	,
-#       'jobApplication[contactDetails][candidateProfileForm][state]' =>	"NSW"	,
-#       'jobApplication[contactDetails][candidateProfileForm][postcode]' =>	"2011"	,
-#       'jobApplication[contactDetails][candidateProfileForm][country]' =>	"Australia"	,
-#       'jobApplication[contactDetails][candidateProfileForm][step]' =>	"3"	,
-#       'jobApplication[contactDetails][applicantId]' =>	"0"	,
-#       'jobApplication[referrerUrl]' =>	"#{test_site}/careers/portal/jobs"	,
-#       'jobApplication[coverLetter]' =>	"cookie.txt"	,
-#       'jobApplication[displayAnswers][1]' =>	"yes"	,
-#       'jobApplication[displayAnswers][3]' =>	"28"	,
-#       'jobApplication[displayAnswers][5]' =>	"4"	,
-#       'applicantId' =>	"0"	,
-#       'portalUrl' =>	"portal"	,
-#       'source' =>	"2"
-#           }
-#
-#       view_results_tree
-#
-#     end
-#   end.run(
-#       path: './JMETER_AUTO/apache-jmeter-3.0/bin/',
-#       file: './JMETER_AUTO/Jmeter_tests/newApplyUser.jmx',
-#       properties: './JMETER_AUTO/apache-jmeter-3.0/bin/jmeter.properties')
-# end
+def CheckTheCandidateAppearsUnderNewStatus(new_status)
+  GoToThePage('https://staging5.dev.elmodev.com/controlpanel/recruitment/requisition/job-app/43')
+  sleep(3)
+  WaitForAnElementByCSSAndTouch(new_status)
+  sleep(3)
+  @new_candidate = $driver.find_elements(:class, "recruitment-candidate-name")[0].text
+  $driver.find_elements(:class, "dropdown-toggle")[9].click
+
+end
+
+def MoveTheCandidateFromNewToNotSuitable(add_to_notsuitable)
+  WaitForAnElementByCSSAndTouch(add_to_notsuitable)
+  sleep(2)
+  #binding.pry
+  PressEnterConfirm()
+  sleep(3)
+  $driver.find_elements(:class, "dropdown-toggle")[5].click
+  sleep(1)
+  $driver.find_element(:css, 'li[ng-click="applyStatusFilter(data.status_not_suitable)"]').click
+  sleep(5)
+
+end
+
+def VerifyThecandidateAppearsUnderNotSuitableCategory()
+  if
+  $driver.find_elements(:class, "recruitment-candidate-name")[0].text.include? "#{@new_candidate}"
+    puts "new candidate is in not suitable category"
+  else
+    raise VerificationException.new("candidate is missing")
+  end
+end
