@@ -15,7 +15,9 @@ EMP_CONTRACT_DESC_TEXT_ID = "//textarea[contains(@id,'description_0')]"
 
 EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 
-EMP_CONTRACT_SEARCH_RESULT = "//td[contains(.,'Staging4')]"
+EMP_CONTRACT_SEARCH_ID = "//input[@placeholder='Search']"
+
+EMP_CONTRACT_SEARCH_BTN = "//button[@id='search-btn']"
 
 
 # CLIENT_CONTRACT_ID = "//input[contains(@id,'contractCode')]"
