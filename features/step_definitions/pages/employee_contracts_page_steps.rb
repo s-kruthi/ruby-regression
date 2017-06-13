@@ -37,6 +37,17 @@ def create_an_employee_contract(emp_contract_save_btn)
   WaitForAnElementByXpathAndTouch(emp_contract_save_btn)
 end
 
+def search_for_an_employee_contract_and_verify(search_field, search_value, search_btn, search_result)
+  WaitForAnElementByXpathAndInputValue(search_field,search_value)
+  Wait_For(2)
+  WaitForAnElementByXpathAndTouch(search_btn)
+  sleep (1)
+  VerifyAnElementExistByXPath(search_result,search_value)
+end
+
+def edit_a_client_contract(test_variable)
+end
+
 #
 # def enterIsActiveStatus(client_active_status_toggle)
 #     WaitForAnElementByXpathAndTouch(client_active_status_toggle)
@@ -107,13 +118,6 @@ end
 # end
 #
 #
-# def searchForAclientContractAndVerify(search_field, search_value, search_btn, search_result)
-#   WaitForAnElementByXpathAndInputValue(search_field,search_value)
-#   Wait_For(2)
-#   WaitForAnElementByXpathAndTouch(search_btn)
-#   sleep (1)
-#   VerifyAnElementExistByXPath(search_result,search_value)
-#  end
 #
 # def verifySuccessMessage(success_alert_id, success_alert_value)
 #   VerifyAnElementExistByXPath(success_alert_id,success_alert_value)
