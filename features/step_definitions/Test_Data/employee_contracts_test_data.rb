@@ -3,6 +3,10 @@
 EMP_CONTRACT_DESC_VALUE = "This is a TEST. Please do not delete this - Omar - " + rand(10..100).to_s
 EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_VALUE = "Contract is saved successfully"
 
+EMP_CONTRACT_SEARCH_VALUE = "This is a TEST. Please do not delete this - Omar"
+
+EMP_CONTRACT_SEARCH_RESULT = "//td[contains(.,'This is a TEST. Please do not delete this - Omar')]"
+
 #//textarea[contains(@id,'description_0')]
 # SUBDOMAIN_INDEX_VALUE = 8
 #
@@ -32,4 +36,4 @@ EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_VALUE = "Contract is saved successfully"
 #
 # CONTRACT_DROPDOWN_ACTION_ITEM = "Edit"
 #
-# VERIFY_SAVE_SUCCESSFUL_VALUE = "Save Success"
+# VERIFY_SAVE_SUCC = "Save Success"

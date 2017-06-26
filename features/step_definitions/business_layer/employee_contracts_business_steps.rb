@@ -28,27 +28,21 @@ Then(/^I Should Be Able To Create A New Contract$/) do
 end
 
 
-Then(/^I Should Be Able To Search For A Contract$/) do
-  search_for_an_employee_contract_and_verify(EMP_CONTRACT_SEARCH_ID, EMP_CONTRACT_SEARCH_VALUE, EMP_CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT)
+Then(/^I Should Be Able To Search For An Employee Contract$/) do
+  search_for_an_employee_contract_and_verify(EMP_CONTRACT_SEARCH_ID, EMP_CONTRACT_SEARCH_VALUE, EMP_CONTRACT_SEARCH_BTN, EMP_CONTRACT_SEARCH_RESULT)
   sleep(1)
   $driver.quit
 end
-#
-# When(/^I Search For A Specific Active Client Contract$/) do
-#   searchForAclientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT)
-# end
-#
-# Then(/^I Should Be Able To De-Activate A Specific Active Client Contract$/) do
-#   editAclientContract(CONTRACT_ACTION_DROPDOWN,3, CONTRACT_DROPDOWN_ACTION_ITEM)
-#   sleep (1)
-#   enterIsActiveStatus(CLIENT_CONTRACT_STATUS_ID)
-#   enterEndDate(CONTRACT_END_DATE_ID, CONTRACT_END_DATE)
-#   sleep (1)
-#   createAClientContract(FORM_TEMPLATE_SAVE_BTN)
-#   sleep (1)
-#   verifySuccessMessage(VERIFY_SAVE_SUCCESSFUL_ID, VERIFY_SAVE_SUCCESSFUL_VALUE)
-#   sleep (1)
-#   $driver.quit
-# end
-#
-#
+
+When(/^I Search For An Employee Contract$/) do
+  # search_for_an_employee_contract_and_verify(EMP_CONTRACT_SEARCH_ID, EMP_CONTRACT_SEARCH_VALUE, EMP_CONTRACT_SEARCH_BTN, EMP_CONTRACT_SEARCH_RESULT)
+  sleep(1)
+end
+
+Then(/^I Should Be Able To Edit An Employee Contract$/) do
+  edit_a_client_contract(test_variable)
+end
+
+Then(/^I Should Be Able To Copy An Employee Contract$/) do
+  copy_a_client_contract()
+end
