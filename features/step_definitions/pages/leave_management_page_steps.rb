@@ -48,14 +48,14 @@ end
 def FillTheLeavePolicyAndSave(leave_policy_title_cs,leave_policy_title_val)
   WaitForAnElementByCSSAndInputValue(leave_policy_title_cs,leave_policy_title_val)
   sleep(1)
-  $driver.find_element(:id, 's2id_autogen4').click #selects leave type annual
-  sleep(1)
-  $driver.find_elements(:class, 'select2-result-label')[1].click
-  sleep(1)
-  $driver.find_element(:id, 's2id_autogen4').click #selects personal type annual
-  sleep(1)
-  $driver.find_elements(:class, 'select2-result-label')[2].click
-  sleep(1)
+  $driver.find_element(:id, 's2id_autogen4').send_keys("Annual Leave", :return) #selects leave type annual
+  # sleep(1)
+  # $driver.find_elements(:class, 'select2-result-label')[1].click
+  sleep(3)
+  $driver.find_element(:id, 's2id_autogen4').send_keys("Personal leave", :return) #selects personal type annual
+  sleep(2)
+  # $driver.find_elements(:class, 'select2-result-label')[2].click
+  # sleep(1)
   $driver.find_element(:id, 'annualEntitlements').send_keys "4"
   $driver.find_element(:id, 'personalEntitlements').send_keys "2"
   $driver.find_elements( :tag_name => "option")[1].click #select work days as 5 days
@@ -116,6 +116,7 @@ def GoToLeaveRequestUnderLeaveManagement(leave_management_sec_id,leave_requests_
 end
 def GoToLeaveBalanceUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
+  sleep(2)
 end
 
 def ApproveTheSubmittedLeaveRequest(approval_reason)
@@ -167,7 +168,7 @@ def GoToLeaveBalanceAndSearchTheEmployee()
   sleep(2)
   $driver.find_element(:xpath, "//span[contains(.,'Leave Balance & Import')]").click
   sleep(2)
-  $driver.find_element(:xpath, "//input[@ng-model='lb.data.criteria.searchText']").send_keys("Donald Trump", :return)
+  $driver.find_element(:xpath, "//input[@ng-model='lb.data.criteria.searchText']").send_keys("Donald trump", :return)
   sleep(1)
 end
 def CheckTheLeaveBucketReturnsTheExpectedAccruals()
@@ -189,11 +190,11 @@ end
 
 
 def FetchTheLeaveBucketForThatEmployee()
-  $annual_leave = $driver.find_elements(:class, "ng-binding")[8].text
+  $annual_leave = $driver.find_elements(:class, "ng-binding")[4].text
   puts "#{$annual_leave}"
-  $personal_leave = $driver.find_elements(:class, "ng-binding")[11].text
+  $personal_leave = $driver.find_elements(:class, "ng-binding")[7].text
   puts "#{$personal_leave}"
-  $limit_based = $driver.find_elements(:class, "ng-binding")[14].text
+  $limit_based = $driver.find_elements(:class, "ng-binding")[10].text
   puts "#{$limit_based}"
 end
 

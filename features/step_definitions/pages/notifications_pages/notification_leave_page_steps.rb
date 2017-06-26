@@ -47,7 +47,7 @@ def SubmitLeaveRequest()
   #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_submitted.sql', "use #{STAGING_DATABASE} ; \n
 select*from epms_user where email='dtrump@us-president.com' and first_name='Donald' and is_notified='1' \\G; \n
-select*from epms_leave_request where user_id ='709' and id = #{$current_path_id} order by id desc \\G; \n
+select*from epms_leave_request where user_id ='177' and id = #{$current_path_id} order by id desc \\G; \n
 select*from epms_log_message where subject like 'New Leave Request Submission' or subject like 'Leave Request Approval Action Reminder' order by id desc LIMIT 2 \\G; \n
 select*from epms_notifier_notification where trigger_id= 'Leave.LeaveRequestSubmissionTrigger' or trigger_id='Leave.LeaveRequestApprovalReminderTrigger' order by id desc LIMIT 2 \\G;")
 end
@@ -56,7 +56,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestNotifications()
   StartTheTunnel()
   begin
     result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_submitted.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
-    frs = result.include?  ("recipient_ids: /709/659/") #true validate that mail goes to both employee and manager
+    frs = result.include?  ("recipient_ids: /177/173/") #true validate that mail goes to both employee and manager
     trs = result.include?  ("subject: New Leave Request Submission") #true validate
     krs = result.include?  ("subject: Leave Request Approval Action Reminder") #true validate
     mrs = result.include?  ("trigger_id: Leave.LeaveRequestApprovalReminderTrigger") #true validate
@@ -94,8 +94,8 @@ def EnterCommentAndCancelTheRequest(cancellation_reason)
   #dump the constructed SQL query into leave_request_submitted.sql file
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled.sql', "use #{STAGING_DATABASE} ; \n
   select*from epms_log_message where subject='Leave Request Cancelled by Requester' order by id desc LIMIT 1 \\G; \n
-  select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRequesterCancellationTrigger' and user_id=709 order by id desc LIMIT 1 \\G; \n
-  select*from epms_leave_request where user_id=709 and status=7 and id=#{$current_path_id} order by id desc \\G;")
+  select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRequesterCancellationTrigger' and user_id=177 order by id desc LIMIT 1 \\G; \n
+  select*from epms_leave_request where user_id=177 and status=7 and id=#{$current_path_id} order by id desc \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheLeaveRequestCancelledNotifications()
@@ -103,7 +103,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestCancelledNotifications()
   begin
     result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 7") #true validate for cancelled status
-    krs = result.include?  ("user_id: 709") #true validate for employee cancelled the leave
+    krs = result.include?  ("user_id: 177") #true validate for employee cancelled the leave
     trs = result.include?  ("subject: Leave Request Cancelled by Requester") #true validate
     mrs = result.include?  ("trigger_id: Leave.LeaveRequestRequesterCancellationTrigger") #true validate
     qrs = result.include?  ("id: #{$current_path_id}")
@@ -322,7 +322,7 @@ def MatchTheExpectedLeaveBucketFromDatabase()
     frs = result.include?  ("balance: #{$annual_leave}") #true validate for first balance
     krs = result.include?  ("balance: #{$personal_leave}") #true validate for 2nd balance
     trs = result.include?  ("balance: #{$limit_based}") #true validate for 3rd balance
-    lrs = result.include?  ("user_id: 709") #true validate for that particular employee
+    lrs = result.include?  ("user_id: 177") #true validate for that particular employee
     if frs && krs && trs && lrs
       puts "Yay! Leave Bucket On UI Matches The Database"
     else
