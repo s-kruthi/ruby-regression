@@ -11,10 +11,10 @@ require 'ruby-jmeter'
 require './features/lib/device_method_factory.rb'
 
 if ENV["CHANNEL"] == nil
-    ENV['CHANNEL'] = 'firefox' #Edit this when using RubyMine needs to run against specific browser
-  else
-    puts "CHANNEL = " + ENV["CHANNEL"]
-  end
+  ENV['CHANNEL'] = 'firefox' #Edit this when using RubyMine needs to run against specific browser
+else
+  puts "CHANNEL = " + ENV["CHANNEL"]
+end
 
 WAIT_TIMEOUT = 5
 World(DeviceMethodFactory.for_channel(ENV['CHANNEL']))
