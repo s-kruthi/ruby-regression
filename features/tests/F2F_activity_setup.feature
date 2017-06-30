@@ -1,32 +1,48 @@
-@F2F
+@Course
 
 Feature:
-  As a Company Administrator I want to test combinations of F2F activities to test if they were triggered successfully
+  As a Learning Admin I want to manage courses successfully
 
   @course_add
-  Scenario: Admin logging in to access F2F Activities (Happy Path)
-    Given I Have Logged In as an Admin User
-    When  I Access a Course that has F2F Activity
-    Then  I Should Be Able To See The F2F Activities in the Course sections page
-    And   I Should Be Able to Add/Edit F2F Activities to the Course
+  Scenario: Learning Admin Creating New Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Click On The New Course Button
+    And   I Add New Course Details
+    Then  I Should Be Able To Create A New Course
 
 
-  @course_view_sessions
-  Scenario: Admin logging in to access F2F Sessions (Happy Path)
-    Given I Have Logged In as an Admin User
-    When  I Have Opened a F2F Activity
-    Then  I Should Be Able To See The F2F Sessions (if available)
-    And   I Should Be Able to Add/Edit F2F Sessions to the Activity
+  @course_search
+  Scenario: Learning Admin Searching New Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Search For A Specific Course
+    Then  I Should Be Able To Edit The Specific Course
 
-  Scenario: Admin logging in to view F2F reports in TMS
-    Given I Have Logged In as an Admin User
-    When  I Open the Reports tab
-    Then  I Should Be Able To See All the Reports related to F2F Activities and Sessions
+  @activity_ack_add @activity_add
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Add A New Acknowledgement Activity
 
+  @activity_f2f_add @activity_add
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Add A New Face-to-Face Activity
+
+  @activity_quiz_add @activity_add
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Add A New Quiz Activity
 
   Scenario: Admin edits the F2F Activity
     Given I Have Logged In as an Admin User
-    And I Have Opened a Course that contains F2F Activity
+    And   I Have Opened a Course that contains F2F Activity
     When  I Edit the F2F Activity
     Then  I Should Be Able To Edit the Activity description and Template details
     And I Should Be Able to Select Whether Location, Venue and Session Facilitator are Enabled for the Sessions or not
