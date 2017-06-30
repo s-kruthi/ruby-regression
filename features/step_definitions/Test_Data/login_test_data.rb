@@ -1,5 +1,5 @@
 #####General ELMO credentials ###############
-ELMO_LANDING_PAGE = 'https://hung01.dev.elmodev.com/dashboard'
+ELMO_LANDING_PAGE = 'https://tmsfull.dev.elmodev.com/dashboard'
 #NEW_USER_EDIT_PAGE = 'https://staging1.dev.elmodev.com/controlpanel/edit-user-password/20519'
 NEW_USER_EDIT_PAGE ='https://staging4.dev.elmodev.com/controlpanel/change-password/'
 NEW_USER_LOGIN_PAGE = 'https://tmsfull.dev.elmodev.com'
@@ -77,3 +77,8 @@ EMPLOYEE_COURSE_PASS = ''
 ####### Employee Contract credentials ########
 EMPLOYEE_CONTRACTS_LANDING_PAGE = 'https://hung01.dev.elmodev.com/setup/login'
 
+#####Learning -F2F credentials ###############
+ELMO_LEARNING_LANDING_PAGE = 'https://tmsfull.dev.elmodev.com/dashboard'
+LEARNING_ADMIN_USERNAME = 'company.omar'
+LEARNING_ADMIN_PASSWORD = 'Admin1234567'
+####### Recruitment user credentials ###########
