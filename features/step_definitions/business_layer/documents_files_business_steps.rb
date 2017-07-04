@@ -14,7 +14,7 @@ And(/^I Enter File Details$/) do
 end
 
 And(/^I Select A File$/) do
-  selectAfile(BROWSE_FILE_ID, FILE_NAME)
+  select_a_file(BROWSE_FILE_ID, FILE_NAME)
 end
 
 And(/^I Select Availability$/) do

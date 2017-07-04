@@ -94,7 +94,6 @@ module Chrome
       sleep(i)
       puts loop do
         i+=1
-        puts "#{i}"
         break if method
       end
     end

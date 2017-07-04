@@ -28,12 +28,17 @@ COURSE_ADD_ACTIVITY_BTN_ID = "addactivity"
 COURSE_SECTION_DROPDOWN_ID = "select2-choice"
 COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID = "select2-result-selectable"
 
+SECTION_TRASH_ICON_ID = "glyphicon-trash"
 
 ###Acknowledgement activity elements
 
 ACK_TITLE_ID = "//input[contains(@id,'name')]"
 ACK_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
+###ELMO Survey activity elements
+
+SURVEY_TITLE_ID = "//input[contains(@id,'name')]"
+SURVEY_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
 ###Face-to-face activity elements
 
@@ -45,3 +50,9 @@ F2F_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 QUIZ_TITLE_ID = "//input[contains(@id,'name')]"
 QUIZ_PASS_MARK_ID = "//input[contains(@id,'passMark-clone')]"
 QUIZ_SAVE_BTN_ID = "//button[contains(.,'Save')]"
+
+###File activity elements
+
+FILE_TITLE_ID = "//input[contains(@id,'name')]"
+FILE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
+FILE_SELECT_FILE_ID = "//a[contains(.,'Select File')]"

@@ -30,9 +30,7 @@ end
 
 Then(/^I Should Be Able To Create A New Course$/) do
   create_a_new_course_and_verify(FORM_TEMPLATE_SAVE_BTN)
-  # sleep (1)
-  verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE)
-  sleep (1)
+  Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE))
   $driver.quit
 end
 
@@ -55,10 +53,15 @@ end
 
 Then(/^I Should Be Able To Add A New (.*) Activity$/) do |course_activity_name|
   click_on_a_sub_tab(COURSE_SUB_TAB_SECTION_NAME_ID)
-  sleep (2)
   add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
-  sleep (2)
   select_an_activity(course_activity_name)
+  $driver.quit
+end
+
+Then(/^I Should Be Able To Delete A Specific Section$/) do
+  click_on_a_sub_tab(COURSE_SUB_TAB_SECTION_NAME_ID)
+  add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
+  delete_a_section(SECTION_TRASH_ICON_ID)
   $driver.quit
 end
 

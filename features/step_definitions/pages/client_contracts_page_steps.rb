@@ -105,7 +105,7 @@ def searchForAclientContractAndVerify(search_field, search_value, search_btn, se
  end
 
 def verifySuccessMessage(success_alert_id, success_alert_value)
-  VerifyAnElementExistByXPath(success_alert_id,success_alert_value)
+  Sleep_Until(VerifyAnElementExistByXPath(success_alert_id,success_alert_value))
 end
 
 def editAclientContract(class_name, index_value, partial_link_text)
