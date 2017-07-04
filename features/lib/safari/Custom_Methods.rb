@@ -92,7 +92,7 @@ module Safari
     def Sleep_Until(method)
       i=1
       sleep(i)
-      loop do
+      for loop in 1..i do
         i+=1
         # puts "#{i}"
         break if method
