@@ -91,13 +91,13 @@ module Firefox
     end
 
     def Sleep_Until(method)
-        i=1
-        sleep(i)
-         loop do
-          i+=1
-          # puts "#{i}"
-          break if method
-        end
+      i=1
+      sleep(i)
+      for loop in 1..i do
+        i+=1
+        # puts "#{i}"
+        break if method
+      end
     end
 
     def use_ckeditor_to_enter_description(text, index_id)

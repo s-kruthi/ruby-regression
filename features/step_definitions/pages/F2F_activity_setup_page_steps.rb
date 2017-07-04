@@ -55,14 +55,14 @@ def create_a_new_course_and_verify(form_template_save_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
 end
 
-def findIdOfDocumentInstance()
-  sleep(1)
-  path_url = $driver.current_url
-  path_id = path_url.split('/')[-2]
-  $document_path_id = "/#{path_id}"
-  puts "Document Path ID: #{$document_path_id}"
-  sleep(1)
-end
+# def findIdOfDocumentInstance()
+#   sleep(1)
+#   path_url = $driver.current_url
+#   path_id = path_url.split('/')[-2]
+#   $document_path_id = "/#{path_id}"
+#   puts "Document Path ID: #{$document_path_id}"
+#   sleep(1)
+# end
 
 def search_a_course(course_list_search_box_id, course_list_title_value, course_search_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndInputValue(course_list_search_box_id, course_list_title_value))
