@@ -95,7 +95,7 @@ module Firefox
         sleep(i)
          loop do
           i+=1
-          puts "#{i}"
+          # puts "#{i}"
           break if method
         end
     end
