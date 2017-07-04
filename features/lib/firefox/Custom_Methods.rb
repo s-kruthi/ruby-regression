@@ -93,7 +93,7 @@ module Firefox
     def Sleep_Until(method)
         i=1
         sleep(i)
-        puts loop do
+         loop do
           i+=1
           puts "#{i}"
           break if method
