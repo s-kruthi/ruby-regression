@@ -1,0 +1,34 @@
+CHANNEL = chrome
+@Course
+Feature: 
+  As a Learning Admin I want to manage courses successfully
+
+  @activity_ack_add @activity_add
+  Scenario: Learning Admin creating New Activity In A Course    # features/tests/F2F_activity_setup.feature:23
+    Given I Have Logged In as a Learning Admin User             # features/step_definitions/business_layer/F2F_activity_setup_business_steps.rb:1
+      ELMO Talent Management System - Dashboard
+    And I Go To The Courses Section                             # features/step_definitions/business_layer/F2F_activity_setup_business_steps.rb:10
+    When I Edit A Specific Course                               # features/step_definitions/business_layer/F2F_activity_setup_business_steps.rb:48
+      #<Enumerator:0x007ff657873db8>
+      #<Enumerator:0x007ff6578504f8>
+      #<Enumerator:0x007ff65781b410>
+      #<Enumerator:0x007ff6527e4f28>
+    Then I Should Be Able To Add A New Acknowledgement Activity # features/step_definitions/business_layer/F2F_activity_setup_business_steps.rb:54
+      #<Enumerator:0x007ff652794e88>
+      #<Enumerator:0x007ff652794b68>
+      #<Enumerator:0x007ff6527643a0>
+      #<Enumerator:0x007ff652764058>
+      #<Enumerator:0x007ff652745b58>
+      #<Enumerator:0x007ff6529cf888>
+      #<Enumerator:0x007ff652997f00>
+      #<Enumerator:0x007ff65269e1f0>
+      #<Enumerator:0x007ff6525ac7b0>
+      #<Enumerator:0x007ff652547b08>
+      #<Enumerator:0x007ff65246f960>
+      MATCHED: Successfully Saved.
+      #<Enumerator:0x007ff652297a70>
+      #<Enumerator:0x007ff652295220>
+
+1 scenario (1 passed)
+4 steps (4 passed)
+0m43.560s

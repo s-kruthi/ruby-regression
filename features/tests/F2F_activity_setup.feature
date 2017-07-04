@@ -26,6 +26,13 @@ Feature:
     When  I Edit A Specific Course
     Then  I Should Be Able To Add A New Acknowledgement Activity
 
+  @activity_survey_add @activity_add
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Add A New ELMO Survey Activity
+
   @activity_f2f_add @activity_add
   Scenario: Learning Admin creating New Activity In A Course
     Given I Have Logged In as a Learning Admin User
@@ -39,6 +46,20 @@ Feature:
     And   I Go To The Courses Section
     When  I Edit A Specific Course
     Then  I Should Be Able To Add A New Quiz Activity
+
+  @activity_file_add @activity_add
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Add A New File Activity
+
+  @activity_delete
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Delete A Specific Section
 
   Scenario: Admin edits the F2F Activity
     Given I Have Logged In as an Admin User

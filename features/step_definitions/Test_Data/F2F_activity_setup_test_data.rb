@@ -20,6 +20,11 @@ ACK_TITLE_VALUE = "Test Acknowledgement Activity - Please DO NOT DELETE"
 ACK_ACTIVITY_EDITOR_TXT = "This is a Test Acknowledgement Activity Editor Content - Please DO NOT DELETE"
 ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
 
+###ELMO Survey activity test data
+SURVEY_TITLE_VALUE = "Test ELMO Survey Activity - Please DO NOT DELETE"
+SURVEY_ACTIVITY_EDITOR_TXT = "This is a Test ELMO Survey Activity Editor Content - Please DO NOT DELETE"
+SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
+
 ###Face-to-face activity test data
 F2F_TITLE_VALUE = "Test Face-to-Face Activity - Please DO NOT DELETE"
 F2F_ACTIVITY_EDITOR_TXT = "This is a Test Face-to-Face Activity Editor Content - Please DO NOT DELETE"
@@ -30,3 +35,8 @@ QUIZ_TITLE_VALUE = "Test Quiz Activity - Please DO NOT DELETE"
 QUIZ_ACTIVITY_EDITOR_TXT = "This is a Test Quiz Activity Editor Content - Please DO NOT DELETE"
 QUIZ_PASS_MARK_VALUE = "85"
 QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved.")
+
+###File activity test data
+FILE_TITLE_VALUE = "Test File Activity - Please DO NOT DELETE"
+FILE_ACTIVITY_EDITOR_TXT = "This is a Test File Activity Editor Content - Please DO NOT DELETE"
+FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved.")

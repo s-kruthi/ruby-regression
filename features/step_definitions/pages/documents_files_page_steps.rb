@@ -14,7 +14,7 @@ def selectALabel(file_id, label_id, label_index)
   WaitForDropdownByClassAndTouchTheIndex(label_id, label_index)
 end
 
-def selectAfile(browse_file_id, sample_filename)
+def select_a_file(browse_file_id, sample_filename)
   sleep(1)
   browse_file_select(browse_file_id, sample_filename)
 end
