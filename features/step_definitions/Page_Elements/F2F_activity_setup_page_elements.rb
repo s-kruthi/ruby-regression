@@ -20,7 +20,10 @@ COURSE_LIST_SEARCH_BOX_ID = "//input[contains(@id,'searchText')]"
 COURSE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 COURSE_LIST_DROPDOWN = "dropdown-toggle"
 
-COURSE_SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
+SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
+SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]"
+SUB_TAB_COURSE_NOT_NAME_ID = "//a[contains(.,'Course Notifications')]"
+COURSE_NOT_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
 COURSE_ADD_A_SECTION_BTN_ID = "//a[contains(.,'Add a section')]"
 
 COURSE_ADD_ACTIVITY_BTN_ID = "addactivity"
@@ -56,3 +59,23 @@ QUIZ_SAVE_BTN_ID = "//button[contains(.,'Save')]"
 FILE_TITLE_ID = "//input[contains(@id,'name')]"
 FILE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 FILE_SELECT_FILE_ID = "//a[contains(.,'Select File')]"
+
+###Label activity elements
+
+LABEL_SAVE_BTN_ID = "//button[contains(@id,'save')]"
+
+###Page activity elements
+
+PAGE_TITLE_ID = "//input[contains(@id,'name')]"
+PAGE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
+
+###Post activity elements
+
+POST_TITLE_ID = "//input[contains(@id,'name')]"
+POST_SAVE_BTN_ID = "//button[contains(@id,'submit')]"
+POST_SELECT_FILE_ID = "//a[contains(.,'Select File')]"
+
+###Notification elements
+
+ADD_NOTIFICATION_BUTTON_ID = "//button[contains(@id,'templateNotification_button_add_template')]"
+ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID = "//button[contains(@id,'templateNotification_button_submit')]"

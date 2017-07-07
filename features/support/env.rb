@@ -11,7 +11,7 @@ require 'ruby-jmeter'
 require './features/lib/device_method_factory.rb'
 
 if ENV["CHANNEL"] == nil
-  ENV['CHANNEL'] = 'firefox' #Edit this when using RubyMine needs to run against specific browser
+  ENV['CHANNEL'] = 'chrome' #Edit this when using RubyMine needs to run against specific browser
 else
   puts "CHANNEL = " + ENV["CHANNEL"]
 end

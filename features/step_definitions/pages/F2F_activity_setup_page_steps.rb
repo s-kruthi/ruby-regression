@@ -93,48 +93,64 @@ def select_an_activity(select_activity_name)
           Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
           Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[0].click)
           Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-          create_an_activity(select_activity_name)
         end
 
       when "ELMO Module"
         begin
-          $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click
-          $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[1].click
-          $driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click
-          create_an_activity(select_activity_name)
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[1].click)
+          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
         end
 
       when "ELMO Survey"
         begin
-          $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
           Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[2].click)
           Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-          create_an_activity(select_activity_name)
         end
 
       when "Face-to-Face"
         begin
-          $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
           Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[4].click)
           Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-          create_an_activity(select_activity_name)
         end
 
       when "Quiz"
         begin
-          $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
           Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[5].click)
-          $driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click
-          create_an_activity(select_activity_name)
+          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
         end
 
       when "File"
         begin
-          $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
           Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[7].click)
           Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-          create_an_activity(select_activity_name)
         end
+
+      when "Label"
+        begin
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[8].click)
+          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
+        end
+
+      when "Page"
+        begin
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[9].click)
+          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
+        end
+
+      when "Post"
+        begin
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
+          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[10].click)
+          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
+        end
+
     end
 
   end
@@ -198,11 +214,29 @@ def create_an_activity(course_activity_name)
 
       when "Label"
         begin
+          Sleep_Until(use_ckeditor_to_enter_description(LABEL_ACTIVITY_EDITOR_TXT, 0))
+          click_on_save_button(LABEL_SAVE_BTN_ID)
+          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Page"
         begin
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(PAGE_TITLE_ID, PAGE_TITLE_VALUE))
+          Sleep_Until(use_ckeditor_to_enter_description(PAGE_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(use_ckeditor_to_enter_description(PAGE_ACTIVITY_EDITOR_TXT, 1))
+          click_on_save_button(PAGE_SAVE_BTN_ID)
+          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
+
+      when "Post"
+        begin
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(POST_TITLE_ID, POST_TITLE_VALUE))
+          Sleep_Until(use_ckeditor_to_enter_description(POST_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(use_ckeditor_to_enter_description(POST_ACTIVITY_EDITOR_TXT, 1))
+          click_on_save_button(POST_SAVE_BTN_ID)
+          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        end
+
     end
 
   end
@@ -219,173 +253,44 @@ def delete_a_section(section_name)
 end
 
 
-# def goToNewDocumentCategoryPage(document_category_btn)
-#   WaitForAnElementByXpathAndTouch(document_category_btn)
-# end
-#
-# def enterDocumentCategoryDetails(document_cat_title_id, document_cat_title_txt)
-#   WaitForAnElementByXpathAndInputValue(document_cat_title_id, document_cat_title_txt)
-#   sleep(1)
-# end
-#
-# def createADocumentCategory(form_temp_save)
-#   WaitForAnElementByXpathAndTouch(form_temp_save)
-#   sleep(1)
-# end
-#
-# def hideTheFirstDocumentCategoryFromTheTable(class_name, index_value, partial_link_text)
-#   WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
-#   sleep(1)
-#   WaitForAnElementByPartialLinkTextAndTouch(partial_link_text)
-#   sleep (1)
-#   PressEnterConfirm()
-#   sleep(1)
-# end
-#
-# def searchForAFileAndVerify(search_box_id, form_temp_search_txt, search_btn_id, search_result)
-#   WaitForAnElementByXpathAndInputValue(search_box_id, form_temp_search_txt)
-#   WaitForAnElementByXpathAndTouch(search_btn_id)
-#   sleep (1)
-#   VerifyAnElementExistByXPath(search_result, form_temp_search_txt)
-# end
-#
-# def deleteTheFirstFileFromTheTable(class_name, index_value, partial_link_text)
-#   WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
-#   sleep(1)
-#   WaitForAnElementByPartialLinkTextAndTouch(partial_link_text)
-#   sleep (1)
-#   PressEnterConfirm()
-#   sleep(1)
-# end
-#
-# def ValidateDocumentSectionisPresentUnderAdmin(document_path,doc_text,forms_path,form_text)
-#   VerifyAnElementExistByXPath(document_path,doc_text)
-#   WaitForAnElementByXpathAndTouch(document_path)
-#   sleep(1)
-#   VerifyAnElementExistByXPath(forms_path,form_text)
-# end
-# def GoToReportsTab()
-#   sleep(1)
-#   $driver.find_elements(:xpath, "//a[contains(.,'Reports')]")[1].click
-#   sleep(2)
-#   $driver.find_element(:xpath, "//a[@href='/report/view/30']").click
-#   sleep(3)
-#   new_win_id = $driver.window_handles[1]
-#   $driver.switch_to.window("#{new_win_id}")
-#   $driver.find_element(:class, 'select2-input').send_keys("shan-automation-secPP", :return)
-#   sleep(5)
-#   $driver.find_element(:class, 'select2-input').send_keys( :return)
-# end
-#
-# def VerifyThePendingFormTemplates()
-#   sleep(2)
-#   $driver.find_element(:class, 'document-approval-status-2').displayed? == true
-# end
-# def RevokeDocumentViewAccessByUsingJmeterRubyService()
-#   sleep(1)
-#   test_site = 'https://tmsfull.dev.elmodev.com'
-#   test do
-#     cookies policy: 'compatibility', clear_each_iteration: true
-#     threads count: 1,loops: 1 do
-#       visit name: 'landing page', url: "#{test_site}"
-#       visit name: 'login', url: "#{test_site}/login_check",
-#             method: 'POST',fill_in: {
-#               _username: 'admin',
-#               _password: 'admin1234567'
-#
-#           }
-#       visit name: 'visit admin page', url: "#{test_site}/admin/users"
-#       visit name: 'Goto edit a role type', url: "#{test_site}/admin/roletype-edit/45" do
-#         extract regex: 'class="form-control" value="(.+?)" >', name: 'role-type-token' , match_number: 2
-#       end
-#       visit name: 'Save edited role type', url: "#{test_site}/admin/roletype-edit/45",
-#             method: 'POST',fill_in: {
-#               'roleType[title]' => 'shanku-automation-role-type',
-#               'roleType[description]' => 'abcd',
-#               'roleType[capabilities][admin][273]'=>'273',
-#               'roleType[capabilities][admin][274]'=>'274',
-#               'roleType[capabilities][admin][34]'=>'34',
-#               'roleType[capabilities][admin][143]'=>'143',
-#               'roleType[capabilities][admin][144]'=>'144',
-#               'roleType[capabilities][admin][145]'=>'145',
-#               'roleType[capabilities][admin][146]'=>'146',
-#               'roleType[capabilities][admin][147]'=>'147',
-#               'roleType[capabilities][admin][148]'=>'148',
-#               'roleType[capabilities][admin][149]'=>'149',
-#               'roleType[capabilities][admin][150]'=>'150',
-#               'roleType[capabilities][admin][151]'=>'151',
-#               'roleType[save]'=> '',
-#               'roleType[_token]'=> '${role-type-token}'
-#
-#           }
-#       view_results_tree
-#     end
-#   end.run(
-#       path: './JMETER_AUTO/apache-jmeter-3.0/bin/',
-#       file: './JMETER_AUTO/Jmeter_tests/ChangeRoleType.jmx',
-#       properties: './JMETER_AUTO/apache-jmeter-3.0/bin/jmeter.properties')
-#   sleep(3)
-# end
-#
-# def CheckReportsTabisUnavailable()
-#   sleep(3)
-#   begin
-#     sleep(1)
-#     #binding.pry
-#     expected_tab_present = $driver.find_elements(:xpath, "//a[contains(.,'Reports')]")[1].present?
-#     if expected_tab_present == false
-#       puts "Working : Reports tab disappeared"
-#     else
-#       raise VerificationException.new("ERROR: Reports tab is still present")
-#     end
-#   rescue Exception => e
-#     puts e.message
-#     $driver.quit
-#   end
-# end
-#
-# def GrantBackDocumentViewAccessByUsingJmeterRubyService()
-#   sleep(1)
-#   test_site = 'https://tmsfull.dev.elmodev.com'
-#   test do
-#     cookies policy: 'compatibility', clear_each_iteration: true
-#     threads count: 1,loops: 1 do
-#       visit name: 'landing page', url: "#{test_site}"
-#       visit name: 'login', url: "#{test_site}/login_check",
-#             method: 'POST',fill_in: {
-#               _username: 'admin',
-#               _password: 'admin1234567'
-#
-#           }
-#       visit name: 'visit admin page', url: "#{test_site}/admin/users"
-#       visit name: 'Goto edit a role type', url: "#{test_site}/admin/roletype-edit/45" do
-#         extract regex: 'class="form-control" value="(.+?)" >', name: 'role-type-token' , match_number: 2
-#       end
-#       visit name: 'Save edited role type', url: "#{test_site}/admin/roletype-edit/45",
-#             method: 'POST',fill_in: {
-#               'roleType[title]' => 'shanku-automation-role-type',
-#               'roleType[description]' => 'abcd',
-#               'roleType[capabilities][admin][273]'=>'273',
-#               'roleType[capabilities][admin][274]'=>'274',
-#               'roleType[capabilities][admin][34]'=>'34',
-#               'roleType[capabilities][admin][143]'=>'143',
-#               'roleType[capabilities][admin][144]'=>'144',
-#               'roleType[capabilities][admin][145]'=>'145',
-#               'roleType[capabilities][admin][146]'=>'146',
-#               'roleType[capabilities][admin][147]'=>'147',
-#               'roleType[capabilities][admin][148]'=>'148',
-#               'roleType[capabilities][admin][149]'=>'149',
-#               'roleType[capabilities][admin][150]'=>'150',
-#               'roleType[capabilities][admin][151]'=>'151',
-#               'roleType[capabilities][report][223]'=>'223',
-#               'roleType[save]'=> '',
-#               'roleType[_token]'=> '${role-type-token}'
-#
-#           }
-#       view_results_tree
-#     end
-#   end.run(
-#       path: './JMETER_AUTO/apache-jmeter-3.0/bin/',
-#       file: './JMETER_AUTO/Jmeter_tests/ChangeRoleType.jmx',
-#       properties: './JMETER_AUTO/apache-jmeter-3.0/bin/jmeter.properties')
-# end
+def create_all_notifications()
+  begin
+    click_add_notification_button()
+    Sleep_Until($driver.find_elements(:class, "select2-choice").first.click)
+    limit = $driver.find_elements(:class, "select2-result-selectable").count-1
+    puts "Number of Notification Triggers Found: \"#{limit+1}\"\n"
+    Sleep_Until($driver.find_elements(:class, "select2-drop").last.click)
+    Sleep_Until($driver.find_element(:xpath, "//button[contains(.,'×')]").click)
+    add_notification_trigger (limit)
+  end
+end
+
+def click_add_notification_button()
+  Sleep_Until($driver.find_elements(:xpath, ADD_NOTIFICATION_BUTTON_ID).first.click)
+end
+
+def add_notification_trigger(limit)
+  i = 0
+  for loop in i..limit do
+    click_add_notification_button()
+    Sleep_Until($driver.find_elements(:class, "select2-choice").first.click)
+    Sleep_Until($driver.find_elements(:class, "select2-result-selectable")[loop].click)
+    add_notification_template()
+    loop += 1
+  end
+end
+
+def add_notification_template()
+  begin
+    Sleep_Until($driver.find_elements(:class, "select2-choice").last.click)
+    Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
+    Sleep_Until($driver.find_elements(:xpath, "//button[contains(@id,'next')]").first.click)
+    save_notification_template()
+  end
+end
+
+def save_notification_template()
+  begin
+    Sleep_Until($driver.find_elements(:xpath, ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID).last.click)
+  end
+end

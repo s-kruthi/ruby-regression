@@ -52,18 +52,27 @@ end
 
 
 Then(/^I Should Be Able To Add A New (.*) Activity$/) do |course_activity_name|
-  click_on_a_sub_tab(COURSE_SUB_TAB_SECTION_NAME_ID)
+  click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
   add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
   select_an_activity(course_activity_name)
+  create_an_activity(course_activity_name)
   $driver.quit
 end
 
 Then(/^I Should Be Able To Delete A Specific Section$/) do
-  click_on_a_sub_tab(COURSE_SUB_TAB_SECTION_NAME_ID)
-  add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
+  click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
   delete_a_section(SECTION_TRASH_ICON_ID)
   $driver.quit
 end
+
+Then(/^I Should Be Able To Add All Notifications$/) do
+  click_on_a_sub_tab(SUB_TAB_COURSE_NOT_NAME_ID)
+  click_on_save_button(COURSE_NOT_SAVE_BUTTON_ID)
+  sleep (2)
+  click_on_a_sub_tab(SUB_TAB_APROVAL_NOT_NAME_ID)
+  create_all_notifications()
+end
+
 
 # And(/^I Go To The Documents Categories Section$/) do
 #   goToTheDocumentsAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_CAT_LIST_PATH)

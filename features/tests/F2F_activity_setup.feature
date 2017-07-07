@@ -54,6 +54,27 @@ Feature:
     When  I Edit A Specific Course
     Then  I Should Be Able To Add A New File Activity
 
+  @activity_label_add @activity_add
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Add A New Label Activity
+
+  @activity_page_add @activity_add
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Add A New Page Activity
+
+  @activity_post_add @activity_add
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Add A New Post Activity
+
   @activity_delete
   Scenario: Learning Admin creating New Activity In A Course
     Given I Have Logged In as a Learning Admin User
@@ -61,13 +82,13 @@ Feature:
     When  I Edit A Specific Course
     Then  I Should Be Able To Delete A Specific Section
 
-  Scenario: Admin edits the F2F Activity
-    Given I Have Logged In as an Admin User
-    And   I Have Opened a Course that contains F2F Activity
-    When  I Edit the F2F Activity
-    Then  I Should Be Able To Edit the Activity description and Template details
-    And I Should Be Able to Select Whether Location, Venue and Session Facilitator are Enabled for the Sessions or not
-    And I Should Be Able to Select Whether Location, Venue and Session Facilitator are Optional Fields or not
+  @activity_notifications
+  Scenario: Learning Admin creating New Activity In A Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    Then  I Should Be Able To Add All Notifications
+
 
   Scenario: Admin verifies the Sessions page
     Given I Have Logged In as an Admin User

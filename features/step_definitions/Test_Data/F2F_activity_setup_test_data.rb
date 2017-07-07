@@ -40,3 +40,17 @@ QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved.")
 FILE_TITLE_VALUE = "Test File Activity - Please DO NOT DELETE"
 FILE_ACTIVITY_EDITOR_TXT = "This is a Test File Activity Editor Content - Please DO NOT DELETE"
 FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved.")
+
+###Label activity test data
+LABEL_ACTIVITY_EDITOR_TXT = "This is a Test Label Activity Editor Content - Please DO NOT DELETE"
+LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved")
+
+###Page activity test data
+PAGE_TITLE_VALUE = "Test Page Activity - Please DO NOT DELETE"
+PAGE_ACTIVITY_EDITOR_TXT = "This is a Test Page Activity Editor Content - Please DO NOT DELETE"
+PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved")
+
+###Post activity test data
+POST_TITLE_VALUE = "Test Post Activity - Please DO NOT DELETE"
+POST_ACTIVITY_EDITOR_TXT = "This is a Test Post Activity Editor Content - Please DO NOT DELETE"
+POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Post saved successfully.")
