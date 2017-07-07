@@ -20,7 +20,7 @@ Feature:
     And I Click on The Save Button
     Then I Should Be Able To Create A New Candidate
 
-    @CreateJobAdd
+  @CreateJobAdd
   Scenario: Add A Job Ad
     Given I Am Under A Recruitment Requisition
     And  I Try To Create A New Job Ad

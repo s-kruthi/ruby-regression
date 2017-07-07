@@ -34,7 +34,7 @@ def GrabThePathIDForAssignedUser(existing_assignment_path,view_button_path, view
   $current_path_id = "/#{path_id}"
   puts $current_path_id
   #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Assigned' or subject like 'Document Due' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentAssignedTrigger' and trigger_id= 'Document.DocumentDueTrigger' or path_id='#{$current_path_id}' \\G;")
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql', "use #{TMSFULL_DATABASE} ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Assigned' or subject like 'Document Due' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentAssignedTrigger' and trigger_id= 'Document.DocumentDueTrigger' or path_id='#{$current_path_id}' \\G;")
 end
 
 def DeleteTheExistingAssignedDocumentsForUser(dropdown,index_value)
@@ -56,7 +56,7 @@ end
 def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
     trs = result.include?  ("subject: Document Assigned") #true validate
     # krs = result.include?  ("subject: Document Due") #true validate
@@ -72,7 +72,7 @@ def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -100,13 +100,13 @@ def ConfirmAndCompleteDocument(enter_message_id, doc_comp_message, document_comp
   WaitForAnElementByIdAndInputValue(enter_message_id, doc_comp_message)
   WaitForAnElementByXpathAndTouch(document_complete)
   sleep(1)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Awaiting Approval' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentSubmittedTrigger' and path_id='#{$current_path_id}' \\G;")
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql', "use #{TMSFULL_DATABASE} ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Awaiting Approval' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentSubmittedTrigger' and path_id='#{$current_path_id}' \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheDocumentAwaitingNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
     trs = result.include?  ("subject: Document Awaiting Approval") #true validate
     krs = result.include?  ("recipient_ids: /3472/") #true validate
@@ -121,7 +121,7 @@ def ConnectToDatabaseAndValidateTheDocumentAwaitingNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -157,13 +157,13 @@ def GoToTheAwaitingApprovalSectionAndApproveTheDocument(doc_approve_button, ente
   WaitForAnElementByIdAndInputValue(enter_approval_message_id, approved_message)
   WaitForAnElementByXpathAndTouch(confirm_approval)
   sleep(3)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Approved' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentApprovedTrigger' and path_id='#{$current_path_id}' \\G;")
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql', "use #{TMSFULL_DATABASE} ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Approved' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentApprovedTrigger' and path_id='#{$current_path_id}' \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheDocumentApprovedNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
     trs = result.include?  ("subject: Document Approved") #true validate
     krs = result.include?  ("recipient_ids: /3472/") #true validate
@@ -178,7 +178,7 @@ def ConnectToDatabaseAndValidateTheDocumentApprovedNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -195,13 +195,13 @@ def GoToTheAwaitingApprovalSectionAndRejectTheDocument(doc_approval_path, doc_re
   WaitForAnElementByIdAndInputValue(enter_rejection_message_id, approved_message)
   WaitForAnElementByXpathAndTouch(confirm_reject)
   sleep(3)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql', "use pmsdev_tmsfull ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Rejected' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentRejectedTrigger' and path_id='#{$current_path_id}' \\G;")
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql', "use #{TMSFULL_DATABASE} ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Rejected' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentRejectedTrigger' and path_id='#{$current_path_id}' \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheDocumentRejectedNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("is_notified: 1") #true validate
     trs = result.include?  ("subject: Document Rejected") #true validate
     krs = result.include?  ("recipient_ids: /3472/") #true validate
@@ -216,7 +216,7 @@ def ConnectToDatabaseAndValidateTheDocumentRejectedNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end

@@ -45,7 +45,7 @@ def SubmitLeaveRequest()
   load('./features/step_definitions/Test_Data/stored_ids.rb')
   puts RQST_PATH_ID
   #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_submitted.sql', "use #{STAGING_DATABASE} ; \n
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_submitted.sql', "use #{STAGING4_DATABASE} ; \n
 select*from epms_user where email='dtrump@us-president.com' and first_name='Donald' and is_notified='1' \\G; \n
 select*from epms_leave_request where user_id ='177' and id = #{$current_path_id} order by id desc \\G; \n
 select*from epms_log_message where subject like 'New Leave Request Submission' or subject like 'Leave Request Approval Action Reminder' order by id desc LIMIT 2 \\G; \n
@@ -55,7 +55,7 @@ end
 def ConnectToDatabaseAndValidateTheLeaveRequestNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_submitted.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_submitted.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("recipient_ids: /177/173/") #true validate that mail goes to both employee and manager
     trs = result.include?  ("subject: New Leave Request Submission") #true validate
     krs = result.include?  ("subject: Leave Request Approval Action Reminder") #true validate
@@ -72,7 +72,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -92,7 +92,7 @@ def EnterCommentAndCancelTheRequest(cancellation_reason)
   $driver.find_element(:css, 'button[ng-click="postLeaveRequestCancellation()"]').click
   sleep(1)
   #dump the constructed SQL query into leave_request_submitted.sql file
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled.sql', "use #{STAGING_DATABASE} ; \n
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled.sql', "use #{STAGING4_DATABASE} ; \n
   select*from epms_log_message where subject='Leave Request Cancelled by Requester' order by id desc LIMIT 1 \\G; \n
   select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRequesterCancellationTrigger' and user_id=177 order by id desc LIMIT 1 \\G; \n
   select*from epms_leave_request where user_id=177 and status=7 and id=#{$current_path_id} order by id desc \\G;")
@@ -101,7 +101,7 @@ end
 def ConnectToDatabaseAndValidateTheLeaveRequestCancelledNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 7") #true validate for cancelled status
     krs = result.include?  ("user_id: 177") #true validate for employee cancelled the leave
     trs = result.include?  ("subject: Leave Request Cancelled by Requester") #true validate
@@ -117,7 +117,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestCancelledNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -135,7 +135,7 @@ end
 def ConnectToDatabaseAndValidateTheLeaveRequestCancelledByApproverNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled_by_approver.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled_by_approver.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 7") #true validate for cancelled status
     krs = result.include?  ("user_id: 659") #true validate for manager cancelled the request
     trs = result.include?  ("subject: Leave Request Cancelled by Approver") #true validate
@@ -151,7 +151,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestCancelledByApproverNotifications(
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -176,7 +176,7 @@ def ViewTheLeaveRequestAndRejectIt(dropdown_toggle,position,add_comment)
   puts REJECT_ID
   #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
 
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql', "use #{STAGING_DATABASE} ; \n
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql', "use #{STAGING4_DATABASE} ; \n
  select*from epms_log_message where subject='Leave Rejection Notification' order by id desc LIMIT 1 \\G; \n
  select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRejectTrigger' and user_id=709 order by id desc LIMIT 1 \\G; \n
  select*from epms_leave_request_workflow where user_id='659' and status='2' and request_id='#{$rejected_path_id}' order by id desc \\G;" )
@@ -185,7 +185,7 @@ end
 def ConnectToDatabaseAndValidateTheLeaveRequestRejectedByApproverNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 2") #true validate for rejected status
     krs = result.include?  ("user_id: 659") #true validate for manager cancelled the request
     prs = result.include?  ("request_id: #{$rejected_path_id}") #true validate for latest rejected request id
@@ -202,7 +202,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestRejectedByApproverNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -219,7 +219,7 @@ end
 def ConnectToDatabaseAndValidateTheLeaveRequestResubmissionNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_resubmitted.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_resubmitted.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 1") #true validate for resubmitted status
     krs = result.include?  ("user_id: 709") #true validate for employee resubmitted the request
     trs = result.include?  ("subject: Leave Request Re-Submission") #true validate
@@ -235,7 +235,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestResubmissionNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -251,7 +251,7 @@ def ViewTheLeaveRequestAndRejectAndCloseIt(dropdown_toggle,position,add_comment)
   $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{add_comment}"
   $driver.find_element(:css, 'button[ng-click="rejectAndCloseLeaveRequest()"]').click
   sleep(2)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql', "use #{STAGING_DATABASE} ; \n
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql', "use #{STAGING4_DATABASE} ; \n
  select*from epms_log_message where subject='Leave Rejection Notification' order by id desc LIMIT 1 \\G; \n
  select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRejectTrigger' and user_id=709 order by id desc LIMIT 1 \\G; \n
  select*from epms_leave_request_workflow where user_id='659' and status='3' and request_id='#{REJECT_ID}' order by id desc \\G;")
@@ -260,7 +260,7 @@ end
 def ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 3") #true validate for closed status
     krs = result.include?  ("user_id: 659") #true validate for manager cancelled the request
     prs = result.include?  ("request_id: #{REJECT_ID}") #true validate for latest rejected request id
@@ -277,7 +277,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -286,7 +286,7 @@ end
 def ConnectToDatabaseAndValidateTheApprovedRequestSubmissionNotification()
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_approved.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_approved.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 4") #true validate for approver approved the request status
     krs = result.include?  ("user_id: 709") #true validate for employee submitted the request
     trs = result.include?  ("subject: leave approved") #true validate
@@ -303,7 +303,7 @@ def ConnectToDatabaseAndValidateTheApprovedRequestSubmissionNotification()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -314,7 +314,7 @@ def MatchTheExpectedLeaveBucketFromDatabase()
   #include Leave
   StartTheTunnel()
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{STAGING_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_bucket_check.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_bucket_check.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     # frs = result.include?  ("balance: #{Leave.annual_leave}") #true validate for first balance
     # krs = result.include?  ("balance: #{Leave.personal_leave}") #true validate for first balance
     # trs = result.include?  ("balance: #{Leave.limit_leave}") #true validate for first balance
