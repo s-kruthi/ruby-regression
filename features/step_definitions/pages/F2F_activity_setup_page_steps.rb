@@ -294,3 +294,13 @@ def save_notification_template()
     Sleep_Until($driver.find_elements(:xpath, ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID).last.click)
   end
 end
+
+def add_admin_notification_templates()
+  begin
+    click_add_notification_button()
+    Sleep_Until($driver.find_elements(:class, "select2-choice").first.click)
+    limit = $driver.find_elements(:class, "select2-result-selectable").count-1
+    puts "Number of Notification Triggers Found: \"#{limit+1}\"\n"
+    Sleep_Until($driver.find_elements(:class, "select2-drop").last.click)
+  end
+end

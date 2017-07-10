@@ -15,7 +15,7 @@ COURSE_CERTIFICATE_TEMPLATE_ID = "//select[contains(@name,'course[cTemplate]')]"
 COURSE_SELF_ENROLL_INPUT_ID = "//select[contains(@id,'allowSelfUnenrol')]"
 COURSE_SHOW_SEC_DESC_INPUT_ID = "//select[contains(@id,'settingsShowSectionDescription')]"
 COURSE_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
-"//div[contains(@class,'alert alert-success')]"
+
 COURSE_LIST_SEARCH_BOX_ID = "//input[contains(@id,'searchText')]"
 COURSE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 COURSE_LIST_DROPDOWN = "dropdown-toggle"
@@ -78,4 +78,4 @@ POST_SELECT_FILE_ID = "//a[contains(.,'Select File')]"
 ###Notification elements
 
 ADD_NOTIFICATION_BUTTON_ID = "//button[contains(@id,'templateNotification_button_add_template')]"
-ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID = "//button[contains(@id,'templateNotification_button_submit')]"
+ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
