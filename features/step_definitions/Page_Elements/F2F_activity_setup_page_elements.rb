@@ -21,8 +21,11 @@ COURSE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 COURSE_LIST_DROPDOWN = "dropdown-toggle"
 
 SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
-SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]"
-SUB_TAB_COURSE_NOT_NAME_ID = "//a[contains(.,'Course Notifications')]"
+#Legacy Approval Notifications tab name
+# SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]"
+SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Notifications')]"
+
+# SUB_TAB_COURSE_NOT_NAME_ID = "//a[contains(.,'Course Notifications')]"
 COURSE_NOT_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
 COURSE_ADD_A_SECTION_BTN_ID = "//a[contains(.,'Add a section')]"
 

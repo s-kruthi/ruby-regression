@@ -66,9 +66,9 @@ Then(/^I Should Be Able To Delete A Specific Section$/) do
 end
 
 Then(/^I Should Be Able To Add All Notifications$/) do
-  click_on_a_sub_tab(SUB_TAB_COURSE_NOT_NAME_ID)
-  click_on_save_button(COURSE_NOT_SAVE_BUTTON_ID)
-  sleep (2)
+  # click_on_a_sub_tab(SUB_TAB_COURSE_NOT_NAME_ID)
+  # click_on_save_button(COURSE_NOT_SAVE_BUTTON_ID)
+  # sleep (2)
   click_on_a_sub_tab(SUB_TAB_APROVAL_NOT_NAME_ID)
   create_all_notifications()
 end
