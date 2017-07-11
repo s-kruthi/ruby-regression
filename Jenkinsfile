@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                 sh 'cucumber --tags @create_leave_type CHANNEL=firefox'
             }
         }
         stage('Deploy') {
