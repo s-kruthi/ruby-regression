@@ -13,6 +13,8 @@ COURSE_SHOW_SEC_DESC_INPUT_VALUE = "Yes"
 COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE = "Course has been saved!"
 
 COURSE_LIST_TITLE_VALUE = "Test Course - Please DO NOT DELETE"
+# COURSE_LIST_TITLE_VALUE = "Document Test - 08.02.2017 - Omar"
+
 COURSE_LIST_ACTION_ITEM = "Edit"
 
 ###Acknowledgement activity test data
