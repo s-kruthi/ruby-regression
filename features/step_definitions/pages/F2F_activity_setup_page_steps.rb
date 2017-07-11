@@ -280,7 +280,7 @@ def add_notification_trigger(limit)
     add_notification_template()
     loop += 1
   end
-  puts "Number of Notification Templates added: \"#{limit}\"\n"
+  puts "Number of Notification Templates added: \"#{limit+1}\"\n"
 end
 
 def add_notification_template()
