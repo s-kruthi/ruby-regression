@@ -256,7 +256,8 @@ end
 def create_all_notifications()
   begin
     click_add_notification_button()
-    Sleep_Until($driver.find_elements(:class, "select2-choice").first.click)
+    # Sleep_Until($driver.find_elements(:class, "select2-choice").first.click)
+    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
     limit = $driver.find_elements(:class, "select2-result-selectable").count-1
     puts "Number of Notification Triggers Found: \"#{limit+1}\"\n"
     Sleep_Until($driver.find_elements(:class, "select2-drop").last.click)
@@ -273,16 +274,19 @@ def add_notification_trigger(limit)
   i = 0
   for loop in i..limit do
     click_add_notification_button()
-    Sleep_Until($driver.find_elements(:class, "select2-choice").first.click)
+    # Sleep_Until($driver.find_elements(:class, "select2-choice").first.click)
+    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
     Sleep_Until($driver.find_elements(:class, "select2-result-selectable")[loop].click)
     add_notification_template()
     loop += 1
   end
+  puts "Number of Notification Templates added: \"#{limit}\"\n"
 end
 
 def add_notification_template()
   begin
-    Sleep_Until($driver.find_elements(:class, "select2-choice").last.click)
+    # Sleep_Until($driver.find_elements(:class, "select2-choice").last.click)
+    $driver.find_element(:id, "s2id_templateNotification_template").click
     Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
     Sleep_Until($driver.find_elements(:xpath, "//button[contains(@id,'next')]").first.click)
     save_notification_template()
