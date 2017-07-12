@@ -75,6 +75,9 @@ module Chrome
     def PressEnterConfirm()
       $driver.find_element(:css, "[data-bb-handler='confirm']").click
     end
+    def PressEnterConfirm()
+      $driver.find_element(:css, "[data-bb-handler='']").click
+    end
     def PressEnterOK()
       $driver.find_element(:css, "[data-bb-handler='ok']").click
     end

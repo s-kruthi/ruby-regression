@@ -8,7 +8,10 @@ NEW_COURSE_TITLE_ID = "//input[contains(@id,'fullname')]"
 NEW_COURSE_CATEGORY_ID = ""
 NEW_COURSE_CODE_ID = "//input[contains(@id,'shortname')]"
 
+COURSE_RETRAIN = "1"
+
 COURSE_RETRAIN_INPUT_ID = "//select[contains(@id,'retrain')]"
+COURSE_RETRAIN_OPEN_INPUT_ID = "//select[contains(@id,'retrainOpen')]"
 COURSE_COMPLETE_INPUT_ID = "//select[contains(@id,'duration')]"
 COURSE_AVAILABILITY_INPUT_ID = "//select[contains(@id,'visible')]"
 COURSE_CERTIFICATE_TEMPLATE_ID = "//select[contains(@name,'course[cTemplate]')]"
@@ -19,6 +22,7 @@ COURSE_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')
 COURSE_LIST_SEARCH_BOX_ID = "//input[contains(@id,'searchText')]"
 COURSE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 COURSE_LIST_DROPDOWN = "dropdown-toggle"
+COURSE_DELETE_BTN_NAME_ID = "//button[contains(@name,'submit')]"
 
 SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
 #Legacy Approval Notifications tab name
