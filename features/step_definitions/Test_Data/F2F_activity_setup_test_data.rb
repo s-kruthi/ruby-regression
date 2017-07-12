@@ -5,6 +5,7 @@ NEW_COURSE_CODE_VALUE = "test00" + rand(10..100).to_s
 NEW_COURSE_DESC_TEXT = "This is a Test For a New Course - Please DO NOT DELETE"
 
 COURSE_RETRAIN_INPUT_VALUE = "1 Month"
+COURSE_RETRAIN_OPEN_INPUT_VALUE = "2 Weeks Before Retrain Date"
 COURSE_COMPLETE_INPUT_VALUE = "3 Weeks"
 COURSE_AVAILABILITY_INPUT_VALUE = "Available to all users"
 COURSE_CERTIFICATE_TEMPLATE_VALUE = "EldersL"
@@ -15,7 +16,8 @@ COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE = "Course has been saved!"
 COURSE_LIST_TITLE_VALUE = "Test Course - Please DO NOT DELETE"
 # COURSE_LIST_TITLE_VALUE = "Document Test - 08.02.2017 - Omar"
 
-COURSE_LIST_ACTION_ITEM = "Edit"
+COURSE_LIST_ACTION_ITEM_EDIT = "Edit"
+COURSE_LIST_ACTION_ITEM_DELETE = "Delete"
 
 ###Acknowledgement activity test data
 ACK_TITLE_VALUE = "Test Acknowledgement Activity - Please DO NOT DELETE"
