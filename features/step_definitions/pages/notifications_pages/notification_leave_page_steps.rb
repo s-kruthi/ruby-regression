@@ -1,6 +1,6 @@
 def ClickNewRequestButtonAndGoToLeaveApplyPage()
   WaitForAnElementByXpathAndTouch("//a[@href='/dashboard/leave/leave-request']")
-  sleep(5)
+  Sleep_Until($driver.find_elements(:css, 'select[data-ng-model="data.leaveRequest.type"]'))
 end
 
 def SelectLeaveType()
@@ -17,12 +17,12 @@ end
 def SelectEndDate(end_date)
   $driver.find_element(:css, 'input[ng-model="data.leaveRequest.endDate"]').clear
   $driver.find_element(:css, 'input[ng-model="data.leaveRequest.endDate"]').send_keys "#{end_date}"
-  sleep(2)
+  sleep(3)
 end
 def ModifyLeaveHours(modify_hrs)
   $driver.find_element(:css, 'input[ng-model="data.leaveRequest.totalHours"]').clear
   $driver.find_element(:css, 'input[ng-model="data.leaveRequest.totalHours"]').send_keys "#{modify_hrs}"
-  sleep(1)
+  sleep(3)
 end
 def AddComment(add_comment)
   $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{add_comment}"
@@ -35,7 +35,7 @@ def SubmitLeaveRequest()
   #   sleep(3)
   #   puts $driver.page_source()
   # end
-  Sleep_Until($driver.find_element(:css, 'b[ng-class="event.status|statusColor"]'))
+  Sleep_Until($driver.find_element(:css, 'span[ng-class="event.status|statusIcon"]'))
 
   path_url = $driver.current_url
   path_id = path_url.split('/')[-1]
@@ -56,7 +56,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestNotifications()
   StartTheTunnel()
   begin
     result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_submitted.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
-    frs = result.include?  ("recipient_ids: /177/173/") #true validate that mail goes to both employee and manager
+    frs = result.include?  ("recipient_ids: /177/210/") #true validate that mail goes to both employee and manager
     trs = result.include?  ("subject: New Leave Request Submission") #true validate
     krs = result.include?  ("subject: Leave Request Approval Action Reminder") #true validate
     mrs = result.include?  ("trigger_id: Leave.LeaveRequestApprovalReminderTrigger") #true validate
@@ -72,7 +72,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    #%x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -84,6 +84,11 @@ def CancelTheLeaveRequestPendingForApproval(dropdown_toggle, position,cancellati
   sleep(1)
   EnterCommentAndCancelTheRequest(cancellation_reason)
   sleep(1)
+  #dump the constructed SQL query into leave_request_submitted.sql file
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled_by_approver.sql', "use #{STAGING4_DATABASE} ; \n
+  select*from epms_log_message where subject='Leave Request Cancelled by Approver' and recipient_ids='/177/210/'  order by id desc LIMIT 1 \\G; \n
+  select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestApproverCancellationTrigger' and user_id=177 order by id desc LIMIT 1 \\G; \n
+  select*from epms_leave_request_workflow where user_id =210 and status=7 order by id desc LIMIT 1 \\G;")
 end
 def EnterCommentAndCancelTheRequest(cancellation_reason)
   $driver.find_element(:css, 'a[ng-click="lr.openLeaveRequestCancellation(request)"]').click
@@ -137,10 +142,10 @@ def ConnectToDatabaseAndValidateTheLeaveRequestCancelledByApproverNotifications(
   begin
     result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_cancelled_by_approver.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 7") #true validate for cancelled status
-    krs = result.include?  ("user_id: 659") #true validate for manager cancelled the request
+    krs = result.include?  ("user_id: 177") #true validate for manager cancelled the request
     trs = result.include?  ("subject: Leave Request Cancelled by Approver") #true validate
     mrs = result.include?  ("trigger_id: Leave.LeaveRequestApproverCancellationTrigger") #true validate
-    qrs = result.include?  ("recipient_ids: /709/659/") #true validate that mail goes to both employee and manager
+    qrs = result.include?  ("recipient_ids: /177/210/") #true validate that mail goes to both employee and manager
     if frs && krs && trs && mrs && qrs
       puts "Yay! Notification has been triggered"
     else
@@ -178,8 +183,8 @@ def ViewTheLeaveRequestAndRejectIt(dropdown_toggle,position,add_comment)
 
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql', "use #{STAGING4_DATABASE} ; \n
  select*from epms_log_message where subject='Leave Rejection Notification' order by id desc LIMIT 1 \\G; \n
- select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRejectTrigger' and user_id=709 order by id desc LIMIT 1 \\G; \n
- select*from epms_leave_request_workflow where user_id='659' and status='2' and request_id='#{$rejected_path_id}' order by id desc \\G;" )
+ select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRejectTrigger' and user_id=177 order by id desc LIMIT 1 \\G; \n
+ select*from epms_leave_request_workflow where user_id='210' and status='2' and request_id='#{$rejected_path_id}' order by id desc \\G;" )
 end
 
 def ConnectToDatabaseAndValidateTheLeaveRequestRejectedByApproverNotifications()
@@ -187,11 +192,11 @@ def ConnectToDatabaseAndValidateTheLeaveRequestRejectedByApproverNotifications()
   begin
     result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 2") #true validate for rejected status
-    krs = result.include?  ("user_id: 659") #true validate for manager cancelled the request
+    krs = result.include?  ("user_id: 210") #true validate for manager cancelled the request
     prs = result.include?  ("request_id: #{$rejected_path_id}") #true validate for latest rejected request id
     trs = result.include?  ("subject: Leave Rejection Notification") #true validate
     mrs = result.include?  ("trigger_id: Leave.LeaveRequestRejectTrigger") #true validate
-    qrs = result.include?  ("recipient_ids: /709/659/") #true validate that mail goes to both employee and manager
+    qrs = result.include?  ("recipient_ids: /177/210/") #true validate that mail goes to both employee and manager
     if frs && krs && prs && trs && mrs && qrs
       puts "Yay! Notification has been triggered"
     else
@@ -202,7 +207,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestRejectedByApproverNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    #%x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -212,8 +217,16 @@ def GoToEditLeavePageAndResubmitThePendingLeave(add_comment)
   puts REJECT_ID
   WaitForAnElementByXpathAndTouch("//a[@href='/dashboard/leave/leave-request/#{REJECT_ID}']")
   sleep(3)
+  $driver.find_elements(:xpath, "//a[contains(.,'Edit')]")[1].click
+  sleep(3)
   $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{add_comment}"
   $driver.find_element(:css, 'button[ng-click="postLeaveRequest()"]').click
+
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_resubmitted.sql', "use #{STAGING4_DATABASE} ; \n
+ select*from epms_log_message where subject = 'Leave Request Re-Submission' order by id desc LIMIT 1 \\G; \n
+ select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestReSubmissionTrigger' and user_id=177 order by id desc LIMIT 1 \\G; \n
+ select*from epms_leave_request where user_id=177 and status=1 order by id desc LIMIT 1 \\G;" )
+
 end
 
 def ConnectToDatabaseAndValidateTheLeaveRequestResubmissionNotifications()
@@ -221,10 +234,10 @@ def ConnectToDatabaseAndValidateTheLeaveRequestResubmissionNotifications()
   begin
     result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_resubmitted.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 1") #true validate for resubmitted status
-    krs = result.include?  ("user_id: 709") #true validate for employee resubmitted the request
+    krs = result.include?  ("user_id: 177") #true validate for employee resubmitted the request
     trs = result.include?  ("subject: Leave Request Re-Submission") #true validate
     mrs = result.include?  ("trigger_id: Leave.LeaveRequestReSubmissionTrigger") #true validate
-    qrs = result.include?  ("recipient_ids: /709/659/") #true validate that mail goes to both employee and manager
+    qrs = result.include?  ("recipient_ids: /177/210/") #true validate that mail goes to both employee and manager
     if frs && krs && trs && mrs && qrs
       puts "Yay! Notification has been triggered"
     else
@@ -235,7 +248,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestResubmissionNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    #%x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -253,8 +266,8 @@ def ViewTheLeaveRequestAndRejectAndCloseIt(dropdown_toggle,position,add_comment)
   sleep(2)
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql', "use #{STAGING4_DATABASE} ; \n
  select*from epms_log_message where subject='Leave Rejection Notification' order by id desc LIMIT 1 \\G; \n
- select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRejectTrigger' and user_id=709 order by id desc LIMIT 1 \\G; \n
- select*from epms_leave_request_workflow where user_id='659' and status='3' and request_id='#{REJECT_ID}' order by id desc \\G;")
+ select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRejectTrigger' and user_id=177 order by id desc LIMIT 1 \\G; \n
+ select*from epms_leave_request_workflow where user_id='210' and status='3' and request_id='#{REJECT_ID}' order by id desc \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
@@ -262,11 +275,11 @@ def ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
   begin
     result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 3") #true validate for closed status
-    krs = result.include?  ("user_id: 659") #true validate for manager cancelled the request
+    krs = result.include?  ("user_id: 210") #true validate for manager cancelled the request
     prs = result.include?  ("request_id: #{REJECT_ID}") #true validate for latest rejected request id
     trs = result.include?  ("subject: Leave Rejection Notification") #true validate
     mrs = result.include?  ("trigger_id: Leave.LeaveRequestRejectTrigger") #true validate
-    qrs = result.include?  ("recipient_ids: /709/659/") #true validate that mail goes to both employee and manager
+    qrs = result.include?  ("recipient_ids: /177/210/") #true validate that mail goes to both employee and manager
     if frs && krs && prs && trs && mrs && qrs
       puts "Yay! Notification has been triggered"
     else
@@ -277,7 +290,7 @@ def ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
     puts "not valid"
 
   ensure
-    %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
+    #%x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
@@ -288,10 +301,10 @@ def ConnectToDatabaseAndValidateTheApprovedRequestSubmissionNotification()
   begin
     result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_approved.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
     frs = result.include?  ("status: 4") #true validate for approver approved the request status
-    krs = result.include?  ("user_id: 709") #true validate for employee submitted the request
-    trs = result.include?  ("subject: leave approved") #true validate
+    krs = result.include?  ("user_id: 177") #true validate for employee submitted the request
+    trs = result.include?  ("subject: Leave Approval Notification") #true validate
     mrs = result.include?  ("trigger_id: Leave.LeaveRequestApprovalTrigger") #true validate
-    qrs = result.include?  ("recipient_ids: /709/715/") #true validate that mail goes to both employee and manager
+    qrs = result.include?  ("recipient_ids: /177/178/") #true validate that mail goes to both employee and manager
     lrs = result.include?  ("id: #{RQST_PATH_ID}") #true validate for latest approved request id
     if frs && krs && trs && mrs && qrs
       puts "Yay! Notification has been triggered"

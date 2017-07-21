@@ -21,20 +21,20 @@ Feature:
     And   I Cancel The Leave That My Employee has Requested For
     Then  My Employee Should Be Instantly Notified About The Leave Request cancellation
 
-  @leave_request_Rejected @group_by_3
+  @leave_request_Rejected @group_by_300
   Scenario: Manger Rejects The Leave which triggers notification to the employee
     Given An Employee Has Applied For A Leave Which Is Awaiting Approval
     When  I Am On The Managers Leave Management Page
     And   I Reject The Leave That My Employee has Requested For
     Then  My Employee Should Be Instantly Notified About The Leave Request Rejection
 
-  @leave_request_resubmitted @group_by_3
+  @leave_request_resubmitted @group_by_300
   Scenario: Employee Resubmits The Leave which triggers notification
     Given I Am On The New Leave Request Page
     When  I Edit The Leave That Is Reopened Post Rejection By Approver
     Then  There Should Be An Instant Notification About Leave Resubmission
 
-  @leave_request_RejectedAndClosed @group_by_3
+  @leave_request_RejectedAndClosed @group_by_300
   Scenario: Manager Finally Reject And Close The Leave Request which triggers notification
     When  I Am On The Managers Leave Management Page
     And   I Reject And Close The Leave That My Employee has Requested For

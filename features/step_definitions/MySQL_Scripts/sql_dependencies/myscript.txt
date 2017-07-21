@@ -1,113 +1,36 @@
 *************************** 1. row ***************************
-                   id: 177
-           manager_id: 173
-    second_manager_id: NULL
-contractor_company_id: NULL
-             username: dtrump
-           identifier: dtrump 
-                 salt: 
-             password: 2c763172f276758229f4eda179a83f81
-           first_name: Donald
-            last_name: trump
-                email: dtrump@us-president.com
-            is_active: 1
-          is_notified: 1
-              is_elmo: 0
-          description: NULL
-            phoneWork: NULL
-            phoneHome: NULL
-               mobile: NULL
-                  fax: NULL
-                  img: NULL
-         profileImage: NULL
-              created: NULL
-             modified: NULL
-           lastAccess: NULL
-           last_login: 1497916195
-          last_logout: 1497916230
-          expiry_date: 0
-             reg_type: manual
-            confirmed: 1
-          confirm_key: NULL
-force_password_change: 0
-           is_deleted: 0
-         deleted_time: NULL
-                 path: /171/173/
-                depth: 3
-          second_path: NULL
-         second_depth: NULL
-               locale: NULL
-        department_id: NULL
-          location_id: NULL
-          position_id: NULL
-          branding_id: NULL
-        is_onboarding: 0
-   onboarding_matched: 0
-          login_count: 1
-           start_date: 1486040400
-             timezone: NULL
-                 type: 0
-            vendor_id: NULL
-       cost_centre_id: NULL
-*************************** 1. row ***************************
-                 id: 17
-            user_id: 177
-          policy_id: 1
-            type_id: 1
-         start_date: 1505916000
-           end_date: 1506088799
-paycycle_start_date: 1505311200
-  paycycle_due_date: 1506520799
-          task_date: 1497939698
-     finalized_date: NULL
-             action: 3
-             status: 1
-         total_hour: 16
-    init_total_hour: 16
-          total_day: 2
-      total_weekend: 0
-             params: a:2:{s:20:"standardHoursPerWeek";s:2:"40";s:13:"stateEmployed";s:3:"NSW";}
-       created_date: 1497939698
-      modified_date: 1497939698
-         is_deleted: 0
-       deleted_time: NULL
-*************************** 1. row ***************************
-            id: 2624
-          type: 1
-   source_type: 1
-       subject: New Leave Request Submission
-          body: <p>dewqdwed</p>
-     fromEmail: {"noreply@elmotalent.com.au":"ELMO Team"}
-    replyEmail: {"noreply@elmotalent.com.au":"ELMO Team"}
-    recipients: {"to":{"dtrump@us-president.com":"Donald trump"},"cc":{"asha.test3@elmo.com.au":"Asha Employee"},"bcc":null}
-      priority: 1
-  created_time: 1497939698
-    fired_time: NULL
-        status: 0
-       context: a:1:{s:8:"schedule";i:3564;}
-      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#195799";s:13:"menuFontColor";s:7:"#ffffff";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:6;s:4:"type";i:0;}
-      template: NULL
-    is_deleted: 0
-  deleted_time: NULL
- recipient_ids: /177/173/
-     source_id: 3564
-         count: 0
-attachment_ids: []
-*************************** 1. row ***************************
-          id: 3268
-  trigger_id: Leave.LeaveRequestSubmissionTrigger
-     user_id: 177
-  sort_order: 1:4011-4015:17-39
-   path_name: /4011/4015
-     path_id: /17/39
-  is_deleted: 0
-deleted_time: NULL
+                    id: 32
+               user_id: 177
+         leave_type_id: 10
+                  type: 2
+leave_entitlement_type: NULL
+                status: 1
+               balance: 40
+          created_date: 1497935913
+         modified_date: 1500419346
+            is_deleted: 0
+          deleted_time: NULL
 *************************** 2. row ***************************
-          id: 3267
-  trigger_id: Leave.LeaveRequestApprovalReminderTrigger
-     user_id: 177
-  sort_order: 0:4011:17
-   path_name: /4011/4015
-     path_id: /17/40
-  is_deleted: 0
-deleted_time: NULL
+                    id: 31
+               user_id: 177
+         leave_type_id: NULL
+                  type: 1
+leave_entitlement_type: 2
+                status: 1
+               balance: 12.1538
+          created_date: 1497935913
+         modified_date: 1499555353
+            is_deleted: 0
+          deleted_time: NULL
+*************************** 3. row ***************************
+                    id: 30
+               user_id: 177
+         leave_type_id: NULL
+                  type: 1
+leave_entitlement_type: 1
+                status: 1
+               balance: 16.3076
+          created_date: 1497935913
+         modified_date: 1499555353
+            is_deleted: 0
+          deleted_time: NULL

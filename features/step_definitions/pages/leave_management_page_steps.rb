@@ -121,6 +121,13 @@ end
 
 def ApproveTheSubmittedLeaveRequest(approval_reason)
   sleep(2)
+   if $driver.find_element(:css, 'input[class="ng-pristine ng-untouched ng-valid ng-not-empty"]')
+     $driver.find_element(:css, 'input[ng-click="lr.getCurrentPayrollCycleRequests()"]').click
+     sleep(2)
+    puts "all good, current payroll cycle box has been unchecked"
+     elsif $driver.find_element(:css, 'input[class="ng-untouched ng-valid ng-empty ng-dirty ng-valid-parse"]')
+      puts "current payroll cycle view box is already unchecked"
+    end
   $driver.find_element(:xpath, %(//a[@ng-href='/admin/leave/leave-request/#{RQST_PATH_ID}'])).click
   sleep(3)
   $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{approval_reason}"
@@ -128,12 +135,20 @@ def ApproveTheSubmittedLeaveRequest(approval_reason)
   sleep(3)
   $driver.navigate.back
   sleep(2)
-  $driver.find_element(:xpath, "//a[contains(.,'Approved Request')]").click
+  #$driver.find_element(:xpath, "//a[contains(.,'Approved Request')]").click
 end
 
 def ModifyLeaveHrAndProcessTheLeaveRequest()
   $driver.find_element(:xpath, "//a[contains(.,'Approved Request')]").click
-  sleep(2)
+  sleep(3)
+  if $driver.find_element(:css, 'input[class="ng-pristine ng-untouched ng-valid ng-not-empty"]')
+    $driver.find_element(:css, 'input[ng-click="lr.getCurrentPayrollCycleRequests()"]').click
+    sleep(2)
+    puts "all good, current payroll cycle box has been unchecked"
+  elsif $driver.find_element(:css, 'input[class="ng-untouched ng-valid ng-empty ng-dirty ng-valid-parse"]')
+    puts "current payroll cycle view box is already unchecked"
+  end
+  sleep(3)
   $driver.find_element(:xpath, "//input[@ng-model='lr.data.criteria.searchText']").send_keys("Donald Trump", :return)
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
