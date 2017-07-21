@@ -11,13 +11,19 @@ Feature:
     And   I Add New Course Details
     Then  I Should Be Able To Create A New Course
 
-
   @course_search
   Scenario: Learning Admin Searching New Course
     Given I Have Logged In as a Learning Admin User
     And   I Go To The Courses Section
     When  I Search For A Specific Course
     Then  I Should Be Able To Edit The Specific Course
+
+  @course_delete
+  Scenario: Learning Admin Creating New Course
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Search For A Specific Course
+    Then  I Should Be Able To Delete The Specific Course
 
   @activity_ack_add @activity_add
   Scenario: Learning Admin creating New Activity In A Course

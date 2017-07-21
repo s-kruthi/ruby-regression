@@ -20,7 +20,8 @@ And(/^I Add New Course Details$/) do
   # enter_course_category()
   enter_course_code(NEW_COURSE_CODE_ID, NEW_COURSE_CODE_VALUE)
   enter_course_description(NEW_COURSE_DESC_TEXT, 0)
-  enter_course_retrain(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE)
+  enter_course_retrain(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN == "1"
+  enter_course_retrain_open(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN == "1"
   enter_course_complete(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
   enter_course_availability(COURSE_AVAILABILITY_INPUT_ID, COURSE_AVAILABILITY_INPUT_VALUE)
   enter_course_certificate_template(COURSE_CERTIFICATE_TEMPLATE_ID, COURSE_CERTIFICATE_TEMPLATE_VALUE)
@@ -41,13 +42,20 @@ end
 
 
 Then(/^I Should Be Able To Edit The Specific Course$/) do
-  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN,3, COURSE_LIST_ACTION_ITEM)
+  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN,3, COURSE_LIST_ACTION_ITEM_EDIT)
+  $driver.quit
+end
+
+
+Then(/^I Should Be Able To Delete The Specific Course$/) do
+  delete_the_first_course_from_table(COURSE_LIST_DROPDOWN,3, COURSE_LIST_ACTION_ITEM_DELETE)
+  click_on_button_in_iframe(COURSE_DELETE_BTN_NAME_ID)
   $driver.quit
 end
 
 When(/^I Edit A Specific Course$/) do
   search_a_course(COURSE_LIST_SEARCH_BOX_ID, COURSE_LIST_TITLE_VALUE, COURSE_SEARCH_BTN_ID)
-  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN,3, COURSE_LIST_ACTION_ITEM)
+  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN,3, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 

@@ -31,6 +31,10 @@ def enter_course_retrain(course_retrain_input_id, course_retrain_input_value)
   select_from_drop_down(course_retrain_input_id, course_retrain_input_value)
 end
 
+def enter_course_retrain_open(course_retrain_open_input_id, course_retrain_open_input_value)
+  select_from_drop_down(course_retrain_open_input_id, course_retrain_open_input_value)
+end
+
 def enter_course_complete(course_complete_input_id, course_complete_input_value)
   select_from_drop_down(course_complete_input_id, course_complete_input_value)
 end
@@ -73,6 +77,37 @@ def edit_the_first_course_from_table(class_name, index_value, partial_link_text)
   Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(class_name, index_value))
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
+
+def delete_the_first_course_from_table(class_name,index_value, partial_link_text)
+  Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(class_name, index_value))
+  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
+end
+
+def click_on_button_in_iframe(course_delete_btn_name_id)
+    begin
+      wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+      select_item = wait.until {
+        element = $driver.find_element(:id, "iframe")
+        element if element.displayed?
+
+      }
+      $driver.switch_to.frame(select_item)
+
+      Sleep_Until($driver.find_element(:xpath, course_delete_btn_name_id).click)
+      sleep (1)
+      Sleep_Until(VerifyAnElementExistByXPath("//div[@class='col-md-12']", 'Course has been deleted!'))
+      $driver.switch_to.parent_frame
+      Sleep_Until($driver.find_element(:xpath, "//button[contains(@class,'close')]").click)
+
+    rescue Exception => e
+      puts e.message
+      $driver.quit
+    end
+end
+
+
+
+
 
 def click_on_a_sub_tab(sub_tab_name_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(sub_tab_name_id))
