@@ -106,9 +106,6 @@ def click_on_button_in_iframe(course_delete_btn_name_id)
 end
 
 
-
-
-
 def click_on_a_sub_tab(sub_tab_name_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(sub_tab_name_id))
 end
@@ -119,78 +116,11 @@ end
 
 
 def select_an_activity(select_activity_name)
-  begin
-
-    case select_activity_name
-
-      when "Acknowledgement"
-        begin
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[0].click)
-          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-        end
-
-      when "ELMO Module"
-        begin
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[1].click)
-          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-        end
-
-      when "ELMO Survey"
-        begin
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[2].click)
-          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-        end
-
-      when "Face-to-Face"
-        begin
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[4].click)
-          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-        end
-
-      when "Quiz"
-        begin
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[5].click)
-          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-        end
-
-      when "File"
-        begin
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[7].click)
-          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-        end
-
-      when "Label"
-        begin
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[8].click)
-          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-        end
-
-      when "Page"
-        begin
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[9].click)
-          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-        end
-
-      when "Post"
-        begin
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_ID).last.click)
-          Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID)[10].click)
-          Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
-        end
-
-    end
-
-  end
+  Sleep_Until($driver.find_elements(:id, COURSE_SECTION_DROPDOWN_ID).last.click)
+  Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_SEARCH_ID).last.send_keys(select_activity_name))
+  Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.click)
+  Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
 end
-
 
 def create_an_activity(course_activity_name)
   begin
@@ -291,7 +221,6 @@ end
 def create_all_notifications()
   begin
     click_add_notification_button()
-    # Sleep_Until($driver.find_elements(:class, "select2-choice").first.click)
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
     limit = $driver.find_elements(:class, "select2-result-selectable").count-1
     puts "Number of Notification Triggers Found: \"#{limit+1}\"\n"
@@ -309,7 +238,6 @@ def add_notification_trigger(limit)
   i = 0
   for loop in i..limit do
     click_add_notification_button()
-    # Sleep_Until($driver.find_elements(:class, "select2-choice").first.click)
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
     Sleep_Until($driver.find_elements(:class, "select2-result-selectable")[loop].click)
     add_notification_template()
@@ -320,7 +248,6 @@ end
 
 def add_notification_template()
   begin
-    # Sleep_Until($driver.find_elements(:class, "select2-choice").last.click)
     $driver.find_element(:id, "s2id_templateNotification_template").click
     Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
     Sleep_Until($driver.find_elements(:xpath, "//button[contains(@id,'next')]").first.click)
@@ -342,4 +269,19 @@ def add_admin_notification_templates()
     puts "Number of Notification Triggers Found: \"#{limit+1}\"\n"
     Sleep_Until($driver.find_elements(:class, "select2-drop").last.click)
   end
+end
+
+def click_on_first_f2f_activity(f2f_link_text)
+  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(f2f_link_text))
+end
+
+def click_add_f2f_session_btn(f2f_session_add_session_btn)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(f2f_session_add_session_btn))
+end
+
+def add_f2f_session()
+  Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_FILE_ID))
+  Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
+
+  # Sleep_Until(WaitForAnElementByXpathAndTouch(f2f_session_add_session_btn))
 end

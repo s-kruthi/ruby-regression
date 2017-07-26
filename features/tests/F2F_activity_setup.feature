@@ -88,12 +88,21 @@ Feature:
     When  I Edit A Specific Course
     Then  I Should Be Able To Delete A Specific Section
 
-  @activity_notifications
-  Scenario: Learning Admin creating New Activity In A Course
+  @course_notifications
+  Scenario: Learning Admin Adding Notification Templates in Course
     Given I Have Logged In as a Learning Admin User
     And   I Go To The Courses Section
     When  I Edit A Specific Course
     Then  I Should Be Able To Add All Notifications
+
+  @f2f_session_add
+  Scenario: Learning Admin creating New Session In A Face-to-Face Activity
+    Given I Have Logged In as a Learning Admin User
+    And   I Go To The Courses Section
+    When  I Edit A Specific Course
+    And   I Open A Specific Face-to-Face Activity
+    Then  I Should Be Able To Create A Session In The Face-to-Face Activity
+
 
 
   Scenario: Admin verifies the Sessions page
