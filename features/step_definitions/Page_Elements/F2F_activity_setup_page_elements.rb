@@ -8,8 +8,6 @@ NEW_COURSE_TITLE_ID = "//input[contains(@id,'fullname')]"
 NEW_COURSE_CATEGORY_ID = ""
 NEW_COURSE_CODE_ID = "//input[contains(@id,'shortname')]"
 
-COURSE_RETRAIN = "1"
-
 COURSE_RETRAIN_INPUT_ID = "//select[contains(@id,'retrain')]"
 COURSE_RETRAIN_OPEN_INPUT_ID = "//select[contains(@id,'retrainOpen')]"
 COURSE_COMPLETE_INPUT_ID = "//select[contains(@id,'duration')]"
@@ -25,17 +23,19 @@ COURSE_LIST_DROPDOWN = "dropdown-toggle"
 COURSE_DELETE_BTN_NAME_ID = "//button[contains(@name,'submit')]"
 
 SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
-#Legacy Approval Notifications tab name
-# SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]"
+
+# SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]" #Legacy Approval Notifications tab name
+# SUB_TAB_COURSE_NOT_NAME_ID = "//a[contains(.,'Course Notifications')]" #Legacy Course Notifications tab name
+
 SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Notifications')]"
 
-# SUB_TAB_COURSE_NOT_NAME_ID = "//a[contains(.,'Course Notifications')]"
 COURSE_NOT_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
 COURSE_ADD_A_SECTION_BTN_ID = "//a[contains(.,'Add a section')]"
 
 COURSE_ADD_ACTIVITY_BTN_ID = "addactivity"
 
-COURSE_SECTION_DROPDOWN_ID = "select2-choice"
+COURSE_SECTION_DROPDOWN_ID = "s2id_section"
+COURSE_SECTION_DROPDOWN_SEARCH_ID = "select2-input"
 COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID = "select2-result-selectable"
 
 SECTION_TRASH_ICON_ID = "glyphicon-trash"
@@ -54,6 +54,7 @@ SURVEY_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
 F2F_TITLE_ID = "//input[contains(@id,'name')]"
 F2F_SAVE_BTN_ID = "//button[contains(@id,'save')]"
+F2F_SESSION_ADD_FILE_ID = "//a[@id='addFile']"
 
 ###Quiz activity elements
 
