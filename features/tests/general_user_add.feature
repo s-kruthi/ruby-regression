@@ -5,7 +5,7 @@ Feature:
 
   @general @user_add
   Scenario: Comapny Admin Creating New User
-    Given I Have Logged In as a Company Admin to tmsfull site
+    Given I Have Logged In as a Company Admin to faraz1 site
     And   I Go To The General Users Section
     When  I Click On Add New User Button
     And   I Enter 4 New User Details
