@@ -29,7 +29,6 @@ end
 Given(/^I Have Logged In as a Learning Admin to (.*) site$/) do |site_name|
   startWebDriver
   site_name = ENV["URL"] if ENV["URL"] != nil
-  puts "URL = " + ENV["URL"] if ENV["URL"] != nil
   go_to_site(site_name)
   EnterUsername(USER_NAME,LEARNING_ADMIN_USERNAME)
   EnterPassword(PASS_WORD,LEARNING_ADMIN_PASSWORD)
@@ -54,7 +53,7 @@ And(/^I Add New Course Details$/) do
   enter_course_retrain_open(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
   enter_course_complete(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
   enter_course_availability(COURSE_AVAILABILITY_INPUT_ID, COURSE_AVAILABILITY_INPUT_VALUE)
-  enter_course_certificate_template(COURSE_CERTIFICATE_TEMPLATE_ID, COURSE_CERTIFICATE_TEMPLATE_VALUE)
+  enter_course_certificate_template(COURSE_CERTIFICATE_TEMPLATE_ID, COURSE_CERTIFICATE_TEMPLATE_VALUE) if COURSE_CERTIFICATE.to_i == 1
   enter_course_self_enrol(COURSE_SELF_ENROLL_INPUT_ID, COURSE_SELF_ENROLL_INPUT_VALUE)
   enter_course_section_description(COURSE_SHOW_SEC_DESC_INPUT_ID, COURSE_SHOW_SEC_DESC_INPUT_VALUE)
 end
