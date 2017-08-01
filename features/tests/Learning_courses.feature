@@ -12,7 +12,6 @@
 
 
     #####################Added Omar's course section##########################
-    @course
     @course_add
     Scenario: Learning Admin Creating New Course
       Given I Have Logged In as a Learning Admin to shayan02 site
