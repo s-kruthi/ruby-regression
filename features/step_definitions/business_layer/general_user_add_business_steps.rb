@@ -1,12 +1,12 @@
 Given(/^I Have Logged In as a Company Admin to (.*) site$/) do |site_name|
   startWebDriver
+  site_name = ENV["URL"] if ENV["URL"] != nil
+  puts "URL = " + ENV["URL"] if ENV["URL"] != nil
   go_to_site(site_name)
   EnterUsername(USER_NAME,COMP_ADMIN_USERNAME)
   EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
 end
-
-
 
 And(/^I Go To The (.*) Section$/) do |user_type|
   begin
@@ -22,6 +22,13 @@ And(/^I Go To The (.*) Section$/) do |user_type|
             go_to_the_sections(ADMIN_COG, ONBOARDING_EXPAND, OB_USERS_LIST_PATH)
             $add_user_type = "OB"
           end
+
+        when "Profile"
+          begin
+            # go_to_the_sections(ADMIN_COG, NAVBAR_ITEM_ID)
+            $add_user_type = "General"
+          end
+
       end
   end
 end
