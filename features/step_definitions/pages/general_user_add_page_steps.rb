@@ -12,6 +12,10 @@ def go_to_the_sections(admin_cog,general_expand,users_list_path)
   goToItemLandingPage(users_list_path)
 end
 
+def go_to_the_navbar_sections(link_to_click)
+  Sleep_Until($driver.find_elements(:xpath, link_to_click).last.click)
+end
+
 def go_to_add_new_users_page(add_new_user_btn)
   WaitForAnElementByXpathAndTouch(add_new_user_btn)
 end

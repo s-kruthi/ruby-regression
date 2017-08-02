@@ -24,3 +24,12 @@ USER_CREATE_SAVE_BTN_ID = "//button[@id='user_save']"
 SELECT_TIMEZONE_ID = "//select[contains(@id,'user_timezone')]"
 
 ADD_USER_SAVE_SUCCESS_ID = "//div[contains(@class,'alert alert-success')]"
+
+SUB_TAB_PERSONAL_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/personal')]"
+SUB_TAB_PAYMENT_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/payment')]"
+
+EDIT_EM_CONTACT_BTN_ID = "//button[contains(@title,'Edit Emergency Contact Details')]"
+EDIT_NOK_CONTACT_BTN_ID = "//button[contains(@title,'Edit Next of Kin')]"
+
+ADD_EM_CONTACT_BTN_ID =  "//button[@title='Add Emergency Contact Details']"
+ADD_NOK_CONTACT_BTN_ID =  "//button[contains(@title,'Add Next of Kin')]"
