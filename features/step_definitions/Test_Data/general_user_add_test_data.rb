@@ -1,5 +1,5 @@
 HOW_MANY_USERS = 10
-SELECT_MANAGER = 1
+SELECT_MANAGER = 0
 SELECT_START_DATE = 0
 SELECT_EXPIRY_DATE = 1
 SELECT_TIMEZONE = 1
@@ -15,3 +15,16 @@ SELECT_EXPIRY_DATE_VALUE = "31/12/2020"
 SELECT_TIMEZONE_VALUE = "Sydney"
 
 ADD_USER_SAVE_SUCCESS_VALUE = "User details have been updated!"
+
+MENU_PROFILE_LINK = "//a[contains(@href,'/controlpanel/my-profile')]"
+MENU_MY_TEAM_LINK = "//a[contains(@href,'/controlpanel/my-employees')]"
+MENU_LEARNING_LINK = "//a[contains(@href,'/learning/my')]"
+MENU_LEAVE_LINK = "//a[contains(@href,'/dashboard/leave/my/leave-requests')]"
+MENU_DOCUMENTS_LINK = "//a[contains(@href,'/documents')]"
+MENU_PERFORMANCE_LINK = "//a[contains(@href,'/dashboard/my-performance')]"
+MENU_RECRUITMENT_LINK = "//a[contains(@href,'/controlpanel/recruitment/requisition/requisition')]"
+MENU_CAREERS_LINK = "//a[contains(@href,'/controlpanel/recruitment/careers/browse-jobs/')]"
+MENU_CALENDER_LINK = "//a[contains(@href,'/controlpanel/calendar/')]"
+MENU_CONTRACTS_LINK = "//a[contains(@href,'/contracts/')]"
+MENU_SUCCESSION_LINK = "//a[contains(@href,'/succession/calibration/')]"
+MENU_REPORTS_LINK = "//a[contains(@href,'/report')]"
