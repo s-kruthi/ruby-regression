@@ -279,6 +279,7 @@ end
 
 def click_on_save_button(btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(btn_id))
+  sleep (1)
 end
 
 def delete_a_section(section_name)
@@ -321,6 +322,7 @@ def add_notification_template()
     $driver.find_element(:id, "s2id_templateNotification_template").click
     Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
     Sleep_Until($driver.find_elements(:xpath, "//button[contains(@id,'next')]").first.click)
+    sleep(2)
     save_notification_template()
   end
 end
@@ -328,6 +330,7 @@ end
 def save_notification_template()
   begin
     Sleep_Until($driver.find_elements(:xpath, ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID).last.click)
+    sleep (1)
   end
 end
 

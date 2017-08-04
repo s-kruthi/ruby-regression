@@ -116,19 +116,84 @@ When(/^I Click On Add New User Button$/) do
 end
 
 
-And(/^I Enter (\d+) New User Details$/) do |total_number_of_users|
+And(/^I Enter (.*) New User Details$/) do |total_number_of_users|
   total = total_number_of_users.to_i
   add_user_details(total)
 end
 
 Then(/^I Should Be Able To Add New Users In To The System$/) do
-  verifySuccessMessage(ADD_USER_SAVE_SUCCESS_ID, ADD_USER_SAVE_SUCCESS_VALUE)
+ Sleep_Until(verifySuccessMessage(ADD_USER_SAVE_SUCCESS_ID, ADD_USER_SAVE_SUCCESS_VALUE))
 end
 
-Then(/^I Should Be Able To Add A New (.*) Activity$/) do |course_activity_name|
-  click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
-  add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
-  select_an_activity(course_activity_name)
-  create_an_activity(course_activity_name)
-  $driver.quit
+And(/^I Click On (.*) Sub Tab$/) do |sub_tab_name|
+  begin
+    case sub_tab_name
+      when "Personal Details"
+        begin
+          Sleep_Until(click_on_a_sub_tab(SUB_TAB_PERSONAL_NAME_ID))
+        end
+
+      when "Payment Details"
+        begin
+          Sleep_Until(click_on_a_sub_tab(SUB_TAB_PAYMENT_NAME_ID))
+        end
+    end
+  end
+end
+
+
+When(/^I Click On (.*) Icon$/) do |click_edit_icon|
+  begin
+    case click_edit_icon
+      when "Edit Emergency Contact Details"
+        begin
+          puts "Edit Emergency Contact Details"
+          Sleep_Until(click_on_a_sub_tab(EDIT_EM_CONTACT_BTN_ID))
+        end
+
+      when "Edit Next Of Kin"
+        begin
+          Sleep_Until(click_on_a_sub_tab(EDIT_NOK_CONTACT_BTN_ID))
+        end
+    end
+  end
+end
+
+
+And(/^I Click On (.*) Button$/) do |add_contact_btn|
+  begin
+    case add_contact_btn
+      when "Add Emergency Contact Details"
+        begin
+          Sleep_Until(click_on_a_sub_tab(ADD_EM_CONTACT_BTN_ID))
+        end
+
+      when "Add Next Of Kin"
+        begin
+          Sleep_Until(click_on_a_sub_tab(ADD_NOK_CONTACT_BTN_ID))
+        end
+    end
+  end
+end
+
+And(/^I Use (.*)$/) do |add_contact_btn|
+  begin
+    case add_contact_btn
+      when "Add Emergency Contact Details"
+        begin
+          Sleep_Until(click_on_a_sub_tab(ADD_EM_CONTACT_BTN_ID))
+        end
+
+      when "Add Next Of Kin"
+        begin
+          Sleep_Until(click_on_a_sub_tab(ADD_NOK_CONTACT_BTN_ID))
+        end
+    end
+  end
+end
+
+Then(/^I Should Be Able To Add (.*)$/) do
+end
+
+And(/^I Should Be Able To Add Payment Details$/) do
 end
