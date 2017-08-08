@@ -143,15 +143,20 @@ def search_a_course(course_list_search_box_id, course_list_title_value, course_s
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
 
-def edit_the_first_course_from_table(class_name, index_value, partial_link_text)
-  Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(class_name, index_value))
+def edit_the_first_course_from_table(xpath_name, partial_link_text)
+  Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
 
-def delete_the_first_course_from_table(class_name,index_value, partial_link_text)
-  Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(class_name, index_value))
+def delete_the_first_course_from_table(xpath_name, partial_link_text)
+  Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
+
+# def delete_the_first_course_from_table(class_name,index_value, partial_link_text)
+#   Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(class_name, index_value))
+#   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
+# end
 
 def click_on_button_in_iframe(course_delete_btn_name_id)
   begin
@@ -319,13 +324,32 @@ end
 
 def add_notification_template()
   begin
-    $driver.find_element(:id, "s2id_templateNotification_template").click
+    # binding.pry
+    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_template").click)
     Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
     Sleep_Until($driver.find_elements(:xpath, "//button[contains(@id,'next')]").first.click)
+    check_for_trigger_date()
     sleep(2)
     save_notification_template()
   end
 end
+
+def check_for_trigger_date()
+#This checks if there's an id, "s2id_templateNotification_dueDatePosition" with any value or not. If there's no value then it selects the 1st available option
+  if $driver.find_element(:id, "s2id_templateNotification_dueDatePosition").text == " "
+    begin
+    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDatePosition").click) if Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDatePosition").text) == nil
+    begin
+    Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
+    Sleep_Until($driver.find_element(:id, "templateNotification_dueDateNumber").send_keys("7"))
+    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDateUnit").click)
+    Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
+    end
+    end
+  end
+end
+
+
 
 def save_notification_template()
   begin

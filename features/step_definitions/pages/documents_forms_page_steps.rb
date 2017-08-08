@@ -1,5 +1,6 @@
 
 def goToTheDocumentsAsCompanyAdmin(admin_cog,documents_expand,documents_list_path)
+  puts "TEST"
   WaitForAnElementByClass(admin_cog)
   TouchAdminMenu(admin_cog)
   sleep(2)
