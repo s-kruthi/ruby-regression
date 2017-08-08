@@ -8,9 +8,9 @@ Given(/^I Have Logged In as a Company Admin to (.*) site$/) do |site_name|
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
 end
 
-And(/^I Go To The (.*) Section$/) do |user_type|
+And(/^I Go To The (.*) Section$/) do |menu_type|
   begin
-      case user_type
+      case menu_type
         when "General Users"
           begin
             go_to_the_sections(ADMIN_COG, GENERAL_EXPAND, USERS_LIST_PATH)
@@ -23,7 +23,7 @@ And(/^I Go To The (.*) Section$/) do |user_type|
             $add_user_type = "OB"
           end
 
-        when "Profile"
+        when "Learning Courses"
           begin
             go_to_the_sections(ADMIN_COG, LEARNING_EXPAND, LEARNING_LIST_PATH)
           end
@@ -93,7 +93,6 @@ And(/^I Go To The (.*) Section$/) do |user_type|
             Sleep_Until(go_to_the_navbar_sections(MENU_REPORTS_LINK))
             sleep (1)
           end
-
       end
   end
 end
@@ -192,7 +191,7 @@ And(/^I Use (.*)$/) do |add_contact_btn|
   end
 end
 
-Then(/^I Should Be Able To Add (.*)$/) do
+Then(/^I Should Be Able To Add (.*) Details$/) do
 end
 
 And(/^I Should Be Able To Add Payment Details$/) do

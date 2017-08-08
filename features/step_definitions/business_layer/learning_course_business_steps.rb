@@ -23,9 +23,6 @@ end
 
 
 
-
-##############Omar's added course section#################
-
 Given(/^I Have Logged In as a Learning Admin to (.*) site$/) do |site_name|
   startWebDriver
   site_name = ENV["URL"] if ENV["URL"] != nil
@@ -35,10 +32,6 @@ Given(/^I Have Logged In as a Learning Admin to (.*) site$/) do |site_name|
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
 end
 
-
-And(/^I Go To The Courses Section$/) do
-  go_to_the_learning_as_company_admin(ADMIN_COG, LEARNING_EXPAND, LEARNING_LIST_PATH)
-end
 
 When(/^I Click On The New Course Button$/) do
   go_to_new_course_add_page(CREATE_NEW_COURSE_BTN)
@@ -50,7 +43,7 @@ And(/^I Add New Course Details$/) do
   enter_course_code(NEW_COURSE_CODE_ID, NEW_COURSE_CODE_VALUE)
   enter_course_description(NEW_COURSE_DESC_TEXT, 0)
   enter_course_retrain(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
-  enter_course_retrain_open(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
+  enter_course_retrain_open(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
   enter_course_complete(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
   enter_course_availability(COURSE_AVAILABILITY_INPUT_ID, COURSE_AVAILABILITY_INPUT_VALUE)
   enter_course_certificate_template(COURSE_CERTIFICATE_TEMPLATE_ID, COURSE_CERTIFICATE_TEMPLATE_VALUE) if COURSE_CERTIFICATE.to_i == 1
@@ -71,20 +64,20 @@ end
 
 
 Then(/^I Should Be Able To Edit The Specific Course$/) do
-  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN,3, COURSE_LIST_ACTION_ITEM_EDIT)
+  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
   $driver.quit
 end
 
 
 Then(/^I Should Be Able To Delete The Specific Course$/) do
-  delete_the_first_course_from_table(COURSE_LIST_DROPDOWN,3, COURSE_LIST_ACTION_ITEM_DELETE)
+  delete_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
   click_on_button_in_iframe(COURSE_DELETE_BTN_NAME_ID)
   $driver.quit
 end
 
 When(/^I Edit A Specific Course$/) do
   search_a_course(COURSE_LIST_SEARCH_BOX_ID, COURSE_LIST_TITLE_VALUE, COURSE_SEARCH_BTN_ID)
-  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN,3, COURSE_LIST_ACTION_ITEM_EDIT)
+  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
