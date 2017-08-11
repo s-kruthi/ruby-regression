@@ -1,6 +1,6 @@
 def go_to_site(login_page)
- site_url = "https://" + "#{login_page}" + ".dev.elmodev.com/dashboard"
-     $driver.navigate.to(site_url)
+ $site_url = "https://" + "#{login_page}" + ".dev.elmodev.com/dashboard"
+     $driver.navigate.to($site_url)
  end
 
 def go_to_the_sections(admin_cog,general_expand,users_list_path)
@@ -21,24 +21,40 @@ def go_to_add_new_users_page(add_new_user_btn)
 end
 
 def add_user_details(limit)
-  i = 1
+  i = 2 if limit >= 2
   for loop in i..limit do
-    first_name = NEW_USER_FIRST_NAME_PREFIX + loop.to_s
-    last_name = NEW_USER_LAST_NAME_PREFIX + loop.to_s
-    user_name = first_name + "." +  last_name
-    email_address = user_name + NEW_USER_EMAIL_SUFFIX
-    Sleep_Until(enter_user_details(NEW_USER_FIRST_NAME_ID, first_name))
-    Sleep_Until(enter_user_details(NEW_USER_LAST_NAME_ID, last_name))
-    Sleep_Until(enter_user_details(NEW_USER_USERNAME_ID, user_name)) if $add_user_type == "EMP"
-    Sleep_Until(enter_user_details(NEW_USER_EMAIL_ID, email_address))
-    Sleep_Until(select_a_manager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, MANAGER_SELECT_INPUT_VALUE,MANAGER_SELECT_RESULT_ID)) if SELECT_MANAGER.to_i == 1
-    Sleep_Until(select_date(SELECT_START_DATE_ID, SELECT_START_DATE_VALUE)) if SELECT_START_DATE.to_i == 1
-    Sleep_Until(select_date(SELECT_EXPIRY_DATE_ID, SELECT_EXPIRY_DATE_VALUE)) if SELECT_EXPIRY_DATE.to_i == 1
-    Sleep_Until(select_timezone(SELECT_TIMEZONE_ID, SELECT_TIMEZONE_VALUE)) if SELECT_TIMEZONE.to_i == 1
-    Sleep_Until(press_save_button(USER_CREATE_SAVE_BTN_ID))
-    sleep (3)
+    create_remaining_users(loop)
     loop += 1
   end
+end
+
+def create_users(loop)
+  first_name = NEW_USER_FIRST_NAME_PREFIX + loop.to_s
+  last_name = NEW_USER_LAST_NAME_PREFIX + loop.to_s
+  user_name = first_name + "." +  last_name
+  email_address = user_name + NEW_USER_EMAIL_SUFFIX
+  Sleep_Until(enter_user_details(NEW_USER_FIRST_NAME_ID, first_name))
+  Sleep_Until(enter_user_details(NEW_USER_LAST_NAME_ID, last_name))
+  Sleep_Until(enter_user_details(NEW_USER_USERNAME_ID, user_name)) if $add_user_type == "EMP"
+  Sleep_Until(enter_user_details(NEW_USER_EMAIL_ID, email_address))
+  Sleep_Until(select_a_manager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, MANAGER_SELECT_INPUT_VALUE,MANAGER_SELECT_RESULT_ID)) if SELECT_MANAGER.to_i == 1
+  Sleep_Until(select_date(SELECT_START_DATE_ID, SELECT_START_DATE_VALUE)) if SELECT_START_DATE.to_i == 1
+  Sleep_Until(select_date(SELECT_EXPIRY_DATE_ID, SELECT_EXPIRY_DATE_VALUE)) if SELECT_EXPIRY_DATE.to_i == 1
+  Sleep_Until(select_timezone(SELECT_TIMEZONE_ID, SELECT_TIMEZONE_VALUE)) if SELECT_TIMEZONE.to_i == 1
+  Sleep_Until(press_save_button(USER_CREATE_SAVE_BTN_ID))
+  sleep (3)
+  # $driver.quit
+end
+
+def create_remaining_users(counter)
+  $driver.navigate.to($site_url)
+  go_to_the_sections(ADMIN_COG, GENERAL_EXPAND, USERS_LIST_PATH) if $add_user_type == "EMP"
+  # $add_user_type = "EMP" if $menu_type == "General Users"
+  go_to_the_sections(ADMIN_COG, ONBOARDING_EXPAND, OB_USERS_LIST_PATH) if $add_user_type == "OB"
+  # $add_user_type = "OB" if $menu_type == "Onboarding Users"
+  go_to_add_new_users_page(ADD_NEW_USER_BTN) if $add_user_type == "EMP"
+  go_to_add_new_users_page(OB_ADD_NEW_USER_BTN)  if $add_user_type == "OB"
+  Sleep_Until(create_users(counter))
 end
 
 def enter_user_details(input_id, input_value)
