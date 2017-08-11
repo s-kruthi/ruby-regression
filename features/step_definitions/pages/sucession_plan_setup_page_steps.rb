@@ -21,7 +21,7 @@ end
 def LogInAndWaitForTheDashboard(tag_name,admin_menu)
   TouchLoginButton(tag_name)
   # Wait_For(3)
-  WaitForAnElementById(admin_menu)
+  # WaitForAnElementById(admin_menu)
   puts "Title: " + $driver.title
   puts "URL: " + $driver.current_url
   sleep(3)

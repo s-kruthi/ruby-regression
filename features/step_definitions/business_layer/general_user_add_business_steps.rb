@@ -1,8 +1,8 @@
 Given(/^I Have Logged In as a Company Admin to (.*) site$/) do |site_name|
   startWebDriver
-  site_name = ENV["URL"] if ENV["URL"] != nil
+  $site_name = ENV["URL"] if ENV["URL"] != nil
   puts "URL = " + ENV["URL"] if ENV["URL"] != nil
-  go_to_site(site_name)
+  go_to_site($site_name)
   EnterUsername(USER_NAME,COMP_ADMIN_USERNAME)
   EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
@@ -115,13 +115,14 @@ When(/^I Click On Add New User Button$/) do
 end
 
 
-And(/^I Enter (.*) New User Details$/) do |total_number_of_users|
-  total = total_number_of_users.to_i
-  add_user_details(total)
+And(/^I Enter New User Details$/) do
+  create_users(1)
 end
 
-Then(/^I Should Be Able To Add New Users In To The System$/) do
- Sleep_Until(verifySuccessMessage(ADD_USER_SAVE_SUCCESS_ID, ADD_USER_SAVE_SUCCESS_VALUE))
+Then(/^I Should Be Able To Add (.*) New Users In To The System$/) do |total_number_of_users|
+  $total = total_number_of_users.to_i
+  add_user_details($total - 1)
+  $driver.quit
 end
 
 And(/^I Click On (.*) Sub Tab$/) do |sub_tab_name|
