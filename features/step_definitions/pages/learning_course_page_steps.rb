@@ -306,10 +306,6 @@ def create_all_notifications()
   end
 end
 
-def click_add_notification_button()
-  Sleep_Until($driver.find_elements(:xpath, ADD_NOTIFICATION_BUTTON_ID).first.click)
-end
-
 def add_notification_trigger(limit)
   i = 0
   for loop in i..limit do
@@ -322,29 +318,35 @@ def add_notification_trigger(limit)
   puts "Number of Notification Templates added: \"#{limit+1}\"\n"
 end
 
+
+def click_add_notification_button()
+  Sleep_Until($driver.find_elements(:xpath, ADD_NOTIFICATION_BUTTON_ID).first.click)
+end
+
 def add_notification_template()
   begin
-    # binding.pry
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_template").click)
     Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
     Sleep_Until($driver.find_elements(:xpath, "//button[contains(@id,'next')]").first.click)
-    check_for_trigger_date()
     sleep(2)
-    save_notification_template()
+    check_for_trigger_date()
+    Sleep_Until(save_notification_template())
   end
 end
 
-def check_for_trigger_date()
 #This checks if there's an id, "s2id_templateNotification_dueDatePosition" with any value or not. If there's no value then it selects the 1st available option
-  if $driver.find_element(:id, "s2id_templateNotification_dueDatePosition").text == " "
+def check_for_trigger_date()
+  if Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDatePosition").text) == " "
     begin
-    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDatePosition").click) if Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDatePosition").text) == nil
-    begin
-    Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
-    Sleep_Until($driver.find_element(:id, "templateNotification_dueDateNumber").send_keys("7"))
-    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDateUnit").click)
-    Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
-    end
+    if Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDatePosition").text) == nil
+      begin
+        Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDatePosition").click)
+        Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
+        Sleep_Until($driver.find_element(:id, "templateNotification_dueDateNumber").send_keys("7"))
+        Sleep_Until($driver.find_element(:id, "s2id_templateNotification_dueDateUnit").click)
+        Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
+        end
+      end
     end
   end
 end
@@ -379,6 +381,4 @@ end
 def add_f2f_session()
   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_FILE_ID))
   Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
-
-  # Sleep_Until(WaitForAnElementByXpathAndTouch(f2f_session_add_session_btn))
 end

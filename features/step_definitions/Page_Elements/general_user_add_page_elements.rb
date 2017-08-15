@@ -23,6 +23,9 @@ USER_CREATE_SAVE_BTN_ID = "//button[@id='user_save']"
 
 SELECT_TIMEZONE_ID = "//select[contains(@id,'user_timezone')]"
 
+USER_PASSWORD_ID = "//input[@name='user[password][first]']"
+USER_PASSWORD_RECONFIRM_ID = "//input[@name='user[password][second]']"
+
 ADD_USER_SAVE_SUCCESS_ID = "//div[contains(@class,'alert alert-success')]"
 
 SUB_TAB_PERSONAL_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/personal')]"

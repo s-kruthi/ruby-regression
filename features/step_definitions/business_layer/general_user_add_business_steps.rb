@@ -116,7 +116,7 @@ end
 
 
 And(/^I Enter New User Details$/) do
-  create_users(1)
+  create_users(11)
 end
 
 Then(/^I Should Be Able To Add (.*) New Users In To The System$/) do |total_number_of_users|

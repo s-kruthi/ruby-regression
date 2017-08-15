@@ -89,8 +89,8 @@ end
 def FillTheNewCompanyHolidayAndSave()
   sleep(1)
   $driver.find_element(:xpath, "//input[@id='holiday_title']").send_keys "Automation Leave Data"
-  $driver.find_element(:id, 'holiday_startDate').send_keys "19/07/2017"
-  $driver.find_element(:id, 'holiday_endDate').send_keys "19/07/2017"
+  $driver.find_element(:id, 'holiday_startDate').send_keys HOLIDAY_STARTDATE
+  $driver.find_element(:id, 'holiday_endDate').send_keys HOLIDAY_ENDDATE
   sleep(1)
   $driver.find_element(:id, 'holiday_save').click
   sleep(3)
@@ -101,12 +101,13 @@ def FillTheNewCompanyHolidayAndSave()
 end
 
 def FindTheCreatedHolidayAndDeleteIt()
-  $driver.find_element(:link_text, 'Holiday Management').click
-  sleep(5)
-  $driver.find_elements(:xpath, "//button[@aria-expanded='true']").last.click
-  $driver.find_element(:css, %(a[ng-click="chl.deleteCompanyEvent(#{$current_hol_id})"])).click
-  sleep(2)
-  $driver.find_element(:css, "[data-bb-handler='success']").click
+  Sleep_Until($driver.find_element(:partial_link_text, 'Holiday Management').click)
+  # sleep(5)
+  Sleep_Until($driver.find_elements(:xpath, "//button[@aria-expanded='true']").last.click)
+  binding.pry
+  Sleep_Until($driver.find_element(:css, %(a[ng-click="chl.deleteCompanyEvent(#{$current_hol_id})"])).click)
+  # sleep(2)
+  Sleep_Until($driver.find_element(:css, "[data-bb-handler='success']").click)
 end
 
 def GoToLeaveRequestUnderLeaveManagement(leave_management_sec_id,leave_requests_path)

@@ -4,7 +4,7 @@ Given(/^I Have Logged In as a Company Admin To Setup Leave Management$/) do
   GoToThePage(ADMIN_LANDING_PAGE)
   EnterUsername(USER_NAME,LEAVE_COMPANY_ADMIN_USER)
   EnterPassword(PASS_WORD,LEAVE_COMPANY_ADMIN_PASS)
-  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+  Sleep_Until(LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN))
 end
 
 When(/^I Try To Create A New Leave Type$/) do
@@ -28,13 +28,13 @@ Then(/^I Should Be Able To Successfully Create A New Leave Policy$/) do
 end
 
 When(/^I Try To Create A New Company Holiday$/) do
-  GoToHolidayMgntUnderLeaveManagement(LEAVE_MGMT_ID)
-  CreateANewCompanyHoliday(HOLIDAY_MGMT_PATH,ADD_NEW_HOLIDAY)
-  FillTheNewCompanyHolidayAndSave()
+  Sleep_Until(GoToHolidayMgntUnderLeaveManagement(LEAVE_MGMT_ID))
+  Sleep_Until(CreateANewCompanyHoliday(HOLIDAY_MGMT_PATH,ADD_NEW_HOLIDAY))
+  Sleep_Until(FillTheNewCompanyHolidayAndSave())
 end
 
 Then(/^I Should Be Able To Successfully Create A New Company Holiday$/) do
-  FindTheCreatedHolidayAndDeleteIt()
+  Sleep_Until(FindTheCreatedHolidayAndDeleteIt())
 end
 
 When(/^I Log In As A Company Admin To Process A Leave Request$/) do
@@ -42,12 +42,12 @@ When(/^I Log In As A Company Admin To Process A Leave Request$/) do
   GoToThePage(ADMIN_LANDING_PAGE)
   EnterUsername(USER_NAME,LEAVE_COMPANY_ADMIN_USER)
   EnterPassword(PASS_WORD,LEAVE_COMPANY_ADMIN_PASS)
-  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
-  GoToLeaveRequestUnderLeaveManagement(LEAVE_MGMT_ID,LEAVE_REQUESTS_PATH)
+  Sleep_Until(LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN))
+  Sleep_Until(GoToLeaveRequestUnderLeaveManagement(LEAVE_MGMT_ID,LEAVE_REQUESTS_PATH))
 end
 
 And(/^I Approved The Submitted Request To Modify It Further$/) do
-  ApproveTheSubmittedLeaveRequest(LEAVE_APROVAL_COMMENT)
+  Sleep_Until(ApproveTheSubmittedLeaveRequest(LEAVE_APROVAL_COMMENT))
   sleep(2)
   ConnectToDatabaseAndValidateTheApprovedRequestSubmissionNotification()
 end
