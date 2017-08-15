@@ -10,8 +10,8 @@ NEW_USER_EMAIL_SUFFIX = "@elmodev.com"
 
 MANAGER_SELECT_INPUT_VALUE = "manager2.omar2"
 
-SELECT_START_DATE_VALUE = "01/01/2010"
-SELECT_EXPIRY_DATE_VALUE = "31/12/2020"
+SELECT_START_DATE_VALUE = (DateTime.now).prev_month.strftime "%d/%m/%Y"
+SELECT_EXPIRY_DATE_VALUE = (DateTime.now).next_year.strftime "%d/%m/%Y"
 SELECT_TIMEZONE_VALUE = "Sydney"
 
 ADD_USER_SAVE_SUCCESS_VALUE = "User details have been updated!"
