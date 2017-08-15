@@ -41,6 +41,8 @@ def create_users(loop)
   Sleep_Until(select_date(SELECT_START_DATE_ID, SELECT_START_DATE_VALUE)) if SELECT_START_DATE.to_i == 1
   Sleep_Until(select_date(SELECT_EXPIRY_DATE_ID, SELECT_EXPIRY_DATE_VALUE)) if SELECT_EXPIRY_DATE.to_i == 1
   Sleep_Until(select_timezone(SELECT_TIMEZONE_ID, SELECT_TIMEZONE_VALUE)) if SELECT_TIMEZONE.to_i == 1
+  Sleep_Until(enter_user_details(USER_PASSWORD_ID, USER_PASSWORD_VALUE))
+  Sleep_Until(enter_user_details(USER_PASSWORD_RECONFIRM_ID, USER_PASSWORD_VALUE))
   Sleep_Until(press_save_button(USER_CREATE_SAVE_BTN_ID))
   sleep (3)
   # $driver.quit
