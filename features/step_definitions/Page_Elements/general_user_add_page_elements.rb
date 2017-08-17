@@ -1,3 +1,17 @@
+MENU_PROFILE_LINK = "//a[contains(@href,'/controlpanel/my-profile')]"
+MENU_MY_TEAM_LINK = "//a[contains(@href,'/controlpanel/my-employees')]"
+MENU_LEARNING_LINK = "//a[contains(@href,'/learning/my')]"
+MENU_LEAVE_LINK = "//a[contains(@href,'/dashboard/leave/my/leave-requests')]"
+MENU_DOCUMENTS_LINK = "//a[contains(@href,'/documents')]"
+MENU_PERFORMANCE_LINK = "//a[contains(@href,'/dashboard/my-performance')]"
+MENU_RECRUITMENT_LINK = "//a[contains(@href,'/controlpanel/recruitment/requisition/requisition')]"
+MENU_CAREERS_LINK = "//a[contains(@href,'/controlpanel/recruitment/careers/browse-jobs/')]"
+MENU_CALENDER_LINK = "//a[contains(@href,'/controlpanel/calendar/')]"
+MENU_CONTRACTS_LINK = "//a[contains(@href,'/contracts/')]"
+MENU_SUCCESSION_LINK = "//a[contains(@href,'/succession/calibration/')]"
+MENU_REPORTS_LINK = "//a[contains(@href,'/report')]"
+
+
 GENERAL_EXPAND = "//a[@href='#collapseGeneral']"
 USERS_LIST_PATH = "//span[contains(.,'Users')]"
 
@@ -33,3 +47,13 @@ EDIT_NOK_CONTACT_BTN_ID = "//button[contains(@title,'Edit Next of Kin')]"
 
 ADD_EM_CONTACT_BTN_ID =  "//button[@title='Add Emergency Contact Details']"
 ADD_NOK_CONTACT_BTN_ID =  "//button[contains(@title,'Add Next of Kin')]"
+
+
+EM_USER__NAME_ID = "//input[contains(@id,'name')]"
+EM_USER_RELATIONSHIP_ID = "//input[contains(@id,'relationship')]"
+EM_USER_ADDRESS_ID = "//input[contains(@id,'autocomplete_address')]"
+EM_USER_MOBILE_ID = "mobile"
+EM_USER_EMAIL_ID = "//input[contains(@id,'email')]"
+
+SAVE_BTN_ID = "//button[contains(@id,'save')]"
+DONE_BTN_ID = "//button[contains(.,'Done')]"

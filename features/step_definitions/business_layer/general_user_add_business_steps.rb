@@ -147,7 +147,6 @@ When(/^I Click On (.*) Icon$/) do |click_edit_icon|
     case click_edit_icon
       when "Edit Emergency Contact Details"
         begin
-          puts "Edit Emergency Contact Details"
           Sleep_Until(click_on_a_sub_tab(EDIT_EM_CONTACT_BTN_ID))
         end
 
@@ -182,18 +181,28 @@ And(/^I Use (.*)$/) do |add_contact_btn|
       when "Add Emergency Contact Details"
         begin
           Sleep_Until(click_on_a_sub_tab(ADD_EM_CONTACT_BTN_ID))
+          Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
+          Sleep_Until(enter_user_details(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
+          Sleep_Until(enter_user_details(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
+          Sleep_Until(WaitForAnElementByIdAndInputValue(EM_USER_MOBILE_ID, EM_USER_MOBILE_VALUE))
+          Sleep_Until(enter_user_details(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
+          Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
         end
 
-      when "Add Next Of Kin"
+      when "Add Next Of Kin Details"
         begin
           Sleep_Until(click_on_a_sub_tab(ADD_NOK_CONTACT_BTN_ID))
+          Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
+          Sleep_Until(enter_user_details(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
+          Sleep_Until(enter_user_details(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
+          Sleep_Until(WaitForAnElementByIdAndInputValue(EM_USER_MOBILE_ID, EM_USER_MOBILE_VALUE))
+          Sleep_Until(enter_user_details(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
         end
     end
   end
 end
 
-Then(/^I Should Be Able To Add (.*) Details$/) do
-end
-
-And(/^I Should Be Able To Add Payment Details$/) do
+Then(/^I Should Be Able To Add (.*) Details$/) do |contact_details|
+  Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(DONE_BTN_ID))
 end
