@@ -19,13 +19,22 @@ Feature:
     And   I Enter New User Details
     Then  I Should Be Able To Add 10 New Users In To The System
 
-  @wip
-  Scenario: Onboarding User Editing Profile Page - WIP
+  @hr_add_emergency_contact
+  Scenario: Onboarding User Editing Profile Page - Emergency Contact Details
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I Go To The Menu Profile Section
     And   I Click On Personal Details Sub Tab
     When  I Click On Edit Emergency Contact Details Icon
     And   I Click On Add Emergency Contact Details Button
-    And   I Use Emergency Contact Details
+    And   I Use Add Emergency Contact Details
     Then  I Should Be Able To Add Emergency Contact Details
-    And   I Should Be Able To Add Payment Details
+
+  @hr_add_nok
+  Scenario: Onboarding User Editing Profile Page - Next of Kin - WIP
+    Given I Have Logged In as a Company Admin to faraz1 site
+    And   I Go To The Menu Profile Section
+    And   I Click On Personal Details Sub Tab
+    When  I Click On Edit Next Of Kin Icon
+    And   I Click On Add Next Of Kin Button
+    And   I Use Add Next Of Kin Details
+    Then  I Should Be Able To Add Next Of Kin Details
