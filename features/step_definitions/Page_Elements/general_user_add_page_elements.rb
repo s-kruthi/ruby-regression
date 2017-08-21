@@ -60,3 +60,11 @@ EM_USER_EMAIL_ID = "//input[contains(@id,'email')]"
 
 SAVE_BTN_ID = "//button[contains(@id,'save')]"
 DONE_BTN_ID = "//button[contains(.,'Done')]"
+
+USERNAME_SEARCH_ID = "//input[@placeholder='Search']"
+
+USERNAME_SEARCH_BTN = "//button[contains(@title,'Search')]"
+ACTION_DROPDOWN_CLASS_NAME = "dropdown-toggle"
+
+INACTIVE_CLASS_ID = "is-not-active"
+INACTIVE_ATTRIBUTE_ID = "data-sinfo"

@@ -22,6 +22,7 @@ end
 
 def add_user_details(limit)
   i = 2 if limit >= 2
+  i = 1 if limit == 1
   for loop in i..limit do
     create_remaining_users(loop)
     loop += 1
@@ -82,4 +83,18 @@ end
 
 def press_save_button(user_create_save_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(user_create_save_btn_id))
+end
+
+def delete_the_user(action_dropdown_class_name, action_dropdown_class_index_value, action_dropdown_name_value)
+  Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(action_dropdown_class_name, action_dropdown_class_index_value))
+  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(action_dropdown_name_value))
+end
+
+def use_active_inactive_filter()
+  Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[2].click)
+  Sleep_Until($driver.find_elements(:xpath, "//span[contains(.,'Active and Inactive')]").first.click)
+end
+
+def very_deleted_user(inactive_class_id, inactive_attribute_id, inactive_attribute_text)
+ puts "MATCHED: \"#{inactive_attribute_text}\" - \e[0m[ \e[32mPASSED\e[0m ]" if $driver.find_element(:class, inactive_class_id).attribute(inactive_attribute_id) == inactive_attribute_text
 end

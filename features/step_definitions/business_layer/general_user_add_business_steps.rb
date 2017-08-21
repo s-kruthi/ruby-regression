@@ -1,7 +1,7 @@
 Given(/^I Have Logged In as a Company Admin to (.*) site$/) do |site_name|
   startWebDriver
   $site_name = ENV["URL"] if ENV["URL"] != nil
-  puts "URL = " + ENV["URL"] if ENV["URL"] != nil
+  puts "Found ENV URL = " + ENV["URL"] if ENV["URL"] != nil
   go_to_site($site_name)
   EnterUsername(USER_NAME,COMP_ADMIN_USERNAME)
   EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
@@ -116,7 +116,7 @@ end
 
 
 And(/^I Enter New User Details$/) do
-  create_users(11)
+  create_users(1)
 end
 
 Then(/^I Should Be Able To Add (.*) New Users In To The System$/) do |total_number_of_users|
@@ -205,4 +205,16 @@ end
 Then(/^I Should Be Able To Add (.*) Details$/) do |contact_details|
   Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
   Sleep_Until(WaitForAnElementByXpathAndTouch(DONE_BTN_ID))
+  sleep (1)
+end
+
+
+And(/^I Search For A Specific User$/) do
+  use_active_inactive_filter()
+  search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, USERNAME_SEARCH_VALUE, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
+end
+
+Then(/^I Should Be Able To Delete The Specific User$/) do
+  delete_the_user(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_CLASS_INDEX_VALUE, ACTION_DROPDOWN_NAME_VALUE)
+  very_deleted_user(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
 end

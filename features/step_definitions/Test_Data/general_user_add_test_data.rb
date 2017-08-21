@@ -23,3 +23,10 @@ EM_USER_RELATIONSHIP_VALUE = "Tester"
 EM_USER_ADDRESS_VALUE = "520 Oxford St, Bondi Junction, New South Wales, Australia"
 EM_USER_MOBILE_VALUE = "0430000000"
 EM_USER_EMAIL_VALUE = "auto.test@elmodev.com"
+
+USERNAME_SEARCH_VALUE = "auto10.test10"
+
+USERNAME_SEARCH_RESULT_VALUE = "//td[contains(.,'auto10.test10@elmodev.com')]"
+ACTION_DROPDOWN_CLASS_INDEX_VALUE = 3
+ACTION_DROPDOWN_NAME_VALUE = "Deactivate user"
+INACTIVE_ATTRIBUTE_TEXT = "User is not active"
