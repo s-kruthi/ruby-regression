@@ -191,21 +191,21 @@ And(/^I Go To The (.*) Section$/) do |menu_type|
 
         when "Menu Contracts"
           begin
-            Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[2].click) if $driver.find_elements(:class, "dropdown-toggle")[2].displayed? == true
+            Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[1].click) if $driver.find_elements(:class, "dropdown-toggle")[1].displayed? == true
             Sleep_Until(go_to_the_navbar_sections(MENU_CONTRACTS_LINK))
             sleep (1)
           end
 
         when "Menu Succession"
           begin
-            Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[2].click) if $driver.find_elements(:class, "dropdown-toggle")[2].displayed? == true
+            Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[1].click) if $driver.find_elements(:class, "dropdown-toggle")[1].displayed? == true
             Sleep_Until(go_to_the_navbar_sections(MENU_SUCCESSION_LINK))
             sleep (1)
           end
 
         when "Menu Reports"
           begin
-            Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[2].click) if $driver.find_elements(:class, "dropdown-toggle")[2].displayed? == true
+            Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[1].click) if $driver.find_elements(:class, "dropdown-toggle")[1].displayed? == true
             Sleep_Until(go_to_the_navbar_sections(MENU_REPORTS_LINK))
             sleep (1)
           end
