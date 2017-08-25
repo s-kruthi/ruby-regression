@@ -1,8 +1,3 @@
-
-And(/^I Go To The Documents Files Section$/) do
-  goToTheDocumentsAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, FILES_LIST_PATH)
-end
-
 When(/^I click on Add File Button$/) do
   goToAddFilePage(ADD_FILE_BTN)
 end

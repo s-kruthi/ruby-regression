@@ -1,25 +1,25 @@
 @client_contracts
 
 Feature:
-  I want to test if an Finance Manager can successfully Manage Client Contracts
+  I want to test if an ELMO Setup Admin can successfully Manage Client Contracts
 
-  @add_client_contract
+  @client_contract_add
   Scenario: Create a Client Contract
-     Given I Have Logged In as an Finance Manager
+     Given I Have Logged In as a ELMO Setup Admin to staging4 site
      And  I Go To The Contracts Section
      When I click on Add New Contract Button
      And  I Enter New Client Contract Details
      Then I Should Be Able To Create A Client Contract
 
-  @search_client_contract
+  @client_contract_search
   Scenario: Search a Client Contract
-    Given I Have Logged In as an Finance Manager
+    Given I Have Logged In as a ELMO Setup Admin to staging4 site
     And  I Go To The Contracts Section
     Then  I Should Be Able To Search For A Specific Active Client Contract
 
-  @deactivate_client_contract
+  @client_contract_deactivate
     Scenario: De-activate a Client Contract
-      Given I Have Logged In as an Finance Manager
+    Given I Have Logged In as a ELMO Setup Admin to staging4 site
       And   I Go To The Contracts Section
       When  I Search For A Specific Active Client Contract
       Then  I Should Be Able To De-Activate A Specific Active Client Contract

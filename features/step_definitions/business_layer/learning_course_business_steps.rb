@@ -1,11 +1,10 @@
-Given(/^I Have Logged In as a Company Admin To Setup A Course$/) do
-  startWebDriver
-  GoToThePage(ADMIN_COURSE_PAGE)
-  EnterUsername(USER_NAME,ADMIN_COURSE_USER)
-  EnterPassword(PASS_WORD,ADMIN_COURSE_PASS)
-  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
-end
-
+# Given(/^I Have Logged In as a Company Admin To Setup A Course$/) do
+#   startWebDriver
+#   GoToThePage(ADMIN_COURSE_PAGE)
+#   EnterUsername(USER_NAME,ADMIN_COURSE_USER)
+#   EnterPassword(PASS_WORD,ADMIN_COURSE_PASS)
+#   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+# end
 
 When(/^I Setup A Course To Edit The Section$/) do
   AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
@@ -20,18 +19,6 @@ Then(/^I Should be Able To Successfully Setup The Quiz Activity$/) do
   SetupTheQuizActivityAndSaveIt()
   #SearchForTheCourseAndDeleteIt(COURSE_NAME_VAL)
 end
-
-
-
-Given(/^I Have Logged In as a Learning Admin to (.*) site$/) do |site_name|
-  startWebDriver
-  site_name = ENV["URL"] if ENV["URL"] != nil
-  go_to_site(site_name)
-  EnterUsername(USER_NAME,LEARNING_ADMIN_USERNAME)
-  EnterPassword(PASS_WORD,LEARNING_ADMIN_PASSWORD)
-  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
-end
-
 
 When(/^I Click On The New Course Button$/) do
   go_to_new_course_add_page(CREATE_NEW_COURSE_BTN)

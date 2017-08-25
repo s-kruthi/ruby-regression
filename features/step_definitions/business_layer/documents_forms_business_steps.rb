@@ -6,11 +6,6 @@ Given(/^I Have Logged In as a Company Admin$/) do
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
 end
 
-
-And(/^I Go To The Documents Form Templates Section$/) do
-  goToTheDocumentsAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
-end
-
 When(/^I click on Create Form Template Button$/) do
   goToNewFormTemplateAddPage(CREATE_FORM_TEMPLATE_BTN)
 end
@@ -26,7 +21,6 @@ Then(/^I Should Be Able To Create A Form Template$/) do
   $driver.quit
 end
 
-
 When(/^I Search For A Specific Form Template$/) do
   searchforAForFormTemplate(FORM_TEMP_SEARCH_BOX, FORM_TEMP_TITLE_TXT, SEARCH_BTN_ID)
 end
@@ -35,10 +29,6 @@ end
 Then(/^I Should Be Able To Hide A Specific Form Template$/) do
   hideTheFirstFormTemplatePlanFromTheTable(FORM_DROPDOWN,3, FORM_ACTION_ITEM)
   $driver.quit
-end
-
-And(/^I Go To The Documents Categories Section$/) do
-  goToTheDocumentsAsCompanyAdmin(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_CAT_LIST_PATH)
 end
 
 When(/^I click on Add Category Button$/) do

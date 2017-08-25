@@ -39,9 +39,19 @@ Feature:
     And   I Use Add Next Of Kin Details
     Then  I Should Be Able To Add Next Of Kin Details
 
-  @wip @general
-  Scenario: Onboarding User Editing Profile Page - Next of Kin - WIP
+  @delete_user @general
+  Scenario: Onboarding or General User List page - delete user
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I Go To The General Users Section
     And   I Search For A Specific User
     Then  I Should Be Able To Delete The Specific User
+
+#    @wip
+#    Scenario: This is a work in progress - WIP
+#      Given I Have Logged In With Given Credential
+#        |login_type|login_name|login_password|login_site|
+#        |Company Admin|company.omar |Admin1234567|tmsfull|
+#        |Company Admin|company.omar|Admin1234567|faraz1 |
+#      And   I Go To The General Users Section
+#      And   I Search For A Specific User
+#      Then  I Should Be Able To Delete The Specific User

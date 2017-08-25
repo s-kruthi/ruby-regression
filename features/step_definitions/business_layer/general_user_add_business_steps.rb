@@ -1,10 +1,96 @@
-Given(/^I Have Logged In as a Company Admin to (.*) site$/) do |site_name|
+# Given(/^I Have Logged In With Given Credential$/) do |credential|
+#
+#   table = credential.hashes
+#   role_type = []
+#   login_name = []
+#   login_pass = []
+#   site_name = []
+#
+#   table.each do |row|
+#     row.each do |key, value|
+#       if key.eql? "login_type"
+#         role_type << value
+#       end
+#         if key.eql? "login_name"
+#           login_name << value
+#         end
+#         if key.eql? "login_password"
+#           login_pass << value
+#         end
+#         if key.eql? "login_site"
+#         site_name << value
+#       end
+#     end
+#   end
+#
+#   puts "Role types: " + role_type.to_s
+#   puts "Login Names: " + login_name.to_s
+#   puts "Login Passwords: " + login_pass.to_s
+#   puts "Site names: " + site_name.to_s
+#
+#
+#   startWebDriver
+#   # site_name = ENV["URL"] if ENV["URL"] != nil
+#   # puts "Found ENV URL = " + ENV["URL"] if ENV["URL"] != nil
+#   go_to_site(site_name[0].to_s)
+#   EnterUsername(USER_NAME,login_name[0].to_s)
+#   EnterPassword(PASS_WORD,login_pass[0].to_s)
+#   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+# end
+
+
+Given(/^I Have Logged In as a (.*) to (.*) site$/) do |login_name, site_name|
   startWebDriver
-  $site_name = ENV["URL"] if ENV["URL"] != nil
+  site_name = ENV["URL"] if ENV["URL"] != nil
   puts "Found ENV URL = " + ENV["URL"] if ENV["URL"] != nil
-  go_to_site($site_name)
-  EnterUsername(USER_NAME,COMP_ADMIN_USERNAME)
-  EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
+  go_to_site(site_name)
+
+  case login_name
+    when "ELMO Setup Admin"
+      begin
+        GoToThePage(ADMIN_SETUP_LANDING_PAGE)
+        EnterUsername(USER_NAME,ELMO_ADMIN_USERNAME)
+        EnterPassword(PASS_WORD,ELMO_ADMIN_PASSWORD)
+
+        loginToSystem(LOGIN_BUTTON)
+
+        GoToThePage(ADMIN_SETUP_LANDING_PAGE)
+        EnterUsername(USER_NAME,ELMO_SETUP_ADMIN_USERNAME)
+        EnterPassword(PASS_WORD,ELMO_SETUP_ADMIN_PASSWORD)
+        loginToSystem(LOGIN_BUTTON)
+      end
+
+    when "ELMO Admin"
+      begin
+        EnterUsername(USER_NAME,ELMO_ADMIN_USERNAME)
+        EnterPassword(PASS_WORD,ELMO_ADMIN_PASSWORD)
+      end
+
+    when "Company Admin"
+      begin
+        EnterUsername(USER_NAME,COMP_ADMIN_USERNAME)
+        EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
+      end
+
+    when "Learning Admin"
+      begin
+        EnterUsername(USER_NAME,LEARNING_ADMIN_USERNAME)
+        EnterPassword(PASS_WORD,LEARNING_ADMIN_PASSWORD)
+      end
+
+    when "Recruitment Admin"
+      begin
+        EnterUsername(USER_NAME,RECRUITMENT_ADMIN_USERNAME)
+        EnterPassword(PASS_WORD,RECRUITMENT_ADMIN_PASSWORD)
+      end
+
+    when "Leave Admin"
+      begin
+        EnterUsername(USER_NAME,LEAVE_COMPANY_ADMIN_USER)
+        EnterPassword(PASS_WORD,LEAVE_COMPANY_ADMIN_PASS)
+      end
+  end
+
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
 end
 
@@ -17,15 +103,45 @@ And(/^I Go To The (.*) Section$/) do |menu_type|
             $add_user_type = "EMP"
           end
 
+        when "General Contract Library"
+          begin
+            go_to_the_sections(ADMIN_COG, EMPLOYEE_CONTRACTS_TAB, EMPLOYEE_CONTRACT_LIST_PATH)
+          end
+
+        when "Documents Files"
+          begin
+            go_to_the_sections(ADMIN_COG, DOCUMENTS_EXPAND, FILES_LIST_PATH)
+          end
+
+        when "Documents Form Templates"
+          begin
+            go_to_the_sections(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
+          end
+
+        when "Documents Categories"
+          begin
+            go_to_the_sections(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_CAT_LIST_PATH)
+          end
+
         when "Onboarding Users"
           begin
             go_to_the_sections(ADMIN_COG, ONBOARDING_EXPAND, OB_USERS_LIST_PATH)
             $add_user_type = "OB"
           end
 
+        when "Recruitment Candidates"
+          begin
+            go_to_the_sections(ADMIN_COG, RECRUITMENT_EXPAND, CANDIDATES_LIST_PATH)
+          end
+
         when "Learning Courses"
           begin
             go_to_the_sections(ADMIN_COG, LEARNING_EXPAND, LEARNING_LIST_PATH)
+          end
+
+        when "Succession Review Setup"
+          begin
+            go_to_the_sections(ADMIN_COG,SUCCESSION_EXPAND, SUCCESSION_REVIEW_SETUP_PATH)
           end
 
         when "Menu Profile"

@@ -1,5 +1,3 @@
-
-
 Given(/^I Have Logged In As A Regular User$/) do
   startWebDriver
   GoToThePage(ELMO_LANDING_PAGE)

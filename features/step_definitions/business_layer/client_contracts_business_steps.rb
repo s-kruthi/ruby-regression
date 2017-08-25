@@ -1,19 +1,3 @@
-Given(/^I Have Logged In as an Finance Manager$/) do
-  startWebDriver
-  GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-  EnterUsername(USER_NAME,ELMO_ADMIN_USERNAME)
-  EnterPassword(PASS_WORD,ELMO_ADMIN_PASSWORD)
-
-  loginToSystem(LOGIN_BUTTON)
-
-  GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-  EnterUsername(USER_NAME,ELMO_SETUP_ADMIN_USERNAME)
-  EnterPassword(PASS_WORD,ELMO_SETUP_ADMIN_PASSWORD)
-  loginToSystem(LOGIN_BUTTON)
-
-end
-
-
 And(/^I Go To The Contracts Section$/) do
   GoToThePage(CLIENT_CONTRACTS_LANDING_PAGE)
   goToClientContractsTab(CLIENT_CONTRACTS_TAB)

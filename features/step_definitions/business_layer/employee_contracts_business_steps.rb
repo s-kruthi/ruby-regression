@@ -1,9 +1,3 @@
-
-And(/^I Go To The Contract Library Section$/) do
-  go_to_employee_contracts_page_as_company_admin(ADMIN_COG, EMPLOYEE_CONTRACTS_TAB, EMPLOYEE_CONTRACT_LIST_PATH)
-end
-
-
 When(/^I click on New Contract Button$/) do
   go_to_new_employee_contracts_page(EMPLOYEE_NEW_CONTRACT_BTN)
   end
@@ -35,7 +29,7 @@ Then(/^I Should Be Able To Search For An Employee Contract$/) do
 end
 
 When(/^I Search For An Employee Contract$/) do
-  # search_for_an_employee_contract_and_verify(EMP_CONTRACT_SEARCH_ID, EMP_CONTRACT_SEARCH_VALUE, EMP_CONTRACT_SEARCH_BTN, EMP_CONTRACT_SEARCH_RESULT)
+  search_for_an_employee_contract_and_verify(EMP_CONTRACT_SEARCH_ID, EMP_CONTRACT_SEARCH_VALUE, EMP_CONTRACT_SEARCH_BTN, EMP_CONTRACT_SEARCH_RESULT)
   sleep(1)
 end
 
