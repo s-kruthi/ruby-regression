@@ -42,6 +42,10 @@ CREATE_FORM_TEMPLATE_BTN="//a[contains(.,'Create Form Template')]"
 FORM_TEMP_TITLE = "//input[contains(@id,'title')]"
 FORM_TEMPLATE_SAVE_BTN="//button[contains(.,'Save')]"
 
+DOCUMENT_CATEGORY_ID = "s2id_formTemplateForm_category"
+DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS = "select2-input"
+DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
+
 FORM_DROPDOWN = "dropdown-toggle"
 
 CAT_POS_INDEX_ARROW = "select2-arrow"

@@ -23,13 +23,17 @@ def goToNewFormTemplateAddPage(form_temp_btn)
   WaitForAnElementByXpathAndTouch(form_temp_btn)
 end
 
-def enterFormTemplateDetails(form_temp_title, form_temp_title_text, pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+def enterFormTemplateDetails(form_temp_title, form_temp_title_text)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
-  sleep(1)
-  select_from_select2_input(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
 end
 
-def enterDescription(form_temp_desc_txt, index_id)
+def single_select_from_select2_input_dropdown(select2_input_id, select2_search_input_class, select2_search_input_text, select2_search_result_class)
+    $driver.find_elements(:id, select2_input_id).last.click
+    $driver.find_elements(:class, select2_search_input_class).last.send_keys(select2_search_input_text)
+    $driver.find_elements(:class, select2_search_result_class).last.click
+end
+
+  def enterDescription(form_temp_desc_txt, index_id)
   use_ckeditor_to_enter_description(form_temp_desc_txt, index_id)
 end
 
