@@ -187,12 +187,14 @@ end
 
 def add_a_new_section(course_add_a_section_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_add_a_section_btn_id))
+  # sleep (1)
 end
 
 
 def select_an_activity(select_activity_name)
   Sleep_Until($driver.find_elements(:id, COURSE_SECTION_DROPDOWN_ID).last.click)
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_SEARCH_ID).last.send_keys(select_activity_name))
+  puts "Adding activity: " + $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.text
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.click)
   Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
 end
@@ -326,6 +328,7 @@ end
 def add_notification_template()
   begin
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_template").click)
+    puts "Added Template: " + $driver.find_elements(:class, "select2-result-selectable").last.text
     Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
     Sleep_Until($driver.find_elements(:xpath, "//button[contains(@id,'next')]").first.click)
     sleep(2)

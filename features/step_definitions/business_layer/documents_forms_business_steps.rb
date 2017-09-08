@@ -11,8 +11,9 @@ When(/^I click on Create Form Template Button$/) do
 end
 
 And(/^I Enter New Form Template Details$/) do
-  enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT, CAT_POS_INDEX_ARROW, 0, CAT_POS_INDEX_CLASS, 3)
-  enterDescription(FORM_TEMP_DESC_TXT, 0)
+  Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
+  Sleep_Until(single_select_from_select2_input_dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT , DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
+  Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
 end
 
 Then(/^I Should Be Able To Create A Form Template$/) do
