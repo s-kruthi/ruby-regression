@@ -1,4 +1,4 @@
-Given(/^I Have Logged In As A Regular User$/) do
+Given(/^I Have Logged In As A Regular User$/i) do
   startWebDriver
   GoToThePage(ELMO_LANDING_PAGE)
   EnterUsername(USER_NAME,EMO_ADMIN_USERNAME)
@@ -7,20 +7,20 @@ Given(/^I Have Logged In As A Regular User$/) do
 end
 
 
-When(/^I Go To The Career Positions Section$/) do
+When(/^I Go To The Career Positions Section$/i) do
   GoToPositionsUnderCareersTab(CAREERS_TAB, 1, POSITIONS_LINK)
 end
 
-Then(/^The Default Positions Should Be Returned In An Alphabetical Order$/) do
+Then(/^The Default Positions Should Be Returned In An Alphabetical Order$/i) do
   WaitForThePositionsListingAndVerifyTheAlphabeticalSorting()
 end
 
 
-Then(/^The I Should Be Able To Search A Position By Typing The Keywords$/) do
+Then(/^The I Should Be Able To Search A Position By Typing The Keywords$/i) do
   SearchForAPositionAndVerifyTheResult(POS_SEARCH_FIELD,POS_SEARCH_VALUE,POS_SEARCH_BTN,POS_SEARCH_RESULT)
 end
 
-Given(/^I Have Logged In As A Specific User$/) do
+Given(/^I Have Logged In As A Specific User$/i) do
   startWebDriver
   GoToThePage(ELMO_LANDING_PAGE)
   EnterUsername(USER_NAME,SPECIFIC_USERNAME)
@@ -28,18 +28,18 @@ Given(/^I Have Logged In As A Specific User$/) do
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
 end
 
-And(/^I Try To Search A Position Based On Interested Positions$/) do
+And(/^I Try To Search A Position Based On Interested Positions$/i) do
   SelectAndSearchInterestedPositionsFromTheDropdown(POSITIONS_DROPDOWN_ID,DROPDOWN_RESULT_CLASS, 2)
 end
 
-Then(/^The Search Should Return The Interested Position Based On My Previous Selections$/) do
+Then(/^The Search Should Return The Interested Position Based On My Previous Selections$/i) do
   ValidateTheSearchResultReturnsTheInterestedPosition(INTERESTED_POSITION_PATH, INTERESTED_POSITION_VALUE)
 end
 
-And(/^I Try To Search A Position Based On Suggested Positions$/) do
+And(/^I Try To Search A Position Based On Suggested Positions$/i) do
   SelectAndSearchSuggestedPositionsFromTheDropdown(POSITIONS_DROPDOWN_ID,DROPDOWN_RESULT_CLASS, 1)
 end
 
-Then(/^The Search Should Return The Suggested Positions Based On The Next Positions Within Two Steps$/) do
+Then(/^The Search Should Return The Suggested Positions Based On The Next Positions Within Two Steps$/i) do
   ValidateTheSearchReturnsNextTwoSuggestedPositions(SUGGESTED_POS_PATH1,SUGGESTED_POS_VALUE1, SUGGESTED_POS_PATH2,SUGGESTED_POS_VALUE2)
 end

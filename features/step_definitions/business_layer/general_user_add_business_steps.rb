@@ -1,4 +1,4 @@
-# Given(/^I Have Logged In With Given Credential$/) do |credential|
+# Given(/^I Have Logged In With Given Credential$/i) do |credential|
 #
 #   table = credential.hashes
 #   role_type = []
@@ -39,7 +39,7 @@
 # end
 
 
-Given(/^I Have Logged In as a (.*) to (.*) site$/) do |login_name, site_name|
+Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
   startWebDriver
   site_name = ENV["URL"] if ENV["URL"] != nil
   puts "Found ENV URL = " + ENV["URL"] if ENV["URL"] != nil
@@ -94,7 +94,7 @@ Given(/^I Have Logged In as a (.*) to (.*) site$/) do |login_name, site_name|
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
 end
 
-And(/^I Go To The (.*) Section$/) do |menu_type|
+And(/^I Go To The (.*) Section$/i) do |menu_type|
   begin
       case menu_type
         when "General Users"
@@ -214,7 +214,7 @@ And(/^I Go To The (.*) Section$/) do |menu_type|
 end
 
 
-When(/^I Click On Add New User Button$/) do
+When(/^I Click On Add New User Button$/i) do
   begin
       case $add_user_type
         when "EMP"
@@ -231,17 +231,17 @@ When(/^I Click On Add New User Button$/) do
 end
 
 
-And(/^I Enter New User Details$/) do
+And(/^I Enter New User Details$/i) do
   create_users(1)
 end
 
-Then(/^I Should Be Able To Add (.*) New Users In To The System$/) do |total_number_of_users|
+Then(/^I Should Be Able To Add (.*) New Users In To The System$/i) do |total_number_of_users|
   $total = total_number_of_users.to_i
   add_user_details($total - 1)
   $driver.quit
 end
 
-And(/^I Click On (.*) Sub Tab$/) do |sub_tab_name|
+And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
   begin
     case sub_tab_name
       when "Personal Details"
@@ -258,7 +258,7 @@ And(/^I Click On (.*) Sub Tab$/) do |sub_tab_name|
 end
 
 
-When(/^I Click On (.*) Icon$/) do |click_edit_icon|
+When(/^I Click On (.*) Icon$/i) do |click_edit_icon|
   begin
     case click_edit_icon
       when "Edit Emergency Contact Details"
@@ -275,7 +275,7 @@ When(/^I Click On (.*) Icon$/) do |click_edit_icon|
 end
 
 
-And(/^I Click On (.*) Button$/) do |add_contact_btn|
+And(/^I Click On (.*) Button$/i) do |add_contact_btn|
   begin
     case add_contact_btn
       when "Add Emergency Contact Details"
@@ -291,10 +291,10 @@ And(/^I Click On (.*) Button$/) do |add_contact_btn|
   end
 end
 
-And(/^I Use (.*)$/) do |add_contact_btn|
+And(/^I Use (.*) Details$/i) do |add_contact_btn|
   begin
     case add_contact_btn
-      when "Add Emergency Contact Details"
+      when "Add Emergency Contact"
         begin
           Sleep_Until(click_on_a_sub_tab(ADD_EM_CONTACT_BTN_ID))
           Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
@@ -305,7 +305,7 @@ And(/^I Use (.*)$/) do |add_contact_btn|
           Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
         end
 
-      when "Add Next Of Kin Details"
+      when "Add Next Of Kin"
         begin
           Sleep_Until(click_on_a_sub_tab(ADD_NOK_CONTACT_BTN_ID))
           Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
@@ -318,19 +318,19 @@ And(/^I Use (.*)$/) do |add_contact_btn|
   end
 end
 
-Then(/^I Should Be Able To Add (.*) Details$/) do |contact_details|
+Then(/^I Should Be Able To Add (.*) Details$/i) do |contact_details|
   Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
   Sleep_Until(WaitForAnElementByXpathAndTouch(DONE_BTN_ID))
   sleep (1)
 end
 
 
-And(/^I Search For A Specific User$/) do
+And(/^I Search For A Specific User$/i) do
   use_active_inactive_filter()
   search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, USERNAME_SEARCH_VALUE, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
 end
 
-Then(/^I Should Be Able To Delete The Specific User$/) do
+Then(/^I Should Be Able To Delete The Specific User$/i) do
   delete_the_user(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_CLASS_INDEX_VALUE, ACTION_DROPDOWN_NAME_VALUE)
   very_deleted_user(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
 end

@@ -1,14 +1,14 @@
-And(/^I Go To The Contracts Section$/) do
+And(/^I Go To The Contracts Section$/i) do
   GoToThePage(CLIENT_CONTRACTS_LANDING_PAGE)
   goToClientContractsTab(CLIENT_CONTRACTS_TAB)
 end
 
 
-When(/^I click on Add New Contract Button$/) do
+When(/^I click on Add New Contract Button$/i) do
   goToAddClientContractsPage(ADD_NEW_CONTRACT_BTN)
   end
 
-And(/^I Enter New Client Contract Details$/) do
+And(/^I Enter New Client Contract Details$/i) do
   enterSubDomainName(CAT_POS_INDEX_ARROW, 0, CAT_POS_INDEX_CLASS, SUBDOMAIN_INDEX_VALUE)
   enterContractCode(CLIENT_CONTRACT_ID, CLIENT_CONTRACT_VALUE)
   enterIsActiveStatus(CLIENT_CONTRACT_STATUS_ID)
@@ -44,24 +44,24 @@ And(/^I Enter New Client Contract Details$/) do
   enterClientContractContactDetails(CONTACT_FIRSTNAME_ID, CONTACT_FIRSTNAME_VALUE, CONTACT_LASTNAME_ID, CONTACT_LASTNAME_VALUE, CONTACT_EMAIL_ID, CONTACT_EMAIL_VALUE, CONTACT_ADDRESS_ID, CONTACT_ADDRESS_VALUE)
  end
 
-Then(/^I Should Be Able To Create A Client Contract$/) do
+Then(/^I Should Be Able To Create A Client Contract$/i) do
   createAClientContract(FORM_TEMPLATE_SAVE_BTN)
   sleep (1)
   verifySuccessMessage(VERIFY_SAVE_SUCCESSFUL_ID, VERIFY_SAVE_SUCCESSFUL_VALUE)
   $driver.quit
 end
 
-Then(/^I Should Be Able To Search For A Specific Active Client Contract$/) do
+Then(/^I Should Be Able To Search For A Specific Active Client Contract$/i) do
   searchForAclientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT)
   sleep(1)
   $driver.quit
 end
 
-When(/^I Search For A Specific Active Client Contract$/) do
+When(/^I Search For A Specific Active Client Contract$/i) do
   searchForAclientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT)
 end
 
-Then(/^I Should Be Able To De-Activate A Specific Active Client Contract$/) do
+Then(/^I Should Be Able To De-Activate A Specific Active Client Contract$/i) do
   editAclientContract(CONTRACT_ACTION_DROPDOWN,3, CONTRACT_DROPDOWN_ACTION_ITEM)
   sleep (1)
   enterIsActiveStatus(CLIENT_CONTRACT_STATUS_ID)

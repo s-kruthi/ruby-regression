@@ -118,6 +118,15 @@
       Then  I Should Be Able To Add All Notifications
 
 
+    @f2f_session_notifications @activity_add
+    Scenario: Learning Admin Using Retrain Discrepancies Page
+      Given I Have Logged In as a Learning Admin to chao site
+      And   I Go To The Learning Courses Section
+      When  I Edit A Specific Course
+      And   I Open A Specific Face-to-Face Activity
+      Then  I Should Be Able To Add All Notifications
+
+
 #  Scenario: Admin verifies the Sessions page
 #    Given I Have Logged In as an Admin User
 #    And I Have Opened a Course that contains F2F Activity

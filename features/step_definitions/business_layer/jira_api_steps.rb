@@ -1,5 +1,5 @@
 
-Given(/^I Want To Upload The Scenarios To Jira Task$/) do
+Given(/^I Want To Upload The Scenarios To Jira Task$/i) do
 
   require_relative('../../support/jira')
 
@@ -9,7 +9,7 @@ Given(/^I Want To Upload The Scenarios To Jira Task$/) do
   workLog = issue.worklogs.build.save!("timeSpent" => "#{TIME_DUR}","comment" => "#{TIME_COMNT}")
 end
 
-Then(/^I Should Be Able To Successfuly Post It To The Desc$/) do
+Then(/^I Should Be Able To Successfuly Post It To The Desc$/i) do
   begin
   if @bingo == true
     puts "successfully posted"
