@@ -3,16 +3,22 @@ def go_to_site(login_page)
      $driver.navigate.to($site_url)
  end
 
-def go_to_the_sections(admin_cog,general_expand,users_list_path)
-  WaitForAnElementByClass(admin_cog)
-  TouchAdminMenu(admin_cog)
-  sleep(2)
-  goToDocumentsSection(general_expand)
-  sleep(2)
+def go_to_the_sections(general_expand,users_list_path)
+  goToASection(general_expand)
+  sleep(1)
   goToItemLandingPage(users_list_path)
 end
 
-def go_to_the_navbar_sections(link_to_click)
+def goToAdminSettings(admin_cog)
+  WaitForAnElementByClass(admin_cog)
+  TouchAdminMenu(admin_cog)
+end
+
+def goToASection(section_expand)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(section_expand))
+end
+
+  def go_to_the_navbar_sections(link_to_click)
   Sleep_Until($driver.find_elements(:xpath, link_to_click).last.click)
 end
 

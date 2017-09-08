@@ -40,7 +40,7 @@ Feature:
     Then I Reset The User Profile Back To Initial
 
   Scenario: Configuring The Career Preference Tab And Section As Admin (Negative scenario, Disable the CP)
-    Given I Have Logged In As An Admin
+    Given I Have Logged In As a Admin to tmsfull site
     When I Navigate To Career Preference Tab Within User Profile Setup Tab
     And I Disable The Career Preference Tab For That Particular User
     Then I Try To Navigate To The Career Preference Tab As a User
@@ -51,12 +51,12 @@ Feature:
 # This Scenario requires a tear down as consecutive test run will add the same question again an again, and Deleting a Question is not mentioned
   # in the requirement sheet
   Scenario: Configuring The Career Preference Tab Preferred Questions As An Admin( Lets Add A new Question)
-    Given I Have Logged In As An Admin
+    Given I Have Logged In As a Admin to tmsfull site
     When I Navigate To Career Preference Tab Within User Profile Setup Tab
     Then I Should Be Able to Add A New Question
 
   Scenario: Configuring The Career Preference Tab Preferred Questions As An Admin( Lets Disable the willing to relocate Question)
-    Given I Have Logged In As An Admin
+    Given I Have Logged In As a Admin to tmsfull site
     When I Navigate To Career Preference Tab Within User Profile Setup Tab
     Then I Should Be Able to Add A New Question
 

@@ -1,7 +1,7 @@
-And(/^I Go To The Contracts Section$/i) do
-  GoToThePage(CLIENT_CONTRACTS_LANDING_PAGE)
-  goToClientContractsTab(CLIENT_CONTRACTS_TAB)
-end
+# And(/^I Go To The Contracts Section$/i) do
+#   GoToThePage(CLIENT_CONTRACTS_LANDING_PAGE)
+#   goToClientContractsTab(CLIENT_CONTRACTS_TAB)
+# end
 
 
 When(/^I click on Add New Contract Button$/i) do

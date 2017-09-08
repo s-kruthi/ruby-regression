@@ -41,8 +41,8 @@
 
 Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
   startWebDriver
-  site_name = ENV["URL"] if ENV["URL"] != nil
-  puts "Found ENV URL = " + ENV["URL"] if ENV["URL"] != nil
+  site_name = (ENV["URL"] || ENV["url"]) if (ENV["URL"] || ENV["url"]) != nil
+  puts "URL OVERRIDE = " + site_name.to_s if (ENV["URL"] || ENV["url"]) != nil
   go_to_site(site_name)
 
   case login_name
@@ -91,58 +91,31 @@ Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
       end
   end
 
-  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
+end
+
+And(/^I go to Admin Section$/i) do
+  goToAdminSettings(ADMIN_COG)
+end
+
+And(/^I Go To The (.*) Under (.*) Section$/i) do |menu_type, menu_section|
+  begin
+      # case menu_type
+      $section_name = "//a[@href='#collapse#{menu_section}']"
+      $item_name = "//span[contains(.,'#{menu_type}')]"
+      go_to_the_sections($section_name, $item_name)
+  end
 end
 
 And(/^I Go To The (.*) Section$/i) do |menu_type|
   begin
-      case menu_type
-        when "General Users"
-          begin
-            go_to_the_sections(ADMIN_COG, GENERAL_EXPAND, USERS_LIST_PATH)
-            $add_user_type = "EMP"
-          end
+    case menu_type
 
-        when "General Contract Library"
-          begin
-            go_to_the_sections(ADMIN_COG, EMPLOYEE_CONTRACTS_TAB, EMPLOYEE_CONTRACT_LIST_PATH)
-          end
-
-        when "Documents Files"
-          begin
-            go_to_the_sections(ADMIN_COG, DOCUMENTS_EXPAND, FILES_LIST_PATH)
-          end
-
-        when "Documents Form Templates"
-          begin
-            go_to_the_sections(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_LIST_PATH)
-          end
-
-        when "Documents Categories"
-          begin
-            go_to_the_sections(ADMIN_COG, DOCUMENTS_EXPAND, DOCUMENTS_CAT_LIST_PATH)
-          end
-
-        when "Onboarding Users"
-          begin
-            go_to_the_sections(ADMIN_COG, ONBOARDING_EXPAND, OB_USERS_LIST_PATH)
-            $add_user_type = "OB"
-          end
-
-        when "Recruitment Candidates"
-          begin
-            go_to_the_sections(ADMIN_COG, RECRUITMENT_EXPAND, CANDIDATES_LIST_PATH)
-          end
-
-        when "Learning Courses"
-          begin
-            go_to_the_sections(ADMIN_COG, LEARNING_EXPAND, LEARNING_LIST_PATH)
-          end
-
-        when "Succession Review Setup"
-          begin
-            go_to_the_sections(ADMIN_COG,SUCCESSION_EXPAND, SUCCESSION_REVIEW_SETUP_PATH)
-          end
+      when "Contracts"
+        begin
+          # GoToThePage(CLIENT_CONTRACTS_LANDING_PAGE)
+          goToClientContractsTab(CLIENT_CONTRACTS_TAB)
+        end
 
         when "Menu Profile"
           begin
@@ -275,15 +248,15 @@ When(/^I Click On (.*) Icon$/i) do |click_edit_icon|
 end
 
 
-And(/^I Click On (.*) Button$/i) do |add_contact_btn|
+And(/^I Click On Add (.*) Button$/i) do |add_contact_btn|
   begin
     case add_contact_btn
-      when "Add Emergency Contact Details"
+      when "Emergency Contact Details"
         begin
           Sleep_Until(click_on_a_sub_tab(ADD_EM_CONTACT_BTN_ID))
         end
 
-      when "Add Next Of Kin"
+      when "Next Of Kin"
         begin
           Sleep_Until(click_on_a_sub_tab(ADD_NOK_CONTACT_BTN_ID))
         end
@@ -291,10 +264,10 @@ And(/^I Click On (.*) Button$/i) do |add_contact_btn|
   end
 end
 
-And(/^I Use (.*) Details$/i) do |add_contact_btn|
+And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
   begin
     case add_contact_btn
-      when "Add Emergency Contact"
+      when "Emergency Contact"
         begin
           Sleep_Until(click_on_a_sub_tab(ADD_EM_CONTACT_BTN_ID))
           Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
@@ -305,7 +278,7 @@ And(/^I Use (.*) Details$/i) do |add_contact_btn|
           Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
         end
 
-      when "Add Next Of Kin"
+      when "Next Of Kin"
         begin
           Sleep_Until(click_on_a_sub_tab(ADD_NOK_CONTACT_BTN_ID))
           Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
