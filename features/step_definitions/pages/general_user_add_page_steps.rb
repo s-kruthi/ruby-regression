@@ -51,16 +51,15 @@ def create_users(loop)
   Sleep_Until(enter_user_details(USER_PASSWORD_ID, USER_PASSWORD_VALUE))
   Sleep_Until(enter_user_details(USER_PASSWORD_RECONFIRM_ID, USER_PASSWORD_VALUE))
   Sleep_Until(press_save_button(USER_CREATE_SAVE_BTN_ID))
-  sleep (3)
+  sleep (2)
   # $driver.quit
 end
 
 def create_remaining_users(counter)
   $driver.navigate.to($site_url)
-  go_to_the_sections(ADMIN_COG, GENERAL_EXPAND, USERS_LIST_PATH) if $add_user_type == "EMP"
-  # $add_user_type = "EMP" if $menu_type == "General Users"
-  go_to_the_sections(ADMIN_COG, ONBOARDING_EXPAND, OB_USERS_LIST_PATH) if $add_user_type == "OB"
-  # $add_user_type = "OB" if $menu_type == "Onboarding Users"
+  goToAdminSettings(ADMIN_COG)
+  go_to_the_sections(GENERAL_EXPAND, USERS_LIST_PATH) if $add_user_type == "EMP"
+  go_to_the_sections(ONBOARDING_EXPAND, OB_USERS_LIST_PATH) if $add_user_type == "OB"
   go_to_add_new_users_page(ADD_NEW_USER_BTN) if $add_user_type == "EMP"
   go_to_add_new_users_page(OB_ADD_NEW_USER_BTN)  if $add_user_type == "OB"
   Sleep_Until(create_users(counter))
@@ -68,7 +67,7 @@ end
 
 def enter_user_details(input_id, input_value)
   $driver.find_element(:xpath, input_id).clear()
-  Sleep_Until(WaitForAnElementByXpathAndInputValue(input_id, input_value))
+  WaitForAnElementByXpathAndInputValue(input_id, input_value)
 end
 
 
@@ -81,6 +80,7 @@ end
 def select_date(select_date_id, select_date_value)
   Sleep_Until($driver.find_element(:xpath, select_date_id).clear())
   Sleep_Until(WaitForAnElementByXpathAndInputValue(select_date_id, select_date_value))
+  $driver.find_element(:xpath, select_date_id).send_keys(:return)
 end
 #
 def select_timezone(select_timezone_id, select_timezone_value)
@@ -97,8 +97,12 @@ def delete_the_user(action_dropdown_class_name, action_dropdown_class_index_valu
 end
 
 def use_active_inactive_filter()
-  Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[2].click)
-  Sleep_Until($driver.find_elements(:xpath, "//span[contains(.,'Active and Inactive')]").first.click)
+  if $driver.find_elements(:id, "create_filter_btn")[0].displayed?
+    begin
+    Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[2].click) if $driver.find_elements(:class, "dropdown-toggle")[2].present?
+    Sleep_Until($driver.find_elements(:xpath, "//span[contains(.,'Active and Inactive')]").first.click) if $driver.find_elements(:xpath, "//span[contains(.,'Active and Inactive')]").present?
+    end
+  end
 end
 
 def very_deleted_user(inactive_class_id, inactive_attribute_id, inactive_attribute_text)

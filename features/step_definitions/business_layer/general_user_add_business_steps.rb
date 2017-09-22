@@ -41,9 +41,9 @@
 
 Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
   startWebDriver
-  site_name = (ENV["URL"] || ENV["url"]) if (ENV["URL"] || ENV["url"]) != nil
-  puts "URL OVERRIDE = " + site_name.to_s if (ENV["URL"] || ENV["url"]) != nil
-  go_to_site(site_name)
+  $site_name = (ENV["URL"] || ENV["url"]) if (ENV["URL"] || ENV["url"]) != nil
+  puts "URL OVERRIDE = " + $site_name.to_s if (ENV["URL"] || ENV["url"]) != nil
+  go_to_site($site_name)
 
   case login_name
     when "ELMO Setup Admin"
@@ -94,16 +94,17 @@ Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
 end
 
-And(/^I go to Admin Section$/i) do
+And(/^I go to Admin Settings$/i) do
   goToAdminSettings(ADMIN_COG)
 end
 
 And(/^I Go To The (.*) Under (.*) Section$/i) do |menu_type, menu_section|
   begin
-      # case menu_type
       $section_name = "//a[@href='#collapse#{menu_section}']"
       $item_name = "//span[contains(.,'#{menu_type}')]"
       go_to_the_sections($section_name, $item_name)
+      $add_user_type = "EMP" if menu_type.include? "Users"
+      $add_user_type = "OB" if menu_type.include? "Onboarding"
   end
 end
 
@@ -113,7 +114,6 @@ And(/^I Go To The (.*) Section$/i) do |menu_type|
 
       when "Contracts"
         begin
-          # GoToThePage(CLIENT_CONTRACTS_LANDING_PAGE)
           goToClientContractsTab(CLIENT_CONTRACTS_TAB)
         end
 
@@ -306,4 +306,9 @@ end
 Then(/^I Should Be Able To Delete The Specific User$/i) do
   delete_the_user(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_CLASS_INDEX_VALUE, ACTION_DROPDOWN_NAME_VALUE)
   very_deleted_user(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
+end
+
+And(/^I Click on "([^"]*)" Button$/i) do |button_name|
+  buttonxPath = "//a[contains(.,'#{button_name}')]"
+  Sleep_Until(WaitForAnElementByXpathAndTouch(buttonxPath))
 end

@@ -1,4 +1,4 @@
-@Recruitment @requisition
+@requisition
 
 Feature:
   I want to be able to create a New Requisition Request

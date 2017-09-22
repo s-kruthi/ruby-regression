@@ -1,4 +1,4 @@
-@General
+@general
 
 Feature:
   As a Company Admin I want to manage Internal Employess Successfully
@@ -6,16 +6,16 @@ Feature:
   @general @user_add
   Scenario: Comapny Admin Creating New User
     Given I Have Logged In as a Company Admin to faraz1 site
-    And   I go to Admin Section
+    And   I go to Admin Settings
     And   I Go To The Users under General section
-    When  I Click On Add New User Button
+    When  I Click On "Add New User" Button
     And   I Enter New User Details
     Then  I Should Be Able To Add 10 New Users In To The System
 
   @onboarding @onboarding_user_add
   Scenario: Comapny Admin Creating New Onboarding User
     Given I Have Logged In as a Company Admin to faraz1 site
-    And   I go to Admin Section
+    And   I go to Admin Settings
     And   I Go To The Users under Onboarding section
     When  I Click On Add New User Button
     And   I Enter New User Details
@@ -41,13 +41,24 @@ Feature:
     And   I Use Add Next Of Kin Details
     Then  I Should Be Able To Add Next Of Kin Details
 
-  @delete_user @general
+  @general @user_delete
   Scenario: Onboarding or General User List page - delete user
     Given I Have Logged In as a Company Admin to faraz1 site
-    And   I go to Admin Section
+    And   I go to Admin Settings
     And   I Go To The Users under General section
     And   I Search For A Specific User
     Then  I Should Be Able To Delete The Specific User
+
+
+  @general @user_notify
+  Scenario: Onboarding or General User List page - delete user
+    Given I Have Logged In as a Company Admin to nick02 site
+    And   I go to Admin Settings
+    And   I Go To The Users under General section
+    And   I Click on "Notify Users" Button
+    And   I Search For A Specific User
+    Then  I Should Be Able To Delete The Specific User
+
 
 #    @wip
 #    Scenario: This is a work in progress - WIP

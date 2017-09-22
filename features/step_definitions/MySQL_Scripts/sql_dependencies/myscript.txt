@@ -1,36 +1,296 @@
 *************************** 1. row ***************************
-                    id: 32
-               user_id: 177
-         leave_type_id: 10
-                  type: 2
-leave_entitlement_type: NULL
-                status: 1
-               balance: 40
-          created_date: 1497935913
-         modified_date: 1500419346
-            is_deleted: 0
-          deleted_time: NULL
+                   id: 3472
+           manager_id: 3456
+    second_manager_id: NULL
+contractor_company_id: NULL
+             username: X1242341
+           identifier: X1242341
+                 salt: 
+             password: 2c763172f276758229f4eda179a83f81
+           first_name: DontTouchAutomationUser
+            last_name: AARON
+                email: REBECCA.AARON@elmodemo.com
+            is_active: 1
+          is_notified: 1
+              is_elmo: 0
+          description: NULL
+            phoneWork: NULL
+            phoneHome: NULL
+               mobile: NULL
+                  fax: NULL
+                  img: 679
+         profileImage: 1dedc1da7e60d9a5115633a80daeac1e39f3c899.png
+              created: 1412139241
+             modified: 1460481485
+           lastAccess: NULL
+           last_login: 1491551620
+          last_logout: 1491892277
+          expiry_date: 0
+             reg_type: manual
+            confirmed: 1
+          confirm_key: NULL
+force_password_change: 0
+           is_deleted: 0
+         deleted_time: NULL
+                 path: /5098/5751/3456/
+                depth: 4
+          second_path: NULL
+         second_depth: NULL
+               locale: NULL
+        department_id: NULL
+          location_id: 1
+          position_id: 3
+          branding_id: NULL
+        is_onboarding: 0
+   onboarding_matched: 0
+          login_count: 15
+           start_date: 1488240000
+             timezone: Australia/Adelaide
+                 type: 0
+            vendor_id: NULL
+       cost_centre_id: NULL
+              country: NULL
+*************************** 1. row ***************************
+          id: 254
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
 *************************** 2. row ***************************
-                    id: 31
-               user_id: 177
-         leave_type_id: NULL
-                  type: 1
-leave_entitlement_type: 2
-                status: 1
-               balance: 12.1538
-          created_date: 1497935913
-         modified_date: 1499555353
-            is_deleted: 0
-          deleted_time: NULL
+          id: 257
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
 *************************** 3. row ***************************
-                    id: 30
-               user_id: 177
-         leave_type_id: NULL
-                  type: 1
-leave_entitlement_type: 1
-                status: 1
-               balance: 16.3076
-          created_date: 1497935913
-         modified_date: 1499555353
-            is_deleted: 0
-          deleted_time: NULL
+          id: 259
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
+*************************** 4. row ***************************
+          id: 261
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
+*************************** 5. row ***************************
+          id: 314
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
+*************************** 6. row ***************************
+          id: 315
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
+*************************** 7. row ***************************
+          id: 5593
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
+*************************** 8. row ***************************
+          id: 20587
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
+*************************** 9. row ***************************
+          id: 20625
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
+*************************** 10. row ***************************
+          id: 21684
+  trigger_id: User.ForgotUsernamePasswordTrigger
+     user_id: 3472
+  sort_order: 2:111:3472
+   path_name: /111
+     path_id: /3472
+  is_deleted: 0
+deleted_time: NULL
+*************************** 1. row ***************************
+            id: 5913
+          type: 1
+   source_type: 1
+       subject: Forgot Username or Password
+          body: Forgot Username or Password<br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: ELMO Talent Management System <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_FIRSTNAME: Katherine <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_LASTNAME: Gotsopoulos <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_USERNAME: kathg <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: https://tmsfull.dev.elmodev.com/security/change-password/katherinegotsopoulos@gmail.com/efe9b1896bccf5994d7ae18718e478cc 
+     fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    replyEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    recipients: {"to":{"katherinegotsopoulos@gmail.com":"Katherine Gotsopoulos","elmotesta1@gmail.com":"Manager1 Test"},"cc":null,"bcc":null}
+ recipient_ids: /14798/14779/
+      priority: 2
+  created_time: 1491538058
+    fired_time: 1491538058
+        status: 1
+       context: a:1:{s:8:"schedule";i:5442;}
+      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:1;s:4:"type";i:0;}
+      template: NULL
+    is_deleted: 0
+  deleted_time: NULL
+     source_id: 5442
+         count: 1
+attachment_ids: []
+*************************** 2. row ***************************
+            id: 6033
+          type: 1
+   source_type: 1
+       subject: Forgot Username or Password
+          body: Forgot Username or Password<br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: ELMO Talent Management System <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_FIRSTNAME: DontTouchAutomationUser <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_LASTNAME: AARON <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_USERNAME: X1242341 <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: https://tmsfull.dev.elmodev.com/security/change-password/REBECCA.AARON@elmodemo.com/f0a223e480094536706f508521abc20c 
+     fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    replyEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON","SIMON.COX@elmodemo.com":"SIMON COX"},"cc":null,"bcc":null}
+ recipient_ids: /3472/3456/
+      priority: 2
+  created_time: 1492488850
+    fired_time: 1492488850
+        status: 1
+       context: a:1:{s:8:"schedule";i:5613;}
+      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:1;s:4:"type";i:0;}
+      template: NULL
+    is_deleted: 0
+  deleted_time: NULL
+     source_id: 5613
+         count: 1
+attachment_ids: []
+*************************** 3. row ***************************
+            id: 19660
+          type: 1
+   source_type: 1
+       subject: Forgot Username or Password
+          body: Forgot Username or Password<br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: ELMO Talent Management System <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_FIRSTNAME: DontTouchAutomationUser <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_LASTNAME: AARON <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_USERNAME: X1242341 <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: https://tmsfull.dev.elmodev.com/security/change-password/REBECCA.AARON@elmodemo.com/d8623307721a3c1860e1692dc59d81e4 
+     fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    replyEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON","SIMON.COX@elmodemo.com":"SIMON COX"},"cc":null,"bcc":null}
+ recipient_ids: /3472/3456/
+      priority: 2
+  created_time: 1501229670
+    fired_time: 1501229670
+        status: 1
+       context: a:1:{s:8:"schedule";i:20652;}
+      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#da6363";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:9;s:4:"type";i:0;}
+      template: NULL
+    is_deleted: 0
+  deleted_time: NULL
+     source_id: 20652
+         count: 1
+attachment_ids: []
+*************************** 4. row ***************************
+            id: 19710
+          type: 1
+   source_type: 1
+       subject: Forgot Username or Password
+          body: Forgot Username or Password<br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: ELMO Talent Management System <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_FIRSTNAME: DontTouchAutomationUser <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_LASTNAME: AARON <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_USERNAME: X1242341 <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: https://tmsfull.dev.elmodev.com/security/change-password/REBECCA.AARON@elmodemo.com/a07942fd8feeb4fa02dc15b43723bc0f 
+     fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    replyEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON","SIMON.COX@elmodemo.com":"SIMON COX"},"cc":null,"bcc":null}
+ recipient_ids: /3472/3456/
+      priority: 2
+  created_time: 1501636920
+    fired_time: 1501636920
+        status: 1
+       context: a:1:{s:8:"schedule";i:20700;}
+      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#da6363";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:9;s:4:"type";i:0;}
+      template: NULL
+    is_deleted: 0
+  deleted_time: NULL
+     source_id: 20700
+         count: 1
+attachment_ids: []
+*************************** 5. row ***************************
+            id: 20695
+          type: 1
+   source_type: 1
+       subject: Forgot Username or Password
+          body: Forgot Username or Password<br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: ELMO Talent Management System <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_FIRSTNAME: rob <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_LASTNAME: campbell <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_USERNAME: robbycm <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: https://tmsfull.dev.elmodev.com/security/change-password/robert.campbell@elmolearning.com.au/e98a7d38ffd8cc8422193b573da4f0b2 
+     fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    replyEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    recipients: {"to":{"robert.campbell@elmolearning.com.au":"rob campbell"},"cc":null,"bcc":null}
+ recipient_ids: /5894/
+      priority: 2
+  created_time: 1505353953
+    fired_time: 1505353953
+        status: 1
+       context: a:1:{s:8:"schedule";i:21718;}
+      branding: a:4:{s:7:"content";a:4:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";s:4:"logo";i:1001;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:6;s:4:"type";i:0;}
+      template: NULL
+    is_deleted: 0
+  deleted_time: NULL
+     source_id: 21718
+         count: 1
+attachment_ids: []
+*************************** 6. row ***************************
+            id: 20768
+          type: 1
+   source_type: 1
+       subject: Forgot Username or Password
+          body: Forgot Username or Password<br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: ELMO Talent Management System <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_FIRSTNAME: Muhammad <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_LASTNAME: Sameer <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_USERNAME: sameer <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: https://tmsfull.dev.elmodev.com/security/change-password/muhammad.sameer@elmolearning.com.au/ea6c88a19825ba74b7b61658f7a10cdd 
+     fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    replyEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    recipients: {"to":{"muhammad.sameer@elmolearning.com.au":"Muhammad Sameer","robert.campbell@elmolearning.com.au":"rob campbell"},"cc":null,"bcc":null}
+ recipient_ids: /15038/5894/
+      priority: 2
+  created_time: 1505693399
+    fired_time: 1505693399
+        status: 1
+       context: a:1:{s:8:"schedule";i:21773;}
+      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:6;s:4:"type";i:0;}
+      template: NULL
+    is_deleted: 0
+  deleted_time: NULL
+     source_id: 21773
+         count: 1
+attachment_ids: []
+*************************** 7. row ***************************
+            id: 20769
+          type: 1
+   source_type: 1
+       subject: Forgot Username or Password
+          body: Forgot Username or Password<br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: ELMO Talent Management System <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: ELMO <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline <br>&nbsp;&nbsp;&nbsp; _SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_FIRSTNAME: DontTouchAutomationUser <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_LASTNAME: AARON <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_USERNAME: X1242341 <br>&nbsp;&nbsp;&nbsp; PLACEHOLDER_SYSTEM_LINK: https://tmsfull.dev.elmodev.com/security/change-password/REBECCA.AARON@elmodemo.com/cf07b7b43fcbf3192aa71414494f33a6 
+     fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    replyEmail: {"noreply@elmolearning.com.au":"HROnline"}
+    recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON","SIMON.COX@elmodemo.com":"SIMON COX"},"cc":null,"bcc":null}
+ recipient_ids: /3472/3456/
+      priority: 2
+  created_time: 1505700900
+    fired_time: 1505700901
+        status: 1
+       context: a:1:{s:8:"schedule";i:21774;}
+      branding: a:4:{s:7:"content";a:3:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#df0021";s:13:"menuFontColor";s:7:"#f6f6f6";}s:7:"cacheId";s:6:"type:0";s:2:"id";i:6;s:4:"type";i:0;}
+      template: NULL
+    is_deleted: 0
+  deleted_time: NULL
+     source_id: 21774
+         count: 1
+attachment_ids: []

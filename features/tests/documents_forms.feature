@@ -6,7 +6,7 @@ Feature:
   @document_category_create
   Scenario: Create a Document Category
     Given I Have Logged In as a Company Admin to tmsfull site
-    And   I go to Admin Section
+    And   I go to Admin Settings
     And   I Go To The Document Categories under Documents section
     When I click on Add Category Button
     And  I Enter New Document Category Details
@@ -15,14 +15,14 @@ Feature:
   @document_category_hide
   Scenario: Hide a Document Category
     Given I Have Logged In as a Company Admin to tmsfull site
-    And   I go to Admin Section
+    And   I go to Admin Settings
     And   I Go To The Document Categories under Documents section
     Then I Should Be Able To Hide A Document Category
 
   @form_template_create
    Scenario: Create a Form Template
      Given I Have Logged In as a Company Admin to tmsfull site
-     And   I go to Admin Section
+     And   I go to Admin Settings
      And  I Go To The Form Templates Under Documents Section
      When I click on Create Form Template Button
      And  I Enter New Form Template Details
@@ -31,7 +31,7 @@ Feature:
   @form_template_hide
     Scenario: Hide a Form Template
     Given I Have Logged In as a Company Admin to tmsfull site
-    And   I go to Admin Section
+    And   I go to Admin Settings
     And  I Go To The Form Templates Under Documents Section
     When  I Search For A Specific Form Template
     Then  I Should Be Able To Hide A Specific Form Template

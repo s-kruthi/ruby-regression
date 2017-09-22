@@ -1,4 +1,4 @@
-@Recruitment @admin_setups
+@recruitment
 
 Feature:
   I want to be able to setup recruitment related flows as an Admin
