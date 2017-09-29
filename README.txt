@@ -43,7 +43,7 @@ Feature:
   Scenario: Create a New Contract                  # features/tests/employee_contracts.feature:7
     Given I Have Logged In as a Company Admin      # features/step_definitions/business_layer/documents_forms_business_steps.rb:1
       ELMO Talent Management System - Dashboard
-    And I Go To The Contract Library Section       # features/step_definitions/business_layer/employee_contracts_business_steps.rb:2
+    And I Go To The General Contract Library Section       # features/step_definitions/business_layer/employee_contracts_business_steps.rb:2
     When I click on New Contract Button            # features/step_definitions/business_layer/employee_contracts_business_steps.rb:7
     And I Enter New Employee Contract Details      # features/step_definitions/business_layer/employee_contracts_business_steps.rb:11
     Then I Should Be Able To Create A New Contract # features/step_definitions/business_layer/employee_contracts_business_steps.rb:23

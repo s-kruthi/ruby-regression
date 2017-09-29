@@ -48,6 +48,9 @@ end
 def edit_a_client_contract(test_variable)
 end
 
+def copy_a_client_contract()
+end
+
 #
 # def enterIsActiveStatus(client_active_status_toggle)
 #     WaitForAnElementByXpathAndTouch(client_active_status_toggle)
