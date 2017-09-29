@@ -62,8 +62,8 @@ Then(/^I Should Be Able To Successfully Process A Modified Leave Request$/) do
   ModifyLeaveHrAndProcessTheLeaveRequest()
 end
 
-And(/^I Should Be Able To Cancel The Request$/) do
-  UnderProcessingTabCancelTheLeaveRequest()
+And(/^I Should Not Be Able To Cancel The Request$/) do
+  ConnectToDatabaseAndDeleteTheProcessedLeaveRequest()
 end
 
 Given(/^I Have Logged In As A Company Admin To Check Leave Balance Section$/) do

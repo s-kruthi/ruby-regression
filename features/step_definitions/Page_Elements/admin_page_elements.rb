@@ -1,4 +1,4 @@
-ADMIN_PROFILE_DROPDOWN = "dropdown-toggle"
+ADMIN_PROFILE_DROPDOWN = "dropdown"
 ADMIN_COG = "glyphicon-cog"
 
 SUCCESSION_EXPAND ="Succession"

@@ -90,3 +90,4 @@ Then(/^I Shouldn't Be Able To View Reports Tab$/) do
 #'roleType[capabilities][report][223]'=>'223',
   GrantBackDocumentViewAccessByUsingJmeterRubyService()
 end
+

@@ -24,7 +24,7 @@ end
 
 
 When(/^I Cancel The Leave That I have Requested For$/) do
-  CancelTheLeaveRequestPendingForApproval(LEAVE_REQUEST_DROPDOWN,3,CANCELLATION_REASON)
+  CancelTheLeaveRequestPendingForApproval(LEAVE_REQUEST_DROPDOWN,2,CANCELLATION_REASON)
 end
 
 Then(/^I Should Be Instantly Notified About My Leave Request cancellation$/) do
@@ -58,7 +58,7 @@ end
 
 And(/^I Cancel The Leave That My Employee has Requested For$/) do
   GoToApprovalRequestPage()
-  CancelTheLeaveRequestPendingForApproval(LEAVE_REQUEST_DROPDOWN,3,CANCELLATION_REASON)
+  CancelTheLeaveRequestPendingForApproval(LEAVE_REQUEST_DROPDOWN,2,CANCELLATION_REASON)
 end
 
 Then(/^My Employee Should Be Instantly Notified About The Leave Request cancellation$/) do
@@ -68,13 +68,16 @@ end
 
 And(/^I Reject The Leave That My Employee has Requested For$/) do
   GoToApprovalRequestPage()
-  ViewTheLeaveRequestAndRejectIt(LEAVE_REQUEST_DROPDOWN,3,LEAVE_REJECT_COMMENT)
+  ViewTheLeaveRequestAndRejectIt(LEAVE_REQUEST_DROPDOWN,2,LEAVE_REJECT_COMMENT)
 end
 
 Then(/^My Employee Should Be Instantly Notified About The Leave Request Rejection$/) do
   ConnectToDatabaseAndValidateTheLeaveRequestRejectedByApproverNotifications()
 end
-
+And(/^I Edited The Leave That My Employee has Requested For$/) do
+  GoToApprovalRequestPage()
+  ViewTheLeaveRequestAndRejectIt(LEAVE_REQUEST_DROPDOWN,2,LEAVE_REJECT_COMMENT)
+end
 When(/^I Edit The Leave That Is Reopened Post Rejection By Approver$/) do
   GoToEditLeavePageAndResubmitThePendingLeave(RESUBMIT_COMMENT)
 end
@@ -85,10 +88,14 @@ end
 
 And(/^I Reject And Close The Leave That My Employee has Requested For$/) do
   GoToApprovalRequestPage()
-  ViewTheLeaveRequestAndRejectAndCloseIt(LEAVE_REQUEST_DROPDOWN,3,LEAVE_REJECT_AND_CLOSE_COMMENT)
+  ViewTheLeaveRequestAndRejectAndCloseIt(LEAVE_REQUEST_DROPDOWN,2,LEAVE_REJECT_AND_CLOSE_COMMENT)
 end
 
 Then(/^There Should Be An Instant Notification About Leave Rejection$/) do
   ConnectToDatabaseAndValidateTheLeaveRequestFinalRejectionNotifications()
 end
 
+And(/^I Put The Leave Request On Hold That My Employee has Requested For$/) do
+  GoToApprovalRequestPage()
+  ViewTheLeaveRequestAndPutItOnHold(LEAVE_REQUEST_DROPDOWN,2,LEAVE_REJECT_COMMENT)
+end

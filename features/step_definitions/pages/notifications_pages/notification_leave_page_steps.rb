@@ -1,6 +1,9 @@
 def ClickNewRequestButtonAndGoToLeaveApplyPage()
   WaitForAnElementByXpathAndTouch("//a[@href='/dashboard/leave/leave-request']")
+  #binding.pry
   Sleep_Until($driver.find_elements(:css, 'select[data-ng-model="data.leaveRequest.type"]'))
+  #Sleep_Until($driver.find_elements(:class,'elmo-busy-spinner').size == 0)
+
 end
 
 def SelectLeaveType()
@@ -304,7 +307,7 @@ def ConnectToDatabaseAndValidateTheApprovedRequestSubmissionNotification()
     krs = result.include?  ("user_id: 177") #true validate for employee submitted the request
     trs = result.include?  ("subject: Leave Approval Notification") #true validate
     mrs = result.include?  ("trigger_id: Leave.LeaveRequestApprovalTrigger") #true validate
-    qrs = result.include?  ("recipient_ids: /177/178/") #true validate that mail goes to both employee and manager
+    qrs = result.include?  ("recipient_ids: /177/210/") #true validate that mail goes to both employee and manager
     lrs = result.include?  ("id: #{RQST_PATH_ID}") #true validate for latest approved request id
     if frs && krs && trs && mrs && qrs
       puts "Yay! Notification has been triggered"
@@ -320,6 +323,43 @@ def ConnectToDatabaseAndValidateTheApprovedRequestSubmissionNotification()
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
     $driver.quit
   end
+end
+
+def ConnectToDatabaseAndDeleteTheProcessedLeaveRequest()
+  StartTheTunnel()
+  begin
+    result = %x(mysql -utester -pMuraf3cAR #{STAGING4_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_delete.sql)
+  rescue
+    puts "not valid"
+
+  ensure
+    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
+    $driver.quit
+  end
+end
+def ViewTheLeaveRequestAndPutItOnHold(dropdown_toggle,position,add_comment)
+  WaitForDropdownByClassAndTouchTheIndex(dropdown_toggle,position)
+  $driver.find_element(:class, 'handle-view-request').click  #opens another tab, you now need to switch window for selenium to work
+  sleep(4)
+  new_win_id = $driver.window_handles[1]
+  $driver.switch_to.window("#{new_win_id}")
+  sleep(1)
+  $driver.find_element(:css, 'textarea[ng-model="data.leaveRequest.comment"]').send_keys "#{add_comment}"
+  $driver.find_element(:css, 'button[ng-click="rejectLeaveRequest()"]').click
+  sleep(2)
+  reject_path_url = $driver.current_url
+  rejected_path_id = reject_path_url.split('/')[-1]
+  $rejected_path_id = "#{rejected_path_id}"
+  puts $rejected_path_id
+  File.write('./features/step_definitions/Test_Data/stored_ids.rb', "REJECT_ID = #{rejected_path_id}")
+  load('./features/step_definitions/Test_Data/stored_ids.rb')
+  puts REJECT_ID
+  #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
+
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_rejected.sql', "use #{STAGING4_DATABASE} ; \n
+ select*from epms_log_message where subject='Leave Rejection Notification' order by id desc LIMIT 1 \\G; \n
+ select*from epms_notifier_notification where trigger_id='Leave.LeaveRequestRejectTrigger' and user_id=177 order by id desc LIMIT 1 \\G; \n
+ select*from epms_leave_request_workflow where user_id='210' and status='2' and request_id='#{$rejected_path_id}' order by id desc \\G;" )
 end
 
 def MatchTheExpectedLeaveBucketFromDatabase()

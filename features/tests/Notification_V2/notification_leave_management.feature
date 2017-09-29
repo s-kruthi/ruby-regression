@@ -46,4 +46,12 @@ Feature:
     When  I Log In As A Company Admin To Process A Leave Request
     And   I Approved The Submitted Request To Modify It Further
     Then  I Should Be Able To Successfully Process A Modified Leave Request
-    And   I Should Be Able To Cancel The Request
+    And   I Should Not Be Able To Cancel The Request
+
+  @leave_request_Rejected @group_by_300000
+  Scenario: Manger Puts The Leave request On Hold which triggers notification to the employee
+    Given An Employee Has Applied For A Leave Which Is Awaiting Approval
+    When  I Am On The Managers Leave Management Page
+    And   I Put The Leave Request On Hold That My Employee has Requested For
+#    Then  My Employee Should Be Instantly Notified About The Leave Request Rejection
+
