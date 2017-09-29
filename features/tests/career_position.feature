@@ -1,4 +1,4 @@
-@Position_Preference_scenarios @smoke
+@career @Position_Preference_scenarios @smoke
 Feature:
   I want to test if a user can successfully search for their preferable position and can compare it with their profile and
   research what areas they need suitable training in to achieve their preferred position

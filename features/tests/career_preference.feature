@@ -1,4 +1,4 @@
-@career_preference
+@career @career_preference
 
 Feature:
   I want to test if user can successfully add their career preferences by answering the default Questions
@@ -28,7 +28,7 @@ Feature:
     And I Should Be Able To Save It Successfully
     Then I Reset The User Profile Back To Initial
 
-    @list_of_positions
+  @list_of_positions
   Scenario: Career Preference Section Has Click To Select List Of Positions (Happy Path)
     Given I Have Logged In As A Regular User
     When I Navigate To The Career Preference Tab

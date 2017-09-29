@@ -1,4 +1,4 @@
-@learning
+@learning @courses
 
   Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
 

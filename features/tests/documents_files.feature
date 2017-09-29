@@ -1,4 +1,4 @@
-@documents_files
+@documents @files
 
 Feature:
   I want to test if a Company Admin can successfully create a Files

@@ -1,4 +1,4 @@
-@scheduled_reports
+@reports @scheduled_reports
 
 Feature:
   I Want To Test If I Can Successfully Manage Scheduled Reports

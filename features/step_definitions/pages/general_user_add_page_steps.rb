@@ -27,8 +27,8 @@ def go_to_add_new_users_page(add_new_user_btn)
 end
 
 def add_user_details(limit)
-  i = 2 if limit >= 2
-  i = 1 if limit == 1
+  i = 2 if limit > 2
+  i = 1 if limit <= 2
   for loop in i..limit do
     create_remaining_users(loop)
     loop += 1
@@ -52,7 +52,6 @@ def create_users(loop)
   Sleep_Until(enter_user_details(USER_PASSWORD_RECONFIRM_ID, USER_PASSWORD_VALUE))
   Sleep_Until(press_save_button(USER_CREATE_SAVE_BTN_ID))
   sleep (2)
-  # $driver.quit
 end
 
 def create_remaining_users(counter)

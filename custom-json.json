@@ -1,1 +1,1 @@
-{"custom_deploy":{"apps":["pms_staging4"],"command":"cron:prepopulateUserBranding --env=staging4"}}
+{"custom_deploy":{"apps":["pms_tony01"],"command":"migrate:user:migrateUserProfileModulesToElmoConfig --env=tony01"}}

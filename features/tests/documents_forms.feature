@@ -1,4 +1,4 @@
-@documents_forms
+@documents @forms
 
 Feature:
   I want to test if a Company Admin can successfully Manage Forms
