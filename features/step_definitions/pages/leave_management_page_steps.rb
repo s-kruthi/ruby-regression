@@ -27,7 +27,7 @@ def SearchTheCreatedLeaveTypeAndDeleteIt(search_leav_typ,leave_type_val)
   WaitForAnElementByCSSAndInputValue(search_leav_typ,leave_type_val)
   $driver.find_element(:css, 'button[ng-click="lt.getLeaveTypes()"]').click
   sleep(1)
-  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
+  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,2)
   $driver.find_element(:css, 'a[ng-click="lt.deleteLeaveType(leaveType.id)"]').click
   sleep(2)
   PressEnterConfirm()
@@ -70,7 +70,7 @@ def SearchTheCreatedLeavePolicyAndDeleteIt(search_leav_pol,leave_pol_val)
   WaitForAnElementByCSSAndInputValue(search_leav_pol,leave_pol_val)
   $driver.find_element(:css, 'button[ng-click="lp.getLeavePolicies()"]').click
   sleep(1)
-  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
+  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,2)
   $driver.find_element(:class, 'delete-leave-policy').click
   sleep(2)
   PressEnterConfirm()
@@ -152,7 +152,7 @@ def ModifyLeaveHrAndProcessTheLeaveRequest()
   sleep(3)
   $driver.find_element(:xpath, "//input[@ng-model='lr.data.criteria.searchText']").send_keys("Donald Trump", :return)
   sleep(1)
-  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
+  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,2)
   sleep(1)
   $driver.find_element(:css, 'a[ng-click="lr.openLeaveRequestHrModification(request)"]').click #click modify hrs
   sleep(2)
@@ -161,7 +161,7 @@ def ModifyLeaveHrAndProcessTheLeaveRequest()
   $driver.find_element(:css, 'textarea[ng-model="data.modification.comment"]').send_keys "automation hrs modified" #enter comment
   $driver.find_element(:css, 'button[ng-click="postLeaveRequestModification()"]').click
   sleep(3)
-  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
+  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,2)
   sleep(2)
   $driver.find_element(:css, 'a[ng-click="lr.hrApproveLeaveRequest(request)"]').click #click approve to process
   sleep(2)
@@ -169,17 +169,11 @@ def ModifyLeaveHrAndProcessTheLeaveRequest()
   sleep(2)
   $driver.find_element(:xpath, "//a[contains(.,'Processing Request')]").click #go to processing request tab
   sleep(2)
+
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/leave_request_delete.sql', "use #{STAGING4_DATABASE} ; \n
+ DELETE FROM epms_leave_request WHERE id=#{RQST_PATH_ID} \\G;" )
 end
 
-def UnderProcessingTabCancelTheLeaveRequest()
-  WaitForDropdownByClassAndTouchTheIndex(LEAVE_REQUEST_DROPDOWN,3)
-  sleep(2)
-  $driver.find_element(:css, 'a[ng-click="lr.openLeaveRequestCancellation(request)"]').click #cancel the processing request
-  sleep(2)
-  $driver.find_element(:css, 'textarea[ng-model="data.cancellation.comment"]').send_keys "automation processing leave cancelled"
-  $driver.find_element(:css, 'button[ng-click="postLeaveRequestCancellation()"]').click
-  sleep(2)
-end
 def GoToLeaveBalanceAndSearchTheEmployee()
   sleep(2)
   $driver.find_element(:xpath, "//span[contains(.,'Leave Balance & Import')]").click

@@ -1,4 +1,6 @@
+
 ADMIN_PROFILE_DROPDOWN = "admin-setting-id"
+
 ADMIN_COG = "glyphicon-cog"
 
 SUCCESSION_EXPAND ="Succession"

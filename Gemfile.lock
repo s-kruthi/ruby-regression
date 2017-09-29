@@ -1,6 +1,7 @@
 GEM
   remote: https://www.rubygems.org/
   specs:
+<<<<<<< HEAD
     activemodel (5.1.2)
       activesupport (= 5.1.2)
     activerecord (5.1.2)
@@ -8,6 +9,15 @@ GEM
       activesupport (= 5.1.2)
       arel (~> 8.0)
     activesupport (5.1.2)
+=======
+    activemodel (5.1.3)
+      activesupport (= 5.1.3)
+    activerecord (5.1.3)
+      activemodel (= 5.1.3)
+      activesupport (= 5.1.3)
+      arel (~> 8.0)
+    activesupport (5.1.3)
+>>>>>>> origin/post-leave1.1
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
       minitest (~> 5.1)
@@ -16,7 +26,7 @@ GEM
     builder (3.2.3)
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
-    coderay (1.1.1)
+    coderay (1.1.2)
     concurrent-ruby (1.0.5)
     cucumber (2.4.0)
       builder (>= 2.1.2)
@@ -37,7 +47,11 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.6)
+<<<<<<< HEAD
     jira-ruby (1.3.0)
+=======
+    jira-ruby (1.4.3)
+>>>>>>> origin/post-leave1.1
       activesupport
       multipart-post
       oauth (~> 0.5, >= 0.5.0)
@@ -47,7 +61,11 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
+<<<<<<< HEAD
     multi_json (1.12.1)
+=======
+    multi_json (1.12.2)
+>>>>>>> origin/post-leave1.1
     multi_test (0.1.2)
     multipart-post (2.0.0)
     netrc (0.11.0)
@@ -75,11 +93,15 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
-    ruby-jmeter (3.1.05)
+    ruby-jmeter (3.1.06)
       nokogiri
       rest-client
     rubyzip (1.2.1)
+<<<<<<< HEAD
     selenium-webdriver (3.4.4)
+=======
+    selenium-webdriver (3.5.1)
+>>>>>>> origin/post-leave1.1
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
     slop (3.6.0)
@@ -112,4 +134,4 @@ DEPENDENCIES
   watir-webdriver
 
 BUNDLED WITH
-   1.15.0
+   1.15.4
