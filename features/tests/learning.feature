@@ -29,7 +29,7 @@
       Then  I Should Be Able To Edit The Specific Course
 
     @course_delete @learning_low_risk
-    Scenario: Learning Admin Creating New Course
+    Scenario: Learning Admin Deleting New Course
       Given I Have Logged In as a Learning Admin to chao site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -37,7 +37,7 @@
       Then  I Should Be Able To Delete The Specific Course
 
     @activity_ack_add @activity_add @learning_high_risk
-    Scenario: Learning Admin creating New Activity In A Course
+    Scenario: Learning Admin creating New Acknowledgement Activity In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -45,7 +45,7 @@
       Then  I Should Be Able To Add A New Acknowledgement Activity
 
     @activity_survey_add @activity_add @learning_high_risk
-    Scenario: Learning Admin creating New Activity In A Course
+    Scenario: Learning Admin creating New ELMO Survey Activity In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -53,7 +53,7 @@
       Then  I Should Be Able To Add A New ELMO Survey Activity
 
     @activity_f2f_add @activity_add @learning_high_risk
-    Scenario: Learning Admin creating New Activity In A Course
+    Scenario: Learning Admin creating New Face-to-Face Activity In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -61,7 +61,7 @@
       Then  I Should Be Able To Add A New Face-to-Face Activity
 
     @activity_quiz_add @activity_add @learning_high_risk
-    Scenario: Learning Admin creating New Activity In A Course
+    Scenario: Learning Admin creating New Quiz Activity In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -69,7 +69,7 @@
       Then  I Should Be Able To Add A New Quiz Activity
 
     @activity_file_add @activity_add @learning_high_risk
-    Scenario: Learning Admin creating New Activity In A Course
+    Scenario: Learning Admin creating New File Activity In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -77,7 +77,7 @@
       Then  I Should Be Able To Add A New File Activity
 
     @activity_label_add @activity_add @learning_high_risk
-    Scenario: Learning Admin creating New Activity In A Course
+    Scenario: Learning Admin creating New Label Activity In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -85,7 +85,7 @@
       Then  I Should Be Able To Add A New Label Activity
 
     @activity_page_add @activity_add @learning_high_risk
-    Scenario: Learning Admin creating New Activity In A Course
+    Scenario: Learning Admin creating New Page Activity In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -93,7 +93,7 @@
       Then  I Should Be Able To Add A New Page Activity
 
     @activity_post_add @activity_add @learning_high_risk
-    Scenario: Learning Admin creating New Activity In A Course
+    Scenario: Learning Admin creating New Post Activity In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -101,7 +101,7 @@
       Then  I Should Be Able To Add A New Post Activity
 
     @activity_delete @learning_low_risk
-    Scenario: Learning Admin creating New Activity In A Course
+    Scenario: Learning Admin Deleting A Section In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -117,7 +117,7 @@
       Then  I Should Be Able To Add All Notifications
 
     @activity_f2f_session_add @activity_add @learning_high_risk
-    Scenario: Learning Admin creating New Session In A Face-to-Face Activity
+    Scenario: Learning Admin Creating New Session In A Face-to-Face Activity
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -136,7 +136,7 @@
 
 
     @retrain_discrepancy_fix @learning_low_risk
-    Scenario: Learning Admin Using Retrain Discrepancies Page
+    Scenario: Learning Admin Using Retrain Discrepancies Page to Fix
       Given I Have Logged In as a Learning Admin to shayan01 site
       And   I go to Admin Settings
       And   I Go To The Courses under Learning section
@@ -145,7 +145,7 @@
       Then  I Should Be Able To Add All Notifications
 
     @wip @learning_low_risk
-    Scenario: Learning Admin Using Retrain Discrepancies Page
+    Scenario: Learning Admin Using Retrain Discrepancies Page to Skip
       Given I Have Logged In as a Learning Admin to shayan01 site
       And   I go to Admin Settings
       And   I Go To The Courses Under Learning Section

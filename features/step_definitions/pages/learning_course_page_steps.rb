@@ -292,7 +292,7 @@ end
 def delete_a_section(section_name)
   Sleep_Until($driver.find_elements(:class, section_name).last.click)
   Sleep_Until(PressEnterConfirm())
-  sleep (3)
+  sleep(3)
 end
 
 
