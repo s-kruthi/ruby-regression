@@ -3,7 +3,7 @@
 Feature:
   As a Company Admin I want to manage Internal Employess Successfully
 
-  @general_user_add
+  @general_user_add @general_high_risk @onboarding_high_risk
   Scenario: Comapny Admin Creating New User
     Given I Have Logged In as a Company Admin to tony01 site
     And   I go to Admin Settings
@@ -12,7 +12,7 @@ Feature:
     And   I Enter New User Details
     Then  I Should Be Able To Add 3 New Users In To The System
 
-  @onboarding_user_add
+  @onboarding_user_add @general_high_risk @onboarding_high_risk
   Scenario: Comapny Admin Creating New Onboarding User
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I go to Admin Settings
@@ -21,7 +21,7 @@ Feature:
     And   I Enter New User Details
     Then  I Should Be Able To Add 10 New Users In To The System
 
-  @hr_add_contact_emergency
+  @hr_add_contact_emergency @general_high_risk @onboarding_high_risk
   Scenario: General User Editing Profile Page - Emergency Contact Details
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I Go To The Menu Profile Section
@@ -31,7 +31,7 @@ Feature:
     And   I Use Add Emergency Contact Details
     Then  I Should Be Able To Add Emergency Contact Details
 
-  @hr_add_contact_nok
+  @hr_add_contact_nok @general_high_risk @onboarding_high_risk
   Scenario: Onboarding User Editing Profile Page - Next of Kin - WIP
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I Go To The Menu Profile Section
@@ -41,7 +41,7 @@ Feature:
     And   I Use Add Next Of Kin Details
     Then  I Should Be Able To Add Next Of Kin Details
 
-  @general_user_delete
+  @general_user_delete @general_low_risk @onboarding_low_risk
   Scenario: Onboarding or General User List page - delete user
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I go to Admin Settings
@@ -50,7 +50,7 @@ Feature:
     Then  I Should Be Able To Delete The Specific User
 
 
-  @general_user_notify
+  @general_user_notify @general_low_risk @onboarding_low_risk
   Scenario: Onboarding or General User List page - delete user
     Given I Have Logged In as a Company Admin to nick02 site
     And   I go to Admin Settings

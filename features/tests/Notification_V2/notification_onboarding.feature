@@ -2,13 +2,13 @@
 Feature:
   As a user I want to test combinations of on boarding notifications to test if they were triggered successfully
 
-  @change_password
+  @change_password @NotificationsGeneral @NotificationsOnboarding
   Scenario: Reset User's password
     Given I Am On The Change Password Section Of A Specific User Profile
     When  I Successfully Change The Password and Opt To Get Notified
     Then  I Should Be Instantly Notified About My Password Change
 
-  @forgot_password
+  @forgot_password @NotificationsGeneral @NotificationsOnboarding
   Scenario: Forgot User password
     Given I Am On The Forgot Password Reset Section Of A Specific User
     When  I Successfully Trigger The Reset Password Email
