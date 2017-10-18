@@ -59,7 +59,6 @@ Feature:
     And   I Search For A Specific User
     Then  I Should Be Able To Delete The Specific User
 
-
 #    @wip
 #    Scenario: This is a work in progress - WIP
 #      Given I Have Logged In With Given Credential
