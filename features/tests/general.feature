@@ -59,7 +59,7 @@ Feature:
     And   I Search For A Specific User
     Then  I Should Be Able To Delete The Specific User
 
-#    @wip
+    @wip
 #    Scenario: This is a work in progress - WIP
 #      Given I Have Logged In With Given Credential
 #        |login_type|login_name|login_password|login_site|

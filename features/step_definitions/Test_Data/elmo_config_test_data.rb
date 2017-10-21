@@ -30,3 +30,14 @@
 # ACTION_DROPDOWN_CLASS_INDEX_VALUE = 3
 # ACTION_DROPDOWN_NAME_VALUE = "Deactivate user"
 # INACTIVE_ATTRIBUTE_TEXT = "User is not active"
+
+
+user_config_selection = {
+    personal_email: "Personal Email",
+    home_phone: "Home Phone",
+    work_phone: "Work Phone",
+    mobile_phone: "Mobile Phone",
+    address: "Address"
+}
+
+#puts user_config_selection[:personal_email]

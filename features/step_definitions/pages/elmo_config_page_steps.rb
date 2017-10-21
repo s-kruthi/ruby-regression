@@ -2,6 +2,10 @@ def click_on_side_bar_item(config_section_item, config_section_name)
   Sleep_Until($driver.find_elements(:id, "#{config_section_item}-#{config_section_name}-button").first.click)
 end
 
+def click_on_side_bar_item_custom(config_section_item, config_section_name)
+ $driver.find_element(:id, user_config_selection[:config_section_item])
+end
+
 # def go_to_site(login_page)
 #  $site_url = "https://" + "#{login_page}" + ".dev.elmodev.com/dashboard"
 #      $driver.navigate.to($site_url)

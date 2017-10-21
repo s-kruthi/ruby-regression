@@ -1,6 +1,31 @@
 When(/^I Click On "([^"]*)" item from left side bar under "([^"]*)" section$/i) do |config_section_item, config_section_name|
-click_on_side_bar_item(config_section_item, config_section_name)
+
+  case config_section_name
+    when "Contact Details"
+      begin
+        click_on_side_bar_item_custom(config_section_item, config_section_name)
+        end
+
+    when "Diversity Questions"
+      begin
+        click_on_side_bar_item_custom(config_section_item, config_section_name)
+      end
+
+    when "Payment Details"
+      begin
+        break
+      end
+
+  end
+
+  click_on_side_bar_item(config_section_item, config_section_name)
 end
+
+
+##Original code
+# When(/^I Click On "([^"]*)" item from left side bar under "([^"]*)" section$/i) do |config_section_item, config_section_name|
+#   click_on_side_bar_item(config_section_item, config_section_name)
+# end
 
 #And(/^I Go To The (.*) Under (.*) Section$/i) do |menu_type, menu_section|
 #   begin
