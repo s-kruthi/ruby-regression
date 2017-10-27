@@ -3,8 +3,8 @@
 Feature:
   As a Company Admin I want to manage User Profile related configurations Successfully
 
-  @elmo_config_expiry_date @general_low_risk
-  Scenario: Comapny Admin Creating New User
+  @elmo_config_save @general_low_risk
+  Scenario: Comapny Admin Modifying User Details Section Configuration Data
     Given I Have Logged In as a Company Admin to chao site
     And   I go to Admin Settings
     And   I Go To The User Profile Setup under General section
