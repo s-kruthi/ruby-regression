@@ -3,7 +3,7 @@
 Feature:
   As a Company Admin I want to manage Internal Employess Successfully
 
-  @general_user_add @general_high_risk @onboarding_high_risk
+  @general_user_add  @general_high_risk @onboarding_high_risk
   Scenario: Comapny Admin Creating New User
     Given I Have Logged In as a Company Admin to tony01 site
     And   I go to Admin Settings
@@ -59,7 +59,7 @@ Feature:
     And   I Search For A Specific User
     Then  I Should Be Able To Delete The Specific User
 
-    @wip
+#    @wip
 #    Scenario: This is a work in progress - WIP
 #      Given I Have Logged In With Given Credential
 #        |login_type|login_name|login_password|login_site|

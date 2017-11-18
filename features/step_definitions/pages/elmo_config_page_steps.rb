@@ -6,6 +6,16 @@ def click_on_side_bar_item_custom(config_section_item, config_section_name)
  $driver.find_element(:id, user_config_selection[:config_section_item])
 end
 
+
+def click_on_toggle_button(module_name, toggle_btn_name)
+  Sleep_Until($driver.find_element(:id, module_name).find_element(:class, toggle_btn_name).click)
+  sleep (1)
+end
+
+def click_on_a_tab(tab_name_href_link)
+  Sleep_Until($driver.find_element(:xpath, "//a[contains(.,'#{tab_name_href_link}')]").click)
+end
+
 # def go_to_site(login_page)
 #  $site_url = "https://" + "#{login_page}" + ".dev.elmodev.com/dashboard"
 #      $driver.navigate.to($site_url)

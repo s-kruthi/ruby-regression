@@ -1,3 +1,5 @@
+
+
 # MENU_PROFILE_LINK = "//a[contains(@href,'/controlpanel/my-profile')]"
 # MENU_MY_TEAM_LINK = "//a[contains(@href,'/controlpanel/my-employees')]"
 # MENU_LEARNING_LINK = "//a[contains(@href,'/learning/my')]"
@@ -19,7 +21,7 @@
 #
 # NEW_USER_FIRST_NAME_ID = "//input[contains(@id,'firstName')]"
 # NEW_USER_LAST_NAME_ID = "//input[@id='user_lastName']"
-# NEW_USER_USERNAME_ID = "//input[@id='user_username']"
+# NEW_USER_USERNAME_ID = "//input[@id='user_username']"x
 # NEW_USER_EMAIL_ID = "//input[@id='user_email']"
 #
 # MANAGER_SELECT_DROPDOWN_ID = "s2id_user_manager"

@@ -140,6 +140,7 @@ module Chrome
       end
     end
 
+    #Example: select_from_drop_down("//select[contains(@id,'Profile Image-visible')]", "Everybody")
     def select_from_drop_down(dropdown_option, dropdown_value)
       begin
         dropdown_list = $driver.find_element(:xpath, dropdown_option)
