@@ -21,21 +21,10 @@ When(/^I Click On "([^"]*)" item from left side bar under "([^"]*)" section$/i) 
   click_on_side_bar_item(config_section_item, config_section_name)
 end
 
-
-##Original code
-# When(/^I Click On "([^"]*)" item from left side bar under "([^"]*)" section$/i) do |config_section_item, config_section_name|
-#   click_on_side_bar_item(config_section_item, config_section_name)
-# end
-
-#And(/^I Go To The (.*) Under (.*) Section$/i) do |menu_type, menu_section|
-#   begin
-#       $section_name = "//a[@href='#collapse#{menu_section}']"
-#       $item_name = "//span[contains(.,'#{menu_type}')]"
-#       go_to_the_sections($section_name, $item_name)
-#       $add_user_type = "EMP" if menu_type.include? "Users"
-#       $add_user_type = "OB" if menu_type.include? "Onboarding"
-#   end
-# end
+And(/^I Click On "([^"]*)" Tab$/i) do |tab_name_id|
+  click_on_a_tab(tab_name_id)
+  sleep (3)
+end
 
 
 And(/^I select "([^"]*)" option to "([^"]*)"$/i) do |config_selection_name, config_selection_value|
@@ -51,6 +40,9 @@ And(/^Verify That "Configuration Status" Is Displayed As "([^"]*)"$/i) do |confi
 end
 
 
+# And(/^$/i) do |module_name, toggle_btn_name|
+#   click_on_toggle_button(module_name, toggle_btn_name)
+# end
 # Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
 #   startWebDriver
 #   $site_name = site_name
