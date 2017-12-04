@@ -1,0 +1,31 @@
+#LEAVE-MANAGEMENT 6 #
+TEST-Add General User With Leave capabilities#
+TEST-Apply And Process leave Request#
+TEST-Bulk Apply For Leave#
+TEST-Delete Pending Leave request For An Employee#
+TEST-Add Leave Payroll Cycle#
+TEST-Update Details Of A leave User#
+
+#DOCUMENTS 3 #
+TEST-Document Form Creation#
+TEST-Revoke Document View Access By Using Jmeter Ruby Service#
+TEST-Grant Back Document View Access By Using Jmeter Ruby Service#
+
+#RECRUITMENT 4 #
+TEST-Sign Up For A Job#
+TEST-Sign In For A Job#
+TEST-Search A Specific Job#
+TEST-Apply For A Specific Job#
+
+#GENERAL SECTION 6 #
+TEST-Add General User to The System#
+TEST-Change User’s Role Type#
+TEST-Add User With HR core Data#
+TEST-Add Surprise User#
+TEST-Create and Add leave Management user#
+TEST-Assign Appraisal#
+
+#REWARDS AND RECOGNITION 3 #
+TEST-Like A recommendation#
+TEST-Unlike A recommendation#
+TEST-Load test Recommendation like Feature with as many users#
