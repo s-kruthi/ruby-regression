@@ -24,3 +24,6 @@ Feature:
     Given I Have Logged In As A Company Admin To Check Leave Balance Section
     When  I Search For Leave Balance Of A Particular Employee
     Then  I Should Be Able To Check The Correct Leave Balance
+
+  #@assign_leave_policy
+  #Scenario: Assign leave policy
