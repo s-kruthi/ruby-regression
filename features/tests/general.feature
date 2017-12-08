@@ -5,7 +5,7 @@ Feature:
 
   @general_user_add  @general_high_risk @onboarding_high_risk
   Scenario: Comapny Admin Creating New User
-    Given I Have Logged In as a Company Admin to tony01 site
+    Given I Have Logged In as a ELMO Super Admin to tony01 site
     And   I go to Admin Settings
     And   I Go To The Users under General section
     When  I Click On "Add New User" Button

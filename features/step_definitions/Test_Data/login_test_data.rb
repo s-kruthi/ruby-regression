@@ -12,6 +12,10 @@ EMAIL_ADD = 'REBECCA.AARON@elmodemo.com'
 COMP_ADMIN_USERNAME = 'company.omar'
 COMP_ADMIN_PASSWORD = 'Admin1234567'
 
+
+ELMO_SUPER_USERNAME = 'admin'
+ELMO_SUPER_PASSWORD = 'admin1234567'
+
 ELMO_ADMIN_USERNAME = 'admin.omar'
 ELMO_ADMIN_PASSWORD = 'Admin1234567'
 ####### Recruitment user credentials ###########

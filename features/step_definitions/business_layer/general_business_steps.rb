@@ -61,6 +61,12 @@ Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
         loginToSystem(LOGIN_BUTTON)
       end
 
+    when "ELMO Super Admin"
+      begin
+        EnterUsername(USER_NAME,ELMO_SUPER_USERNAME)
+        EnterPassword(PASS_WORD,ELMO_SUPER_PASSWORD)
+      end
+
     when "ELMO Admin"
       begin
         EnterUsername(USER_NAME,ELMO_ADMIN_USERNAME)
