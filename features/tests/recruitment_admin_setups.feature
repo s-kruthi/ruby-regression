@@ -5,7 +5,7 @@ Feature:
 
 
   @interviewguideSetup @recruitment_high_risk
-  Scenario: [InterviewGuide]SetUp A New Interview guide With Question Weightage And Publish It
+  Scenario: [Recruitment]SetUp A New Interview guide With Question Weightage And Publish It
   Given I Am Under A Recruitment Interview Guide Section
   And  I Create Up A New Interview Guide
   When I Add Sections And Questions With Proper Weightage

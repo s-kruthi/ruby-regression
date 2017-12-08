@@ -4,12 +4,12 @@ Feature:
   I want to test if user can successfully add their career preferences by answering the default Questions
 
   @Login_test_case @career_low_risk
-  Scenario: [Career]Career Preference Tab Is Disabled (Given The Succession Module Is Not Enabled)
+  Scenario: [Careers]Career Preference Tab Is Disabled (Given The Succession Module Is Not Enabled)
     Given I Have Logged In As A Restricted User
     When I Try To Navigate To The Career Preference Tab
     Then I Verify The Tab Is Disabled
   @enabled @career_low_risk
-  Scenario: [Career]Career Preference Tab Is Enabled (Happy Path)
+  Scenario: [Careers]Career Preference Tab Is Enabled (Happy Path)
     Given I Have Logged In As A Regular User
     When I Try To Navigate To The Career Preference Tab
     And I Verify The Tab Is Enabled
@@ -17,7 +17,7 @@ Feature:
 
   @Default_question @career_low_risk
 # We reset the user profile So that its ready for the next test run, This Way we dont exhaust the test data
-  Scenario: [Career]Career Preference Section Has Default Questions(Happy Path)
+  Scenario: [Careers]Career Preference Section Has Default Questions(Happy Path)
     Given I Have Logged In As A Regular User
     When I Navigate To The Career Preference Tab
     And I Verify My Profile Details Are Displayed Properly
@@ -29,7 +29,7 @@ Feature:
     Then I Reset The User Profile Back To Initial
 
   @list_of_positions @career_low_risk
-  Scenario: [Career]Career Preference Section Has Click To Select List Of Positions (Happy Path)
+  Scenario: [Careers]Career Preference Section Has Click To Select List Of Positions (Happy Path)
     Given I Have Logged In As A Regular User
     When I Navigate To The Career Preference Tab
     And I Click To View The List Of Available Positions
@@ -41,7 +41,7 @@ Feature:
     Then I Reset The User Profile Back To Initial
 
   @career_low_risk
-  Scenario: [Career]Configuring The Career Preference Tab And Section As Admin (Negative scenario, Disable the CP)
+  Scenario: [Careers]Configuring The Career Preference Tab And Section As Admin (Negative scenario, Disable the CP)
     Given I Have Logged In As a Admin to tmsfull site
     When I Navigate To Career Preference Tab Within User Profile Setup Tab
     And I Disable The Career Preference Tab For That Particular User
@@ -53,13 +53,13 @@ Feature:
 # This Scenario requires a tear down as consecutive test run will add the same question again an again, and Deleting a Question is not mentioned
   # in the requirement sheet
   @career_low_risk
-  Scenario: [Career]Configuring The Career Preference Tab Preferred Questions As An Admin( Lets Add A new Question)
+  Scenario: [Careers]Configuring The Career Preference Tab Preferred Questions As An Admin( Lets Add A new Question)
     Given I Have Logged In As a Admin to tmsfull site
     When I Navigate To Career Preference Tab Within User Profile Setup Tab
     Then I Should Be Able to Add A New Question
 
   @career_low_risk
-  Scenario: [Career]Configuring The Career Preference Tab Preferred Questions As An Admin( Lets Disable the willing to relocate Question)
+  Scenario: [Careers]Configuring The Career Preference Tab Preferred Questions As An Admin( Lets Disable the willing to relocate Question)
     Given I Have Logged In As a Admin to tmsfull site
     When I Navigate To Career Preference Tab Within User Profile Setup Tab
     Then I Should Be Able to Add A New Question

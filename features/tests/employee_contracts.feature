@@ -4,7 +4,7 @@ Feature:
   I want to Test if I can Successfully Manage Contract Library
 
   @employee_contract_add @general_high_risk
-  Scenario: [EmployeeContract]Create a New Contract
+  Scenario: [General]Create a New Contract
     Given I Have Logged In as a Company Admin to staging5 site
     And   I go to Admin Settings
     And   I Go To The Contract Library Under General Section
@@ -41,7 +41,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To The Contract Library under General section
     When I Search For An Employee Contract
-    Then I Should Be Able To Hide/Unhide An Employee Contract
+#    Then I Should Be Able To Hide/Unhide An Employee Contract
 
   @employee_contract_delete @general_low_risk
   Scenario: [General]Delete an Existing Contract
@@ -49,4 +49,4 @@ Feature:
     And   I go to Admin Settings
     And   I Go To The Contract Library under General section
     When I Search For An Employee Contract
-    Then I Should Be Able To Delete An Employee Contract
+#    Then I Should Be Able To Delete An Employee Contract
