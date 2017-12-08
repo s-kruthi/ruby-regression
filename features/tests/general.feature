@@ -4,16 +4,16 @@ Feature:
   As a Company Admin I want to manage Internal Employess Successfully
 
   @general_user_add  @general_high_risk @onboarding_high_risk
-  Scenario: Comapny Admin Creating New User
+  Scenario: [General]Comapny Admin Creating New User
     Given I Have Logged In as a ELMO Super Admin to tony01 site
     And   I go to Admin Settings
     And   I Go To The Users under General section
     When  I Click On "Add New User" Button
     And   I Enter New User Details
-    Then  I Should Be Able To Add 3 New Users In To The System
+    Then  I Should Be Able To Add 10 New Users In To The System
 
   @onboarding_user_add @general_high_risk @onboarding_high_risk
-  Scenario: Comapny Admin Creating New Onboarding User
+  Scenario: [General]Comapny Admin Creating New Onboarding User
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I go to Admin Settings
     And   I Go To The Users under Onboarding section
@@ -22,7 +22,7 @@ Feature:
     Then  I Should Be Able To Add 10 New Users In To The System
 
   @hr_add_contact_emergency @general_high_risk @onboarding_high_risk
-  Scenario: General User Editing Profile Page - Emergency Contact Details
+  Scenario: [General]General User Editing Profile Page - Emergency Contact Details
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I Go To The Menu Profile Section
     And   I Click On Personal Details Sub Tab
@@ -32,7 +32,7 @@ Feature:
     Then  I Should Be Able To Add Emergency Contact Details
 
   @hr_add_contact_nok @general_high_risk @onboarding_high_risk
-  Scenario: Onboarding User Editing Profile Page - Next of Kin
+  Scenario: [Onboarding]Onboarding User Editing Profile Page - Next of Kin
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I Go To The Menu Profile Section
     And   I Click On Personal Details Sub Tab
@@ -42,7 +42,7 @@ Feature:
     Then  I Should Be Able To Add Next Of Kin Details
 
   @general_user_delete @general_low_risk @onboarding_low_risk
-  Scenario: Onboarding or General User List page - Delete user
+  Scenario: [Onboarding]Onboarding or General User List page - Delete user
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I go to Admin Settings
     And   I Go To The Users under General section
@@ -51,7 +51,7 @@ Feature:
 
 
   @general_user_notify @general_low_risk @onboarding_low_risk @wip
-  Scenario: Onboarding or General User Notify page - Delete user
+  Scenario: [Onboarding]Onboarding or General User Notify page - Delete user
     Given I Have Logged In as a Company Admin to nick02 site
     And   I go to Admin Settings
     And   I Go To The Users under General section

@@ -3,7 +3,7 @@ Feature:
   I want to test if a user can successfully create a new succession plan and upon completion can delete it as well.
 
   @succession_delete @succession_high_risk
-  Scenario: Delete a Succession
+  Scenario: [Succession]Delete a Succession
     Given I Have Logged In as a Company Admin to tmsfull site
     And   I go to Admin Settings
     And   I Go To The Succession Review Setup Under Succession Section
@@ -11,7 +11,7 @@ Feature:
     Then  I Should Be Able To Delete The Plan From the Table
 
   @succession_hide @succession_high_risk
-  Scenario: Hide a Succession
+  Scenario: [Succession]Hide a Succession
     Given I Have Logged In as a Company Admin to tmsfull site
     And   I go to Admin Settings
     And   I Go To The Succession Review Setup Under Succession Section
@@ -21,7 +21,7 @@ Feature:
     And   I Should Be Able To Delete The Plan From the Table
 
   @succession_search @succession_high_risk
-  Scenario: Search a Succession
+  Scenario: [Succession]Search a Succession
     Given I Have Logged In as a Company Admin to tmsfull site
     And   I go to Admin Settings
     And   I Go To The Succession Review Setup Under Succession Section
@@ -30,7 +30,7 @@ Feature:
     And   I Should Be Able To Delete The Searched Plan From the Table
 
   @succession_cannot_delete @succession_high_risk
-  Scenario: Assigned Succession Plan Cannot Be Deleted
+  Scenario: [Succession]Assigned Succession Plan Cannot Be Deleted
     Given I Have Logged In as a Company Admin to tmsfull site
     And   I go to Admin Settings
     And   I Go To The Succession Review Setup Under Succession Section

@@ -4,7 +4,7 @@ Feature:
   I want to Test if I can Successfully Manage Contract Library
 
   @employee_contract_add @general_high_risk
-  Scenario: Create a New Contract
+  Scenario: [EmployeeContract]Create a New Contract
     Given I Have Logged In as a Company Admin to staging5 site
     And   I go to Admin Settings
     And   I Go To The Contract Library Under General Section
@@ -13,14 +13,14 @@ Feature:
     Then I Should Be Able To Create A New Contract
 
   @employee_contract_search @general_high_risk
-  Scenario: Search an Existing Contract
+  Scenario: [General]Search an Existing Contract
     Given I Have Logged In as a Company Admin to staging5 site
     And   I go to Admin Settings
     And   I Go To The Contract Library under General section
     Then I Should Be Able To Search For An Employee Contract
 
   @employee_contract_edit @general_high_risk
-  Scenario: Edit an Existing Contract
+  Scenario: [General]Edit an Existing Contract
     Given I Have Logged In as a Company Admin to staging5 site
     And   I go to Admin Settings
     And   I Go To The Contract Library under General section
@@ -28,7 +28,7 @@ Feature:
     Then I Should Be Able To Edit An Employee Contract
 
   @employee_contract_copy @general_low_risk
-  Scenario: Copy an Existing Contract
+  Scenario: [General]Copy an Existing Contract
     Given I Have Logged In as a ELMO Admin to staging5 site
     And   I go to Admin Settings
     And   I Go To The Contract Library under General section
@@ -36,7 +36,7 @@ Feature:
     Then I Should Be Able To Copy An Employee Contract
 
   @employee_contract_hide @general_low_risk
-  Scenario: Hide/Unhide an Existing Contract
+  Scenario: [General]Hide/Unhide an Existing Contract
     Given I Have Logged In as a Company Admin to staging5 site
     And   I go to Admin Settings
     And   I Go To The Contract Library under General section
@@ -44,7 +44,7 @@ Feature:
     Then I Should Be Able To Hide/Unhide An Employee Contract
 
   @employee_contract_delete @general_low_risk
-  Scenario: Delete an Existing Contract
+  Scenario: [General]Delete an Existing Contract
     Given I Have Logged In as a Company Admin to staging5 site
     And   I go to Admin Settings
     And   I Go To The Contract Library under General section

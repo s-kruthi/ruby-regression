@@ -4,7 +4,7 @@ Feature:
   As a Company Admin I want to manage User Profile related configurations Successfully
 
   @elmo_user_config @general_low_risk
-  Scenario: Comapny Admin Modifying User Configuration Section data
+  Scenario: [General]Comapny Admin Modifying User Configuration Section data
     Given I Have Logged In as a Company Admin to chao site
     And   I go to Admin Settings
     And   I Go To The User Profile Setup under General section
@@ -23,7 +23,7 @@ Feature:
 
 
   @elmo_activity_resume_config @general_low_risk
-  Scenario: Comapny Admin Modifying Activity And Resume Configuration Section data
+  Scenario: [General]Comapny Admin Modifying Activity And Resume Configuration Section data
     Given I Have Logged In as a Company Admin to hung01 site
     And   I go to Admin Settings
     And   I Go To The User Profile Setup under General section

@@ -4,7 +4,7 @@ Feature:
   I want to test if a Company Admin can successfully Manage Forms
 
   @document_category_create @document_high_risk
-  Scenario: Create a Document Category
+  Scenario: [Documents]Create a Document Category
     Given I Have Logged In as a Company Admin to tmsfull site
     And   I go to Admin Settings
     And   I Go To The Document Categories under Documents section
@@ -13,14 +13,14 @@ Feature:
     Then I Should Be Able To Create A Document Category
 
   @document_category_hide @document_low_risk
-  Scenario: Hide a Document Category
+  Scenario: [Documents]Hide a Document Category
     Given I Have Logged In as a Company Admin to tmsfull site
     And   I go to Admin Settings
     And   I Go To The Document Categories under Documents section
     Then I Should Be Able To Hide A Document Category
 
   @form_template_create @document_high_risk
-   Scenario: Create a Form Template
+   Scenario: [Documents]Create a Form Template
      Given I Have Logged In as a Company Admin to tmsfull site
      And   I go to Admin Settings
      And  I Go To The Form Templates Under Documents Section
@@ -29,7 +29,7 @@ Feature:
      Then I Should Be Able To Create A Form Template
 
   @form_template_hide @document_low_risk
-    Scenario: Hide a Form Template
+    Scenario: [Documents]Hide a Form Template
     Given I Have Logged In as a Company Admin to tmsfull site
     And   I go to Admin Settings
     And  I Go To The Form Templates Under Documents Section
@@ -41,7 +41,7 @@ Feature:
     # url : https://tmsfull.dev.elmodev.com
     # security profile : document prms-shanku
     # role type : shanku-automation-role-type
-  Scenario: Invocare - onboarding admins cannot access the documents
+  Scenario: [Documents]Invocare - onboarding admins cannot access the documents
     Given I Have Logged In As An Employee With Security Profile Access
     When  I Try To Access Documents Under Reports Tab
     Then  I Should Be Able To View Pending Form Templates
