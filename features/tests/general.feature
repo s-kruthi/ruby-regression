@@ -4,7 +4,7 @@ Feature:
   As a Company Admin I want to manage Internal Employess Successfully
 
   @general_user_add  @general_high_risk @onboarding_high_risk
-  Scenario: [General]Comapny Admin Creating New User
+  Scenario: [General] [Onboarding] Comapny Admin Creating New User
     Given I Have Logged In as a ELMO Super Admin to tony01 site
     And   I go to Admin Settings
     And   I Go To The Users under General section

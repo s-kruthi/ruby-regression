@@ -1,4 +1,10 @@
 @Notifications_leave_management @smoke @leaveManagement
+  #@leaveTestRailTags
+#C168	C167	C169	C171	C173	C172	C174	C196	C175	C176	C177	C178
+#C208	C787	C788	C1764	C1765	C1766	C1767	C1768	C1759	C1760	C1761	C1762
+#C1763	C131	C133	C134	C135	C136	C213	C214	C215	C216	C217	C221
+#C789	C210	C211	C1769
+#@leaveTestRailTags
 Feature:
   As a user I want to test combinations of Leave management notifications to test if they were triggered successfully
 
