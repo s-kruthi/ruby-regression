@@ -1,31 +1,31 @@
-#LEAVE-MANAGEMENT 6 #
-TEST-Add General User With Leave capabilities#
-TEST-Apply And Process leave Request#
-TEST-Bulk Apply For Leave#
-TEST-Delete Pending Leave request For An Employee#
-TEST-Add Leave Payroll Cycle#
-TEST-Update Details Of A leave User#
+#LEAVE-MANAGEMENT#
+[LEAVE-SERVICE-TEST]-Add General User With Leave capabilities#
+[LEAVE-SERVICE-TEST]-Apply And Process leave Request#
+[LEAVE-SERVICE-TEST]-Bulk Apply For Leave#
+[LEAVE-SERVICE-TEST]-Delete Pending Leave request For An Employee#
+[LEAVE-SERVICE-TEST]-Add Leave Payroll Cycle#
+[LEAVE-SERVICE-TEST]-Update Details Of A leave User#
 
-#DOCUMENTS 3 #
-TEST-Document Form Creation#
-TEST-Revoke Document View Access By Using Jmeter Ruby Service#
-TEST-Grant Back Document View Access By Using Jmeter Ruby Service#
+#DOCUMENTS#
+[DOCUMENT-SERVICE-TEST]-Document Form Creation#
+[DOCUMENT-SERVICE-TEST]-Revoke Document View Access By Using Jmeter Ruby Service#
+[DOCUMENT-SERVICE-TEST]-Grant Back Document View Access By Using Jmeter Ruby Service#
 
-#RECRUITMENT 4 #
-TEST-Sign Up For A Job#
-TEST-Sign In For A Job#
-TEST-Search A Specific Job#
-TEST-Apply For A Specific Job#
+#RECRUITMENT#
+[RECRUITMENT-SERVICE-TEST]-Sign Up For A Job#
+[RECRUITMENT-SERVICE-TEST]-Sign In For A Job#
+[RECRUITMENT-SERVICE-TEST]-Search A Specific Job#
+[RECRUITMENT-SERVICE-TEST]-Apply For A Specific Job#
 
-#GENERAL SECTION 6 #
-TEST-Add General User to The System#
-TEST-Change User’s Role Type#
-TEST-Add User With HR core Data#
-TEST-Add Surprise User#
-TEST-Create and Add leave Management user#
-TEST-Assign Appraisal#
+#GENERAL SECTION#
+[GENERAL-SERVICE-TEST]-Add General User to The System#
+[GENERAL-SERVICE-TEST]-Change User’s Role Type#
+[GENERAL-SERVICE-TEST]-Add User With HR core Data#
+[GENERAL-SERVICE-TEST]-Add Surprise User#
+[GENERAL-SERVICE-TEST]-Create and Add leave Management user#
+[GENERAL-SERVICE-TEST]-Assign Appraisal#
 
-#REWARDS AND RECOGNITION 3 #
-TEST-Like A recommendation#
-TEST-Unlike A recommendation#
-TEST-Load test Recommendation like Feature with as many users#
+#REWARDS AN DRECOGNITION#
+[REWARDS-SERVICE-TEST]-Like A recommendation#
+[REWARDS-SERVICE-TEST]-Unlike A recommendation#
+[REWARDS-SERVICE-TEST]-Load test Recommendation like Feature with as many users##
