@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Test passed'
-            sh 'whoami'
+            sh 'pwd'
           }
         }
         stage('success') {
