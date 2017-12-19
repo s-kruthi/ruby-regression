@@ -11,7 +11,8 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Test passed'
-            sh 'pwd'
+            sh '''#!/bin/bash -l
+cd /var/lib/scriptonce_automation  pwd'''
           }
         }
         stage('success') {
