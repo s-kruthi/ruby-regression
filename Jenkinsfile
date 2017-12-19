@@ -7,17 +7,18 @@ pipeline {
       }
     }
     stage('Test') {
-      steps {
-        parallel(
-          "Test": {
-           echo 'Test passed'
-            
-          },
-          "success": {
+      parallel {
+        stage('Test') {
+          steps {
             echo 'Test passed'
-            
+            sh 'whoami'
           }
-        )
+        }
+        stage('success') {
+          steps {
+            echo 'Test passed'
+          }
+        }
       }
     }
     stage('Deploy') {
