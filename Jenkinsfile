@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Test passed'
-            sh ' cd /var/lib/scriptonce_automation; pwd; gem list;'
+            sh ' #!/bin/bash -l ; cd /var/lib/scriptonce_automation; pwd; gem list;'
           }
         }
         stage('success') {
