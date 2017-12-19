@@ -12,7 +12,9 @@ pipeline {
           steps {
             echo 'Test passed'
             sh '''#!/bin/bash -l
-cd /var/lib/scriptonce_automation  pwd'''
+'''
+            sh 'cd /var/lib/scriptonce_automation '
+            sh ' pwd'
           }
         }
         stage('success') {
