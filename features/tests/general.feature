@@ -7,7 +7,7 @@ Feature:
   Scenario: [General] [Onboarding] Comapny Admin Creating New User
     Given I Have Logged In as a ELMO Super Admin to tony01 site
     And   I go to Admin Settings
-    And   I Go To The Users under General section
+    And   I Go To Users under General section
     When  I Click On "Add New User" Button
     And   I Enter New User Details
     Then  I Should Be Able To Add 10 New Users In To The System
@@ -16,7 +16,7 @@ Feature:
   Scenario: [General][Onboarding]Comapny Admin Creating New Onboarding User
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I go to Admin Settings
-    And   I Go To The Users under Onboarding section
+    And   I Go To Users under Onboarding section
     When  I Click On Add New User Button
     And   I Enter New User Details
     Then  I Should Be Able To Add 10 New Users In To The System
@@ -45,7 +45,7 @@ Feature:
   Scenario: [General][Onboarding]Onboarding or General User List page - Delete user
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I go to Admin Settings
-    And   I Go To The Users under General section
+    And   I Go To Users under General section
     And   I Search For A Specific User
     Then  I Should Be Able To Delete The Specific User
 
@@ -54,7 +54,7 @@ Feature:
   Scenario: [General][Onboarding]Onboarding or General User Notify page - Delete user
     Given I Have Logged In as a Company Admin to nick02 site
     And   I go to Admin Settings
-    And   I Go To The Users under General section
+    And   I Go To Users under General section
     And   I Click on "Notify Users" Button
     And   I Search For A Specific User
     Then  I Should Be Able To Delete The Specific User

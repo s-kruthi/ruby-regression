@@ -105,7 +105,10 @@ And(/^I go to Admin Settings$/i) do
   goToAdminSettings(ADMIN_COG)
 end
 
-And(/^I Go To The (.*) Under (.*) Section$/i) do |menu_type, menu_section|
+And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
+  if menu_section == "Rewards"
+    menu_section = "RewardsAdmin"
+  end
   begin
       $section_name = "//a[@href='#collapse#{menu_section}']"
       $item_name = "//span[contains(.,'#{menu_type}')]"
