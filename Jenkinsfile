@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Test passed'
-            sh ' cd /var/lib/scriptonce_automation; pwd; git checkout .;git remote set-url origin git@bitbucket.org:shanku_elmo/scriptonce_automation.git; git remote -v; '
+            sh ' cd /var/lib/scriptonce_automation; pwd; git checkout .; git remote set-url origin git@bitbucket.org:shanku_elmo/scriptonce_automation.git; git remote -v; '
           }
         }
         stage('success') {
