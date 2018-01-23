@@ -9,7 +9,7 @@ And(/^I Enter File Details$/i) do
 end
 
 And(/^I Select A File$/i) do
-  select_a_file(BROWSE_FILE_ID, FILE_NAME)
+  select_a_file(BROWSE_FILE_ID, DOCUMENT_FILE_NAME)
 end
 
 And(/^I Select Availability$/i) do

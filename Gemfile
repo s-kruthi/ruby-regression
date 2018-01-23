@@ -1,14 +1,29 @@
 source "https://www.rubygems.org"
 
-gem "rest-client"
-gem "rspec"
-gem "selenium-webdriver"
+gem "activerecord"
+gem "capybara"
+gem "concurrent-ruby"
 gem "cucumber"
+gem "cucumber-core"
+gem "cucumber-expressions"
+gem "ffi"
+gem "gherkin"
+gem "jira-ruby"
+gem "multi_test"
+gem "mysql2"
+gem "net"
+gem "net-ssh"
+gem "nokogiri"
+gem "openssl"
+gem "pry"
+gem "rest-client"
+gem "rake"
+gem "renv"
+gem "rspec"
 gem "rspec-expectations"
+gem "selenium-webdriver"
+gem "touch_action"
+gem "ruby-jmeter"
+gem "waitutil"
 gem "watir-webdriver"
-gem 'activerecord', '>= 4.2.6'
-gem 'touch_action'
-gem 'ruby-jmeter'
-gem 'pry'
-gem 'waitutil'
-gem 'jira-ruby'
+

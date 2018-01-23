@@ -37,7 +37,7 @@ FILE_DESC_TXT = "Test File Description - DO NOT DELETE"
 
 
 filename = "sample.pdf"
-FILE_NAME = File.join(File.absolute_path("../../step_definitions/Test_Data/", File.dirname(__FILE__)), filename)
+DOCUMENT_FILE_NAME = File.join(File.absolute_path("../../step_definitions/Test_Data/", File.dirname(__FILE__)), filename)
 
 FILE_LABEL_ID_INDEX = 3
 

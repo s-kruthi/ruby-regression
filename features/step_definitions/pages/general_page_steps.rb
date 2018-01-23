@@ -72,7 +72,7 @@ end
 
 def select_a_manager(recipient_field_id, recipient_input_id, recipient1_input_value, recipient1_result_id)
   $driver.find_element(:id, recipient_field_id).click
-  Sleep_Until($driver.find_elements(:class, recipient_input_id).first.send_keys(recipient1_input_value))
+  Sleep_Until($driver.find_elements(:class, recipient_input_id).last.send_keys(recipient1_input_value))
   Sleep_Until($driver.find_elements(:class, recipient1_result_id).first.click)
 end
 

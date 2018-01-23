@@ -1,1 +1,1 @@
-{"custom_deploy":{"apps":["pms_staging2"],"command":"cron:generateCourseEnrolmentReminderNotification --env=staging2"}}
+{"custom_deploy":{"apps":["pms_shayan04"],"command":"cron:generateTemporaryTable user --env=shayan04"}}
