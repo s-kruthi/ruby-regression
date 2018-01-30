@@ -41,10 +41,7 @@
 
 Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
   startWebDriver
-  $site_name = site_name
-  $site_name = (ENV["URL"] || ENV["url"]) if (ENV["URL"] || ENV["url"]) != nil
-  puts "URL OVERRIDE = " + $site_name.to_s if (ENV["URL"] || ENV["url"]) != nil
-  go_to_site($site_name)
+  go_to_site(site_name)
 
   case login_name
     when "ELMO Setup Admin"

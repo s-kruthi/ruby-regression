@@ -1,6 +1,23 @@
-def go_to_site(login_page)
- $site_url = "https://" + "#{login_page}" + ".dev.elmodev.com/dashboard"
-     $driver.navigate.to($site_url)
+def go_to_site(site_name)
+
+  $site_alias = site_name
+  $site_type = "staging"
+
+  #Use override from ENV variable if there's any to go to any specific domain name, if there's no specified one, use default from BDD
+  $site_alias = (ENV["URL"] || ENV["url"]) if (ENV["URL"] || ENV["url"]) != nil
+
+  #Use override from ENV variable if there's any to go to any staging or prod site, if there's no specified one, use default from BDD
+  $site_type = (ENV["TYPE"] || ENV["type"]) if (ENV["TYPE"] || ENV["type"]) != nil
+
+  # TODO: Change this to a case select condition
+ $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/dashboard" if ($site_type.to_s == "prod" || $site_type.to_s == "PROD")
+ $site_url = "https://" + "#{$site_alias}" + ".dev.elmodev.com/dashboard" if ($site_type.to_s == "staging" || $site_type.to_s == "STAGING")
+
+ # puts "URL OVERRIDE = " + $site_url.to_s if (ENV["URL"] || ENV["url"]) != nil
+ # puts "SERVER MODE = " + $site_type.to_s if (ENV["TYPE"] || ENV["type"]) != nil
+
+
+  $driver.navigate.to($site_url)
  end
 
 def go_to_the_sections(general_expand,users_list_path)
