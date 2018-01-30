@@ -13,8 +13,8 @@ def go_to_site(site_name)
  $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/dashboard" if ($site_type.to_s == "prod" || $site_type.to_s == "PROD")
  $site_url = "https://" + "#{$site_alias}" + ".dev.elmodev.com/dashboard" if ($site_type.to_s == "staging" || $site_type.to_s == "STAGING")
 
- # puts "URL OVERRIDE = " + $site_url.to_s if (ENV["URL"] || ENV["url"]) != nil
- # puts "SERVER MODE = " + $site_type.to_s if (ENV["TYPE"] || ENV["type"]) != nil
+ puts "URL OVERRIDE = " + $site_url.to_s if (ENV["URL"] || ENV["url"]) != nil
+ puts "SERVER MODE = " + $site_type.to_s if (ENV["TYPE"] || ENV["type"]) != nil
 
 
   $driver.navigate.to($site_url)
