@@ -23,3 +23,74 @@ end
 And(/^I Should Be Able To Unmask The TFN Number By Tapping The Show Button$/i) do
   UnmaskAndViewTaxFileNumberDetailsForTheEmployee()
 end
+
+Then(/^i should be able to view (.*) sub-tab$/i) do |sub_tab_name|
+
+  case sub_tab_name
+    when "Activity"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_ACTIVITY_NAME_ID))
+      end
+
+    when "Resume"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_RESUME_NAME_ID))
+      end
+
+    when "My Career"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_MYCAREER_NAME_ID))
+      end
+
+    when "Personal Details"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_PERSONAL_NAME_ID))
+      end
+
+    when "Payment Details"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_PAYMENT_NAME_ID))
+      end
+
+    when "Recognition"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_RECOGNITION_NAME_ID))
+      end
+   end
+end
+
+And(/^i should be able to click (.*) sub-tab$/i) do |sub_tab_name|
+
+  case sub_tab_name
+
+    when "Activity"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_ACTIVITY_NAME_ID))
+      end
+
+    when "Resume"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_RESUME_NAME_ID))
+      end
+
+    when "My Career"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_MYCAREER_NAME_ID))
+      end
+
+    when "Personal Details"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_PERSONAL_NAME_ID))
+      end
+
+    when "Payment Details"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_PAYMENT_NAME_ID))
+      end
+
+    when "Recognition"
+      begin
+        Sleep_Until(click_on_a_sub_tab(SUB_TAB_RECOGNITION_NAME_ID))
+      end
+  end
+end
