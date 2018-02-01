@@ -1,5 +1,5 @@
 MENU_PROFILE_LINK = "//a[contains(@href,'/controlpanel/my-profile')]"
-MENU_MY_TEAM_LINK = "//a[contains(@href,'/controlpanel/my-employees')]"
+MENU_MY_TEAM_LINK = "//a[contains(@href,'/controlpanel/team-members')]"
 MENU_LEARNING_LINK = "//a[contains(@href,'/learning/my')]"
 MENU_LEAVE_LINK = "//a[contains(@href,'/dashboard/leave/my/leave-requests')]"
 MENU_DOCUMENTS_LINK = "//a[contains(@href,'/documents')]"
@@ -42,8 +42,14 @@ USER_PASSWORD_RECONFIRM_ID = "//input[@name='user[password][second]']"
 
 ADD_USER_SAVE_SUCCESS_ID = "//div[contains(@class,'alert alert-success')]"
 
+
+SUB_TAB_ACTIVITY_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/personal')]"
+SUB_TAB_RESUME_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/resume')]"
+SUB_TAB_MYCAREER_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/my-career')]"
 SUB_TAB_PERSONAL_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/personal')]"
 SUB_TAB_PAYMENT_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/payment')]"
+SUB_TAB_RECOGNITION_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/recommendation')]"
+
 
 EDIT_EM_CONTACT_BTN_ID = "//button[contains(@title,'Edit Emergency Contact Details')]"
 EDIT_NOK_CONTACT_BTN_ID = "//button[contains(@title,'Edit Next of Kin')]"

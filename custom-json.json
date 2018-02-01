@@ -1,1 +1,1 @@
-{"custom_deploy":{"apps":["pms_shayan04"],"command":"cron:generateTemporaryTable user --env=shayan04"}}
+{"custom_deploy":{"apps":["pms_hung02"],"command":"cron:indexCandidate --env=hung02"}}
