@@ -43,6 +43,20 @@ module Firefox
       end
     end
 
+    def WaitForAnElementByXpathAndClearValue(xpath)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_element(:xpath, "#{xpath}")
+          element if element.displayed?
+        }
+        select_item.clear()
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
     def WaitForAnElementByCSSAndInputValue(css,value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)

@@ -16,11 +16,25 @@ Feature:
     Then  I Should Be Able To Unmask The TFN Number By Tapping The Show Button
 
 
-  @ViewEmployeeDetails @general_low_risk
+  @ViewOwnEmployeeDetails @general_low_risk
   Scenario: [General]View Employee Profile to Verify Sub Tabs
     Given I Have Logged In as a Company Admin to hung02 site
     And   I Go To The Menu Profile Section
     Then  I Should Be Able To View Activity Sub-Tab
+    And   I Should Be Able To Click Resume Sub-Tab
+    And   I Should Be Able To Click My Career Sub-Tab
+    And   I Should Be Able To Click Personal Details Sub-Tab
+    And   I Should Be Able To Click Payment Details Sub-Tab
+    And   I Should Be Able To Click Recognition Sub-Tab
+
+
+  @ViewAnotherEmployeeDetails @general_low_risk
+  Scenario: [General]View Employee Profile to Verify Sub Tabs
+    Given I Have Logged In as a Company Manager to hung02 site
+    And   I Go To The Menu My Team Section
+    And   I Search An Employee named test1.omar1
+    Then  I Should Be Able To View The Employee Profile for test1.omar1 and verify Email address test1.omar1@elmodev.com
+#    And   I Should Be Able To Click Activity Sub-Tab
     And   I Should Be Able To Click Resume Sub-Tab
     And   I Should Be Able To Click My Career Sub-Tab
     And   I Should Be Able To Click Personal Details Sub-Tab

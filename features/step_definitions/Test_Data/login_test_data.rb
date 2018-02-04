@@ -35,9 +35,6 @@ DOC_SEC_PROF_USER = 'autsecprousr'
 DOC_SEC_PROF_PASS = 'Tester1!'
 DOC_USERNAME = 'X1242341'
 DOC_PASSWORD = 'Tester1!'
-####### manager's credentials ###########
-MANAGER_USERNAME = 'X1201531'
-MANAGER_PASSWORD = 'Tester1!'
 
 ####### employee profile details page ########
 EMPLOYEE_PROFILE_PAGE = "https://staging4.dev.elmodev.com/controlpanel/user-profile/619/payment"
@@ -86,6 +83,12 @@ ELMO_LEARNING_LANDING_PAGE = 'https://tony01.dev.elmodev.com/dashboard'
 LEARNING_ADMIN_USERNAME = 'company.omar'
 LEARNING_ADMIN_PASSWORD = 'Admin1234567'
 
-####### Recruitment user credentials ###########
+####### User credentials ###########
+MANAGER_USERNAME = 'X1201531'
+MANAGER_PASSWORD = 'Tester1!'
 
+COMPANY_MANAGER_USER = "manager1.omar1"
+COMPANY_MANAGER_PASS = "Admin1234567"
 
+COMPANY_EMPLOYEE_1_USER = "test1.omar1"
+COMPANY_EMPLOYEE_1_PASS = "Admin1234567"
