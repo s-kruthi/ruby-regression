@@ -93,9 +93,21 @@ Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
         EnterUsername(USER_NAME,LEAVE_COMPANY_ADMIN_USER)
         EnterPassword(PASS_WORD,LEAVE_COMPANY_ADMIN_PASS)
       end
+
+    when "Company Manager"
+      begin
+        EnterUsername(USER_NAME,COMPANY_MANAGER_USER)
+        EnterPassword(PASS_WORD,COMPANY_MANAGER_PASS)
+      end
+
+    when "Company Employee"
+      begin
+        EnterUsername(USER_NAME,COMPANY_EMPLOYEE_1_USER)
+        EnterPassword(PASS_WORD,COMPANY_EMPLOYEE_1_PASS)
+      end
   end
 
-  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
+   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
 end
 
 And(/^I go to Admin Settings$/i) do

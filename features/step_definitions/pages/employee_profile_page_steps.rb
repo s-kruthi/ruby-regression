@@ -22,3 +22,20 @@ def UnmaskAndViewTaxFileNumberDetailsForTheEmployee()
   VerifyAnElementExistByClassAndIndex("masked-value","865414088\nShow",2)
   $driver.quit
 end
+
+
+def search_for_input(search_input_id, search_input_value, search_btn_id)
+  Sleep_Until(WaitForAnElementByXpathAndClearValue(search_input_id))
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(search_input_id, search_input_value))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(search_btn_id))
+end
+
+def click_on_search_result(search_employee_class)
+  Sleep_Until(WaitForAnElementByXpathAndTouchTheIndex(search_employee_class, 0))
+end
+
+
+def verify_employee_profile(employee_name, employee_email)
+    VerifyAnElementExistByClassAndIndex(USER_PROFILE_EMAIL_CLASS_NAME, employee_email, 1) #This is the email address
+    VerifyAnElementExistByClassAndIndex(USER_PROFILE_BODY_CLASS_NAME, employee_name, 0) #This is the employee profile view
+end
