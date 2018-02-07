@@ -303,10 +303,6 @@ end
 # end
 #
 #
-# And(/^I Search For A Specific User$/i) do
-#   use_active_inactive_filter()
-#   search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, USERNAME_SEARCH_VALUE, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
-# end
 #
 # Then(/^I Should Be Able To Delete The Specific User$/i) do
 #   delete_the_user(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_CLASS_INDEX_VALUE, ACTION_DROPDOWN_NAME_VALUE)

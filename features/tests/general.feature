@@ -46,8 +46,8 @@ Feature:
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I go to Admin Settings
     And   I Go To Users under General section
-    And   I Search For A Specific User
-    Then  I Should Be Able To Delete The Specific User
+    And   I Search For A Specific User named auto1.test1
+    Then  I Should Be Able To use De-activate user on The Specific User
 
 
   @general_user_notify @general_low_risk @onboarding_low_risk @wip
@@ -56,8 +56,20 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Users under General section
     And   I Click on "Notify Users" Button
-    And   I Search For A Specific User
-    Then  I Should Be Able To Delete The Specific User
+    And   I Search For A Specific User named auto1.test1
+    Then  I Should Be Able To use De-activate user on The Specific User
+
+
+  @general_user_edit_profile @general_low_risk @onboarding_user_edit_profile @onboarding_low_risk @wip
+  Scenario: [General][Onboarding]Onboarding or General User Notify page - Delete user
+    Given I Have Logged In as a Company Admin to hung02 site
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    And   I Search For A Specific User named auto1.test1
+    Then  I Should Be Able To use Edit User Profile on The Specific User
+#    And   I Should Be Able to Fill In All Profile Related Information
+    And   I Should Be Able To Save The Information Successfully
+
 
 
    # @wip

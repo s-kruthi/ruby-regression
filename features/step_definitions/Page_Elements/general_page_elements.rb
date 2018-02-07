@@ -69,7 +69,7 @@ DONE_BTN_ID = "//button[contains(.,'Done')]"
 
 USERNAME_SEARCH_ID = "//input[@placeholder='Search']"
 
-USERNAME_SEARCH_BTN = "//button[contains(@title,'Search')]"
+USERNAME_SEARCH_BTN = "//button[contains(@name,'search[submit]')]"
 ACTION_DROPDOWN_CLASS_NAME = "dropdown-toggle"
 
 INACTIVE_CLASS_ID = "is-not-active"

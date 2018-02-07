@@ -110,9 +110,11 @@ Given(/^i have logged in as a (.*) to (.*) site$/i) do |login_name, site_name|
    LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
 end
 
+
 And(/^I go to Admin Settings$/i) do
   goToAdminSettings(ADMIN_COG)
 end
+
 
 And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
   if menu_section == "Rewards"
@@ -126,6 +128,7 @@ And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
       $add_user_type = "OB" if menu_type.include? "Onboarding"
   end
 end
+
 
 And(/^I Go To The (.*) Section$/i) do |menu_type|
   begin
@@ -227,6 +230,7 @@ And(/^I Enter New User Details$/i) do
   create_users(1)
 end
 
+
 Then(/^I Should Be Able To Add (.*) New Users In To The System$/i) do |total_number_of_users|
   $total = total_number_of_users.to_i
   add_user_details($total - 1)
@@ -283,6 +287,7 @@ And(/^I Click On Add (.*) Button$/i) do |add_contact_btn|
   end
 end
 
+
 And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
   begin
     case add_contact_btn
@@ -317,17 +322,46 @@ Then(/^I Should Be Able To Add (.*) Details$/i) do |contact_details|
 end
 
 
-And(/^I Search For A Specific User$/i) do
-  use_active_inactive_filter()
-  search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, USERNAME_SEARCH_VALUE, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
+And(/^i search for a specific user named (.*)$/i) do |username_search_value|
+  $username_search_value = username_search_value
+  use_active_inactive_filter() if USE_ACTIVE_INACTIVE_FILTER.to_i == 1
+  search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, $username_search_value, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
 end
 
-Then(/^I Should Be Able To Delete The Specific User$/i) do
-  delete_the_user(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_CLASS_INDEX_VALUE, ACTION_DROPDOWN_NAME_VALUE)
-  very_deleted_user(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
+
+Then(/^I Should Be Able To use (.*) on The Specific User$/i) do |specified_action|
+  begin
+    case specified_action
+
+    when "De-activate user"
+        begin
+          click_user_list_actions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_DEACTIVATE_VALUE)
+          very_deleted_user(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
+        end
+
+    when "Edit User Profile"
+        begin
+          click_user_list_actions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_EDIT_VALUE)
+        end
+      end
+  end
+end
+
+
+And(/^i should be able to go to (.*) tab$/i) do |profile_tab_name|
+     click_on_a_tab(profile_tab_name)
+end
+
+And(/^i should be able to fill in all profile related information$/i) do
+  pending
+end
+
+And(/^i should be able to save the information successfully$/i) do
+  click_on_save_button(SAVE_BTN_ID)
 end
 
 And(/^I Click on "([^"]*)" Button$/i) do |button_name|
   buttonxPath = "//a[contains(.,'#{button_name}')]"
   Sleep_Until(WaitForAnElementByXpathAndTouch(buttonxPath))
 end
+

@@ -181,10 +181,6 @@ def click_on_button_in_iframe(course_delete_btn_name_id)
 end
 
 
-def click_on_a_sub_tab(sub_tab_name_id)
-  Sleep_Until(WaitForAnElementByXpathAndTouch(sub_tab_name_id))
-end
-
 def add_a_new_section(course_add_a_section_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_add_a_section_btn_id))
   # sleep (1)

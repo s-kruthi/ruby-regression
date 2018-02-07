@@ -156,3 +156,4 @@
       When  I Edit A Specific Course
       And   I Open A Specific Face-to-Face Activity
       Then  I Should Be Able To Add All Notifications
+

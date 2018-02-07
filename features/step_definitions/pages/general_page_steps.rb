@@ -20,28 +20,34 @@ def go_to_site(site_name)
   $driver.navigate.to($site_url)
  end
 
+
 def go_to_the_sections(general_expand,users_list_path)
   goToASection(general_expand)
   sleep(1)
   goToItemLandingPage(users_list_path)
 end
 
+
 def goToAdminSettings(admin_cog)
   WaitForAnElementByClass(admin_cog)
   TouchAdminMenu(admin_cog)
 end
 
+
 def goToASection(section_expand)
   Sleep_Until(WaitForAnElementByXpathAndTouch(section_expand))
 end
 
-  def go_to_the_navbar_sections(link_to_click)
+
+def go_to_the_navbar_sections(link_to_click)
   Sleep_Until($driver.find_elements(:xpath, link_to_click).last.click)
 end
+
 
 def go_to_add_new_users_page(add_new_user_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(add_new_user_btn))
 end
+
 
 def add_user_details(limit)
   i = 2 if limit >= 2
@@ -51,6 +57,7 @@ def add_user_details(limit)
     loop += 1
   end
 end
+
 
 def create_users(loop)
   first_name = NEW_USER_FIRST_NAME_PREFIX + loop.to_s
@@ -71,6 +78,7 @@ def create_users(loop)
   sleep (2)
 end
 
+
 def create_remaining_users(counter)
   $driver.navigate.to($site_url)
   goToAdminSettings(ADMIN_COG)
@@ -80,6 +88,7 @@ def create_remaining_users(counter)
   go_to_add_new_users_page(OB_ADD_NEW_USER_BTN)  if $add_user_type == "OB"
   Sleep_Until(create_users(counter))
 end
+
 
 def enter_user_details(input_id, input_value)
   $driver.find_element(:xpath, input_id).clear()
@@ -93,24 +102,30 @@ def select_a_manager(recipient_field_id, recipient_input_id, recipient1_input_va
   Sleep_Until($driver.find_elements(:class, recipient1_result_id).first.click)
 end
 
+
 def select_date(select_date_id, select_date_value)
   Sleep_Until($driver.find_element(:xpath, select_date_id).clear())
   Sleep_Until(WaitForAnElementByXpathAndInputValue(select_date_id, select_date_value))
   $driver.find_element(:xpath, select_date_id).send_keys(:return)
 end
-#
+
+
 def select_timezone(select_timezone_id, select_timezone_value)
   Sleep_Until(select_from_drop_down(select_timezone_id, select_timezone_value))
 end
+
 
 def press_save_button(user_create_save_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(user_create_save_btn_id))
 end
 
-def delete_the_user(action_dropdown_class_name, action_dropdown_class_index_value, action_dropdown_name_value)
+
+def click_user_list_actions(action_dropdown_class_name, action_dropdown_class_index_value, action_dropdown_name_value)
   Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(action_dropdown_class_name, action_dropdown_class_index_value))
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(action_dropdown_name_value))
 end
+
+
 
 def use_active_inactive_filter()
   if $driver.find_elements(:id, "create_filter_btn")[0].displayed?
@@ -121,6 +136,17 @@ def use_active_inactive_filter()
   end
 end
 
+
 def very_deleted_user(inactive_class_id, inactive_attribute_id, inactive_attribute_text)
  puts "MATCHED: \"#{inactive_attribute_text}\" - \e[0m[ \e[32mPASSED\e[0m ]" if $driver.find_element(:class, inactive_class_id).attribute(inactive_attribute_id) == inactive_attribute_text
+end
+
+
+def click_on_a_tab(tab_name)
+  Sleep_Until($driver.find_element(:xpath, "//a[contains(.,'#{tab_name}')]").click)
+end
+
+
+def click_on_a_sub_tab(sub_tab_name_id)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(sub_tab_name_id))
 end
