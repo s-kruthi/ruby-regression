@@ -64,6 +64,15 @@ ACK_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 SURVEY_TITLE_ID = "//input[contains(@id,'name')]"
 SURVEY_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
+###ELMO Survey2 activity elements
+
+SURVEY2_TITLE_ID = "//input[contains(@id,'name')]"
+SURVEY2_SAVE_BTN_ID = "//button[contains(@id,'save')]"
+
+SURVEY2_CONTENT_DROPDOWN_INPUT_ID = "//div[contains(@id,'s2id_elmo_learningbundle_ModSurveytwo_survey2')]"
+SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS = "select2-input"
+SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS = "select2-result-selectable"
+
 ###Face-to-face activity elements
 
 F2F_TITLE_ID = "//input[contains(@id,'name')]"

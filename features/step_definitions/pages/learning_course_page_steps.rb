@@ -275,6 +275,15 @@ def create_an_activity(course_activity_name)
           Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
+      when "ELMO Survey (new)"
+        begin
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(SURVEY2_TITLE_ID, SURVEY2_TITLE_VALUE))
+          Sleep_Until(use_ckeditor_to_enter_description(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(single_select_from_select2_input_dropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
+          click_on_save_button(SURVEY2_SAVE_BTN_ID)
+          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        end
+
     end
 
   end

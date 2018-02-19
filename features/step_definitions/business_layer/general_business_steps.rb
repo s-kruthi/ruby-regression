@@ -329,7 +329,7 @@ And(/^i search for a specific user named (.*)$/i) do |username_search_value|
 end
 
 
-Then(/^I Should Be Able To use (.*) on The Specific User$/i) do |specified_action|
+Then(/^I Should Be Able To use (.*) Action on The Specific User$/i) do |specified_action|
   begin
     case specified_action
 
@@ -354,6 +354,16 @@ end
 
 And(/^i should be able to fill in all profile related information$/i) do
   pending
+  select_gender()
+  enter_preferred_name()
+  select_date_joined()
+  select_terminate_date()
+  select_employement_status()
+  select_date_of_birth()
+  enter_elders_id()
+  select_hay_grade()
+  select_employe()
+
 end
 
 And(/^i should be able to save the information successfully$/i) do

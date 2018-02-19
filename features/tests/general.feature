@@ -10,7 +10,7 @@ Feature:
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
     And   I Enter New User Details
-    Then  I Should Be Able To Add 10 New Users In To The System
+    Then  I Should Be Able To Add 4 New Users In To The System
 
   @onboarding_user_add @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]Comapny Admin Creating New Onboarding User
@@ -41,33 +41,23 @@ Feature:
     And   I Use Add Next Of Kin Details
     Then  I Should Be Able To Add Next Of Kin Details
 
-  @general_user_delete @general_low_risk @onboarding_low_risk
-  Scenario: [General][Onboarding]Onboarding or General User List page - Delete user
+  @general_user_deactivate @general_low_risk @onboarding_low_risk
+  Scenario: [General][Onboarding]Onboarding or General User List page - De-Activate user
     Given I Have Logged In as a Company Admin to faraz1 site
     And   I go to Admin Settings
     And   I Go To Users under General section
     And   I Search For A Specific User named auto1.test1
-    Then  I Should Be Able To use De-activate user on The Specific User
-
-
-  @general_user_notify @general_low_risk @onboarding_low_risk @wip
-  Scenario: [General][Onboarding]Onboarding or General User Notify page - Delete user
-    Given I Have Logged In as a Company Admin to nick02 site
-    And   I go to Admin Settings
-    And   I Go To Users under General section
-    And   I Click on "Notify Users" Button
-    And   I Search For A Specific User named auto1.test1
-    Then  I Should Be Able To use De-activate user on The Specific User
+    Then  I Should Be Able To use De-activate user Action on The Specific User
 
 
   @general_user_edit_profile @general_low_risk @onboarding_user_edit_profile @onboarding_low_risk @wip
-  Scenario: [General][Onboarding]Onboarding or General User Notify page - Delete user
+  Scenario: [General][Onboarding]Onboarding or General User List page - Edit Profile Information
     Given I Have Logged In as a Company Admin to hung02 site
     And   I go to Admin Settings
     And   I Go To Users under General section
     And   I Search For A Specific User named auto1.test1
-    Then  I Should Be Able To use Edit User Profile on The Specific User
-#    And   I Should Be Able to Fill In All Profile Related Information
+    Then  I Should Be Able To use Edit User Profile Action On The Specific User
+    And   I Should Be Able to Fill In All Profile Related Information
     And   I Should Be Able To Save The Information Successfully
 
 

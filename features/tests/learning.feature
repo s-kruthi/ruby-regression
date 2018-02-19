@@ -104,6 +104,14 @@
       When  I Edit A Specific Course
       Then  I Should Be Able To Add A New Post Activity
 
+    @activity_survey2_add @activity_add @learning_high_risk
+    Scenario: [Learning]Learning Admin creating New Post Activity In A Course
+      Given I Have Logged In as a Learning Admin to shayan02 site
+      And   I go to Admin Settings
+      And   I Go To Courses under Learning section
+      When  I Edit A Specific Course
+      Then  I Should Be Able To Add A New ELMO Survey (new) Activity
+
     @activity_delete @learning_low_risk
     Scenario: [Learning]Learning Admin Deleting A Section In A Course
       Given I Have Logged In as a Learning Admin to shayan02 site
@@ -112,7 +120,7 @@
       When  I Edit A Specific Course
       Then  I Should Be Able To Delete A Specific Section
 
-    @course_notifications @activity_add @learning_low_risk
+    @course_notifications_add @activity_add @learning_low_risk
     Scenario: [Learning]Learning Admin Adding Notification Templates in Course
       Given I Have Logged In as a Learning Admin to shayan02 site
       And   I go to Admin Settings
@@ -129,7 +137,7 @@
       And   I Open A Specific Face-to-Face Activity
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
 
-    @f2f_session_notifications @activity_add @learning_low_risk
+    @f2f_session_notifications_add @activity_add @learning_low_risk
     Scenario: [Learning]Learning Admin Adding Notification Templates in Face-to-Face Activity
       Given I Have Logged In as a Learning Admin to chao site
       And   I go to Admin Settings

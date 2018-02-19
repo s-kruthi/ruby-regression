@@ -37,6 +37,12 @@ SURVEY_TITLE_VALUE = "Test ELMO Survey Activity - Please DO NOT DELETE"
 SURVEY_ACTIVITY_EDITOR_TXT = "This is a Test ELMO Survey Activity Editor Content - Please DO NOT DELETE"
 SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
 
+###ELMO Survey activity test data
+SURVEY2_TITLE_VALUE = "Test ELMO Survey (new) Activity - Please DO NOT DELETE"
+SURVEY2_ACTIVITY_EDITOR_TXT = "This is a Test ELMO Survey (new) Activity Editor Content - Please DO NOT DELETE"
+SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE = "Learning"
+SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
+
 ###Face-to-face activity test data
 F2F_TITLE_VALUE = "Test Face-to-Face Activity - Please DO NOT DELETE"
 F2F_ACTIVITY_EDITOR_TXT = "This is a Test Face-to-Face Activity Editor Content - Please DO NOT DELETE"
