@@ -153,10 +153,12 @@ def delete_the_first_course_from_table(xpath_name, partial_link_text)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
 
-# def delete_the_first_course_from_table(class_name,index_value, partial_link_text)
-#   Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(class_name, index_value))
-#   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
-# end
+def click_the_menu_of_first_course_from_table(xpath_name, partial_link_text)
+  Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
+  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
+  PressEnterConfirm()
+  sleep (2)
+end
 
 def click_on_button_in_iframe(course_delete_btn_name_id)
   begin

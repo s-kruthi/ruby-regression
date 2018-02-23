@@ -1,11 +1,3 @@
-# Given(/^I Have Logged In as a Company Admin To Setup A Course$/i) do
-#   startWebDriver
-#   GoToThePage(ADMIN_COURSE_PAGE)
-#   EnterUsername(USER_NAME,ADMIN_COURSE_USER)
-#   EnterPassword(PASS_WORD,ADMIN_COURSE_PASS)
-#   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
-# end
-
 When(/^I Setup A Course To Edit The Section$/i) do
   AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
   FillTheCourseFormAndSaveIt(COURSE_NAME_ID,COURSE_NAME_VAL,COURSE_CODE_ID,COURSE_CODE_VAL,SAVE_COURSE_ID)
@@ -17,7 +9,6 @@ end
 
 Then(/^I Should be Able To Successfully Setup The Quiz Activity$/i) do
   SetupTheQuizActivityAndSaveIt()
-  #SearchForTheCourseAndDeleteIt(COURSE_NAME_VAL)
 end
 
 When(/^I Click On The New Course Button$/i) do
@@ -45,8 +36,8 @@ Then(/^I Should Be Able To Create A New Course$/i) do
 end
 
 
-When(/^I Search For A Specific Course$/i) do
-  search_a_course(COURSE_LIST_SEARCH_BOX_ID, COURSE_LIST_TITLE_VALUE, COURSE_SEARCH_BTN_ID)
+When(/^I Search For A Specific Course Named (.*)$/i) do |course_name|
+  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
 end
 
 
@@ -62,8 +53,8 @@ Then(/^I Should Be Able To Delete The Specific Course$/i) do
   $driver.quit
 end
 
-When(/^I Edit A Specific Course$/i) do
-  search_a_course(COURSE_LIST_SEARCH_BOX_ID, COURSE_LIST_TITLE_VALUE, COURSE_SEARCH_BTN_ID)
+When(/^I Edit A Specific Course Named (.*)$/i) do |course_name|
+  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
   edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
@@ -96,3 +87,27 @@ Then(/^I Should Be Able To Add All Notifications$/i) do
   click_on_a_sub_tab(SUB_TAB_APROVAL_NOT_NAME_ID)
   create_all_notifications()
 end
+
+
+And(/^I Click On The Menu Of A Specific Course$/i) do
+  search_a_course(COURSE_LIST_SEARCH_BOX_ID, COURSE_LIST_TITLE_VALUE, COURSE_SEARCH_BTN_ID)
+  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+end
+
+
+Then(/^I Should Be Able To (.*) Of The Specific Course$/i) do |retrain_action|
+  click_the_menu_of_first_course_from_table(COURSE_LIST_DROPDOWN, retrain_action)
+  case retrain_action
+    when "Fix Retrain"
+      begin
+        Sleep_Until(verifySuccessMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_FIX_SUCCESSFUL_VALUE))
+      end
+
+    when "Disable Retrain"
+      begin
+        Sleep_Until(verifySuccessMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_DISABLE_SUCCESSFUL_VALUE))
+      end
+  end
+end
+
+

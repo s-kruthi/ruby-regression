@@ -110,3 +110,6 @@ POST_SELECT_FILE_ID = "//a[contains(.,'Select File')]"
 
 ADD_NOTIFICATION_BUTTON_ID = "//button[contains(@id,'templateNotification_button_add_template')]"
 ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
+
+###Course Retrain Discrepancy Elements
+COURSE_DISCREPANCY_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"

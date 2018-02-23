@@ -77,3 +77,7 @@ PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved")
 POST_TITLE_VALUE = "Test Post Activity - Please DO NOT DELETE"
 POST_ACTIVITY_EDITOR_TXT = "This is a Test Post Activity Editor Content - Please DO NOT DELETE"
 POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Post saved successfully.")
+
+###Course Retrain Discrepancy data
+COURSE_DISCREPANCY_FIX_SUCCESSFUL_VALUE = "Retrain for the selected user(s) have been successfully fixed"
+COURSE_DISCREPANCY_DISABLE_SUCCESSFUL_VALUE = "Retrain for the selected user(s) have been successfully disabled"
