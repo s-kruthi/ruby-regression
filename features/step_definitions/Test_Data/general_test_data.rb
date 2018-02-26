@@ -36,3 +36,7 @@ ACTION_DROPDOWN_EDIT_VALUE = "Edit User Profile"
 ACTION_DROPDOWN_DEACTIVATE_VALUE = "Deactivate user"
 
 INACTIVE_ATTRIBUTE_TEXT = "User is not active"
+
+#Select2 dropdown generic data
+SELECT2_DROPDOWN_ID = "select2-input"
+SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"

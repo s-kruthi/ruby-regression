@@ -113,3 +113,6 @@ ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
 
 ###Course Retrain Discrepancy Elements
 COURSE_DISCREPANCY_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
+EMPLOYEE_NAME_DROPDOWN_ID = "s2id_filter_form_elmoPms_userEmployeeId"
+FILTER_SUBMIT_BTN_ID = "//button[contains(.,'Submit')]"
+FILTER_RESULT_VERIFY_TABLE_ID = "elmo-table"

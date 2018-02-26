@@ -147,7 +147,7 @@
       Then  I Should Be Able To Add All Notifications
 
 
-    @retrain_discrepancy_fix @wip @learning_low_risk
+    @retrain_discrepancy_fix @learning_low_risk
     Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Fix Retrain
       Given I Have Logged In as a Learning Admin to shayan01 site
       And   I go to Admin Settings
@@ -155,10 +155,20 @@
       When  I Search For A Specific Course Named Fraud & Corruption
       Then  I Should Be Able To Fix Retrain Of The Specific Course
 
-    @retrain_discrepancy_disable @wip @learning_low_risk
+    @retrain_discrepancy_disable @learning_low_risk
     Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Disable Retrain
       Given I Have Logged In as a Learning Admin to shayan01 site
       And   I go to Admin Settings
       And   I Go To Retrain Discrepancies under Learning section
       When  I Search For A Specific Course Named Fraud & Corruption
       Then  I Should Be Able To Disable Retrain Of The Specific Course
+
+    @retrain_discrepancy_filter_create @wip @learning_low_risk
+    Scenario: [Learning]Learning Admin using a Filter to apply on Retrain Discrepancies Page Results
+      Given I Have Logged In as a Learning Admin to shayan01 site
+      And   I go to Admin Settings
+      And   I Go To Retrain Discrepancies under Learning section
+      When  I Click On "Create Filter" Button
+      And   I select Employee Name as Test1 Omar1
+      Then  I Should Be Able to Create a Filter
+      And   See a Filtered List of Retrain Discrepancy Course Results for Learner Test1 Omar1

@@ -29,8 +29,8 @@ end
 
 def single_select_from_select2_input_dropdown(select2_input_id, select2_search_input_class, select2_search_input_text, select2_search_result_class)
     $driver.find_elements(:id, select2_input_id).last.click
-    $driver.find_elements(:class, select2_search_input_class).last.send_keys(select2_search_input_text)
-    $driver.find_elements(:class, select2_search_result_class).last.click
+    Sleep_Until($driver.find_elements(:class, select2_search_input_class).last.send_keys(select2_search_input_text))
+    Sleep_Until($driver.find_elements(:class, select2_search_result_class).first.click)
 end
 
   def enterDescription(form_temp_desc_txt, index_id)

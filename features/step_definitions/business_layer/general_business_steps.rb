@@ -336,7 +336,7 @@ Then(/^I Should Be Able To use (.*) Action on The Specific User$/i) do |specifie
     when "De-activate user"
         begin
           click_user_list_actions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_DEACTIVATE_VALUE)
-          very_deleted_user(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
+          verify_deleted_user(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
         end
 
     when "Edit User Profile"
@@ -371,7 +371,18 @@ And(/^i should be able to save the information successfully$/i) do
 end
 
 And(/^I Click on "([^"]*)" Button$/i) do |button_name|
-  buttonxPath = "//a[contains(.,'#{button_name}')]"
-  Sleep_Until(WaitForAnElementByXpathAndTouch(buttonxPath))
-end
 
+  case button_name
+    when "Create Filter"
+      begin
+        buttonxPath = "//button[contains(.,'#{button_name}')]"
+        Sleep_Until($driver.find_elements(:xpath, buttonxPath).first.click)
+      end
+
+    else
+      begin
+        buttonxPath = "//a[contains(.,'#{button_name}')]"
+        Sleep_Until(WaitForAnElementByXpathAndTouch(buttonxPath))
+        end
+  end
+end

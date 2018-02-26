@@ -137,7 +137,7 @@ def use_active_inactive_filter()
 end
 
 
-def very_deleted_user(inactive_class_id, inactive_attribute_id, inactive_attribute_text)
+def verify_deleted_user(inactive_class_id, inactive_attribute_id, inactive_attribute_text)
  puts "MATCHED: \"#{inactive_attribute_text}\" - \e[0m[ \e[32mPASSED\e[0m ]" if $driver.find_element(:class, inactive_class_id).attribute(inactive_attribute_id) == inactive_attribute_text
 end
 

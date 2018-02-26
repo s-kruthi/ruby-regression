@@ -362,13 +362,13 @@ def check_for_trigger_date()
 end
 
 
-
 def save_notification_template()
   begin
     Sleep_Until($driver.find_elements(:xpath, ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID).last.click)
     sleep (1)
   end
 end
+
 
 def add_admin_notification_templates()
   begin
@@ -380,15 +380,23 @@ def add_admin_notification_templates()
   end
 end
 
+
 def click_on_first_f2f_activity(f2f_link_text)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(f2f_link_text))
 end
+
 
 def click_add_f2f_session_btn(f2f_session_add_session_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(f2f_session_add_session_btn))
 end
 
+
 def add_f2f_session()
   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_FILE_ID))
   Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
+end
+
+
+def verify_filter_result(verify_result_table_id, input_value)
+  Sleep_Until(VerifyAnElementExistById(verify_result_table_id, input_value))
 end

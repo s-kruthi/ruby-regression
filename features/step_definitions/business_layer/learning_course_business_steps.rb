@@ -110,4 +110,22 @@ Then(/^I Should Be Able To (.*) Of The Specific Course$/i) do |retrain_action|
   end
 end
 
+And(/^I select (.*) as (.*)$/i) do |dropdown_name, dropdown_value|
 
+  case dropdown_name
+    when "Employee Name"
+      begin
+        Sleep_Until(single_select_from_select2_input_dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
+      end
+   end
+
+end
+
+Then(/^I Should Be Able to Create a Filter$/i) do
+  Sleep_Until(click_on_save_button(FILTER_SUBMIT_BTN_ID))
+end
+
+
+And(/^See a Filtered List of Retrain Discrepancy Course Results for Learner (.*)$/i) do |learner_name|
+  verify_filter_result(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
+end

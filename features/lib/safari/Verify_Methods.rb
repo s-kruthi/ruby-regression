@@ -13,7 +13,7 @@ module Safari
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "MATCHED: #{text} - \e[0m[ \e[32mPASSED\e[0m ]"
+          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
           $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
@@ -33,7 +33,7 @@ module Safari
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "MATCHED: #{text} - \e[0m[ \e[32mPASSED\e[0m ]"
+          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
           $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
@@ -53,7 +53,7 @@ module Safari
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "MATCHED: #{text} - \e[0m[ \e[32mPASSED\e[0m ]"
+          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
           $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
@@ -73,7 +73,7 @@ module Safari
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "MATCHED: #{text} - \e[0m[ \e[32mPASSED\e[0m ]"
+          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
           $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
@@ -93,7 +93,7 @@ module Safari
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text == true
-          puts "MATCHED: #{text} - \e[0m[ \e[32mPASSED\e[0m ]"
+          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
           $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
