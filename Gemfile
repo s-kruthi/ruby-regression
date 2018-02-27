@@ -26,4 +26,4 @@ gem "touch_action"
 gem "ruby-jmeter"
 gem "waitutil"
 gem "watir-webdriver"
-
+gem "sequel"
