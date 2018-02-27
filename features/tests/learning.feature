@@ -8,7 +8,7 @@
 
   @xxx430 @learning_high_risk
   Scenario: [Learning]Create A New Course With Quiz Activity
-    Given I Have Logged In as a Learning Admin to shayan01 site
+    Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
     When  I Setup A Course To Edit The Section
@@ -17,7 +17,7 @@
 
     @course_add @learning_high_risk
     Scenario: [Learning]Learning Admin Creating New Course
-      Given I Have Logged In as a Learning Admin to shayan01 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Click On The New Course Button
@@ -26,7 +26,7 @@
 
     @course_search @learning_low_risk
     Scenario: [Learning]Learning Admin Searching New Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Search For A Specific Course Named DO NOT DELETE
@@ -34,7 +34,7 @@
 
     @course_delete @learning_low_risk
     Scenario: [Learning]Learning Admin Deleting New Course
-      Given I Have Logged In as a Learning Admin to chao site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Search For A Specific Course Named DO NOT DELETE
@@ -42,7 +42,7 @@
 
     @activity_ack_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New Acknowledgement Activity In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -50,7 +50,7 @@
 
     @activity_survey_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New ELMO Survey Activity In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -58,7 +58,7 @@
 
     @activity_f2f_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New Face-to-Face Activity In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -66,7 +66,7 @@
 
     @activity_quiz_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New Quiz Activity In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -74,7 +74,7 @@
 
     @activity_file_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New File Activity In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -82,7 +82,7 @@
 
     @activity_label_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New Label Activity In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -90,7 +90,7 @@
 
     @activity_page_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New Page Activity In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -98,7 +98,7 @@
 
     @activity_post_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New Post Activity In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -106,7 +106,7 @@
 
     @activity_survey2_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New Post Activity In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -114,7 +114,7 @@
 
     @activity_delete @learning_low_risk
     Scenario: [Learning]Learning Admin Deleting A Section In A Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -122,7 +122,7 @@
 
     @course_notifications_add @activity_add @learning_low_risk
     Scenario: [Learning]Learning Admin Adding Notification Templates in Course
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -130,7 +130,7 @@
 
     @activity_f2f_session_add @activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin Creating New Session In A Face-to-Face Activity
-      Given I Have Logged In as a Learning Admin to shayan02 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -139,7 +139,7 @@
 
     @activity_f2f_session_notifications_add @activity_add @learning_low_risk
     Scenario: [Learning]Learning Admin Adding Notification Templates in Face-to-Face Activity
-      Given I Have Logged In as a Learning Admin to chao site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
@@ -149,7 +149,7 @@
 
     @retrain_discrepancy_fix @learning_low_risk
     Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Fix Retrain
-      Given I Have Logged In as a Learning Admin to shayan01 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Retrain Discrepancies under Learning section
       When  I Search For A Specific Course Named Fraud & Corruption
@@ -157,7 +157,7 @@
 
     @retrain_discrepancy_disable @learning_low_risk
     Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Disable Retrain
-      Given I Have Logged In as a Learning Admin to shayan01 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Retrain Discrepancies under Learning section
       When  I Search For A Specific Course Named Fraud & Corruption
@@ -165,7 +165,7 @@
 
     @retrain_discrepancy_filter_create @wip @learning_low_risk
     Scenario: [Learning]Learning Admin using a Filter to apply on Retrain Discrepancies Page Results
-      Given I Have Logged In as a Learning Admin to shayan01 site
+      Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Retrain Discrepancies under Learning section
       When  I Click On "Create Filter" Button

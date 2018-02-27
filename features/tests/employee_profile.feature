@@ -18,7 +18,7 @@ Feature:
 
   @ViewOwnEmployeeDetails @general_low_risk
   Scenario: [General]View Employee Profile to Verify Sub Tabs
-    Given I Have Logged In as a Company Admin to hung02 site
+    Given I Have Logged In as a Company Admin
     And   I Go To The Menu Profile Section
     Then  I Should Be Able To View Activity Sub-Tab
     And   I Should Be Able To Click Resume Sub-Tab
@@ -30,7 +30,7 @@ Feature:
 
   @ViewAnotherEmployeeDetails @general_low_risk
   Scenario: [General]View Employee Profile to Verify Sub Tabs
-    Given I Have Logged In as a Company Manager to hung02 site
+    Given I Have Logged In as a Company Manager
     And   I Go To The Menu My Team Section
     And   I Search An Employee named test1.omar1
     Then  I Should Be Able To View The Employee Profile for test1.omar1 and verify Email address test1.omar1@elmodev.com

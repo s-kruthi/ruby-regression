@@ -4,7 +4,7 @@ Feature:
 
   @succession_delete @succession_high_risk
   Scenario: [Succession]Delete a Succession
-    Given I Have Logged In as a Company Admin to tmsfull site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Succession Review Setup Under Succession Section
     When   I Create A New Succession Plan
@@ -12,7 +12,7 @@ Feature:
 
   @succession_hide @succession_high_risk
   Scenario: [Succession]Hide a Succession
-    Given I Have Logged In as a Company Admin to tmsfull site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Succession Review Setup Under Succession Section
     And   I Create A New Succession Plan
@@ -22,7 +22,7 @@ Feature:
 
   @succession_search @succession_high_risk
   Scenario: [Succession]Search a Succession
-    Given I Have Logged In as a Company Admin to tmsfull site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Succession Review Setup Under Succession Section
     And   I Create A New Succession Plan To Search For
@@ -31,7 +31,7 @@ Feature:
 
   @succession_cannot_delete @succession_high_risk
   Scenario: [Succession]Assigned Succession Plan Cannot Be Deleted
-    Given I Have Logged In as a Company Admin to tmsfull site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Succession Review Setup Under Succession Section
     And   I Try To Delete A Pre Assigned Succession Plan

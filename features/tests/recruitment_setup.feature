@@ -5,7 +5,7 @@ Feature:
 
   @add_requisition @recruitment_high_risk
   Scenario: [Recruitment]Create a Requisition
-    Given I Have Logged In as a Recruitment Admin to staging5 site
+    Given I Have Logged In as a Recruitment Admin
     And I Go To The Menu Recruitment Section
     When  I Click on New Requisition Button
     And   I Enter New Requisition Details
@@ -13,7 +13,7 @@ Feature:
 
   @add_candidate @recruitment_high_risk
   Scenario: [Recruitment]Create a New Candidate for Recruitment
-    Given I Have Logged In as a Recruitment Admin to staging5 site
+    Given I Have Logged In as a Recruitment Admin
     And I Go To The Recruitment Candidates Section
     When I Click on New Candidate Button
     And I Enter New Candidate Details

@@ -5,7 +5,7 @@ Feature:
 
   @document_category_create @document_high_risk
   Scenario: [Documents]Create a Document Category
-    Given I Have Logged In as a Company Admin to tmsfull site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Document Categories under Documents section
     When I click on Add Category Button
@@ -14,14 +14,14 @@ Feature:
 
   @document_category_hide @document_low_risk
   Scenario: [Documents]Hide a Document Category
-    Given I Have Logged In as a Company Admin to tmsfull site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Document Categories under Documents section
     Then I Should Be Able To Hide A Document Category
 
   @form_template_create @document_high_risk
    Scenario: [Documents]Create a Form Template
-     Given I Have Logged In as a Company Admin to tmsfull site
+     Given I Have Logged In as a Company Admin
      And   I go to Admin Settings
      And  I Go To Form Templates Under Documents Section
      When I click on Create Form Template Button
@@ -30,7 +30,7 @@ Feature:
 
   @form_template_hide @document_low_risk
     Scenario: [Documents]Hide a Form Template
-    Given I Have Logged In as a Company Admin to tmsfull site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And  I Go To Form Templates Under Documents Section
     When  I Search For A Specific Form Template

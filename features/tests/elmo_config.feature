@@ -5,7 +5,7 @@ Feature:
 
   @elmo_user_config @general_low_risk
   Scenario: [General]Comapny Admin Modifying User Configuration Section data
-    Given I Have Logged In as a Company Admin to chao site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To User Profile Setup under General section
     And   I Click On "User Profile Setup" Tab
@@ -24,7 +24,7 @@ Feature:
 
   @elmo_activity_resume_config @general_low_risk
   Scenario: [General]Comapny Admin Modifying Activity And Resume Configuration Section data
-    Given I Have Logged In as a Company Admin to hung01 site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To User Profile Setup under General section
     And   I Click On "Personal And Payment Details" Tab

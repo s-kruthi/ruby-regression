@@ -4,8 +4,8 @@ Feature:
   As a Company Admin I want to manage Badges
 
   @create_badge  @rewards_low_risk
-  Scenario: [Rewards]Comapny Admin Creating A New Badge Available To All Users
-    Given I Have Logged In as a Company Admin to tmsfull site
+  Scenario: [Rewards]Company Admin Creating A New Badge Available To All Users
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Badge Management under Rewards section
     When  I Click On "Add Badge" Button

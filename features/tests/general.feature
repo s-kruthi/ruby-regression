@@ -5,7 +5,7 @@ Feature:
 
   @general_user_add  @general_high_risk @onboarding_high_risk
   Scenario: [General] [Onboarding] Comapny Admin Creating New User
-    Given I Have Logged In as a ELMO Super Admin to tony01 site
+    Given I Have Logged In as a ELMO Super Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
@@ -14,7 +14,7 @@ Feature:
 
   @onboarding_user_add @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]Comapny Admin Creating New Onboarding User
-    Given I Have Logged In as a Company Admin to faraz1 site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Users under Onboarding section
     When  I Click On Add New User Button
@@ -23,7 +23,7 @@ Feature:
 
   @hr_add_contact_emergency @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]General User Editing Profile Page - Emergency Contact Details
-    Given I Have Logged In as a Company Admin to faraz1 site
+    Given I Have Logged In as a Company Admin
     And   I Go To The Menu Profile Section
     And   I Click On Personal Details Sub Tab
     When  I Click On Edit Emergency Contact Details Icon
@@ -33,7 +33,7 @@ Feature:
 
   @hr_add_contact_nok @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]Onboarding User Editing Profile Page - Next of Kin
-    Given I Have Logged In as a Company Admin to faraz1 site
+    Given I Have Logged In as a Company Admin
     And   I Go To The Menu Profile Section
     And   I Click On Personal Details Sub Tab
     When  I Click On Edit Next Of Kin Icon
@@ -43,7 +43,7 @@ Feature:
 
   @general_user_deactivate @general_low_risk @onboarding_low_risk
   Scenario: [General][Onboarding]Onboarding or General User List page - De-Activate user
-    Given I Have Logged In as a Company Admin to faraz1 site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
     And   I Search For A Specific User named auto1.test1
@@ -52,7 +52,7 @@ Feature:
 
   @general_user_edit_profile @general_low_risk @onboarding_user_edit_profile @onboarding_low_risk @wip
   Scenario: [General][Onboarding]Onboarding or General User List page - Edit Profile Information
-    Given I Have Logged In as a Company Admin to hung02 site
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
     And   I Search For A Specific User named auto1.test1

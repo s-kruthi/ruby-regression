@@ -1,13 +1,10 @@
-def go_to_site(site_name)
-
-  $site_alias = site_name
-  $site_type = "staging"
+def go_to_site()
 
   #Use override from ENV variable if there's any to go to any specific domain name, if there's no specified one, use default from BDD
-  $site_alias = (ENV["URL"] || ENV["url"]) if (ENV["URL"] || ENV["url"]) != nil
+  $site_alias = (ENV["URL"] || ENV["url"]) || 'tmsfull'
 
   #Use override from ENV variable if there's any to go to any staging or prod site, if there's no specified one, use default from BDD
-  $site_type = (ENV["TYPE"] || ENV["type"]) if (ENV["TYPE"] || ENV["type"]) != nil
+  $site_type = (ENV["TYPE"] || ENV["type"]) || 'staging'
 
   # TODO: Change this to a case select condition
  $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/dashboard" if ($site_type.to_s == "prod" || $site_type.to_s == "PROD")
