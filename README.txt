@@ -1,10 +1,12 @@
 - Ruby gems required:
 
+require 'touch_action'
 require 'pp'
 require 'jira-ruby'
 require 'rubygems'
 require 'active_record'
 require 'waitutil'
+require 'touch_action/selenium-webdriver'
 require 'selenium-webdriver'
 require 'pry'
 require 'rest-client'
