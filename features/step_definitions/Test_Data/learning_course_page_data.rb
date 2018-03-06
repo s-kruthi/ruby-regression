@@ -22,7 +22,6 @@ COURSE_SHOW_SEC_DESC_INPUT_VALUE = "Yes"
 COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE = "Course has been saved!"
 
 COURSE_LIST_TITLE_VALUE = "Test Course - Please DO NOT DELETE"
-# COURSE_LIST_TITLE_VALUE = "Document Test - 08.02.2017 - Omar"
 
 COURSE_LIST_ACTION_ITEM_EDIT = "Edit Course"
 COURSE_LIST_ACTION_ITEM_DELETE = "Delete"
@@ -47,7 +46,6 @@ SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
 F2F_TITLE_VALUE = "Test Face-to-Face Activity - Please DO NOT DELETE"
 F2F_ACTIVITY_EDITOR_TXT = "This is a Test Face-to-Face Activity Editor Content - Please DO NOT DELETE"
 F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
-FIRST_F2F_ACTIVITY_LINK_TEXT = "Test Face-to-Face"
 
 ###Face-to-face activity session test data
 F2F_SESSION_ADD_SESSION_BTN = "//a[contains(.,'New Session')]"
