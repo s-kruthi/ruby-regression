@@ -129,3 +129,11 @@ end
 And(/^See a Filtered List of Retrain Discrepancy Course Results for Learner (.*)$/i) do |learner_name|
   verify_filter_result(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
 end
+
+
+Then(/^I Should Be Able To View The Face-To-Face Activity Session List$/i) do
+end
+
+
+And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*)$/i) do |sorting_order_type|
+end
