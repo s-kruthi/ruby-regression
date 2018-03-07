@@ -67,9 +67,9 @@ Then(/^I Should Be Able To Add A New (.*) Activity$/i) do |course_activity_name|
   $driver.quit
 end
 
-And(/^I Open A Specific Face-to-Face Activity$/i) do
+And(/^I Open A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
   click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
-  click_on_first_f2f_activity(FIRST_F2F_ACTIVITY_LINK_TEXT)
+  click_on_first_f2f_activity(f2f_activity_name)
 end
 
 Then(/^I Should Be Able To Create A Session In The Face-to-Face Activity$/i) do
@@ -128,4 +128,12 @@ end
 
 And(/^See a Filtered List of Retrain Discrepancy Course Results for Learner (.*)$/i) do |learner_name|
   verify_filter_result(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
+end
+
+
+Then(/^I Should Be Able To View The Face-To-Face Activity Session List$/i) do
+end
+
+
+And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*)$/i) do |sorting_order_type|
 end
