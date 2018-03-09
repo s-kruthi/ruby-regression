@@ -80,7 +80,8 @@ F2F_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 F2F_SESSION_ADD_FILE_ID = "//a[@id='addFile']"
 F2F_SESSION_TITLE_ID = "//h3[contains(.,'')]"
 F2F_SESSION_HEADING_ID = "//h4[contains(.,'')]"
-F2F_SESSION_SORTING_ORDER_ID = "//a[contains(@class,'sortable')]"
+F2F_SESSION_SORTING_CLASS_ID = "//a[contains(@class,'sortable')]"
+F2F_SESSION_SORTING_ORDER_ID = "//a[contains(@title,'Location')]"
 
 ###Quiz activity elements
 

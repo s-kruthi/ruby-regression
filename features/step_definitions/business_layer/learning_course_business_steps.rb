@@ -138,5 +138,8 @@ end
 
 
 And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*)$/i) do |sorting_order_type|
-  SortFaceToFaceSessionListByType(F2F_SESSION_SORTING_ORDER_ID, sorting_order_type)
+  SortFaceToFaceSessionListByType(F2F_SESSION_SORTING_CLASS_ID, sorting_order_type)
+  VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID, "asc")
+  SortFaceToFaceSessionListByType(F2F_SESSION_SORTING_CLASS_ID, sorting_order_type)
+  VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID, "desc")
 end

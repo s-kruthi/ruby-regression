@@ -405,15 +405,18 @@ def WaitForFaceToFaceSessionListAndVerify(verify_element__id_xpath, verify_eleme
   VerifyAnElementExistByXPath(verify_element__id_xpath, verify_element_id_value)
 end
 
-def SortFaceToFaceSessionListByType(sorting_order_id, sorting_order_value)
-  begin
-    unsorted_url = $driver.current_url
-    Sleep_Until($driver.find_elements(:xpath, sorting_order_id).detect { |option| option.click if option.attribute('text').eql? sorting_order_value})
-
+def SortFaceToFaceSessionListByType(sorting_class_id, sorting_class_value)
+    sorting_xpath = "//a[contains(@title,"{sorting_class_value}")]"
+    # $driver.find_elements(:xpath, sorting_xpath).first.click
+  # Sleep_Until($driver.find_elements(:xpath, sorting_class_id).detect { |option| option.click if option.attribute('text').eql? sorting_class_value})
     rescue Exception => e
-  end
 
-  puts GREEN_PASS + "MATCHED: sorting column \"" + sorting_order_value + "\""
-  sleep (3)
-  Sleep_Until($driver.navigate.to(unsorted_url))
+  puts GREEN_PASS + "MATCHED: sorting column \"" + sorting_class_value + "\""
+  sleep (1)
+  # Sleep_Until($driver.navigate.to(unsorted_url))
+end
+
+def VerifyFaceToFaceSessionSortingOrderByClass(sorting_order_id, sorting_order_value)
+  sorting_result = $driver.find_element(:xpath, sorting_order_id).attribute "class"
+  puts GREEN_PASS + "MATCHED: sorting Found in \"" + sorting_order_value + "\" order" if sorting_result == sorting_order_value
 end
