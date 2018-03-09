@@ -84,7 +84,7 @@ Then(/^I Should Be Able To Delete A Specific Section$/i) do
 end
 
 Then(/^I Should Be Able To Add All Notifications$/i) do
-  click_on_a_sub_tab(SUB_TAB_APROVAL_NOT_NAME_ID)
+  click_on_a_sub_tab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
   create_all_notifications()
 end
 
@@ -132,8 +132,11 @@ end
 
 
 Then(/^I Should Be Able To View The Face-To-Face Activity Session List$/i) do
+  WaitForFaceToFaceSessionListAndVerify(F2F_SESSION_HEADING_ID, F2F_SESSION_HEADING_VALUE)
+  WaitForFaceToFaceSessionListAndVerify(F2F_SESSION_TITLE_ID, F2F_TITLE_VALUE)
 end
 
 
 And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*)$/i) do |sorting_order_type|
+  SortFaceToFaceSessionListByType(F2F_SESSION_SORTING_ORDER_ID, sorting_order_type)
 end

@@ -10,7 +10,7 @@ ACTIVITY_DROPDOWN = 's2id_section'
 
 
 
-############Omar's added course section###############
+############Learning course section###############
 
 LEARNING_EXPAND = "//a[@href='#collapseLearning']"
 LEARNING_LIST_PATH = "//span[contains(.,'Courses')]"
@@ -41,7 +41,7 @@ SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
 # SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]" #Legacy Approval Notifications tab name
 # SUB_TAB_COURSE_NOT_NAME_ID = "//a[contains(.,'Course Notifications')]" #Legacy Course Notifications tab name
 
-SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Notifications')]"
+SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID = "//a[contains(.,'Notifications')]"
 
 COURSE_NOT_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
 COURSE_ADD_A_SECTION_BTN_ID = "//a[contains(.,'Add a section')]"
@@ -78,6 +78,9 @@ SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS = "select2-result-selectable"
 F2F_TITLE_ID = "//input[contains(@id,'name')]"
 F2F_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 F2F_SESSION_ADD_FILE_ID = "//a[@id='addFile']"
+F2F_SESSION_TITLE_ID = "//h3[contains(.,'')]"
+F2F_SESSION_HEADING_ID = "//h4[contains(.,'')]"
+F2F_SESSION_SORTING_ORDER_ID = "//a[contains(@class,'sortable')]"
 
 ###Quiz activity elements
 

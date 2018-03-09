@@ -400,3 +400,20 @@ end
 def verify_filter_result(verify_result_table_id, input_value)
   Sleep_Until(VerifyAnElementExistById(verify_result_table_id, input_value))
 end
+
+def WaitForFaceToFaceSessionListAndVerify(verify_element__id_xpath, verify_element_id_value)
+  VerifyAnElementExistByXPath(verify_element__id_xpath, verify_element_id_value)
+end
+
+def SortFaceToFaceSessionListByType(sorting_order_id, sorting_order_value)
+  begin
+    unsorted_url = $driver.current_url
+    Sleep_Until($driver.find_elements(:xpath, sorting_order_id).detect { |option| option.click if option.attribute('text').eql? sorting_order_value})
+
+    rescue Exception => e
+  end
+
+  puts GREEN_PASS + "MATCHED: sorting column \"" + sorting_order_value + "\""
+  sleep (3)
+  Sleep_Until($driver.navigate.to(unsorted_url))
+end

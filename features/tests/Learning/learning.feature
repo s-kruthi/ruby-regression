@@ -134,7 +134,7 @@
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
-      And   I Open A Specific Face-to-Face Activity
+      And   I Open A Specific Face-to-Face Activity Named Test Face-to-Face
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
 
     @activity_f2f_session_notifications_add @activity_add @learning_low_risk
@@ -143,7 +143,7 @@
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
-      And   I Open A Specific Face-to-Face Activity
+      And   I Open A Specific Face-to-Face Activity Named Test Face-to-Face
       Then  I Should Be Able To Add All Notifications
 
 
@@ -173,7 +173,7 @@
       Then  I Should Be Able to Create a Filter
       And   See a Filtered List of Retrain Discrepancy Course Results for Learner Test1 Omar1
 
-    @activity_f2f_session_list_sort @wip @learning_low_risk @C6081
+    @activity_f2f_session_list_sort @learning_low_risk @C6081
     Scenario: [Learning]When viewing face-to-face session list, sessions should be listed from oldest (top) to newest (bottom)
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
