@@ -174,7 +174,7 @@
       And   See a Filtered List of Retrain Discrepancy Course Results for Learner Test1 Omar1
 
     @activity_f2f_session_list_sort @learning_low_risk @C6081
-    Scenario: [Learning]When viewing face-to-face session list, sessions should be listed from oldest (top) to newest (bottom)
+    Scenario: [Learning]When viewing face-to-face session list, can sort by ascending/descending for all field headers
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
