@@ -17,7 +17,6 @@ end
 
 And(/^I Add New Course Details$/i) do
   enter_course_title(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
-  # enter_course_category()
   enter_course_code(NEW_COURSE_CODE_ID, NEW_COURSE_CODE_VALUE)
   enter_course_description(NEW_COURSE_DESC_TEXT, 0)
   enter_course_retrain(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
@@ -138,9 +137,9 @@ end
 
 
 And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*)$/i) do |sorting_order_type|
-  binding.pry
   FindFaceToFaceSessionSortingColumnByClass(F2F_SESSION_SORTING_CLASS_ID, sorting_order_type)
   SortFaceToFaceSessionListByType(sorting_order_type)
-  # VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID, "desc")
-  # SortFaceToFaceSessionListByType(F2F_SESSION_SORTING_CLASS_ID, sorting_order_type)
+  VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID)
+  SortFaceToFaceSessionListByType(sorting_order_type)
+  VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID)
  end

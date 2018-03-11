@@ -407,10 +407,8 @@ end
 
 
 def FindFaceToFaceSessionSortingColumnByClass(sorting_class_id, sorting_class_value)
-  # sorting_result = $driver.find_element(:xpath, sorting_order_id).attribute "class"
     begin
-      Sleep_Until($driver.find_elements(:xpath, sorting_class_id).detect { |option| option.click if option.attribute('text').eql? sorting_class_value})
-
+      Sleep_Until($driver.find_elements(:xpath, sorting_class_id).detect { |option| option.puts if option.attribute('text').eql? sorting_class_value})
       rescue Exception => e
     end
 
@@ -421,4 +419,27 @@ def SortFaceToFaceSessionListByType(sorting_class_value)
   sorting_xpath = "//a[contains(@title,'#{sorting_class_value}')]"
   Sleep_Until($driver.find_elements(:xpath, sorting_xpath).first.click)
   sleep (2)
+end
+
+def VerifyFaceToFaceSessionSortingOrderByClass(sorting_order_id)
+
+  sorting_result = $driver.find_element(:xpath, sorting_order_id).attribute "class"
+
+  case sorting_result
+
+    when "asc"
+      begin
+        puts GREEN_PASS + "Sorting done in: ASCENDING order"
+      end
+
+    when "desc"
+      begin
+        puts GREEN_PASS + "Sorting done in: DESCENDING order"
+      end
+
+    else
+      begin
+        puts RED_FAIL + "Unknown sorting result found: " + sorting_result
+      end
+  end
 end
