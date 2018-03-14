@@ -1,10 +1,12 @@
 When(/^I Setup A Course To Edit The Section$/i) do
   AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
-  FillTheCourseFormAndSaveIt(COURSE_NAME_ID,COURSE_NAME_VAL,COURSE_CODE_ID,COURSE_CODE_VAL,SAVE_COURSE_ID)
+  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, COURSE_NAME_VAL, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
 end
 
 And(/^I Try To Setup A Quiz Activity Under The Section$/i) do
-  GoToTheCourseSection(ADD_COURSE_SECTION)
+  click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
+  add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
+  select_an_activity("Quiz")
 end
 
 Then(/^I Should be Able To Successfully Setup The Quiz Activity$/i) do
@@ -116,7 +118,7 @@ And(/^I select (.*) as (.*)$/i) do |dropdown_name, dropdown_value|
       begin
         Sleep_Until(single_select_from_select2_input_dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
       end
-   end
+  end
 
 end
 
@@ -142,4 +144,34 @@ And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*
   VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID)
   SortFaceToFaceSessionListByType(sorting_order_type)
   VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID)
- end
+end
+
+And(/^I Can View The Enrolled Users For That Particular Course$/) do
+  GoToTheEnrolledUserSectionOfThatParticularCourse(DROPDOWN_KEY_CSS, 0, ENROLLED_USER_LTXT, MANUAL_ENROLL_LTXT)
+
+end
+
+When(/^I Try To Refresh The Enrolments For That Particular Course$/) do
+  ClickAndRefreshEnrollmentsForAParticularCourse(DROPDOWN_KEY_CSS, 0, REFRESH_ENROLMENT_LTXT, REFRESH_ID)
+  PressConfirm()
+  Sleep_Until(WaitForAnElementByClass("close-btn"))
+  PressEnterClose()
+end
+
+And(/^I Have Interacted With An Assigned Course (.*)$/i) do |course_name|
+  GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
+  SearchTheAssignedCourse(course_name)
+  Sleep_Until(VerifyAnElementExistByCSS(COURSE_TITLE_CSS, course_name))
+  SignUpForASession(ENROLLED_BUTTON, ACTIVITY_NAME, SIGNUP_BUTTON)
+end
+
+
+Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
+  GoToCourseEnrolmentsSection(COURSE_ENROLMENT_LTEXT)
+  SearchTheAssignedCourseInEnrollmentSection(course_name)
+  VerifyTheStatusAsNotYetStarted()
+end
+
+And(/^I Withdraw The Candidate From Session$/) do
+  WithdrawTheCandidateFromF2FSession()
+end

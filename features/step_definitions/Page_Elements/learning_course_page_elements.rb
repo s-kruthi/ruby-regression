@@ -120,3 +120,16 @@ COURSE_DISCREPANCY_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')
 EMPLOYEE_NAME_DROPDOWN_ID = "s2id_filter_form_elmoPms_userEmployeeId"
 FILTER_SUBMIT_BTN_ID = "//button[contains(.,'Submit')]"
 FILTER_RESULT_VERIFY_TABLE_ID = "elmo-table"
+
+#### course section elements #####
+DROPDOWN_KEY_CSS = 'button[data-toggle="dropdown"]'
+ENROLLED_USER_LTXT = 'Enrolled Users'
+MANUAL_ENROLL_LTXT = 'Manual Enrol Users'
+REFRESH_ENROLMENT_LTXT = 'Refresh Enrolments'
+REFRESH_ID = 'myModalLabel'
+COURSE_CATALOGUE_LTEXT = 'Course Catalogue'
+COURSE_TITLE_CSS  = 'span[title="course_section_automation_f2f_shanku"]'
+ENROLLED_BUTTON = 'Enrolled'
+SIGNUP_BUTTON = 'Sign Up'
+COURSE_ENROLMENT_LTEXT = 'Enrolments'
+ACTIVITY_NAME = 'activity-name'

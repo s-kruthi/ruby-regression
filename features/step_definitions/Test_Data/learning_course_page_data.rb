@@ -3,7 +3,7 @@ COURSE_RETRAIN_OPEN = 0
 COURSE_CERTIFICATE = 1
 
 COURSE_NAME_VAL = 'Automation test Course'
-COURSE_CODE_VAL =  "#{rand(1..5000)}"
+COURSE_CODE_VAL =  "#{SecureRandom.hex(5)}"
 
 
 NEW_COURSE_TITLE_VALUE = "Test Course - Please DO NOT DELETE"
