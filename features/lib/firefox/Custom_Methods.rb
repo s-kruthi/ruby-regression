@@ -40,6 +40,32 @@ module Firefox
         $driver.quit
       end
     end
+    def WaitForAnElementByCssAndTouchTheIndex(css,index_value)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_elements(:css, "#{css}")[index_value]
+          element if element.displayed?
+        }
+        select_item.click
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+    def WaitForAnElementByPartialLinkTextAndTouchTheIndex(partial_link_text,index_value)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_elements(:partial_link_text, "#{partial_link_text}")[index_value]
+          element if element.displayed?
+        }
+        select_item.click
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
     def VerifyAnElementExistByCSSAndIndex(css,text,index_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -75,6 +101,9 @@ module Firefox
     def PressEnterConfirm()
       $driver.find_element(:css, "[data-bb-handler='confirm']").click
     end
+    def PressConfirm()
+      $driver.find_element(:class, "confirm-btn").click
+    end
     def PressEnterOK()
       $driver.find_element(:css, "[data-bb-handler='ok']").click
     end
@@ -85,6 +114,9 @@ module Firefox
     def TouchCancel()
       element = $driver.find_element(:link, "cancel")
       element.click
+    end
+    def PressEnterClose()
+      $driver.find_element(:class, "close-btn").click
     end
     def Wait_For(timeout)
       $driver.manage.timeouts.implicit_wait = timeout

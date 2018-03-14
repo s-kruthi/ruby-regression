@@ -23,24 +23,26 @@ def MakeItvisibleToAllusers()
   select_list.select_by(:text, 'Available to all users')
 end
 
-def GoToTheCourseSection(course_section_id)
-  $driver.find_element(:xpath, %(//a[@href='/admin/course/#{$new_course_id}/setSections'])).click
-  sleep(3)
-  WaitForAnElementByIdAndTouch(course_section_id)
-  sleep(1)
-  $driver.navigate.refresh
-  sleep(2)
-  # WaitForAnElementByIdAndTouch(activity_dropdown)
-  # sleep(1)
-  # WaitForDropdownByClassAndTouchTheIndex(quiz_activity_cls,index_value)
-
-  #WaitForAnElementByCSSAndTouch(add_activity)
-  $driver.find_element(:class, "activity-select").send_keys "Quiz"
-  $driver.find_element(:name, "addsection").click
-
-
-  sleep(3)
-end
+# def GoToTheCourseSection(course_section_id)
+#   $driver.find_element(:xpath, %(//a[@href='/admin/course/#{$new_course_id}/setSections'])).click
+#   sleep(3)
+#   WaitForAnElementByIdAndTouch(course_section_id)
+#   sleep(1)
+#   $driver.navigate.refresh
+#
+#   Sleep_Until($driver.find_element(:css, 'input[name="addsection"]'))
+#   # WaitForAnElementByIdAndTouch(activity_dropdown)
+#   # sleep(1)
+#   # WaitForDropdownByClassAndTouchTheIndex(quiz_activity_cls,index_value)
+#
+#   #WaitForAnElementByCSSAndTouch(add_activity)
+#   $driver.find_element(:id, "select2-chosen-1").click
+#   $driver.find_element(:class, "select2-input").send_keys "Quiz"
+#   $driver.find_element(:class, "select2-match").click
+#   $driver.find_element(:css, 'input[name="addsection"]').click
+#
+#   Sleep_Until(WaitForAnElementByPartialLinkText("Back to Sections"))
+# end
 
 def SetupTheQuizActivityAndSaveIt()
   $driver.find_element(:xpath, "//input[@data-description='learning.course.modQuiz.edit.name.description']").send_keys "Automation Quiz Activity"
@@ -399,4 +401,58 @@ end
 
 def verify_filter_result(verify_result_table_id, input_value)
   Sleep_Until(VerifyAnElementExistById(verify_result_table_id, input_value))
+end
+
+def GoToTheEnrolledUserSectionOfThatParticularCourse(dropdown_key,dropdown_index,enrolled_user_text, manual_enroll_user_text)
+  WaitForAnElementByCssAndTouchTheIndex(dropdown_key, dropdown_index)
+  WaitForAnElementByPartialLinkTextAndTouch(enrolled_user_text)
+  Sleep_Until(WaitForAnElementByPartialLinkText(manual_enroll_user_text))
+end
+
+def ClickAndRefreshEnrollmentsForAParticularCourse(dropdown_key, dropdown_index, refresh_enrollments_text, refresh_id)
+  WaitForAnElementByCssAndTouchTheIndex(dropdown_key, dropdown_index)
+  WaitForAnElementByPartialLinkTextAndTouch(refresh_enrollments_text)
+  Sleep_Until(WaitForAnElementById(refresh_id))
+end
+
+def SearchTheAssignedCourse(course_name)
+  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
+end
+
+def GoToCourseCatalogueSection(course_catalogue_LText)
+  WaitForAnElementByPartialLinkTextAndTouch(course_catalogue_LText)
+end
+def SignUpForASession(enrolled_button, activity_class,sign_up_button)
+  WaitForAnElementByPartialLinkTextAndTouch(enrolled_button)
+  Sleep_Until(WaitForAnElementByClass(activity_class))
+  WaitForAnElementByClassAndTouch(activity_class)
+  Sleep_Until(WaitForAnElementByPartialLinkText(sign_up_button))
+  WaitForAnElementByPartialLinkTextAndTouch(sign_up_button)
+end
+
+def GoToCourseEnrolmentsSection(course_Enrolments_LText)
+  Sleep_Until(WaitForAnElementByPartialLinkText(course_Enrolments_LText))
+  WaitForAnElementByPartialLinkTextAndTouch(course_Enrolments_LText)
+end
+
+def SearchTheAssignedCourseInEnrollmentSection(course_name)
+  #binding.pry
+  $driver.find_element(:id, "s2id_autogen1").send_keys "#{course_name}"
+  sleep(3)
+  $driver.find_element(:class, "select2-result-label").click
+  sleep(3)
+end
+def VerifyTheStatusAsNotYetStarted()
+  VerifyAnElementExistByClass("course-status-0","Not Yet Started")
+end
+
+def WithdrawTheCandidateFromF2FSession()
+  $driver.navigate.to("https://tmsfull.dev.elmodev.com/learning/facetoface/376/164/manage-attendance")
+  sleep(3)
+  $driver.find_elements(:css, 'button[data-toggle="dropdown"]')[1].click
+  sleep(2)
+  element = $driver.find_element(:partial_link_text, 'Cancel Sign Up')
+  element.touch_action(:tap)
+  sleep(3)
+  PressConfirm()
 end

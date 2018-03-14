@@ -83,6 +83,19 @@ module Safari
         $driver.quit
       end
     end
+    def WaitForAnElementByPartialLinkText(partial_link_text)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_element(:partial_link_text, "#{partial_link_text}")
+          element if element.displayed?
+        }
+        select_item
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
 
   end
 end
