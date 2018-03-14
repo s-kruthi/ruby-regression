@@ -104,7 +104,7 @@ def FindTheCreatedHolidayAndDeleteIt()
   Sleep_Until($driver.find_element(:partial_link_text, 'Holiday Management').click)
   # sleep(5)
   Sleep_Until($driver.find_elements(:xpath, "//button[@aria-expanded='true']").last.click)
-  binding.pry
+  #binding.pry
   Sleep_Until($driver.find_element(:css, %(a[ng-click="chl.deleteCompanyEvent(#{$current_hol_id})"])).click)
   # sleep(2)
   Sleep_Until($driver.find_element(:css, "[data-bb-handler='success']").click)

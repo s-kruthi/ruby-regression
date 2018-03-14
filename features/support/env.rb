@@ -9,6 +9,7 @@ require 'rest-client'
 require 'ruby-jmeter'
 require 'sequel'
 require 'net/ssh/gateway'
+require 'watir'
 
 require './features/lib/device_method_factory.rb'
 

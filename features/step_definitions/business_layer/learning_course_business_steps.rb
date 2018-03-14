@@ -4,7 +4,9 @@ When(/^I Setup A Course To Edit The Section$/i) do
 end
 
 And(/^I Try To Setup A Quiz Activity Under The Section$/i) do
-  GoToTheCourseSection(ADD_COURSE_SECTION)
+  click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
+  add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
+  select_an_activity("Quiz")
 end
 
 Then(/^I Should be Able To Successfully Setup The Quiz Activity$/i) do
@@ -37,6 +39,7 @@ end
 
 
 When(/^I Search For A Specific Course Named (.*)$/i) do |course_name|
+  binding.pry
   search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
 end
 
@@ -136,4 +139,34 @@ end
 
 
 And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*)$/i) do |sorting_order_type|
+end
+
+And(/^I Can View The Enrolled Users For That Particular Course$/) do
+  GoToTheEnrolledUserSectionOfThatParticularCourse(DROPDOWN_KEY_CSS,0, ENROLLED_USER_LTXT, MANUAL_ENROLL_LTXT )
+
+end
+
+When(/^I Try To Refresh The Enrolments For That Particular Course$/) do
+  ClickAndRefreshEnrollmentsForAParticularCourse(DROPDOWN_KEY_CSS,0, REFRESH_ENROLMENT_LTXT, REFRESH_ID)
+  PressConfirm()
+  Sleep_Until(WaitForAnElementByClass("close-btn"))
+  PressEnterClose()
+end
+
+And(/^I Have Interacted With An Assigned Course (.*)$/i) do |course_name|
+  GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
+  SearchTheAssignedCourse(course_name)
+  Sleep_Until(VerifyAnElementExistByCSS(COURSE_TITLE_CSS, course_name))
+  SignUpForASession(ENROLLED_BUTTON,ACTIVITY_NAME, SIGNUP_BUTTON)
+end
+
+
+Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
+  GoToCourseEnrolmentsSection(COURSE_ENROLMENT_LTEXT)
+  SearchTheAssignedCourseInEnrollmentSection(course_name)
+  VerifyTheStatusAsNotYetStarted()
+end
+
+And(/^I Withdraw The Candidate From Session$/) do
+  WithdrawTheCandidateFromF2FSession()
 end
