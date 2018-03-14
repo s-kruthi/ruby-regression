@@ -4,7 +4,6 @@
   #@learningTestRailTags
 
 Feature: As An Admin I Would Like To View user Enrollment and Refresh The course If Required
-  (Finished as part of QTA-6)
 
   @course_assignments  @learning_high_risk @C807
   Scenario: View Enrolments For A Particular Course

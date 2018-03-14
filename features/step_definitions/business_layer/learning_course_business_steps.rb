@@ -1,6 +1,6 @@
 When(/^I Setup A Course To Edit The Section$/i) do
   AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
-  FillTheCourseFormAndSaveIt(COURSE_NAME_ID,COURSE_NAME_VAL,COURSE_CODE_ID,COURSE_CODE_VAL,SAVE_COURSE_ID)
+  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, COURSE_NAME_VAL, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
 end
 
 And(/^I Try To Setup A Quiz Activity Under The Section$/i) do
@@ -19,7 +19,6 @@ end
 
 And(/^I Add New Course Details$/i) do
   enter_course_title(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
-  # enter_course_category()
   enter_course_code(NEW_COURSE_CODE_ID, NEW_COURSE_CODE_VALUE)
   enter_course_description(NEW_COURSE_DESC_TEXT, 0)
   enter_course_retrain(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
@@ -86,7 +85,7 @@ Then(/^I Should Be Able To Delete A Specific Section$/i) do
 end
 
 Then(/^I Should Be Able To Add All Notifications$/i) do
-  click_on_a_sub_tab(SUB_TAB_APROVAL_NOT_NAME_ID)
+  click_on_a_sub_tab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
   create_all_notifications()
 end
 
@@ -119,7 +118,7 @@ And(/^I select (.*) as (.*)$/i) do |dropdown_name, dropdown_value|
       begin
         Sleep_Until(single_select_from_select2_input_dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
       end
-   end
+  end
 
 end
 
@@ -134,19 +133,26 @@ end
 
 
 Then(/^I Should Be Able To View The Face-To-Face Activity Session List$/i) do
+  WaitForFaceToFaceSessionListAndVerify(F2F_SESSION_HEADING_ID, F2F_SESSION_HEADING_VALUE)
+  WaitForFaceToFaceSessionListAndVerify(F2F_SESSION_TITLE_ID, F2F_TITLE_VALUE)
 end
 
 
 And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*)$/i) do |sorting_order_type|
+  FindFaceToFaceSessionSortingColumnByClass(F2F_SESSION_SORTING_CLASS_ID, sorting_order_type)
+  SortFaceToFaceSessionListByType(sorting_order_type)
+  VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID)
+  SortFaceToFaceSessionListByType(sorting_order_type)
+  VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID)
 end
 
 And(/^I Can View The Enrolled Users For That Particular Course$/) do
-  GoToTheEnrolledUserSectionOfThatParticularCourse(DROPDOWN_KEY_CSS,0, ENROLLED_USER_LTXT, MANUAL_ENROLL_LTXT )
+  GoToTheEnrolledUserSectionOfThatParticularCourse(DROPDOWN_KEY_CSS, 0, ENROLLED_USER_LTXT, MANUAL_ENROLL_LTXT)
 
 end
 
 When(/^I Try To Refresh The Enrolments For That Particular Course$/) do
-  ClickAndRefreshEnrollmentsForAParticularCourse(DROPDOWN_KEY_CSS,0, REFRESH_ENROLMENT_LTXT, REFRESH_ID)
+  ClickAndRefreshEnrollmentsForAParticularCourse(DROPDOWN_KEY_CSS, 0, REFRESH_ENROLMENT_LTXT, REFRESH_ID)
   PressConfirm()
   Sleep_Until(WaitForAnElementByClass("close-btn"))
   PressEnterClose()
@@ -156,7 +162,7 @@ And(/^I Have Interacted With An Assigned Course (.*)$/i) do |course_name|
   GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
   SearchTheAssignedCourse(course_name)
   Sleep_Until(VerifyAnElementExistByCSS(COURSE_TITLE_CSS, course_name))
-  SignUpForASession(ENROLLED_BUTTON,ACTIVITY_NAME, SIGNUP_BUTTON)
+  SignUpForASession(ENROLLED_BUTTON, ACTIVITY_NAME, SIGNUP_BUTTON)
 end
 
 

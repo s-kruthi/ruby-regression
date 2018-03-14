@@ -403,7 +403,49 @@ def verify_filter_result(verify_result_table_id, input_value)
   Sleep_Until(VerifyAnElementExistById(verify_result_table_id, input_value))
 end
 
-def GoToTheEnrolledUserSectionOfThatParticularCourse(dropdown_key,dropdown_index,enrolled_user_text, manual_enroll_user_text)
+def WaitForFaceToFaceSessionListAndVerify(verify_element__id_xpath, verify_element_id_value)
+  VerifyAnElementExistByXPath(verify_element__id_xpath, verify_element_id_value)
+end
+
+
+def FindFaceToFaceSessionSortingColumnByClass(sorting_class_id, sorting_class_value)
+    begin
+      Sleep_Until($driver.find_elements(:xpath, sorting_class_id).detect { |option| option.puts if option.attribute('text').eql? sorting_class_value})
+      rescue Exception => e
+    end
+
+    puts GREEN_PASS + "MATCHED: sortable column found: \"" + sorting_class_value + "\""
+end
+
+def SortFaceToFaceSessionListByType(sorting_class_value)
+  sorting_xpath = "//a[contains(@title,'#{sorting_class_value}')]"
+  Sleep_Until($driver.find_elements(:xpath, sorting_xpath).first.click)
+  sleep (2)
+end
+
+def VerifyFaceToFaceSessionSortingOrderByClass(sorting_order_id)
+
+  sorting_result = $driver.find_element(:xpath, sorting_order_id).attribute "class"
+
+  case sorting_result
+
+    when "asc"
+      begin
+        puts GREEN_PASS + "Sorting done in: ASCENDING order"
+      end
+
+    when "desc"
+      begin
+        puts GREEN_PASS + "Sorting done in: DESCENDING order"
+      end
+
+    else
+      begin
+        puts RED_FAIL + "Unknown sorting result found: " + sorting_result
+      end
+  end
+
+  def GoToTheEnrolledUserSectionOfThatParticularCourse(dropdown_key,dropdown_index,enrolled_user_text, manual_enroll_user_text)
   WaitForAnElementByCssAndTouchTheIndex(dropdown_key, dropdown_index)
   WaitForAnElementByPartialLinkTextAndTouch(enrolled_user_text)
   Sleep_Until(WaitForAnElementByPartialLinkText(manual_enroll_user_text))
@@ -436,7 +478,6 @@ def GoToCourseEnrolmentsSection(course_Enrolments_LText)
 end
 
 def SearchTheAssignedCourseInEnrollmentSection(course_name)
-  #binding.pry
   $driver.find_element(:id, "s2id_autogen1").send_keys "#{course_name}"
   sleep(3)
   $driver.find_element(:class, "select2-result-label").click
