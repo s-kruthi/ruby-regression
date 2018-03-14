@@ -39,7 +39,6 @@ end
 
 
 When(/^I Search For A Specific Course Named (.*)$/i) do |course_name|
-  binding.pry
   search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
 end
 
