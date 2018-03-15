@@ -113,6 +113,5 @@ module Chrome
         $driver.quit
       end
     end
-
   end
 end

@@ -97,5 +97,16 @@ module Chrome
       end
     end
 
+    def WaitForToggleButtonStateChangedByXpath(toggle_xpath, toggle_value)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        wait.until {
+          $driver.find_element(:xpath, toggle_xpath).text === toggle_value
+        }
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
   end
 end
