@@ -113,19 +113,5 @@ module Chrome
         $driver.quit
       end
     end
-
-    def WaitForAlertWindowAndClickAcceptOrDismiss(accept_or_dismiss)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        alert_window = wait.until { $driver.switch_to.alert }
-      rescue Selenium::WebDriver::Error::NoAlertOpenError => e
-        puts e.message
-      end
-      if accept_or_dismiss.downcase === "accept"
-        alert_window.accept
-      elsif accept_or_dismiss.downcase === "dismiss"
-        alert_window.dismiss
-      end
-    end
   end
 end

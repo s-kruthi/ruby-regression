@@ -33,7 +33,7 @@ end
 def ConfirmCategoryVisibilityChangeOnClick(visibility_before_click)
   case visibility_before_click
     when "Visible"
-      WaitForAlertWindowAndClickAcceptOrDismiss("accept")
+      WaitForAlertWindowAndTouchAcceptOrDismiss("accept")
       WaitForToggleButtonStateChangedByXpath(CATEGORY_VISIBLE_XPATH, "Hidden")
       VerifyAnElementExistByXPath(CATEGORY_VISIBLE_XPATH,"Hidden")
     else "Hidden"
