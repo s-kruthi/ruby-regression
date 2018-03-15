@@ -33,13 +33,11 @@ end
 def ConfirmCategoryVisibilityChangeOnClick(visibility_before_click)
   case visibility_before_click
     when "Visible"
-      begin
-        $driver.switch_to.alert.accept
-        rescue Selenium::WebDriver::Error::NoAlertOpenError => e
-        puts e.message
-      end
-      $driver.find_element(:xpath, CATEGORY_VISIBLE_XPATH).attribute('title') === 'Hidden'
-    when "Hidden"
-      $driver.find_element(:xpath, CATEGORY_VISIBLE_XPATH).attribute('title') === 'Visible'
+      WaitForAlertWindowAndClickAcceptOrDismiss("accept")
+      WaitForToggleButtonStateChangedByXpath(CATEGORY_VISIBLE_XPATH, "Hidden")
+      VerifyAnElementExistByXPath(CATEGORY_VISIBLE_XPATH,"Hidden")
+    else "Hidden"
+      WaitForToggleButtonStateChangedByXpath(CATEGORY_VISIBLE_XPATH, "Visible")
+      VerifyAnElementExistByXPath(CATEGORY_VISIBLE_XPATH,"Visible")
   end
 end
