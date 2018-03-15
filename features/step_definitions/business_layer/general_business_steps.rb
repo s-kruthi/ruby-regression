@@ -76,6 +76,12 @@ Given(/^i have logged in as a (.*)$/i) do |login_name|
         EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
       end
 
+    when "Contract Admin"
+      begin
+        EnterUsername(USER_NAME,COMP_ADMIN_USERNAME)
+        EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
+      end
+
     when "Learning Admin"
       begin
         EnterUsername(USER_NAME,LEARNING_ADMIN_USERNAME)
