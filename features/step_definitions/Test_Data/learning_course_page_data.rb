@@ -80,3 +80,9 @@ POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Post saved successfully.")
 ###Course Retrain Discrepancy data
 COURSE_DISCREPANCY_FIX_SUCCESSFUL_VALUE = "Retrain for the selected user(s) have been successfully fixed"
 COURSE_DISCREPANCY_DISABLE_SUCCESSFUL_VALUE = "Retrain for the selected user(s) have been successfully disabled"
+
+###Course Category
+CATEGORY_NAME_VALUE = "Cucumber test name"
+CATEGORY_DESCRIPTION_VALUE = "Cucumber test description"
+EXTRA_NAME_VALUE = "extra name"
+EXTRA_DESCRIPTION_VALUE = "extra description"

@@ -133,3 +133,13 @@ ENROLLED_BUTTON = 'Enrolled'
 SIGNUP_BUTTON = 'Sign Up'
 COURSE_ENROLMENT_LTEXT = 'Enrolments'
 ACTIVITY_NAME = 'activity-name'
+
+#### Categories section elements ####
+CATEGORIES_BTN = "//a[@href='/admin/course/categories'][contains(text(),'Categories')]"
+NEW_CATEGORY_BTN = "//a[contains(string(),'New Category')]"
+CATEGORY_NAME_ID = "elmo_learningbundle_category_name"
+CATEGORY_FRAME_CSS = "#cke_1_contents > iframe"
+CATEGORY_SAVE_ID = "elmo_learningbundle_category_Save"
+CATEGORY_SUCCESS_XPATH = "//div[@class='alert alert-success']"
+CATEGORY_EDIT_XPATH = "//table[@id='elmo-table']/tbody/tr[1]/td[2]/div[1]/a[1]"
+CATEGORY_VISIBLE_XPATH = "//table[@id='elmo-table']/tbody/tr[1]/td[2]/div[1]/a[2]"
