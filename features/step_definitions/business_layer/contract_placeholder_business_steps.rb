@@ -1,5 +1,7 @@
 And(/^I Enter The Placeholder Title/i) do
-  placeholder_title = NEW_PLACEHOLDER_TITLE
+  time = Time.now
+  placeholder_title = NEW_PLACEHOLDER_TITLE + time.strftime("%Y%m%d%H%M%S").to_s
+  PLACEHOLDER_TEXT_VALUE = placeholder_title
   Sleep_Until(EnterPlaceholderTitle(PLACEHOLDER_TITLE_ID, placeholder_title))
 end
 
@@ -8,7 +10,7 @@ And(/^I Choose The Type as "([^"]*)"/i) do | placeholder_type |
 end
 
 And(/^I Enter The Placeholder Text/i) do
-  placeholder_text = NEW_PLACEHOLDER_TITLE
+  placeholder_text = PLACEHOLDER_TEXT_VALUE
   Sleep_Until(EnterPlaceholderText(PLACEHOLDER_TEXT_ID, placeholder_text))
 end
 

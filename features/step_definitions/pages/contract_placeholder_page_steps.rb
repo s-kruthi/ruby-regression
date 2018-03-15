@@ -15,3 +15,7 @@ end
 def ClickSavePlaceholder(placeholder_create_save_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(placeholder_create_save_btn_id))
 end
+
+def VerifyCreationSuccessMessage(placeholder_save_success_id,placeholder_save_success_value)
+  Sleep_Until(VerifyAnElementExistByXPath(placeholder_save_success_id,placeholder_save_success_value))
+end
