@@ -92,3 +92,9 @@ COMPANY_MANAGER_PASS = "Admin1234567"
 
 COMPANY_EMPLOYEE_1_USER = "test1.omar1"
 COMPANY_EMPLOYEE_1_PASS = "Admin1234567"
+
+
+
+##########Generic Variables####################
+GREEN_PASS = "\e[0m[ \e[32mPASSED\e[0m ] "
+RED_FAIL = "\e[0m[ \e[32mPASSED\e[0m ] "

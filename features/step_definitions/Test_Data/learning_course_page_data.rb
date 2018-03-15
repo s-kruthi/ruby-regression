@@ -50,6 +50,7 @@ F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
 ###Face-to-face activity session test data
 F2F_SESSION_ADD_SESSION_BTN = "//a[contains(.,'New Session')]"
 SESSION_INSTRUCTION_TEXT = "This is a Test Face-to-Face Session Editor Content - Please DO NOT DELETE"
+F2F_SESSION_HEADING_VALUE = "Sessions"
 
 ###Quiz activity test data
 QUIZ_TITLE_VALUE = "Test Quiz Activity - Please DO NOT DELETE"
