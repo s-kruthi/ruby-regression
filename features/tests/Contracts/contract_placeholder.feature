@@ -6,7 +6,7 @@
 
   @create_placeholder  @placeholders_low_risk
     Scenario Outline: [Contracts]Company Admin can create new contract placeholders
-      Given I Have Logged In as a Company Admin
+      Given I Have Logged In as a Contract Admin
       And   I go to Admin Settings
       And   I Go To Contract Placeholder Library Under General Section
       When  I Click on "New Placeholder" Button
