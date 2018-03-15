@@ -1,0 +1,25 @@
+Given I have logged In as a company administrator
+And I go to Courses within Learning module.
+And I go to category tab
+When I click on “New Category” button
+And I enter new category details
+Then I should be able to save course category.
+
+Edit a course category:
+TestRail Case ID: C820
+
+Given I have logged In as a company administrator
+And I go to "Courses" within Learning module.
+And I open category tab
+When I click on "Edit" button for any of existing course category
+Then I should be able to edit existing category details.
+And I click in save button
+Then I should be able to save my changes in category.
+
+Manage visibility of course category
+TestRail Case ID: C821
+Given I have logged In as a company administrator
+And I go to Courses within Learning module.
+And I open category tab
+When I click on visible button next to a category I want to hide/unhide
+Then the visibility of that particular category should be changed.

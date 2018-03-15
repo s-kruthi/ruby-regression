@@ -444,6 +444,7 @@ def VerifyFaceToFaceSessionSortingOrderByClass(sorting_order_id)
         puts RED_FAIL + "Unknown sorting result found: " + sorting_result
       end
   end
+end
 
   def GoToTheEnrolledUserSectionOfThatParticularCourse(dropdown_key,dropdown_index,enrolled_user_text, manual_enroll_user_text)
   WaitForAnElementByCssAndTouchTheIndex(dropdown_key, dropdown_index)
