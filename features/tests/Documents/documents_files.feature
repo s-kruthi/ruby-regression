@@ -5,7 +5,7 @@ Feature:
 
   @file_create @document_high_risk
    Scenario: [Documents]Create a New File
-    Given I Have Logged In as a Company Admin
+    Given I have logged in as a Company Admin
     And   I go to Admin Settings
     And   I Go To Files under Documents section
     When I click on Add File Button

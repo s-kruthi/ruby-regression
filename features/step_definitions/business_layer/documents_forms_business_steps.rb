@@ -1,10 +1,10 @@
-Given(/^I Have Logged In as a Company Admin$/i) do
-  startWebDriver
-  GoToThePage(ELMO_LANDING_PAGE)
-  EnterUsername(USER_NAME,COMP_ADMIN_USERNAME)
-  EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
-  LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
-end
+# Given(/^I Have Logged In as a Company Admin$/i) do
+#   startWebDriver
+#   GoToThePage(ELMO_LANDING_PAGE)
+#   EnterUsername(USER_NAME,COMP_ADMIN_USERNAME)
+#   EnterPassword(PASS_WORD,COMP_ADMIN_PASSWORD)
+#   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
+# end
 
 When(/^I click on Create Form Template Button$/i) do
   goToNewFormTemplateAddPage(CREATE_FORM_TEMPLATE_BTN)

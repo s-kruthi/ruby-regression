@@ -158,13 +158,21 @@ When(/^I Try To Refresh The Enrolments For That Particular Course$/) do
   PressEnterClose()
 end
 
-And(/^I Have Interacted With An Assigned Course (.*)$/i) do |course_name|
+And(/^I Have Interacted With An Assigned F2F Course (.*)$/i) do |course_name|
   GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
   SearchTheAssignedCourse(course_name)
-  Sleep_Until(VerifyAnElementExistByCSS(COURSE_TITLE_CSS, course_name))
+  Sleep_Until(VerifyAnElementExistByCSS(F2F_COURSE_TITLE_CSS, course_name))
   SignUpForASession(ENROLLED_BUTTON, ACTIVITY_NAME, SIGNUP_BUTTON)
 end
 
+And(/^I Have Interacted With An Assigned quiz Course (.*)$/i) do |course_name|
+  GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
+  SearchTheAssignedCourse(course_name)
+  Sleep_Until(VerifyAnElementExistByCSS("span[title=\"#{course_name}\"]", course_name))
+  FillUpQuizSection(ENROLLED_BUTTON, ACTIVITY_NAME, SUBMIT_QUIZ_BUTTON, QUIZ_ANSWER)
+  sleep(2)
+  WaitForAnElementByPartialLinkTextAndTouch(course_name)
+end
 
 Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
   GoToCourseEnrolmentsSection(COURSE_ENROLMENT_LTEXT)
@@ -174,4 +182,12 @@ end
 
 And(/^I Withdraw The Candidate From Session$/) do
   WithdrawTheCandidateFromF2FSession()
+end
+
+And(/^I Validate the Status As In Progress$/) do
+  VerifyTheStatusAsInProgress()
+end
+
+And(/^I Re Enrol The Candidate For The Activity$/) do
+  DeleteTheExistingEnrolmentAndReEnrolTheCandidate()
 end

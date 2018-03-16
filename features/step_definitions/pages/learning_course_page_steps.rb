@@ -472,7 +472,15 @@ def SignUpForASession(enrolled_button, activity_class,sign_up_button)
   Sleep_Until(WaitForAnElementByPartialLinkText(sign_up_button))
   WaitForAnElementByPartialLinkTextAndTouch(sign_up_button)
 end
-
+def FillUpQuizSection(enrolled_button, activity_class,submit_quiz,quiz_answer)
+  WaitForAnElementByPartialLinkTextAndTouch(enrolled_button)
+  Sleep_Until(WaitForAnElementByClass(activity_class))
+  WaitForAnElementByClassAndTouch(activity_class)
+  Sleep_Until(WaitForAnElementById(submit_quiz))
+  use_ckeditor_to_enter_description(quiz_answer, 0)
+  sleep(1)
+  WaitForAnElementByIdAndTouch(submit_quiz)
+end
 def GoToCourseEnrolmentsSection(course_Enrolments_LText)
   Sleep_Until(WaitForAnElementByPartialLinkText(course_Enrolments_LText))
   WaitForAnElementByPartialLinkTextAndTouch(course_Enrolments_LText)
@@ -487,7 +495,9 @@ end
 def VerifyTheStatusAsNotYetStarted()
   VerifyAnElementExistByClass("course-status-0","Not Yet Started")
 end
-
+def VerifyTheStatusAsInProgress()
+  VerifyAnElementExistByClass("activity-type-1","In Progress")
+end
 def WithdrawTheCandidateFromF2FSession()
   $driver.navigate.to("https://tmsfull.dev.elmodev.com/learning/facetoface/376/164/manage-attendance")
   sleep(3)
@@ -497,4 +507,21 @@ def WithdrawTheCandidateFromF2FSession()
   element.touch_action(:tap)
   sleep(3)
   PressConfirm()
+end
+
+def DeleteTheExistingEnrolmentAndReEnrolTheCandidate()
+  $driver.navigate.to("https://tmsfull.dev.elmodev.com/admin/course/392/enrolments")
+  Sleep_Until($driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]'))
+  $driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]').click
+  sleep(1)
+  PressConfirm()
+  sleep(3)
+  WaitForAnElementByPartialLinkTextAndTouch("Manual Enrol Users")
+  Sleep_Until( $driver.find_element(:id, "s2id_autogen1"))
+  $driver.find_element(:id, "s2id_autogen1").send_keys "Donttouchautomationuser"
+  sleep(3)
+  $driver.find_element(:class, "select2-result-label").click
+  sleep(1)
+  $driver.find_element(:id, "enrol-btn").click
+  sleep(2)
 end
