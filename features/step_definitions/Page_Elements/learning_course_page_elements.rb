@@ -128,11 +128,13 @@ MANUAL_ENROLL_LTXT = 'Manual Enrol Users'
 REFRESH_ENROLMENT_LTXT = 'Refresh Enrolments'
 REFRESH_ID = 'myModalLabel'
 COURSE_CATALOGUE_LTEXT = 'Course Catalogue'
-COURSE_TITLE_CSS  = 'span[title="course_section_automation_f2f_shanku"]'
+F2F_COURSE_TITLE_CSS  = 'span[title="course_section_automation_f2f_shanku"]'
 ENROLLED_BUTTON = 'Enrolled'
 SIGNUP_BUTTON = 'Sign Up'
 COURSE_ENROLMENT_LTEXT = 'Enrolments'
 ACTIVITY_NAME = 'activity-name'
+SUBMIT_QUIZ_BUTTON = 'submit-quiz'
+QUIZ_ANSWER = 'Aliens'
 
 #### Categories section elements ####
 CATEGORIES_BTN = "//a[@href='/admin/course/categories'][contains(text(),'Categories')]"
