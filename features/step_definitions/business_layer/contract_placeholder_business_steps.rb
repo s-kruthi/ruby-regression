@@ -20,10 +20,10 @@ Then(/^I Should Be Able To Create A New Contract Placeholder/i) do
 end
 
 Then(/^I Should See The Default Value field Has a CK Editor/i) do
-  Sleep_Until(WaitForAnElementByXPath(CKEDITOR_ID))
+  Sleep_Until(WaitForAnElementByXPath(CONTRACT_PLACEHOLDER_CKEDITOR_ID))
 end
 
-And(/^I Should See That The Field Is Limited to ([^"]*) characters/i) do | max_value|
+And(/^I Should See That The Field Is Limited to (\d+) characters/i) do | max_value|
   Sleep_Until(VerifyMaxLength(TEXTAREA_DEFAULT_VALUE_ID,max_value))
 end
 

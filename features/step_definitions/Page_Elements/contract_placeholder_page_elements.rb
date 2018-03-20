@@ -8,7 +8,7 @@ PLACEHOLDER_CREATE_SAVE_BTN_ID = "//button[@id='placeholderForm_save']"
 
 PLACEHOLDER_SAVE_SUCCESS_ID = "//div[contains(@class,'alert alert-success')]"
 
-CKEDITOR_ID = "//span[@id='cke_1_top']"
+CONTRACT_PLACEHOLDER_CKEDITOR_ID = "//span[@id='cke_1_top']"
 
 TEXTAREA_DEFAULT_VALUE_ID ='//textarea[@id="placeholderForm_defaultValue"]'
 

@@ -22,5 +22,5 @@ end
 
 def VerifyMaxLength(textarea_default_value_id,max_value)
   max_length = $driver.find_element(:xpath, textarea_default_value_id).attribute('maxlength')
-  max_value.eql?max_length
+  max_length.eql?max_value
 end
