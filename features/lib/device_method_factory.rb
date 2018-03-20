@@ -2,6 +2,7 @@ class DeviceMethodFactory
 
   def self.for_channel channel_name
     require "./features/lib/#{channel_name}/method_factory"
+    require "../../features/lib/Database/database_env"
 
     if channel_name == "android"
         return Android::MethodFactory
