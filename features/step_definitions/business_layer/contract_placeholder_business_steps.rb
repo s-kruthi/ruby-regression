@@ -18,3 +18,15 @@ Then(/^I Should Be Able To Create A New Contract Placeholder/i) do
   Sleep_Until(ClickSavePlaceholder(PLACEHOLDER_CREATE_SAVE_BTN_ID))
   Sleep_Until(VerifyCreationSuccessMessage(PLACEHOLDER_SAVE_SUCCESS_ID, PLACEHOLDER_SAVE_SUCCESS_VALUE))
 end
+
+Then(/^I Should See The Default Value field Has a CK Editor/i) do
+  Sleep_Until(WaitForAnElementByXPath(CKEDITOR_ID))
+end
+
+And(/^I Should See That The Field Is Limited to ([^"]*) characters/i) do | max_value|
+  Sleep_Until(VerifyMaxLength(TEXTAREA_DEFAULT_VALUE_ID,max_value))
+end
+
+And(/^I Should See The Instructional Text Indicating The Size Limitation/i) do
+  Sleep_Until(WaitForAnElementByXPath(INSTRUCTIONAL_TEXT_ID))
+end
