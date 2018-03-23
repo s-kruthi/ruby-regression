@@ -9,8 +9,8 @@ def search_user(user_type)
     $user = $daos.get_onboarding_user_detail_with_no_contract
   end
     username = $user[:first_name]+" "+$user[:last_name]
-    $driver.find_elements(:xpath,"//div[contains(@class,'bootbox-input')]").last.click
-    Sleep_Until($driver.find_elements(:class, "bootbox-input").last.send_keys(username))
+    $driver.find_elements(:xpath, SEARCH_DROPDOWN_ID).last.click
+    Sleep_Until($driver.find_elements(:class, SEARCH_BOX_ID).last.send_keys(username))
 end
 
 def IdentifyUser(user_type)
