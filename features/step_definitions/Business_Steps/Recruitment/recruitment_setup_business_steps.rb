@@ -67,7 +67,7 @@ end
 
 Given(/^I Am Under A Recruitment Requisition$/i) do
   startWebDriver
-  require_relative '../../../features/step_definitions/pages/sucession_plan_setup_page_steps'
+  require_relative '../../../features/step_definitions/Page_Steps/sucession_plan_setup_page_steps'
   GoToThePage(REQUISITION_LANDING_PAGE)
   # puts "#{$newme}"
   # EnterUsername(USER_NAME,"#{$newme}")
