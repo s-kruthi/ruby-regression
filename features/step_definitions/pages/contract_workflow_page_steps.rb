@@ -4,9 +4,9 @@ end
 
 def search_user(user_type)
   if user_type == "existing"
-    $user = $daos.get_existing_user_detail
+    $user = $daos.get_existing_user_detail_with_no_contract
   else
-    $user = $daos.get_onboarding_user_detail
+    $user = $daos.get_onboarding_user_detail_with_no_contract
   end
     username = $user[:first_name]+" "+$user[:last_name]
     $driver.find_elements(:xpath,"//div[contains(@class,'bootbox-input')]").last.click

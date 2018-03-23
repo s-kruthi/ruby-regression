@@ -6,6 +6,6 @@ And(/^I Search For An "(\w+)" User With No Contract Workflow Assigned/i) do | us
   search_user(user_type)
 end
 
-Then(/^I should be able to differentiate user as "(\w+)"/i) do | user_type |
+Then(/^I Should Be Able To Differentiate User As "(\w+)"/i) do | user_type |
   Sleep_Until(IdentifyUser(user_type))
 end
