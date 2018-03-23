@@ -19,7 +19,9 @@ class DeviceMethodFactory
     if channel_name == "safari"
       return Safari::MethodFactory
     end
-
+    if channel_name == "headless"
+      return Headless::MethodFactory
+    end
   end
   #STEP_PAUSE = (ENV['STEP_PAUSE'] || 2).to_f
 end
