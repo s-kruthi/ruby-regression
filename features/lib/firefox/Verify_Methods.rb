@@ -15,8 +15,8 @@ module Firefox
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message
@@ -35,8 +35,8 @@ module Firefox
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
          end
       rescue Exception => e
         puts e.message
@@ -55,8 +55,8 @@ module Firefox
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message
@@ -75,8 +75,8 @@ module Firefox
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message
@@ -95,8 +95,8 @@ module Firefox
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message

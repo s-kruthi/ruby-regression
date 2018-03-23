@@ -363,7 +363,7 @@ def ViewTheLeaveRequestAndPutItOnHold(dropdown_toggle,position,add_comment)
 end
 
 def MatchTheExpectedLeaveBucketFromDatabase()
-  require_relative '../../../step_definitions/pages/leave_management_page_steps'
+  require_relative '../../../step_definitions/Page_Steps/leave_management_page_steps'
   #include Leave
   StartTheTunnel()
   begin

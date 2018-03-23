@@ -3,6 +3,9 @@
 #   $driver.manage.all_cookies
 # end
 
+require 'net/ssh/gateway'
+require 'sequel'
+
 File.open('./features/step_definitions/Test_Data/stored_ids.rb', 'w') {|file| file.truncate(0) }
 
 

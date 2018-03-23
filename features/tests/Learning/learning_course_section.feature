@@ -53,3 +53,4 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
     And   I Search For A Specific Course Named course_section_automation_QuizActivity_(FAIL)
     And   I Try To Refresh The Enrolments For That Particular Course
     Then  I Should See The Course course_section_automation_QuizActivity_(FAIL) Status Reset To Not Yet Started
+

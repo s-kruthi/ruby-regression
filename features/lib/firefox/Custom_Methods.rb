@@ -90,8 +90,8 @@ module Firefox
         if expected_text == true
           puts "#{text} matched"
         else
-          $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/#{text}Screenshot.png")
-          raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->screenshots->#{ENV['CHANNEL']})")
+          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/#{text}Screenshot.png")
+          raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message
