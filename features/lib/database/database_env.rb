@@ -29,6 +29,24 @@ module Database_env
       return ids.map(:name)
     end
 
+    def get_existing_user_detail_with_no_contract()
+      query = "select first_name, last_name, email
+               from epms_user
+               where id not in (select user_id from epms_contract_workflow
+               where status not in (0,1,2,3,4,5,6,7))
+               and is_active =1 and confirmed=1 and is_deleted=0 and is_elmo=0 and is_onboarding=0 order by rand();"
+      @db[query].first
+    end
+
+    def get_onboarding_user_detail_with_no_contract()
+      query = "select first_name, last_name, email
+               from epms_user
+               where id not in (select user_id from epms_contract_workflow
+               where status not in (0,1,2,3,4,5,6,7))
+               and is_active =1 and confirmed=1 and is_deleted=0 and is_elmo=0 and is_onboarding=1 order by rand();"
+      @db[query].first
+    end
+
   end
 
 end
