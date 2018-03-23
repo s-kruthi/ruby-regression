@@ -503,8 +503,7 @@ def WithdrawTheCandidateFromF2FSession()
   sleep(3)
   $driver.find_elements(:css, 'button[data-toggle="dropdown"]')[1].click
   sleep(2)
-  element = $driver.find_element(:partial_link_text, 'Cancel Sign Up')
-  element.touch_action(:tap)
+  $driver.find_element(:css, 'a[title="Cancel Sign Up"]').click
   sleep(3)
   PressConfirm()
 end
