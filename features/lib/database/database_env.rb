@@ -12,7 +12,8 @@ module Database_env
       @@HOST = 'secure.elmodev.com'
       @@SSH_USER  = 'tester'
       @@DB_HOST   = "basic-test-cluster.cluster-cb3yhxjbfifz.ap-southeast-2.rds.amazonaws.com"
-      @@PWD = "Muraf3cAR"
+      @@PWD = ENV['ssh_pwd'] || ENV['SSH_PWD']
+      @@DB_PWD = ENV['db_pwd'] || ENV['DB_PWD']
 
       gateway = Net::SSH::Gateway.new(@@HOST, @@SSH_USER, :password => @@PWD)
       port = gateway.open(@@DB_HOST,3306,3306)
@@ -20,7 +21,7 @@ module Database_env
       $site = (ENV["URL"] || ENV["url"]) || 'tmsfull'
       $data_base = "pmsdev_" + "#{$site}"
 
-      @db = Sequel.connect(:adapter => 'mysql2', :host => '127.0.0.1',:port => port, :user => 'tester', :password => @@PWD, :database => $data_base)
+      @db = Sequel.connect(:adapter => 'mysql2', :host => '127.0.0.1',:port => port, :user => 'tester', :password => @@DB_PWD, :database => $data_base)
 
     end
 
