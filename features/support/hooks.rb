@@ -16,3 +16,7 @@ Before do |scenario|
     $tag_counts[tag] += 1
   end
 end
+
+After do
+  $driver.quit
+end
