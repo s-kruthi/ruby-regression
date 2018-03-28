@@ -1,4 +1,8 @@
 @Notifications_docs @smoke
+
+#@DocumentTestRailTags
+#
+#@DocumentTestRailTags
 Feature:
   As a user I want to test combinations of document notifications to test if they were triggered successfully
 
