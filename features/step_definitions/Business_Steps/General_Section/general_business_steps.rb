@@ -42,7 +42,7 @@
 Given(/^i have logged in as a (.*)$/i) do |login_name|
   startWebDriver
   go_to_site()
-
+  
   case login_name
     when "ELMO Setup Admin"
       begin
