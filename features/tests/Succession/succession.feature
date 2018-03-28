@@ -1,4 +1,9 @@
 @succession @smoke
+
+#@SuccessionTestRailTags
+#
+#@SuccessionTestRailTags
+
 Feature:
   I want to test if a user can successfully create a new succession plan and upon completion can delete it as well.
 

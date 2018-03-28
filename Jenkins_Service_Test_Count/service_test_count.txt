@@ -25,7 +25,7 @@
 [GENERAL-SERVICE-TEST]-Create and Add leave Management user#
 [GENERAL-SERVICE-TEST]-Assign Appraisal#
 
-#REWARDS AN DRECOGNITION#
+#REWARDS AND RECOGNITION#
 [REWARDS-SERVICE-TEST]-Like A recommendation#
 [REWARDS-SERVICE-TEST]-Unlike A recommendation#
 [REWARDS-SERVICE-TEST]-Load test Recommendation like Feature with as many users##

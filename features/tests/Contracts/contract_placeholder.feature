@@ -1,10 +1,13 @@
 @contracts @contract_placeholders
-  #@contractplaceholderlibraryTestRailTags
-  #C9171
+
+#@ContractTestRailTags
+# C9171
+#@ContractTestRailTags
+
 
   Feature: As a Company Admin I want to manage the Contract Placeholder Library
 
-  @create_placeholder  @placeholders_low_risk
+  @create_placeholder  @contracts_low_risk
     Scenario Outline: [Contracts]Company Admin can create new contract placeholders
       Given I Have Logged In as a Contract Admin
       And   I go to Admin Settings
@@ -23,7 +26,7 @@
         | Currency         |
         | Text Area        |
 
-    @textarea_characteristics  @placeholders_low_risk
+    @textarea_characteristics  @contracts_low_risk
     Scenario: [Contracts]Default value for Text area placeholders have CK editor and size limitation
       Given I Have Logged In as a Contract Admin
       And   I go to Admin Settings

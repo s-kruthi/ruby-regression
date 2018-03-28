@@ -1,10 +1,12 @@
 @contracts @contract_workflow
-  #@contractworkflowTestRailTags
-  #C9670 #C9689
+ #@ContractTestRailTags
+ #C9670 #C9689
+#@ContractTestRailTags
+
 
   Feature: As a Company Admin I want to manage the Contract Workflow for users
 
-  @differentiate_users_assign_contract
+  @differentiate_users_assign_contract @contracts_high_risk
   Scenario Outline: [Contracts]Differentiate users while assigning contracts
     Given I Have Logged In as a Contract Admin
     And   I Go To The Menu Contracts Section
@@ -17,7 +19,7 @@
     | existing   |
     | onboarding |
 
-    @assign_contract
+    @assign_contract @contracts_high_risk
     Scenario Outline: [Contracts]Company Admin can assign contracts to users with no contract workflow
       Given I Have Logged In as a Contract Admin
       And   I Go To The Menu Contracts Section
