@@ -524,3 +524,40 @@ def DeleteTheExistingEnrolmentAndReEnrolTheCandidate()
   $driver.find_element(:id, "enrol-btn").click
   sleep(2)
 end
+
+def EditCourseCreatedLastScenario(course_created)
+  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_created, COURSE_SEARCH_BTN_ID)
+  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+end
+
+def VerifySectionName(section_name_css, new_section_name)
+  VerifyAnElementExistByCSS(section_name_css, new_section_name)
+end
+
+def ClickSectionButton(button_name)
+  section_button_css = (button_name.upcase + "_SECTION_CSS").constantize
+  WaitForAnElementByCSSAndTouch(section_button_css)
+end
+
+def EditSectionNameValue(section_name_edit, section_edit_value)
+  WaitForAnElementByCSSAndInputValue(section_name_edit, section_edit_value)
+end
+
+def VerifyCourseSectionNotExist(course_section_css)
+  VerifyAnElementNotExistByCSS(course_section_css)
+end
+
+def VerifyAnElementNotExistByCSS(css)
+  begin
+    wait = Selenium::WebDriver::Wait.new(:timeout => 3)
+    element = wait.until {
+      $driver.find_element(:css, "#{css}")
+    }
+  rescue Selenium::WebDriver::Error::NoSuchElementError
+    puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: Element not exist"
+  end
+  if element.display
+    $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+    puts "\e[0m[ \e[32mFAILED\e[0m ] NOT MATCHED: Element exist"
+  end
+end

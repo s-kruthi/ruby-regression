@@ -143,5 +143,14 @@ CATEGORY_NAME_ID = "elmo_learningbundle_category_name"
 CATEGORY_FRAME_CSS = "#cke_1_contents > iframe"
 CATEGORY_SAVE_ID = "elmo_learningbundle_category_Save"
 CATEGORY_SUCCESS_XPATH = "//div[@class='alert alert-success']"
-CATEGORY_EDIT_XPATH = "//table[@id='elmo-table']/tbody/tr[1]/td[2]/div[1]/a[1]"
-CATEGORY_VISIBLE_XPATH = "//table[@id='elmo-table']/tbody/tr[1]/td[2]/div[1]/a[2]"
+CATEGORY_EDIT_XPATH = "//a[@title='Edit Course']"
+CATEGORY_VISIBLE_XPATH = "//a[contains(concat(' ', @class, ' '), ' edit-visible ')]"
+
+#### Learning section elements ####
+COURSE_SECTION_CSS = ".list-group-item.asection:not(.hide)"
+SECTION_NAME_VISIBLE_CSS = ".section-name:not(.section-name-000)"
+EDIT_SECTION_CSS = ".edit-section:not(.edit-section-000)"
+SECTION_NAME_EDIT_INPUT_CSS = ".section-name-input:not(.hidden)"
+DONE_SECTION_CSS = ".done-edit-section:not(.hidden)"
+DELETE_SECTION_CSS = ".del-section:not(.del-section-000)"
+DELETE_SECTION_CONFIRM_CSS = 'button[data-bb-handler="confirm"]'
