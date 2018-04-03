@@ -534,7 +534,7 @@ def VerifySectionName(section_name_css, new_section_name)
   VerifyAnElementExistByCSS(section_name_css, new_section_name)
 end
 
-def PressSectionButton(button_name)
+def ClickSectionButton(button_name)
   section_button_css = (button_name.upcase + "_SECTION_CSS").constantize
   WaitForAnElementByCSSAndTouch(section_button_css)
 end
@@ -545,4 +545,19 @@ end
 
 def VerifyCourseSectionNotExist(course_section_css)
   VerifyAnElementNotExistByCSS(course_section_css)
+end
+
+def VerifyAnElementNotExistByCSS(css)
+  begin
+    wait = Selenium::WebDriver::Wait.new(:timeout => 3)
+    element = wait.until {
+      $driver.find_element(:css, "#{css}")
+    }
+  rescue Selenium::WebDriver::Error::NoSuchElementError
+    puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: Element not exist"
+  end
+  if element.display
+    $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+    puts "\e[0m[ \e[32mFAILED\e[0m ] NOT MATCHED: Element exist"
+  end
 end
