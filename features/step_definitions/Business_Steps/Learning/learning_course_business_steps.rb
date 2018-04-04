@@ -3,19 +3,23 @@ When(/^I Setup A Course To Edit The Section$/i) do
   FillTheCourseFormAndSaveIt(COURSE_NAME_ID, COURSE_NAME_VAL, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
 end
 
+
 And(/^I Try To Setup A Quiz Activity Under The Section$/i) do
   click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
   add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
   select_an_activity("Quiz")
 end
 
+
 Then(/^I Should be Able To Successfully Setup The Quiz Activity$/i) do
   SetupTheQuizActivityAndSaveIt()
 end
 
+
 When(/^I Click On The New Course Button$/i) do
   go_to_new_course_add_page(CREATE_NEW_COURSE_BTN)
 end
+
 
 And(/^I Add New Course Details$/i) do
   enter_course_title(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
@@ -29,6 +33,7 @@ And(/^I Add New Course Details$/i) do
   enter_course_self_enrol(COURSE_SELF_ENROLL_INPUT_ID, COURSE_SELF_ENROLL_INPUT_VALUE)
   enter_course_section_description(COURSE_SHOW_SEC_DESC_INPUT_ID, COURSE_SHOW_SEC_DESC_INPUT_VALUE)
 end
+
 
 Then(/^I Should Be Able To Create A New Course$/i) do
   create_a_new_course_and_verify(FORM_TEMPLATE_SAVE_BTN)
@@ -54,6 +59,7 @@ Then(/^I Should Be Able To Delete The Specific Course$/i) do
   $driver.quit
 end
 
+
 When(/^I Edit A Specific Course Named (.*)$/i) do |course_name|
   search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
   edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
@@ -68,10 +74,12 @@ Then(/^I Should Be Able To Add A New (.*) Activity$/i) do |course_activity_name|
   $driver.quit
 end
 
+
 And(/^I Open A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
   click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
   ClickOnFirstActivity(f2f_activity_name)
 end
+
 
 Then(/^I Should Be Able To Create A Session In The Face-to-Face Activity$/i) do
   pending
@@ -83,6 +91,7 @@ Then(/^I Should Be Able To Delete A Specific Section$/i) do
   delete_a_section(SECTION_TRASH_ICON_ID)
   $driver.quit
 end
+
 
 Then(/^I Should Be Able To Add All Notifications$/i) do
   click_on_a_sub_tab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
@@ -111,6 +120,7 @@ Then(/^I Should Be Able To (.*) Of The Specific Course$/i) do |retrain_action|
   end
 end
 
+
 And(/^I select (.*) as (.*)$/i) do |dropdown_name, dropdown_value|
 
   case dropdown_name
@@ -121,6 +131,7 @@ And(/^I select (.*) as (.*)$/i) do |dropdown_name, dropdown_value|
   end
 
 end
+
 
 Then(/^I Should Be Able to Create a Filter$/i) do
   Sleep_Until(click_on_save_button(FILTER_SUBMIT_BTN_ID))
@@ -146,10 +157,11 @@ And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*
   VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID)
 end
 
+
 And(/^I Can View The Enrolled Users For That Particular Course$/) do
   GoToTheEnrolledUserSectionOfThatParticularCourse(DROPDOWN_KEY_CSS, 0, ENROLLED_USER_LTXT, MANUAL_ENROLL_LTXT)
-
 end
+
 
 When(/^I Try To Refresh The Enrolments For That Particular Course$/) do
   ClickAndRefreshEnrollmentsForAParticularCourse(DROPDOWN_KEY_CSS, 0, REFRESH_ENROLMENT_LTXT, REFRESH_ID)
@@ -158,12 +170,14 @@ When(/^I Try To Refresh The Enrolments For That Particular Course$/) do
   PressEnterClose()
 end
 
+
 And(/^I Have Interacted With An Assigned F2F Course (.*)$/i) do |course_name|
   GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
   SearchTheAssignedCourse(course_name)
   Sleep_Until(VerifyAnElementExistByCSS(F2F_COURSE_TITLE_CSS, course_name))
   SignUpForASession(ENROLLED_BUTTON, ACTIVITY_NAME, SIGNUP_BUTTON)
 end
+
 
 And(/^I Have Interacted With An Assigned quiz Course (.*)$/i) do |course_name|
   GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
@@ -174,51 +188,33 @@ And(/^I Have Interacted With An Assigned quiz Course (.*)$/i) do |course_name|
   WaitForAnElementByPartialLinkTextAndTouch(course_name)
 end
 
+
 Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
   GoToCourseEnrolmentsSection(COURSE_ENROLMENT_LTEXT)
   SearchTheAssignedCourseInEnrollmentSection(course_name)
   VerifyTheStatusAsNotYetStarted()
 end
 
+
 And(/^I Withdraw The Candidate From Session$/) do
   WithdrawTheCandidateFromF2FSession()
 end
+
 
 And(/^I Validate the Status As In Progress$/) do
   VerifyTheStatusAsInProgress()
 end
 
+
 And(/^I Re Enrol The Candidate For The Activity$/) do
   DeleteTheExistingEnrolmentAndReEnrolTheCandidate()
 end
+
 
 And(/^I Edit A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
   click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
   EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
 end
-
-
-# When(/^I Set The Following Face\-to\-Face Section Settings$/i) do |config_table|
-#   data = config_table.hashes
-#   $action_type_name = []
-#   $action_type_value = []
-#
-#   data.each do |row|
-#     row.each do |key, value|
-#
-#     if key.eql? "label_name"
-#       $action_type_name << value
-#       puts "Label type: " + $action_type_name.to_s
-#     end
-#
-#     if key.eql? "label_value"
-#       $action_type_value << value
-#       puts "Label Value: " + $action_type_value.to_s
-#     end
-#
-#     end
-#   end
-# end
 
 
 When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
@@ -230,5 +226,4 @@ end
 Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with the Specified Settings$/i) do
   create_a_new_course_and_verify(F2F_SAVE_BTN_ID)
   Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
-  $driver.quit
 end

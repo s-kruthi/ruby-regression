@@ -25,26 +25,6 @@ def MakeItvisibleToAllusers()
   select_list.select_by(:text, 'Available to all users')
 end
 
-# def GoToTheCourseSection(course_section_id)
-#   $driver.find_element(:xpath, %(//a[@href='/admin/course/#{$new_course_id}/setSections'])).click
-#   sleep(3)
-#   WaitForAnElementByIdAndTouch(course_section_id)
-#   sleep(1)
-#   $driver.navigate.refresh
-#
-#   Sleep_Until($driver.find_element(:css, 'input[name="addsection"]'))
-#   # WaitForAnElementByIdAndTouch(activity_dropdown)
-#   # sleep(1)
-#   # WaitForDropdownByClassAndTouchTheIndex(quiz_activity_cls,index_value)
-#
-#   #WaitForAnElementByCSSAndTouch(add_activity)
-#   $driver.find_element(:id, "select2-chosen-1").click
-#   $driver.find_element(:class, "select2-input").send_keys "Quiz"
-#   $driver.find_element(:class, "select2-match").click
-#   $driver.find_element(:css, 'input[name="addsection"]').click
-#
-#   Sleep_Until(WaitForAnElementByPartialLinkText("Back to Sections"))
-# end
 
 def SetupTheQuizActivityAndSaveIt()
   $driver.find_element(:xpath, "//input[@data-description='learning.course.modQuiz.edit.name.description']").send_keys "Automation Quiz Activity"
@@ -616,7 +596,6 @@ end
 
 
 def CheckFaceToFaceActivitySettings(label_name, label_value)
-
   case label_name
     when "Location"
       begin
@@ -635,12 +614,9 @@ end
 
 
 def EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disabled)
-  byebug
-  WaitForAnElementByXpathAndTouch("//label[text()=‘Facilitator’]/parent::div/following-sibling::div[1]/div[1]/input") if location_disabled == 1
+  Sleep_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Facilitator’]/parent::div/following-sibling::div[1]/div[1]/input")) if location_disabled == 1
   puts GREEN_PASS + " [MATCHED] Location has been successfully Enabled" if location_disabled == 1
 
-  WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input") if facilitator_disabled == 1
+  Slee_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input")) if facilitator_disabled == 1
   puts GREEN_PASS + " [MATCHED] Location has been successfully Enabled" if facilitator_disabled == 1
-
-  sleep (3)
 end

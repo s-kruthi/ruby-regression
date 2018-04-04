@@ -145,9 +145,6 @@
       And   I Go To Courses under Learning section
       And   I Edit A Specific Course Named DO NOT DELETE
       And   I Edit A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
-#      When  I Set The Following Face\-to\-Face Section Settings
-#      |Location|Enabled|
-#      |Facilitator|Disabled|
       When  I Set Location Settings To Enabled
       And   I Set Facilitator Settings To Disabled
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity with the Specified Settings
