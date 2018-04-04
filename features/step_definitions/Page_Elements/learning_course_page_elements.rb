@@ -82,6 +82,7 @@ F2F_SESSION_TITLE_ID = "//h3[contains(.,'')]"
 F2F_SESSION_HEADING_ID = "//h4[contains(.,'')]"
 F2F_SESSION_SORTING_CLASS_ID = "//a[contains(@class,'sortable')]"
 F2F_SESSION_SORTING_ORDER_ID = "//a[contains(@title,'Location')]"
+F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/104/230')]"
 
 ###Quiz activity elements
 
