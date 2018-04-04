@@ -51,32 +51,32 @@ F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
 F2F_SESSION_ADD_SESSION_BTN = "//a[contains(.,'New Session')]"
 SESSION_INSTRUCTION_TEXT = "This is a Test Face-to-Face Session Editor Content - Please DO NOT DELETE"
 F2F_SESSION_HEADING_VALUE = "Sessions"
-F2F_SESSION_SETTINGS_SAVE_VALUE = "Successfulled saved."
+F2F_SESSION_SETTINGS_SAVE_VALUE = "Successfully Saved."
 
 ###Quiz activity test data
 QUIZ_TITLE_VALUE = "Test Quiz Activity - Please DO NOT DELETE"
 QUIZ_ACTIVITY_EDITOR_TXT = "This is a Test Quiz Activity Editor Content - Please DO NOT DELETE"
 QUIZ_PASS_MARK_VALUE = "85"
-QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved.")
+QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved."
 
 ###File activity test data
 FILE_TITLE_VALUE = "Test File Activity - Please DO NOT DELETE"
 FILE_ACTIVITY_EDITOR_TXT = "This is a Test File Activity Editor Content - Please DO NOT DELETE"
-FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved.")
+FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved."
 
 ###Label activity test data
 LABEL_ACTIVITY_EDITOR_TXT = "This is a Test Label Activity Editor Content - Please DO NOT DELETE"
-LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved")
+LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
 
 ###Page activity test data
 PAGE_TITLE_VALUE = "Test Page Activity - Please DO NOT DELETE"
 PAGE_ACTIVITY_EDITOR_TXT = "This is a Test Page Activity Editor Content - Please DO NOT DELETE"
-PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Successfully saved")
+PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
 
 ###Post activity test data
 POST_TITLE_VALUE = "Test Post Activity - Please DO NOT DELETE"
 POST_ACTIVITY_EDITOR_TXT = "This is a Test Post Activity Editor Content - Please DO NOT DELETE"
-POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE = ("Post saved successfully.")
+POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Post saved successfully."
 
 ###Course Retrain Discrepancy data
 COURSE_DISCREPANCY_FIX_SUCCESSFUL_VALUE = "Retrain for the selected user(s) have been successfully fixed"
