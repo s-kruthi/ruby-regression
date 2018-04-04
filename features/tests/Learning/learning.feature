@@ -137,6 +137,22 @@
       And   I Open A Specific Face-to-Face Activity Named Test Face-to-Face
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
 
+
+    @activity_f2f_session_location_add @activity_f2f_session_facilitator_add @activity_f2f_session_config_add @activity_f2f_session_facilitator_add @learning_low_risk @C6067 @C6068
+    Scenario: [Learning]Validation: When location/facilitator field has been enabled, allow sessions to be created with the location/facilitator field
+      Given I Have Logged In as a Learning Admin
+      And   I go to Admin Settings
+      And   I Go To Courses under Learning section
+      And   I Edit A Specific Course Named DO NOT DELETE
+      And   I Edit A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
+#      When  I Set The Following Face\-to\-Face Section Settings
+#      |Location|Enabled|
+#      |Facilitator|Disabled|
+      When  I Set Location Settings To Enabled
+      And   I Set Facilitator Settings To Disabled
+      Then  I Should Be Able To Create A Session In The Face-to-Face Activity with the Specified Settings
+
+
     @activity_f2f_session_notifications_add @activity_add @learning_low_risk
     Scenario: [Learning]Learning Admin Adding Notification Templates in Face-to-Face Activity
       Given I Have Logged In as a Learning Admin
@@ -152,7 +168,7 @@
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Retrain Discrepancies under Learning section
-      When  I Search For A Specific Course Named Fraud & Corruption
+      When  I Search For A Specific Course Named Leadership Training - Development
       Then  I Should Be Able To Fix Retrain Of The Specific Course
 
     @retrain_discrepancy_disable @learning_low_risk
@@ -160,7 +176,7 @@
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Retrain Discrepancies under Learning section
-      When  I Search For A Specific Course Named Fraud & Corruption
+      When  I Search For A Specific Course Named Leadership Training - Intermediate
       Then  I Should Be Able To Disable Retrain Of The Specific Course
 
     @retrain_discrepancy_filter_create @learning_low_risk

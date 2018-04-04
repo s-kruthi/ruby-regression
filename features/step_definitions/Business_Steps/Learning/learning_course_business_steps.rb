@@ -70,11 +70,11 @@ end
 
 And(/^I Open A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
   click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
-  click_on_first_f2f_activity(f2f_activity_name)
+  ClickOnFirstActivity(f2f_activity_name)
 end
 
 Then(/^I Should Be Able To Create A Session In The Face-to-Face Activity$/i) do
-  click_add_f2f_session_btn(F2F_SESSION_ADD_SESSION_BTN)
+  pending
 end
 
 
@@ -190,4 +190,45 @@ end
 
 And(/^I Re Enrol The Candidate For The Activity$/) do
   DeleteTheExistingEnrolmentAndReEnrolTheCandidate()
+end
+
+And(/^I Edit A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
+  click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
+  EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
+end
+
+
+# When(/^I Set The Following Face\-to\-Face Section Settings$/i) do |config_table|
+#   data = config_table.hashes
+#   $action_type_name = []
+#   $action_type_value = []
+#
+#   data.each do |row|
+#     row.each do |key, value|
+#
+#     if key.eql? "label_name"
+#       $action_type_name << value
+#       puts "Label type: " + $action_type_name.to_s
+#     end
+#
+#     if key.eql? "label_value"
+#       $action_type_value << value
+#       puts "Label Value: " + $action_type_value.to_s
+#     end
+#
+#     end
+#   end
+# end
+
+
+When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
+  CheckFaceToFaceActivitySettings(label_name, label_value)
+  EditFaceToFaceActivitySettingsAndVerify(label_name, label_value)
+end
+
+
+Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with the Specified Settings$/i) do
+  create_a_new_course_and_verify(F2F_SAVE_BTN_ID)
+  Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
+  $driver.quit
 end
