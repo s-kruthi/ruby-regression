@@ -132,6 +132,11 @@ def ClickOnAButtonByXPath(form_template_save_btn)
 end
 
 
+  def create_a_new_course_and_verify(form_template_save_btn)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
+end
+
+
 def search_a_course(course_list_search_box_id, course_list_title_value, course_search_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndInputValue(course_list_search_box_id, course_list_title_value))
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
@@ -176,7 +181,7 @@ def click_on_button_in_iframe(course_delete_btn_name_id)
 
   rescue Exception => e
     puts e.message
-    $driver.quit
+    # $driver.quit
   end
 end
 
@@ -608,8 +613,10 @@ def CheckFaceToFaceActivitySettings(label_name, label_value)
       begin
         facilitator_disabled = 1 if $driver.find_elements(:id, "elmo_learningbundle_mod_facetoface_sessionTemplate_facilitatorRequired")[0].attribute "disabled"
         puts COLOR_BLUE + "Facilitator is currently Disabled"
+      end
+
+      EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disabled)
   end
-  EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disabled)
 end
 
 
@@ -622,7 +629,7 @@ def EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disab
 end
 
 
-def   CreateFaceToFaceActivitySettingsAndVerify()
+def  CreateFaceToFaceActivitySettingsAndVerify()
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
 
   WaitForAnElementByXpathAndTouch("//label[text()=‘Facilitator’]/parent::div/following-sibling::div[1]/div[1]/input") if location_disabled == 1
