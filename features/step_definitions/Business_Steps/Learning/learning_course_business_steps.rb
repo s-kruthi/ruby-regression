@@ -220,6 +220,7 @@ end
 
 When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
   CheckFaceToFaceActivitySettings(label_name, label_value)
+<<<<<<< HEAD
   CreateFaceToFaceActivitySettingsAndVerify()
   ClickOnAButtonByXPath(FORM_TEMPLATE_SAVE_BTN)
 end
@@ -229,6 +230,13 @@ end
 Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with the Specified Settings$/i) do
   ClickOnAButtonByXPath(F2F_SAVE_BTN_ID)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
+=======
+  EditFaceToFaceActivitySettingsAndVerify(label_name, label_value)
+end
+
+
+Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with the Specified Settings$/i) do
+>>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
   create_a_new_course_and_verify(F2F_SAVE_BTN_ID)
   Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
 end
