@@ -127,11 +127,7 @@ def enter_course_section_description(course_show_sec_desc_input_id, course_show_
 end
 
 
-<<<<<<< HEAD
 def ClickOnAButtonByXPath(form_template_save_btn)
-=======
-def create_a_new_course_and_verify(form_template_save_btn)
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
 end
 
@@ -425,11 +421,7 @@ def FindFaceToFaceSessionSortingColumnByClass(sorting_class_id, sorting_class_va
   rescue Exception => e
   end
 
-<<<<<<< HEAD
   puts COLOR_GREEN + "MATCHED: sortable column found: \"" + sorting_class_value + "\""
-=======
-  puts GREEN_PASS + "MATCHED: sortable column found: \"" + sorting_class_value + "\""
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
 end
 
 
@@ -608,24 +600,14 @@ def CheckFaceToFaceActivitySettings(label_name, label_value)
   case label_name
     when "Location"
       begin
-<<<<<<< HEAD
       location_disabled = 1 if $driver.find_elements(:id, "elmo_learningbundle_mod_facetoface_sessionTemplate_locationRequired")[0].attribute "disabled"
-      puts "Location is currently Disabled"
-=======
-        location_disabled = 1 if $driver.find_elements(:id, "elmo_learningbundle_mod_facetoface_sessionTemplate_locationRequired")[0].attribute "disabled"
-        puts "Location is currently Disabled"
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
+      puts COLOR_BLUE + "Location is currently Disabled"
       end
 
     when "Facilitator"
       begin
         facilitator_disabled = 1 if $driver.find_elements(:id, "elmo_learningbundle_mod_facetoface_sessionTemplate_facilitatorRequired")[0].attribute "disabled"
-<<<<<<< HEAD
         puts COLOR_BLUE + "Facilitator is currently Disabled"
-=======
-        puts "Location is currently Disabled"
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
-      end
   end
   EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disabled)
 end
@@ -633,11 +615,10 @@ end
 
 def EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disabled)
   Sleep_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Facilitator’]/parent::div/following-sibling::div[1]/div[1]/input")) if location_disabled == 1
-<<<<<<< HEAD
   puts COLOR_GREEN + " [MATCHED] Location has been successfully Enabled" if location_disabled == 1
 
   Sleep_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input")) if facilitator_disabled == 1
-  puts COLOR_GREEN + " [MATCHED] Location has been successfully Enabled" if facilitator_disabled == 1
+  puts COLOR_GREEN + " [MATCHED] Facilitator has been successfully Enabled" if facilitator_disabled == 1
 end
 
 
@@ -648,12 +629,6 @@ def   CreateFaceToFaceActivitySettingsAndVerify()
   puts GREEN_PASS + " [MATCHED] Location has been successfully Enabled" if location_disabled == 1
 
   WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input") if facilitator_disabled == 1
-  puts GREEN_PASS + " [MATCHED] Location has been successfully Enabled" if facilitator_disabled == 1
+  puts GREEN_PASS + " [MATCHED] Facilitator has been successfully Enabled" if facilitator_disabled == 1
   sleep (3)
-=======
-  puts GREEN_PASS + " [MATCHED] Location has been successfully Enabled" if location_disabled == 1
-
-  Slee_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input")) if facilitator_disabled == 1
-  puts GREEN_PASS + " [MATCHED] Location has been successfully Enabled" if facilitator_disabled == 1
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
 end
