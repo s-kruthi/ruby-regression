@@ -70,45 +70,30 @@ QUIZ_TITLE_VALUE = "Test Quiz Activity - Please DO NOT DELETE"
 QUIZ_ACTIVITY_EDITOR_TXT = "This is a Test Quiz Activity Editor Content - Please DO NOT DELETE"
 QUIZ_PASS_MARK_VALUE = "85"
 QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved."
-<<<<<<< HEAD
 
-=======
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
 
 ###File activity test data
 FILE_TITLE_VALUE = "Test File Activity - Please DO NOT DELETE"
 FILE_ACTIVITY_EDITOR_TXT = "This is a Test File Activity Editor Content - Please DO NOT DELETE"
 FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved."
-<<<<<<< HEAD
 
-=======
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
 
 ###Label activity test data
 LABEL_ACTIVITY_EDITOR_TXT = "This is a Test Label Activity Editor Content - Please DO NOT DELETE"
 LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
-<<<<<<< HEAD
 
-=======
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
 
 ###Page activity test data
 PAGE_TITLE_VALUE = "Test Page Activity - Please DO NOT DELETE"
 PAGE_ACTIVITY_EDITOR_TXT = "This is a Test Page Activity Editor Content - Please DO NOT DELETE"
 PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
-<<<<<<< HEAD
 
-=======
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
 
 ###Post activity test data
 POST_TITLE_VALUE = "Test Post Activity - Please DO NOT DELETE"
 POST_ACTIVITY_EDITOR_TXT = "This is a Test Post Activity Editor Content - Please DO NOT DELETE"
 POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Post saved successfully."
-<<<<<<< HEAD
 
-=======
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
 
 ###Course Retrain Discrepancy data
 COURSE_DISCREPANCY_FIX_SUCCESSFUL_VALUE = "Retrain for the selected user(s) have been successfully fixed"

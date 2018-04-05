@@ -9,9 +9,7 @@ ACTIVITY_DROPDOWN = 's2id_section'
 
 
 
-
 ############Learning course section###############
-
 LEARNING_EXPAND = "//a[@href='#collapseLearning']"
 LEARNING_LIST_PATH = "//span[contains(.,'Courses')]"
 
@@ -19,8 +17,10 @@ CREATE_NEW_COURSE_BTN = "//a[contains(.,'New Course')]"
 
 NEW_COURSE_TITLE_ID = "//input[contains(@id,'fullname')]"
 
+
 NEW_COURSE_CATEGORY_ID = ""
 NEW_COURSE_CODE_ID = "//input[contains(@id,'shortname')]"
+
 
 COURSE_RETRAIN_INPUT_ID = "//select[contains(@id,'retrain')]"
 COURSE_RETRAIN_OPEN_INPUT_ID = "//select[contains(@id,'retrainOpen')]"
@@ -31,10 +31,12 @@ COURSE_SELF_ENROLL_INPUT_ID = "//select[contains(@id,'allowSelfUnenrol')]"
 COURSE_SHOW_SEC_DESC_INPUT_ID = "//select[contains(@id,'settingsShowSectionDescription')]"
 COURSE_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 
+
 COURSE_LIST_SEARCH_BOX_ID = "//input[contains(@id,'searchText')]"
 COURSE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 COURSE_LIST_DROPDOWN = "//table//button[@data-toggle='dropdown']"
 COURSE_DELETE_BTN_NAME_ID = "//button[contains(@name,'submit')]"
+
 
 SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
 
@@ -54,18 +56,18 @@ COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID = "select2-result-selectable"
 
 SECTION_TRASH_ICON_ID = "glyphicon-trash"
 
-###Acknowledgement activity elements
 
+###Acknowledgement activity elements
 ACK_TITLE_ID = "//input[contains(@id,'name')]"
 ACK_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
-###ELMO Survey activity elements
 
+###ELMO Survey activity elements
 SURVEY_TITLE_ID = "//input[contains(@id,'name')]"
 SURVEY_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
-###ELMO Survey2 activity elements
 
+###ELMO Survey2 activity elements
 SURVEY2_TITLE_ID = "//input[contains(@id,'name')]"
 SURVEY2_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
@@ -73,8 +75,8 @@ SURVEY2_CONTENT_DROPDOWN_INPUT_ID = "s2id_elmo_learningbundle_ModSurveytwo_surve
 SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS = "select2-input"
 SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS = "select2-result-selectable"
 
-###Face-to-face activity elements
 
+###Face-to-face activity elements
 F2F_TITLE_ID = "//input[contains(@id,'name')]"
 F2F_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 F2F_SESSION_ADD_FILE_ID = "//a[@id='addFile']"
@@ -82,53 +84,48 @@ F2F_SESSION_TITLE_ID = "//h3[contains(.,'')]"
 F2F_SESSION_HEADING_ID = "//h4[contains(.,'')]"
 F2F_SESSION_SORTING_CLASS_ID = "//a[contains(@class,'sortable')]"
 F2F_SESSION_SORTING_ORDER_ID = "//a[contains(@title,'Location')]"
-<<<<<<< HEAD
-<<<<<<< Updated upstream
+
 F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/246/397')]"
-=======
-F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/104/230')]"
->>>>>>> Stashed changes
-=======
-F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/246/397')]"
->>>>>>> 5ea96bcfa9f9e1231b7b0e608309c466ae826e8e
+
 
 ###Quiz activity elements
-
 QUIZ_TITLE_ID = "//input[contains(@id,'name')]"
 QUIZ_PASS_MARK_ID = "//input[contains(@id,'passMark-clone')]"
 QUIZ_SAVE_BTN_ID = "//button[contains(.,'Save')]"
 
-###File activity elements
 
+###File activity elements
 FILE_TITLE_ID = "//input[contains(@id,'name')]"
 FILE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 FILE_SELECT_FILE_ID = "//a[contains(.,'Select File')]"
 
-###Label activity elements
 
+###Label activity elements
 LABEL_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
-###Page activity elements
 
+###Page activity elements
 PAGE_TITLE_ID = "//input[contains(@id,'name')]"
 PAGE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
-###Post activity elements
 
+###Post activity elements
 POST_TITLE_ID = "//input[contains(@id,'name')]"
 POST_SAVE_BTN_ID = "//button[contains(@id,'submit')]"
 POST_SELECT_FILE_ID = "//a[contains(.,'Select File')]"
 
-###Notification elements
 
+###Notification elements
 ADD_NOTIFICATION_BUTTON_ID = "//button[contains(@id,'templateNotification_button_add_template')]"
 ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
+
 
 ###Course Retrain Discrepancy Elements
 COURSE_DISCREPANCY_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 EMPLOYEE_NAME_DROPDOWN_ID = "s2id_filter_form_elmoPms_userEmployeeId"
 FILTER_SUBMIT_BTN_ID = "//button[contains(.,'Submit')]"
 FILTER_RESULT_VERIFY_TABLE_ID = "elmo-table"
+
 
 #### course section elements #####
 DROPDOWN_KEY_CSS = 'button[data-toggle="dropdown"]'
@@ -145,6 +142,7 @@ ACTIVITY_NAME = 'activity-name'
 SUBMIT_QUIZ_BUTTON = 'submit-quiz'
 QUIZ_ANSWER = 'Aliens'
 
+
 #### Categories section elements ####
 CATEGORIES_BTN = "//a[@href='/admin/course/categories'][contains(text(),'Categories')]"
 NEW_CATEGORY_BTN = "//a[contains(string(),'New Category')]"
@@ -155,6 +153,7 @@ CATEGORY_SUCCESS_XPATH = "//div[@class='alert alert-success']"
 CATEGORY_EDIT_XPATH = "//a[@title='Edit Course']"
 CATEGORY_VISIBLE_XPATH = "//a[contains(concat(' ', @class, ' '), ' edit-visible ')]"
 
+
 #### Learning section elements ####
 COURSE_SECTION_CSS = ".list-group-item.asection:not(.hide)"
 SECTION_NAME_VISIBLE_CSS = ".section-name:not(.section-name-000)"
@@ -164,6 +163,8 @@ DONE_SECTION_CSS = ".done-edit-section:not(.hidden)"
 DELETE_SECTION_CSS = ".del-section:not(.del-section-000)"
 DELETE_SECTION_CONFIRM_CSS = 'button[data-bb-handler="confirm"]'
 
+
 #### Learning cost category elements ####
 COST_CATEGORY_NAME_ID = "elmo_learningbundle_cost_category_name"
 CATEGORY_SECTION_CLASS = "view-course-info"
+
