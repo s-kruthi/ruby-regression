@@ -39,5 +39,34 @@ When(/^I click on visible button next to a category I want to hide\/unhide$/) do
 end
 
 Then(/^The visibility of that particular category should be changed.$/) do
-  ConfirmCategoryVisibilityChangeOnClick(@VisibilityBeforeClick)
+  ConfirmCategoryVisibilityWithAlertChangeOnClick(@VisibilityBeforeClick)
+end
+
+When("I Create A Cost Category With {runtime name}") do |name|
+  AdminCreateItemTroughNewLink("New Category")
+  CompleteFieldWithRuntimeName(COST_CATEGORY_NAME_ID, name)
+  ClickButtonWithName('Save')
+end
+
+Then(/^I Should Be Able To Create The Learning Cost Category$/) do
+  VerifySuccessAlert(CATEGORY_SUCCESS_XPATH)
+end
+
+Then(/^I Can Toggle The Visibility State Of Existing Cost Category$/) do
+  unless TableItemExistingOnPage(CATEGORY_SECTION_CLASS)
+    steps %{ When I Create A Cost Category With A Unique Name }
+  end
+  @VisibilityBeforeClick = $driver.find_element(:xpath, CATEGORY_VISIBLE_XPATH).attribute('title')
+  Sleep_Until(ClickCategoryVisibleButton(CATEGORY_VISIBLE_XPATH))
+  ConfirmCategoryVisibilityNoAlertChangeOnClick(@VisibilityBeforeClick)
+end
+
+When(/^I Edit The Cost Category$/) do
+  Sleep_Until(ClickLinkButtonWithName("Edit"))
+end
+
+Then("I Can Edit The Learning Cost Category With {runtime content}") do |content|
+  EditTextInCKEContent(content)
+  ClickButtonWithName('Save')
+  VerifySuccessAlert(CATEGORY_SUCCESS_XPATH)
 end

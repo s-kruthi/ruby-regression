@@ -154,3 +154,7 @@ SECTION_NAME_EDIT_INPUT_CSS = ".section-name-input:not(.hidden)"
 DONE_SECTION_CSS = ".done-edit-section:not(.hidden)"
 DELETE_SECTION_CSS = ".del-section:not(.del-section-000)"
 DELETE_SECTION_CONFIRM_CSS = 'button[data-bb-handler="confirm"]'
+
+#### Learning cost category elements ####
+COST_CATEGORY_NAME_ID = "elmo_learningbundle_cost_category_name"
+CATEGORY_SECTION_CLASS = "view-course-info"

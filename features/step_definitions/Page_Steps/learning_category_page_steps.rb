@@ -30,7 +30,7 @@ def ClickCategoryVisibleButton(category_visible_xpath)
   WaitForAnElementByXpathAndTouch(category_visible_xpath)
 end
 
-def ConfirmCategoryVisibilityChangeOnClick(visibility_before_click)
+def ConfirmCategoryVisibilityWithAlertChangeOnClick(visibility_before_click)
   case visibility_before_click
     when "Visible"
       WaitForAlertWindowAndTouchAcceptOrDismiss("accept")
@@ -40,4 +40,39 @@ def ConfirmCategoryVisibilityChangeOnClick(visibility_before_click)
       WaitForToggleButtonStateChangedByXpath(CATEGORY_VISIBLE_XPATH, "Visible")
       VerifyAnElementExistByXPath(CATEGORY_VISIBLE_XPATH,"Visible")
   end
+end
+
+def ConfirmCategoryVisibilityNoAlertChangeOnClick(visibility_before_click)
+  case visibility_before_click
+    when "Visible"
+      VerifyAnElementExistByXPath(CATEGORY_VISIBLE_XPATH,"Hidden")
+    else "Hidden"
+      VerifyAnElementExistByXPath(CATEGORY_VISIBLE_XPATH,"Visible")
+  end
+end
+
+def AdminCreateItemTroughNewLink(link_text)
+  WaitForAnElementByLinkAndTouch(link_text)
+end
+
+def CompleteFieldWithRuntimeName(field_id, name)
+  WaitForAnElementByIdAndInputValue(field_id, name)
+end
+
+def ClickButtonWithName(button_text)
+  button_css = %Q[button[name*= "#{button_text.downcase}"]]
+  Sleep_Until(WaitForAnElementByCSSAndTouch(button_css))
+end
+
+def ClickLinkButtonWithName(link_button_text)
+  link_button_css = %Q[a[title*="#{link_button_text}"]]
+  WaitForAnElementByCSSAndTouch(link_button_css)
+end
+
+def TableItemExistingOnPage(category_section_class)
+  VerifyAnElementExistByClass(category_section_class, "")
+end
+
+def EditTextInCKEContent(content, index_id = 0)
+  use_ckeditor_to_enter_description(content, index_id)
 end
