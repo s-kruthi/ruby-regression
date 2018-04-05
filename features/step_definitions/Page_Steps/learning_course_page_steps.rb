@@ -127,7 +127,7 @@ def enter_course_section_description(course_show_sec_desc_input_id, course_show_
 end
 
 
-def create_a_new_course_and_verify(form_template_save_btn)
+def ClickOnAButtonByXPath(form_template_save_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
 end
 
@@ -183,7 +183,6 @@ end
 
 def add_a_new_section(course_add_a_section_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_add_a_section_btn_id))
-  # sleep (1)
 end
 
 
@@ -207,7 +206,7 @@ def create_an_activity(course_activity_name)
           Sleep_Until(use_ckeditor_to_enter_description(ACK_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(use_ckeditor_to_enter_description(ACK_ACTIVITY_EDITOR_TXT, 1))
           click_on_save_button(ACK_SAVE_BTN_ID)
-          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+          Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "ELMO Module"
@@ -219,7 +218,7 @@ def create_an_activity(course_activity_name)
           Sleep_Until(WaitForAnElementByXpathAndInputValue(SURVEY_TITLE_ID, SURVEY_TITLE_VALUE))
           Sleep_Until(use_ckeditor_to_enter_description(SURVEY_ACTIVITY_EDITOR_TXT, 0))
           click_on_save_button(SURVEY_SAVE_BTN_ID)
-          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+          Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Face-to-Face"
@@ -228,7 +227,7 @@ def create_an_activity(course_activity_name)
           Sleep_Until(use_ckeditor_to_enter_description(F2F_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(use_ckeditor_to_enter_description(F2F_ACTIVITY_EDITOR_TXT, 1))
           click_on_save_button(F2F_SAVE_BTN_ID)
-          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+          Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Quiz"
@@ -238,7 +237,7 @@ def create_an_activity(course_activity_name)
           Sleep_Until(use_ckeditor_to_enter_description(QUIZ_ACTIVITY_EDITOR_TXT, 1))
           Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
           $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
-          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+          Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "File"
@@ -248,14 +247,14 @@ def create_an_activity(course_activity_name)
           Sleep_Until(WaitForAnElementByXpathAndTouch(FILE_SELECT_FILE_ID))
           Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
           click_on_save_button(FILE_SAVE_BTN_ID)
-          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+          Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Label"
         begin
           Sleep_Until(use_ckeditor_to_enter_description(LABEL_ACTIVITY_EDITOR_TXT, 0))
           click_on_save_button(LABEL_SAVE_BTN_ID)
-          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+          Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Page"
@@ -264,7 +263,7 @@ def create_an_activity(course_activity_name)
           Sleep_Until(use_ckeditor_to_enter_description(PAGE_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(use_ckeditor_to_enter_description(PAGE_ACTIVITY_EDITOR_TXT, 1))
           click_on_save_button(PAGE_SAVE_BTN_ID)
-          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+          Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Post"
@@ -273,7 +272,7 @@ def create_an_activity(course_activity_name)
           Sleep_Until(use_ckeditor_to_enter_description(POST_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(use_ckeditor_to_enter_description(POST_ACTIVITY_EDITOR_TXT, 1))
           click_on_save_button(POST_SAVE_BTN_ID)
-          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+          Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "ELMO Survey (new)"
@@ -282,7 +281,7 @@ def create_an_activity(course_activity_name)
           Sleep_Until(use_ckeditor_to_enter_description(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(single_select_from_select2_input_dropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
           click_on_save_button(SURVEY2_SAVE_BTN_ID)
-          Sleep_Until(verifySuccessMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+          Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
     end
@@ -295,6 +294,7 @@ def click_on_save_button(btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(btn_id))
   sleep (1)
 end
+
 
 def delete_a_section(section_name)
   Sleep_Until($driver.find_elements(:class, section_name).last.click)
@@ -345,6 +345,7 @@ def add_notification_template()
     Sleep_Until(save_notification_template())
   end
 end
+
 
 #This checks if there's an id, "s2id_templateNotification_dueDatePosition" with any value or not. If there's no value then it selects the 1st available option
 def check_for_trigger_date()
@@ -420,7 +421,7 @@ def FindFaceToFaceSessionSortingColumnByClass(sorting_class_id, sorting_class_va
   rescue Exception => e
   end
 
-  puts GREEN_PASS + "MATCHED: sortable column found: \"" + sorting_class_value + "\""
+  puts COLOR_GREEN + "MATCHED: sortable column found: \"" + sorting_class_value + "\""
 end
 
 
@@ -439,17 +440,17 @@ def VerifyFaceToFaceSessionSortingOrderByClass(sorting_order_id)
 
     when "asc"
       begin
-        puts GREEN_PASS + "Sorting done in: ASCENDING order"
+        puts COLOR_GREEN + "Sorting done in: ASCENDING order"
       end
 
     when "desc"
       begin
-        puts GREEN_PASS + "Sorting done in: DESCENDING order"
+        puts COLOR_GREEN + "Sorting done in: DESCENDING order"
       end
 
     else
       begin
-        puts RED_FAIL + "Unknown sorting result found: " + sorting_result
+        puts COLOR_RED + "Unknown sorting result found: " + sorting_result
       end
   end
 end
@@ -599,14 +600,14 @@ def CheckFaceToFaceActivitySettings(label_name, label_value)
   case label_name
     when "Location"
       begin
-        location_disabled = 1 if $driver.find_elements(:id, "elmo_learningbundle_mod_facetoface_sessionTemplate_locationRequired")[0].attribute "disabled"
-        puts "Location is currently Disabled"
+      location_disabled = 1 if $driver.find_elements(:id, "elmo_learningbundle_mod_facetoface_sessionTemplate_locationRequired")[0].attribute "disabled"
+      puts "Location is currently Disabled"
       end
 
     when "Facilitator"
       begin
         facilitator_disabled = 1 if $driver.find_elements(:id, "elmo_learningbundle_mod_facetoface_sessionTemplate_facilitatorRequired")[0].attribute "disabled"
-        puts "Location is currently Disabled"
+        puts COLOR_BLUE + "Facilitator is currently Disabled"
       end
   end
   EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disabled)
@@ -615,8 +616,20 @@ end
 
 def EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disabled)
   Sleep_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Facilitator’]/parent::div/following-sibling::div[1]/div[1]/input")) if location_disabled == 1
+  puts COLOR_GREEN + " [MATCHED] Location has been successfully Enabled" if location_disabled == 1
+
+  Sleep_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input")) if facilitator_disabled == 1
+  puts COLOR_GREEN + " [MATCHED] Location has been successfully Enabled" if facilitator_disabled == 1
+end
+
+
+def   CreateFaceToFaceActivitySettingsAndVerify()
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+
+  WaitForAnElementByXpathAndTouch("//label[text()=‘Facilitator’]/parent::div/following-sibling::div[1]/div[1]/input") if location_disabled == 1
   puts GREEN_PASS + " [MATCHED] Location has been successfully Enabled" if location_disabled == 1
 
-  Slee_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input")) if facilitator_disabled == 1
+  WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input") if facilitator_disabled == 1
   puts GREEN_PASS + " [MATCHED] Location has been successfully Enabled" if facilitator_disabled == 1
+  sleep (3)
 end

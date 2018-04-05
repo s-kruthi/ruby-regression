@@ -19,18 +19,18 @@ end
 Then(/^I Should Be Able To Create A File$/i) do
   createAFile(FORM_TEMPLATE_SAVE_BTN)
   sleep(1)
-  verifySuccessMessage(FILE_SAVE_SUCCESSFUL_ID, FILE_SAVE_SUCCESSFUL_VALUE)
-  $driver.quit
+  VerifySuccessAlertMessage(FILE_SAVE_SUCCESSFUL_ID, FILE_SAVE_SUCCESSFUL_VALUE)
+  # $driver.quit
 end
 
 Then(/^I Should Be Able To Search For A Specific File$/i) do
     searchForAFileAndVerify(FILE_TEMP_SEARCH_BOX, FILE_TITLE_TXT, FILE_SEARCH_BTN_ID, FILE_SEARCH_RESULT)
     sleep (1)
-    $driver.quit
+    # $driver.quit
 end
 
 Then(/^I Should Be Able To Delete A Specific File$/i) do
   deleteTheFirstFileFromTheTable(FILE_DROPDOWN,3, FILE_ACTION_DELETE)
   sleep(1)
-  $driver.quit
+  # $driver.quit
 end

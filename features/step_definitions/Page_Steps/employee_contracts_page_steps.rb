@@ -122,7 +122,7 @@ end
 #
 #
 #
-# def verifySuccessMessage(success_alert_id, success_alert_value)
+# def VerifySuccessAlertMessage(success_alert_id, success_alert_value)
 #   VerifyAnElementExistByXPath(success_alert_id,success_alert_value)
 # end
 #

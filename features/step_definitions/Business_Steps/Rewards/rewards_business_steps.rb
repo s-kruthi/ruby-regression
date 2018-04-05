@@ -15,5 +15,5 @@ end
 
 Then(/^I Should Be Able To Create A New Badge Successfully$/i) do
   Sleep_Until(ClickSaveBadge(BADGE_CREATE_SAVE_BTN_ID))
-  Sleep_Until(VerifySuccessMessage(BADGE_SAVE_SUCCESS_ID, BADGE_SAVE_SUCCESS_VALUE))
+  Sleep_Until(VerifySuccessAlertMessage(BADGE_SAVE_SUCCESS_ID, BADGE_SAVE_SUCCESS_VALUE))
 end

@@ -10,7 +10,7 @@ Feature:
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
     And   I Enter New User Details
-    Then  I Should Be Able To Add 4 New Users In To The System
+    Then  I Should Be Able To Add 1 New Users In To The System
 
   @onboarding_user_add @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]Comapny Admin Creating New Onboarding User

@@ -33,7 +33,7 @@ end
 Then(/^I Should Be Able To Create A Scheduled Report$/i) do
   enterSaveBtn(REPORTS_SAVE_BTN_ID)
   sleep (2)
-  verifySuccessMessage(SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_ID, SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_VALUE)
+  VerifySuccessAlertMessage(SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_ID, SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_VALUE)
   sleep(1)
   $driver.quit
 end
@@ -57,7 +57,7 @@ end
 Then(/^I Should Be Able To Delete That Specific Scheduled Report$/i) do
   deleteAScheduledReport(SCHD_REPORT_DELETE_BTN_VALUE, 0) #Delete the 1st available reseult)
   sleep(2)
-  verifySuccessMessage(SCHD_REPORT_VERIFY_DELETE_SUCCESSFUL_ID, SCHD_REPORT_VERIFY_DELETE_SUCCESSFUL_VALUE)
+  VerifySuccessAlertMessage(SCHD_REPORT_VERIFY_DELETE_SUCCESSFUL_ID, SCHD_REPORT_VERIFY_DELETE_SUCCESSFUL_VALUE)
   sleep(1)
   PressEnterOK()
   sleep(1)
