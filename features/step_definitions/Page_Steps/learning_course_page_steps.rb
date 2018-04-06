@@ -132,7 +132,7 @@ def ClickOnAButtonByXPath(form_template_save_btn)
 end
 
 
-  def create_a_new_course_and_verify(form_template_save_btn)
+def create_a_new_course_and_verify(form_template_save_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
 end
 
@@ -605,37 +605,48 @@ def CheckFaceToFaceActivitySettings(label_name, label_value)
   case label_name
     when "Location"
       begin
-      location_disabled = 1 if $driver.find_elements(:id, "elmo_learningbundle_mod_facetoface_sessionTemplate_locationRequired")[0].attribute "disabled"
-      puts COLOR_BLUE + "Location is currently Disabled"
+        location_disabled = 1 if $driver.find_elements(:id, F2F_SESSION_CONFIG_LOCATION_ID)[0].attribute "disabled"
+        puts COLOR_BLUE + "[CURRENT] Location is Disabled" if location_disabled == 1
+        EditFaceToFaceActivitySettingsAndVerify(label_name, location_disabled, label_value)
       end
 
     when "Facilitator"
       begin
-        facilitator_disabled = 1 if $driver.find_elements(:id, "elmo_learningbundle_mod_facetoface_sessionTemplate_facilitatorRequired")[0].attribute "disabled"
-        puts COLOR_BLUE + "Facilitator is currently Disabled"
+        facilitator_disabled = 1 if $driver.find_elements(:id, F2F_SESSION_CONFIG_FACILITATOR_ID)[0].attribute "disabled"
+        puts COLOR_BLUE + "[CURRENT] Facilitator is currently Disabled" if facilitator_disabled == 1
+        EditFaceToFaceActivitySettingsAndVerify(label_name, facilitator_disabled, label_value)
       end
-
-      EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disabled)
   end
 end
 
 
-def EditFaceToFaceActivitySettingsAndVerify(location_disabled, facilitator_disabled)
-  Sleep_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Facilitator’]/parent::div/following-sibling::div[1]/div[1]/input")) if location_disabled == 1
-  puts COLOR_GREEN + " [MATCHED] Location has been successfully Enabled" if location_disabled == 1
+def EditFaceToFaceActivitySettingsAndVerify(label_name, label_disabled, label_value)
+  case label_name
+    when "Location"
+      begin
+        puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
+        Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_CONFIG_LOC_INPUT_ID)) if label_disabled == 1
+        puts COLOR_GREEN + "[MATCHED] Location has been successfully Enabled" if label_disabled == 1
+        return
+      end
 
-  Sleep_Until(WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input")) if facilitator_disabled == 1
-  puts COLOR_GREEN + " [MATCHED] Facilitator has been successfully Enabled" if facilitator_disabled == 1
+    when "Facilitator"
+      begin
+        puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
+        Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_CONFIG_FAC_INPUT_ID)) if label_disabled == 1
+        puts COLOR_GREEN + "[MATCHED] Facilitator has been successfully Enabled" if label_disabled == 1
+        return
+      end
+
+  end
 end
 
+def VerifyFaceToFaceActivitySettings()
+  location_disabled = 1 if $driver.find_elements(:id, F2F_SESSION_CONFIG_LOCATION_ID)[0].attribute "disabled"
+  puts COLOR_BLUE + "[NEW] Location is currently Disabled after modification" if location_disabled == 1
+  puts COLOR_CYAN + "[NEW] Location is currently Enabled after modification" + location_disabled.to_s
 
-def  CreateFaceToFaceActivitySettingsAndVerify()
-  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-
-  WaitForAnElementByXpathAndTouch("//label[text()=‘Facilitator’]/parent::div/following-sibling::div[1]/div[1]/input") if location_disabled == 1
-  puts GREEN_PASS + " [MATCHED] Location has been successfully Enabled" if location_disabled == 1
-
-  WaitForAnElementByXpathAndTouch("//label[text()=‘Location’]/parent::div/following-sibling::div[1]/div[1]/input") if facilitator_disabled == 1
-  puts GREEN_PASS + " [MATCHED] Facilitator has been successfully Enabled" if facilitator_disabled == 1
-  sleep (3)
+  facilitator_disabled = 1 if $driver.find_elements(:id, F2F_SESSION_CONFIG_FACILITATOR_ID)[0].attribute "disabled"
+  puts COLOR_BLUE + "[NEW] Facilitator is currently Disabled after modification" if facilitator_disabled == 1
+  puts COLOR_CYAN + "[NEW] Facilitator is currently Enabled after modification" + facilitator_disabled.to_s
 end

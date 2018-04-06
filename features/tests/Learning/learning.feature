@@ -162,7 +162,7 @@
       And   I Edit A Specific Course Named DO NOT DELETE
       And   I Edit A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
       When  I Set Location Settings To Enabled
-      And   I Set Facilitator Settings To Disabled
+      And   I Set Facilitator Settings To Enabled
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity with the Specified Settings
 
 

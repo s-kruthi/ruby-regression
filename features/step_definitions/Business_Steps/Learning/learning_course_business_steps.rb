@@ -213,20 +213,21 @@ end
 
 
 And(/^I Edit A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
-  click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
 end
 
 
 When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
   CheckFaceToFaceActivitySettings(label_name, label_value)
-  CreateFaceToFaceActivitySettingsAndVerify()
-  ClickOnAButtonByXPath(FORM_TEMPLATE_SAVE_BTN)
+  ClickOnAButtonByXPath(F2F_SAVE_BTN_ID)
+  Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
 end
 
 
 Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with the Specified Settings$/i) do
-  ClickOnAButtonByXPath(F2F_SAVE_BTN_ID)
-  Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+  EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
+  VerifyFaceToFaceActivitySettings()
 end
 

@@ -62,8 +62,6 @@ SESSION_INSTRUCTION_TEXT = "This is a Test Face-to-Face Session Editor Content -
 F2F_SESSION_HEADING_VALUE = "Sessions"
 F2F_SESSION_SETTINGS_SAVE_VALUE = "Successfully Saved."
 
-F2F_SESSION_SETTINGS_SAVE_VALUE = "Successfully Saved."
-
 
 ###Quiz activity test data
 QUIZ_TITLE_VALUE = "Test Quiz Activity - Please DO NOT DELETE"
