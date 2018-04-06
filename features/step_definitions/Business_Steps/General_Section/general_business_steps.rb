@@ -245,7 +245,6 @@ end
 Then(/^I Should Be Able To Add (.*) New Users In To The System$/i) do |total_number_of_users|
   $total = total_number_of_users.to_i
   add_user_details($total - 1)
-  $driver.quit
 end
 
 And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
@@ -253,12 +252,12 @@ And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
     case sub_tab_name
       when "Personal Details"
         begin
-          Sleep_Until(click_on_a_sub_tab(SUB_TAB_PERSONAL_NAME_ID))
+          Sleep_Until(ClickOnASubTab(SUB_TAB_PERSONAL_NAME_ID))
         end
 
       when "Payment Details"
         begin
-          Sleep_Until(click_on_a_sub_tab(SUB_TAB_PAYMENT_NAME_ID))
+          Sleep_Until(ClickOnASubTab(SUB_TAB_PAYMENT_NAME_ID))
         end
     end
   end
@@ -270,12 +269,12 @@ When(/^I Click On (.*) Icon$/i) do |click_edit_icon|
     case click_edit_icon
       when "Edit Emergency Contact Details"
         begin
-          Sleep_Until(click_on_a_sub_tab(EDIT_EM_CONTACT_BTN_ID))
+          Sleep_Until(ClickOnASubTab(EDIT_EM_CONTACT_BTN_ID))
         end
 
       when "Edit Next Of Kin"
         begin
-          Sleep_Until(click_on_a_sub_tab(EDIT_NOK_CONTACT_BTN_ID))
+          Sleep_Until(ClickOnASubTab(EDIT_NOK_CONTACT_BTN_ID))
         end
     end
   end
@@ -287,12 +286,12 @@ And(/^I Click On Add (.*) Button$/i) do |add_contact_btn|
     case add_contact_btn
       when "Emergency Contact Details"
         begin
-          Sleep_Until(click_on_a_sub_tab(ADD_EM_CONTACT_BTN_ID))
+          Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
         end
 
       when "Next Of Kin"
         begin
-          Sleep_Until(click_on_a_sub_tab(ADD_NOK_CONTACT_BTN_ID))
+          Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
         end
     end
   end
@@ -304,7 +303,7 @@ And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
     case add_contact_btn
       when "Emergency Contact"
         begin
-          Sleep_Until(click_on_a_sub_tab(ADD_EM_CONTACT_BTN_ID))
+          Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
           Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
           Sleep_Until(enter_user_details(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
           Sleep_Until(enter_user_details(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
@@ -315,7 +314,7 @@ And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
 
       when "Next Of Kin"
         begin
-          Sleep_Until(click_on_a_sub_tab(ADD_NOK_CONTACT_BTN_ID))
+          Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
           Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
           Sleep_Until(enter_user_details(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
           Sleep_Until(enter_user_details(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))

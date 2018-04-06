@@ -19,7 +19,7 @@ end
 Then(/^I Should Be Able To Create A Form Template$/i) do
   createAFormTemplateAndVerify(FORM_TEMPLATE_SAVE_BTN)
   findIdOfDocumentInstance()
-  $driver.quit
+  # $driver.quit
 end
 
 When(/^I Search For A Specific Form Template$/i) do
@@ -29,7 +29,7 @@ end
 
 Then(/^I Should Be Able To Hide A Specific Form Template$/i) do
   hideTheFirstFormTemplatePlanFromTheTable(FORM_DROPDOWN,3, FORM_ACTION_ITEM)
-  $driver.quit
+  # $driver.quit
 end
 
 When(/^I click on Add Category Button$/i) do
@@ -43,15 +43,15 @@ end
 
 Then(/^I Should Be Able To Create A Document Category$/i) do
   createADocumentCategory(FORM_TEMPLATE_SAVE_BTN)
-  verifySuccessMessage(DOCUMENT_CAT_SAVE_SUCCESS_ID, DOCUMENT_CAT_SAVE_SUCCESS_VALUE)
-  $driver.quit
+  VerifySuccessAlertMessage(DOCUMENT_CAT_SAVE_SUCCESS_ID, DOCUMENT_CAT_SAVE_SUCCESS_VALUE)
+  # $driver.quit
 end
 
 
 Then(/^I Should Be Able To Hide A Document Category$/i) do
   hideTheFirstDocumentCategoryFromTheTable(DOC_CAT_DROPDOWN,3, DOC_CAT_ACTION_ITEM)
   sleep (1)
-  $driver.quit
+  # $driver.quit
 end
 
 Given(/^I Have Logged In As An Employee With Security Profile Access$/i) do

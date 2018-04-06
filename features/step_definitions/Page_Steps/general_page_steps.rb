@@ -143,6 +143,6 @@ def click_on_a_tab(tab_name)
 end
 
 
-def click_on_a_sub_tab(sub_tab_name_id)
+def ClickOnASubTab(sub_tab_name_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(sub_tab_name_id))
 end

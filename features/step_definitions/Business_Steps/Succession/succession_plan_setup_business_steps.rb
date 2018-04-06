@@ -6,7 +6,7 @@ Then(/^I Should Be Able To Delete The Plan From the Table$/i) do
   sleep(2)
   SearchTheNewlyCreatedSuccessionPlan(SEARCH_PATH,SEARCH_VALUE)
   DeleteTheFirstSuccessionPlanFromTheTable(DROPDOWN,11)
-  $driver.quit
+  # $driver.quit
 end
 
 Then(/^I Should Be Able To Hide The Plan From the Table$/i) do
@@ -28,7 +28,7 @@ end
 
 And(/^I Should Be Able To Delete The Searched Plan From the Table$/i) do
   DeleteTheFirstSuccessionPlanFromTheTable(DROPDOWN,2)
-  $driver.quit
+  # $driver.quit
 end
 
 And(/^I Try To Delete A Pre Assigned Succession Plan$/i) do
@@ -37,6 +37,6 @@ end
 
 Then(/^I Am Returned With Cannot Be Deleted Message$/i) do
   VerifyTheMessageCannotBeDeletedExist(MESSAGE_CLASS,MESSAGE_BODY)
-  $driver.quit
+  # $driver.quit
 end
 

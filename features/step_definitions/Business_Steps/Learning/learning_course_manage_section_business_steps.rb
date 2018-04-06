@@ -5,7 +5,7 @@ Given(/^I Create A New Course With A Unique Name$/) do
 end
 
 Then(/^I Should Be Able To Create A Section$/) do
-  click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
   VerifySectionName(COURSE_SECTION_CSS, NEW_SECTION_VALUE)
 end

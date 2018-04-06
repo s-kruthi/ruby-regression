@@ -29,6 +29,7 @@ def ConnectToDatabaseAndValidateTheChangePasswordTriggeredNotifications()
   ensure
     %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
+    #TODO: Should be removed due to hooks
     $driver.quit
   end
 end
@@ -60,6 +61,7 @@ def ConnectToDatabaseAndValidateTheForgotPasswordTriggeredNotifications()
   ensure
    %x(mysql -utester -pMuraf3cAR pmsdev_tmsfull -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
     %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
+   #TODO: Should be removed due to hooks
     $driver.quit
   end
 end

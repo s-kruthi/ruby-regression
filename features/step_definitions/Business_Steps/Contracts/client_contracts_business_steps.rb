@@ -47,14 +47,14 @@ And(/^I Enter New Client Contract Details$/i) do
 Then(/^I Should Be Able To Create A Client Contract$/i) do
   createAClientContract(FORM_TEMPLATE_SAVE_BTN)
   sleep (1)
-  verifySuccessMessage(VERIFY_SAVE_SUCCESSFUL_ID, VERIFY_SAVE_SUCCESSFUL_VALUE)
-  $driver.quit
+  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VERIFY_SAVE_SUCCESSFUL_VALUE)
+  # $driver.quit
 end
 
 Then(/^I Should Be Able To Search For A Specific Active Client Contract$/i) do
   searchForAclientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT)
   sleep(1)
-  $driver.quit
+  # $driver.quit
 end
 
 When(/^I Search For A Specific Active Client Contract$/i) do
@@ -69,9 +69,9 @@ Then(/^I Should Be Able To De-Activate A Specific Active Client Contract$/i) do
   sleep (1)
   createAClientContract(FORM_TEMPLATE_SAVE_BTN)
   sleep (1)
-  verifySuccessMessage(VERIFY_SAVE_SUCCESSFUL_ID, VERIFY_SAVE_SUCCESSFUL_VALUE)
+  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VERIFY_SAVE_SUCCESSFUL_VALUE)
   sleep (1)
-  $driver.quit
+  # $driver.quit
 end
 
 
