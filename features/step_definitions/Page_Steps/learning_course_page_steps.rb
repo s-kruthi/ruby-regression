@@ -591,11 +591,11 @@ def VerifyAnElementNotExistByCSS(css)
     elements = wait.until {
       $driver.find_elements(:css, "#{css}")
     }
-    unless elements.size == 0
-      $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-      raise ("\e[0m[ \e[31mFAILED\e[0m ] Unexpected item exists. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+    if elements.empty?
+      puts COLOR_GREEN + "MATCHED: Item not displayed."
     else
-      puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: Unexpected item invisible."
+      $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+      raise (COLOR_RED + "Item displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
     end
   rescue Exception => e
     puts e.message
