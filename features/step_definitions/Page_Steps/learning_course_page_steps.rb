@@ -584,7 +584,7 @@ def VerifyCourseSectionNotExist(course_section_css)
   VerifyAnElementNotExistByCSS(course_section_css)
 end
 
-
+# For VerifyAnElementNotExistByCSS sufficient wait must be used before this step. Such as Sleep_Until
 def VerifyAnElementNotExistByCSS(css)
   begin
     wait = Selenium::WebDriver::Wait.new(:timeout => 5)
