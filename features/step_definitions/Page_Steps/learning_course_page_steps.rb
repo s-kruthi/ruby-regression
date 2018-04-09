@@ -631,7 +631,6 @@ def EditFaceToFaceActivitySettings(label_name, label_disabled, label_value)
         puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
         $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == false) { $this.parent().trigger('click') } })") if label_disabled == false
         $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
-
         return
       end
 

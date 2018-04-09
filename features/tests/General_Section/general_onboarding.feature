@@ -4,7 +4,7 @@ Feature:
   As a Company Admin I want to manage Internal Employess Successfully
 
   @general_user_add  @general_high_risk @onboarding_high_risk
-  Scenario: [General] [Onboarding] Comapny Admin Creating New User
+  Scenario: [General] [Onboarding] Company Admin Creating New User
     Given I Have Logged In as a ELMO Super Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
@@ -13,7 +13,7 @@ Feature:
     Then  I Should Be Able To Add 1 New Users In To The System
 
   @onboarding_user_add @general_high_risk @onboarding_high_risk
-  Scenario: [General][Onboarding]Comapny Admin Creating New Onboarding User
+  Scenario: [General][Onboarding]Company Admin Creating New Onboarding User
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Onboarding Users under Onboarding section
