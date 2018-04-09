@@ -84,8 +84,8 @@ F2F_SESSION_TITLE_ID = "//h3[contains(.,'')]"
 F2F_SESSION_HEADING_ID = "//h4[contains(.,'')]"
 F2F_SESSION_SORTING_CLASS_ID = "//a[contains(@class,'sortable')]"
 F2F_SESSION_SORTING_ORDER_ID = "//a[contains(@title,'Location')]"
-F2F_SESSION_CONFIG_LOCATION_ID = "elmo_learningbundle_mod_facetoface_sessionTemplate_locationRequired"
-F2F_SESSION_CONFIG_FACILITATOR_ID = "elmo_learningbundle_mod_facetoface_sessionTemplate_facilitatorRequired"
+F2F_SESSION_CONFIG_LOCATION_ID = 'elmo_learningbundle_mod_facetoface_sessionTemplate_location'
+F2F_SESSION_CONFIG_FACILITATOR_ID = 'elmo_learningbundle_mod_facetoface_sessionTemplate_facilitator'
 
 F2F_SESSION_CONFIG_LOC_INPUT_ID = "//label[text()='Location']/parent::div/following-sibling::div[1]/div[1]/div/child::label[2]"
 F2F_SESSION_CONFIG_FAC_INPUT_ID = "//label[text()='Facilitator']/parent::div/following-sibling::div[1]/div[1]/div/child::label[2]"
