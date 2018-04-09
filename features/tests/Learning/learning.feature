@@ -154,7 +154,7 @@
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
 
 
-    @activity_f2f_session_location_add @activity_f2f_session_facilitator_add @activity_f2f_session_config_add @activity_f2f_session_facilitator_add @learning_low_risk @C6067 @C6068
+    @activity_f2f_session_location_add @activity_f2f_session_facilitator_add @activity_f2f_session_config_add @learning_low_risk @C6067 @C6068
     Scenario: [Learning]Validation: When location/facilitator field has been enabled, allow sessions to be created with the location/facilitator field
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
