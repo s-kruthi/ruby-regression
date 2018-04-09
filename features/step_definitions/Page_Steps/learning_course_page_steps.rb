@@ -587,19 +587,21 @@ end
 
 def VerifyAnElementNotExistByCSS(css)
   begin
-    wait = Selenium::WebDriver::Wait.new(:timeout => 3)
-    element = wait.until {
-      $driver.find_element(:css, "#{css}")
+    wait = Selenium::WebDriver::Wait.new(:timeout => 5)
+    elements = wait.until {
+      $driver.find_elements(:css, "#{css}")
     }
-  rescue Selenium::WebDriver::Error::NoSuchElementError
-    puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: Element not exist"
-  end
-  if element.display
-    $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-    puts "\e[0m[ \e[32mFAILED\e[0m ] NOT MATCHED: Element exist"
+    unless elements.size == 0
+      $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+      raise ("\e[0m[ \e[31mFAILED\e[0m ] Unexpected item exists. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+    else
+      puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: Unexpected item invisible."
+    end
+  rescue Exception => e
+    puts e.message
+    $driver.quit
   end
 end
-
 
 def CheckFaceToFaceActivitySettings(label_name, label_value)
   case label_name
