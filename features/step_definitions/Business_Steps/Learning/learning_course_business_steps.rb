@@ -219,7 +219,6 @@ end
 
 
 When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
-  # byebug
   CheckFaceToFaceActivitySettings(label_name, label_value)
   ClickOnAButtonByXPath(F2F_SAVE_BTN_ID)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
