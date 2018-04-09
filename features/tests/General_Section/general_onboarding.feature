@@ -16,7 +16,7 @@ Feature:
   Scenario: [General][Onboarding]Comapny Admin Creating New Onboarding User
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
-    And   I Go To Users under Onboarding section
+    And   I Go To Onboarding Users under Onboarding section
     When  I Click On Add New User Button
     And   I Enter New User Details
     Then  I Should Be Able To Add 10 New Users In To The System

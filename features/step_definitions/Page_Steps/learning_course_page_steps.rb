@@ -393,7 +393,7 @@ def ClickOnFirstActivity(f2f_link_text)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(f2f_link_text))
 end
 
-
+#TODO: This method is required to be changed once the JIRA PMS-13860 is complete. Currently this is using absolute xPath which is highly unreliable. This needs to be changed to id, name, css or relative xpath
 def EditACourseActivity(activity_edit_link)
   Sleep_Until(WaitForAnElementByXpathAndTouch(activity_edit_link))
 end
@@ -610,7 +610,7 @@ def CheckFaceToFaceActivitySettings(label_name, label_value)
         location_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_LOCATION_ID}).is(':checked')")
         puts COLOR_BLUE + "Location is Disabled" if location_disabled == false
         puts COLOR_BLUE + "Location is Enabled" if location_disabled == true
-        EditFaceToFaceActivitySettingsAndVerify(label_name, location_disabled, label_value)
+        EditFaceToFaceActivitySettings(label_name, location_disabled, label_value)
       end
 
     when "Facilitator"
@@ -618,13 +618,13 @@ def CheckFaceToFaceActivitySettings(label_name, label_value)
         facilitator_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).is(':checked')")
         puts COLOR_BLUE + "Facilitator is currently Disabled" if facilitator_disabled == false
         puts COLOR_BLUE + "Facilitator is currently Enabled" if facilitator_disabled == true
-        EditFaceToFaceActivitySettingsAndVerify(label_name, facilitator_disabled, label_value)
+        EditFaceToFaceActivitySettings(label_name, facilitator_disabled, label_value)
       end
   end
 end
 
 
-def EditFaceToFaceActivitySettingsAndVerify(label_name, label_disabled, label_value)
+def EditFaceToFaceActivitySettings(label_name, label_disabled, label_value)
   case label_name
     when "Location"
       begin
