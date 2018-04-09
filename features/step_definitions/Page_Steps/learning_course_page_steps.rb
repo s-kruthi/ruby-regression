@@ -607,15 +607,17 @@ def CheckFaceToFaceActivitySettings(label_name, label_value)
   case label_name
     when "Location"
       begin
-        location_disabled = 1 if $driver.find_elements(:id, F2F_SESSION_CONFIG_LOCATION_ID)[0].attribute "disabled"
-        puts COLOR_BLUE + "[CURRENT] Location is Disabled" if location_disabled == 1
+        location_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_LOCATION_ID}).is(':checked')")
+        puts COLOR_BLUE + "Location is Disabled" if location_disabled == false
+        puts COLOR_BLUE + "Location is Enabled" if location_disabled == true
         EditFaceToFaceActivitySettingsAndVerify(label_name, location_disabled, label_value)
       end
 
     when "Facilitator"
       begin
-        facilitator_disabled = 1 if $driver.find_elements(:id, F2F_SESSION_CONFIG_FACILITATOR_ID)[0].attribute "disabled"
-        puts COLOR_BLUE + "[CURRENT] Facilitator is currently Disabled" if facilitator_disabled == 1
+        facilitator_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).is(':checked')")
+        puts COLOR_BLUE + "Facilitator is currently Disabled" if facilitator_disabled == false
+        puts COLOR_BLUE + "Facilitator is currently Enabled" if facilitator_disabled == true
         EditFaceToFaceActivitySettingsAndVerify(label_name, facilitator_disabled, label_value)
       end
   end
@@ -627,16 +629,20 @@ def EditFaceToFaceActivitySettingsAndVerify(label_name, label_disabled, label_va
     when "Location"
       begin
         puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
-        Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_CONFIG_LOC_INPUT_ID)) if label_disabled == 1
-        puts COLOR_GREEN + "[MATCHED] Location has been successfully Enabled" if label_disabled == 1
+        $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == false) { $this.parent().trigger('click') } })") if label_disabled == false
+        $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
+        puts COLOR_GREEN + "[MATCHED] Location has been successfully Enabled" if label_disabled == false
+        puts COLOR_GREEN + "[MATCHED] Location has been successfully Disabled" if label_disabled == true
         return
       end
 
     when "Facilitator"
       begin
         puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
-        Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_CONFIG_FAC_INPUT_ID)) if label_disabled == 1
-        puts COLOR_GREEN + "[MATCHED] Facilitator has been successfully Enabled" if label_disabled == 1
+        $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == false) { $this.parent().trigger('click') } })") if label_disabled == false
+        $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
+        puts COLOR_GREEN + "[MATCHED] Facilitator has been successfully Enabled" if label_disabled == false
+        puts COLOR_GREEN + "[MATCHED] Facilitator has been successfully Disabled" if label_disabled == true
         return
       end
 
@@ -644,11 +650,12 @@ def EditFaceToFaceActivitySettingsAndVerify(label_name, label_disabled, label_va
 end
 
 def VerifyFaceToFaceActivitySettings()
-  location_disabled = 1 if $driver.find_elements(:id, F2F_SESSION_CONFIG_LOCATION_ID)[0].attribute "disabled"
-  puts COLOR_BLUE + "[NEW] Location is currently Disabled after modification" if location_disabled == 1
-  puts COLOR_CYAN + "[NEW] Location is currently Enabled after modification" + location_disabled.to_s
 
-  facilitator_disabled = 1 if $driver.find_elements(:id, F2F_SESSION_CONFIG_FACILITATOR_ID)[0].attribute "disabled"
-  puts COLOR_BLUE + "[NEW] Facilitator is currently Disabled after modification" if facilitator_disabled == 1
-  puts COLOR_CYAN + "[NEW] Facilitator is currently Enabled after modification" + facilitator_disabled.to_s
+  location_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_LOCATION_ID}).is(':checked')")
+  puts COLOR_BLUE + "[NEW] Location is currently Disabled after value change" if location_disabled == false
+  puts COLOR_BLUE + "[NEW] Location is currently Enabled after value change" if location_disabled == true
+
+  facilitator_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).is(':checked')")
+  puts COLOR_BLUE + "[NEW] Facilitator is currently Disabled after value change" if facilitator_disabled == false
+  puts COLOR_BLUE + "[NEW] Facilitator is currently Enabled after value change" if facilitator_disabled == true
 end
