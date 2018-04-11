@@ -56,12 +56,12 @@ module Database_env
       @db[query]
     end
 
-    def get_placeholders_containing_string(placeholder_string)
-      query = "select count(*) as placeholdersnum
+    def get_contract_placeholders_containing_string(contract_placeholder_string)
+      query = "select count(*) as contract_placeholdersnum
                from epms_placeholder
-               where name like '%#{placeholder_string}%';"
-      placeholders_count = @db[query].first
-      return placeholders_count[:placeholdersnum]
+               where name like '%#{contract_placeholder_string}%';"
+      contract_placeholders_count = @db[query].first
+      return contract_placeholders_count[:contract_placeholdersnum]
     end
 
   end
