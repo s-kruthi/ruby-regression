@@ -23,10 +23,19 @@ Then(/^I Should See The Default Value field Has a CK Editor/i) do
   Sleep_Until(WaitForAnElementByXPath(CONTRACT_PLACEHOLDER_CKEDITOR_ID))
 end
 
-And(/^I Should See That The Field Is Limited to (\d+) characters/i) do | max_value|
+And(/^I Should See That The Field Is Limited to (\d+) characters/i) do | max_value |
   Sleep_Until(VerifyMaxLength(TEXTAREA_DEFAULT_VALUE_ID,max_value))
 end
 
 And(/^I Should See The Instructional Text Indicating The Size Limitation/i) do
   Sleep_Until(WaitForAnElementByXPath(INSTRUCTIONAL_TEXT_ID))
 end
+
+When(/^I Search For Contract Placeholders Starting With "([^"]*)"/i) do | placeholder_name |
+  SearchContractPlaceholder(placeholder_name)
+end
+
+Then(/^I Should Be Able To See The Placeholders/i) do
+  pending
+end
+

@@ -20,7 +20,11 @@ def VerifyCreationSuccessMessage(placeholder_save_success_id,placeholder_save_su
   Sleep_Until(VerifyAnElementExistByXPath(placeholder_save_success_id,placeholder_save_success_value))
 end
 
-def VerifyMaxLength(textarea_default_value_id,max_value)
+def VerifyMaxLength(textarea_default_value_id, max_value)
   max_length = $driver.find_element(:xpath, textarea_default_value_id).attribute('maxlength')
   max_length.eql?max_value
+end
+
+def SearchContractPlaceholder(placeholder_name)
+  pending
 end
