@@ -42,7 +42,7 @@
     Scenario: Search for Existing Contract Placeholders
       Given I Have Logged In as a Contract Admin
       And   I go to Admin Settings
-      And   I Go To The Contract Placeholder Library Under General Section
+      And   I Go To Contract Placeholder Library Under General Section
       When  I Search For Contract Placeholders Starting With "Auto"
       Then  I Should Be Able To See The Placeholders
 

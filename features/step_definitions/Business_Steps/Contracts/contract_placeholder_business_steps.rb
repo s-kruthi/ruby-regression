@@ -32,10 +32,11 @@ And(/^I Should See The Instructional Text Indicating The Size Limitation/i) do
 end
 
 When(/^I Search For Contract Placeholders Starting With "([^"]*)"/i) do | placeholder_name |
-  SearchContractPlaceholder(placeholder_name)
+  PLACEHOLDER_NAME = placeholder_name
+  SearchContractPlaceholder(PLACEHOLDER_SEARCH_BOX_ID, PLACEHOLDER_NAME, PLACEHOLDER_SEARCH_BTN_ID)
 end
 
 Then(/^I Should Be Able To See The Placeholders/i) do
-  pending
+  Sleep_Until(VerifySearch(SEARCH_RESULTS_ID, PLACEHOLDER_NAME))
 end
 
