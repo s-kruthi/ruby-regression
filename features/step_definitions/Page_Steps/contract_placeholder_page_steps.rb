@@ -31,7 +31,12 @@ def SearchContractPlaceholder(contract_placeholder_search_box_id, search_contrac
 end
 
 def VerifyContractPlaceholderSearch(contract_placeholder_search_results_id, contract_placeholder_name)
-  results_count = $driver.find_element(:xpath, contract_placeholder_search_results_id).text.split(" ")[4].to_i
   query_count = $daos.get_contract_placeholders_containing_string(contract_placeholder_name)
-  results_count.eql?query_count
+
+  if query_count == 0
+    Sleep_Until(VerifyAnElementExistByXPath(contract_placeholder_search_results_id, CONTRACT_PLACEHOLDER_NORECORDS_MSG))
+  else
+    results_count = $driver.find_element(:xpath, contract_placeholder_search_results_id).text.split(" ")[4].to_i
+    results_count.eql?query_count
+  end
 end
