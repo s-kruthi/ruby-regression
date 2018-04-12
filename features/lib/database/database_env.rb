@@ -48,12 +48,20 @@ module Database_env
       @db[query].first
     end
 
-    def get_user_contract_workflow_id(user_id,status)
+    def get_user_contract_workflow_id(user_id, status)
       query = "select id
                from epms_contract_workflow
                where user_id = #{user_id}
                and status = #{status};"
       @db[query]
+    end
+
+    def get_contract_placeholders_containing_string(contract_placeholder_string)
+      query = "select count(*) as contract_placeholdersnum
+               from epms_placeholder
+               where name like '%#{contract_placeholder_string}%';"
+      contract_placeholders_count = @db[query].first
+      return contract_placeholders_count[:contract_placeholdersnum]
     end
 
   end
