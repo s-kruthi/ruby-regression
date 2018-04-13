@@ -111,7 +111,7 @@ def CreateAClientContract(form_temp_save)
 end
 
 
-def SearchForAclientContractAndVerify(search_field, search_value, search_btn, search_result)
+def SearchForAClientContractAndVerify(search_field, search_value, search_btn, search_result)
   WaitForAnElementByXpathAndInputValue(search_field,search_value)
   Wait_For(2)
   WaitForAnElementByXpathAndTouch(search_btn)
@@ -125,7 +125,7 @@ def VerifySuccessAlertMessage(success_alert_id, success_alert_value)
 end
 
 
-def EditAclientContract(class_name, index_value, partial_link_text)
+def EditAClientContract(class_name, index_value, partial_link_text)
   WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
   sleep(1)
   WaitForAnElementByPartialLinkTextAndTouch(partial_link_text)

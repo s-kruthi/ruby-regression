@@ -5,12 +5,10 @@ When(/^I click on New Contract Button$/i) do
 And(/^I Enter New Employee Contract Details$/i) do
     EnterEmployeeContractTitle(EMP_CONTRACT_TITLE_ID, EMP_CONTRACT_DESC_VALUE)
     SelectEmployeeContractCategory(EMP_CONTRACT_CAT_INDEX_ID, 0, EMP_CONTRACT_CAT_RESULT_ID, 2) #Selects Recruitment from the dropdown
-    EnterEmployeeContractDescription_text(EMP_CONTRACT_DESC_TEXT_ID, EMP_CONTRACT_DESC_VALUE)       #Enter a contract description
-    EnterEmployeeContractDescription(EMP_CONTRACT_DESC_VALUE, 0) #Enter the Employee Contract Header Description
-    EnterEmployeeContractDescription(EMP_CONTRACT_DESC_VALUE, 1)  #Enter the Contract Body Description
-    # enter_employee_contract_header_image()
-    EnterEmployeeContractDescription(EMP_CONTRACT_DESC_VALUE, 2)    #Enter the Contract Footer Description
-    # enter_employee_contract_footer_image()
+    EnterEmployeeContractDescriptionText(EMP_CONTRACT_DESC_TEXT_ID, EMP_CONTRACT_DESC_VALUE)       #Enter a contract description
+    EnterEmployeeContractDescriptionText(EMP_CONTRACT_DESC_VALUE, 0) #Enter the Employee Contract Header Description
+    EnterEmployeeContractDescriptionText(EMP_CONTRACT_DESC_VALUE, 1)  #Enter the Contract Body Description
+    EnterEmployeeContractDescriptionText(EMP_CONTRACT_DESC_VALUE, 2)    #Enter the Contract Footer Description
     sleep (1)
 end
 

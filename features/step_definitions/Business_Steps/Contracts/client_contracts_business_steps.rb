@@ -28,15 +28,15 @@ Then(/^I Should Be Able To Create A Client Contract$/i) do
 end
 
 Then(/^I Should Be Able To Search For A Specific Active Client Contract$/i) do
-  Sleep_Until(SearchForAclientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT))
+  Sleep_Until(SearchForAClientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT))
 end
 
 When(/^I Search For A Specific Active Client Contract$/i) do
-  Sleep_Until(SearchForAclientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT))
+  Sleep_Until(SearchForAClientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT))
 end
 
 Then(/^I Should Be Able To De-Activate A Specific Active Client Contract$/i) do
-  Sleep_Until(EditAclientContract(CONTRACT_ACTION_DROPDOWN,3, CONTRACT_DROPDOWN_ACTION_ITEM))
+  Sleep_Until(EditAClientContract(CONTRACT_ACTION_DROPDOWN,3, CONTRACT_DROPDOWN_ACTION_ITEM))
   Sleep_Until(EnterIsActiveStatus(CLIENT_CONTRACT_STATUS_ID))
   Sleep_Until(EnterEndDate(CONTRACT_END_DATE_ID, CONTRACT_END_DATE))
   Sleep_Until(CreateAClientContract(FORM_TEMPLATE_SAVE_BTN))

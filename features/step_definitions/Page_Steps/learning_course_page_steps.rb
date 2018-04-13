@@ -82,7 +82,7 @@ def EnterCourseCategory()
 end
 
 
-def EnterCourseTitle(new_course_code_id, new_course_code_value)
+def EnterCourseCode(new_course_code_id, new_course_code_value)
   WaitForAnElementByXpathAndInputValue(new_course_code_id, new_course_code_value)
 end
 
@@ -97,7 +97,7 @@ def EnterCourseRetrain(course_retrain_input_id, course_retrain_input_value)
 end
 
 
-def EnterCourseRetrain_open(course_retrain_open_input_id, course_retrain_open_input_value)
+def EnterCourseRetrainOpen(course_retrain_open_input_id, course_retrain_open_input_value)
   SelectFromDropDown(course_retrain_open_input_id, course_retrain_open_input_value)
 end
 
@@ -482,8 +482,7 @@ def FillUpQuizSection(enrolled_button, activity_class, submit_quiz, quiz_answer)
   Sleep_Until(WaitForAnElementByClass(activity_class))
   WaitForAnElementByClassAndTouch(activity_class)
   Sleep_Until(WaitForAnElementById(submit_quiz))
-  UseCkeditorToEnterText(quiz_answer, 0)
-  sleep(1)
+  Sleep_Until(UseCkeditorToEnterText(quiz_answer, 0))
   WaitForAnElementByIdAndTouch(submit_quiz)
 end
 
