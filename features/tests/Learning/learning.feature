@@ -36,7 +36,7 @@
       Then  I Should Be Able To Edit The Specific Course
 
 
-    @course_delete @learning_low_risk @C6091 @C6091
+    @course_delete @learning_low_risk @C6091
     Scenario: [Learning]Learning Admin Deleting New Course
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings

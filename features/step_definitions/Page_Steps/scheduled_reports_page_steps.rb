@@ -13,7 +13,7 @@ end
 
 def enterFrequency(schd_report_freq_id, schd_report_freq_value)
   sleep(1)
-  select_from_drop_down(schd_report_freq_id, schd_report_freq_value)
+  SelectFromDropDown(schd_report_freq_id, schd_report_freq_value)
 end
 
 def enterStartandEndDate(report_start_date_id, report_start_date_value, report_end_date_id, report_end_date_value)
@@ -25,21 +25,21 @@ end
 
 def selectAReport(cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, report_name_filter_index_value)
   sleep (1)
-  select_from_select2_input(cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, report_name_filter_index_value)
+  SelectFromSelect2Input(cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, report_name_filter_index_value)
   sleep (1)
 end
 
 def selectAScheduledReportFilter(cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, schd_report_filter_index_value)
-    select_from_select2_input(cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, schd_report_filter_index_value)
+    SelectFromSelect2Input(cat_pos_index_arrow_id, cat_pos_index_arrow_value, cat_pos_index_class, schd_report_filter_index_value)
     sleep (1)
 end
 
 def selectReportLevel(report_level_id, report_level_value)
-    select_from_drop_down(report_level_id, report_level_value)
+    SelectFromDropDown(report_level_id, report_level_value)
 end
 
 def selectReportFormat(report_format_id, report_format_value)
-  select_from_drop_down(report_format_id, report_format_value)
+  SelectFromDropDown(report_format_id, report_format_value)
 end
 
 def selectRecipients(recipient_field_id, recipient1_input_value, recipient2_input_value)
@@ -54,7 +54,7 @@ def selectRecipients(recipient_field_id, recipient1_input_value, recipient2_inpu
 end
 
 def selectShowAllDataOption(show_all_data_id, show_all_data_value)
-  select_from_drop_down(show_all_data_id, show_all_data_value)
+  SelectFromDropDown(show_all_data_id, show_all_data_value)
 end
 
 def enterSaveBtn(save_btn_id)

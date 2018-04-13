@@ -74,5 +74,5 @@ def TableItemExistingOnPage(category_section_class)
 end
 
 def EditTextInCKEContent(content, index_id = 0)
-  use_ckeditor_to_enter_description(content, index_id)
+  UseCkeditorToEnterText(content, index_id)
 end
