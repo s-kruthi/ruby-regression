@@ -68,62 +68,62 @@ def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_l
 end
 
 
-def go_to_new_course_add_page(new_course_btn)
+def GoToNewCourseAddPage(new_course_btn)
   WaitForAnElementByXpathAndTouch(new_course_btn)
 end
 
 
-def enter_course_title(new_course_title_id, new_course_title_value)
+def EnterCourseTitle(new_course_title_id, new_course_title_value)
   WaitForAnElementByXpathAndInputValue(new_course_title_id, new_course_title_value)
 end
 
 
-def enter_course_category()
+def EnterCourseCategory()
 end
 
 
-def enter_course_code(new_course_code_id, new_course_code_value)
+def EnterCourseCode(new_course_code_id, new_course_code_value)
   WaitForAnElementByXpathAndInputValue(new_course_code_id, new_course_code_value)
 end
 
 
-def enter_course_description(form_temp_desc_txt, index_id)
-  use_ckeditor_to_enter_description(form_temp_desc_txt, index_id)
+def EnterCourseDescription(form_temp_desc_txt, index_id)
+  UseCkeditorToEnterText(form_temp_desc_txt, index_id)
 end
 
 
-def enter_course_retrain(course_retrain_input_id, course_retrain_input_value)
-  select_from_drop_down(course_retrain_input_id, course_retrain_input_value)
+def EnterCourseRetrain(course_retrain_input_id, course_retrain_input_value)
+  SelectFromDropDown(course_retrain_input_id, course_retrain_input_value)
 end
 
 
-def enter_course_retrain_open(course_retrain_open_input_id, course_retrain_open_input_value)
-  select_from_drop_down(course_retrain_open_input_id, course_retrain_open_input_value)
+def EnterCourseRetrainOpen(course_retrain_open_input_id, course_retrain_open_input_value)
+  SelectFromDropDown(course_retrain_open_input_id, course_retrain_open_input_value)
 end
 
 
-def enter_course_complete(course_complete_input_id, course_complete_input_value)
-  select_from_drop_down(course_complete_input_id, course_complete_input_value)
+def EnterCourseComplete(course_complete_input_id, course_complete_input_value)
+  SelectFromDropDown(course_complete_input_id, course_complete_input_value)
 end
 
 
-def enter_course_availability(course_availability_input_id, course_availability_input_value)
-  select_from_drop_down(course_availability_input_id, course_availability_input_value)
+def EnterCourseAvailability(course_availability_input_id, course_availability_input_value)
+  SelectFromDropDown(course_availability_input_id, course_availability_input_value)
 end
 
 
-def enter_course_certificate_template(course_certificate_template_id, course_certificate_template_value)
-  select_from_drop_down(course_certificate_template_id, course_certificate_template_value)
+def EnterCourseCertificateTemplate(course_certificate_template_id, course_certificate_template_value)
+  SelectFromDropDown(course_certificate_template_id, course_certificate_template_value)
 end
 
 
-def enter_course_self_enrol(course_self_enroll_input_id, course_self_enroll_input_value)
-  select_from_drop_down(course_self_enroll_input_id, course_self_enroll_input_value)
+def EnterCourseSelfEnrol(course_self_enroll_input_id, course_self_enroll_input_value)
+  SelectFromDropDown(course_self_enroll_input_id, course_self_enroll_input_value)
 end
 
 
-def enter_course_section_description(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
-  select_from_drop_down(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
+def EnterCourseSectionDescription(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
+  SelectFromDropDown(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
 end
 
 
@@ -132,30 +132,30 @@ def ClickOnAButtonByXPath(form_template_save_btn)
 end
 
 
-def create_a_new_course_and_verify(form_template_save_btn)
+def CreateANewCourseAndVerify(form_template_save_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
 end
 
 
-def search_a_course(course_list_search_box_id, course_list_title_value, course_search_btn_id)
+def SearchACourse(course_list_search_box_id, course_list_title_value, course_search_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndInputValue(course_list_search_box_id, course_list_title_value))
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
 
 
-def edit_the_first_course_from_table(xpath_name, partial_link_text)
+def EditFirstCourseFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
 
 
-def delete_the_first_course_from_table(xpath_name, partial_link_text)
+def DeleteTheFirstCourseFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
 
 
-def click_the_menu_of_first_course_from_table(xpath_name, partial_link_text)
+def ClickMenuOfFirstItemFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
   PressEnterConfirm()
@@ -163,35 +163,18 @@ def click_the_menu_of_first_course_from_table(xpath_name, partial_link_text)
 end
 
 
-def click_on_button_in_iframe(course_delete_btn_name_id)
-  begin
-    wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-    select_item = wait.until {
-      element = $driver.find_element(:id, "iframe")
-      element if element.displayed?
-
-    }
-    $driver.switch_to.frame(select_item)
-
-    Sleep_Until($driver.find_element(:xpath, course_delete_btn_name_id).click)
-    sleep (1)
-    Sleep_Until(VerifyAnElementExistByXPath("//div[@class='col-md-12']", 'Course has been deleted!'))
-    $driver.switch_to.parent_frame
-    Sleep_Until($driver.find_element(:xpath, "//button[contains(@class,'close')]").click)
-
-  rescue Exception => e
-    puts e.message
-    # $driver.quit
-  end
+def CourseActionConfirm(course_action_id)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(course_action_id))
+  sleep (3)
 end
 
 
-def add_a_new_section(course_add_a_section_btn_id)
+def AddANewSection(course_add_a_section_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_add_a_section_btn_id))
 end
 
 
-def select_an_activity(select_activity_name)
+def SelectAnActivity(select_activity_name)
   Sleep_Until($driver.find_elements(:id, COURSE_SECTION_DROPDOWN_ID).last.click)
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_SEARCH_ID).last.send_keys(select_activity_name))
   puts "Adding activity: " + $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.text
@@ -200,7 +183,7 @@ def select_an_activity(select_activity_name)
 end
 
 
-def create_an_activity(course_activity_name)
+def CreateAnActivity(course_activity_name)
   begin
 
     case course_activity_name
@@ -208,9 +191,9 @@ def create_an_activity(course_activity_name)
       when "Acknowledgement"
         begin
           Sleep_Until(WaitForAnElementByXpathAndInputValue(ACK_TITLE_ID, ACK_TITLE_VALUE))
-          Sleep_Until(use_ckeditor_to_enter_description(ACK_ACTIVITY_EDITOR_TXT, 0))
-          Sleep_Until(use_ckeditor_to_enter_description(ACK_ACTIVITY_EDITOR_TXT, 1))
-          click_on_save_button(ACK_SAVE_BTN_ID)
+          Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 1))
+          ClickOnSaveButton(ACK_SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
@@ -221,25 +204,25 @@ def create_an_activity(course_activity_name)
       when "ELMO Survey"
         begin
           Sleep_Until(WaitForAnElementByXpathAndInputValue(SURVEY_TITLE_ID, SURVEY_TITLE_VALUE))
-          Sleep_Until(use_ckeditor_to_enter_description(SURVEY_ACTIVITY_EDITOR_TXT, 0))
-          click_on_save_button(SURVEY_SAVE_BTN_ID)
+          Sleep_Until(UseCkeditorToEnterText(SURVEY_ACTIVITY_EDITOR_TXT, 0))
+          ClickOnSaveButton(SURVEY_SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Face-to-Face"
         begin
           Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_TITLE_ID, F2F_TITLE_VALUE))
-          Sleep_Until(use_ckeditor_to_enter_description(F2F_ACTIVITY_EDITOR_TXT, 0))
-          Sleep_Until(use_ckeditor_to_enter_description(F2F_ACTIVITY_EDITOR_TXT, 1))
-          click_on_save_button(F2F_SAVE_BTN_ID)
+          Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 1))
+          ClickOnSaveButton(F2F_SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Quiz"
         begin
           Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_TITLE_ID, QUIZ_TITLE_VALUE))
-          Sleep_Until(use_ckeditor_to_enter_description(QUIZ_ACTIVITY_EDITOR_TXT, 0))
-          Sleep_Until(use_ckeditor_to_enter_description(QUIZ_ACTIVITY_EDITOR_TXT, 1))
+          Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 1))
           Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
           $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
@@ -248,44 +231,44 @@ def create_an_activity(course_activity_name)
       when "File"
         begin
           Sleep_Until(WaitForAnElementByXpathAndInputValue(FILE_TITLE_ID, FILE_TITLE_VALUE))
-          Sleep_Until(use_ckeditor_to_enter_description(FILE_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(UseCkeditorToEnterText(FILE_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(WaitForAnElementByXpathAndTouch(FILE_SELECT_FILE_ID))
           Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
-          click_on_save_button(FILE_SAVE_BTN_ID)
+          ClickOnSaveButton(FILE_SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Label"
         begin
-          Sleep_Until(use_ckeditor_to_enter_description(LABEL_ACTIVITY_EDITOR_TXT, 0))
-          click_on_save_button(LABEL_SAVE_BTN_ID)
+          Sleep_Until(UseCkeditorToEnterText(LABEL_ACTIVITY_EDITOR_TXT, 0))
+          ClickOnSaveButton(LABEL_SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Page"
         begin
           Sleep_Until(WaitForAnElementByXpathAndInputValue(PAGE_TITLE_ID, PAGE_TITLE_VALUE))
-          Sleep_Until(use_ckeditor_to_enter_description(PAGE_ACTIVITY_EDITOR_TXT, 0))
-          Sleep_Until(use_ckeditor_to_enter_description(PAGE_ACTIVITY_EDITOR_TXT, 1))
-          click_on_save_button(PAGE_SAVE_BTN_ID)
+          Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 1))
+          ClickOnSaveButton(PAGE_SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Post"
         begin
           Sleep_Until(WaitForAnElementByXpathAndInputValue(POST_TITLE_ID, POST_TITLE_VALUE))
-          Sleep_Until(use_ckeditor_to_enter_description(POST_ACTIVITY_EDITOR_TXT, 0))
-          Sleep_Until(use_ckeditor_to_enter_description(POST_ACTIVITY_EDITOR_TXT, 1))
-          click_on_save_button(POST_SAVE_BTN_ID)
+          Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
+          ClickOnSaveButton(POST_SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "ELMO Survey (new)"
         begin
           Sleep_Until(WaitForAnElementByXpathAndInputValue(SURVEY2_TITLE_ID, SURVEY2_TITLE_VALUE))
-          Sleep_Until(use_ckeditor_to_enter_description(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
-          Sleep_Until(single_select_from_select2_input_dropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
-          click_on_save_button(SURVEY2_SAVE_BTN_ID)
+          Sleep_Until(UseCkeditorToEnterText(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
+          Sleep_Until(SelectSingleFromSelect2InputDropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
+          ClickOnSaveButton(SURVEY2_SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
@@ -295,20 +278,20 @@ def create_an_activity(course_activity_name)
 end
 
 
-def click_on_save_button(btn_id)
+def ClickOnSaveButton(btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(btn_id))
   sleep (1)
 end
 
 
-def delete_a_section(section_name)
+def DeleteASection(section_name)
   Sleep_Until($driver.find_elements(:class, section_name).last.click)
   Sleep_Until(PressEnterConfirm())
   sleep(3)
 end
 
 
-def create_all_notifications()
+def CreateAllNotifications()
   begin
     click_add_notification_button()
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
@@ -410,7 +393,7 @@ def add_f2f_session()
 end
 
 
-def verify_filter_result(verify_result_table_id, input_value)
+def VerifyFilterResult(verify_result_table_id, input_value)
   Sleep_Until(VerifyAnElementExistById(verify_result_table_id, input_value))
 end
 
@@ -476,7 +459,7 @@ end
 
 
 def SearchTheAssignedCourse(course_name)
-  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
 end
 
 
@@ -499,8 +482,7 @@ def FillUpQuizSection(enrolled_button, activity_class, submit_quiz, quiz_answer)
   Sleep_Until(WaitForAnElementByClass(activity_class))
   WaitForAnElementByClassAndTouch(activity_class)
   Sleep_Until(WaitForAnElementById(submit_quiz))
-  use_ckeditor_to_enter_description(quiz_answer, 0)
-  sleep(1)
+  Sleep_Until(UseCkeditorToEnterText(quiz_answer, 0))
   WaitForAnElementByIdAndTouch(submit_quiz)
 end
 
@@ -559,8 +541,8 @@ end
 
 
 def EditCourseCreatedLastScenario(course_created)
-  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_created, COURSE_SEARCH_BTN_ID)
-  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_created, COURSE_SEARCH_BTN_ID)
+  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 

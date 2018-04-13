@@ -28,7 +28,8 @@ COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE = "Course has been saved!"
 COURSE_LIST_TITLE_VALUE = "Test Course - Please DO NOT DELETE"
 
 COURSE_LIST_ACTION_ITEM_EDIT = "Edit Course"
-COURSE_LIST_ACTION_ITEM_DELETE = "Delete"
+COURSE_LIST_ACTION_ITEM_DELETE = "Delete Course"
+COURSE_DELETE_SUCCESSFUL_VALUE = "Course has been deleted!"
 
 
 ###Acknowledgement activity test data

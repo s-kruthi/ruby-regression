@@ -6,7 +6,7 @@ end
 
 Then(/^I Should Be Able To Create A Section$/) do
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
+  AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
   VerifySectionName(COURSE_SECTION_CSS, NEW_SECTION_VALUE)
 end
 

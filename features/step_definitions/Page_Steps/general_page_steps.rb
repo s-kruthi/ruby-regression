@@ -61,16 +61,16 @@ def create_users(loop)
   last_name = NEW_USER_LAST_NAME_PREFIX + loop.to_s + ".ob" if $add_user_type == "OB"
   user_name = first_name + "." +  last_name
   email_address = user_name + NEW_USER_EMAIL_SUFFIX
-  Sleep_Until(enter_user_details(NEW_USER_FIRST_NAME_ID, first_name))
-  Sleep_Until(enter_user_details(NEW_USER_LAST_NAME_ID, last_name))
-  Sleep_Until(enter_user_details(NEW_USER_USERNAME_ID, user_name)) if $add_user_type == "EMP"
-  Sleep_Until(enter_user_details(NEW_USER_EMAIL_ID, email_address))
+  Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, first_name))
+  Sleep_Until(EnterUserDetails(NEW_USER_LAST_NAME_ID, last_name))
+  Sleep_Until(EnterUserDetails(NEW_USER_USERNAME_ID, user_name)) if $add_user_type == "EMP"
+  Sleep_Until(EnterUserDetails(NEW_USER_EMAIL_ID, email_address))
   Sleep_Until(select_timezone(SELECT_TIMEZONE_ID, SELECT_TIMEZONE_VALUE)) if SELECT_TIMEZONE.to_i == 1
-  Sleep_Until(select_a_manager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, MANAGER_SELECT_INPUT_VALUE,MANAGER_SELECT_RESULT_ID)) if SELECT_MANAGER.to_i == 1
+  Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, MANAGER_SELECT_INPUT_VALUE,MANAGER_SELECT_RESULT_ID)) if SELECT_MANAGER.to_i == 1
   Sleep_Until(select_date(SELECT_START_DATE_ID, SELECT_START_DATE_VALUE)) if SELECT_START_DATE.to_i == 1
   Sleep_Until(select_date(SELECT_EXPIRY_DATE_ID, SELECT_EXPIRY_DATE_VALUE)) if SELECT_EXPIRY_DATE.to_i == 1
-  Sleep_Until(enter_user_details(USER_PASSWORD_ID, USER_PASSWORD_VALUE))
-  Sleep_Until(enter_user_details(USER_PASSWORD_RECONFIRM_ID, USER_PASSWORD_VALUE))
+  Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, USER_PASSWORD_VALUE))
+  Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, USER_PASSWORD_VALUE))
   Sleep_Until(press_save_button(USER_CREATE_SAVE_BTN_ID))
   sleep (2)
 end
@@ -87,13 +87,13 @@ def create_remaining_users(counter)
 end
 
 
-def enter_user_details(input_id, input_value)
+def EnterUserDetails(input_id, input_value)
   $driver.find_element(:xpath, input_id).clear()
   WaitForAnElementByXpathAndInputValue(input_id, input_value)
 end
 
 
-def select_a_manager(recipient_field_id, recipient_input_id, recipient1_input_value, recipient1_result_id)
+def SelectAManager(recipient_field_id, recipient_input_id, recipient1_input_value, recipient1_result_id)
   $driver.find_element(:id, recipient_field_id).click
   Sleep_Until($driver.find_elements(:class, recipient_input_id).last.send_keys(recipient1_input_value))
   Sleep_Until($driver.find_elements(:class, recipient1_result_id).first.click)
@@ -108,7 +108,7 @@ end
 
 
 def select_timezone(select_timezone_id, select_timezone_value)
-  Sleep_Until(select_from_drop_down(select_timezone_id, select_timezone_value))
+  Sleep_Until(SelectFromDropDown(select_timezone_id, select_timezone_value))
 end
 
 
@@ -139,7 +139,7 @@ def verify_deleted_user(inactive_class_id, inactive_attribute_id, inactive_attri
 end
 
 
-def click_on_a_tab(tab_name)
+def ClickOnATab(tab_name)
   Sleep_Until($driver.find_element(:xpath, "//a[contains(.,'#{tab_name}')]").click)
 end
 
