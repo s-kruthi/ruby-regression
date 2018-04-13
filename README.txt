@@ -1,39 +1,54 @@
-- Ruby gems required:
 
-require 'touch_action'
-require 'pp'
-require 'jira-ruby'
+Required Gems:
+-------------------------
 require 'rubygems'
 require 'active_record'
-require 'waitutil'
 require 'touch_action/selenium-webdriver'
+require 'securerandom'
+require 'waitutil'
 require 'selenium-webdriver'
 require 'pry'
 require 'rest-client'
 require 'ruby-jmeter'
+require 'sequel'
+require 'net/ssh/gateway'
+require 'watir'
 
 
-open up terminal and use 'bundle update' which will install all required gems by reading the  “Gemfile.lock” file
+Setup:
+--------------------------
+brew install bundler
+brew install chromedriver
+brew install geckodriver
+brew install mysql
+cd [Go to your scriptonce_automation] folder
+bundle update
 
 
-- How To Load The test?
+FAQ:
+----------------------------
 
-1. Just download the 'scriptonce_automation' folder
-2. Save it in your local( e.g documents / desktop)
-3. Now open RubyMine and load this project by giving path to your 'features' folder( that's a neat ruby IDE, you can chose any other)
+* How To Load The test?
 
-- How To Run The test?
+- Just download the 'scriptonce_automation' folder
+- Save it in your local( e.g documents / desktop)
+- Now open RubyMine and load this project by giving path to your 'features' folder( that's a neat ruby IDE, you can chose any other)
 
-Open a terminal
-Go To the 'scriptonce_automation' Folder Path (e.g cd */sampleWeb/sample_rubymine/sample_cucumber/scriptonce_automation)
+* How To Run The test?
 
-Type "$export CHANNEL=firefox; cucumber --tags @create_new_issue" if you're using Windows with Cygwin or gitbash sort of emulator
-Type "CHANNEL=firefox cucumber --tags @create_new_issue" if you're using MacOS/Linux
-You can also pass parameters to change the default site information as well as point at whether it's staging or production site, as staging points to sub-domain.dev.elmodev.com and production points to sub-domain.elmotalent.com.au
+- Open a terminal
+- Go To the 'scriptonce_automation' Folder Path (e.g cd */sampleWeb/sample_rubymine/sample_cucumber/scriptonce_automation)
+
+- Type "$export CHANNEL=firefox; cucumber -csigxt @create_new_issue" if you're using Windows with Cygwin or gitbash sort of emulator
+- Type "CHANNEL=chrome cucumber -csigxt @create_new_issue" if you're using MacOS/Linux
+
+*NOTE:*
+You can also pass parameters to change the default site information as well as point at whether it's staging or production site, as staging points to sub-domain.dev.elmodev.com
+ and production points to sub-domain.elmotalent.com.au
 
 An example is provided below:
 
-~/automation/scriptonce_automation <auto/TDC-57> ✗ CHANNEL=firefox cucumber --xgt @retrain_discrepancy_fix url=shayan01 type=staging
+~/automation/scriptonce_automation <auto/TDC-57> ✗ CHANNEL=firefox cucumber -csigxt @retrain_discrepancy_fix url=shayan01 type=staging
 @learning @courses
 Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
 
@@ -53,7 +68,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
 5 steps (5 passed)
 0m22.338s
 
-~/automation/scriptonce_automation <auto/TDC-57> ✗ CHANNEL=chrome cucumber -xgt @activity_survey2_add url=survey.uat type=prod
+~/automation/scriptonce_automation <auto/TDC-57> ✗ CHANNEL=chrome cucumber -csigxt @activity_survey2_add url=survey.uat type=prod
 @learning @courses
 Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
 
@@ -74,4 +89,3 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
 1 scenario (1 passed)
 5 steps (5 passed)
 0m44.586s
-
