@@ -165,6 +165,7 @@ end
 
 def CourseActionConfirm(course_action_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_action_id))
+  sleep (3)
 end
 
 
