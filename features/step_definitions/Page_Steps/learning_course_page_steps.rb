@@ -137,25 +137,25 @@ def create_a_new_course_and_verify(form_template_save_btn)
 end
 
 
-def search_a_course(course_list_search_box_id, course_list_title_value, course_search_btn_id)
+def SearchACourse(course_list_search_box_id, course_list_title_value, course_search_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndInputValue(course_list_search_box_id, course_list_title_value))
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
 
 
-def edit_the_first_course_from_table(xpath_name, partial_link_text)
+def EditFirstCourseFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
 
 
-def delete_the_first_course_from_table(xpath_name, partial_link_text)
+def DeleteTheFirstCourseFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
 
 
-def click_the_menu_of_first_course_from_table(xpath_name, partial_link_text)
+def ClickMenuOfFirstItemFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
   PressEnterConfirm()
@@ -163,26 +163,8 @@ def click_the_menu_of_first_course_from_table(xpath_name, partial_link_text)
 end
 
 
-def click_on_button_in_iframe(course_delete_btn_name_id)
-  begin
-    wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-    select_item = wait.until {
-      element = $driver.find_element(:id, "iframe")
-      element if element.displayed?
-
-    }
-    $driver.switch_to.frame(select_item)
-
-    Sleep_Until($driver.find_element(:xpath, course_delete_btn_name_id).click)
-    sleep (1)
-    Sleep_Until(VerifyAnElementExistByXPath("//div[@class='col-md-12']", 'Course has been deleted!'))
-    $driver.switch_to.parent_frame
-    Sleep_Until($driver.find_element(:xpath, "//button[contains(@class,'close')]").click)
-
-  rescue Exception => e
-    puts e.message
-    # $driver.quit
-  end
+def CourseActionConfirm(course_action_id)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(course_action_id))
 end
 
 
@@ -308,7 +290,7 @@ def delete_a_section(section_name)
 end
 
 
-def create_all_notifications()
+def CreateAllNotifications()
   begin
     click_add_notification_button()
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
@@ -476,7 +458,7 @@ end
 
 
 def SearchTheAssignedCourse(course_name)
-  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
 end
 
 
@@ -559,8 +541,8 @@ end
 
 
 def EditCourseCreatedLastScenario(course_created)
-  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_created, COURSE_SEARCH_BTN_ID)
-  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_created, COURSE_SEARCH_BTN_ID)
+  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 

@@ -43,26 +43,25 @@ end
 
 
 When(/^I Search For A Specific Course Named (.*)$/i) do |course_name|
-  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
 end
 
 
 Then(/^I Should Be Able To Edit The Specific Course$/i) do
-  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
-  # $driver.quit
+  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
 Then(/^I Should Be Able To Delete The Specific Course$/i) do
-  delete_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
-  click_on_button_in_iframe(COURSE_DELETE_BTN_NAME_ID)
-  # $driver.quit
+  DeleteTheFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
+  Sleep_Until(CourseActionConfirm(COURSE_DELETE_BTN_NAME_ID))
+  VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
 end
 
 
 When(/^I Edit A Specific Course Named (.*)$/i) do |course_name|
-  search_a_course(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
-  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
+  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
@@ -71,13 +70,11 @@ Then(/^I Should Be Able To Add A New (.*) Activity$/i) do |course_activity_name|
   add_a_new_section(COURSE_ADD_A_SECTION_BTN_ID)
   select_an_activity(course_activity_name)
   create_an_activity(course_activity_name)
-  # $driver.quit
 end
 
 
 And(/^I Open A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  click_on_a_sub_tab(SUB_TAB_SECTION_NAME_ID)
   ClickOnFirstActivity(f2f_activity_name)
 end
 
@@ -90,24 +87,23 @@ end
 Then(/^I Should Be Able To Delete A Specific Section$/i) do
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   delete_a_section(SECTION_TRASH_ICON_ID)
-  # $driver.quit
 end
 
 
 Then(/^I Should Be Able To Add All Notifications$/i) do
   ClickOnASubTab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
-  create_all_notifications()
+  CreateAllNotifications()
 end
 
 
 And(/^I Click On The Menu Of A Specific Course$/i) do
-  search_a_course(COURSE_LIST_SEARCH_BOX_ID, COURSE_LIST_TITLE_VALUE, COURSE_SEARCH_BTN_ID)
-  edit_the_first_course_from_table(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, COURSE_LIST_TITLE_VALUE, COURSE_SEARCH_BTN_ID)
+  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
 Then(/^I Should Be Able To (.*) Of The Specific Course$/i) do |retrain_action|
-  click_the_menu_of_first_course_from_table(COURSE_LIST_DROPDOWN, retrain_action)
+  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, retrain_action)
   case retrain_action
     when "Fix Retrain"
       begin

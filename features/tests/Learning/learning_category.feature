@@ -5,7 +5,7 @@
 
 Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
 
-  @new_category @learning_high_risk
+  @course_new_category @learning_high_risk
   Scenario: [Learning]Create a new category
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -15,7 +15,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     And   I enter new category details
     Then  I should be able to save course category.
 
-  @edit_category @learning_high_risk
+  @course_edit_category @learning_high_risk
   Scenario: [Learning]Edit an existing category
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
