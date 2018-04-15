@@ -3,6 +3,7 @@ module Chrome
     def self.set_up_selenium_web_driver
       # we now point to locally installed chromedriver , $brew upgrade chromedriver
       $driver = Selenium::WebDriver.for :chrome
+      # we now point to locally installed chromedriver , $brew upgrade chromedriver
       $driver.manage.window.resize_to(1500, 1900)
       $driver.switch_to.window($driver.window_handles[0])
       $driver.manage.window.maximize()
