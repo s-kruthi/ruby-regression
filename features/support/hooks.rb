@@ -17,6 +17,18 @@ Before do |scenario|
   end
 end
 
-After do
+After do | scenario |
+  status_scenario = scenario.passed?
+  scenario.tags.map(&:name).each do | tag |
+   if (tag =~ /^\@[C]\d/)
+     $testrail_tag = tag.gsub('@C','').to_s
+   end
+  end
+  if status_scenario
+    status_id = 1
+  else
+    status_id = 5
+  end
+  $testrail_client.send_post('add_result_for_case/' + ENV['test_run_id'] +'/'+ $testrail_tag,{ :status_id => status_id, :comment => "This testing API."})
   $driver.quit
 end

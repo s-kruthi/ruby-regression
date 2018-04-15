@@ -1,13 +1,6 @@
 #
 # TestRail API binding for Ruby (API v2, available since TestRail 3.0)
 #
-# Learn more:
-#
-# http://docs.gurock.com/testrail-api2/start
-# http://docs.gurock.com/testrail-api2/accessing
-#
-# Copyright Gurock Software GmbH. See license.md for details.
-#
 
 require 'net/http'
 require 'net/https'
