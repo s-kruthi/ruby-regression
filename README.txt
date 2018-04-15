@@ -13,7 +13,8 @@ require 'ruby-jmeter'
 require 'sequel'
 require 'net/ssh/gateway'
 require 'watir'
-
+require 'pp'
+require 'jira-ruby'
 
 Setup:
 --------------------------
