@@ -6,7 +6,7 @@ end
 def enterFileDetails(form_temp_title, form_temp_title_text, pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
   sleep(1)
-  select_from_select2_input(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+  SelectFromSelect2Input(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
 end
 
 def selectALabel(file_id, label_id, label_index)
@@ -21,7 +21,7 @@ end
 
 def selectFileAvailability(availability_id, availability_value)
   sleep(1)
-  select_from_drop_down(availability_id, availability_value)
+  SelectFromDropDown(availability_id, availability_value)
 end
 
 def createAFile(form_temp_save)

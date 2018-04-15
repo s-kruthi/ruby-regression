@@ -4,7 +4,7 @@ def EnterContractPlaceholderTitle(contract_placeholder_id, contract_placeholder_
 end
 
 def SelectContractPlaceholderType(select_contract_placeholder_type_id, placeholder_type_value)
-  Sleep_Until(select_from_drop_down(select_contract_placeholder_type_id, placeholder_type_value))
+  Sleep_Until(SelectFromDropDown(select_contract_placeholder_type_id, placeholder_type_value))
 end
 
 def EnterContractPlaceholderText(contract_placeholder_text_id, contract_placeholder_text)

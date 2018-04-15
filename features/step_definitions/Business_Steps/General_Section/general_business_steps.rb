@@ -304,22 +304,22 @@ And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
       when "Emergency Contact"
         begin
           Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
-          Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
-          Sleep_Until(enter_user_details(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
-          Sleep_Until(enter_user_details(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
+          Sleep_Until(EnterUserDetails(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
+          Sleep_Until(EnterUserDetails(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
+          Sleep_Until(EnterUserDetails(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
           Sleep_Until(WaitForAnElementByIdAndInputValue(EM_USER_MOBILE_ID, EM_USER_MOBILE_VALUE))
-          Sleep_Until(enter_user_details(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
+          Sleep_Until(EnterUserDetails(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
           Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
         end
 
       when "Next Of Kin"
         begin
           Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
-          Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
-          Sleep_Until(enter_user_details(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
-          Sleep_Until(enter_user_details(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
+          Sleep_Until(EnterUserDetails(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
+          Sleep_Until(EnterUserDetails(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
+          Sleep_Until(EnterUserDetails(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
           Sleep_Until(WaitForAnElementByIdAndInputValue(EM_USER_MOBILE_ID, EM_USER_MOBILE_VALUE))
-          Sleep_Until(enter_user_details(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
+          Sleep_Until(EnterUserDetails(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
         end
     end
   end
@@ -359,7 +359,7 @@ end
 
 
 And(/^i should be able to go to (.*) tab$/i) do |profile_tab_name|
-     click_on_a_tab(profile_tab_name)
+     ClickOnATab(profile_tab_name)
 end
 
 And(/^i should be able to fill in all profile related information$/i) do
@@ -377,7 +377,7 @@ And(/^i should be able to fill in all profile related information$/i) do
 end
 
 And(/^i should be able to save the information successfully$/i) do
-  click_on_save_button(SAVE_BTN_ID)
+  ClickOnSaveButton(SAVE_BTN_ID)
 end
 
 And(/^I Click on "([^"]*)" Button$/i) do |button_name|

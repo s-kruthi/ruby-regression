@@ -22,7 +22,7 @@ When(/^I Click On "([^"]*)" item from left side bar under "([^"]*)" section$/i) 
 end
 
 And(/^I Click On "([^"]*)" Tab$/i) do |tab_name_id|
-  click_on_a_tab(tab_name_id)
+  ClickOnATab(tab_name_id)
   sleep (3)
 end
 
@@ -275,22 +275,22 @@ end
 #       when "Emergency Contact"
 #         begin
 #           Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
-#           Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
-#           Sleep_Until(enter_user_details(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
-#           Sleep_Until(enter_user_details(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
+#           Sleep_Until(EnterUserDetails(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
+#           Sleep_Until(EnterUserDetails(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
+#           Sleep_Until(EnterUserDetails(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
 #           Sleep_Until(WaitForAnElementByIdAndInputValue(EM_USER_MOBILE_ID, EM_USER_MOBILE_VALUE))
-#           Sleep_Until(enter_user_details(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
+#           Sleep_Until(EnterUserDetails(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
 #           Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
 #         end
 #
 #       when "Next Of Kin"
 #         begin
 #           Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
-#           Sleep_Until(enter_user_details(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
-#           Sleep_Until(enter_user_details(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
-#           Sleep_Until(enter_user_details(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
+#           Sleep_Until(EnterUserDetails(EM_USER__NAME_ID, EM_USER__NAME_VALUE))
+#           Sleep_Until(EnterUserDetails(EM_USER_RELATIONSHIP_ID, EM_USER_RELATIONSHIP_VALUE))
+#           Sleep_Until(EnterUserDetails(EM_USER_ADDRESS_ID, EM_USER_ADDRESS_VALUE))
 #           Sleep_Until(WaitForAnElementByIdAndInputValue(EM_USER_MOBILE_ID, EM_USER_MOBILE_VALUE))
-#           Sleep_Until(enter_user_details(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
+#           Sleep_Until(EnterUserDetails(EM_USER_EMAIL_ID, EM_USER_EMAIL_VALUE))
 #         end
 #     end
 #   end

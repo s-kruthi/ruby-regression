@@ -131,7 +131,7 @@ module Safari
       end
     end
 
-    def use_ckeditor_to_enter_description(text, index_id)
+    def UseCkeditorToEnterText(text, index_id)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
@@ -156,7 +156,7 @@ module Safari
       end
     end
 
-    def select_from_select2_input(index_arrow_name, index_arrow_id, index_class_name, index_class_id)
+    def SelectFromSelect2Input(index_arrow_name, index_arrow_id, index_class_name, index_class_id)
       begin
         WaitForDropdownByClassAndTouchTheIndex(index_arrow_name, index_arrow_id)
         WaitForDropdownByClassAndTouchTheIndex(index_class_name, index_class_id)
@@ -173,7 +173,7 @@ module Safari
       end
     end
 
-    def select_from_drop_down(dropdown_option, dropdown_value)
+    def SelectFromDropDown(dropdown_option, dropdown_value)
       begin
         dropdown_list = $driver.find_element(:xpath, dropdown_option)
         select_list = Selenium::WebDriver::Support::Select.new(dropdown_list)

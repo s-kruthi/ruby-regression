@@ -35,8 +35,8 @@ COURSE_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')
 COURSE_LIST_SEARCH_BOX_ID = "//input[contains(@id,'searchText')]"
 COURSE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 COURSE_LIST_DROPDOWN = "//table//button[@data-toggle='dropdown']"
-COURSE_DELETE_BTN_NAME_ID = "//button[contains(@name,'submit')]"
-
+COURSE_DELETE_BTN_NAME_ID = "//button[contains(@id,'copyDeleteConfirm')]"
+COURSE_DELETE_SUCCESSFUL_ID = "//div[contains(@class,'modal-body')]"
 
 SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
 

@@ -1,4 +1,4 @@
-@learning @Courses @martin_test
+@learning @courses
   #@learningTestRailTags
   #C240 C241 C242
   #@learningTestRailTags
