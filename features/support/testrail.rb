@@ -96,3 +96,7 @@ module TestRail
 	class APIError < StandardError
 	end
 end
+
+$testrail_client = TestRail::APIClient.new('https://elmotalent.testrail.net')
+$testrail_client.user = ENV['testrail_user'] || ENV['TESTRAIL_USER']
+$testrail_client.password = ENV['testrail_pwd'] || ENV['TESTRAIL_PWD']
