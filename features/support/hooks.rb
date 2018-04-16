@@ -18,7 +18,7 @@ Before do |scenario|
 end
 
 After do | scenario |
-
+  #Send the testcase results only if you have passed the Test Run id from the command line
   if ENV['test_run_id']
     test_run_id = ENV['test_run_id'].to_s
     status_scenario = scenario.passed?
@@ -28,8 +28,10 @@ After do | scenario |
       end
     end
     if status_scenario
+      #Status = Passed
       status_id = 1
     else
+      #Status = Failed
       status_id = 5
     end
     if $testrail_tag.nil?
