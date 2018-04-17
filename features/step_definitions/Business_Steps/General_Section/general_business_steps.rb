@@ -6,7 +6,7 @@
 #   login_pass = []
 #   site_name = []
 #
-#   tableVerifyDeletedUser do |row|
+#   table do |row|
 #     row.each do |key, value|
 #       if key.eql? "login_type"
 #         role_type << value

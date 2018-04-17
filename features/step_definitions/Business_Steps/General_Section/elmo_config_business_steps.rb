@@ -1,9 +1,8 @@
 When(/^I Change "([^"]*)" Elmo Configuration To "([^"]*)"/i) do |elmo_configuration_name, elmo_configuration_value|
-  #DEBUG: check values
-  # elmo_config_settings.each {|key, value| puts "#{key} is #{value}"}
+  # This is WIP
   ELMO_CONFIG_SETTINGS.each do |key, value|
-    puts "TEST"
     if key.eql? elmo_configuration_name
+      puts "TEST"
       puts "#{key} current value: #{value}"
       break
     end
