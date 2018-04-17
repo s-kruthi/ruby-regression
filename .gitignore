@@ -23,6 +23,7 @@
 # Logs and databases #
 ######################
 *.sqlite
+.byebug_history
 
 # OS generated files #
 ######################

@@ -64,7 +64,7 @@ EM_USER_ADDRESS_ID = "//input[contains(@id,'autocomplete_address')]"
 EM_USER_MOBILE_ID = "mobile"
 EM_USER_EMAIL_ID = "//input[contains(@id,'email')]"
 
-SAVE_BTN_ID = "//button[contains(@id,'save')]"
+SAVE_BTN_ID = "//button[contains(.,'Save')]"
 DONE_BTN_ID = "//button[contains(.,'Done')]"
 
 USERNAME_SEARCH_ID = "//input[@placeholder='Search']"
