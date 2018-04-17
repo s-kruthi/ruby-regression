@@ -45,7 +45,7 @@
       Then  I Should Be Able To Delete The Specific Course
 
 
-    @course_activity_ack_add @course_activity_add @learning_high_risk
+    @course_activity_ack_add @course_activity_add @learning_high_risk @C243
     Scenario: [Learning]Learning Admin creating New Acknowledgement Activity In A Course
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
