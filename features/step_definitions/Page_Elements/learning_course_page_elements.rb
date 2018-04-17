@@ -40,6 +40,8 @@ COURSE_DELETE_SUCCESSFUL_ID = "//div[contains(@class,'modal-body')]"
 
 SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
 
+COURSE_AVAILABILITY_ID = "//select[contains(@id,'elmo_learningbundle_course_visible')]"
+
 # SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]" #Legacy Approval Notifications tab name
 # SUB_TAB_COURSE_NOT_NAME_ID = "//a[contains(.,'Course Notifications')]" #Legacy Course Notifications tab name
 
@@ -98,6 +100,11 @@ F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/246/397')]
 QUIZ_TITLE_ID = "//input[contains(@id,'name')]"
 QUIZ_PASS_MARK_ID = "//input[contains(@id,'passMark-clone')]"
 QUIZ_SAVE_BTN_ID = "//button[contains(.,'Save')]"
+QUESTION_SAVE_BTN_ID = "//button[@class='save-question btn btn-primary']"
+ADD_QUESTION_BTN_ID = "//a[@class='btn btn-primary add-question']"
+SAVE_QUIZ_SETTINGS_BTN_ID = "//button[@class='btn btn-primary save-quiz']"
+
+
 
 
 ###File activity elements
