@@ -1,5 +1,14 @@
+ELMO_CONFIG_SETTINGS = {
+    "User activation on": "Creation",
+    "Notify new user": "Manually",
+    "Employee must have manager": "Disabled",
+    "Lock course with enrolments": "Yes",
+    "New User Contract": "Disabled",
+    "New OB User Contract": "Disabled"
+}
 
-user_config_selection = {
+
+USER_CONFIG_SELECTION = {
     "Personal Email": "personal_email",
     "Home Phone": "home_phone",
     "Work Phone": "work_phone",
@@ -7,7 +16,8 @@ user_config_selection = {
     "Address": "address"
 }
 
-activity_resume_selection = {
+
+ACTIVITY_RESUME_SELECTION = {
     "Performance": "performance",
     "Learning": "learning",
     "Professional Development": "cpd",
@@ -23,9 +33,9 @@ activity_resume_selection = {
     "Message": "messages"
 }
 
-#activity = { "a" => 100, "b" => 200 }
-#activity.each {|key, value| puts "#{key} is #{value}" }
-#activity.each_key {|key| puts key }
+# activity = { "Performance" => 100, "Professional Development" => 200 }
+# activity.each {|key, value| puts "#{key} is #{value}" }
+# activity.each_key {|key| puts key }
 
 #puts user_config_selection[:personal_email]
 

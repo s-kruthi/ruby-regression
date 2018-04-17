@@ -1,9 +1,9 @@
 
-def click_on_side_bar_item(config_section_item, config_section_name)
+def ClickOnSideBarItem(config_section_item, config_section_name)
   Sleep_Until($driver.find_elements(:id, "#{config_section_item}-#{config_section_name}-button").first.click)
 end
 
-def click_on_side_bar_item_custom(config_section_item, config_section_name)
+def ClickOnSideBarItemCustom(config_section_item, config_section_name)
  $driver.find_element(:id, user_config_selection[:config_section_item])
 end
 

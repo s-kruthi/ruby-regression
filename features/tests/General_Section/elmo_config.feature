@@ -28,15 +28,6 @@ Feature:
     And   I Go To User Profile Setup under General section
     And   I Click On "Personal And Payment Details" Tab
     When  I Click On "Expiry Date" item from left side bar under "User Details" section
-#    And   I select "Enabled" option to "Enabled"
-#    And   I select "Required" dropdown to "Required"
-#    And   I select "Self Registration" dropdown to "Yes"
-#    And   I select "Visible" dropdown to "Manager and Company Admin"
-#    And   I select "Editable" dropdown to "Company Admin Only"
-#    And   I select "Profile" dropdown to "Company Admin Only"
-#    And   I select "Reports" dropdown to "Company Admin Only"
-#    Then  I Should Be Able To Save Configuration Details
-#    And   Verify That "Configuration Status" Is Displayed As "Saved"
 
 
   @elmo_config_general_configuration @general_low_risk

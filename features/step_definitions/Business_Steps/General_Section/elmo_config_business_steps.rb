@@ -1,5 +1,13 @@
 When(/^I Change "([^"]*)" Elmo Configuration To "([^"]*)"/i) do |elmo_configuration_name, elmo_configuration_value|
-  pending
+  #DEBUG: check values
+  # elmo_config_settings.each {|key, value| puts "#{key} is #{value}"}
+  ELMO_CONFIG_SETTINGS.each do |key, value|
+    puts "TEST"
+    if key.eql? elmo_configuration_name
+      puts "#{key} current value: #{value}"
+      break
+    end
+  end
 end
 
 When(/^I Click On "([^"]*)" Item From Left Side Bar Under "([^"]*)" Section$/i) do |config_section_item, config_section_name|
@@ -7,12 +15,12 @@ When(/^I Click On "([^"]*)" Item From Left Side Bar Under "([^"]*)" Section$/i) 
   case config_section_name
   when "Contact Details"
     begin
-      click_on_side_bar_item_custom(config_section_item, config_section_name)
+      ClickOnSideBarItemCustom(config_section_item, config_section_name)
     end
 
   when "Diversity Questions"
     begin
-      click_on_side_bar_item_custom(config_section_item, config_section_name)
+      ClickOnSideBarItemCustom(config_section_item, config_section_name)
     end
 
   when "Payment Details"
@@ -21,7 +29,7 @@ When(/^I Click On "([^"]*)" Item From Left Side Bar Under "([^"]*)" Section$/i) 
     end
   end
 
-  click_on_side_bar_item(config_section_item, config_section_name)
+  ClickOnSideBarItem(config_section_item, config_section_name)
 end
 
 And(/^I Click On "([^"]*)" Tab$/i) do |tab_name_id|

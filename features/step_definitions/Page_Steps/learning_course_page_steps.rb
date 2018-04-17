@@ -64,7 +64,7 @@ def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_l
   sleep(2)
   goToDocumentsSection(documents_expand)
   sleep(2)
-  goToItemLandingPage(documents_list_path)
+  GoToItemLandingPage(documents_list_path)
 end
 
 

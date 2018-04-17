@@ -6,7 +6,7 @@
 #   login_pass = []
 #   site_name = []
 #
-#   table.each do |row|
+#   tableVerifyDeletedUser do |row|
 #     row.each do |key, value|
 #       if key.eql? "login_type"
 #         role_type << value
@@ -32,7 +32,7 @@
 #   startWebDriver
 #   # site_name = ENV["URL"] if ENV["URL"] != nil
 #   # puts "Found ENV URL = " + ENV["URL"] if ENV["URL"] != nil
-#   go_to_site(site_name[0].to_s)
+#   GoToSite(site_name[0].to_s)
 #   EnterUsername(USER_NAME,login_name[0].to_s)
 #   EnterPassword(PASS_WORD,login_pass[0].to_s)
 #   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
@@ -41,7 +41,7 @@
 
 Given(/^i have logged in as a (.*)$/i) do |login_name|
   startWebDriver
-  go_to_site()
+  GoToSite()
   
   case login_name
     when "ELMO Setup Admin"
@@ -123,7 +123,7 @@ end
 
 
 And(/^I go to Admin Settings$/i) do
-  goToAdminSettings(ADMIN_COG)
+  GoToAdminSettings(ADMIN_COG)
 end
 
 
@@ -134,7 +134,7 @@ And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
   begin
       $section_name = "//a[@href='#collapse#{menu_section}']"
       $item_name = "//span[contains(.,'#{menu_type}')]"
-      go_to_the_sections($section_name, $item_name)
+      GoToSection($section_name, $item_name)
       $add_user_type = "EMP" if menu_type.include? "Users"
       $add_user_type = "OB" if menu_type.include? "Onboarding"
   end
@@ -152,67 +152,67 @@ And(/^I Go To The (.*) Section$/i) do |menu_type|
 
         when "Menu Profile"
           begin
-            go_to_the_navbar_sections(MENU_PROFILE_LINK)
+            GoToNavBarSection(MENU_PROFILE_LINK)
           end
 
         when "Menu My Team"
           begin
-            go_to_the_navbar_sections(MENU_MY_TEAM_LINK)
+            GoToNavBarSection(MENU_MY_TEAM_LINK)
           end
 
         when "Menu Learning"
           begin
-            go_to_the_navbar_sections(MENU_LEARNING_LINK)
+            GoToNavBarSection(MENU_LEARNING_LINK)
           end
 
         when "Menu Leave"
           begin
-            go_to_the_navbar_sections(MENU_LEAVE_LINK)
+            GoToNavBarSection(MENU_LEAVE_LINK)
           end
 
         when "Menu Documents"
           begin
-            go_to_the_navbar_sections(MENU_DOCUMENTS_LINK)
+            GoToNavBarSection(MENU_DOCUMENTS_LINK)
           end
 
         when "Menu Performance"
           begin
-            go_to_the_navbar_sections(MENU_PERFORMANCE_LINK)
+            GoToNavBarSection(MENU_PERFORMANCE_LINK)
           end
 
         when "Menu Recruitment"
           begin
-            go_to_the_navbar_sections(MENU_RECRUITMENT_LINK)
+            GoToNavBarSection(MENU_RECRUITMENT_LINK)
           end
 
         when "Menu Careers"
           begin
-            go_to_the_navbar_sections(MENU_CAREERS_LINK)
+            GoToNavBarSection(MENU_CAREERS_LINK)
           end
 
         when "Menu Calender"
           begin
-            go_to_the_navbar_sections(MENU_CALENDER_LINK)
+            GoToNavBarSection(MENU_CALENDER_LINK)
           end
 
         when "Menu Contracts"
           begin
             Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[1].click) if $driver.find_elements(:class, "dropdown-toggle")[1].displayed? == true
-            Sleep_Until(go_to_the_navbar_sections(MENU_CONTRACTS_LINK))
+            Sleep_Until(GoToNavBarSection(MENU_CONTRACTS_LINK))
             sleep (1)
           end
 
         when "Menu Succession"
           begin
             Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[1].click) if $driver.find_elements(:class, "dropdown-toggle")[1].displayed? == true
-            Sleep_Until(go_to_the_navbar_sections(MENU_SUCCESSION_LINK))
+            Sleep_Until(GoToNavBarSection(MENU_SUCCESSION_LINK))
             sleep (1)
           end
 
         when "Menu Reports"
           begin
             Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[1].click) if $driver.find_elements(:class, "dropdown-toggle")[1].displayed? == true
-            Sleep_Until(go_to_the_navbar_sections(MENU_REPORTS_LINK))
+            Sleep_Until(GoToNavBarSection(MENU_REPORTS_LINK))
             sleep (1)
           end
       end
@@ -225,12 +225,12 @@ When(/^I Click On Add New User Button$/i) do
       case $add_user_type
         when "EMP"
           begin
-            go_to_add_new_users_page(ADD_NEW_USER_BTN)
+            GoToAddNewUsersPage(ADD_NEW_USER_BTN)
           end
 
         when "OB"
           begin
-            go_to_add_new_users_page(OB_ADD_NEW_USER_BTN)
+            GoToAddNewUsersPage(OB_ADD_NEW_USER_BTN)
           end
     end
   end
@@ -238,13 +238,13 @@ end
 
 
 And(/^I Enter New User Details$/i) do
-  create_users(1)
+  CreateUsers(1)
 end
 
 
 Then(/^I Should Be Able To Add (.*) New Users In To The System$/i) do |total_number_of_users|
   $total = total_number_of_users.to_i
-  add_user_details($total - 1)
+  AddUserDetails($total - 1)
 end
 
 And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
@@ -334,7 +334,7 @@ end
 
 And(/^i search for a specific user named (.*)$/i) do |username_search_value|
   $username_search_value = username_search_value
-  use_active_inactive_filter() if USE_ACTIVE_INACTIVE_FILTER.to_i == 1
+  UseActiveInactiveFilter() if USE_ACTIVE_INACTIVE_FILTER.to_i == 1
   search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, $username_search_value, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
 end
 
@@ -345,13 +345,13 @@ Then(/^I Should Be Able To use (.*) Action on The Specific User$/i) do |specifie
 
     when "De-activate user"
         begin
-          click_user_list_actions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_DEACTIVATE_VALUE)
-          verify_deleted_user(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
+          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_DEACTIVATE_VALUE)
+          VerifyDeletedUser(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
         end
 
     when "Edit User Profile"
         begin
-          click_user_list_actions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_EDIT_VALUE)
+          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_EDIT_VALUE)
         end
       end
   end
