@@ -517,8 +517,13 @@ def DeleteTheExistingEnrolmentAndReEnrolTheCandidate()
   WaitForAnElementByPartialLinkTextAndTouch("Manual Enrol Users")
   Sleep_Until($driver.find_element(:id, "s2id_autogen1"))
   $driver.find_element(:id, "s2id_autogen1").send_keys "Donttouchautomationuser"
-  sleep(3)
-  $driver.find_element(:class, "select2-result-label").click
+  begin
+  wait_valid = $driver.find_element(:class, "select2-results-1").text.include? "Donttouchautomationuser"
+  Sleep_Until(wait_valid)
+  rescue
+  sleep(9)
+  end
+  $driver.find_element(:id, "select2-results-1").click
   sleep(1)
   $driver.find_element(:id, "enrol-btn").click
   sleep(2)
