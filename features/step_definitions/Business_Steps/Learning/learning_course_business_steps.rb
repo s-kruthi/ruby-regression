@@ -1,6 +1,6 @@
 When(/^I Setup A Course To Edit The Section$/i) do
   AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
-  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, COURSE_NAME_VAL, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
+  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, NEW_COURSE_TITLE_VALUE, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
 end
 
 

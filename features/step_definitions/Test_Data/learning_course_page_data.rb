@@ -3,14 +3,9 @@ COURSE_RETRAIN_OPEN = 1
 COURSE_CERTIFICATE = 1
 
 
-COURSE_NAME_VAL = 'Automation test Course'
-COURSE_CODE_VAL =  "auto" + "#{SecureRandom.hex(5)}"
-
-
-NEW_COURSE_TITLE_VALUE = "Test Course - Please DO NOT DELETE"
+NEW_COURSE_TITLE_VALUE = "Test Course - Please DO NOT DELETE " + Time.now.strftime("%Y%m%d%H%M%S").to_s
 NEW_COURSE_CATEGORY_VALUE = "Banking"
-
-
+COURSE_CODE_VAL =  "auto" + SecureRandom.hex(5)
 NEW_COURSE_DESC_TEXT = "This is a Test For a New Course - Please DO NOT DELETE"
 
 
