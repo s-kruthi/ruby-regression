@@ -1,8 +1,8 @@
-When(/^I change "([^"]*)" elmo configuration To "([^"]*)"/i) do | elmo_configuration_name, elmo_configuration_value |
-pending
+When(/^I Change "([^"]*)" Elmo Configuration To "([^"]*)"/i) do |elmo_configuration_name, elmo_configuration_value|
+  pending
 end
 
-When(/^I Click On "([^"]*)" item from left side bar under "([^"]*)" section$/i) do |config_section_item, config_section_name|
+When(/^I Click On "([^"]*)" Item From Left Side Bar Under "([^"]*)" Section$/i) do |config_section_item, config_section_name|
 
   case config_section_name
   when "Contact Details"
@@ -30,14 +30,18 @@ And(/^I Click On "([^"]*)" Tab$/i) do |tab_name_id|
 end
 
 
-And(/^I select "([^"]*)" option to "([^"]*)"$/i) do |config_selection_name, config_selection_value|
+And(/^I Select "([^"]*)" Option To "([^"]*)"$/i) do |config_selection_name, config_selection_value|
+  pending
 end
 
-And(/^I select "([^"]*)" dropdown to "([^"]*)"$/i) do |option_name, option_value|
+And(/^I Select "([^"]*)" Dropdown To "([^"]*)"$/i) do |option_name, option_value|
+  pending
 end
 
 Then(/^I Should Be Able To Save Configuration Details$/i) do
+  ClickOnSaveButton(ELMO_CONFIG_SAVE_ID)
 end
 
 And(/^Verify That "Configuration Status" Is Displayed As "([^"]*)"$/i) do |config_status_value|
+  pending
 end

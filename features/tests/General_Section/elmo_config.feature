@@ -21,7 +21,6 @@ Feature:
     And   Verify That "Configuration Status" Is Displayed As "Saved"
 
 
-
   @elmo_config_activity_resume @general_low_risk
   Scenario: [General]Company Admin Modifying Activity And Resume Configuration Section data
     Given I Have Logged In as a Company Admin
@@ -40,9 +39,9 @@ Feature:
 #    And   Verify That "Configuration Status" Is Displayed As "Saved"
 
 
-  @elmo_config_general_configuration
-  Scenario: [Genera]As an ELMO Admin, I want to be able to modify ELMO configuration under General Setup and change various settings
-    Given I Have Logged In As A Company Admin
+  @elmo_config_general_configuration @general_low_risk
+  Scenario: [General]As an ELMO Admin, I want to be able to modify ELMO configuration under General Setup and change various settings
+    Given I Have Logged In As A ELMO Admin
     And   I go to Admin Settings
     And   I Go To General Setup under General section
     And   I Click On "ELMO Configuration" Tab
