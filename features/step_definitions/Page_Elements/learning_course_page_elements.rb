@@ -102,9 +102,6 @@ QUIZ_PASS_MARK_ID = "//input[contains(@id,'passMark-clone')]"
 QUIZ_SAVE_BTN_ID = "//button[contains(.,'Save')]"
 QUESTION_SAVE_BTN_ID = "//button[@class='save-question btn btn-primary']"
 ADD_QUESTION_BTN_ID = "//a[@class='btn btn-primary add-question']"
-SAVE_QUIZ_SETTINGS_BTN_ID = "//button[@class='btn btn-primary save-quiz']"
-
-
 
 
 ###File activity elements

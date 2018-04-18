@@ -16,19 +16,6 @@ def MakeItVisibleToAllUsers()
 end
 
 
-def SetupTheQuizActivityAndSaveIt()
-  Sleep_Until($driver.find_element(:xpath, "//input[@data-description='learning.course.modQuiz.edit.name.description']").send_keys "Automation Quiz Activity")
-  Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
-  $driver.find_elements(:class, "cke_wysiwyg_frame")[2].click
-  $driver.find_elements(:class, "cke_wysiwyg_frame")[2].send_keys "What's The capital Of Australia?"
-  Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
-  $driver.find_element(:xpath, "//input[@id='elmo_learningbundle_mod_modquiz_quizSettings_passMark-clone']").send_keys "50"
-  Sleep_Until(WaitForAnElementByXpathAndTouch("//label[@class='btn btn-default active toggle-off']"))
-  Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_QUIZ_SETTINGS_BTN_ID))
-  Sleep_Until($driver.find_element(:class, "alert-success"))
-end
-
-
 def SearchForTheCourseAndDeleteIt(course_name)
   GoToThePage(ADMIN_COURSE_PAGE)
   sleep(2)
@@ -123,6 +110,7 @@ end
 
 
 def SearchACourse(course_list_search_box_id, course_list_title_value, course_search_btn_id)
+  #query db for course if found proceed with search else create course
   Sleep_Until(WaitForAnElementByXpathAndInputValue(course_list_search_box_id, course_list_title_value))
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
@@ -131,6 +119,8 @@ end
 def EditFirstCourseFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
+  #get url and check if it has edit
+  $driver.current_url =~ /\/course\/edit/
 end
 
 
@@ -156,13 +146,18 @@ end
 
 def AddANewSection(course_add_a_section_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_add_a_section_btn_id))
+  #Adding sleep intentionally,if course has too many activities, it takes time to scroll down the page
+  sleep (2)
 end
 
 
 def SelectAnActivity(select_activity_name)
-  Sleep_Until(WaitForAnElementByIdAndTouch(COURSE_SECTION_DROPDOWN_ID))
+  # Sleep_Until(WaitForAnElementByIdAndTouch(COURSE_SECTION_DROPDOWN_ID))
+  # This is a quick hack to ensure the last dropdown is selected since that is the one which gets created from AddANewSection() method
+  Sleep_Until($driver.find_elements(:id, COURSE_SECTION_DROPDOWN_ID).last.click)
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_SEARCH_ID).last.send_keys(select_activity_name))
   puts "Adding activity: " + $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.text
+  puts "here"
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.click)
   Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
 end
@@ -208,6 +203,11 @@ def CreateAnActivity(course_activity_name)
           Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_TITLE_ID, QUIZ_TITLE_VALUE))
           Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 1))
+          Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
+          #Adding question
+          Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
+          Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
+
           Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
           $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
