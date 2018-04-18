@@ -12,12 +12,13 @@ end
 
 
 Then(/^I Should be Able To Successfully Setup The Quiz Activity$/i) do
-  SetupTheQuizActivityAndSaveIt()
+  CreateAnActivity("Quiz")
 end
 
 
 When(/^I Click On The New Course Button$/i) do
-  GoToNewCourseAddPage(CREATE_NEW_COURSE_BTN)
+  ClickOnAButtonByXPath(CREATE_NEW_COURSE_BTN)
+  #GoToNewCourseAddPage(CREATE_NEW_COURSE_BTN)
 end
 
 
