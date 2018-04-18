@@ -18,7 +18,6 @@ end
 
 When(/^I Click On The New Course Button$/i) do
   ClickOnAButtonByXPath(CREATE_NEW_COURSE_BTN)
-  #GoToNewCourseAddPage(CREATE_NEW_COURSE_BTN)
 end
 
 
