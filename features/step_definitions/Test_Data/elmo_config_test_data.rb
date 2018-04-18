@@ -1,5 +1,15 @@
+ELMO_CONFIG_SETTINGS = {
+    "User activation on": ELMO_CONFIG_USER_ACTIVATION_ON_ID,
+    "Notify new user": ELMO_CONFIG_NOTIFY_NEW_USER_ID,
+    "Employee must have manager": ELMO_CONFIG_EMPLOYEE_MUST_HAVE_MANAGER_ID,
+    "Lock course with enrolments": ELMO_CONFIG_LOCK_COURSE_WITH_ENROLMENTS_ID,
+    "New User Contract": ELMO_CONFIG_NEW_USER_CONTRACT,
+    "New OB User Contract": ELMO_CONFIG_NEW_OB_USER_CONTRACT
+}
+ELMO_CONFIG_VERIFY_SAVE_SUCCESSFUL_VALUE = "ELMO configurations have been saved!"
 
-user_config_selection = {
+
+USER_CONFIG_SELECTION = {
     "Personal Email": "personal_email",
     "Home Phone": "home_phone",
     "Work Phone": "work_phone",
@@ -7,7 +17,8 @@ user_config_selection = {
     "Address": "address"
 }
 
-activity_resume_selection = {
+
+ACTIVITY_RESUME_SELECTION = {
     "Performance": "performance",
     "Learning": "learning",
     "Professional Development": "cpd",
@@ -23,9 +34,9 @@ activity_resume_selection = {
     "Message": "messages"
 }
 
-#activity = { "a" => 100, "b" => 200 }
-#activity.each {|key, value| puts "#{key} is #{value}" }
-#activity.each_key {|key| puts key }
+# activity = { "Performance" => 100, "Professional Development" => 200 }
+# activity.each {|key, value| puts "#{key} is #{value}" }
+# activity.each_key {|key| puts key }
 
 #puts user_config_selection[:personal_email]
 

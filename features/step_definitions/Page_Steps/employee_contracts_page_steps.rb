@@ -5,7 +5,7 @@ def  GoToEmployeeContractsPageAsCompanyAdmin(admin_cog, employee_contracts_tab, 
   sleep(2)
   goToDocumentsSection(employee_contracts_tab)
   sleep(2)
-  goToItemLandingPage(employee_contract_list_path)
+  GoToItemLandingPage(employee_contract_list_path)
 end
 
 def GoToNewEmployeeContractsPage(employee_new_contract_btn)

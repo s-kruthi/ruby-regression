@@ -49,9 +49,6 @@ def CreateARandomEmailAddress()
   puts TRANS1
 end
 
-def ClickOnSaveButton(candidate_save_btn)
-  WaitForAnElementByIdAndTouch(candidate_save_btn)
-end
 
 def VerifyANewCandidateHasBeenCreated(candidate_name_class,first_name)
   WaitForAnElementByIdAndInputValue("keywordsSearchItemEnable",TRANS1)

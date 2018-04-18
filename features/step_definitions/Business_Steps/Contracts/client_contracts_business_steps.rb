@@ -24,7 +24,7 @@ And(/^I Enter New Client Contract Details$/i) do
 
 Then(/^I Should Be Able To Create A Client Contract$/i) do
   Sleep_Until(CreateAClientContract(FORM_TEMPLATE_SAVE_BTN))
-  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VERIFY_SAVE_SUCCESSFUL_VALUE))
+  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CONTRACT_VERIFY_SAVE_SUCCESSFUL_VALUE))
 end
 
 Then(/^I Should Be Able To Search For A Specific Active Client Contract$/i) do
@@ -40,5 +40,5 @@ Then(/^I Should Be Able To De-Activate A Specific Active Client Contract$/i) do
   Sleep_Until(EnterIsActiveStatus(CLIENT_CONTRACT_STATUS_ID))
   Sleep_Until(EnterEndDate(CONTRACT_END_DATE_ID, CONTRACT_END_DATE))
   Sleep_Until(CreateAClientContract(FORM_TEMPLATE_SAVE_BTN))
-  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VERIFY_SAVE_SUCCESSFUL_VALUE))
+  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CONTRACT_VERIFY_SAVE_SUCCESSFUL_VALUE))
 end

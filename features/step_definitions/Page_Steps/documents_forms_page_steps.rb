@@ -6,7 +6,7 @@ def goToTheDocumentsAsCompanyAdmin(admin_cog,documents_expand,documents_list_pat
   sleep(2)
   goToDocumentsSection(documents_expand)
   sleep(2)
-  goToItemLandingPage(documents_list_path)
+  GoToItemLandingPage(documents_list_path)
 
 end
 
@@ -14,7 +14,7 @@ def goToDocumentsSection(documents_expand)
   WaitForAnElementByXpathAndTouch(documents_expand)
 end
 
-def goToItemLandingPage(documents_list_path)
+def GoToItemLandingPage(documents_list_path)
   WaitForAnElementByXpathAndTouch(documents_list_path)
   sleep(2)
 end

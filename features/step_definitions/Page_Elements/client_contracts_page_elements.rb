@@ -29,5 +29,3 @@ CONTRACT_SEARCH_RESULT = "//td[contains(.,'Staging4')]"
 CONTRACT_SEARCH_BTN = "//button[contains(@type,'submit')]"
 
 CONTRACT_ACTION_DROPDOWN = "dropdown-toggle"
-
-VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"

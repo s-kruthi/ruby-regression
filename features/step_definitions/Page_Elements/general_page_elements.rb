@@ -64,13 +64,20 @@ EM_USER_ADDRESS_ID = "//input[contains(@id,'autocomplete_address')]"
 EM_USER_MOBILE_ID = "mobile"
 EM_USER_EMAIL_ID = "//input[contains(@id,'email')]"
 
-SAVE_BTN_ID = "//button[contains(@id,'save')]"
+
+SAVE_BTN_ID = "//button[contains(.,'Save')]"
 DONE_BTN_ID = "//button[contains(.,'Done')]"
 
+
 USERNAME_SEARCH_ID = "//input[@placeholder='Search']"
+
 
 USERNAME_SEARCH_BTN = "//button[contains(@name,'search[submit]')]"
 ACTION_DROPDOWN_CLASS_NAME = "dropdown-toggle"
 
+
 INACTIVE_CLASS_ID = "is-not-active"
 INACTIVE_ATTRIBUTE_ID = "data-sinfo"
+
+
+VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
