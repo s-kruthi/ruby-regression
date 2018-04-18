@@ -18,6 +18,10 @@ end
 
 When(/^I Click On The New Course Button$/i) do
   ClickOnAButtonByXPath(CREATE_NEW_COURSE_BTN)
+<<<<<<< HEAD
+=======
+  #GoToNewCourseAddPage(CREATE_NEW_COURSE_BTN)
+>>>>>>> d488eaaf73a1b9895153bedf1a671dea63f1f3de
 end
 
 
