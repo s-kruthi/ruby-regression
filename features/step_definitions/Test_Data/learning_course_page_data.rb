@@ -103,7 +103,7 @@ CATEGORY_NAME_VALUE = "Cucumber test name"
 CATEGORY_DESCRIPTION_VALUE = "Cucumber test description"
 EXTRA_NAME_VALUE = "extra name"
 EXTRA_DESCRIPTION_VALUE = "extra description"
-
+CATEGORY_SUCCESS_VALUE = "Category has been saved!"
 
 ###Course Section
 NEW_SECTION_VALUE = "New Section"

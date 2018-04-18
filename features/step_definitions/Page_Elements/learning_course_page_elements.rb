@@ -155,7 +155,6 @@ NEW_CATEGORY_BTN = "//a[contains(string(),'New Category')]"
 CATEGORY_NAME_ID = "elmo_learningbundle_category_name"
 CATEGORY_FRAME_CSS = "#cke_1_contents > iframe"
 CATEGORY_SAVE_ID = "elmo_learningbundle_category_Save"
-CATEGORY_SUCCESS_XPATH = "//div[@class='alert alert-success']"
 CATEGORY_EDIT_XPATH = "//a[@title='Edit Course']"
 CATEGORY_VISIBLE_XPATH = "//a[contains(concat(' ', @class, ' '), ' edit-visible ')]"
 

@@ -36,5 +36,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To General Setup under General section
     And   I Click On "ELMO Configuration" Tab
-    When  I Change "Lock course with enrolments" ELMO Configuration To "Disabled"
+    When  I Change "Lock course with enrolments" ELMO Configuration To "No"
+    And   I Change "New User Contract" ELMO Configuration to "Disabled"
+    And   I Change "New OB User Contract" ELMO Configuration to "Disabled"
     Then  I Should Be Able To Save Configuration Details

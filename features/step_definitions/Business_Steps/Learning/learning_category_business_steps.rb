@@ -13,7 +13,7 @@ end
 
 Then(/^I should be able to save course category.$/) do
   SaveCourseCategory(CATEGORY_SAVE_ID)
-  VerifySuccessAlert(CATEGORY_SUCCESS_XPATH)
+  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CATEGORY_SUCCESS_VALUE)
 end
 
 When(/^I click on "Edit" button for any of existing course category$/) do
