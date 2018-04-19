@@ -1,13 +1,16 @@
-ADD_COURSE_BTN = "//a[contains(.,'New Course')]"
-COURSE_NAME_ID = 'elmo_learningbundle_course_fullname'
-COURSE_CODE_ID ='elmo_learningbundle_course_shortname'
-SAVE_COURSE_ID = 'elmo_learningbundle_course_save'
+#ADD_COURSE_BTN = "//a[contains(.,'New Course')]"
+#COURSE_NAME_ID = 'elmo_learningbundle_course_fullname'
+#COURSE_CODE_ID ='elmo_learningbundle_course_shortname'
+#SAVE_COURSE_ID = 'elmo_learningbundle_course_save'
 ADD_COURSE_SECTION = 'add-section'
-QUIZ_ACTIVITY = "select2-results-dept-1"
+#QUIZ_ACTIVITY = "select2-results-dept-1"
 ADD_ACTIVITY = 'input[name="addsection"]'
-ACTIVITY_DROPDOWN = 's2id_section'
+#ACTIVITY_DROPDOWN = 's2id_section'
 
 
+SAVE_BTN_ID = "//button[contains(@id,'save')]"
+ADD_FILE_ID = "//a[@id='addFile']"
+COURSE_ACTIVITY_TITLE_ID = "//input[contains(@id,'name')]"
 
 ############Learning course section###############
 LEARNING_EXPAND = "//a[@href='#collapseLearning']"
@@ -15,20 +18,19 @@ LEARNING_LIST_PATH = "//span[contains(.,'Courses')]"
 
 CREATE_NEW_COURSE_BTN = "//a[contains(.,'New Course')]"
 
+
+############Course Details########################
 NEW_COURSE_TITLE_ID = "//input[contains(@id,'fullname')]"
-
-
 NEW_COURSE_CATEGORY_ID = ""
 NEW_COURSE_CODE_ID = "//input[contains(@id,'shortname')]"
 
-
+COURSE_SHOW_SEC_DESC_INPUT_ID = "//select[contains(@id,'settingsShowSectionDescription')]"
+COURSE_COMPLETE_INPUT_ID = "//select[contains(@id,'duration')]"
 COURSE_RETRAIN_INPUT_ID = "//select[contains(@id,'retrain')]"
 COURSE_RETRAIN_OPEN_INPUT_ID = "//select[contains(@id,'retrainOpen')]"
-COURSE_COMPLETE_INPUT_ID = "//select[contains(@id,'duration')]"
 COURSE_AVAILABILITY_INPUT_ID = "//select[contains(@id,'visible')]"
 COURSE_CERTIFICATE_TEMPLATE_ID = "//select[contains(@name,'course[cTemplate]')]"
 COURSE_SELF_ENROLL_INPUT_ID = "//select[contains(@id,'allowSelfUnenrol')]"
-COURSE_SHOW_SEC_DESC_INPUT_ID = "//select[contains(@id,'settingsShowSectionDescription')]"
 COURSE_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 
 
@@ -59,29 +61,13 @@ COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID = "select2-result-selectable"
 SECTION_TRASH_ICON_ID = "glyphicon-trash"
 
 
-###Acknowledgement activity elements
-ACK_TITLE_ID = "//input[contains(@id,'name')]"
-ACK_SAVE_BTN_ID = "//button[contains(@id,'save')]"
-
-
-###ELMO Survey activity elements
-SURVEY_TITLE_ID = "//input[contains(@id,'name')]"
-SURVEY_SAVE_BTN_ID = "//button[contains(@id,'save')]"
-
-
 ###ELMO Survey2 activity elements
-SURVEY2_TITLE_ID = "//input[contains(@id,'name')]"
-SURVEY2_SAVE_BTN_ID = "//button[contains(@id,'save')]"
-
 SURVEY2_CONTENT_DROPDOWN_INPUT_ID = "s2id_elmo_learningbundle_ModSurveytwo_survey2"
 SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS = "select2-input"
 SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS = "select2-result-selectable"
 
 
 ###Face-to-face activity elements
-F2F_TITLE_ID = "//input[contains(@id,'name')]"
-F2F_SAVE_BTN_ID = "//button[contains(@id,'save')]"
-F2F_SESSION_ADD_FILE_ID = "//a[@id='addFile']"
 F2F_SESSION_TITLE_ID = "//h3[contains(.,'')]"
 F2F_SESSION_HEADING_ID = "//h4[contains(.,'')]"
 F2F_SESSION_SORTING_CLASS_ID = "//a[contains(@class,'sortable')]"
@@ -95,34 +81,18 @@ F2F_SESSION_CONFIG_FAC_INPUT_ID = "//label[text()='Facilitator']/parent::div/fol
 
 F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/246/397')]"
 
+###F@F session elements#####
+F2F_SESSION_ADD_PART_CLASS_ID = "//a[contains(@class,'add-timeslot-action')]"
+
 
 ###Quiz activity elements
-QUIZ_TITLE_ID = "//input[contains(@id,'name')]"
 QUIZ_PASS_MARK_ID = "//input[contains(@id,'passMark-clone')]"
-QUIZ_SAVE_BTN_ID = "//button[contains(.,'Save')]"
 QUESTION_SAVE_BTN_ID = "//button[@class='save-question btn btn-primary']"
 ADD_QUESTION_BTN_ID = "//a[@class='btn btn-primary add-question']"
 
 
-###File activity elements
-FILE_TITLE_ID = "//input[contains(@id,'name')]"
-FILE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
-FILE_SELECT_FILE_ID = "//a[contains(.,'Select File')]"
-
-
-###Label activity elements
-LABEL_SAVE_BTN_ID = "//button[contains(@id,'save')]"
-
-
-###Page activity elements
-PAGE_TITLE_ID = "//input[contains(@id,'name')]"
-PAGE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
-
-
 ###Post activity elements
-POST_TITLE_ID = "//input[contains(@id,'name')]"
 POST_SAVE_BTN_ID = "//button[contains(@id,'submit')]"
-POST_SELECT_FILE_ID = "//a[contains(.,'Select File')]"
 
 
 ###Notification elements

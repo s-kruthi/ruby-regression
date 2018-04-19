@@ -86,7 +86,8 @@ end
 
 Then(/^I Should Be Able To Create A Session In The Face-to-Face Activity$/i) do
   ClickOnAButtonByXPath("//a[contains(.,'New Session')]")
-  #WIP
+  AddSessionDetails
+ # ClickOnSaveButton(SAVE_BTN_ID)
 end
 
 

@@ -17,8 +17,8 @@
 #end
 
 
-def SearchForTheCourseAndDeleteIt(course_name)
-  GoToThePage(ADMIN_COURSE_PAGE)
+#def SearchForTheCourseAndDeleteIt(course_name)
+#  GoToThePage(ADMIN_COURSE_PAGE)
   sleep(2)
   $driver.find_element(:id, "coureSearch_searchText").send_keys("#{course_name}", :return)
   sleep(2)
@@ -166,37 +166,40 @@ def CreateAnActivity(course_activity_name)
 
       when "Acknowledgement"
         begin
-          Sleep_Until(WaitForAnElementByXpathAndInputValue(ACK_TITLE_ID, ACK_TITLE_VALUE))
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, ACK_TITLE_VALUE))
           Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 1))
-          ClickOnSaveButton(ACK_SAVE_BTN_ID)
+          AddFile
+          ClickOnSaveButton(SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "ELMO Module"
         begin
+          pending
         end
 
       when "ELMO Survey"
         begin
-          Sleep_Until(WaitForAnElementByXpathAndInputValue(SURVEY_TITLE_ID, SURVEY_TITLE_VALUE))
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY_TITLE_VALUE))
           Sleep_Until(UseCkeditorToEnterText(SURVEY_ACTIVITY_EDITOR_TXT, 0))
-          ClickOnSaveButton(SURVEY_SAVE_BTN_ID)
+          ClickOnSaveButton(SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Face-to-Face"
         begin
-          Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_TITLE_ID, F2F_TITLE_VALUE))
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, F2F_TITLE_VALUE))
           Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 1))
-          ClickOnSaveButton(F2F_SAVE_BTN_ID)
+          AddFile
+          ClickOnSaveButton(SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Quiz"
         begin
-          Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_TITLE_ID, QUIZ_TITLE_VALUE))
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, QUIZ_TITLE_VALUE))
           Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 1))
           Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
@@ -205,39 +208,38 @@ def CreateAnActivity(course_activity_name)
           Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
 
           Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
-          $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
+          $driver.find_elements(:xpath, SAVE_BTN_ID).last.click
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "File"
         begin
-          Sleep_Until(WaitForAnElementByXpathAndInputValue(FILE_TITLE_ID, FILE_TITLE_VALUE))
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, FILE_TITLE_VALUE))
           Sleep_Until(UseCkeditorToEnterText(FILE_ACTIVITY_EDITOR_TXT, 0))
-          Sleep_Until(WaitForAnElementByXpathAndTouch(FILE_SELECT_FILE_ID))
-          Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
-          ClickOnSaveButton(FILE_SAVE_BTN_ID)
+          AddFile
+          ClickOnSaveButton(SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Label"
         begin
           Sleep_Until(UseCkeditorToEnterText(LABEL_ACTIVITY_EDITOR_TXT, 0))
-          ClickOnSaveButton(LABEL_SAVE_BTN_ID)
+          ClickOnSaveButton(SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Page"
         begin
-          Sleep_Until(WaitForAnElementByXpathAndInputValue(PAGE_TITLE_ID, PAGE_TITLE_VALUE))
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, PAGE_TITLE_VALUE))
           Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 1))
-          ClickOnSaveButton(PAGE_SAVE_BTN_ID)
+          ClickOnSaveButton(SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
       when "Post"
         begin
-          Sleep_Until(WaitForAnElementByXpathAndInputValue(POST_TITLE_ID, POST_TITLE_VALUE))
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, POST_TITLE_VALUE))
           Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
           ClickOnSaveButton(POST_SAVE_BTN_ID)
@@ -246,10 +248,10 @@ def CreateAnActivity(course_activity_name)
 
       when "ELMO Survey (new)"
         begin
-          Sleep_Until(WaitForAnElementByXpathAndInputValue(SURVEY2_TITLE_ID, SURVEY2_TITLE_VALUE))
+          Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY2_TITLE_VALUE))
           Sleep_Until(UseCkeditorToEnterText(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
           Sleep_Until(SelectSingleFromSelect2InputDropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
-          ClickOnSaveButton(SURVEY2_SAVE_BTN_ID)
+          ClickOnSaveButton(SAVE_BTN_ID)
           Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         end
 
@@ -369,7 +371,7 @@ end
 
 
 def add_f2f_session()
-  Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_FILE_ID))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_FILE_ID))
   Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
 end
 
@@ -622,4 +624,20 @@ def VerifyFaceToFaceActivitySettings()
   facilitator_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).is(':checked')")
   puts COLOR_BLUE + "Facilitator is now Disabled after value change" if facilitator_disabled == false
   puts COLOR_BLUE + "Facilitator is now Enabled after value change" if facilitator_disabled == true
+end
+
+def AddSessionDetails
+  AddFile
+  Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
+  AddSessionTimings
+end
+
+def AddFile
+  Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_FILE_ID))
+  Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
+end
+
+def AddSessionTimings
+  Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_PART_CLASS_ID))
+
 end
