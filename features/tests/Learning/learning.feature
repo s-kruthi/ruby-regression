@@ -31,80 +31,102 @@
       When  I Search For A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Delete The Specific Course
 
-    @course_activity_ack_add @course_activity_add @learning_high_risk @C243
-    Scenario: [Learning]Learning Admin creating New Acknowledgement Activity In A Course
+    @course_activity_add @learning_high_risk
+    Scenario Outline: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A New Acknowledgement Activity
+      Then  I Should Be Able To Add A New <activity_type> Activity
 
-    @course_activity_survey_add @course_activity_add @learning_high_risk
-    Scenario: [Learning]Learning Admin creating New ELMO Survey Activity In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A New ELMO Survey Activity
+      Examples:
+      | activity_type     |
+      | Acknowledgement   |
+      | ELMO Survey       |
+      | Face-to-Face      |
+      | Quiz              |
+      | File              |
+      | Label             |
+      | Page              |
+      | Post              |
+    #  | ELMO Survey (new) | -> site specific:faraz1
 
-    @course_activity_f2f_add @course_activity_add @learning_high_risk
-    Scenario: [Learning]Learning Admin creating New Face-to-Face Activity In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A New Face-to-Face Activity
+#   TODO: Pending review and removal as it’s now redundant
+#    @course_activity_ack_add @course_activity_add @learning_high_risk @C243
+#    Scenario: [Learning]Learning Admin creating New Acknowledgement Activity In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A New Acknowledgement Activity
+#
+#    @course_activity_survey_add @course_activity_add @learning_high_risk @C244
+#    Scenario: [Learning]Learning Admin creating New ELMO Survey Activity In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A New ELMO Survey Activity
+#
+#    @course_activity_f2f_add @course_activity_add @learning_high_risk @C246
+#    Scenario: [Learning]Learning Admin creating New Face-to-Face Activity In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A New Face-to-Face Activity
 
-  # TODO: Pending review and removal as it’s now redundant
-  #  @xxx430 @learning_high_risk
-  #  Scenario: [Learning]Create A New Course With Quiz Activity
-  #    Given I Have Logged In as a Learning Admin
-  #    And   I go to Admin Settings
-  #    And   I Go To Courses under Learning section
-  #    When  I Setup A Course To Edit The Section
-  #    And   I Try To Setup A Quiz Activity Under The Section
-  #    Then  I Should be Able To Successfully Setup The Quiz Activity
 
-    @course_activity_quiz_add @course_activity_add @learning_high_risk
-    Scenario: [Learning]Learning Admin creating New Quiz Activity In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A New Quiz Activity
+#    @xxx430 @learning_high_risk
+#    Scenario: [Learning]Create A New Course With Quiz Activity
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Setup A Course To Edit The Section
+#      And   I Try To Setup A Quiz Activity Under The Section
+#      Then  I Should be Able To Successfully Setup The Quiz Activity
 
-    @course_activity_file_add @course_activity_add @learning_high_risk
-    Scenario: [Learning]Learning Admin creating New File Activity In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A New File Activity
+#    @course_activity_quiz_add @course_activity_add @learning_high_risk @C247
+#    Scenario: [Learning]Learning Admin creating New Quiz Activity In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A New Quiz Activity
+#
+#    @course_activity_file_add @course_activity_add @learning_high_risk @C12720
+#    Scenario: [Learning]Learning Admin creating New File Activity In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A New File Activity
+#
+#    @course_activity_label_add @course_activity_add @learning_high_risk
+#    Scenario: [Learning]Learning Admin creating New Label Activity In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A New Label Activity
+#
+#    @course_activity_page_add @course_activity_add @learning_high_risk
+#    Scenario: [Learning]Learning Admin creating New Page Activity In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A New Page Activity
+#
+#    @course_activity_post_add @course_activity_add @learning_high_risk
+#    Scenario: [Learning]Learning Admin creating New Post Activity In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A New Post Activity
 
-    @course_activity_label_add @course_activity_add @learning_high_risk
-    Scenario: [Learning]Learning Admin creating New Label Activity In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A New Label Activity
-
-    @course_activity_page_add @course_activity_add @learning_high_risk
-    Scenario: [Learning]Learning Admin creating New Page Activity In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A New Page Activity
-
-    @course_activity_post_add @course_activity_add @learning_high_risk
-    Scenario: [Learning]Learning Admin creating New Post Activity In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A New Post Activity
-
+    # Deployed only on faraz1 as of now
     @course_activity_survey2_add @course_activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin creating New Post Activity In A Course
       Given I Have Logged In as a Learning Admin
