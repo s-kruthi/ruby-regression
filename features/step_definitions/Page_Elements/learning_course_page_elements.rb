@@ -1,7 +1,7 @@
-#ADD_COURSE_BTN = "//a[contains(.,'New Course')]"
-#COURSE_NAME_ID = 'elmo_learningbundle_course_fullname'
-#COURSE_CODE_ID ='elmo_learningbundle_course_shortname'
-#SAVE_COURSE_ID = 'elmo_learningbundle_course_save'
+# ADD_COURSE_BTN = "//a[contains(.,'New Course')]"
+# COURSE_NAME_ID = 'elmo_learningbundle_course_fullname'
+# COURSE_CODE_ID ='elmo_learningbundle_course_shortname'
+# SAVE_COURSE_ID = 'elmo_learningbundle_course_save'
 ADD_COURSE_SECTION = 'add-section'
 #QUIZ_ACTIVITY = "select2-results-dept-1"
 ADD_ACTIVITY = 'input[name="addsection"]'
@@ -114,7 +114,7 @@ MANUAL_ENROLL_LTXT = 'Manual Enrol Users'
 REFRESH_ENROLMENT_LTXT = 'Refresh Enrolments'
 REFRESH_ID = 'myModalLabel'
 COURSE_CATALOGUE_LTEXT = 'Course Catalogue'
-F2F_COURSE_TITLE_CSS  = 'span[title="course_section_automation_f2f_shanku"]'
+F2F_COURSE_TITLE_CSS = 'span[title="course_section_automation_f2f_shanku"]'
 ENROLLED_BUTTON = 'Enrolled'
 SIGNUP_BUTTON = 'Sign Up'
 COURSE_ENROLMENT_LTEXT = 'Enrolments'
@@ -146,4 +146,3 @@ DELETE_SECTION_CONFIRM_CSS = 'button[data-bb-handler="confirm"]'
 #### Learning cost category elements ####
 COST_CATEGORY_NAME_ID = "elmo_learningbundle_cost_category_name"
 CATEGORY_SECTION_CLASS = "view-course-info"
-
