@@ -8,7 +8,6 @@ ADD_ACTIVITY = 'input[name="addsection"]'
 #ACTIVITY_DROPDOWN = 's2id_section'
 
 
-SAVE_BTN_ID = "//button[contains(@id,'save')]"
 ADD_FILE_ID = "//a[@id='addFile']"
 COURSE_ACTIVITY_TITLE_ID = "//input[contains(@id,'name')]"
 
