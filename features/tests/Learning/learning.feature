@@ -39,7 +39,7 @@
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A New Acknowledgement Activity
 
-    @course_activity_survey_add @course_activity_add @learning_high_risk
+    @course_activity_survey_add @course_activity_add @learning_high_risk @C244
     Scenario: [Learning]Learning Admin creating New ELMO Survey Activity In A Course
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
@@ -47,7 +47,7 @@
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A New ELMO Survey Activity
 
-    @course_activity_f2f_add @course_activity_add @learning_high_risk
+    @course_activity_f2f_add @course_activity_add @learning_high_risk @C246
     Scenario: [Learning]Learning Admin creating New Face-to-Face Activity In A Course
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
@@ -65,7 +65,7 @@
   #    And   I Try To Setup A Quiz Activity Under The Section
   #    Then  I Should be Able To Successfully Setup The Quiz Activity
 
-    @course_activity_quiz_add @course_activity_add @learning_high_risk
+    @course_activity_quiz_add @course_activity_add @learning_high_risk @C247
     Scenario: [Learning]Learning Admin creating New Quiz Activity In A Course
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
@@ -73,7 +73,7 @@
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A New Quiz Activity
 
-    @course_activity_file_add @course_activity_add @learning_high_risk
+    @course_activity_file_add @course_activity_add @learning_high_risk @C12720
     Scenario: [Learning]Learning Admin creating New File Activity In A Course
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings

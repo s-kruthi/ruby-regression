@@ -1,19 +1,20 @@
-When(/^I Setup A Course To Edit The Section$/i) do
-  AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
-  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, NEW_COURSE_TITLE_VALUE, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
-end
+# TODO: Pending review and removal as it’s now redundant
+#When(/^I Setup A Course To Edit The Section$/i) do
+#  AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
+#  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, NEW_COURSE_TITLE_VALUE, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
+#end
 
 
-And(/^I Try To Setup A Quiz Activity Under The Section$/i) do
-  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
-  SelectAnActivity("Quiz")
-end
+#And(/^I Try To Setup A Quiz Activity Under The Section$/i) do
+#  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+#  AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
+#  SelectAnActivity("Quiz")
+#end
 
 
-Then(/^I Should be Able To Successfully Setup The Quiz Activity$/i) do
-  CreateAnActivity("Quiz")
-end
+#Then(/^I Should be Able To Successfully Setup The Quiz Activity$/i) do
+#  CreateAnActivity("Quiz")
+#end
 
 
 When(/^I Click On The New Course Button$/i) do
@@ -67,8 +68,13 @@ end
 Then(/^I Should Be Able To Add A New (.*) Activity$/i) do |course_activity_name|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
-  SelectAnActivity(course_activity_name)
-  CreateAnActivity(course_activity_name)
+  case course_activity_name
+    when 'Acknowledgement'
+      CreateAnActivity(course_activity_name)
+    else
+      SelectAnActivity(course_activity_name)
+      CreateAnActivity(course_activity_name)
+  end
 end
 
 
@@ -79,8 +85,8 @@ end
 
 
 Then(/^I Should Be Able To Create A Session In The Face-to-Face Activity$/i) do
-  # pending
-  ClickOnAButtonByXPath()
+  ClickOnAButtonByXPath("//a[contains(.,'New Session')]")
+  #WIP
 end
 
 

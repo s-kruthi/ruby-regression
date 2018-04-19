@@ -1,19 +1,20 @@
-def AddACoursesAndGoToCourseSection(course_btn_path)
-  Sleep_Until(WaitForAnElementByXpathAndTouch(course_btn_path))
-end
+# TODO: Pending review and removal as it’s now redundant
+#def AddACoursesAndGoToCourseSection(course_btn_path)
+#  Sleep_Until(WaitForAnElementByXpathAndTouch(course_btn_path))
+#end
 
 
-def FillTheCourseFormAndSaveIt(course_name_id, course_name_val, course_code_id, course_code_val, save_course_id)
-  Sleep_Until(WaitForAnElementByIdAndInputValue(course_name_id, course_name_val))
-  Sleep_Until(WaitForAnElementByIdAndInputValue(course_code_id, course_code_val))
-  MakeItVisibleToAllUsers()
-  Sleep_Until(WaitForAnElementByIdAndTouch(save_course_id))
-end
+#def FillTheCourseFormAndSaveIt(course_name_id, course_name_val, course_code_id, course_code_val, save_course_id)
+#  Sleep_Until(WaitForAnElementByIdAndInputValue(course_name_id, course_name_val))
+#  Sleep_Until(WaitForAnElementByIdAndInputValue(course_code_id, course_code_val))
+#  MakeItVisibleToAllUsers()
+#  Sleep_Until(WaitForAnElementByIdAndTouch(save_course_id))
+#end
 
 
-def MakeItVisibleToAllUsers()
-  SelectFromDropDown(COURSE_AVAILABILITY_ID, 'Available to all users')
-end
+#def MakeItVisibleToAllUsers()
+#  SelectFromDropDown(COURSE_AVAILABILITY_ID, 'Available to all users')
+#end
 
 
 def SearchForTheCourseAndDeleteIt(course_name)
@@ -47,10 +48,6 @@ end
 
 def EnterCourseTitle(new_course_title_id, new_course_title_value)
   WaitForAnElementByXpathAndInputValue(new_course_title_id, new_course_title_value)
-end
-
-
-def EnterCourseCategory()
 end
 
 
@@ -157,13 +154,12 @@ def SelectAnActivity(select_activity_name)
   Sleep_Until($driver.find_elements(:id, COURSE_SECTION_DROPDOWN_ID).last.click)
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_SEARCH_ID).last.send_keys(select_activity_name))
   puts "Adding activity: " + $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.text
-  puts "here"
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.click)
-  Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
 end
 
 
 def CreateAnActivity(course_activity_name)
+  Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
   begin
 
     case course_activity_name
