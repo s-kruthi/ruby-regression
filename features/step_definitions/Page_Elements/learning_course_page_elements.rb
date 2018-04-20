@@ -77,8 +77,8 @@ F2F_SESSION_CONFIG_FACILITATOR_ID = 'elmo_learningbundle_mod_facetoface_sessionT
 F2F_SESSION_CONFIG_LOC_INPUT_ID = "//label[text()='Location']/parent::div/following-sibling::div[1]/div[1]/div/child::label[2]"
 F2F_SESSION_CONFIG_FAC_INPUT_ID = "//label[text()='Facilitator']/parent::div/following-sibling::div[1]/div[1]/div/child::label[2]"
 
-
-F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/246/397')]"
+# TODO: Pending review and removal as it’s now redundant
+#F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/246/397')]"
 
 ###F@F session elements#####
 F2F_SESSION_ADD_PART_CLASS_ID = "//a[contains(@class,'add-timeslot-action')]"

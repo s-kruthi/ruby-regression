@@ -37,7 +37,9 @@ end
 
 
 Then(/^I Should Be Able To Create A New Course$/i) do
-  ClickOnAButtonByXPath(FORM_TEMPLATE_SAVE_BTN)
+  ClickOnSaveButton(SAVE_BTN_ID)
+  # TODO: Pending review and removal as it’s now redundant
+  #ClickOnAButtonByXPath(FORM_TEMPLATE_SAVE_BTN)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE))
 end
 
@@ -215,22 +217,31 @@ And(/^I Re Enrol The Candidate For The Activity$/) do
 end
 
 
-And(/^I Edit A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
+And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do | activity_type, f2f_activity_name |
+  F2F_ACTIVITY_NAME = f2f_activity_name
+  F2F_ACTIVITY_TYPE = activity_type
+  ## TODO: Query DB for course ection. If found proceed with search else create section
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
+  ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
+  # TODO: Pending review and removal as it’s now redundant
+ # EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
 end
 
 
 When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
   CheckFaceToFaceActivitySettings(label_name, label_value)
-  ClickOnAButtonByXPath(F2F_SAVE_BTN_ID)
+  ClickOnSaveButton(SAVE_BTN_ID)
+  # TODO: Pending review and removal as it’s now redundant
+  #ClickOnAButtonByXPath(F2F_SAVE_BTN_ID)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
 end
 
 
 Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with the Specified Settings$/i) do
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
+  ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
+  # TODO: Pending review and removal as it’s now redundant
+  #EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
   VerifyFaceToFaceActivitySettings()
 end
 

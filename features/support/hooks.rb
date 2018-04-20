@@ -40,6 +40,7 @@ After do | scenario |
       $testrail_client.send_post('add_result_for_case/'+ test_run_id +'/'+ $testrail_tag,{ :status_id => status_id, :comment => "Testing Testrail API integration."})
     end
   end
+  if scenario.failed? then $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png") end
   File.open('./features/step_definitions/Test_Data/stored_ids.rb', 'w') {|file| file.truncate(0) }
   $driver.quit
 end
