@@ -1,4 +1,5 @@
 When(/^I Change "([^"]*)" Elmo Configuration To "([^"]*)"/i) do |elmo_configuration_name, elmo_configuration_value|
+  begin
   ELMO_CONFIG_SETTINGS.each do |key, value|
     if key.to_s.eql? elmo_configuration_name
       if ($driver.find_element(:xpath, "#{value}").displayed?) == true
@@ -9,8 +10,9 @@ When(/^I Change "([^"]*)" Elmo Configuration To "([^"]*)"/i) do |elmo_configurat
   end
   puts COLOR_RED + "The specified Configuration cannot be found. Please check Test Data Section." if $configuration_found != 1
 
-rescue Exception => e
+  rescue Exception => e
   puts COLOR_BLUE + "INFO: " + e.message
+  end
 end
 
 

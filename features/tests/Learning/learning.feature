@@ -49,7 +49,8 @@
       | Label             |
       | Page              |
       | Post              |
-    #  | ELMO Survey (new) | -> site specific:faraz1
+      #Survey currently works on faraz1 only
+     # | ELMO Survey (new) |
 
 #   TODO: Pending review and removal as it’s now redundant
 #    @course_activity_ack_add @course_activity_add @learning_high_risk @C243
@@ -85,7 +86,7 @@
 #      When  I Setup A Course To Edit The Section
 #      And   I Try To Setup A Quiz Activity Under The Section
 #      Then  I Should be Able To Successfully Setup The Quiz Activity
-
+#
 #    @course_activity_quiz_add @course_activity_add @learning_high_risk @C247
 #    Scenario: [Learning]Learning Admin creating New Quiz Activity In A Course
 #      Given I Have Logged In as a Learning Admin
@@ -125,15 +126,14 @@
 #      And   I Go To Courses under Learning section
 #      When  I Edit A Specific Course Named DO NOT DELETE
 #      Then  I Should Be Able To Add A New Post Activity
-
-    # Deployed only on faraz1 as of now
-    @course_activity_survey2_add @course_activity_add @learning_high_risk
-    Scenario: [Learning]Learning Admin creating New Post Activity In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A New ELMO Survey (new) Activity
+#
+#    @course_activity_survey2_add @course_activity_add @learning_high_risk
+#    Scenario: [Learning]Learning Admin creating New Post Activity In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A New ELMO Survey (new) Activity
 
     @course_activity_delete @learning_low_risk
     Scenario: [Learning]Learning Admin Deleting A Section In A Course

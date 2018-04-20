@@ -15,7 +15,8 @@ module Chrome
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
+          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
@@ -35,7 +36,8 @@ module Chrome
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
+          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
@@ -55,7 +57,8 @@ module Chrome
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
+          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
@@ -75,7 +78,8 @@ module Chrome
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
+          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
@@ -95,7 +99,8 @@ module Chrome
         if expected_text == true
           puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
         else
-          $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
+          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
+          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
           raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
