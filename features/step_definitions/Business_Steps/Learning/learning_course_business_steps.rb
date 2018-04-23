@@ -71,11 +71,11 @@ Then(/^I Should Be Able To Add A New (.*) Activity$/i) do |course_activity_name|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
   case course_activity_name
-    when 'Acknowledgement'
-      CreateAnActivity(course_activity_name)
-    else
-      SelectAnActivity(course_activity_name)
-      CreateAnActivity(course_activity_name)
+  when 'Acknowledgement'
+    CreateAnActivity(course_activity_name)
+  else
+    SelectAnActivity(course_activity_name)
+    CreateAnActivity(course_activity_name)
   end
 end
 
@@ -89,7 +89,7 @@ end
 Then(/^I Should Be Able To Create A Session In The Face-to-Face Activity$/i) do
   ClickOnAButtonByXPath("//a[contains(.,'New Session')]")
   AddSessionDetails()
- ClickOnSaveButton(SAVE_BTN_ID)
+  ClickOnSaveButton(SAVE_BTN_ID)
 end
 
 
@@ -114,15 +114,15 @@ end
 Then(/^I Should Be Able To (.*) Of The Specific Course$/i) do |retrain_action|
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, retrain_action)
   case retrain_action
-    when "Fix Retrain"
-      begin
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_FIX_SUCCESSFUL_VALUE))
-      end
+  when "Fix Retrain"
+    begin
+      Sleep_Until(VerifySuccessAlertMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_FIX_SUCCESSFUL_VALUE))
+    end
 
-    when "Disable Retrain"
-      begin
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_DISABLE_SUCCESSFUL_VALUE))
-      end
+  when "Disable Retrain"
+    begin
+      Sleep_Until(VerifySuccessAlertMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_DISABLE_SUCCESSFUL_VALUE))
+    end
   end
 end
 
@@ -130,10 +130,10 @@ end
 And(/^I select (.*) as (.*)$/i) do |dropdown_name, dropdown_value|
 
   case dropdown_name
-    when "Employee Name"
-      begin
-        Sleep_Until(SelectSingleFromSelect2InputDropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
-      end
+  when "Employee Name"
+    begin
+      Sleep_Until(SelectSingleFromSelect2InputDropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
+    end
   end
 
 end
@@ -217,14 +217,14 @@ And(/^I Re Enrol The Candidate For The Activity$/) do
 end
 
 
-And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do | activity_type, f2f_activity_name |
+And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activity_type, f2f_activity_name|
   F2F_ACTIVITY_NAME = f2f_activity_name
   F2F_ACTIVITY_TYPE = activity_type
   ## TODO: Query DB for course ection. If found proceed with search else create section
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
   # TODO: Pending review and removal as it’s now redundant
- # EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
+  # EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
 end
 
 
