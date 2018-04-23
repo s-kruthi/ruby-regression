@@ -278,13 +278,13 @@ end
 
 def CreateAllNotifications()
   begin
-    ClickAddNotificationNutton()
+    ClickAddNotificationButton()
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
     limit = $driver.find_elements(:class, "select2-result-selectable").count - 1
     puts "Number of Notification Triggers Found: \"#{limit + 1}\"\n"
     Sleep_Until($driver.find_elements(:class, "select2-drop").last.click)
     Sleep_Until($driver.find_element(:xpath, "//button[contains(.,'×')]").click)
-    AddNotificationTrigger (limit)
+    AddNotificationTrigger(limit)
   end
 end
 
@@ -646,10 +646,10 @@ def VerifyFaceToFaceActivitySettings()
 end
 
 
-def AddSessionDetails
+def AddSessionDetails()
   AddFile()
   Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
-  AddSessionTimings
+  AddSessionTimings()
 end
 
 
@@ -659,7 +659,7 @@ def AddFile()
 end
 
 
-def AddSessionTimings
+def AddSessionTimings()
   pending
   # WIP
   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_PART_CLASS_ID))
