@@ -19,6 +19,9 @@ COURSE_SHOW_SEC_DESC_INPUT_VALUE = "Yes"
 COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE = "Course has been saved!"
 
 
+COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
+
+
 COURSE_LIST_TITLE_VALUE = "Test Course - Please DO NOT DELETE"
 
 COURSE_LIST_ACTION_ITEM_EDIT = "Edit Course"
@@ -29,7 +32,8 @@ COURSE_DELETE_SUCCESSFUL_VALUE = "Course has been deleted!"
 ###Acknowledgement activity test data
 ACK_TITLE_VALUE = "Test Acknowledgement Activity - Please DO NOT DELETE"
 ACK_ACTIVITY_EDITOR_TXT = "This is a Test Acknowledgement Activity Editor Content - Please DO NOT DELETE"
-ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
+# TODO: Pending review and removal as it’s now redundant
+# ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
 
 
 ###ELMO Survey activity test data
@@ -48,14 +52,21 @@ SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
 ###Face-to-face activity test data
 F2F_TITLE_VALUE = "Test Face-to-Face Activity - Please DO NOT DELETE"
 F2F_ACTIVITY_EDITOR_TXT = "This is a Test Face-to-Face Activity Editor Content - Please DO NOT DELETE"
-F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
+F2F_SESSION_MIN_CAPACITY_INPUT_VALUE = "5"
+F2F_SESSION_MAX_CAPACITY_INPUT_VALUE = "15"
+F2F_SESSION_LOCATION_INPUT_VALUE = "Adelaide"
+F2F_SESSION_FACILITATOR_INPUT_VALUE = "External"
+# TODO: Pending review and removal as it’s now redundant
+# F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
 
 
 ###Face-to-face activity session test data
 F2F_SESSION_ADD_SESSION_BTN = "//a[contains(.,'New Session')]"
 SESSION_INSTRUCTION_TEXT = "This is a Test Face-to-Face Session Editor Content - Please DO NOT DELETE"
 F2F_SESSION_HEADING_VALUE = "Sessions"
-F2F_SESSION_SETTINGS_SAVE_VALUE = "Successfully Saved."
+# TODO: Pending review and removal as it’s now redundant
+# F2F_SESSION_SETTINGS_SAVE_VALUE = "Successfully Saved."
+F2F_SESSION_AVAILABILITY_INPUT_VALUE = "Available to all users"
 
 
 ###Quiz activity test data
