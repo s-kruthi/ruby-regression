@@ -62,3 +62,13 @@ end
 And(/^Verify That "Configuration Status" Is Displayed As "([^"]*)"$/i) do |config_status_value|
   pending
 end
+
+Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/) do |admin_type, configure_name, configured_value|
+  steps %Q{
+    Given I Have Logged In As A #{admin_type}
+    And I go to Admin Settings
+    And I Go To General Setup under General section
+    And I Click On "ELMO Configuration" Tab
+    When I Change "#{configure_name}" ELMO Configuration To "#{configured_value}"
+        }
+  end

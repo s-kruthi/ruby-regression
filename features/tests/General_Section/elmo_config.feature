@@ -40,3 +40,13 @@ Feature:
     And   I Change "New User Contract" ELMO Configuration to "Disabled"
     And   I Change "New OB User Contract" ELMO Configuration to "Disabled"
     Then  I Should Be Able To Save Configuration Details
+
+  @elmo_config_setup @general_low_risk
+  Scenario: [Genera]As an ELMO Admin, I want to be able to modify ELMO configuration under General Setup and change various settings
+#    Given I Have Logged In As A ELMO Admin
+#    And   I go to Admin Settings
+#    And   I Go To General Setup under General section
+#    And   I Click On "ELMO Configuration" Tab
+#    When  I Change "Lock course with enrolments" ELMO Configuration To "Disabled"
+#    Then  I Should Be Able To Save Configuration Details
+    * The "ELMO Admin" Configure The "Lock course with enrolments" To "Yes"
