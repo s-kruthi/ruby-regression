@@ -155,7 +155,9 @@ def CreateAnActivity(course_activity_name)
         # TODO: Pending review and removal as it’s now redundant
         # ClickOnSaveButton(ACK_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        #Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "ELMO Module"
@@ -169,7 +171,9 @@ def CreateAnActivity(course_activity_name)
         # TODO: Pending review and removal as it’s now redundant
         # ClickOnSaveButton(SURVEY_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Face-to-Face"
@@ -181,7 +185,9 @@ def CreateAnActivity(course_activity_name)
         # TODO: Pending review and removal as it’s now redundant
         # ClickOnSaveButton(F2F_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Quiz"
@@ -200,7 +206,9 @@ def CreateAnActivity(course_activity_name)
         # TODO: Pending review and removal as it’s now redundant
         # $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
         $driver.find_elements(:xpath, SAVE_BTN_ID).last.click
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "File"
@@ -213,7 +221,9 @@ def CreateAnActivity(course_activity_name)
         #Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
         # ClickOnSaveButton(FILE_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Label"
@@ -222,7 +232,9 @@ def CreateAnActivity(course_activity_name)
         # TODO: Pending review and removal as it’s now redundant
         # ClickOnSaveButton(LABEL_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Page"
@@ -233,7 +245,9 @@ def CreateAnActivity(course_activity_name)
         # TODO: Pending review and removal as it’s now redundant
         # ClickOnSaveButton(PAGE_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Post"
@@ -244,7 +258,9 @@ def CreateAnActivity(course_activity_name)
         # TODO: Pending review and removal as it’s now redundant
         # ClickOnSaveButton(POST_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "ELMO Survey (new)"
@@ -255,7 +271,9 @@ def CreateAnActivity(course_activity_name)
         # TODO: Pending review and removal as it’s now redundant
         # ClickOnSaveButton(SURVEY2_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     end
@@ -647,9 +665,21 @@ end
 
 
 def AddSessionDetails()
-  AddFile()
   Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
   AddSessionTimings()
+  #Enter min capacity
+  Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_MIN_CAPACITY_INPUT_ID))
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_MIN_CAPACITY_INPUT_ID, F2F_SESSION_MIN_CAPACITY_INPUT_VALUE))
+
+  # enter max capacity
+  Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_MAX_CAPACITY_INPUT_ID))
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_MAX_CAPACITY_INPUT_ID, F2F_SESSION_MAX_CAPACITY_INPUT_VALUE))
+  # enter location
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
+  # enter facilitator
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_FACILITATOR_INPUT_ID, F2F_SESSION_FACILITATOR_INPUT_VALUE))
+  # select availability
+  SelectFromDropDown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_INPUT_VALUE)
 end
 
 
@@ -660,7 +690,13 @@ end
 
 
 def AddSessionTimings()
-  pending
-  # WIP
   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_PART_CLASS_ID))
+  #get time n date
+  time = DateTime.now
+  #start time is 7 days from now
+  start_time = (time + 7)
+  #finishing after 1hr
+  end_time = start_time + (1/24.0)
+  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
+  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
 end
