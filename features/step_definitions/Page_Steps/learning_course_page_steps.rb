@@ -302,7 +302,7 @@ def CreateAllNotifications()
     puts "Number of Notification Triggers Found: \"#{limit + 1}\"\n"
     Sleep_Until($driver.find_elements(:class, "select2-drop").last.click)
     Sleep_Until($driver.find_element(:xpath, "//button[contains(.,'×')]").click)
-    AddNotificationTrigger (limit)
+    AddNotificationTrigger(limit)
   end
 end
 
