@@ -12,10 +12,9 @@ pipeline {
         stage('Test') {
           steps {
             echo '-----------Running cucumber tests-------------- \n'
-	    sh ' cd ~/automation/scriptonce_automation; pwd; cucumber -csigxt @course_add url=tmsfull; cucumber -csigxt -csigxt @course_activity_add url=tmsfull'
+	    sh ' cd ~/automation/scriptonce_automation; pwd; CHANNEL=headless cucumber -csigxt @course_add url=tmsfull; CHANNEL=headless cucumber -csigxt -csigxt @course_activity_add url=tmsfull'
             
 	    echo 'Test passed\n'
-	    sh ' cd ~/automation/scriptonce_automation; pwd; git checkout .; git remote -v; git pull origin master'
           }
         }
         stage('success') {
