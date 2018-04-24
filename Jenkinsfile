@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Test passed'
-            sh ' cd /var/lib/scriptonce_automation; pwd; git checkout .; git remote -v; git pull origin master;  '
+	sh ' cd /var/lib/scriptonce_automation; pwd; git checkout .; git remote -v; git pull origin master'
           }
         }
         stage('success') {
