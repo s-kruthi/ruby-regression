@@ -1,4 +1,3 @@
-ADD_COURSE_BTN = "//a[contains(.,'New Course')]"
 COURSE_NAME_ID = 'elmo_learningbundle_course_fullname'
 COURSE_CODE_ID ='elmo_learningbundle_course_shortname'
 SAVE_COURSE_ID = 'elmo_learningbundle_course_save'
@@ -98,7 +97,6 @@ ADD_QUESTION_BTN_ID = "//a[@class='btn btn-primary add-question']"
 SCORM_TITLE_ID = "//input[contains(@id,'name')]"
 SCORM_PASS_MARK_ID = "//input[contains(@id,'cke_1_contents')]"
 SCORM_FILE_ID = "addFile"
-Activity_SAVE_BTN_ID = "//button[contains(.,'Save')]"
 EDIT_ACTIVITY_BUTTON_CSS = "a[href*='edit-activity']"
 
 

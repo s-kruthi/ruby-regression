@@ -674,7 +674,7 @@ def FillTitleAndDescriptionFieldAndSave(partial_id)
   title_id = "input[id*=#{partial_id.to_s}][name*=name]"
   WaitForAnElementByCSSAndInputValue(title_id, EDITED_VALUE)
   UseCkeditorToEnterText(EDITED_VALUE, 0)
-  $driver.find_elements(:xpath, Activity_SAVE_BTN_ID).last.click
+  ClickOnSaveButton(SAVE_BTN_ID)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
