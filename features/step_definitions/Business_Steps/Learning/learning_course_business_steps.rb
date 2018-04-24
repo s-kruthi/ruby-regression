@@ -245,3 +245,30 @@ Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with 
   VerifyFaceToFaceActivitySettings()
 end
 
+
+When(/^I Leave Current Edit Page For List$/) do
+  WaitForAnElementByXpathAndTouch(PRECEDING_BREAD_LIST_XPATH)
+end
+
+
+Then(/^I Should Edit The ([\s\w]+) .* Name And Description$/) do |edit_target|
+  FillTitleAndDescriptionFieldAndSave(edit_target)
+end
+
+
+And(/^I Search For Created Course In The Scenario$/) do
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
+end
+
+
+And(/^I Change The Created Course Enrolment With (\w+) Being (\w+)$/) do |role_type, enrolled|
+  HandleEnrolmentOfCourse(role_type, enrolled)
+end
+
+
+And(/^I Go To The Sections Of The Created Course$/) do
+  WaitForAnElementByLinkTextAndTouch("Courses")
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
+  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+end

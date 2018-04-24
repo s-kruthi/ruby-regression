@@ -34,6 +34,12 @@ ACTIVITY_RESUME_SELECTION = {
     "Message": "messages"
 }
 
+
+USER_IN_ROLE = {
+    "Employee": "Tomatkins Automation No Touch Please",
+}
+
+
 # activity = { "Performance" => 100, "Professional Development" => 200 }
 # activity.each {|key, value| puts "#{key} is #{value}" }
 # activity.each_key {|key| puts key }

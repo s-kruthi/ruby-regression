@@ -1,7 +1,8 @@
 Given(/^I Create A New Course With A Unique Name$/) do
   @unique_course_name = "Automation test section" + Time.now.to_s
   AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
-  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, @unique_course_name, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
+  course_code_value = COURSE_CODE_ID + Time.now.to_s
+  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, @unique_course_name, COURSE_CODE_ID, course_code_value, SAVE_COURSE_ID)
 end
 
 Then(/^I Should Be Able To Create A Section$/) do

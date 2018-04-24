@@ -28,6 +28,43 @@
 #   WaitForAnElementByXpathAndTouch(new_course_btn)
 # end
 
+def AddACoursesAndGoToCourseSection(course_btn_path)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(course_btn_path))
+end
+
+
+def FillTheCourseFormAndSaveIt(course_name_id, course_name_val, course_code_id, course_code_val, save_course_id)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(course_name_id, course_name_val))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(course_code_id, course_code_val))
+  MakeItVisibleToAllUsers()
+  Sleep_Until(WaitForAnElementByIdAndTouch(save_course_id))
+end
+
+def MakeItVisibleToAllUsers()
+  SelectFromDropDown(COURSE_AVAILABILITY_ID, 'Available to all users')
+end
+
+def SearchForTheCourseAndDeleteIt(course_name)
+  GoToThePage(ADMIN_COURSE_PAGE)
+  sleep(2)
+  $driver.find_element(:id, "coureSearch_searchText").send_keys("#{course_name}", :return)
+  sleep(2)
+  $driver.find_elements(:class, "dropdown-toggle")[3].click
+  $driver.find_element(:class, "delete-course").click
+  sleep(3)
+  $driver.switch_to.frame("iframe")
+  sleep(2)
+  $driver.find_element(:xpath, "//button[@type='submit']").click
+end
+
+def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_list_path)
+  WaitForAnElementByClass(admin_cog)
+  TouchAdminMenu(admin_cog)
+  sleep(2)
+  goToDocumentsSection(documents_expand)
+  sleep(2)
+  GoToItemLandingPage(documents_list_path)
+end
 
 def EnterCourseTitle(new_course_title_id, new_course_title_value)
   WaitForAnElementByXpathAndInputValue(new_course_title_id, new_course_title_value)
@@ -201,6 +238,17 @@ def CreateAnActivity(course_activity_name)
         # $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
         $driver.find_elements(:xpath, SAVE_BTN_ID).last.click
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+      end
+
+    when "SCORM Package"
+      begin
+        Sleep_Until(WaitForAnElementByXpathAndInputValue(SCORM_TITLE_ID, SCORM_TITLE_VALUE))
+        Sleep_Until(UseCkeditorToEnterText(SCORM_ACTIVITY_EDITOR_TXT, 0))
+        Sleep_Until(WaitForAnElementByIdAndTouch(SCORM_FILE_ID))
+        Sleep_Until(WaitForSelectFileButtonAndUpload_File(SCORM_FILE_NAME))
+        $driver.find_elements(:xpath, Activity_SAVE_BTN_ID).last.click
+        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        sleep(2)
       end
 
     when "File"
@@ -590,6 +638,13 @@ def VerifyAnElementNotExistByCSS(css)
   end
 end
 
+def ConditionAnElementNotExistByCSS(css)
+  wait = Selenium::WebDriver::Wait.new(:timeout => 5)
+  elements = wait.until {
+    $driver.find_elements(:css, "#{css}")
+  }
+  elements.empty?
+end
 
 def CheckFaceToFaceActivitySettings(label_name, label_value)
   case label_name
@@ -663,4 +718,42 @@ def AddSessionTimings()
   pending
   # WIP
   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_PART_CLASS_ID))
+end
+
+def FillTitleAndDescriptionFieldAndSave(partial_id)
+  WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS)
+  title_id = "input[id*=#{partial_id.to_s}][name*=name]"
+  WaitForAnElementByCSSAndInputValue(title_id, EDITED_VALUE)
+  UseCkeditorToEnterText(EDITED_VALUE, 0)
+  $driver.find_elements(:xpath, Activity_SAVE_BTN_ID).last.click
+  Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+end
+
+def HandleEnrolmentOfCourse(role_type, enrolled)
+  WaitForAnElementByCSSAndTouch("a[title='Edit Course'] + .btn")
+  WaitForAnElementByCSSAndTouch("[title='Enrolled Users']")
+  case enrolled
+  when "Enrolled"
+    UnenrolAllOnCourseEnrolmentPage() unless ConditionAnElementNotExistByCSS("tr[data-id]")
+    EnrolUserWithRoleTypeOnCourseEnrolmentPage(role_type)
+  when "NonEnrolled"
+    UnenrolAllOnCourseEnrolmentPage() unless ConditionAnElementNotExistByCSS("tr[data-id]")
+  end
+end
+
+def UnenrolAllOnCourseEnrolmentPage
+  WaitForAnElementByIdAndTouch("select-all")
+  Sleep_Until(WaitForAnElementByIdAndTouch("multiple_unenrolled"))
+  Sleep_Until(PressConfirm())
+end
+
+def EnrolUserWithRoleTypeOnCourseEnrolmentPage(user)
+  WaitForAnElementByCSSAndTouch("[title='Bulk Enrol Users']")
+  user_name = USER_IN_ROLE.each do |key, value|
+    break value if key.to_s.eql? "Employee"
+  end
+  WaitForAnElementByXpathAndTouch(%Q{//span[contains(text(), "#{user_name}")]/../preceding-sibling::*[1]})
+  WaitForAnElementByIdAndTouch("enrol-btn")
+  Sleep_Until(WaitForAnElementByCSSAndTouch(".process-action[data-action=run]"))
+  sleep(5)
 end
