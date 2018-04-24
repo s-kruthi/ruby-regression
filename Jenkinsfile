@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
           steps {
             echo '-----------Running cucumber tests-------------- \n'
-	    sh ' cd ~/automation/scriptonce_automation; pwd; CHANNEL=headless cucumber -csigxt @course_add url=tmsfull; CHANNEL=headless cucumber -csigxt -csigxt @course_activity_add url=tmsfull'
+	    sh ' cd ~/automation/scriptonce_automation; pwd; CHANNEL=headless cucumber -csigxt (@course_add or @course_activity_add) url=tmsfull; pwd'
             
 	    echo 'Test passed\n'
           }
