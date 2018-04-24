@@ -11,7 +11,8 @@ pipeline {
       parallel {
         stage('Test') {
           steps {
-	    	sh "scriptonce; pwd; cucumber -csigxt '@smoke or @course_add' url=tmsfull"
+            echo '-----------Running cucumber tests-------------- \n'
+	    	sh "scriptonce; pwd; CHANNEL=headless cucumber -csigxt '@smoke or @course_add' url=tmsfull"
           }
         }
         stage('success') {
