@@ -3,15 +3,16 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Building..'
+        echo 'Building/Checking..'
+	sh 'scriptonce; pwd; git remote -v; git stash; git fetch; git checkout master; git pull origin master'
       }
     }
     stage('Test') {
       parallel {
         stage('Test') {
           steps {
-            echo 'Test passed'
-	sh ' cd /var/lib/scriptonce_automation; pwd; git checkout .; git remote -v; git pull origin master'
+            echo '-----------Running cucumber tests-------------- \n'
+	    sh 'scriptonce; pwd; cucumber -csigxt @course_add url=tmsfull'
           }
         }
         stage('success') {
