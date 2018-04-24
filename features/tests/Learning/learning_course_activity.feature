@@ -4,7 +4,7 @@
   #@learningTestRailTags
 Feature: Course Activity Scorm Package Manipulation
   @add_edit_scorm_package @C1027
-  Scenario: Add And Edit Scorm Activity
+  Scenario: As a Learning Admin, I Want To Be Able To Add/Edit A SCORM Package And Make Necessary Changes
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To Courses Under Learning Section

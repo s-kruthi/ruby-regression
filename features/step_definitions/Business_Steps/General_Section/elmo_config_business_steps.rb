@@ -63,7 +63,7 @@ And(/^Verify That "Configuration Status" Is Displayed As "([^"]*)"$/i) do |confi
   pending
 end
 
-Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/) do |admin_type, configure_name, configured_value|
+Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/i) do |admin_type, configure_name, configured_value|
   steps %Q{
     Given I Have Logged In As A #{admin_type}
     And I go to Admin Settings

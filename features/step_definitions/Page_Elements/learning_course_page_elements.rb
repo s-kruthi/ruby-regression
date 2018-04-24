@@ -97,6 +97,7 @@ SCORM_FILE_ID = "addFile"
 Activity_SAVE_BTN_ID = "//button[contains(.,'Save')]"
 EDIT_ACTIVITY_BUTTON_CSS = "a[href*='edit-activity']"
 
+
 ###File activity elements
 FILE_TITLE_ID = "//input[contains(@id,'name')]"
 FILE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
@@ -167,6 +168,7 @@ DELETE_SECTION_CONFIRM_CSS = 'button[data-bb-handler="confirm"]'
 #### Learning cost category elements ####
 COST_CATEGORY_NAME_ID = "elmo_learningbundle_cost_category_name"
 CATEGORY_SECTION_CLASS = "view-course-info"
+
 
 #### Learning activity elements ####
 PRECEDING_BREAD_LIST_XPATH = "//ol[@class='breadcrumb']/*[last()]/preceding-sibling::*[1]"

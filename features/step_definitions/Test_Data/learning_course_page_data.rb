@@ -64,12 +64,14 @@ QUIZ_ACTIVITY_EDITOR_TXT = "This is a Test Quiz Activity Editor Content - Please
 QUIZ_PASS_MARK_VALUE = "85"
 QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved."
 
+
 ###SCORM package activity test data
 SCORM_TITLE_VALUE = "Test SCORM package Activity - Please DO NOT DELETE"
 SCORM_ACTIVITY_EDITOR_TXT = "This is a Test SCORM package Activity Editor Content - Please DO NOT DELETE"
 ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved."
 SCORM_FILE_NAME = 'scorm_3199.zip'
 EDITED_VALUE = 'The field is edited.'
+
 
 ###File activity test data
 FILE_TITLE_VALUE = "Test File Activity - Please DO NOT DELETE"
@@ -105,6 +107,7 @@ CATEGORY_DESCRIPTION_VALUE = "Cucumber test description"
 EXTRA_NAME_VALUE = "extra name"
 EXTRA_DESCRIPTION_VALUE = "extra description"
 CATEGORY_SUCCESS_VALUE = "Category has been saved!"
+
 
 ###Course Section
 NEW_SECTION_VALUE = "New Section"

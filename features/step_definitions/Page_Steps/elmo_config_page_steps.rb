@@ -13,6 +13,7 @@ def click_on_toggle_button(module_name, toggle_btn_name)
   sleep (1)
 end
 
+
 def ConfigureLockCourseWithEnrolments(dropdown_id_xpath, dropdown_value)
   SelectFromDropDown(dropdown_id_xpath, dropdown_value)
 end

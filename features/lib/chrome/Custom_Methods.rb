@@ -200,7 +200,7 @@ module Chrome
       end
     end
 
-    def WaitForChooseFileButtonAndUpload_File(file)
+    def WaitForSelectFileButtonAndUpload_File(file)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         upload_button = wait.until {

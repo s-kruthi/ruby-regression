@@ -245,7 +245,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(SCORM_TITLE_ID, SCORM_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(SCORM_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(WaitForAnElementByIdAndTouch(SCORM_FILE_ID))
-        Sleep_Until(WaitForChooseFileButtonAndUpload_File(SCORM_FILE_NAME))
+        Sleep_Until(WaitForSelectFileButtonAndUpload_File(SCORM_FILE_NAME))
         $driver.find_elements(:xpath, Activity_SAVE_BTN_ID).last.click
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         sleep(2)
