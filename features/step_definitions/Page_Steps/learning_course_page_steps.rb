@@ -1,33 +1,3 @@
-# TODO: Pending review and removal
-# def SearchForTheCourseAndDeleteIt(course_name)
-#  GoToThePage(ADMIN_COURSE_PAGE)
-#   sleep(2)
-#   $driver.find_element(:id, "coureSearch_searchText").send_keys("#{course_name}", :return)
-#   sleep(2)
-#   $driver.find_elements(:class, "dropdown-toggle")[3].click
-#   $driver.find_element(:class, "delete-course").click
-#   sleep(3)
-#   $driver.switch_to.frame("iframe")
-#   sleep(2)
-#   $driver.find_element(:xpath, "//button[@type='submit']").click
-# end
-
-
-# TODO: Pending review and removal
-# def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_list_path)
-#   WaitForAnElementByClass(admin_cog)
-#   TouchAdminMenu(admin_cog)
-#   sleep(2)
-#   goToDocumentsSection(documents_expand)
-#   sleep(2)
-#   GoToItemLandingPage(documents_list_path)
-# end
-
-
-# def GoToNewCourseAddPage(new_course_btn)
-#   WaitForAnElementByXpathAndTouch(new_course_btn)
-# end
-
 def AddACoursesAndGoToCourseSection(course_btn_path)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_btn_path))
 end
@@ -797,4 +767,8 @@ def EnrolUserWithRoleTypeOnCourseEnrolmentPage(user)
   end_time = start_time + (1 / 24.0)
   Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
   Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
+
+  end_time = start_time + (1/24.0)
+  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
+  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
 end
