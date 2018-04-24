@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building/Checking..'
-	sh 'scriptonce; pwd; git remote -v; git stash; git fetch; git checkout master; git pull origin master'
+	sh "scriptonce; pwd; git remote -v; git stash; git fetch; git checkout master; git pull origin master"
       }
     }
     stage('Test') {
