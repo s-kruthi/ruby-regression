@@ -270,5 +270,5 @@ And(/^I Go To The Sections Of The Created Course$/) do
   WaitForAnElementByLinkTextAndTouch("Courses")
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
   EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
-  WaitForAnElementByLinkTextAndTouch("Sections")
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
 end
