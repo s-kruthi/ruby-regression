@@ -691,7 +691,8 @@ end
 
 def AddSessionDetails()
   Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
-  AddSessionTimings()
+  # TODO: Complete AddSessionTimes()
+  # AddSessionTimings()
   #Enter min capacity
   Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_MIN_CAPACITY_INPUT_ID))
   Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_MIN_CAPACITY_INPUT_ID, F2F_SESSION_MIN_CAPACITY_INPUT_VALUE))
@@ -715,6 +716,8 @@ end
 
 
 def AddSessionTimings()
+  # TODO Add Both start time and finish time since this is required when adding a time
+  pending
   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_PART_CLASS_ID))
 end
 

@@ -32,8 +32,7 @@ COURSE_DELETE_SUCCESSFUL_VALUE = "Course has been deleted!"
 ###Acknowledgement activity test data
 ACK_TITLE_VALUE = "Test Acknowledgement Activity - Please DO NOT DELETE"
 ACK_ACTIVITY_EDITOR_TXT = "This is a Test Acknowledgement Activity Editor Content - Please DO NOT DELETE"
-# TODO: Pending review and removal as it’s now redundant
-# ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
+ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
 
 
 ###ELMO Survey activity test data
@@ -56,15 +55,13 @@ F2F_SESSION_MIN_CAPACITY_INPUT_VALUE = "5"
 F2F_SESSION_MAX_CAPACITY_INPUT_VALUE = "15"
 F2F_SESSION_LOCATION_INPUT_VALUE = "Adelaide"
 F2F_SESSION_FACILITATOR_INPUT_VALUE = "External"
-# TODO: Pending review and removal as it’s now redundant
-# F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
+F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
 
 
 ###Face-to-face activity session test data
 SESSION_INSTRUCTION_TEXT = "This is a Test Face-to-Face Session Editor Content - Please DO NOT DELETE"
 F2F_SESSION_HEADING_VALUE = "Sessions"
-# TODO: Pending review and removal as it’s now redundant
-# F2F_SESSION_SETTINGS_SAVE_VALUE = "Successfully Saved."
+F2F_SESSION_SETTINGS_SAVE_VALUE = "Successfully Saved."
 F2F_SESSION_AVAILABILITY_INPUT_VALUE = "Available to all users"
 
 
