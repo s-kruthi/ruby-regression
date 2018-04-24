@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
           steps {
             echo '-----------Running cucumber tests-------------- \n'
-	    sh ' cd ~/automation/scriptonce_automation; pwd; /usr/bin/cucumer /usr/local/bin/cucumber -csigxt @course_add url=tmsfull; /usr/local/bin/cucumber -csigxt -csigxt @course_activity_add url=tmsfull; '
+	    sh ' cd ~/automation/scriptonce_automation; pwd; /usr/bin/cucumer /usr/local/bin/cucumber -csigxt @course_add url=tmsfull; /usr/local/bin/cucumber -csigxt -csigxt @course_activity_add url=tmsfull'
           }
         }
         stage('success') {
