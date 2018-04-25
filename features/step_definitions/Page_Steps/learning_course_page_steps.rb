@@ -691,12 +691,10 @@ end
 
 def AddSessionDetails()
   Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
-  # TODO: Complete AddSessionTimes()
-  # AddSessionTimings()
+  AddSessionTimings()
   #Enter min capacity
   Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_MIN_CAPACITY_INPUT_ID))
   Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_MIN_CAPACITY_INPUT_ID, F2F_SESSION_MIN_CAPACITY_INPUT_VALUE))
-
   # enter max capacity
   Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_MAX_CAPACITY_INPUT_ID))
   Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_MAX_CAPACITY_INPUT_ID, F2F_SESSION_MAX_CAPACITY_INPUT_VALUE))
@@ -716,9 +714,15 @@ end
 
 
 def AddSessionTimings()
-  # TODO Add Both start time and finish time since this is required when adding a time
-  pending
   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_PART_CLASS_ID))
+  #get time n date
+  time = DateTime.now
+  #start time is 7 days from now
+  start_time = (time + 7)
+  #finishing after 1hr
+  end_time = start_time + (1/24.0)
+  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
+  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
 end
 
 
@@ -761,17 +765,4 @@ def EnrolUserWithRoleTypeOnCourseEnrolmentPage(user)
   WaitForAnElementByIdAndTouch("enrol-btn")
   Sleep_Until(WaitForAnElementByCSSAndTouch(".process-action[data-action=run]"))
   sleep(5)
-
-  #get time n date
-  time = DateTime.now
-  #start time is 7 days from now
-  start_time = (time + 7)
-  #finishing after 1hr
-  end_time = start_time + (1 / 24.0)
-  Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
-  Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
-
-  end_time = start_time + (1/24.0)
-  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
-  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
 end
