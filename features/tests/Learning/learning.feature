@@ -153,6 +153,16 @@
 
     @course_activity_f2f_session_add @course_activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin Creating New Session In A Face-to-Face Activity
+      Background:
+        Given I Have Logged In as a Learning Admin
+        And   I go to Admin Settings
+        And   I Go To Courses under Learning section
+        And   I Edit A Specific Course Named DO NOT DELETE
+        And   I Edit A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
+        When  I Set Location Settings To Enabled
+        And   I Set Facilitator Settings To Enabled
+        Then  I Should Be Able To Create A Session In The Face-to-Face Activity with the Specified Settings
+
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section

@@ -80,8 +80,16 @@ F2F_SESSION_CONFIG_FAC_INPUT_ID = "//label[text()='Facilitator']/parent::div/fol
 # TODO: Pending review and removal as it’s now redundant
 #F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/246/397')]"
 
-###F@F session elements#####
+###F2F session elements#####
+F2F_SESSION_ADD_SESSION_BTN = "//a[contains(.,'New Session')]"
 F2F_SESSION_ADD_PART_CLASS_ID = "//a[contains(@class,'add-timeslot-action')]"
+F2F_SESSION_START_TIME = "//input[contains(@id, 'startTime')]"
+F2F_SESSION_FINISH_TIME = "//input[contains(@id, 'finishTime')]"
+F2F_SESSION_AVAILABILITY_INPUT_ID = "//select[contains(@id,'availability')]"
+F2F_SESSION_MIN_CAPACITY_INPUT_ID = "//input[contains(@id,'minCapacity')]"
+F2F_SESSION_MAX_CAPACITY_INPUT_ID = "//input[contains(@id,'maxCapacity')]"
+F2F_SESSION_LOCATION_INPUT_ID= "//input[contains(@id,'location')]"
+F2F_SESSION_FACILITATOR_INPUT_ID = "//input[contains(@id,'facilitator')]"
 
 
 ###Quiz activity elements

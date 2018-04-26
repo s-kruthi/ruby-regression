@@ -87,9 +87,10 @@ end
 
 
 Then(/^I Should Be Able To Create A Session In The Face-to-Face Activity$/i) do
-  ClickOnAButtonByXPath("//a[contains(.,'New Session')]")
+  ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
   AddSessionDetails()
   ClickOnSaveButton(SAVE_BTN_ID)
+  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
 
