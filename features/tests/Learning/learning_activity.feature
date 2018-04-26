@@ -32,7 +32,7 @@
       | Acknowledgement   |
 
 
-    @course_activity_elmomodule_add @learning_high_risk
+    @course_activity_elmomodule_add @learning_high_risk @C1633
     Scenario Outline: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
