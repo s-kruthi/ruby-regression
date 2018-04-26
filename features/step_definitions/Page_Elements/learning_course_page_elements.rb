@@ -3,9 +3,7 @@ COURSE_NAME_ID = 'elmo_learningbundle_course_fullname'
 COURSE_CODE_ID ='elmo_learningbundle_course_shortname'
 SAVE_COURSE_ID = 'elmo_learningbundle_course_save'
 ADD_COURSE_SECTION = 'add-section'
-#QUIZ_ACTIVITY = "select2-results-dept-1"
 ADD_ACTIVITY = 'input[name="addsection"]'
-#ACTIVITY_DROPDOWN = 's2id_section'
 
 
 ADD_FILE_ID = "//a[@id='addFile']"
@@ -77,8 +75,6 @@ F2F_SESSION_CONFIG_FACILITATOR_ID = 'elmo_learningbundle_mod_facetoface_sessionT
 F2F_SESSION_CONFIG_LOC_INPUT_ID = "//label[text()='Location']/parent::div/following-sibling::div[1]/div[1]/div/child::label[2]"
 F2F_SESSION_CONFIG_FAC_INPUT_ID = "//label[text()='Facilitator']/parent::div/following-sibling::div[1]/div[1]/div/child::label[2]"
 
-# TODO: Pending review and removal as it’s now redundant
-#F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/246/397')]"
 
 ###F2F session elements#####
 F2F_SESSION_ADD_SESSION_BTN = "//a[contains(.,'New Session')]"

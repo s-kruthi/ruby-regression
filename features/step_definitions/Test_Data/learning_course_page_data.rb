@@ -35,13 +35,19 @@ ACK_ACTIVITY_EDITOR_TXT = "This is a Test Acknowledgement Activity Editor Conten
 ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
 
 
+###ELMO Module activity test data
+ELMO_MODULE_ACTIVITY_TITLE_VALUE = "Test ELMO Module Activity - Please DO NOT DELETE"
+ELMO_MODULE_ACTIVITY_EDITOR_TXT = "This is a Test ELMO Module Activity Editor Content - Please DO NOT DELETE"
+ELMO_MODULE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
+
+
 ###ELMO Survey activity test data
 SURVEY_TITLE_VALUE = "Test ELMO Survey Activity - Please DO NOT DELETE"
 SURVEY_ACTIVITY_EDITOR_TXT = "This is a Test ELMO Survey Activity Editor Content - Please DO NOT DELETE"
 SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved"
 
 
-###ELMO Survey activity test data
+###ELMO Survey2 activity test data
 SURVEY2_TITLE_VALUE = "Test ELMO Survey (new) Activity - Please DO NOT DELETE"
 SURVEY2_ACTIVITY_EDITOR_TXT = "This is a Test ELMO Survey (new) Activity Editor Content - Please DO NOT DELETE"
 SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE = "Learning"
@@ -56,7 +62,6 @@ F2F_SESSION_MAX_CAPACITY_INPUT_VALUE = "15"
 F2F_SESSION_LOCATION_INPUT_VALUE = "Adelaide"
 F2F_SESSION_FACILITATOR_INPUT_VALUE = "External"
 F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
-
 
 ###Face-to-face activity session test data
 SESSION_INSTRUCTION_TEXT = "This is a Test Face-to-Face Session Editor Content - Please DO NOT DELETE"

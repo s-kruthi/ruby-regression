@@ -1,22 +1,3 @@
-# TODO: Pending review and removal as it’s now redundant
-#When(/^I Setup A Course To Edit The Section$/i) do
-#  AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
-#  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, NEW_COURSE_TITLE_VALUE, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
-#end
-
-
-#And(/^I Try To Setup A Quiz Activity Under The Section$/i) do
-#  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-#  AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
-#  SelectAnActivity("Quiz")
-#end
-
-
-#Then(/^I Should be Able To Successfully Setup The Quiz Activity$/i) do
-#  CreateAnActivity("Quiz")
-#end
-
-
 When(/^I Click On The New Course Button$/i) do
   ClickOnAButtonByXPath(CREATE_NEW_COURSE_BTN)
 end
@@ -38,8 +19,6 @@ end
 
 Then(/^I Should Be Able To Create A New Course$/i) do
   ClickOnSaveButton(SAVE_BTN_ID)
-  # TODO: Pending review and removal as it’s now redundant
-  #ClickOnAButtonByXPath(FORM_TEMPLATE_SAVE_BTN)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE))
 end
 
@@ -224,16 +203,12 @@ And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activi
   ## TODO: Query DB for course ection. If found proceed with search else create section
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
-  # TODO: Pending review and removal as it’s now redundant
-  # EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
 end
 
 
 When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
   CheckFaceToFaceActivitySettings(label_name, label_value)
   ClickOnSaveButton(SAVE_BTN_ID)
-  # TODO: Pending review and removal as it’s now redundant
-  #ClickOnAButtonByXPath(F2F_SAVE_BTN_ID)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
 end
 
@@ -241,8 +216,6 @@ end
 Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with the Specified Settings$/i) do
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
-  # TODO: Pending review and removal as it’s now redundant
-  #EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
   VerifyFaceToFaceActivitySettings()
 end
 
