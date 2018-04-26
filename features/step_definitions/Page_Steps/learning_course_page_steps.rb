@@ -159,27 +159,23 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 1))
         AddFile()
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(ACK_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        # TODO: Pending review and removal as it’s now redundant
-        #Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "ELMO Module"
       begin
+        Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, ELMO_MODULE_ACTIVITY_TITLE_VALUE))
+        Sleep_Until(UseCkeditorToEnterText(ELMO_MODULE_ACTIVITY_EDITOR_TXT, 0))
+        ClickOnSaveButton(SAVE_BTN_ID)
+        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ELMO_MODULE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "ELMO Survey"
       begin
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(SURVEY_ACTIVITY_EDITOR_TXT, 0))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(SURVEY_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        # TODO: Pending review and removal as it’s now redundant
-        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
@@ -189,11 +185,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 1))
         AddFile()
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(F2F_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        # TODO: Pending review and removal as it’s now redundant
-        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
@@ -205,16 +197,10 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
         #Adding question
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
-        # TODO: Pending review and removal as it’s now redundant
         Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
-        #ClickOnSaveButton(SAVE_BTN_ID)
 
         Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
-        # TODO: Pending review and removal as it’s now redundant
-        # $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
-        $driver.find_elements(:xpath, SAVE_BTN_ID).last.click
-        # TODO: Pending review and removal as it’s now redundant
-        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
@@ -224,7 +210,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(UseCkeditorToEnterText(SCORM_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(WaitForAnElementByIdAndTouch(SCORM_FILE_ID))
         Sleep_Until(WaitForSelectFileButtonAndUpload_File(SCORM_FILE_NAME))
-        $driver.find_elements(:xpath, Activity_SAVE_BTN_ID).last.click
+        ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         sleep(2)
       end
@@ -234,24 +220,14 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, FILE_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(FILE_ACTIVITY_EDITOR_TXT, 0))
         AddFile()
-        # TODO: Pending review and removal as it’s now redundant
-        #Sleep_Until(WaitForAnElementByXpathAndTouch(FILE_SELECT_FILE_ID))
-        #Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
-        # ClickOnSaveButton(FILE_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        # TODO: Pending review and removal as it’s now redundant
-        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Label"
       begin
         Sleep_Until(UseCkeditorToEnterText(LABEL_ACTIVITY_EDITOR_TXT, 0))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(LABEL_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        # TODO: Pending review and removal as it’s now redundant
-        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
@@ -260,11 +236,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, PAGE_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 1))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(PAGE_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        # TODO: Pending review and removal as it’s now redundant
-        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
@@ -273,11 +245,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, POST_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(POST_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        # TODO: Pending review and removal as it’s now redundant
-        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
@@ -286,11 +254,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY2_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(SelectSingleFromSelect2InputDropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(SURVEY2_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        # TODO: Pending review and removal as it’s now redundant
-        # Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
@@ -399,10 +363,7 @@ end
 
 
 def ModifyACourseActivity(activity_edit_link_name, action_type)
-# TODO: Pending review and removal as it’s now redundant
-#def EditACourseActivity(activity_edit_link)
   Sleep_Until($driver.find_elements(:xpath, "//a[contains(@title,'#{action_type} #{activity_edit_link_name}')]").last.click)
-# Sleep_Until(WaitForAnElementByXpathAndTouch(activity_edit_link))
 end
 
 
@@ -415,18 +376,6 @@ def add_f2f_session()
   Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_FILE_ID))
   Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
 end
-
-
-# TODO: Pending Removal
-# def ClickAddF2fSessionBtn(f2f_session_add_session_btn)
-#   Sleep_Until(WaitForAnElementByXpathAndTouch(f2f_session_add_session_btn))
-# end
-#
-#
-# def AddF2fSession()
-#   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_FILE_ID))
-#   Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
-# end
 
 
 def VerifyFilterResult(verify_result_table_id, input_value)
@@ -616,15 +565,14 @@ def VerifyAnElementNotExistByCSS(css)
     if elements.empty?
       puts COLOR_GREEN + "MATCHED: Item not displayed."
     else
-      # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
-      # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-      raise (COLOR_RED + "Item displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+      raise(COLOR_RED + "Item displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
     end
   rescue Exception => e
     puts e.message
     $driver.quit
   end
 end
+
 
 def ConditionAnElementNotExistByCSS(css)
   wait = Selenium::WebDriver::Wait.new(:timeout => 5)
@@ -633,6 +581,7 @@ def ConditionAnElementNotExistByCSS(css)
   }
   elements.empty?
 end
+
 
 def CheckFaceToFaceActivitySettings(label_name, label_value)
   case label_name
@@ -661,7 +610,7 @@ def EditFaceToFaceActivitySettings(label_name, label_disabled, label_value)
     begin
       puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
       $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == false) { $this.parent().trigger('click') } })") if label_disabled == false
-      $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
+      # $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
       return
     end
 
@@ -669,7 +618,7 @@ def EditFaceToFaceActivitySettings(label_name, label_disabled, label_value)
     begin
       puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
       $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == false) { $this.parent().trigger('click') } })") if label_disabled == false
-      $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
+      # $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
       return
     end
 
@@ -678,7 +627,6 @@ end
 
 
 def VerifyFaceToFaceActivitySettings()
-
   location_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_LOCATION_ID}).is(':checked')")
   puts COLOR_BLUE + "Location is now Disabled after value change" if location_disabled == false
   puts COLOR_BLUE + "Location is now Enabled after value change" if location_disabled == true
