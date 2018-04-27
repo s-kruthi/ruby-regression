@@ -1,33 +1,40 @@
-# TODO: Pending review and removal
-# def SearchForTheCourseAndDeleteIt(course_name)
-#  GoToThePage(ADMIN_COURSE_PAGE)
-#   sleep(2)
-#   $driver.find_element(:id, "coureSearch_searchText").send_keys("#{course_name}", :return)
-#   sleep(2)
-#   $driver.find_elements(:class, "dropdown-toggle")[3].click
-#   $driver.find_element(:class, "delete-course").click
-#   sleep(3)
-#   $driver.switch_to.frame("iframe")
-#   sleep(2)
-#   $driver.find_element(:xpath, "//button[@type='submit']").click
-# end
+def AddACoursesAndGoToCourseSection(course_btn_path)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(course_btn_path))
+end
 
 
-# TODO: Pending review and removal
-# def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_list_path)
-#   WaitForAnElementByClass(admin_cog)
-#   TouchAdminMenu(admin_cog)
-#   sleep(2)
-#   goToDocumentsSection(documents_expand)
-#   sleep(2)
-#   GoToItemLandingPage(documents_list_path)
-# end
+def FillTheCourseFormAndSaveIt(course_name_id, course_name_val, course_code_id, course_code_val, save_course_id)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(course_name_id, course_name_val))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(course_code_id, course_code_val))
+  MakeItVisibleToAllUsers()
+  Sleep_Until(WaitForAnElementByIdAndTouch(save_course_id))
+end
 
+def MakeItVisibleToAllUsers()
+  SelectFromDropDown(COURSE_AVAILABILITY_ID, 'Available to all users')
+end
 
-# def GoToNewCourseAddPage(new_course_btn)
-#   WaitForAnElementByXpathAndTouch(new_course_btn)
-# end
+def SearchForTheCourseAndDeleteIt(course_name)
+  GoToThePage(ADMIN_COURSE_PAGE)
+  sleep(2)
+  $driver.find_element(:id, "coureSearch_searchText").send_keys("#{course_name}", :return)
+  sleep(2)
+  $driver.find_elements(:class, "dropdown-toggle")[3].click
+  $driver.find_element(:class, "delete-course").click
+  sleep(3)
+  $driver.switch_to.frame("iframe")
+  sleep(2)
+  $driver.find_element(:xpath, "//button[@type='submit']").click
+end
 
+def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_list_path)
+  WaitForAnElementByClass(admin_cog)
+  TouchAdminMenu(admin_cog)
+  sleep(2)
+  goToDocumentsSection(documents_expand)
+  sleep(2)
+  GoToItemLandingPage(documents_list_path)
+end
 
 def EnterCourseTitle(new_course_title_id, new_course_title_value)
   WaitForAnElementByXpathAndInputValue(new_course_title_id, new_course_title_value)
@@ -83,14 +90,8 @@ def ClickOnAButtonByXPath(form_template_save_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
 end
 
-# TODO: Pending review and removal as it’s now redundant
-# def CreateANewCourseAndVerify(form_template_save_btn)
-#   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
-# end
-
 
 def SearchACourse(course_list_search_box_id, course_list_title_value, course_search_btn_id)
-  # TODO: Query DB for course. If found proceed with search else create course
   Sleep_Until(WaitForAnElementByXpathAndInputValue(course_list_search_box_id, course_list_title_value))
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
@@ -104,7 +105,8 @@ def EditFirstCourseFromTable(xpath_name, partial_link_text)
 end
 
 
-def DeleteTheFirstCourseFromTable(xpath_name, partial_link_text)
+#This selects the last course from the list and deletes it
+def DeleteTheCourseFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
@@ -152,24 +154,24 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 1))
         AddFile()
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(ACK_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACK_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "ELMO Module"
       begin
+        Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, ELMO_MODULE_ACTIVITY_TITLE_VALUE))
+        Sleep_Until(UseCkeditorToEnterText(ELMO_MODULE_ACTIVITY_EDITOR_TXT, 0))
+        ClickOnSaveButton(SAVE_BTN_ID)
+        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ELMO_MODULE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "ELMO Survey"
       begin
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(SURVEY_ACTIVITY_EDITOR_TXT, 0))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(SURVEY_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Face-to-Face"
@@ -178,10 +180,8 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 1))
         AddFile()
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(F2F_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Quiz"
@@ -192,15 +192,22 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
         #Adding question
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
-        # TODO: Pending review and removal as it’s now redundant
         Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
-        #ClickOnSaveButton(SAVE_BTN_ID)
 
         Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
-        # TODO: Pending review and removal as it’s now redundant
-        # $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
-        $driver.find_elements(:xpath, SAVE_BTN_ID).last.click
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        ClickOnSaveButton(SAVE_BTN_ID)
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+      end
+
+    when "SCORM Package"
+      begin
+        Sleep_Until(WaitForAnElementByXpathAndInputValue(SCORM_TITLE_ID, SCORM_TITLE_VALUE))
+        Sleep_Until(UseCkeditorToEnterText(SCORM_ACTIVITY_EDITOR_TXT, 0))
+        Sleep_Until(WaitForAnElementByIdAndTouch(SCORM_FILE_ID))
+        Sleep_Until(WaitForSelectFileButtonAndUpload_File(SCORM_FILE_NAME))
+        ClickOnSaveButton(SAVE_BTN_ID)
+        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        sleep(2)
       end
 
     when "File"
@@ -208,21 +215,15 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, FILE_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(FILE_ACTIVITY_EDITOR_TXT, 0))
         AddFile()
-        # TODO: Pending review and removal as it’s now redundant
-        #Sleep_Until(WaitForAnElementByXpathAndTouch(FILE_SELECT_FILE_ID))
-        #Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
-        # ClickOnSaveButton(FILE_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Label"
       begin
         Sleep_Until(UseCkeditorToEnterText(LABEL_ACTIVITY_EDITOR_TXT, 0))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(LABEL_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Page"
@@ -230,10 +231,8 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, PAGE_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 1))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(PAGE_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "Post"
@@ -241,10 +240,8 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, POST_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(POST_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "ELMO Survey (new)"
@@ -252,10 +249,8 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY2_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(SelectSingleFromSelect2InputDropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
-        # TODO: Pending review and removal as it’s now redundant
-        # ClickOnSaveButton(SURVEY2_SAVE_BTN_ID)
         ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY2_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     end
@@ -363,10 +358,7 @@ end
 
 
 def ModifyACourseActivity(activity_edit_link_name, action_type)
-# TODO: Pending review and removal as it’s now redundant
-#def EditACourseActivity(activity_edit_link)
   Sleep_Until($driver.find_elements(:xpath, "//a[contains(@title,'#{action_type} #{activity_edit_link_name}')]").last.click)
- # Sleep_Until(WaitForAnElementByXpathAndTouch(activity_edit_link))
 end
 
 
@@ -379,18 +371,6 @@ def add_f2f_session()
   Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_FILE_ID))
   Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
 end
-
-
-# TODO: Pending Removal
-# def ClickAddF2fSessionBtn(f2f_session_add_session_btn)
-#   Sleep_Until(WaitForAnElementByXpathAndTouch(f2f_session_add_session_btn))
-# end
-#
-#
-# def AddF2fSession()
-#   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_FILE_ID))
-#   Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
-# end
 
 
 def VerifyFilterResult(verify_result_table_id, input_value)
@@ -580,14 +560,21 @@ def VerifyAnElementNotExistByCSS(css)
     if elements.empty?
       puts COLOR_GREEN + "MATCHED: Item not displayed."
     else
-      # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
-      # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-      raise (COLOR_RED + "Item displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+      raise(COLOR_RED + "Item displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
     end
   rescue Exception => e
     puts e.message
     $driver.quit
   end
+end
+
+
+def ConditionAnElementNotExistByCSS(css)
+  wait = Selenium::WebDriver::Wait.new(:timeout => 5)
+  elements = wait.until {
+    $driver.find_elements(:css, "#{css}")
+  }
+  elements.empty?
 end
 
 
@@ -618,7 +605,7 @@ def EditFaceToFaceActivitySettings(label_name, label_disabled, label_value)
     begin
       puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
       $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == false) { $this.parent().trigger('click') } })") if label_disabled == false
-      $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
+      # $driver.execute_script("$(#{F2F_SESSION_CONFIG_LOCATION_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
       return
     end
 
@@ -626,7 +613,7 @@ def EditFaceToFaceActivitySettings(label_name, label_disabled, label_value)
     begin
       puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
       $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == false) { $this.parent().trigger('click') } })") if label_disabled == false
-      $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
+      # $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
       return
     end
 
@@ -635,7 +622,6 @@ end
 
 
 def VerifyFaceToFaceActivitySettings()
-
   location_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_LOCATION_ID}).is(':checked')")
   puts COLOR_BLUE + "Location is now Disabled after value change" if location_disabled == false
   puts COLOR_BLUE + "Location is now Enabled after value change" if location_disabled == true
@@ -647,9 +633,20 @@ end
 
 
 def AddSessionDetails()
-  AddFile()
   Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
   AddSessionTimings()
+  #Enter min capacity
+  Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_MIN_CAPACITY_INPUT_ID))
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_MIN_CAPACITY_INPUT_ID, F2F_SESSION_MIN_CAPACITY_INPUT_VALUE))
+  # enter max capacity
+  Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_MAX_CAPACITY_INPUT_ID))
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_MAX_CAPACITY_INPUT_ID, F2F_SESSION_MAX_CAPACITY_INPUT_VALUE))
+  # enter location
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
+  # enter facilitator
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_FACILITATOR_INPUT_ID, F2F_SESSION_FACILITATOR_INPUT_VALUE))
+  # select availability
+  SelectFromDropDown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_INPUT_VALUE)
 end
 
 
@@ -660,7 +657,55 @@ end
 
 
 def AddSessionTimings()
-  pending
-  # WIP
   Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_PART_CLASS_ID))
+  #get time n date
+  time = DateTime.now
+  #start time is 7 days from now
+  start_time = (time + 7)
+  #finishing after 1hr
+  end_time = start_time + (1/24.0)
+  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
+  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
+end
+
+
+def FillTitleAndDescriptionFieldAndSave(partial_id)
+  WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS)
+  title_id = "input[id*=#{partial_id.to_s}][name*=name]"
+  WaitForAnElementByCSSAndInputValue(title_id, EDITED_VALUE)
+  UseCkeditorToEnterText(EDITED_VALUE, 0)
+  $driver.find_elements(:xpath, Activity_SAVE_BTN_ID).last.click
+  Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+end
+
+
+def HandleEnrolmentOfCourse(role_type, enrolled)
+  WaitForAnElementByCSSAndTouch("a[title='Edit Course'] + .btn")
+  WaitForAnElementByCSSAndTouch("[title='Enrolled Users']")
+  case enrolled
+  when "Enrolled"
+    UnenrolAllOnCourseEnrolmentPage() unless ConditionAnElementNotExistByCSS("tr[data-id]")
+    EnrolUserWithRoleTypeOnCourseEnrolmentPage(role_type)
+  when "NonEnrolled"
+    UnenrolAllOnCourseEnrolmentPage() unless ConditionAnElementNotExistByCSS("tr[data-id]")
+  end
+end
+
+
+def UnenrolAllOnCourseEnrolmentPage
+  WaitForAnElementByIdAndTouch("select-all")
+  Sleep_Until(WaitForAnElementByIdAndTouch("multiple_unenrolled"))
+  Sleep_Until(PressConfirm())
+end
+
+
+def EnrolUserWithRoleTypeOnCourseEnrolmentPage(user)
+  WaitForAnElementByCSSAndTouch("[title='Bulk Enrol Users']")
+  user_name = USER_IN_ROLE.each do |key, value|
+    break value if key.to_s.eql? "Employee"
+  end
+  WaitForAnElementByXpathAndTouch(%Q{//span[contains(text(), "#{user_name}")]/../preceding-sibling::*[1]})
+  WaitForAnElementByIdAndTouch("enrol-btn")
+  Sleep_Until(WaitForAnElementByCSSAndTouch(".process-action[data-action=run]"))
+  sleep(5)
 end

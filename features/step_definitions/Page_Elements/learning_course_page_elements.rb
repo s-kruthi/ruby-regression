@@ -1,11 +1,9 @@
-# ADD_COURSE_BTN = "//a[contains(.,'New Course')]"
-# COURSE_NAME_ID = 'elmo_learningbundle_course_fullname'
-# COURSE_CODE_ID ='elmo_learningbundle_course_shortname'
-# SAVE_COURSE_ID = 'elmo_learningbundle_course_save'
+ADD_COURSE_BTN = "//a[contains(.,'New Course')]"
+COURSE_NAME_ID = 'elmo_learningbundle_course_fullname'
+COURSE_CODE_ID ='elmo_learningbundle_course_shortname'
+SAVE_COURSE_ID = 'elmo_learningbundle_course_save'
 ADD_COURSE_SECTION = 'add-section'
-#QUIZ_ACTIVITY = "select2-results-dept-1"
 ADD_ACTIVITY = 'input[name="addsection"]'
-#ACTIVITY_DROPDOWN = 's2id_section'
 
 
 ADD_FILE_ID = "//a[@id='addFile']"
@@ -77,17 +75,46 @@ F2F_SESSION_CONFIG_FACILITATOR_ID = 'elmo_learningbundle_mod_facetoface_sessionT
 F2F_SESSION_CONFIG_LOC_INPUT_ID = "//label[text()='Location']/parent::div/following-sibling::div[1]/div[1]/div/child::label[2]"
 F2F_SESSION_CONFIG_FAC_INPUT_ID = "//label[text()='Facilitator']/parent::div/following-sibling::div[1]/div[1]/div/child::label[2]"
 
-# TODO: Pending review and removal as it’s now redundant
-#F2F_ACTIVITY_EDIT_LINK = "//a[contains(@href,'/learning/edit-activity/246/397')]"
 
-###F@F session elements#####
+###F2F session elements#####
+F2F_SESSION_ADD_SESSION_BTN = "//a[contains(.,'New Session')]"
 F2F_SESSION_ADD_PART_CLASS_ID = "//a[contains(@class,'add-timeslot-action')]"
+F2F_SESSION_START_TIME = "//input[contains(@id, 'startTime')]"
+F2F_SESSION_FINISH_TIME = "//input[contains(@id, 'finishTime')]"
+F2F_SESSION_AVAILABILITY_INPUT_ID = "//select[contains(@id,'availability')]"
+F2F_SESSION_MIN_CAPACITY_INPUT_ID = "//input[contains(@id,'minCapacity')]"
+F2F_SESSION_MAX_CAPACITY_INPUT_ID = "//input[contains(@id,'maxCapacity')]"
+F2F_SESSION_LOCATION_INPUT_ID= "//input[contains(@id,'location')]"
+F2F_SESSION_FACILITATOR_INPUT_ID = "//input[contains(@id,'facilitator')]"
 
 
 ###Quiz activity elements
 QUIZ_PASS_MARK_ID = "//input[contains(@id,'passMark-clone')]"
 QUESTION_SAVE_BTN_ID = "//button[@class='save-question btn btn-primary']"
 ADD_QUESTION_BTN_ID = "//a[@class='btn btn-primary add-question']"
+
+
+###SCORM package elements
+SCORM_TITLE_ID = "//input[contains(@id,'name')]"
+SCORM_PASS_MARK_ID = "//input[contains(@id,'cke_1_contents')]"
+SCORM_FILE_ID = "addFile"
+Activity_SAVE_BTN_ID = "//button[contains(.,'Save')]"
+EDIT_ACTIVITY_BUTTON_CSS = "a[href*='edit-activity']"
+
+
+###File activity elements
+FILE_TITLE_ID = "//input[contains(@id,'name')]"
+FILE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
+FILE_SELECT_FILE_ID = "//a[contains(.,'Select File')]"
+
+
+###Label activity elements
+LABEL_SAVE_BTN_ID = "//button[contains(@id,'save')]"
+
+
+###Page activity elements
+PAGE_TITLE_ID = "//input[contains(@id,'name')]"
+PAGE_SAVE_BTN_ID = "//button[contains(@id,'save')]"
 
 
 ###Post activity elements
@@ -145,3 +172,7 @@ DELETE_SECTION_CONFIRM_CSS = 'button[data-bb-handler="confirm"]'
 #### Learning cost category elements ####
 COST_CATEGORY_NAME_ID = "elmo_learningbundle_cost_category_name"
 CATEGORY_SECTION_CLASS = "view-course-info"
+
+
+#### Learning activity elements ####
+PRECEDING_BREAD_LIST_XPATH = "//ol[@class='breadcrumb']/*[last()]/preceding-sibling::*[1]"

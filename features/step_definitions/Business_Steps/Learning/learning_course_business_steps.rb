@@ -1,22 +1,3 @@
-# TODO: Pending review and removal as it’s now redundant
-#When(/^I Setup A Course To Edit The Section$/i) do
-#  AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
-#  FillTheCourseFormAndSaveIt(COURSE_NAME_ID, NEW_COURSE_TITLE_VALUE, COURSE_CODE_ID, COURSE_CODE_VAL, SAVE_COURSE_ID)
-#end
-
-
-#And(/^I Try To Setup A Quiz Activity Under The Section$/i) do
-#  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-#  AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
-#  SelectAnActivity("Quiz")
-#end
-
-
-#Then(/^I Should be Able To Successfully Setup The Quiz Activity$/i) do
-#  CreateAnActivity("Quiz")
-#end
-
-
 When(/^I Click On The New Course Button$/i) do
   ClickOnAButtonByXPath(CREATE_NEW_COURSE_BTN)
 end
@@ -38,14 +19,19 @@ end
 
 Then(/^I Should Be Able To Create A New Course$/i) do
   ClickOnSaveButton(SAVE_BTN_ID)
-  # TODO: Pending review and removal as it’s now redundant
-  #ClickOnAButtonByXPath(FORM_TEMPLATE_SAVE_BTN)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE))
 end
 
 
-When(/^I Search For A Specific Course Named (.*)$/i) do |course_name|
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
+When(/^I Search For A Specific Course Named (.*)$/i) do |course_search_name|
+  course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
+end
+
+
+When(/^I See a List of Discrepency Courses$/i) do
+  discrepency_course = $daos.get_course_discrepency_list()
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, discrepency_course, COURSE_SEARCH_BTN_ID)
 end
 
 
@@ -55,14 +41,15 @@ end
 
 
 Then(/^I Should Be Able To Delete The Specific Course$/i) do
-  DeleteTheFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
+  DeleteTheCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
   Sleep_Until(CourseActionConfirm(COURSE_DELETE_BTN_NAME_ID))
   VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
 end
 
 
-When(/^I Edit A Specific Course Named (.*)$/i) do |course_name|
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
+When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
+  course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
   EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
@@ -80,16 +67,17 @@ Then(/^I Should Be Able To Add A New (.*) Activity$/i) do |course_activity_name|
 end
 
 
-And(/^I Open A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
+And(/^I Open A Specific Activity Named (.*)$/i) do |f2f_activity_name|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ClickOnFirstActivity(f2f_activity_name)
 end
 
 
-Then(/^I Should Be Able To Create A Session In The Face-to-Face Activity$/i) do
-  ClickOnAButtonByXPath("//a[contains(.,'New Session')]")
+Then(/^I Should Be Able To (Create|Edit) A Session In The Face-to-Face Activity$/i) do
+  ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
   AddSessionDetails()
   ClickOnSaveButton(SAVE_BTN_ID)
+  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
 
@@ -105,13 +93,14 @@ Then(/^I Should Be Able To Add All Notifications$/i) do
 end
 
 
-And(/^I Click On The Menu Of A Specific Course$/i) do
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, COURSE_LIST_TITLE_VALUE, COURSE_SEARCH_BTN_ID)
+And(/^I Click On The Menu Of A Specific Course Named (.*)$/i) do |course_search_name|
+  course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
   EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
-Then(/^I Should Be Able To (.*) Of The Specific Course$/i) do |retrain_action|
+Then(/^I Should Be Able To (.*) Of A Specific Course$/i) do |retrain_action|
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, retrain_action)
   case retrain_action
   when "Fix Retrain"
@@ -223,16 +212,12 @@ And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activi
   ## TODO: Query DB for course ection. If found proceed with search else create section
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
-  # TODO: Pending review and removal as it’s now redundant
-  # EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
 end
 
 
 When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
   CheckFaceToFaceActivitySettings(label_name, label_value)
   ClickOnSaveButton(SAVE_BTN_ID)
-  # TODO: Pending review and removal as it’s now redundant
-  #ClickOnAButtonByXPath(F2F_SAVE_BTN_ID)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
 end
 
@@ -240,8 +225,33 @@ end
 Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with the Specified Settings$/i) do
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
-  # TODO: Pending review and removal as it’s now redundant
-  #EditACourseActivity(F2F_ACTIVITY_EDIT_LINK)
   VerifyFaceToFaceActivitySettings()
 end
 
+
+When(/^I Leave Current Edit Page For List$/) do
+  WaitForAnElementByXpathAndTouch(PRECEDING_BREAD_LIST_XPATH)
+end
+
+
+Then(/^I Should Edit The ([\s\w]+) .* Name And Description$/) do |edit_target|
+  FillTitleAndDescriptionFieldAndSave(edit_target)
+end
+
+
+And(/^I Search For Created Course In The Scenario$/) do
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
+end
+
+
+And(/^I Change The Created Course Enrolment With (\w+) Being (\w+)$/) do |role_type, enrolled|
+  HandleEnrolmentOfCourse(role_type, enrolled)
+end
+
+
+And(/^I Go To The Sections Of The Created Course$/) do
+  WaitForAnElementByLinkTextAndTouch("Courses")
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
+  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+end
