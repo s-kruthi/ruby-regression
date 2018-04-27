@@ -159,6 +159,16 @@
       Then  I Should Be Able To Delete A Specific Section
 
 
+    @course_activity_edit @learning_low_risk
+    Scenario: [Learning]Learning Admin Deleting A Section In A Course
+      Given I Have Logged In as a Learning Admin
+      And   I go to Admin Settings
+      And   I Go To Courses under Learning section
+      When  I Edit A Specific Course Named DO NOT DELETE
+      And   I Edit A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
+      Then  I Should Be Able To Create A Session In The Face-to-Face Activity
+
+
     @course_activity_f2f_session_add @course_activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin Creating New Session In A Face-to-Face Activity
       Background:
@@ -175,7 +185,7 @@
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
-      And   I Open A Specific Face-to-Face Activity Named Test Face-to-Face
+      And   I Open A Specific Activity Named Test Face-to-Face
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
 
 
@@ -197,7 +207,7 @@
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
-      And   I Open A Specific Face-to-Face Activity Named Test Face-to-Face
+      And   I Open A Specific Activity Named Test Face-to-Face
       Then  I Should Be Able To Add All Notifications
 
 
@@ -207,6 +217,6 @@
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
-      And   I Open A Specific Face-to-Face Activity Named Test Face-to-Face
+      And   I Open A Specific Activity Named Test Face-to-Face
       Then  I Should Be Able To View The Face-To-Face Activity Session List
       And   I Should Be Able to Sort The The Face-To-Face Activity Session List By Location
