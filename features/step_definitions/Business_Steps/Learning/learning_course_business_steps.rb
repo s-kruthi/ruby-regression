@@ -23,8 +23,15 @@ Then(/^I Should Be Able To Create A New Course$/i) do
 end
 
 
-When(/^I Search For A Specific Course Named (.*)$/i) do |course_name|
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
+When(/^I Search For A Specific Course Named (.*)$/i) do |course_search_name|
+  course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
+end
+
+
+When(/^I See a List of Discrepency Courses$/i) do
+  discrepency_course = $daos.get_course_discrepency_list()
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, discrepency_course, COURSE_SEARCH_BTN_ID)
 end
 
 
@@ -34,14 +41,15 @@ end
 
 
 Then(/^I Should Be Able To Delete The Specific Course$/i) do
-  DeleteTheFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
+  DeleteTheCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
   Sleep_Until(CourseActionConfirm(COURSE_DELETE_BTN_NAME_ID))
   VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
 end
 
 
-When(/^I Edit A Specific Course Named (.*)$/i) do |course_name|
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
+When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
+  course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
   EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
@@ -59,13 +67,13 @@ Then(/^I Should Be Able To Add A New (.*) Activity$/i) do |course_activity_name|
 end
 
 
-And(/^I Open A Specific Face-to-Face Activity Named (.*)$/i) do |f2f_activity_name|
+And(/^I Open A Specific Activity Named (.*)$/i) do |f2f_activity_name|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ClickOnFirstActivity(f2f_activity_name)
 end
 
 
-Then(/^I Should Be Able To Create A Session In The Face-to-Face Activity$/i) do
+Then(/^I Should Be Able To (Create|Edit) A Session In The Face-to-Face Activity$/i) do
   ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
   AddSessionDetails()
   ClickOnSaveButton(SAVE_BTN_ID)
@@ -85,13 +93,14 @@ Then(/^I Should Be Able To Add All Notifications$/i) do
 end
 
 
-And(/^I Click On The Menu Of A Specific Course$/i) do
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, COURSE_LIST_TITLE_VALUE, COURSE_SEARCH_BTN_ID)
+And(/^I Click On The Menu Of A Specific Course Named (.*)$/i) do |course_search_name|
+  course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
   EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
-Then(/^I Should Be Able To (.*) Of The Specific Course$/i) do |retrain_action|
+Then(/^I Should Be Able To (.*) Of A Specific Course$/i) do |retrain_action|
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, retrain_action)
   case retrain_action
   when "Fix Retrain"

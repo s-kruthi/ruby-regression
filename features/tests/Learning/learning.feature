@@ -48,8 +48,8 @@
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Retrain Discrepancies under Learning section
-      When  I Search For A Specific Course Named Leadership Training - Development
-      Then  I Should Be Able To Fix Retrain Of The Specific Course
+      When  I See a List of Discrepency Courses
+      Then  I Should Be Able To Fix Retrain Of A Specific Course
 
 
     @course_retrain_discrepancy_disable @learning_low_risk
@@ -57,8 +57,8 @@
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Retrain Discrepancies under Learning section
-      When  I Search For A Specific Course Named Leadership Training - Intermediate
-      Then  I Should Be Able To Disable Retrain Of The Specific Course
+      When  I See a List of Discrepency Courses
+      Then  I Should Be Able To Disable Retrain Of A Specific Course
 
 
     @course_retrain_discrepancy_filter_create @learning_low_risk

@@ -90,14 +90,8 @@ def ClickOnAButtonByXPath(form_template_save_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
 end
 
-# TODO: Pending review and removal as it’s now redundant
-# def CreateANewCourseAndVerify(form_template_save_btn)
-#   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
-# end
-
 
 def SearchACourse(course_list_search_box_id, course_list_title_value, course_search_btn_id)
-  # TODO: Query DB for course. If found proceed with search else create course
   Sleep_Until(WaitForAnElementByXpathAndInputValue(course_list_search_box_id, course_list_title_value))
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
@@ -111,7 +105,8 @@ def EditFirstCourseFromTable(xpath_name, partial_link_text)
 end
 
 
-def DeleteTheFirstCourseFromTable(xpath_name, partial_link_text)
+#This selects the last course from the list and deletes it
+def DeleteTheCourseFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
