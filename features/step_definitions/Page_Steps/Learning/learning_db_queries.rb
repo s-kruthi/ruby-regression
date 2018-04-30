@@ -24,6 +24,14 @@ module Database_env
     end
 
 
+    def get_f2f_location_facilitator_settings(f2f_id)
+      query = "select location, facilitator
+              from epms_course_facetoface_session_template
+              where facetoface_id = #{f2f_id};"
+      return @db[query]
+    end
+
+
   end
 
 

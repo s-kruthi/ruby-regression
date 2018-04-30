@@ -638,6 +638,7 @@ end
 
 
 def AddSessionDetails()
+  f2f_id = $driver.current_url.split('/').last
   Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
   AddSessionTimings()
   #Enter min capacity
@@ -646,6 +647,15 @@ def AddSessionDetails()
   # enter max capacity
   Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_MAX_CAPACITY_INPUT_ID))
   Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_MAX_CAPACITY_INPUT_ID, F2F_SESSION_MAX_CAPACITY_INPUT_VALUE))
+
+  #check for location and facilitator settings for the course
+  course_f2f_settings = $daos.get_f2f_location_facilitator_settings
+  case
+    when course_f2f_settings[:location]
+      # enter location
+      Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
+    when course_f2f_settings[:location]
+  end
   # enter location
   Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
   # enter facilitator
