@@ -2,7 +2,7 @@ def ClickAssignContract(assign_contract_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(assign_contract_btn_id))
 end
 
-def search_user(user_type)
+def SearchUser(user_type)
   if user_type == "existing"
     $user = $daos.get_existing_user_detail_with_no_contract
   else
@@ -29,7 +29,7 @@ def ChooseUserForContract(confirm_assign_contract_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(confirm_assign_contract_btn_id))
 end
 
-def confirm_user_pending_contract_workflow()
+def ConfirmUserPendingContractWorkflow()
   workflow_status = 1 #pending status
   user_id = $user[:id]
   username = $user[:first_name]+" "+$user[:last_name]
