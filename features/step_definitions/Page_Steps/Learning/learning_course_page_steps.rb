@@ -789,20 +789,17 @@ def AddSessionDetails()
   Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_MAX_CAPACITY_INPUT_ID, F2F_SESSION_MAX_CAPACITY_INPUT_VALUE))
 
   #check for location and facilitator settings for the course
-  course_f2f_settings = $daos.get_f2f_location_facilitator_settings(f2f_id)
-  if course_f2f_settings[0][0].to_s == 'true'
-    Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_LOCATION_INPUT_ID))
-    Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
-  else
-    puts COLOR_BLUE + "Location is disabled for the Face to Face Activity"
+  course_f2f_settings = $daos.get_f2f_location_facilitator_settings
+  case
+    when course_f2f_settings[:location]
+      # enter location
+      Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
+    when course_f2f_settings[:location]
   end
-  if course_f2f_settings[0][1].to_s == 'true'
-    Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_FACILITATOR_INPUT_ID))
-    Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_FACILITATOR_INPUT_ID, F2F_SESSION_FACILITATOR_INPUT_VALUE))
-  else
-    puts COLOR_BLUE + "Facilitator is disabled for the Face to Face Activity"
-  end
-
+  # enter location
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
+  # enter facilitator
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_FACILITATOR_INPUT_ID, F2F_SESSION_FACILITATOR_INPUT_VALUE))
   # select availability
   SelectFromDropDown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_INPUT_VALUE)
 end
