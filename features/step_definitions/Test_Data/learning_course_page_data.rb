@@ -124,3 +124,9 @@ CATEGORY_SUCCESS_VALUE = "Category has been saved!"
 ###Course Section
 NEW_SECTION_VALUE = "New Section"
 SECTION_EDIT_VALUE = "Section Field Edited"
+
+
+###Quiz Section
+COMPLETION_VALUE = 'Pass/Fail'
+FEEDBACK_VALUE = 'Yes'
+MARKER_VALUE = 'Manager'

@@ -174,3 +174,13 @@ CATEGORY_SECTION_CLASS = "view-course-info"
 
 #### Learning activity elements ####
 PRECEDING_BREAD_LIST_XPATH = "//ol[@class='breadcrumb']/*[last()]/preceding-sibling::*[1]"
+
+
+#### Quiz activity elements ####
+QUIZ_SAVE_ID = 'modQuiz_save'
+COMPLETION_ID = 's2id_elmo_learningbundle_mod_modquiz_quizSettings_completionTerm-clone'
+FEEDBACK_ID = 's2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-clone'
+MARKER_ID = 's2id_elmo_learningbundle_mod_modquiz_quizSettings_markerType-clone'
+QUIZ_SETTING_CLASS = 'select2-result-label'
+
+
