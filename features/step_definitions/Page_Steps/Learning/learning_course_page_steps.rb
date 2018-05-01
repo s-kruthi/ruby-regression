@@ -690,3 +690,47 @@ def EnrolUserWithRoleTypeOnCourseEnrolmentPage(user)
   Sleep_Until(WaitForAnElementByCSSAndTouch(".process-action[data-action=run]"))
   sleep(5)
 end
+
+
+# Section for quiz @Martinma123
+def ModifyQuizTitleDescription
+  WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS)
+  title_id = 'input[name*=name]'
+  WaitForAnElementByCSSAndInputValue(title_id, EDITED_VALUE)
+  UseCkeditorToEnterText(EDITED_VALUE, 0)
+  ClickQuizSaveButton()
+  Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+end
+
+def ClickQuizSaveButton
+  WaitForAnElementByIdAndTouch(QUIZ_SAVE_ID)
+end
+
+def ChooseFromSelect2DropdownByIndex(container_id, item_div_class, index)
+  begin
+    wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+    select_item = wait.until {
+      select2_arrow = $driver.find_element(:css, "div[id=#{container_id}] > *:first-child *:last-child")
+      select2_arrow.click
+      element = $driver.find_elements(:class, item_div_class.to_s)[index]
+      element if element.present?
+    }
+    select_item.click
+  rescue Selenium::WebDriver::Error::TimeOutError => e
+    puts e.message
+    $driver.quit
+  end
+end
+
+def VerifySettingsOfQuizActivity()
+  VerifyAnElementExistById(COMPLETION_ID, COMPLETION_VALUE)
+  VerifyAnElementExistById(FEEDBACK_ID, FEEDBACK_VALUE)
+  VerifyAnElementExistById(MARKER_ID, MARKER_VALUE)
+end
+
+def ChangeQuizSettings()
+  ChooseFromSelect2DropdownByIndex(COMPLETION_ID, QUIZ_SETTING_CLASS, 1)
+  ChooseFromSelect2DropdownByIndex(FEEDBACK_ID, QUIZ_SETTING_CLASS, 0)
+  ChooseFromSelect2DropdownByIndex(MARKER_ID, QUIZ_SETTING_CLASS, 1)
+  ClickQuizSaveButton()
+end
