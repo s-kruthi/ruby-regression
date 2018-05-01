@@ -182,7 +182,15 @@ And(/^I Have Interacted With An Assigned quiz Course (.*)$/i) do |course_name|
   sleep(2)
   WaitForAnElementByPartialLinkTextAndTouch(course_name)
 end
-
+And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
+  GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
+  SearchTheAssignedCourse(course_name)
+  Sleep_Until(VerifyAnElementExistByCSS("span[title=\"#{course_name}\"]", course_name))
+  WaitForAnElementByCSSAndTouch(CRS_REQUEST_BTN)
+  sleep(2)
+  WaitForAnElementByIdAndInputValue(CRS_RQST_ID, CRS_RQST_TXT)
+  WaitForAnElementByIdAndTouch(CRS_REQUEST_SBMT)
+end
 
 Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
   GoToCourseEnrolmentsSection(COURSE_ENROLMENT_LTEXT)
@@ -202,7 +210,8 @@ end
 
 
 And(/^I Re Enrol The Candidate For The Activity$/) do
-  DeleteTheExistingEnrolmentAndReEnrolTheCandidate()
+  DeleteTheExistingCourseEnrolment('392')
+  ReEnrolTheCandidateForCourse()
 end
 
 

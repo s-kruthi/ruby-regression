@@ -124,3 +124,7 @@ CATEGORY_SUCCESS_VALUE = "Category has been saved!"
 ###Course Section
 NEW_SECTION_VALUE = "New Section"
 SECTION_EDIT_VALUE = "Section Field Edited"
+
+### Course Enrolment ##
+CRS_RQST_TXT = " automation in progress"
+COURSE_APPROVAL_REASON = "automation, approving course request"
