@@ -256,7 +256,7 @@ And(/^I Go To The Sections Of The Created Course$/) do
 end
 
 #### Quiz section @Martinma123
-#### Specific for quiz activity
+#### ModifyQuizTitleDescription specific for quiz activity due to Save button duplicated
 Then(/^I Should Edit The Quiz activity$/) do
   ModifyQuizTitleDescription()
 end
@@ -265,7 +265,10 @@ And(/^I Verify That Default Settings For Quiz Is Correct$/) do
   VerifySettingsOfQuizActivity()
 end
 
-
 And(/^I Should Change Quiz Settings$/) do
   ChangeQuizSettings()
+end
+
+And(/^Modifying Settings Of Quiz Activity Is (\w+)$/) do |setting_ability|
+  CheckAbilityToModifyQuizSettings(setting_ability)
 end

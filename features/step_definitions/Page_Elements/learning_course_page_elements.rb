@@ -182,5 +182,8 @@ COMPLETION_ID = 's2id_elmo_learningbundle_mod_modquiz_quizSettings_completionTer
 FEEDBACK_ID = 's2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-clone'
 MARKER_ID = 's2id_elmo_learningbundle_mod_modquiz_quizSettings_markerType-clone'
 QUIZ_SETTING_CLASS = 'select2-result-label'
-
-
+PASS_MARK_CSS = '#elmo_learningbundle_mod_modquiz_quizSettings_passMark-clone'
+COMPLETION_TERMINOLOGY_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_completionTerm-clone'
+SHOW_FEEDBACK_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-clone'
+MARKER_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-clone'
+COMPLETION_NOTIFICATION_CSS = '.toggle[data-toggle]'

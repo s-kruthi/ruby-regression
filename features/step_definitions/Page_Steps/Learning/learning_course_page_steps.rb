@@ -734,3 +734,11 @@ def ChangeQuizSettings()
   ChooseFromSelect2DropdownByIndex(MARKER_ID, QUIZ_SETTING_CLASS, 1)
   ClickQuizSaveButton()
 end
+
+def CheckAbilityToModifyQuizSettings(setting_ability)
+  VerifyElementAbilityByCSS(PASS_MARK_CSS, setting_ability)
+  VerifySelect2Ability(COMPLETION_TERMINOLOGY_CSS, setting_ability)
+  VerifySelect2Ability(SHOW_FEEDBACK_CSS, setting_ability)
+  VerifySelect2Ability(MARKER_CSS, setting_ability)
+  VerifyElementAbilityByCSS(COMPLETION_NOTIFICATION_CSS, setting_ability)
+end

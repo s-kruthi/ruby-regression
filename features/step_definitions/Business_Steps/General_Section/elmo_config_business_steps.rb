@@ -70,5 +70,7 @@ Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/i) do |admin
     And I Go To General Setup under General section
     And I Click On "ELMO Configuration" Tab
     When I Change "#{configure_name}" ELMO Configuration To "#{configured_value}"
+    Then I Should Be Able To Save Configuration Details
         }
-  end
+
+end
