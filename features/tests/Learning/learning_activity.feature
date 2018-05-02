@@ -203,6 +203,21 @@
       And   I Should Be Able To Only Edit Existing Activities For The Course
 
 
+    @course_activity_edit_validation @lock_course_enrolment @learning_high_risk
+    Scenario: [Learning]Learning Admin Can Edit Only The Session Details In A Face-to-Face Activity
+      Given The Lock Course With Enrolments Is Configured To Yes
+      And   Courses Have User Enrolments
+      And   I Have Logged In as a Learning Admin
+      And   I go to Admin Settings
+      And   I Go To Courses under Learning section
+      When  I Search For A Course With Active User Enrolments
+      And   I Edit The Course
+      Then  I Should Not Be Able To Delete Any Course Related Activities
+      And   I Should Not Be Able To Add New Sections
+      And   I Should Be Able To Only Add Non-Recordable Activities
+      And   I Should Be Able To Only Edit Existing Activities For The Course
+
+
     @course_activity_f2f_session_add @course_activity_add @learning_high_risk
     Scenario: [Learning]Learning Admin Creating New Session In A Face-to-Face Activity
       Given The Lock course with enrolments Is Configured To Yes
