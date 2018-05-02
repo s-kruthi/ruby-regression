@@ -260,6 +260,121 @@ def CreateAnActivity(course_activity_name)
 end
 
 
+def EditACourseActivity(course_activity_name)
+  pending
+  # begin
+  #
+  #   case course_activity_name
+  #   when "Acknowledgement"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, ACK_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 0))
+  #       Sleep_Until(UseCkeditorToEnterText(ACK_ACTIVITY_EDITOR_TXT, 1))
+  #       AddFile()
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   when "ELMO Module"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, ELMO_MODULE_ACTIVITY_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(ELMO_MODULE_ACTIVITY_EDITOR_TXT, 0))
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ELMO_MODULE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   when "ELMO Survey"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(SURVEY_ACTIVITY_EDITOR_TXT, 0))
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   when "Face-to-Face"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, F2F_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 0))
+  #       Sleep_Until(UseCkeditorToEnterText(F2F_ACTIVITY_EDITOR_TXT, 1))
+  #       AddFile()
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   when "Quiz"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, QUIZ_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 0))
+  #       Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 1))
+  #       Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
+  #       #Adding question
+  #       Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
+  #       Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
+  #
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   when "SCORM Package"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(SCORM_TITLE_ID, SCORM_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(SCORM_ACTIVITY_EDITOR_TXT, 0))
+  #       Sleep_Until(WaitForAnElementByIdAndTouch(SCORM_FILE_ID))
+  #       Sleep_Until(WaitForSelectFileButtonAndUpload_File(SCORM_FILE_NAME))
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #       sleep(2)
+  #     end
+  #
+  #   when "File"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, FILE_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(FILE_ACTIVITY_EDITOR_TXT, 0))
+  #       AddFile()
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, FILE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   when "Label"
+  #     begin
+  #       Sleep_Until(UseCkeditorToEnterText(LABEL_ACTIVITY_EDITOR_TXT, 0))
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, LABEL_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   when "Page"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, PAGE_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 0))
+  #       Sleep_Until(UseCkeditorToEnterText(PAGE_ACTIVITY_EDITOR_TXT, 1))
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, PAGE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   when "Post"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, POST_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 0))
+  #       Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   when "ELMO Survey (new)"
+  #     begin
+  #       Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY2_TITLE_VALUE))
+  #       Sleep_Until(UseCkeditorToEnterText(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
+  #       Sleep_Until(SelectSingleFromSelect2InputDropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
+  #       ClickOnSaveButton(SAVE_BTN_ID)
+  #       Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  #     end
+  #
+  #   end
+  # end
+end
+
+
 def ClickOnSaveButton(btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(btn_id))
   sleep (1)
@@ -640,7 +755,7 @@ def EditActivitySettings(label_name, label_disabled, label_value)
       $driver.execute_script("$(#{SURVEY_CONFIG_COMPULSORY_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == false) { $this.parent().trigger('click') } })") if label_disabled == false
       # $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
       return
-     end
+    end
 
   end
 end
@@ -676,7 +791,7 @@ def AddSessionDetails()
   #check for location and facilitator settings for the course
   course_f2f_settings = $daos.get_f2f_location_facilitator_settings(f2f_id)
   if course_f2f_settings[0][0].to_s == 'true'
-    Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_LOCATION_INPUT_ID))
+    Sleep_Until(WaitForAnElementByXwellpathAndClearValue(F2F_SESSION_LOCATION_INPUT_ID))
     Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
   else
     puts COLOR_BLUE + "Location is disabled for the Face to Face Activity"
@@ -706,9 +821,9 @@ def AddSessionTimings()
   #start time is 7 days from now
   start_time = (time + 7)
   #finishing after 1hr
-  end_time = start_time + (1/24.0)
-  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
-  Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
+  end_time = start_time + (1 / 24.0)
+  Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
+  Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
 end
 
 
