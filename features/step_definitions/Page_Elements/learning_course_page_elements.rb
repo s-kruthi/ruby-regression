@@ -6,6 +6,7 @@ ADD_ACTIVITY = 'input[name="addsection"]'
 
 
 ADD_FILE_ID = "//a[@id='addFile']"
+LIST_DROPDOWN = "//table//button[@data-toggle='dropdown']"
 COURSE_ACTIVITY_TITLE_ID = "//input[contains(@id,'name')]"
 
 ############Learning course section###############
@@ -85,6 +86,7 @@ F2F_SESSION_MIN_CAPACITY_INPUT_ID = "//input[contains(@id,'minCapacity')]"
 F2F_SESSION_MAX_CAPACITY_INPUT_ID = "//input[contains(@id,'maxCapacity')]"
 F2F_SESSION_LOCATION_INPUT_ID= "//input[contains(@id,'location')]"
 F2F_SESSION_FACILITATOR_INPUT_ID = "//input[contains(@id,'facilitator')]"
+F2F_SESSION_SAVE_CHANGES_ID = "//button[contains(@class, 'confirm-btn')]"
 
 
 ###Quiz activity elements
