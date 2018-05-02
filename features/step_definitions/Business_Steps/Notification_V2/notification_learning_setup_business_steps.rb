@@ -16,5 +16,4 @@ end
 
 Then(/^The User Should Be Instantly Notified About The New Enrolment Request$/) do
   ConnectToDatabaseAndValidateTheCourseEnrolmentRequestApprovedNotification()
-
 end

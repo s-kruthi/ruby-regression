@@ -442,7 +442,7 @@ end
 
 
 def GoToCourseCatalogueSection(course_catalogue_LText)
-  WaitForAnElementByPartialLinkTextAndTouch(course_catalogue_LText)
+  ClickOnATab(course_catalogue_LText)
 end
 def GoToCourseRequestSection(course_request_LText)
   WaitForAnElementByPartialLinkTextAndTouch(course_request_LText)
