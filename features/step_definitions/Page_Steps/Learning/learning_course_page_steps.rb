@@ -791,7 +791,7 @@ def AddSessionDetails()
   #check for location and facilitator settings for the course
   course_f2f_settings = $daos.get_f2f_location_facilitator_settings(f2f_id)
   if course_f2f_settings[0][0].to_s == 'true'
-    Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_LOCATION_INPUT_ID))
+    Sleep_Until(WaitForAnElementByXwellpathAndClearValue(F2F_SESSION_LOCATION_INPUT_ID))
     Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
   else
     puts COLOR_BLUE + "Location is disabled for the Face to Face Activity"
