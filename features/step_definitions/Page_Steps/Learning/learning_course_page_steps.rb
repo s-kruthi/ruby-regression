@@ -586,14 +586,14 @@ def ConditionAnElementNotExistByCSS(css)
 end
 
 
-def CheckFaceToFaceActivitySettings(label_name, label_value)
+def CheckActivitySettings(label_name, label_value)
   case label_name
   when "Location"
     begin
       location_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_LOCATION_ID}).is(':checked')")
       puts COLOR_BLUE + "Location is Disabled" if location_disabled == false
       puts COLOR_BLUE + "Location is Enabled" if location_disabled == true
-      EditFaceToFaceActivitySettings(label_name, location_disabled, label_value)
+      EditActivitySettings(label_name, location_disabled, label_value)
     end
 
   when "Facilitator"
@@ -601,13 +601,22 @@ def CheckFaceToFaceActivitySettings(label_name, label_value)
       facilitator_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).is(':checked')")
       puts COLOR_BLUE + "Facilitator is currently Disabled" if facilitator_disabled == false
       puts COLOR_BLUE + "Facilitator is currently Enabled" if facilitator_disabled == true
-      EditFaceToFaceActivitySettings(label_name, facilitator_disabled, label_value)
+      EditActivitySettings(label_name, facilitator_disabled, label_value)
+    end
+
+  when "Compulsory"
+    begin
+      compulsory_disabled = $driver.execute_script("return $(#{SURVEY_CONFIG_COMPULSORY_ID}).is(':checked')")
+      byebug
+      puts COLOR_BLUE + "Compulsory setting is currently Disabled" if compulsory_disabled == false
+      puts COLOR_BLUE + "Compulsory setting is currently Enabled" if compulsory_disabled == true
+      EditActivitySettings(label_name, compulsory_disabled, label_value)
     end
   end
 end
 
 
-def EditFaceToFaceActivitySettings(label_name, label_disabled, label_value)
+def EditActivitySettings(label_name, label_disabled, label_value)
   case label_name
   when "Location"
     begin
@@ -624,6 +633,14 @@ def EditFaceToFaceActivitySettings(label_name, label_disabled, label_value)
       # $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
       return
     end
+
+  when "Compulsory"
+    begin
+      puts COLOR_BLUE + "Requested settings for " + label_name + ": " + label_value
+      $driver.execute_script("$(#{SURVEY_CONFIG_COMPULSORY_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == false) { $this.parent().trigger('click') } })") if label_disabled == false
+      # $driver.execute_script("$(#{F2F_SESSION_CONFIG_FACILITATOR_ID}).each(function() { var $this=$(this)\; if ($this.is(':checked') == true) { $this.parent().trigger('click') } })") if label_disabled == true
+      return
+     end
 
   end
 end

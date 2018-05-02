@@ -238,9 +238,13 @@ end
 
 
 When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
-  CheckFaceToFaceActivitySettings(label_name, label_value)
+  CheckActivitySettings(label_name, label_value)
   ClickOnSaveButton(SAVE_BTN_ID)
-  Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
+  if label_name == 'Compulsory'
+    Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID,SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  else
+    Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
+  end
 end
 
 
@@ -346,6 +350,10 @@ And(/^I Edit The Course$/i) do
 end
 
 
-And(/^I Should Be Able To Edit A Specific ELMO Survey Activity Named Test ELMO Survey Activity - Please DO NOT DELETE$/i) do
-  pending
+Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (.*)$/i) do |activity_type, survey_activity_name|
+    SURVEY_ACTIVITY_NAME = survey_activity_name
+    SURVEY_ACTIVITY_TYPE = activity_type
+    ## TODO: Query DB for course activity. If found proceed with search else create activity
+    ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+    ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
 end

@@ -64,6 +64,9 @@ SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS = "select2-input"
 SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS = "select2-result-selectable"
 
 
+###ELMO Survey activity elements
+SURVEY_CONFIG_COMPULSORY_ID = 'elmo_learningbundle_modelmosurvey_compulsory'
+
 ###Face-to-face activity elements
 F2F_SESSION_TITLE_ID = "//h3[contains(.,'')]"
 F2F_SESSION_HEADING_ID = "//h4[contains(.,'')]"

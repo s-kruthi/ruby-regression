@@ -58,6 +58,25 @@
         | ELMO Survey       |
 
 
+    @course_activity_edit @course_activity_survey_edit @learning_low_risk
+    Scenario: [Learning]Learning Admin Can Edit An ELMO Survey Activity In A Course
+      Given I Have Logged In as a Learning Admin
+      And   I go to Admin Settings
+      And   I Go To Courses under Learning section
+      When  I Edit A Specific Course Named DO NOT DELETE
+      Then  I Should Be Able To Edit A Specific ELMO Survey Activity Named Test ELMO Survey Activity - Please DO NOT DELETE
+      And   I Set Compulsory Settings To Enabled
+
+
+    @course_activity_delete @course_activity_survey_delete @learning_low_risk @test
+    Scenario: [Learning]Learning Admin Can Edit An ELMO Survey Activity In A Course
+      Given I Have Logged In as a Learning Admin
+      And   I go to Admin Settings
+      And   I Go To Courses under Learning section
+      When  I Edit A Specific Course Named DO NOT DELETE
+      Then  I Should Be Able To Delete A Specific ELMO Survey Activity Named Test ELMO Survey Activity - Please DO NOT DELETE
+
+
     @course_activity_f2f_add @learning_high_risk
     Scenario Outline: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
@@ -219,6 +238,7 @@
       When  I Edit A Specific Course Named DO NOT DELETE
       And   I Delete A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
 
+
     # TODO Scenario can be modified to be Edit F2F activity?
     @course_activity_f2f_session_location_add @course_activity_f2f_session_facilitator_add @course_activity_f2f_session_config_add @learning_low_risk @C6067 @C6068
     Scenario: [Learning]Validation: When location/facilitator field has been enabled, allow sessions to be created with the location/facilitator field
@@ -267,14 +287,5 @@
       And   I Should Be Able To Only Add Non-Recordable Activities
       And   I Should Be Able To Only Edit Existing Activities For The Course
 
-
-    @course_activity_edit @learning_low_risk
-    Scenario: [Learning]Learning Admin Can Edit An ELMO Survey Activity In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Edit A Specific ELMO Survey Activity Named Test ELMO Survey Activity - Please DO NOT DELETE
-      And   I Set Compulsory Settings To Enabled
 
 
