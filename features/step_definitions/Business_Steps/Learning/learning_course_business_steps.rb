@@ -317,6 +317,7 @@ And(/^I Go To The Sections Of The Created Course$/) do
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
 end
 
+
 #### Quiz section Martinma123
 #### ModifyQuizTitleDescription specific for quiz activity due to Save button duplicated
 Then(/^I Should Edit The Quiz activity$/) do
