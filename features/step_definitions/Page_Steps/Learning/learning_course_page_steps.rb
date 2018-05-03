@@ -444,9 +444,11 @@ end
 
 
 def GoToCourseCatalogueSection(course_catalogue_LText)
-  WaitForAnElementByPartialLinkTextAndTouch(course_catalogue_LText)
+  ClickOnATab(course_catalogue_LText)
 end
-
+def GoToCourseRequestSection(course_request_LText)
+  WaitForAnElementByPartialLinkTextAndTouch(course_request_LText)
+end
 
 def SignUpForASession(enrolled_button, activity_class, sign_up_button)
   WaitForAnElementByPartialLinkTextAndTouch(enrolled_button)
@@ -502,13 +504,15 @@ def WithdrawTheCandidateFromF2FSession()
 end
 
 
-def DeleteTheExistingEnrolmentAndReEnrolTheCandidate()
-  $driver.navigate.to("https://tmsfull.dev.elmodev.com/admin/course/392/enrolments")
+def DeleteTheExistingCourseEnrolment(course_id)
+  $driver.navigate.to("https://tmsfull.dev.elmodev.com/admin/course/#{course_id}/enrolments")
   Sleep_Until($driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]'))
   $driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]').click
   sleep(1)
   PressConfirm()
   sleep(3)
+end
+def ReEnrolTheCandidateForCourse()
   WaitForAnElementByPartialLinkTextAndTouch("Manual Enrol Users")
   Sleep_Until($driver.find_element(:id, "s2id_autogen1"))
   $driver.find_element(:id, "s2id_autogen1").send_keys "Donttouchautomationuser"
@@ -523,7 +527,6 @@ def DeleteTheExistingEnrolmentAndReEnrolTheCandidate()
   $driver.find_element(:id, "enrol-btn").click
   sleep(2)
 end
-
 
 def EditCourseCreatedLastScenario(course_created)
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_created, COURSE_SEARCH_BTN_ID)

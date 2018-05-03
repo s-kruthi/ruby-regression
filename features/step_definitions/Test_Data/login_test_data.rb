@@ -35,6 +35,8 @@ DOC_SEC_PROF_USER = 'autsecprousr'
 DOC_SEC_PROF_PASS = 'Tester1!'
 DOC_USERNAME = 'X1242341'
 DOC_PASSWORD = 'Tester1!'
+DOC_MANAGER_NAME = 'X1201531'
+DOC_MANAGER_PASSWORD = 'Tester1!'
 
 ####### employee profile details page ########
 EMPLOYEE_PROFILE_PAGE = "https://staging4.dev.elmodev.com/controlpanel/user-profile/619/payment"

@@ -138,6 +138,7 @@ MANUAL_ENROLL_LTXT = 'Manual Enrol Users'
 REFRESH_ENROLMENT_LTXT = 'Refresh Enrolments'
 REFRESH_ID = 'myModalLabel'
 COURSE_CATALOGUE_LTEXT = 'Course Catalogue'
+COURSE_REQUESTS_LTEXT = 'Course Requests'
 F2F_COURSE_TITLE_CSS = 'span[title="course_section_automation_f2f_shanku"]'
 ENROLLED_BUTTON = 'Enrolled'
 SIGNUP_BUTTON = 'Sign Up'
@@ -145,7 +146,11 @@ COURSE_ENROLMENT_LTEXT = 'Enrolments'
 ACTIVITY_NAME = 'activity-name'
 SUBMIT_QUIZ_BUTTON = 'submit-quiz'
 QUIZ_ANSWER = 'Aliens'
-
+CRS_REQUEST_BTN = 'a[title="Send Enrol Request"]'
+CRS_RQST_ID = 'elmo_learningbundle_courseenrolrequest_comment'
+CRS_REQUEST_SBMT = 'elmo_learningbundle_courseenrolrequest_submit'
+APPROVE_CRS_RQST_CSS = 'a[title="Approve this course request"]'
+COURSE_APPROVAL_REASON_FLD= "reason-field"
 
 #### Categories section elements ####
 CATEGORIES_BTN = "//a[@href='/admin/course/categories'][contains(text(),'Categories')]"

@@ -116,6 +116,11 @@ Given(/^i have logged in as a (.*)$/i) do |login_name|
         EnterUsername(USER_NAME,DOC_USERNAME)
         EnterPassword(PASS_WORD,DOC_PASSWORD)
       end
+    when "Specific Automation User Manager"
+      begin
+        EnterUsername(USER_NAME,DOC_MANAGER_NAME)
+        EnterPassword(PASS_WORD,DOC_MANAGER_PASSWORD)
+      end
   end
 
    LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
