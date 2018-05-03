@@ -200,7 +200,7 @@ module Safari
       end
     end
 
-    def WaitForSelectFileButtonAndUpload_File(file)
+    def WaitForSelectFileButtonAndUploadFile(file)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         upload_button = wait.until {

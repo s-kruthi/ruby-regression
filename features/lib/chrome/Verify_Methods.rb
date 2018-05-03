@@ -109,7 +109,7 @@ module Chrome
       end
     end
 
-    ####Verify element and Select2 elements ability to change @Martinma123
+    ####Verify element and Select2 elements ability to change Martinma123
     def VerifyElementAbilityByCSS(element_css, setting_ability)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)

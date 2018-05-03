@@ -37,27 +37,29 @@ Feature: Course Activity Scorm Package and Quiz Manipulation
       |     No      |  Enrolled         |
 
   @quiz_activity_edit @C247
-  Scenario: As a company admin, I want to be able to add/edit a quiz and make necessary changes
+  Scenario: As A Company Admin, I Want To Be Able To Add/edit A Quiz And Make Necessary Changes
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To Courses Under Learning Section
     When  I Create A New Course With A Unique Name
-    Then  I Should Be Able To Add A New Quiz Activity
-    When  I Leave Current Edit Page For List
+    And  I Should Be Able To Add A New Quiz Activity
+    And  I Leave Current Edit Page For List
     Then  I Should Edit The Quiz activity
 
   @quiz_activity_setting
-  Scenario: Verify default settings of Quiz activity and change activity settings
+  Scenario: Verify Default Settings Of Quiz Activity And Change Activity Settings
+    Default settings for Settings is "Completion Terminology: Pass/Fail", "Show Feedback: Yes", "Marker: Manager"
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To Courses Under Learning Section
     When  I Create A New Course With A Unique Name
-    Then  I Should Be Able To Add A New Quiz Activity
+    And   I Should Be Able To Add A New Quiz Activity
     And   I Verify That Default Settings For Quiz Is Correct
-    And   I Should Change Quiz Settings
+    Then  I Should Change Quiz Settings
 
   @course_enrolment_lock_course_enrolment_edit_quiz
-  Scenario Outline: Ability to edit Quiz activity as per enrolment and system configuration
+  Scenario Outline: Ability To Edit Quiz Activity As Per Enrolment And System Configuration
+
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To Courses Under Learning Section
