@@ -670,6 +670,7 @@ def AddSessionTimings()
   Sleep_Until($driver.find_elements(:xpath,F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
 end
 
+
 def FillTitleAndDescriptionFieldAndSave(partial_id)
   WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS)
   title_id = "input[id*=#{partial_id.to_s}][name*=name]"
@@ -678,6 +679,7 @@ def FillTitleAndDescriptionFieldAndSave(partial_id)
   ClickOnSaveButton(SAVE_BTN_ID)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
+
 
 def HandleEnrolmentOfCourse(role_type, enrolled)
   WaitForAnElementByCSSAndTouch("a[title='Edit Course'] + .btn")
@@ -691,11 +693,13 @@ def HandleEnrolmentOfCourse(role_type, enrolled)
   end
 end
 
+
 def UnenrolAllOnCourseEnrolmentPage
   WaitForAnElementByIdAndTouch("select-all")
   Sleep_Until(WaitForAnElementByIdAndTouch("multiple_unenrolled"))
   Sleep_Until(PressConfirm())
 end
+
 
 def EnrolUserWithRoleTypeOnCourseEnrolmentPage(user)
   WaitForAnElementByCSSAndTouch("[title='Bulk Enrol Users']")
@@ -719,9 +723,11 @@ def ModifyQuizTitleDescription
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
+
 def ClickQuizSaveButton
   WaitForAnElementByIdAndTouch(QUIZ_SAVE_ID)
 end
+
 
 def ChooseFromSelect2DropdownByIndex(container_id, item_div_class, index)
   begin
@@ -739,11 +745,13 @@ def ChooseFromSelect2DropdownByIndex(container_id, item_div_class, index)
   end
 end
 
+
 def VerifySettingsOfQuizActivity()
   VerifyAnElementExistById(COMPLETION_ID, COMPLETION_VALUE)
   VerifyAnElementExistById(FEEDBACK_ID, FEEDBACK_VALUE)
   VerifyAnElementExistById(MARKER_ID, MARKER_VALUE)
 end
+
 
 def ChangeQuizSettings()
   ChooseFromSelect2DropdownByIndex(COMPLETION_ID, QUIZ_SETTING_CLASS, 1)
@@ -751,6 +759,7 @@ def ChangeQuizSettings()
   ChooseFromSelect2DropdownByIndex(MARKER_ID, QUIZ_SETTING_CLASS, 1)
   ClickQuizSaveButton()
 end
+
 
 def CheckAbilityToModifyQuizSettings(setting_ability)
   VerifyElementAbilityByCSS(PASS_MARK_CSS, setting_ability)
