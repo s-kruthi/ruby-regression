@@ -108,5 +108,52 @@ module Chrome
         $driver.quit
       end
     end
+
+    ####Verify element and Select2 elements ability to change Martinma123
+    def VerifyElementAbilityByCSS(element_css, setting_ability)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        element_ability = wait.until {
+          disabled_element_css = "#{element_css}[disabled]"
+          enabled_element_css = element_css
+          if $driver.find_elements(:css, disabled_element_css).any?
+            "disabled"
+          elsif $driver.find_elements(:css, enabled_element_css).any?
+            "enabled"
+          end
+        }
+        if element_ability == setting_ability.downcase
+          puts "\e[0m[ \e[32mPASSED\e[0m ] Element ability MATCHED: #{setting_ability}"
+        else
+          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+        end
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+
+    def VerifySelect2Ability(select2_element_css, setting_ability)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        element_ability = wait.until {
+          disabled_element_css = "#{select2_element_css}.select2-container-disabled"
+          enabled_element_css = "#{select2_element_css}:not(.select2-container-disabled)"
+          if $driver.find_elements(:css, disabled_element_css).any?
+            "disabled"
+          elsif $driver.find_elements(:css, enabled_element_css).any?
+            "enabled"
+          end
+        }
+        if element_ability == setting_ability.downcase
+          puts "\e[0m[ \e[32mPASSED\e[0m ] Element ability MATCHED: #{setting_ability}"
+        else
+          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+        end
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
   end
 end

@@ -1,6 +1,6 @@
 Given(/^I Create A New Course With A Unique Name$/) do
   @unique_course_name = "Automation test section" + Time.now.to_s
-  AddACoursesAndGoToCourseSection(ADD_COURSE_BTN)
+  AddACoursesAndGoToCourseSection(CREATE_NEW_COURSE_BTN)
   course_code_value = COURSE_CODE_ID + Time.now.to_s
   FillTheCourseFormAndSaveIt(COURSE_NAME_ID, @unique_course_name, COURSE_CODE_ID, course_code_value, SAVE_COURSE_ID)
 end

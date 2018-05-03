@@ -195,8 +195,10 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
 
         Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
-        ClickOnSaveButton(SAVE_BTN_ID)
-        Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+        # TODO: Pending review and removal as it’s now redundant
+        # $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
+        $driver.find_elements(:xpath, SAVE_BTN_ID).last.click
+        Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
     when "SCORM Package"
@@ -204,7 +206,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(SCORM_TITLE_ID, SCORM_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(SCORM_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(WaitForAnElementByIdAndTouch(SCORM_FILE_ID))
-        Sleep_Until(WaitForSelectFileButtonAndUpload_File(SCORM_FILE_NAME))
+        Sleep_Until(WaitForSelectFileButtonAndUploadFile(SCORM_FILE_NAME))
         ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         sleep(2)
@@ -677,7 +679,7 @@ def FillTitleAndDescriptionFieldAndSave(partial_id)
   title_id = "input[id*=#{partial_id.to_s}][name*=name]"
   WaitForAnElementByCSSAndInputValue(title_id, EDITED_VALUE)
   UseCkeditorToEnterText(EDITED_VALUE, 0)
-  $driver.find_elements(:xpath, Activity_SAVE_BTN_ID).last.click
+  ClickOnSaveButton(SAVE_BTN_ID)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
@@ -711,4 +713,61 @@ def EnrolUserWithRoleTypeOnCourseEnrolmentPage(user)
   WaitForAnElementByIdAndTouch("enrol-btn")
   Sleep_Until(WaitForAnElementByCSSAndTouch(".process-action[data-action=run]"))
   sleep(5)
+end
+
+
+# Section for quiz Martinma123
+def ModifyQuizTitleDescription
+  WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS)
+  title_id = 'input[name*=name]'
+  WaitForAnElementByCSSAndInputValue(title_id, EDITED_VALUE)
+  UseCkeditorToEnterText(EDITED_VALUE, 0)
+  ClickQuizSaveButton()
+  Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+end
+
+
+def ClickQuizSaveButton
+  WaitForAnElementByIdAndTouch(QUIZ_SAVE_ID)
+end
+
+
+def ChooseFromSelect2DropdownByIndex(container_id, item_div_class, index)
+  begin
+    wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+    select_item = wait.until {
+      select2_arrow = $driver.find_element(:css, "div[id=#{container_id}] > *:first-child *:last-child")
+      select2_arrow.click
+      element = $driver.find_elements(:class, item_div_class.to_s)[index]
+      element if element.present?
+    }
+    select_item.click
+  rescue Selenium::WebDriver::Error::TimeOutError => e
+    puts e.message
+    $driver.quit
+  end
+end
+
+
+def VerifySettingsOfQuizActivity()
+  VerifyAnElementExistById(COMPLETION_ID, COMPLETION_VALUE)
+  VerifyAnElementExistById(FEEDBACK_ID, FEEDBACK_VALUE)
+  VerifyAnElementExistById(MARKER_ID, MARKER_VALUE)
+end
+
+
+def ChangeQuizSettings()
+  ChooseFromSelect2DropdownByIndex(COMPLETION_ID, QUIZ_SETTING_CLASS, 1)
+  ChooseFromSelect2DropdownByIndex(FEEDBACK_ID, QUIZ_SETTING_CLASS, 0)
+  ChooseFromSelect2DropdownByIndex(MARKER_ID, QUIZ_SETTING_CLASS, 1)
+  ClickQuizSaveButton()
+end
+
+
+def CheckAbilityToModifyQuizSettings(setting_ability)
+  VerifyElementAbilityByCSS(PASS_MARK_CSS, setting_ability)
+  VerifySelect2Ability(COMPLETION_TERMINOLOGY_CSS, setting_ability)
+  VerifySelect2Ability(SHOW_FEEDBACK_CSS, setting_ability)
+  VerifySelect2Ability(MARKER_CSS, setting_ability)
+  VerifyElementAbilityByCSS(COMPLETION_NOTIFICATION_CSS, setting_ability)
 end

@@ -1,4 +1,3 @@
-ADD_COURSE_BTN = "//a[contains(.,'New Course')]"
 COURSE_NAME_ID = 'elmo_learningbundle_course_fullname'
 COURSE_CODE_ID ='elmo_learningbundle_course_shortname'
 SAVE_COURSE_ID = 'elmo_learningbundle_course_save'
@@ -98,7 +97,6 @@ ADD_QUESTION_BTN_ID = "//a[@class='btn btn-primary add-question']"
 SCORM_TITLE_ID = "//input[contains(@id,'name')]"
 SCORM_PASS_MARK_ID = "//input[contains(@id,'cke_1_contents')]"
 SCORM_FILE_ID = "addFile"
-Activity_SAVE_BTN_ID = "//button[contains(.,'Save')]"
 EDIT_ACTIVITY_BUTTON_CSS = "a[href*='edit-activity']"
 
 
@@ -181,3 +179,16 @@ CATEGORY_SECTION_CLASS = "view-course-info"
 
 #### Learning activity elements ####
 PRECEDING_BREAD_LIST_XPATH = "//ol[@class='breadcrumb']/*[last()]/preceding-sibling::*[1]"
+
+
+#### Quiz activity elements ####
+QUIZ_SAVE_ID = 'modQuiz_save'
+COMPLETION_ID = 's2id_elmo_learningbundle_mod_modquiz_quizSettings_completionTerm-clone'
+FEEDBACK_ID = 's2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-clone'
+MARKER_ID = 's2id_elmo_learningbundle_mod_modquiz_quizSettings_markerType-clone'
+QUIZ_SETTING_CLASS = 'select2-result-label'
+PASS_MARK_CSS = '#elmo_learningbundle_mod_modquiz_quizSettings_passMark-clone'
+COMPLETION_TERMINOLOGY_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_completionTerm-clone'
+SHOW_FEEDBACK_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-clone'
+MARKER_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-clone'
+COMPLETION_NOTIFICATION_CSS = '.toggle[data-toggle]'
