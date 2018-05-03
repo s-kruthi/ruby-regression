@@ -51,4 +51,4 @@ Feature:
 #    When  I Change "Lock course with enrolments" ELMO Configuration To "Disabled"
 #    Then  I Should Be Able To Save Configuration Details
   Scenario: [Genera]As an ELMO Admin, I want to be able to modify ELMO configuration under General Setup and change various settings
-    * The "ELMO Admin" Configure The "Lock course with enrolments" To "Yes"
+    * The "ELMO Admin" Configure The "Lock course with enrolments" To Yes
