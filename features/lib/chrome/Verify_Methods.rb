@@ -4,7 +4,8 @@ module Chrome
     class VerificationException < Exception;
     end
 
-    def VerifyAnElementExistById(id,text)
+
+    def VerifyAnElementExistById(id, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
@@ -12,20 +13,20 @@ module Chrome
           element if element.displayed?
         }
         expected_text = select_item.text.include? "#{text}"
-        if expected_text == true
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+        if expected_text
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
-          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
-          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+          fail
         end
+
       rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
 
-    def VerifyAnElementExistByClass(class_name,text)
+
+    def VerifyAnElementExistByClass(class_name, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
@@ -33,20 +34,20 @@ module Chrome
           element if element.displayed?
         }
         expected_text = select_item.text.include? "#{text}"
-        if expected_text == true
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+        if expected_text
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
-          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
-          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+          fail
         end
+
       rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
 
-    def VerifyAnElementExistByXPath(xpath,text)
+
+    def VerifyAnElementExistByXPath(xpath, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
@@ -54,20 +55,20 @@ module Chrome
           element if element.displayed?
         }
         expected_text = select_item.text.include? "#{text}"
-        if expected_text == true
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+        if expected_text
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
-          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
-          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+          fail
         end
+
       rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
 
-    def VerifyAnElementExistByName(name,text)
+
+    def VerifyAnElementExistByName(name, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         select_item = wait.until {
@@ -75,18 +76,18 @@ module Chrome
           element if element.displayed?
         }
         expected_text = select_item.text.include? "#{text}"
-        if expected_text == true
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+        if expected_text
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
-          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
-          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+          fail
         end
+
       rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def VerifyAnElementExistByCSS(css, text)
       begin
@@ -96,18 +97,18 @@ module Chrome
           element if element.displayed?
         }
         expected_text = select_item.text.include? "#{text}"
-        if expected_text == true
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+        if expected_text
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
-          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
-          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+          fail
         end
+
       rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     ####Verify element and Select2 elements ability to change Martinma123
     def VerifyElementAbilityByCSS(element_css, setting_ability)
@@ -123,13 +124,14 @@ module Chrome
           end
         }
         if element_ability == setting_ability.downcase
-          puts "\e[0m[ \e[32mPASSED\e[0m ] Element ability MATCHED: #{setting_ability}"
+          puts COLOR_GREEN + "Element ability MATCHED: #{setting_ability}"
         else
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+          fail
         end
+
       rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
 
@@ -146,14 +148,16 @@ module Chrome
           end
         }
         if element_ability == setting_ability.downcase
-          puts "\e[0m[ \e[32mPASSED\e[0m ] Element ability MATCHED: #{setting_ability}"
+          puts COLOR_GREEN + "Element ability MATCHED: #{setting_ability}"
         else
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+          fail
         end
+
       rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         puts e.message
-        $driver.quit
       end
     end
+
   end
 end
