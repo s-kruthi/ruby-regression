@@ -35,7 +35,6 @@ module Headless
         fail
         raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
 
