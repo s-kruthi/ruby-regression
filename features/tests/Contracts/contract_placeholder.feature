@@ -25,6 +25,7 @@
         | Currency         |
         | Text Area        |
 
+
   @contracts_textarea_characteristics  @contracts_low_risk
     Scenario: [Contracts]Default value for Text area placeholders have CK editor and size limitation
       Given I Have Logged In as a Contract Admin
