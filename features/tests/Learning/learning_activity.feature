@@ -178,14 +178,14 @@
       Then  I Should Be Able To Delete A Specific Section
 
 
-    @course_activity_edit @learning_low_risk
+    @course_activity_edit_wip @learning_low_risk
     Scenario: [Learning]Learning Admin Editing A Section In A Course
-      Given The Lock Course With Enrolments Is Configured To No
-      And   I Have Logged In as a Learning Admin
+#      Given The Lock Course With Enrolments Is Configured To No
+      Given   I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
       When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Edit A Face-to-Face Activity
+      Then  I Should Be Able To Edit A Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
 
 
     @course_activity_edit_validation @lock_course_enrolment @learning_high_risk

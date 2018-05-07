@@ -73,7 +73,7 @@ end
 # end
 
 
-Then(/^I Should Be Able To (Add|Edit) A (.*) Activity$/i) do |course_activity_action, course_activity_name|
+Then(/^I Should Be Able To (Add|Edit) A (.*) Activity Named (.*)$/i) do |course_activity_action, course_activity_name, course_activity_title|
 
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
 
@@ -95,9 +95,7 @@ Then(/^I Should Be Able To (Add|Edit) A (.*) Activity$/i) do |course_activity_ac
 
   when 'Edit'
     begin
-      COURSE_ACTIVITY_NAME = course_activity_name
-      COURSE_ACTIVITY_TYPE = course_activity_action
-      ModifyACourseActivity(COURSE_ACTIVITY_NAME, COURSE_ACTIVITY_TYPE)
+      ModifyACourseActivity(course_activity_title, course_activity_action)
       EditACourseActivity(course_activity_name)
     end
   end
