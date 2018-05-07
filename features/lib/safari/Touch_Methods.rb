@@ -1,6 +1,10 @@
 module Safari
   module Touch_Methods
 
+    class VerificationException < Exception;
+    end
+
+
     def WaitForAnElementByIdAndTouch(id)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -9,11 +13,14 @@ module Safari
           element if element.displayed?
         }
         select_item.click
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByClassAndTouch(class_name)
       begin
@@ -23,11 +30,15 @@ module Safari
           element if element.displayed?
         }
         select_item.click
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
         $driver.quit
       end
     end
+
 
     def WaitForAnElementByXpathAndTouch(xpath)
       begin
@@ -37,11 +48,14 @@ module Safari
           element if element.displayed?
         }
         select_item.click
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByTagNameAndTouch(tag_name)
       begin
@@ -51,11 +65,14 @@ module Safari
           element if element.displayed?
         }
         select_item.click
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByCSSAndTouch(css)
       begin
@@ -65,9 +82,11 @@ module Safari
           element if element.displayed?
         }
         select_item.click
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
 
@@ -80,11 +99,14 @@ module Safari
           element if element.displayed?
         }
         select_item.click
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByLinkTextAndTouch(link_text)
       begin
@@ -94,11 +116,14 @@ module Safari
           element if element.displayed?
         }
         select_item.click
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByPartialLinkTextAndTouch(partial_link_text)
       begin
@@ -108,9 +133,11 @@ module Safari
           element if element.displayed?
         }
         select_item.click
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
 

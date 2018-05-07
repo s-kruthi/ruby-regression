@@ -1,6 +1,10 @@
 module Chrome
   module Input_Methods
 
+    class VerificationException < Exception;
+    end
+
+
     def WaitForAnElementByIdAndInputValue(id,value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -9,11 +13,16 @@ module Chrome
           element if element.displayed?
         }
         select_item.send_keys "#{value}"
+
+
       rescue Exception => e
+        fail
+        Cucumber.wants_to_quit = true
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByClassAndInputValue(class_name,value)
       begin
@@ -23,11 +32,14 @@ module Chrome
           element if element.displayed?
         }
         select_item.send_keys "#{value}"
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByXpathAndInputValue(xpath,value)
       begin
@@ -37,11 +49,14 @@ module Chrome
           element if element.displayed?
         }
         select_item.send_keys "#{value}"
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByXpathAndClearValue(xpath)
       begin
@@ -51,11 +66,14 @@ module Chrome
           element if element.displayed?
         }
         select_item.clear()
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByCSSAndInputValue(css,value)
       begin
@@ -65,12 +83,13 @@ module Chrome
           element if element.displayed?
         }
         select_item.send_keys "#{value}"
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
-
 
   end
 end

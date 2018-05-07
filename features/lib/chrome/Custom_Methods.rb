@@ -1,6 +1,10 @@
 module Chrome
   module Custom_Methods
 
+    class VerificationException < Exception;
+    end
+
+
     def WaitForDropdownByClassAndTouchTheIndex(class_name,index_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
