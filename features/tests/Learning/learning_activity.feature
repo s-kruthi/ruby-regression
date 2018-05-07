@@ -278,6 +278,4 @@
       Then  I Should Be Able To View The Face-To-Face Activity Session List
       And   I Should Be Able to Sort The The Face-To-Face Activity Session List By Location
 
-
-
-
+      

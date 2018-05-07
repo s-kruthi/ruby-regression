@@ -39,6 +39,7 @@
       And   I Should See That The Field Is Limited to 5000 characters
       And   I Should See The Instructional Text Indicating The Size Limitation
 
+
   @contracts_low_risk @search_contract_placeholder
     Scenario: Search for Existing Contract Placeholders
       Given I Have Logged In as a Contract Admin
