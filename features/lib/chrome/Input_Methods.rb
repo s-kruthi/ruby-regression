@@ -17,7 +17,6 @@ module Chrome
 
       rescue Exception => e
         fail
-        Cucumber.wants_to_quit = true
         raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end

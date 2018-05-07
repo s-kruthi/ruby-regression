@@ -1,6 +1,10 @@
 module Headless
   module Wait_Methods
 
+    class VerificationException < Exception;
+    end
+
+
     def WaitForAnElementById(id)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -9,11 +13,14 @@ module Headless
           element if element.displayed?
         }
         select_item
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByClass(class_name)
       begin
@@ -24,10 +31,12 @@ module Headless
         }
         select_item
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByXPath(xpath)
       begin
@@ -37,11 +46,14 @@ module Headless
           element if element.displayed?
         }
         select_item
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByName(name)
       begin
@@ -51,11 +63,14 @@ module Headless
           element if element.displayed?
         }
         select_item
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForAnElementByCSS(css)
       begin
@@ -65,11 +80,15 @@ module Headless
           element if element.displayed?
         }
         select_item
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
+
     def WaitForAnElementByLink(link)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -78,11 +97,15 @@ module Headless
           element if element.displayed?
         }
         select_item
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
+
     def WaitForAnElementByPartialLinkText(partial_link_text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -91,11 +114,14 @@ module Headless
           element if element.displayed?
         }
         select_item
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
 
     def WaitForToggleButtonStateChangedByXpath(toggle_xpath, toggle_value)
       begin
@@ -103,10 +129,13 @@ module Headless
         wait.until {
           $driver.find_element(:xpath, toggle_xpath).text === toggle_value
         }
+
       rescue Exception => e
+        fail
+        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
-        $driver.quit
       end
     end
+
   end
 end

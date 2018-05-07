@@ -4,6 +4,7 @@ module Chrome
     class VerificationException < Exception;
     end
 
+
     def VerifyAnElementExistById(id, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -13,17 +14,17 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
           fail
         end
 
       rescue Exception => e
-        Cucumber.wants_to_quit = true
-        raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is NOT matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
+
 
     def VerifyAnElementExistByClass(class_name, text)
       begin
@@ -34,17 +35,17 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
           fail
         end
 
       rescue Exception => e
-        Cucumber.wants_to_quit = true
-        raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is NOT matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
+
 
     def VerifyAnElementExistByXPath(xpath, text)
       begin
@@ -55,14 +56,13 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
           fail
         end
 
       rescue Exception => e
-        Cucumber.wants_to_quit = true
-        raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is NOT matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
@@ -77,17 +77,17 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
           fail
         end
 
       rescue Exception => e
-        Cucumber.wants_to_quit = true
-        raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is NOT matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
+
 
     def VerifyAnElementExistByCSS(css, text)
       begin
@@ -98,17 +98,17 @@ module Chrome
         }
         expected_text = select_item.text.include? "#{text}"
         if expected_text
-          puts "\e[0m[ \e[32mPASSED\e[0m ] MATCHED: #{text}"
+          puts COLOR_GREEN + "MATCHED: #{text}"
         else
           fail
         end
 
       rescue Exception => e
-        Cucumber.wants_to_quit = true
-        raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is NOT matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
+
 
     ####Verify element and Select2 elements ability to change Martinma123
     def VerifyElementAbilityByCSS(element_css, setting_ability)
@@ -124,14 +124,13 @@ module Chrome
           end
         }
         if element_ability == setting_ability.downcase
-          puts "\e[0m[ \e[32mPASSED\e[0m ] Element ability MATCHED: #{setting_ability}"
+          puts COLOR_GREEN + "Element ability MATCHED: #{setting_ability}"
         else
           fail
         end
 
       rescue Exception => e
-        Cucumber.wants_to_quit = true
-        raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Text is NOT matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
@@ -149,14 +148,16 @@ module Chrome
           end
         }
         if element_ability == setting_ability.downcase
-          puts "\e[0m[ \e[32mPASSED\e[0m ] Element ability MATCHED: #{setting_ability}"
+          puts COLOR_GREEN + "Element ability MATCHED: #{setting_ability}"
         else
-          raise VerificationException.new("\e[0m[ \e[31mFAILED\e[0m ] Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+          fail
         end
+
       rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         puts e.message
-        $driver.quit
       end
     end
+
   end
 end
