@@ -47,9 +47,12 @@ After do | scenario |
 
   File.open('./features/step_definitions/Test_Data/stored_ids.rb', 'w') {|file| file.truncate(0) }
 
+  $driver.quit
+end
+
+
+at_exit do
   #closing all forwarded ports and then closing the gateway's SSH session
   $gateway.shutdown!
-
-  $driver.quit
 end
 
