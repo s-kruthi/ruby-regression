@@ -82,7 +82,7 @@ Feature: Course Activity Scorm Package and Quiz Manipulation
     |     No        |  Enrolled       |  Enabled  |
     |     No        |  Enrolled       |  Enabled  |
 
-    @pen @course_non_recordable_activities_create @C12720
+    @course_non_recordable_activities_create @C12720
     Scenario Outline: Able to create activities File, Label, Page, Post
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
