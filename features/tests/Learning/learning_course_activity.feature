@@ -81,3 +81,18 @@ Feature: Course Activity Scorm Package and Quiz Manipulation
     |     Yes       |  NonEnrolled    |  Enabled  |
     |     No        |  Enrolled       |  Enabled  |
     |     No        |  Enrolled       |  Enabled  |
+
+    @course_non_recordable_activities_create @C12720
+    Scenario Outline: Able to create activities File, Label, Page, Post
+      Given I Have Logged In As A Company Admin
+      And   I Go To Admin Settings
+      And   I Go To Courses Under Learning Section
+      When  I Create A New Course With A Unique Name
+      Then  I Should Be Able To Add A New <activity> Activity
+
+    Examples:
+    |  activity  |
+    |     File   |
+    |     Page   |
+    |     Label  |
+    |     Post   |

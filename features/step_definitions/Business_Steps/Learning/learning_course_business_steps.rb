@@ -243,8 +243,8 @@ When(/^I Leave Current Edit Page For List$/) do
 end
 
 
-Then(/^I Should Edit The .* Name And Description$/) do
-  FillTitleAndDescriptionFieldAndSave()
+Then(/^I Should Edit The ([\s\w]+) .* Name And Description$/) do |edit_target|
+  FillTitleAndDescriptionFieldAndSave(edit_target)
 end
 
 And(/^I Search For Created Course In The Scenario$/) do
