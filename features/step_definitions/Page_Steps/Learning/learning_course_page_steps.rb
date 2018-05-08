@@ -193,10 +193,8 @@ def CreateAnActivity(course_activity_name)
         #Adding question
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
         Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
-
         Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
-        # TODO: Pending review and removal as it’s now redundant
-        # $driver.find_elements(:xpath, QUIZ_SAVE_BTN_ID).last.click
+
         $driver.find_elements(:xpath, SAVE_BTN_ID).last.click
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
