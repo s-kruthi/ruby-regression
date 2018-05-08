@@ -264,10 +264,10 @@ def CreateAnActivity(course_activity_name)
 end
 
 
-def EditACourseActivity(course_activity_name)
+def EditACourseActivity(course_activity_type)
   begin
 
-    case course_activity_name
+    case course_activity_type
     when "Acknowledgement"
       begin
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, ACK_TITLE_VALUE))
