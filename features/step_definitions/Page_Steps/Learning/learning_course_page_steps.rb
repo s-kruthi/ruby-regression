@@ -10,9 +10,11 @@ def FillTheCourseFormAndSaveIt(course_name_id, course_name_val, course_code_id, 
   Sleep_Until(WaitForAnElementByIdAndTouch(save_course_id))
 end
 
+
 def MakeItVisibleToAllUsers()
   SelectFromDropDown(COURSE_AVAILABILITY_ID, 'Available to all users')
 end
+
 
 def SearchForTheCourseAndDeleteIt(course_name)
   GoToThePage(ADMIN_COURSE_PAGE)
@@ -27,6 +29,7 @@ def SearchForTheCourseAndDeleteIt(course_name)
   $driver.find_element(:xpath, "//button[@type='submit']").click
 end
 
+
 def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_list_path)
   WaitForAnElementByClass(admin_cog)
   TouchAdminMenu(admin_cog)
@@ -35,6 +38,7 @@ def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_l
   sleep(2)
   GoToItemLandingPage(documents_list_path)
 end
+
 
 def EnterCourseTitle(new_course_title_id, new_course_title_value)
   WaitForAnElementByXpathAndInputValue(new_course_title_id, new_course_title_value)
@@ -129,7 +133,7 @@ end
 def AddANewSection(course_add_a_section_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_add_a_section_btn_id))
   #Adding sleep intentionally,if course has too many activities, it takes time to scroll down the page
-  sleep (2)
+  sleep (3)
 end
 
 
@@ -140,11 +144,12 @@ def SelectAnActivity(select_activity_name)
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_SEARCH_ID).last.send_keys(select_activity_name))
   puts "Adding activity: " + $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.text
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.click)
+  sleep (1)
 end
 
 
 def CreateAnActivity(course_activity_name)
-  Sleep_Until($driver.find_elements(:name, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
+  Sleep_Until($driver.find_elements(:xpath, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
   begin
 
     case course_activity_name
@@ -189,12 +194,13 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, QUIZ_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 1))
-        Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
+
         #Adding question
+        Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
         Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
-        Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
 
+        Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
         $driver.find_elements(:xpath, SAVE_BTN_ID).last.click
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
@@ -303,12 +309,12 @@ def EditACourseActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, QUIZ_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 1))
-        Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
+        #Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
         #Adding question
-        Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
-        Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
+        #Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
+       # Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
 
-        Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
+      #  Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
         ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
@@ -561,9 +567,12 @@ end
 def GoToCourseCatalogueSection(course_catalogue_LText)
   ClickOnATab(course_catalogue_LText)
 end
+
+
 def GoToCourseRequestSection(course_request_LText)
   WaitForAnElementByPartialLinkTextAndTouch(course_request_LText)
 end
+
 
 def SignUpForASession(enrolled_button, activity_class, sign_up_button)
   WaitForAnElementByPartialLinkTextAndTouch(enrolled_button)
@@ -627,6 +636,8 @@ def DeleteTheExistingCourseEnrolment(course_id)
   PressConfirm()
   sleep(3)
 end
+
+
 def ReEnrolTheCandidateForCourse()
   WaitForAnElementByPartialLinkTextAndTouch("Manual Enrol Users")
   Sleep_Until($driver.find_element(:id, "s2id_autogen1"))
@@ -642,6 +653,7 @@ def ReEnrolTheCandidateForCourse()
   $driver.find_element(:id, "enrol-btn").click
   sleep(2)
 end
+
 
 def EditCourseCreatedLastScenario(course_created)
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_created, COURSE_SEARCH_BTN_ID)
@@ -787,13 +799,13 @@ def AddSessionDetails()
 
   #check for location and facilitator settings for the course
   course_f2f_settings = $daos.get_f2f_location_facilitator_settings(f2f_id)
-  if course_f2f_settings[0][0].to_s == 'true'
+  if course_f2f_settings[:location].to_s == 'true'
     Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_LOCATION_INPUT_ID))
     Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
   else
     puts COLOR_BLUE + "Location is disabled for the Face to Face Activity"
   end
-  if course_f2f_settings[0][1].to_s == 'true'
+  if course_f2f_settings[:facilitator].to_s == 'true'
     Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_FACILITATOR_INPUT_ID))
     Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_FACILITATOR_INPUT_ID, F2F_SESSION_FACILITATOR_INPUT_VALUE))
   else

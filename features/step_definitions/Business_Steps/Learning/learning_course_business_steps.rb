@@ -60,51 +60,31 @@ And(/^I Open A Specific Activity Named (.*)$/i) do |f2f_activity_name|
 end
 
 
-# Then(/^I Should Be Able To Add A New (.*) Activity$/i) do |course_activity_name|
-#   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-#   AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
-#   case course_activity_name
-#   when 'Acknowledgement'
-#     CreateAnActivity(course_activity_name)
-#   else
-#     SelectAnActivity(course_activity_name)
-#     CreateAnActivity(course_activity_name)
-#   end
-# end
+Then(/^I Should Be Able To Add A (.*) Activity$/i) do |course_activity_name|
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+  AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
+
+  case course_activity_name
+    when 'Acknowledgement'
+      CreateAnActivity(course_activity_name)
+    else
+      SelectAnActivity(course_activity_name)
+      CreateAnActivity(course_activity_name)
+  end
+end
 
 
-Then(/^I Should Be Able To (Add|Edit) A (.*) Activity Named (.*)$/i) do |course_activity_action, course_activity_name, course_activity_title|
-
+Then(/^I Should Be Able To (Edit|Delete) A (.*) Activity Named (.*)$/i) do |course_activity_action, course_activity_type, course_activity_title|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
 
-  case course_activity_action
-
-  when 'Add'
-    begin
-      ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-      AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
-
-      case course_activity_name
-      when 'Acknowledgement'
-        CreateAnActivity(course_activity_name)
-      else
-        SelectAnActivity(course_activity_name)
-        CreateAnActivity(course_activity_name)
-      end
-    end
-
-  when 'Edit'
-    begin
-      ModifyACourseActivity(course_activity_title, course_activity_action)
-      EditACourseActivity(course_activity_name)
-    end
-  end
+  #check if activity exists, if not create activity
+  ModifyACourseActivity(course_activity_action, course_activity_title)
+  EditACourseActivity(course_activity_type)
 end
 
 
 Then(/^I Should Be Able To (Create|Edit|Delete) A Session In The Face-to-Face Activity$/i) do |modify_session_type|
   case modify_session_type
-
   when 'Create'
     ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
     AddSessionDetails()
@@ -149,6 +129,7 @@ end
 
 Then(/^I Should Be Able To (.*) Of A Specific Course$/i) do |retrain_action|
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, retrain_action)
+
   case retrain_action
   when "Fix Retrain"
     begin
@@ -164,7 +145,6 @@ end
 
 
 And(/^I select (.*) as (.*)$/i) do |dropdown_name, dropdown_value|
-
   case dropdown_name
   when "Employee Name"
     begin
@@ -229,6 +209,8 @@ And(/^I Have Interacted With An Assigned quiz Course (.*)$/i) do |course_name|
   sleep(2)
   WaitForAnElementByPartialLinkTextAndTouch(course_name)
 end
+
+
 And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
   GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
   SearchTheAssignedCourse(course_name)
@@ -238,6 +220,7 @@ And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
   WaitForAnElementByIdAndInputValue(CRS_RQST_ID, CRS_RQST_TXT)
   WaitForAnElementByIdAndTouch(CRS_REQUEST_SBMT)
 end
+
 
 Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
   GoToCourseEnrolmentsSection(COURSE_ENROLMENT_LTEXT)
@@ -262,12 +245,12 @@ And(/^I Re Enrol The Candidate For The Activity$/) do
 end
 
 
-And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activity_type, f2f_activity_name|
+And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activity_action, f2f_activity_name|
   F2F_ACTIVITY_NAME = f2f_activity_name
-  F2F_ACTIVITY_TYPE = activity_type
+  F2F_ACTIVITY_ACTION = activity_action
   ## TODO: Query DB for course ection. If found proceed with search else create section
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
+  ModifyACourseActivity(F2F_ACTIVITY_ACTION, F2F_ACTIVITY_NAME)
 end
 
 
@@ -282,11 +265,12 @@ When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
 end
 
 
-Then(/^I Should Be Able To Save The Session with the Specified Settings$/i) do
-  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
-  VerifyFaceToFaceActivitySettings()
-end
+#TODO: Pending Review and removal
+# Then(/^I Should Be Able To Save The Session with the Specified Settings$/i) do
+#   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+#   ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
+#   VerifyFaceToFaceActivitySettings()
+# end
 
 
 When(/^I Leave Current Edit Page For List$/) do
@@ -297,6 +281,7 @@ end
 Then(/^I Should Edit The ([\s\w]+) .* Name And Description$/) do |edit_target|
   FillTitleAndDescriptionFieldAndSave(edit_target)
 end
+
 
 And(/^I Search For Created Course In The Scenario$/) do
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
@@ -322,17 +307,21 @@ Then(/^I Should Edit The Quiz activity$/) do
   ModifyQuizTitleDescription()
 end
 
+
 And(/^I Verify That Default Settings For Quiz Is Correct$/) do
   VerifySettingsOfQuizActivity()
 end
+
 
 And(/^I Should Change Quiz Settings$/) do
   ChangeQuizSettings()
 end
 
+
 And(/^Modifying Settings Of Quiz Activity Is (\w+)$/) do |setting_ability|
   CheckAbilityToModifyQuizSettings(setting_ability)
 end
+
 
 Given(/^The Lock course with enrolments Is Configured To (Yes|No)$/i) do |elmo_config_option|
   steps %Q{
@@ -363,6 +352,7 @@ Then(/^I Should Not Be Able To Delete Any Course Related Activities$/i) do
   #this doesnt work -> does not contain trash icon - //span[contains(@class,'glyphicon-trash')] since del section is hidden
   #check that does not contain delete section button - //a[contains(@class,'del-section')]
 end
+
 
 And(/^I Should Be Able To Only Add Non-Recordable Activities$/i) do
   pending
