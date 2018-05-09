@@ -49,6 +49,7 @@ end
 
 When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
   EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
@@ -77,7 +78,27 @@ end
 Then(/^I Should Be Able To (Edit|Delete) A (.*) Activity Named (.*)$/i) do |course_activity_action, course_activity_type, course_activity_title|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
 
+  #get course id from url
+  course_id = $driver.current_url.split('/')[6]
+
   #check if activity exists, if not create activity
+  # AddANewSection(COURSE_ADD_A_SECTION_BTN_ID),SelectAnActivity(course_activity_type),CreateAnActivity(course_activity_type)
+  pending
+  case course_activity_type
+    when "Acknowledgement"
+      count = $daos.get_visible_course_list_by_name(course_search_name)
+
+    when "ELMO Module"
+    when "ELMO Survey"
+    when "Face-to-Face"
+    when "Quiz"
+    when "SCORM Package"
+    when "File"
+    when "Label"
+    when "Page"
+    when "Post"
+    when "ELMO Survey (new)"
+  end
   ModifyACourseActivity(course_activity_action, course_activity_title)
   EditACourseActivity(course_activity_type)
 end
