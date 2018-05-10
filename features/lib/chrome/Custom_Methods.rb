@@ -149,6 +149,7 @@ module Chrome
           element if element.displayed?
         }
 
+        enter_txt.clear()
         enter_txt.send_keys(text)
 
         $driver.switch_to.parent_frame

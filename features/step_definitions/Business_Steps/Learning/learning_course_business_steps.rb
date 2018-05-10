@@ -49,21 +49,9 @@ end
 
 When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
   EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
-end
-
-
-Then(/^I Should Be Able To Add A New (.*) Activity$/i) do |course_activity_name|
-  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
-  case course_activity_name
-  when 'Acknowledgement'
-    CreateAnActivity(course_activity_name)
-  else
-    SelectAnActivity(course_activity_name)
-    CreateAnActivity(course_activity_name)
-  end
 end
 
 
@@ -73,11 +61,69 @@ And(/^I Open A Specific Activity Named (.*)$/i) do |f2f_activity_name|
 end
 
 
-Then(/^I Should Be Able To (Create|Edit) A Session In The Face-to-Face Activity$/i) do
-  ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
-  AddSessionDetails()
-  ClickOnSaveButton(SAVE_BTN_ID)
-  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+Then(/^I Should Be Able To Add A (.*) Activity$/i) do |course_activity_name|
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+  AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
+
+  case course_activity_name
+    when 'Acknowledgement'
+      CreateAnActivity(course_activity_name)
+    else
+      SelectAnActivity(course_activity_name)
+      CreateAnActivity(course_activity_name)
+  end
+end
+
+
+Then(/^I Should Be Able To (Edit|Delete) A (.*) Activity Named (.*)$/i) do |course_activity_action, course_activity_type, course_activity_title|
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+
+  ModifyACourseActivity(course_activity_action, course_activity_title)
+  EditACourseActivity(course_activity_type)
+  # #get course id from url
+  # #course_id = $driver.current_url.split('/')[6]
+  #
+  # #check if activity exists, if not create activity
+  # # AddANewSection(COURSE_ADD_A_SECTION_BTN_ID),SelectAnActivity(course_activity_type),CreateAnActivity(course_activity_type)
+  #
+  # case course_activity_type
+  #   when "Acknowledgement"
+  #     count = $daos.get_course_activity(course_id)
+  #
+  #   when "ELMO Module"
+  #   when "ELMO Survey"
+  #   when "Face-to-Face"
+  #   when "Quiz"
+  #   when "SCORM Package"
+  #   when "File"
+  #   when "Label"
+  #   when "Page"
+  #   when "Post"
+  #   when "ELMO Survey (new)"
+  # end
+end
+
+
+Then(/^I Should Be Able To (Create|Edit|Delete) A Session In The Face-to-Face Activity$/i) do |modify_session_type|
+  case modify_session_type
+  when 'Create'
+    ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
+    AddSessionDetails()
+    ClickOnSaveButton(SAVE_BTN_ID)
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+
+  when 'Edit'
+    EditFirstCourseFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
+    EditSessionDetails()
+    ClickOnSaveButton(SAVE_BTN_ID)
+    PressConfirm()
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+
+  when 'Delete'
+    DeleteTheCourseFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
+    PressConfirm()
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
+  end
 end
 
 
@@ -102,6 +148,7 @@ end
 
 Then(/^I Should Be Able To (.*) Of A Specific Course$/i) do |retrain_action|
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, retrain_action)
+
   case retrain_action
   when "Fix Retrain"
     begin
@@ -117,7 +164,6 @@ end
 
 
 And(/^I select (.*) as (.*)$/i) do |dropdown_name, dropdown_value|
-
   case dropdown_name
   when "Employee Name"
     begin
@@ -182,6 +228,8 @@ And(/^I Have Interacted With An Assigned quiz Course (.*)$/i) do |course_name|
   sleep(2)
   WaitForAnElementByPartialLinkTextAndTouch(course_name)
 end
+
+
 And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
   GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
   SearchTheAssignedCourse(course_name)
@@ -191,6 +239,7 @@ And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
   WaitForAnElementByIdAndInputValue(CRS_RQST_ID, CRS_RQST_TXT)
   WaitForAnElementByIdAndTouch(CRS_REQUEST_SBMT)
 end
+
 
 Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
   GoToCourseEnrolmentsSection(COURSE_ENROLMENT_LTEXT)
@@ -215,27 +264,32 @@ And(/^I Re Enrol The Candidate For The Activity$/) do
 end
 
 
-And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activity_type, f2f_activity_name|
+And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activity_action, f2f_activity_name|
   F2F_ACTIVITY_NAME = f2f_activity_name
-  F2F_ACTIVITY_TYPE = activity_type
+  F2F_ACTIVITY_ACTION = activity_action
   ## TODO: Query DB for course ection. If found proceed with search else create section
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
+  ModifyACourseActivity(F2F_ACTIVITY_ACTION, F2F_ACTIVITY_NAME)
 end
 
 
 When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
-  CheckFaceToFaceActivitySettings(label_name, label_value)
+  CheckActivitySettings(label_name, label_value)
   ClickOnSaveButton(SAVE_BTN_ID)
-  Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
+  if label_name == 'Compulsory'
+    Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID,SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  else
+    Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
+  end
 end
 
 
-Then(/^I Should Be Able To Create A Session In The Face\-to\-Face Activity with the Specified Settings$/i) do
-  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
-  VerifyFaceToFaceActivitySettings()
-end
+#TODO: Pending Review and removal
+# Then(/^I Should Be Able To Save The Session with the Specified Settings$/i) do
+#   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+#   ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
+#   VerifyFaceToFaceActivitySettings()
+# end
 
 
 When(/^I Leave Current Edit Page For List$/) do
@@ -246,6 +300,7 @@ end
 Then(/^I Should Edit The ([\s\w]+) .* Name And Description$/) do |edit_target|
   FillTitleAndDescriptionFieldAndSave(edit_target)
 end
+
 
 And(/^I Search For Created Course In The Scenario$/) do
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
@@ -264,20 +319,87 @@ And(/^I Go To The Sections Of The Created Course$/) do
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
 end
 
+
 #### Quiz section Martinma123
 #### ModifyQuizTitleDescription specific for quiz activity due to Save button duplicated
 Then(/^I Should Edit The Quiz activity$/) do
   ModifyQuizTitleDescription()
 end
 
+
 And(/^I Verify That Default Settings For Quiz Is Correct$/) do
   VerifySettingsOfQuizActivity()
 end
+
 
 And(/^I Should Change Quiz Settings$/) do
   ChangeQuizSettings()
 end
 
+
 And(/^Modifying Settings Of Quiz Activity Is (\w+)$/) do |setting_ability|
   CheckAbilityToModifyQuizSettings(setting_ability)
+end
+
+
+Given(/^The Lock course with enrolments Is Configured To (Yes|No)$/i) do |elmo_config_option|
+  steps %Q{
+    Given I Have Logged In As A ELMO Admin
+    And I go to Admin Settings
+    And I Go To General Setup under General section
+    And I Click On "ELMO Configuration" Tab
+    When I Change "Lock course with enrolments" ELMO Configuration To "#{elmo_config_option}"
+    Then  I Should Be Able To Save Configuration Details
+        }
+  $driver.quit
+end
+
+
+And(/^Courses Have User Enrolments$/i) do
+  pending
+end
+
+
+When(/^I Search For A Course With Active User Enrolments$/i) do
+  pending
+end
+
+
+Then(/^I Should Not Be Able To Delete Any Course Related Activities$/i) do
+  pending
+  #check that does not contain delete button for activities- //a[contains(@class,'del-activity')]
+  #this doesnt work -> does not contain trash icon - //span[contains(@class,'glyphicon-trash')] since del section is hidden
+  #check that does not contain delete section button - //a[contains(@class,'del-section')]
+end
+
+
+And(/^I Should Be Able To Only Add Non-Recordable Activities$/i) do
+  pending
+end
+
+
+And(/^I Should Not Be Able To Add New Sections$/i) do
+  pending
+  # check that the page does not contain Add section button - WaitForAnElementByXpathAndTouch(course_add_a_section_btn_id))
+  # check that the Sections tab has the lock symbol - //span[contains(@class,'glyphicon-lock')]
+end
+
+
+And(/^I Should Be Able To Only Edit Existing Activities For The Course$/i) do
+  pending
+end
+
+
+And(/^I Edit The Course$/i) do
+  pending
+  #call the step - I Edit A Specific Course Named DO NOT DELETE
+end
+
+
+Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (.*)$/i) do |activity_type, survey_activity_name|
+    SURVEY_ACTIVITY_NAME = survey_activity_name
+    SURVEY_ACTIVITY_TYPE = activity_type
+    ## TODO: Query DB for course activity. If found proceed with search else create activity
+    ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+    ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
 end

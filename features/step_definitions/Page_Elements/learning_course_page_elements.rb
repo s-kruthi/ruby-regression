@@ -6,6 +6,7 @@ ADD_ACTIVITY = 'input[name="addsection"]'
 
 
 ADD_FILE_ID = "//a[@id='addFile']"
+LIST_DROPDOWN = "//table//button[@data-toggle='dropdown']"
 COURSE_ACTIVITY_TITLE_ID = "//input[contains(@id,'name')]"
 
 ############Learning course section###############
@@ -48,7 +49,7 @@ SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID = "//a[contains(.,'Notifications')]"
 COURSE_NOT_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
 COURSE_ADD_A_SECTION_BTN_ID = "//a[contains(.,'Add a section')]"
 
-COURSE_ADD_ACTIVITY_BTN_ID = "addactivity"
+COURSE_ADD_ACTIVITY_BTN_ID = "//input[contains(@value,'Add an activity')]"
 
 COURSE_SECTION_DROPDOWN_ID = "s2id_section"
 COURSE_SECTION_DROPDOWN_SEARCH_ID = "select2-input"
@@ -62,6 +63,9 @@ SURVEY2_CONTENT_DROPDOWN_INPUT_ID = "s2id_elmo_learningbundle_ModSurveytwo_surve
 SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS = "select2-input"
 SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS = "select2-result-selectable"
 
+
+###ELMO Survey activity elements
+SURVEY_CONFIG_COMPULSORY_ID = 'elmo_learningbundle_modelmosurvey_compulsory'
 
 ###Face-to-face activity elements
 F2F_SESSION_TITLE_ID = "//h3[contains(.,'')]"
@@ -85,6 +89,7 @@ F2F_SESSION_MIN_CAPACITY_INPUT_ID = "//input[contains(@id,'minCapacity')]"
 F2F_SESSION_MAX_CAPACITY_INPUT_ID = "//input[contains(@id,'maxCapacity')]"
 F2F_SESSION_LOCATION_INPUT_ID= "//input[contains(@id,'location')]"
 F2F_SESSION_FACILITATOR_INPUT_ID = "//input[contains(@id,'facilitator')]"
+# F2F_SESSION_SAVE_CHANGES_ID = "//button[contains(@class, 'confirm-btn')]"
 
 
 ###Quiz activity elements
