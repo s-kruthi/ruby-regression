@@ -3,7 +3,7 @@ When(/^I Change "([^"]*)" Elmo Configuration To "([^"]*)"/i) do |elmo_configurat
   ELMO_CONFIG_SETTINGS.each do |key, value|
     if key.to_s.eql? elmo_configuration_name
       if ($driver.find_element(:xpath, "#{value}").displayed?) == true
-        Sleep_Until(SelectFromDropDown("#{value}", elmo_configuration_value)) #if Sleep_Until($driver.find_element(:xpath, "#{value}").displayed? == true)
+        Sleep_Until(SelectFromDropDown("#{value}", elmo_configuration_value))
         $configuration_found = 1
       end
     end
@@ -72,5 +72,4 @@ Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/i) do |admin
     When I Change "#{configure_name}" ELMO Configuration To "#{configured_value}"
     Then I Should Be Able To Save Configuration Details
         }
-
 end
