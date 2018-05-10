@@ -133,7 +133,7 @@ end
 def AddANewSection(course_add_a_section_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_add_a_section_btn_id))
   #Adding sleep intentionally,if course has too many activities, it takes time to scroll down the page
-  sleep (3)
+  sleep (1)
 end
 
 
@@ -142,14 +142,14 @@ def SelectAnActivity(select_activity_name)
   # This is a quick hack to ensure the last dropdown is selected since that is the one which gets created from AddANewSection() method
   Sleep_Until($driver.find_elements(:id, COURSE_SECTION_DROPDOWN_ID).last.click)
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_SEARCH_ID).last.send_keys(select_activity_name))
-  puts "Adding activity: " + $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.text
+  puts COLOR_BLUE + "Adding activity: " + $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.text
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.click)
-  sleep (1)
 end
 
 
 def CreateAnActivity(course_activity_name)
   Sleep_Until($driver.find_elements(:xpath, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
+
   begin
 
     case course_activity_name
@@ -292,7 +292,6 @@ def EditACourseActivity(course_activity_type)
       begin
         Sleep_Until(WaitForAnElementByXpathAndClearValue(COURSE_ACTIVITY_TITLE_ID))
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY_TITLE_VALUE + " edit"))
-        byebug
         Sleep_Until(UseCkeditorToEnterText(SURVEY_ACTIVITY_EDITOR_TXT, 0))
         ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))

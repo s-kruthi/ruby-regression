@@ -78,29 +78,29 @@ end
 Then(/^I Should Be Able To (Edit|Delete) A (.*) Activity Named (.*)$/i) do |course_activity_action, course_activity_type, course_activity_title|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
 
-  #get course id from url
-  course_id = $driver.current_url.split('/')[6]
-
-  #check if activity exists, if not create activity
-  # AddANewSection(COURSE_ADD_A_SECTION_BTN_ID),SelectAnActivity(course_activity_type),CreateAnActivity(course_activity_type)
-  pending
-  case course_activity_type
-    when "Acknowledgement"
-      count = $daos.get_visible_course_list_by_name(course_search_name)
-
-    when "ELMO Module"
-    when "ELMO Survey"
-    when "Face-to-Face"
-    when "Quiz"
-    when "SCORM Package"
-    when "File"
-    when "Label"
-    when "Page"
-    when "Post"
-    when "ELMO Survey (new)"
-  end
   ModifyACourseActivity(course_activity_action, course_activity_title)
   EditACourseActivity(course_activity_type)
+  # #get course id from url
+  # #course_id = $driver.current_url.split('/')[6]
+  #
+  # #check if activity exists, if not create activity
+  # # AddANewSection(COURSE_ADD_A_SECTION_BTN_ID),SelectAnActivity(course_activity_type),CreateAnActivity(course_activity_type)
+  #
+  # case course_activity_type
+  #   when "Acknowledgement"
+  #     count = $daos.get_course_activity(course_id)
+  #
+  #   when "ELMO Module"
+  #   when "ELMO Survey"
+  #   when "Face-to-Face"
+  #   when "Quiz"
+  #   when "SCORM Package"
+  #   when "File"
+  #   when "Label"
+  #   when "Page"
+  #   when "Post"
+  #   when "ELMO Survey (new)"
+  # end
 end
 
 
@@ -116,13 +116,11 @@ Then(/^I Should Be Able To (Create|Edit|Delete) A Session In The Face-to-Face Ac
     EditFirstCourseFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
     EditSessionDetails()
     ClickOnSaveButton(SAVE_BTN_ID)
-    # ConfirmChanges(F2F_SESSION_SAVE_CHANGES_ID)
     PressConfirm()
     Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 
   when 'Delete'
     DeleteTheCourseFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
-    # ConfirmChanges(F2F_SESSION_SAVE_CHANGES_ID)
     PressConfirm()
     Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
   end

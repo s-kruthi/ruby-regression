@@ -49,7 +49,7 @@ SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID = "//a[contains(.,'Notifications')]"
 COURSE_NOT_SAVE_BUTTON_ID = "//button[contains(@id,'submit')]"
 COURSE_ADD_A_SECTION_BTN_ID = "//a[contains(.,'Add a section')]"
 
-COURSE_ADD_ACTIVITY_BTN_ID = "addactivity"
+COURSE_ADD_ACTIVITY_BTN_ID = "//input[contains(@value,'Add an activity')]"
 
 COURSE_SECTION_DROPDOWN_ID = "s2id_section"
 COURSE_SECTION_DROPDOWN_SEARCH_ID = "select2-input"

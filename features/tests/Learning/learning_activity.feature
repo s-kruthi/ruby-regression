@@ -21,8 +21,8 @@ Feature: As An Admin I Would Like to Manage Course Activities Which can Further 
     Then  I Should Be Able To Add A ELMO Module Activity
 
 
-  @learning_high_risk @course_activity_add @course_activity_elmosurvey_add
-  Scenario: [Learning]Learning Admin creating New Activities In A Course
+  @learning_high_risk @course_activity_add @course_activity_elmosurvey_add @C244
+  Scenario: [Learning]Learning Admin creating New ELMO Survey Activity In A Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
@@ -106,7 +106,7 @@ Feature: As An Admin I Would Like to Manage Course Activities Which can Further 
 
   @learning_high_risk @course_activity_edit_validation @lock_course_enrolment
   Scenario: [Learning]Learning Admin Can Edit Only The Session Details In A Face-to-Face Activity
-    Given The Lock Course With Enrolments Is Configured To No
+    Given The Lock Course With Enrolments Is Configured To Yes
     And   Courses Have User Enrolments
     And   I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -119,17 +119,17 @@ Feature: As An Admin I Would Like to Manage Course Activities Which can Further 
     And   I Should Be Able To Only Edit Existing Activities For The Course
 
 
-  @learning_low_risk @course_activity_survey_edit
+  @learning_low_risk @course_activity_survey_edit @C15704
   Scenario: [Learning]Learning Admin Can Edit An ELMO Survey Activity In A Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
     When  I Edit A Specific Course Named DO NOT DELETE
-    Then  I Should Be Able To Edit A ELMO Survey Activity Named Test ELMO Survey Activity - Please DO NOT DELETE
+    Then  I Should Be Able To Edit A Specific ELMO Survey Activity Named Test ELMO Survey Activity - Please DO NOT DELETE
     And   I Set Compulsory Settings To Enabled
 
 
-  @learning_low_risk @course_activity_delete @course_activity_survey_delete
+  @learning_low_risk @course_activity_delete @course_activity_survey_delete @C15705
   Scenario: [Learning]Learning Admin Can Delete An ELMO Survey Activity In A Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -147,7 +147,7 @@ Feature: As An Admin I Would Like to Manage Course Activities Which can Further 
     Then  I Should Be Able To Delete A Specific Section
 
 
-  @learning_high_risk @course_activity_add
+  @learning_high_risk @course_activity_add @course_activity_f2f_session_add @C744
   Scenario: [Learning]Learning Admin Creating New Session In A Face-to-Face Activity
     Given The Lock course with enrolments Is Configured To Yes
     And   I Have Logged In as a Learning Admin

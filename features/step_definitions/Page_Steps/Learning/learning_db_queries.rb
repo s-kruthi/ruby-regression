@@ -53,6 +53,9 @@ module Database_env
     end
 
 
+    def get_course_activity(course_id)
+      pending
+    end
   end
 
 
