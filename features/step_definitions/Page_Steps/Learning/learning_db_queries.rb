@@ -1,24 +1,11 @@
 module Database_env
   class DAO
-    # def get_visible_course_list_by_name(partial_course_name)
-    #   query = "SELECT c.fullname
-    #           FROM mdl_course c
-    #           INNER JOIN mdl_course_categories cc ON cc.id = c.category
-    #           WHERE c.fullname LIKE '%#{partial_course_name}%'
-    #           AND c.visible = 1
-    #           AND cc.visible = 1;"
-    #   return @db[query].first[:fullname]
-    # end
-
-
     def get_visible_course_list_by_name(partial_course_name)
       query = "SELECT DISTINCT c.id, c.fullname FROM mdl_course c
               INNER JOIN epms_lms_course_enrolment e ON c.id = e.course_id
-              INNER JOIN epms_course_facetoface f ON c.id = f.course
               INNER JOIN epms_user u ON u.id = e.user_id
               INNER JOIN mdl_course_categories cc ON cc.id = c.category
               WHERE c.fullname LIKE '%#{partial_course_name}%'
-              AND f.is_deleted = 0
               AND c.visible = 1
               AND e.isActive=1
               AND u.is_active = 1
