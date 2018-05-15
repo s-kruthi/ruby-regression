@@ -48,7 +48,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Retrain Discrepancies under Learning section
-    When  I See a List of Discrepency Courses
+    When  I See a List of Discrepancy Courses
     Then  I Should Be Able To Fix Retrain Of A Specific Course
 
 
@@ -57,7 +57,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Retrain Discrepancies under Learning section
-    When  I See a List of Discrepency Courses
+    When  I See a List of Discrepancy Courses
     Then  I Should Be Able To Disable Retrain Of A Specific Course
 
 

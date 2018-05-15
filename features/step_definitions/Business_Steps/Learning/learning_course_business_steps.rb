@@ -29,9 +29,9 @@ When(/^I Search For A Specific Course Named (.*)$/i) do |course_search_name|
 end
 
 
-When(/^I See a List of Discrepency Courses$/i) do
-  discrepency_course = $daos.get_course_discrepency_list()
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, discrepency_course, COURSE_SEARCH_BTN_ID)
+When(/^I See a List of Discrepancy Courses$/i) do
+  discrepancy_course = $daos.get_course_discrepancy_list()
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, discrepancy_course, COURSE_SEARCH_BTN_ID)
 end
 
 

@@ -15,7 +15,7 @@ module Database_env
     end
 
 
-    def get_course_discrepency_list()
+    def get_course_discrepancy_list()
       query = "SELECT c.fullname courseName
               FROM epms_lms_course_enrolment e
               INNER JOIN mdl_course c ON e.course_id = c.id
