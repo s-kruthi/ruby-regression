@@ -249,7 +249,7 @@ end
 
 Then(/^I Should Be Able To Add (.*) New Users In To The System$/i) do |total_number_of_users|
   $total = total_number_of_users.to_i
-  AddUserDetails($total - 1)
+  AddUserDetails($total)
 end
 
 And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|

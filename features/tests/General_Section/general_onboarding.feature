@@ -5,12 +5,12 @@ Feature:
 
   @general_user_add  @general_high_risk @onboarding_high_risk
   Scenario: [General] [Onboarding] Company Admin Creating New User
-    Given I Have Logged In as a ELMO Super Admin
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
     And   I Enter New User Details
-    Then  I Should Be Able To Add 1 New Users In To The System
+    Then  I Should Be Able To Add 5 New Users In To The System
 
   @onboarding_user_add @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]Company Admin Creating New Onboarding User

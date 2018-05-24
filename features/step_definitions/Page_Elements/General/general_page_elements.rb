@@ -37,8 +37,8 @@ USER_CREATE_SAVE_BTN_ID = "//button[@id='user_save']"
 
 SELECT_TIMEZONE_ID = "//select[contains(@id,'user_timezone')]"
 
-USER_PASSWORD_ID = "//input[@name='user[password][first]']"
-USER_PASSWORD_RECONFIRM_ID = "//input[@name='user[password][second]']"
+USER_PASSWORD_ID = "//input[contains(@id,'user_password_first')]"
+USER_PASSWORD_RECONFIRM_ID = "//input[contains(@id,'user_password_second')]"
 
 ADD_USER_SAVE_SUCCESS_ID = "//div[contains(@class,'alert alert-success')]"
 
