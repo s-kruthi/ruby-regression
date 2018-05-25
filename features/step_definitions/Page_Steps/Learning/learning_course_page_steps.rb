@@ -318,9 +318,9 @@ def EditACourseActivity(course_activity_type)
         #Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
         #Adding question
         #Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
-       # Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
+        # Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
 
-      #  Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
+        #  Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
         ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
@@ -404,6 +404,8 @@ end
 
 def CreateAllNotifications()
   begin
+    #This line is a temporary workaround used to store the elmo-table contents which will be used to check whether a template has already been added or not
+    $template_list = $driver.find_element(:id, "elmo-table").text.split("\nEdit\nToggle dropdown to edit appraisal")
     ClickAddNotificationButton()
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
     limit = $driver.find_elements(:class, "select2-result-selectable").count - 1
@@ -434,14 +436,26 @@ end
 
 
 def AddNotificationTemplate()
-  begin
-    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_template").click)
-    puts "Added Template: " + $driver.find_elements(:class, "select2-result-selectable").last.text
-    Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
-    Sleep_Until($driver.find_elements(:xpath, "//button[contains(@id,'next')]").first.click)
-    sleep(2)
-    CheckForTriggerDate()
-    Sleep_Until(SaveNotificationTemplate())
+  #Check for existing notification templates
+  Sleep_Until($driver.find_element(:id, "s2id_templateNotification_template").click)
+  $current_template = $driver.find_elements(:class, "select2-result-selectable").last.text
+
+  if !($template_list.to_s.include? $current_template.to_s)
+    begin
+      puts "Added Template: " + $driver.find_elements(:class, "select2-result-selectable").last.text
+      Sleep_Until($driver.find_elements(:class, "select2-result-selectable").last.click)
+      Sleep_Until($driver.find_elements(:xpath, "//button[contains(@id,'next')]").first.click)
+      sleep(2)
+      CheckForTriggerDate()
+      Sleep_Until(SaveNotificationTemplate())
+    end
+
+  else
+    # byebug
+    puts COLOR_BLUE + "Notification already exists: " + $driver.find_elements(:class, "select2-result-selectable").last.text
+    Sleep_Until($driver.find_elements(:class, "select2-drop-mask").last.click)
+    Sleep_Until($driver.find_element(:xpath, "//button[contains(.,'×')]").click)
+    return
   end
 end
 

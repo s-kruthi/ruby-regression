@@ -74,6 +74,9 @@ ADD_FILE_BTN = "//button[contains(.,'Add File')]"
 
 FILE_TITLE = "//input[contains(@id,'title')]"
 FILE_ID = "//ul[contains(.,'Labels')]"
+
+FILE_CATEGORY_ID = "s2id_category"
+
 FILE_LABEL_ID = "select2-result"
 BROWSE_FILE_ID = "//input[contains(@type,'file')]"
 
