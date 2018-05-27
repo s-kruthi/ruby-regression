@@ -1,30 +1,32 @@
-def goToTheDocumentsAsCompanyAdmin(admin_cog, documents_expand, documents_list_path)
-  puts "TEST"
-  WaitForAnElementByClass(admin_cog)
-  TouchAdminMenu(admin_cog)
-  sleep(2)
-  goToDocumentsSection(documents_expand)
-  sleep(2)
-  GoToItemLandingPage(documents_list_path)
-
-end
+#TODO: Review and Remove since there is no usage found
+# def goToTheDocumentsAsCompanyAdmin(admin_cog, documents_expand, documents_list_path)
+#   Sleep_Until(WaitForAnElementByClass(admin_cog))
+#   TouchAdminMenu(admin_cog)
+#   goToDocumentsSection(documents_expand)
+#   sleep(2)
+#   GoToItemLandingPage(documents_list_path)
+# end
 
 def goToDocumentsSection(documents_expand)
   WaitForAnElementByXpathAndTouch(documents_expand)
 end
+
 
 def GoToItemLandingPage(documents_list_path)
   WaitForAnElementByXpathAndTouch(documents_list_path)
   sleep(2)
 end
 
+
 def goToNewFormTemplateAddPage(form_temp_btn)
   WaitForAnElementByXpathAndTouch(form_temp_btn)
 end
 
+
 def enterFormTemplateDetails(form_temp_title, form_temp_title_text)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
 end
+
 
 def SelectSingleFromSelect2InputDropdown(select2_input_id, select2_search_input_class, select2_search_input_text, select2_search_result_class)
   $driver.find_elements(:id, select2_input_id).last.click
@@ -32,14 +34,17 @@ def SelectSingleFromSelect2InputDropdown(select2_input_id, select2_search_input_
   Sleep_Until($driver.find_elements(:class, select2_search_result_class).first.click)
 end
 
+
 def enterDescription(form_temp_desc_txt, index_id)
   UseCkeditorToEnterText(form_temp_desc_txt, index_id)
 end
+
 
 def createAFormTemplateAndVerify(form_temp_save)
   WaitForAnElementByXpathAndTouch(form_temp_save)
   sleep(3)
 end
+
 
 def findIdOfDocumentInstance()
   sleep(1)
@@ -50,11 +55,13 @@ def findIdOfDocumentInstance()
   sleep(1)
 end
 
+
 def searchforAForFormTemplate(search_box_id, form_temp_search_txt, search_btn_id)
   WaitForAnElementByXpathAndInputValue(search_box_id, form_temp_search_txt)
   WaitForAnElementByXpathAndTouch(search_btn_id)
   sleep(2)
 end
+
 
 def hideTheFirstFormTemplatePlanFromTheTable(class_name, index_value, partial_link_text)
   WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
@@ -65,19 +72,23 @@ def hideTheFirstFormTemplatePlanFromTheTable(class_name, index_value, partial_li
   sleep(1)
 end
 
+
 def goToNewDocumentCategoryPage(document_category_btn)
   WaitForAnElementByXpathAndTouch(document_category_btn)
 end
+
 
 def enterDocumentCategoryDetails(document_cat_title_id, document_cat_title_txt)
   WaitForAnElementByXpathAndInputValue(document_cat_title_id, document_cat_title_txt)
   sleep(1)
 end
 
+
 def createADocumentCategory(form_temp_save)
   WaitForAnElementByXpathAndTouch(form_temp_save)
   sleep(1)
 end
+
 
 def hideTheFirstDocumentCategoryFromTheTable(class_name, index_value, partial_link_text)
   WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
@@ -88,12 +99,14 @@ def hideTheFirstDocumentCategoryFromTheTable(class_name, index_value, partial_li
   sleep(1)
 end
 
+
 def searchForAFileAndVerify(search_box_id, form_temp_search_txt, search_btn_id, search_result)
   WaitForAnElementByXpathAndInputValue(search_box_id, form_temp_search_txt)
   WaitForAnElementByXpathAndTouch(search_btn_id)
   sleep (1)
   VerifyAnElementExistByXPath(search_result, form_temp_search_txt)
 end
+
 
 def deleteTheFirstFileFromTheTable(class_name, index_value, partial_link_text)
   WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
@@ -104,12 +117,14 @@ def deleteTheFirstFileFromTheTable(class_name, index_value, partial_link_text)
   sleep(1)
 end
 
+
 def ValidateDocumentSectionisPresentUnderAdmin(document_path, doc_text, forms_path, form_text)
   VerifyAnElementExistByXPath(document_path, doc_text)
   WaitForAnElementByXpathAndTouch(document_path)
   sleep(1)
   VerifyAnElementExistByXPath(forms_path, form_text)
 end
+
 
 def GoToReportsTab()
   sleep(1)
@@ -124,10 +139,12 @@ def GoToReportsTab()
   $driver.find_element(:class, 'select2-input').send_keys(:return)
 end
 
+
 def VerifyThePendingFormTemplates()
   sleep(2)
   $driver.find_element(:class, 'document-approval-status-2').displayed? == true
 end
+
 
 def RevokeDocumentViewAccessByUsingJmeterRubyService()
   sleep(1)
@@ -175,6 +192,7 @@ def RevokeDocumentViewAccessByUsingJmeterRubyService()
   sleep(3)
 end
 
+
 def CheckReportsTabisUnavailable()
   sleep(3)
   begin
@@ -191,6 +209,7 @@ def CheckReportsTabisUnavailable()
     $driver.quit
   end
 end
+
 
 def GrantBackDocumentViewAccessByUsingJmeterRubyService()
   sleep(1)

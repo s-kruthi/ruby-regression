@@ -451,7 +451,6 @@ def AddNotificationTemplate()
     end
 
   else
-    # byebug
     puts COLOR_BLUE + "Notification already exists: " + $driver.find_elements(:class, "select2-result-selectable").last.text
     Sleep_Until($driver.find_elements(:class, "select2-drop-mask").last.click)
     Sleep_Until($driver.find_element(:xpath, "//button[contains(.,'×')]").click)

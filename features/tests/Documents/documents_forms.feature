@@ -14,12 +14,14 @@ Feature:
     And  I Enter New Document Category Details
     Then I Should Be Able To Create A Document Category
 
+
   @document_category_hide @document_low_risk
   Scenario: [Documents]Hide a Document Category
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Document Categories under Documents section
     Then I Should Be Able To Hide A Document Category
+
 
   @form_template_create @document_high_risk
    Scenario: [Documents]Create a Form Template
@@ -29,6 +31,7 @@ Feature:
      When I click on Create Form Template Button
      And  I Enter New Form Template Details
      Then I Should Be Able To Create A Form Template
+
 
   @form_template_hide @document_low_risk
     Scenario: [Documents]Hide a Form Template

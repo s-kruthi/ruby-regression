@@ -23,19 +23,15 @@ end
 
 Then(/^I Should Be Able To Create A File$/i) do
   ClickOnSaveButton(FORM_TEMPLATE_SAVE_BTN)
-  # Sleep_Until(createAFile(FORM_TEMPLATE_SAVE_BTN))
-  # sleep(1)
   VerifySuccessAlertMessage(FILE_SAVE_SUCCESSFUL_ID, FILE_SAVE_SUCCESSFUL_VALUE)
 end
 
 
 Then(/^I Should Be Able To Search For A Specific File$/i) do
   Sleep_Until(searchForAFileAndVerify(FILE_TEMP_SEARCH_BOX, FILE_TITLE_TXT, FILE_SEARCH_BTN_ID, FILE_SEARCH_RESULT))
-    sleep (1)
 end
 
 
 Then(/^I Should Be Able To Delete A Specific File$/i) do
   Sleep_Until(deleteTheFirstFileFromTheTable(FILE_DROPDOWN,3, FILE_ACTION_DELETE))
-  sleep(1)
 end

@@ -42,11 +42,11 @@ After do | scenario |
 
   #screenshots incase of failure
   if scenario.failed?
+    puts COLOR_BLUE + "URL: " + $driver.current_url
     $driver.save_screenshot("./features/screenshots/#{ENV['CHANNEL']}/screenshot - #{Time.now.strftime('%Y-%m-%d %H-%M-%S')}.png")
   end
 
   File.open('./features/step_definitions/Test_Data/stored_ids.rb', 'w') {|file| file.truncate(0) }
-
   $driver.quit
 end
 
