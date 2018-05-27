@@ -35,9 +35,10 @@ DOC_CAT_ACTION_ITEM = "Hide"
 FILE_TITLE_TXT = "Test File - DO NOT DELETE"
 FILE_DESC_TXT = "Test File Description - DO NOT DELETE"
 
+FILE_CATEGORY_VALUE = "omar"
 
 filename = "sample.pdf"
-DOCUMENT_FILE_NAME = File.join(File.absolute_path("../../step_definitions/Test_Data/", File.dirname(__FILE__)), filename)
+DOCUMENT_FILE_NAME = File.join(File.absolute_path("../../Test_Data/", File.dirname(__FILE__)), filename)
 
 FILE_LABEL_ID_INDEX = 3
 

@@ -2,35 +2,40 @@ When(/^I click on Add File Button$/i) do
   goToAddFilePage(ADD_FILE_BTN)
 end
 
+
 And(/^I Enter File Details$/i) do
-  enterFileDetails(FILE_TITLE, FILE_TITLE_TXT, CAT_POS_INDEX_ARROW, 0, CAT_POS_INDEX_CLASS, 5)
-  enterDescription(FILE_DESC_TXT, 0)
+  Sleep_Until(enterFileDetails(FILE_TITLE, FILE_TITLE_TXT))
+  Sleep_Until(enterFileCategory(FILE_CATEGORY_ID, FILE_CATEGORY_VALUE))
+  Sleep_Until(enterDescription(FILE_DESC_TXT, 0))
   selectALabel(FILE_ID, FILE_LABEL_ID, FILE_LABEL_ID_INDEX)
 end
 
+
 And(/^I Select A File$/i) do
-  select_a_file(BROWSE_FILE_ID, DOCUMENT_FILE_NAME)
+  Sleep_Until(select_a_file(BROWSE_FILE_ID, DOCUMENT_FILE_NAME))
 end
+
 
 And(/^I Select Availability$/i) do
-  selectFileAvailability(AVAIL_DROPDOWN_OPTION, AVAIL_DROPDOWN_VALUE)
+  Sleep_Until(selectFileAvailability(AVAIL_DROPDOWN_OPTION, AVAIL_DROPDOWN_VALUE))
 end
+
 
 Then(/^I Should Be Able To Create A File$/i) do
-  createAFile(FORM_TEMPLATE_SAVE_BTN)
-  sleep(1)
+  ClickOnSaveButton(FORM_TEMPLATE_SAVE_BTN)
+  # Sleep_Until(createAFile(FORM_TEMPLATE_SAVE_BTN))
+  # sleep(1)
   VerifySuccessAlertMessage(FILE_SAVE_SUCCESSFUL_ID, FILE_SAVE_SUCCESSFUL_VALUE)
-  # $driver.quit
 end
+
 
 Then(/^I Should Be Able To Search For A Specific File$/i) do
-    searchForAFileAndVerify(FILE_TEMP_SEARCH_BOX, FILE_TITLE_TXT, FILE_SEARCH_BTN_ID, FILE_SEARCH_RESULT)
+  Sleep_Until(searchForAFileAndVerify(FILE_TEMP_SEARCH_BOX, FILE_TITLE_TXT, FILE_SEARCH_BTN_ID, FILE_SEARCH_RESULT))
     sleep (1)
-    # $driver.quit
 end
 
+
 Then(/^I Should Be Able To Delete A Specific File$/i) do
-  deleteTheFirstFileFromTheTable(FILE_DROPDOWN,3, FILE_ACTION_DELETE)
+  Sleep_Until(deleteTheFirstFileFromTheTable(FILE_DROPDOWN,3, FILE_ACTION_DELETE))
   sleep(1)
-  # $driver.quit
 end
