@@ -14,10 +14,12 @@ pipeline {
             sh 'cd /var/lib/scriptonce_automation; pwd; git checkout .; git remote -v; git pull origin master'
           }
         }
-        stage('test') {
+        stage('Test Execution') {
           steps {
             echo 'test execution in progress..'
-            sh 'cucumber -xgt @C807 CHANNEL=headless'
+            sh '''source ~/.bash_profile
+
+cucumber -xgt @C807 CHANNEL=headless'''
           }
         }
       }
