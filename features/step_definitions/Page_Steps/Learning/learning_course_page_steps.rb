@@ -100,27 +100,25 @@ def SearchACourse(course_list_search_box_id, course_list_title_value, course_sea
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
 
+#TODO: Pending review and removal as ClickMenuOfFirstItemFromTable(), ClickMenuOfFirstItemFromTable() and DeleteTheCourseFromTable() are identical
+# def EditFirstCourseFromTable(xpath_name, partial_link_text)
+#   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
+#   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
+#   #get url and check if it has edit
+#   $driver.current_url =~ /\/course\/edit/
+# end
 
-def EditFirstCourseFromTable(xpath_name, partial_link_text)
-  Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
-  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
-  #get url and check if it has edit
-  $driver.current_url =~ /\/course\/edit/
-end
 
-
-#This selects the last course from the list and deletes it
-def DeleteTheCourseFromTable(xpath_name, partial_link_text)
-  Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
-  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
-end
+#This selects the first course from the list and deletes it
+# def DeleteTheCourseFromTable(xpath_name, partial_link_text)
+#   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
+#   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
+# end
 
 
 def ClickMenuOfFirstItemFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
-  PressEnterConfirm()
-  sleep (2)
 end
 
 
@@ -681,7 +679,7 @@ end
 
 def EditCourseCreatedLastScenario(course_created)
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_created, COURSE_SEARCH_BTN_ID)
-  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
