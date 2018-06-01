@@ -36,14 +36,32 @@ end
 
 
 Then(/^I Should Be Able To Edit The Specific Course$/i) do
-  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
-Then(/^I Should Be Able To Delete The Specific Course$/i) do
-  DeleteTheCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
-  Sleep_Until(CourseActionConfirm(COURSE_DELETE_BTN_NAME_ID))
-  VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
+Then(/^I Should Be Able To (Edit|Copy|Delete) The Specific Course$/i) do |course_action|
+  case course_action
+
+  when 'Edit'
+    begin
+      ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+    end
+
+  when 'Copy'
+    begin
+      ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_COPY)
+      Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
+      VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_COPY_SUCCESSFUL_VALUE)
+    end
+
+  when 'Delete'
+    begin
+    ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
+    Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
+    VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
+    end
+  end
 end
 
 
@@ -51,7 +69,7 @@ When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
 
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
-  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
@@ -113,14 +131,14 @@ Then(/^I Should Be Able To (Create|Edit|Delete) A Session In The Face-to-Face Ac
     Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 
   when 'Edit'
-    EditFirstCourseFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
     EditSessionDetails()
     ClickOnSaveButton(SAVE_BTN_ID)
     PressConfirm()
     Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 
   when 'Delete'
-    DeleteTheCourseFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
     PressConfirm()
     Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
   end
@@ -142,7 +160,7 @@ end
 And(/^I Click On The Menu Of A Specific Course Named (.*)$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
-  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
 
@@ -152,11 +170,15 @@ Then(/^I Should Be Able To (.*) Of A Specific Course$/i) do |retrain_action|
   case retrain_action
   when "Fix Retrain"
     begin
+      PressEnterConfirm()
+      sleep (1)
       Sleep_Until(VerifySuccessAlertMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_FIX_SUCCESSFUL_VALUE))
     end
 
   when "Disable Retrain"
     begin
+      PressEnterConfirm()
+      sleep (1)
       Sleep_Until(VerifySuccessAlertMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_DISABLE_SUCCESSFUL_VALUE))
     end
   end
@@ -315,7 +337,7 @@ end
 And(/^I Go To The Sections Of The Created Course$/) do
   WaitForAnElementByLinkTextAndTouch("Courses")
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
-  EditFirstCourseFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
 end
 

@@ -25,6 +25,15 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To Edit The Specific Course
 
 
+  @learning_low_risk @course_copy
+  Scenario: [Learning]Learning Admin Deleting New Course
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Search For A Specific Course Named DO NOT DELETE
+    Then  I Should Be Able To Copy The Specific Course
+
+
   @learning_low_risk @course_delete @C6091
   Scenario: [Learning]Learning Admin Deleting New Course
     Given I Have Logged In as a Learning Admin
