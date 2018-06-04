@@ -57,7 +57,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Retrain Discrepancies under Learning section
-    When  I See a List of Discrepancy Courses
+    When  I See a List of Discrepancy Courses for Users
     Then  I Should Be Able To Fix Retrain Of A Specific Course
 
 
@@ -66,7 +66,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Retrain Discrepancies under Learning section
-    When  I See a List of Discrepancy Courses
+    When  I See a List of Discrepancy Courses for Users
     Then  I Should Be Able To Disable Retrain Of A Specific Course
 
 
@@ -78,4 +78,26 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     When  I Click On "Create Filter" Button
     And   I select Employee Name as Test1 Omar1
     Then  I Should Be Able to Create a Filter
-    And   See a Filtered List of Retrain Discrepancy Course Results for Learner Test1 Omar1
+    And   I See a Filtered List of Retrain Discrepancy Course Results for Learner Test1 Omar1
+
+
+  @learning_low_risk @course_retrain_discrepancy_bulkfix
+  Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Fix Retrain in Bulk
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Retrain Discrepancies under Learning section
+    When  I See a List of Discrepancy Courses for Users
+    And   I Select 3 Retrain Discrepancies For Bulk Action
+    And   I Choose To Fix Retrain From The Actions Menu
+    Then  I Should Be Able To See The Success Message For Fix Retrain For Users
+
+
+  @learning_low_risk @course_retrain_discrepancy_bulkdisable
+  Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Fix Retrain in Bulk
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Retrain Discrepancies under Learning section
+    When  I See a List of Discrepancy Courses for Users
+    And   I Select 3 Retrain Discrepancies For Bulk Action
+    And   I Choose To Disable Retrain From The Actions Menu
+    Then  I Should Be Able To See The Success Message For Disable Retrain For Users

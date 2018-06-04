@@ -29,7 +29,7 @@ When(/^I Search For A Specific Course Named (.*)$/i) do |course_search_name|
 end
 
 
-When(/^I See a List of Discrepancy Courses$/i) do
+When(/^I See a List of Discrepancy Courses for Users$/i) do
   discrepancy_course = $daos.get_course_discrepancy_list()
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, discrepancy_course, COURSE_SEARCH_BTN_ID)
 end
@@ -201,7 +201,7 @@ Then(/^I Should Be Able to Create a Filter$/i) do
 end
 
 
-And(/^See a Filtered List of Retrain Discrepancy Course Results for Learner (.*)$/i) do |learner_name|
+And(/^I See a Filtered List of Retrain Discrepancy Course Results for Learner (.*)$/i) do |learner_name|
   VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
 end
 
@@ -424,4 +424,30 @@ Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (
     ## TODO: Query DB for course activity. If found proceed with search else create activity
     ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
     ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
+end
+
+
+And(/^I Choose To (Fix Retrain|Disable Retrain) From The Actions Menu$/i) do | retrain_action |
+  ClickMenuOfFirstItemFromTable(COURSE_PAGE_DROPDOWN, retrain_action)
+  PressEnterConfirm()
+  sleep (2)
+end
+
+
+Then(/^I Should Be Able To See The Success Message For (Fix|Disable) Retrain For Users$/i) do | retrain_action |
+  case retrain_action
+    when "Fix"
+      Sleep_Until(VerifySuccessAlertMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_FIX_SUCCESSFUL_VALUE))
+    when "Disable"
+      Sleep_Until(VerifySuccessAlertMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_DISABLE_SUCCESSFUL_VALUE))
+  end
+end
+
+
+And(/^I Select (\d+) Retrain Discrepancies For Bulk Action$/i) do | selection_number |
+ i = 0
+ while(i != selection_number)
+   WaitForDropdownByClassAndTouchTheIndex("select-course-enrolment", i)
+   i = i + 1
+ end
 end
