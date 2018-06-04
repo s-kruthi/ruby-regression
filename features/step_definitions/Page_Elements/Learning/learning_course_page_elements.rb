@@ -137,6 +137,7 @@ FILTER_RESULT_VERIFY_TABLE_ID = "elmo-table"
 COURSE_BULKDISCREPANCY_FIX_ID = "bulk-retrain-discrepancy-fix" #classname
 COURSE_BULKDISCREPANCY_DISABLE_ID = "bulk-retrain-discrepancy-disable"
 COURSE_PAGE_DROPDOWN = "//button[@data-toggle='dropdown']"
+COURSE_DISCREPANCY_LISTINGS_ID = "select-course-enrolment"
 
 
 #### course section elements #####

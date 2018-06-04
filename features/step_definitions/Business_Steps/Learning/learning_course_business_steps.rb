@@ -447,7 +447,7 @@ end
 And(/^I Select (\d+) Retrain Discrepancies For Bulk Action$/i) do | selection_number |
  i = 0
  while(i != selection_number)
-   WaitForDropdownByClassAndTouchTheIndex("select-course-enrolment", i)
+   WaitForDropdownByClassAndTouchTheIndex(COURSE_DISCREPANCY_LISTINGS_ID, i)
    i = i + 1
  end
 end
