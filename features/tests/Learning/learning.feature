@@ -52,10 +52,20 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To Add All Notifications
 
 
-  @learning_low_risk @course_view_enrolments @test
+  @learning_low_risk @course_view_enrolments
   Scenario: [Learning]Learning Admin Can View Course Enrolments
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
     When  I Click On "Enrolments" Tab
     Then  I Should Be Able To View All The Course Enrolments
+
+
+  @learning_low_risk @course_retrain_enrolments
+  Scenario: [Learning]Learning Admin Can Modify Retrain For Enrolments
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Click On "Enrolments" Tab
+    And   I Choose To Enable Retrain For The Enrolment
+    Then  I Should Be Able To See The Retrain Enabled For The Enrolment
