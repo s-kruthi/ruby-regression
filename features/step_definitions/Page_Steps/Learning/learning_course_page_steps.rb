@@ -700,27 +700,27 @@ end
 
 
 def VerifyCourseSectionNotExist(course_section_css)
-  VerifyAnElementNotExistByCSS(course_section_css)
+  VerifyAnElementNotExist("css", course_section_css)
 end
 
-
+#TODO: Moved to Verify Methods file, can be removed after code review
 # For VerifyAnElementNotExistByCSS sufficient wait must be used before this step. Such as Sleep_Until
-def VerifyAnElementNotExistByCSS(css)
-  begin
-    wait = Selenium::WebDriver::Wait.new(:timeout => 5)
-    elements = wait.until {
-      $driver.find_elements(:css, "#{css}")
-    }
-    if elements.empty?
-      puts COLOR_GREEN + "MATCHED: Item not displayed."
-    else
-      raise(COLOR_RED + "Item displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
-    end
-  rescue Exception => e
-    puts e.message
-    $driver.quit
-  end
-end
+# def VerifyAnElementNotExistByCSS(css)
+#   begin
+#     wait = Selenium::WebDriver::Wait.new(:timeout => 5)
+#     elements = wait.until {
+#       $driver.find_elements(:css, "#{css}")
+#     }
+#     if elements.empty?
+#       puts COLOR_GREEN + "MATCHED: Item not displayed."
+#     else
+#       raise(COLOR_RED + "Item displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+#     end
+#   rescue Exception => e
+#     puts e.message
+#     $driver.quit
+#   end
+# end
 
 
 def ConditionAnElementNotExistByCSS(css)
