@@ -91,7 +91,7 @@
     Scenario: As An Administrator I Want To Manage Face 2 Face Course Activity Sessions Such As Create Copy Edit Cancel Delete
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A Face-to-Face Activity
-      And   I Open The Activity Named Test Face-to-Face From The Sections List
+      And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
 #   COMMENT in the following step the function 'AddSessionTimings()' of saves session time to test data for validation
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
       When  I Go To The Page Which Has The List Of Current Editing Item

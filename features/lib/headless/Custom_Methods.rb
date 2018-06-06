@@ -14,6 +14,8 @@ module Headless
         $driver.quit
       end
     end
+
+
     def WaitForAnElementByXpathAndTouchTheIndex(xpath,index_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -27,6 +29,8 @@ module Headless
         $driver.quit
       end
     end
+
+
     def WaitForAnElementByIdAndTouchTheIndex(id,index_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -40,6 +44,8 @@ module Headless
         $driver.quit
       end
     end
+
+
     def WaitForAnElementByPartialLinkTextAndTouchTheIndex(partial_link_text,index_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -53,6 +59,8 @@ module Headless
         $driver.quit
       end
     end
+
+
     def WaitForAnElementByCssAndTouchTheIndex(css,index_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -66,6 +74,8 @@ module Headless
         $driver.quit
       end
     end
+
+
     def VerifyAnElementExistByCSSAndIndex(css,text,index_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -79,6 +89,8 @@ module Headless
         $driver.quit
       end
     end
+
+
     def VerifyAnElementExistByClassAndIndex(class_name,text,index_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -99,32 +111,50 @@ module Headless
         $driver.quit
       end
     end
+
+
     def PressEnterConfirm()
       $driver.find_element(:css, "[data-bb-handler='confirm']").click
     end
+
+
     def PressConfirm()
       $driver.find_element(:class, "confirm-btn").click
     end
+
+
     def PressEnterOK()
       $driver.find_element(:css, "[data-bb-handler='ok']").click
     end
+
+
     def TouchDelete()
       element = $driver.find_element(:link, "Delete")
       element.click
     end
+
+
     def TouchCancel()
       element = $driver.find_element(:link, "cancel")
       element.click
     end
+
+
     def PressEnterClose()
       $driver.find_element(:class, "close-btn").click
     end
+
+
     def PressModalClose()
       $driver.find_element(:css, '.modal button[class="close"]').click
     end
+
+
     def Wait_For(timeout)
       $driver.manage.timeouts.implicit_wait = timeout
     end
+
+
     def Sleep_Until(method)
       i=1
       sleep(i)
@@ -134,6 +164,8 @@ module Headless
         break if method
       end
     end
+
+
     def UseCkeditorToEnterText(text, index_id)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -159,12 +191,14 @@ module Headless
       end
     end
 
+
     def SelectFromSelect2Input(index_arrow_name, index_arrow_id, index_class_name, index_class_id)
       begin
         WaitForDropdownByClassAndTouchTheIndex(index_arrow_name, index_arrow_id)
         WaitForDropdownByClassAndTouchTheIndex(index_class_name, index_class_id)
       end
     end
+
 
     def browse_file_select(browse_file_id, sample_filename)
       begin
@@ -175,6 +209,7 @@ module Headless
         $driver.quit
       end
     end
+
 
     #Example: SelectFromDropDown("//select[contains(@id,'Profile Image-visible')]", "Everybody")
     def SelectFromDropDown(dropdown_option, dropdown_value)
@@ -189,6 +224,7 @@ module Headless
       end
     end
 
+
     def WaitForAlertWindowAndTouchAcceptOrDismiss(accept_or_dismiss)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -202,6 +238,7 @@ module Headless
         alert_window.dismiss
       end
     end
+
 
     def WaitForSelectFileButtonAndUploadFile(file)
       begin

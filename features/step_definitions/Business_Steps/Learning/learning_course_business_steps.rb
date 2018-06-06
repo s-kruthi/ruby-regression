@@ -415,7 +415,7 @@ Given(/^A Company Admin Creates A New Course With Unique Name$/i) do
       }
 end
 
-And(/^I Open The Activity Named (.*) From The Sections List$/i) do |f2f_activity_name|
+And(/^I Open The Activity Named (.*) On Sections List Page After Editing$/i) do |f2f_activity_name|
   step 'I Go To The Page Which Has The List Of Current Editing Item'
   ClickOnFirstActivity(f2f_activity_name)
 end
