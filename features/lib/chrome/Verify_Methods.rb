@@ -180,6 +180,32 @@ module Chrome
       end
     end
 
-  end
 
+    def VerifyColumnTextsMatchExpectedCSS(column_css, column_hash_title_value)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        element_columns = wait.until {$driver.find_elements(:css, column_css)}
+        column_title_values = element_columns.map(&:text)
+        unmatched_item = []
+        column_title_values.each do |column|
+          column_title = column.split("\n").first
+          column_value = column.split("\n").last
+          unless column_value.include?(column_hash_title_value[column_title.downcase])
+            unmatched_item.push(column)
+          end
+        end
+
+        if unmatched_item.size.zero?
+          puts COLOR_GREEN + 'Page elements matched'
+        else
+          puts COLOR_RED + 'Unmateched page items'
+          puts unmatched_item
+          fail
+          raise VerificationException.new(COLOR_RED + "Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+        end
+      rescue Exception => e
+        puts e.message
+      end
+    end
+  end
 end

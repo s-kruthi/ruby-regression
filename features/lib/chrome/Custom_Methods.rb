@@ -149,8 +149,18 @@ module Chrome
     end
 
 
+    def PressModalClose()
+      $driver.find_element(:css, '.modal button[class="close"]').click
+    end
+
+
     def Wait_For(timeout)
       $driver.manage.timeouts.implicit_wait = timeout
+    end
+
+
+    def PressModalClose()
+      $driver.find_element(:css, '.modal button[class="close"]').click
     end
 
 

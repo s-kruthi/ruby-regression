@@ -86,3 +86,21 @@
         |    Yes      | NonEnrolled   | Enabled  |
         |    No       | Enrolled      | Enabled  |
         |    No       | Enrolled      | Enabled  |
+
+    @course_face_to_face_session_management @C1829
+    Scenario: As An Administrator I Want To Manage Face 2 Face Course Activity Sessions Such As Create Copy Edit Cancel Delete
+      Given A Company Admin Creates A New Course With Unique Name
+      Then  I Should Be Able To Add A Face-to-Face Activity
+      And   I Open The Activity Named Test Face-to-Face From The Sections List
+#   COMMENT in the following step the function 'AddSessionTimings()' of saves session time to test data for validation
+      Then  I Should Be Able To Create A Session In The Face-to-Face Activity
+      When  I Leave Current Edit Page For List
+#   COMMENT the following step can verify web table detail pre-defined in test data as Hash value
+      Then  I Should Be Able To Verify The Session Details As Per Created
+      When  I Should Be Able To Copy A Session In The Face-to-Face Activity
+      And   I Leave Current Edit Page For List
+      Then  I Should Be Able To Verify The Session Details As Per Copied
+      And   I Should Be Able To Edit A Session In The Face-to-Face Activity
+      And   I Leave Current Edit Page For List
+      And   I Should Be Able To Cancel A Session In The Face-to-Face Activity
+      And   I Should Be Able To Delete A Session In The Face-to-Face Activity
