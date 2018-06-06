@@ -34,6 +34,31 @@ Then(/^I Should Be Able To Edit The Specific Course$/i) do
 end
 
 
+Then(/^I Should Be Able To (Edit|Copy|Delete) The Specific Course$/i) do |course_action|
+  case course_action
+
+  when 'Edit'
+    begin
+      ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+    end
+
+  when 'Copy'
+    begin
+      ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_COPY)
+      Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
+      VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_COPY_SUCCESSFUL_VALUE)
+    end
+
+  when 'Delete'
+    begin
+      ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
+      Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
+      VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
+    end
+  end
+end
+
+
 When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
 
@@ -113,7 +138,7 @@ Then(/^I Should Be Able To (Create|Edit|Delete|Copy|Cancel) A Session In The Fac
 
   when 'Copy'
     ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_COPY)
-    ClickOnOKButton(OK_BTN_ID)
+    PressEnterConfirm()
     ClickOnSaveButton(SAVE_BTN_ID)
     Sleep_Until(PressConfirm())
     Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
@@ -269,7 +294,7 @@ end
 # end
 
 
-When(/^I Leave Current Edit Page For List$/) do
+When(/^I Go To The Page Which Has The List Of Current Editing Item$/) do
   Sleep_Until(WaitForAnElementByXpathAndTouch(PRECEDING_BREAD_LIST_XPATH))
 end
 
@@ -391,7 +416,7 @@ Given(/^A Company Admin Creates A New Course With Unique Name$/i) do
 end
 
 And(/^I Open The Activity Named (.*) From The Sections List$/i) do |f2f_activity_name|
-  step 'I Leave Current Edit Page For List'
+  step 'I Go To The Page Which Has The List Of Current Editing Item'
   ClickOnFirstActivity(f2f_activity_name)
 end
 

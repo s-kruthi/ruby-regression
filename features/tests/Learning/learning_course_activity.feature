@@ -12,7 +12,7 @@
       And   I Go To Courses Under Learning Section
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A New SCORM Package Activity
-      When  I Leave Current Edit Page For List
+      When  I Go To The Page Which Has The List Of Current Editing Item
       Then  I Should Edit The Scorm Section Name And Description
 
 
@@ -47,7 +47,7 @@
       And   I Go To Courses Under Learning Section
       When  I Create A New Course With A Unique Name
       And  I Should Be Able To Add A New Quiz Activity
-      And  I Leave Current Edit Page For List
+      And  I Go To The Page Which Has The List Of Current Editing Item
       Then  I Should Edit The Quiz activity
 
 
@@ -94,13 +94,13 @@
       And   I Open The Activity Named Test Face-to-Face From The Sections List
 #   COMMENT in the following step the function 'AddSessionTimings()' of saves session time to test data for validation
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
-      When  I Leave Current Edit Page For List
+      When  I Go To The Page Which Has The List Of Current Editing Item
 #   COMMENT the following step can verify web table detail pre-defined in test data as Hash value
       Then  I Should Be Able To Verify The Session Details As Per Created
       When  I Should Be Able To Copy A Session In The Face-to-Face Activity
-      And   I Leave Current Edit Page For List
+      And   I Go To The Page Which Has The List Of Current Editing Item
       Then  I Should Be Able To Verify The Session Details As Per Copied
       And   I Should Be Able To Edit A Session In The Face-to-Face Activity
-      And   I Leave Current Edit Page For List
+      And   I Go To The Page Which Has The List Of Current Editing Item
       And   I Should Be Able To Cancel A Session In The Face-to-Face Activity
       And   I Should Be Able To Delete A Session In The Face-to-Face Activity

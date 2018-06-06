@@ -100,12 +100,6 @@ def SearchACourse(course_list_search_box_id, course_list_title_value, course_sea
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
 
-# Duplicated with ClickMenuOfFirstItemFromTable
-def ManagePageItemFromDropdown(xpath_name, partial_link_text)
-  Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
-  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
-end
-
 
 #TODO: Pending review and removal as ClickMenuOfFirstItemFromTable(), ClickMenuOfFirstItemFromTable() and DeleteTheCourseFromTable() are identical
 # def EditFirstCourseFromTable(xpath_name, partial_link_text)
@@ -395,12 +389,6 @@ end
 
 
 def ClickOnSaveButton(btn_id)
-  Sleep_Until(WaitForAnElementByXpathAndTouch(btn_id))
-  sleep (1)
-end
-
-
-def ClickOnOKButton(btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(btn_id))
   sleep (1)
 end

@@ -159,11 +159,6 @@ module Chrome
     end
 
 
-    def PressModalClose()
-      $driver.find_element(:css, '.modal button[class="close"]').click
-    end
-
-
     def Sleep_Until(method)
       i=1
       sleep(i)
