@@ -179,10 +179,10 @@ module Firefox
           puts COLOR_RED + 'Unmateched page items'
           puts unmatched_item
           fail
-          raise VerificationException.new(COLOR_RED + "Page text is not as expected. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
 
       rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Page text is not as expected. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         puts e.message
       end
     end
