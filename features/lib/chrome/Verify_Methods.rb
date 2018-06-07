@@ -201,7 +201,7 @@ module Chrome
           puts COLOR_RED + 'Unmateched page items'
           puts unmatched_item
           fail
-          raise VerificationException.new(COLOR_RED + "Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+          raise VerificationException.new(COLOR_RED + "Page text is not as expected. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
         puts e.message
