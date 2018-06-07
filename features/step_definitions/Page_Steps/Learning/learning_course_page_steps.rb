@@ -100,6 +100,7 @@ def SearchACourse(course_list_search_box_id, course_list_title_value, course_sea
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
 
+
 #TODO: Pending review and removal as ClickMenuOfFirstItemFromTable(), ClickMenuOfFirstItemFromTable() and DeleteTheCourseFromTable() are identical
 # def EditFirstCourseFromTable(xpath_name, partial_link_text)
 #   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
@@ -859,6 +860,8 @@ def AddSessionTimings()
   end_time = start_time + (1 / 24.0)
   Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
   Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
+  FACE_TO_FACE_SESSION_VALUES['Start Time'.downcase] = start_time.strftime('%d %B %Y %I:%M %p')
+  FACE_TO_FACE_SESSION_VALUES['Finish Time'.downcase] = end_time.strftime('%d %B %Y %I:%M %p')
 end
 
 

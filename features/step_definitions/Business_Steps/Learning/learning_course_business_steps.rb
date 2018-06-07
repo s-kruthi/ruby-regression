@@ -51,9 +51,9 @@ Then(/^I Should Be Able To (Edit|Copy|Delete) The Specific Course$/i) do |course
 
   when 'Delete'
     begin
-    ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
-    Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
-    VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
+      ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
+      Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
+      VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
     end
   end
 end
@@ -116,7 +116,7 @@ Then(/^I Should Be Able To (Edit|Delete) A (.*) Activity Named (.*)$/i) do |cour
 end
 
 
-Then(/^I Should Be Able To (Create|Edit|Delete) A Session In The Face-to-Face Activity$/i) do |modify_session_type|
+Then(/^I Should Be Able To (Create|Edit|Delete|Copy|Cancel) A Session In The Face-to-Face Activity$/i) do |modify_session_type|
   case modify_session_type
   when 'Create'
     ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
@@ -134,6 +134,18 @@ Then(/^I Should Be Able To (Create|Edit|Delete) A Session In The Face-to-Face Ac
   when 'Delete'
     ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
     PressConfirm()
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
+
+  when 'Copy'
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_COPY)
+    PressEnterConfirm()
+    ClickOnSaveButton(SAVE_BTN_ID)
+    Sleep_Until(PressConfirm())
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+
+  when 'Cancel'
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_CANCEL)
+    Sleep_Until(PressConfirm())
     Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
   end
 end
@@ -282,8 +294,8 @@ end
 # end
 
 
-When(/^I Leave Current Edit Page For List$/) do
-  WaitForAnElementByXpathAndTouch(PRECEDING_BREAD_LIST_XPATH)
+When(/^I Go To The Page Which Has The List Of Current Editing Item$/) do
+  Sleep_Until(WaitForAnElementByXpathAndTouch(PRECEDING_BREAD_LIST_XPATH))
 end
 
 
@@ -394,5 +406,30 @@ Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (
     ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
 end
 
+Given(/^A Company Admin Creates A New Course With Unique Name$/i) do
+  steps %Q{
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To Courses Under Learning Section
+    When  I Create A New Course With A Unique Name
+      }
+end
 
+And(/^I Open The Activity Named (.*) On Sections List Page After Editing$/i) do |f2f_activity_name|
+  step 'I Go To The Page Which Has The List Of Current Editing Item'
+  ClickOnFirstActivity(f2f_activity_name)
+end
 
+Then(/^I Should Be Able To Verify The Session Details As Per Created$/i) do
+  Sleep_Until(WaitForAnElementByCSSAndTouch(F2F_SESSION_DROPDOWN_CSS))
+  Sleep_Until(WaitForAnElementByCSSAndTouch(F2F_SESSION_DETAILS_CSS))
+  VerifyColumnTextsMatchExpectedCSS(F2F_SESSION_DETAILS_COLUMN_CSS, FACE_TO_FACE_SESSION_VALUES)
+  Sleep_Until(PressModalClose())
+end
+
+Then(/^I Should Be Able To Verify The Session Details As Per Copied$/i) do
+  Sleep_Until(WaitForAnElementByCssAndTouchTheIndex(F2F_SESSION_DROPDOWN_CSS, 1))
+  Sleep_Until(WaitForAnElementByCssAndTouchTheIndex(F2F_SESSION_DETAILS_CSS, 1))
+  VerifyColumnTextsMatchExpectedCSS(F2F_SESSION_DETAILS_COLUMN_CSS, FACE_TO_FACE_SESSION_VALUES)
+  Sleep_Until(PressModalClose())
+end
