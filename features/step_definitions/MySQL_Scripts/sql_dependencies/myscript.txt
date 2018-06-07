@@ -1,5 +1,5 @@
 *************************** 1. row ***************************
-            id: 24831
+            id: 26041
           type: 1
    source_type: 1
        subject: Course Enrol Request Approved
@@ -14,19 +14,19 @@ Should you have any questions please email&nbsp;<a href="mailto:lnd@tmbank.com.a
     recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":null,"bcc":null}
  recipient_ids: /3472/
       priority: 1
-  created_time: 1525317336
+  created_time: 1527211308
     fired_time: NULL
         status: 0
-       context: a:1:{s:8:"schedule";i:26261;}
+       context: a:1:{s:8:"schedule";i:27797;}
       branding: a:4:{s:7:"content";a:4:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#195799";s:13:"menuFontColor";s:7:"#ffffff";s:4:"logo";i:1162;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:9;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
-     source_id: 26261
+     source_id: 27797
          count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-                         id: 97
+                         id: 156
                   course_id: 787
                requestor_id: 3472
                 approver_id: 3456
@@ -34,14 +34,14 @@ attachment_ids: []
                      status: 2
                     comment: automation in progress<hr/><div class="name" data-name="SIMON COX">
                 Message from SIMON COX</div>automation, approving course request
-                       date: 1525317320
+                       date: 1527211292
                  is_deleted: 0
                deleted_time: NULL
 request_container_path_name: NULL
   request_container_path_id: NULL
        external_training_id: NULL
 *************************** 1. row ***************************
-          id: 25855
+          id: 27227
   trigger_id: Learning.CourseEnrolRequestApprovedTrigger
      user_id: 3472
   sort_order: 1:196-111-111:787-3472-3456

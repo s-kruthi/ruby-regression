@@ -11,6 +11,7 @@ require 'sequel'
 require 'net/ssh/gateway'
 require 'watir'
 require 'colorize'
+require 'csv'
 
 require './features/lib/device_method_factory.rb'
 
@@ -23,3 +24,4 @@ end
 
 WAIT_TIMEOUT = 5
 World(DeviceMethodFactory.for_channel(ENV['CHANNEL']))
+

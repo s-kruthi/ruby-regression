@@ -19,7 +19,7 @@ pipeline {
             echo 'test execution in progress..'
             sh '''source ~/.bash_profile
 
-cucumber -xgt @C807 CHANNEL=headless'''
+cucumber -xgt @smoke_learning CHANNEL=headless'''
           }
         }
       }
