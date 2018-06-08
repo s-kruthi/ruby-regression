@@ -159,6 +159,25 @@ module Headless
       end
     end
 
+    def VerifyAnElementNotExist(type, identifier)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 5)
+        elements = wait.until {
+          $driver.find_elements(:"#{type}", "#{identifier}")
+        }
+        if elements.empty?
+          puts COLOR_GREEN + "MATCHED: Item not displayed."
+        else
+          fail
+        end
+
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Item is displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        puts e.message
+      end
+    end
+
+
     def VerifyColumnTextsMatchExpectedCSS(column_css, column_hash_title_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)

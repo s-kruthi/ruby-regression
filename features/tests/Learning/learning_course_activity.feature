@@ -22,7 +22,7 @@
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
       When  I Create A New Course With A Unique Name
-      Then  I Should Be Able To Add A New SCORM Package Activity
+      Then  I Should Be Able To Add A SCORM Package Activity
       Given The "ELMO Admin" Configure The "Lock course with enrolments" To <course_lock>
       But   I Have Logged In As A Company Admin
       When  I Go To Admin Settings
