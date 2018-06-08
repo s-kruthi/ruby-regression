@@ -1,4 +1,4 @@
-@Notifications_learning @learning
+@Notifications_learning @learning @smoke_learning
 #@learningTestRailTags
 #C12706 C12257 C12258
 #@learningTestRailTags
@@ -30,9 +30,11 @@ Feature:
     Then  The User Should Be Instantly Notified About The New Enrolment Request
 
   @course_assignments_via_rules @learning_high_risk @NotificationsLearning @C1010
-  Scenario: [Learning] Verify that user who is assigned course via assignment rule receives "New Enrolment" notification
+  Scenario: [Learning] Verify that user who is assigned a course via assignment rule receives "New Enrolment" notification
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Assignment Rules under General section
     And   I Search For A Specific Assignment Rule Named notification_course_assignment
+    When  I Reset The Assignment Rule
+    Then  The User Should Be Instantly Notified About The New Enrolment
 

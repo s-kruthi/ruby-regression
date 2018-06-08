@@ -11,14 +11,15 @@ pipeline {
         stage('check in code') {
           steps {
             echo 'Test passed'
-            sh 'cd /var/lib/scriptonce_automation; pwd; git checkout .;git fetch --all; git remote -v; git checkout QTA-65; git branch'
+            sh 'cd /var/lib/scriptonce_automation; pwd; git checkout .;git clean -f -d; git remote -v;git checkout master; git pull origin master'
           }
         }
         stage('Test Execution') {
           steps {
             echo 'test execution in progress..'
             sh '''source ~/.bash_profile
-		cucumber -xgt @smoke_learning CHANNEL=headless'''
+
+cucumber -xgt @smoke_learning CHANNEL=headless'''
           }
         }
       }
