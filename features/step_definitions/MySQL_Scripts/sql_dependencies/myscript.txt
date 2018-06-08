@@ -1,5 +1,5 @@
 *************************** 1. row ***************************
-            id: 26834
+            id: 26849
           type: 1
    source_type: 1
        subject: New Enrolment
@@ -23,19 +23,19 @@ PLACEHOLDER_COURSE_DUE_DATE: [not specified]<br />
     recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":{"SIMON.COX@elmodemo.com":"SIMON COX"},"bcc":null}
  recipient_ids: /3472/3456/
       priority: 1
-  created_time: 1528438718
+  created_time: 1528441783
     fired_time: NULL
         status: 0
-       context: a:1:{s:8:"schedule";i:28568;}
+       context: a:1:{s:8:"schedule";i:28586;}
       branding: a:4:{s:7:"content";a:4:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#195799";s:13:"menuFontColor";s:7:"#ffffff";s:4:"logo";i:1162;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:9;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
-     source_id: 28568
+     source_id: 28586
          count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-                 id: 109668
+                 id: 109980
           course_id: 392
             user_id: 3472
  lmsUserEnrolmentId: NULL
@@ -44,21 +44,21 @@ enrolSourceObjectId: NULL
              status: 0
                cost: 0
             retrain: 0
-        timeEnroled: 1528341396
-            timeDue: 1528341396
+        timeEnroled: 1528441698
+            timeDue: 1528441698
         timeStarted: 0
           timeEnded: 0
         timeExpired: 0
-        timeCreated: 1528341396
-       timeModified: 1528341396
+        timeCreated: 1528441698
+       timeModified: 1528441698
            isActive: 1
         modifier_id: NULL
        retrain_open: 0
 *************************** 1. row ***************************
-          id: 27980
+          id: 27995
   trigger_id: Learning.CourseNewEnrolmentTrigger
      user_id: 3472
-  sort_order: 1:196-111-1951:982-3472-109973
+  sort_order: 1:196-111-1951:982-3472-109982
    path_name: /196
      path_id: /982
   is_deleted: 0
