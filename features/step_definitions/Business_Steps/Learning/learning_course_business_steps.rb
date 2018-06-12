@@ -442,8 +442,7 @@ end
 Then(/^I Should Be Able To View All The Course Enrolments$/i) do
   count = $daos.get_count_course_enrolments()
   if count == 0
-    VerifyAnElementNotExistByCSS("div[class=pagination-count]")
-    #VerifyAnElementNotExist("xpath", PAGINATION_ID)
+    VerifyAnElementNotExist("xpath", PAGINATION_ID)
   else
      results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
      if results_count.eql?count then puts COLOR_BLUE + "Results match" end
