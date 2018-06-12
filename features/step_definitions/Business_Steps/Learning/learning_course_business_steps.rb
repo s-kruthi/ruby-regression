@@ -406,6 +406,7 @@ Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (
     ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
 end
 
+
 Given(/^A Company Admin Creates A New Course With Unique Name$/i) do
   steps %Q{
     Given I Have Logged In As A Company Admin
@@ -415,10 +416,12 @@ Given(/^A Company Admin Creates A New Course With Unique Name$/i) do
       }
 end
 
+
 And(/^I Open The Activity Named (.*) On Sections List Page After Editing$/i) do |f2f_activity_name|
   step 'I Go To The Page Which Has The List Of Current Editing Item'
   ClickOnFirstActivity(f2f_activity_name)
 end
+
 
 Then(/^I Should Be Able To Verify The Session Details As Per Created$/i) do
   Sleep_Until(WaitForAnElementByCSSAndTouch(F2F_SESSION_DROPDOWN_CSS))
@@ -427,9 +430,34 @@ Then(/^I Should Be Able To Verify The Session Details As Per Created$/i) do
   Sleep_Until(PressModalClose())
 end
 
+
 Then(/^I Should Be Able To Verify The Session Details As Per Copied$/i) do
   Sleep_Until(WaitForAnElementByCssAndTouchTheIndex(F2F_SESSION_DROPDOWN_CSS, 1))
   Sleep_Until(WaitForAnElementByCssAndTouchTheIndex(F2F_SESSION_DETAILS_CSS, 1))
   VerifyColumnTextsMatchExpectedCSS(F2F_SESSION_DETAILS_COLUMN_CSS, FACE_TO_FACE_SESSION_VALUES)
   Sleep_Until(PressModalClose())
+end
+
+
+Then(/^I Should Be Able To View All The Course Enrolments$/i) do
+  count = $daos.get_count_course_enrolments()
+  if count == 0
+    VerifyAnElementNotExistByCSS("div[class=pagination-count]")
+    #VerifyAnElementNotExist("xpath", PAGINATION_ID)
+  else
+     results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
+     if results_count.eql?count then puts COLOR_BLUE + "Results match" end
+  end
+end
+
+
+And(/^I Choose To (Enable|Disable) Retrain For The Enrolment$/i) do | retrain_action |
+  #check the retrain setting and then change setting
+  pending
+end
+
+
+Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$/i) do | retrain_action |
+  #check the retrain setting
+  pending
 end
