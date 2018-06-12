@@ -206,5 +206,5 @@ MARKER_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-cl
 COMPLETION_NOTIFICATION_CSS = '.toggle[data-toggle]'
 
 
-####Enrolments section elements ####
+
 
