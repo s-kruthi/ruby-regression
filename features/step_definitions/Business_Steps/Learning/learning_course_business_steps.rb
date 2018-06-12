@@ -452,7 +452,15 @@ end
 
 And(/^I Choose To (Enable|Disable) Retrain For The Enrolment$/i) do | retrain_action |
   #check the retrain setting and then change setting
-  pending
+  #checks the first enrolment
+  retrain_setting = $driver.find_elements(:xpath,'//input[@name="enrolment-retrain"]')[0].attribute("value")
+  puts COLOR_BLUE + "Retrain setting is currently Disabled" if retrain_setting == "0"
+
+  if retrain_action = "Enable"
+    $driver.find_element(:xpath,'//input[@name="enrolment-retrain"]').attribute("value") == "0"
+
+  end
+
 end
 
 
@@ -482,5 +490,19 @@ Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With N
     VerifyAnElementExistByCSS(ModalDialogBodyTextCSS, 'Item has been deleted successfully')
     PressEnterOK()
     VerifyAnElementNotExist('#body', 'css', 'tr[id*=templateRow]')
+  end
+end
+
+
+And(/^I Filter For Enrolments With (\w+) Of (.*)$/i) do | filter_by, filter_value |
+  case filter_by
+    when "Enrolment Methods"
+      pending
+    when "Course Name"
+      pending
+    when "Status"
+      Sleep_Until(SelectFromDropDown("//select[@id=courseSearchForm_statusIds]", "#{filter_value}"))
+      puts "here"
+      byebug
   end
 end
