@@ -54,5 +54,20 @@ module Database_env
     def get_course_activity(course_id)
       pending
     end
+
+
+    def get_count_course_enrolments()
+      query = "select count(*) as enrolmentcount
+              from `epms_lms_course_enrolment` e
+              inner join epms_user u on u.id = e.user_id
+              where e.isActive=1
+              and u.is_active=1
+              and u.is_deleted=0
+              and u.is_elmo=0"
+      enrolments = @db[query].first
+      return enrolments[:enrolmentcount]
+    end
+
   end
+
 end
