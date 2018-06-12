@@ -697,7 +697,7 @@ manager_username= vars.get(&quot;username1&quot;);
 user_id= vars.get(&quot;new_user_id2&quot;);
 user_name= vars.get(&quot;username&quot;);
 
-f = new FileOutputStream(&quot;/Users/shankumahanty/Desktop/shan_automation/JMETER_AUTO/Jmeter_tests/user_id.csv&quot;, false); //spec-ify true if you want to overwrite file. Keep blank otherwise.
+f = new FileOutputStream(&quot;/var/lib/scriptonce_automation/JMETER_AUTO/Jmeter_tests/user_id.csv&quot;, false); //spec-ify true if you want to overwrite file. Keep blank otherwise.
 p = new PrintStream(f); 
 this.interpreter.setOut(p); 
 p.println(manager_id+&quot;,&quot; +manager_username+&quot;,&quot; +user_id+&quot;,&quot; +user_name );

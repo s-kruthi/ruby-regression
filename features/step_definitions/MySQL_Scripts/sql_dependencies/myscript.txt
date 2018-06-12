@@ -1,5 +1,5 @@
 *************************** 1. row ***************************
-            id: 26849
+            id: 26918
           type: 1
    source_type: 1
        subject: New Enrolment
@@ -23,42 +23,42 @@ PLACEHOLDER_COURSE_DUE_DATE: [not specified]<br />
     recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":{"SIMON.COX@elmodemo.com":"SIMON COX"},"bcc":null}
  recipient_ids: /3472/3456/
       priority: 1
-  created_time: 1528441783
+  created_time: 1528766300
     fired_time: NULL
         status: 0
-       context: a:1:{s:8:"schedule";i:28586;}
+       context: a:1:{s:8:"schedule";i:28619;}
       branding: a:4:{s:7:"content";a:4:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#195799";s:13:"menuFontColor";s:7:"#ffffff";s:4:"logo";i:1162;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:9;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
-     source_id: 28586
+     source_id: 28619
          count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-                 id: 109980
-          course_id: 392
+                 id: 110004
+          course_id: 982
             user_id: 3472
  lmsUserEnrolmentId: NULL
-        enrolMethod: 0
-enrolSourceObjectId: NULL
+        enrolMethod: 2
+enrolSourceObjectId: 50
              status: 0
                cost: 0
             retrain: 0
-        timeEnroled: 1528441698
-            timeDue: 1528441698
+        timeEnroled: 1528766300
+            timeDue: 1528766300
         timeStarted: 0
           timeEnded: 0
         timeExpired: 0
-        timeCreated: 1528441698
-       timeModified: 1528441698
+        timeCreated: 1528766300
+       timeModified: 1528766300
            isActive: 1
         modifier_id: NULL
        retrain_open: 0
 *************************** 1. row ***************************
-          id: 27995
+          id: 28023
   trigger_id: Learning.CourseNewEnrolmentTrigger
      user_id: 3472
-  sort_order: 1:196-111-1951:982-3472-109982
+  sort_order: 1:196-111-1951:982-3472-110004
    path_name: /196
      path_id: /982
   is_deleted: 0

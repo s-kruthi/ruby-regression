@@ -36,5 +36,5 @@ Feature:
     And   I Go To Assignment Rules under General section
     And   I Search For A Specific Assignment Rule Named notification_course_assignment
     When  I Reset The Assignment Rule
-    Then  The User Should Be Instantly Notified About The New Enrolment
+    Then  The User Should Be Instantly Notified About The New Course Enrolment
 
