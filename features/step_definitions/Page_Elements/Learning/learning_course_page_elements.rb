@@ -207,6 +207,7 @@ MARKER_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-cl
 COMPLETION_NOTIFICATION_CSS = '.toggle[data-toggle]'
 
 
+<<<<<<< HEAD
 #### Face to Face Notification Elements ####
 F2FNotificationEditButtonCSS = '.templateNotification_button_edit'
 NOTIFICATION_ID = 'tr[id*=templateRow]'
@@ -225,3 +226,16 @@ SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
 AddNotificationNextButtonId = 'templateNotification_button_next'
 EditButtonXpathText = '//a[contains(text(),"Edit")]'
 ModalDialogBodyTextCSS = '.modal-body .bootbox-body-sr'
+=======
+
+#### Enrolments Section elements ####
+ENROLMENT_STATUS_FILTER_ID = "//select[@id='courseSearchForm_statusIds']"
+ENROLMENT_METHOD_FILTER_ID = "//select[@id='courseSearchForm_enrolmentMethods']"
+RETRAIN_TOGGLE_ID = "//input[@name='enrolment-retrain']"
+RETRAIN_DISABLE_TOGGLE_ID = '//label[@class="btn btn-primary toggle-on"]'
+RETRAIN_ENABLE_TOGGLE_ID = '//label[@class="btn btn-default active toggle-off"]'
+
+
+
+
+>>>>>>> QTA-36 completed modify enable/disable retrain enrolments

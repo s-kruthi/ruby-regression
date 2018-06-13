@@ -1016,3 +1016,32 @@ def VerifyF2FNotificationTitleDescription()
   VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_TITLE_XPATH, 'Edit Notification')
   VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_DESCRIPTION_XPATH, 'Edit Notification')
 end
+
+
+
+def CheckRetrainSetting()
+  $retrain_setting = $driver.find_elements(:xpath, RETRAIN_TOGGLE_ID)[0].attribute("value")
+end
+
+
+def ModifyRetrainSetting(retrain_action)
+  if retrain_action == "Disable"
+    if $retrain_setting == "0"
+      puts COLOR_BLUE + "Retrain setting is currently Disabled"
+      $retrain_setting = 0
+    else
+      $driver.find_elements(:xpath, RETRAIN_DISABLE_TOGGLE_ID)[0].click
+      puts COLOR_BLUE + "Retrain setting has been Disabled"
+      sleep (1)
+    end
+  else
+    if $retrain_setting == "1"
+      puts COLOR_BLUE + "Retrain setting is currently Enabled"
+      $retrain_setting = 0
+    else
+      $driver.find_elements(:xpath, RETRAIN_ENABLE_TOGGLE_ID)[0].click
+      puts COLOR_BLUE + "Retrain setting has been Enabled"
+      sleep (1)
+    end
+  end
+end

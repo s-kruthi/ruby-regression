@@ -451,22 +451,14 @@ end
 
 
 And(/^I Choose To (Enable|Disable) Retrain For The Enrolment$/i) do | retrain_action |
-  #check the retrain setting and then change setting
-  #checks the first enrolment
-  retrain_setting = $driver.find_elements(:xpath,'//input[@name="enrolment-retrain"]')[0].attribute("value")
-  puts COLOR_BLUE + "Retrain setting is currently Disabled" if retrain_setting == "0"
-
-  if retrain_action = "Enable"
-    $driver.find_element(:xpath,'//input[@name="enrolment-retrain"]').attribute("value") == "0"
-
-  end
-
+  #checks the first enrolment's retrain setting and then changes the setting if needed
+  CheckRetrainSetting()
+  ModifyRetrainSetting(retrain_action)
 end
 
 
-Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$/i) do | retrain_action |
-  #check the retrain setting
-  pending
+Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$/i) do | retrain_setting |
+  if $retrain_setting != 0 then  PressModalClose() end
 end
 
 
@@ -495,14 +487,11 @@ end
 
 
 And(/^I Filter For Enrolments With (\w+) Of (.*)$/i) do | filter_by, filter_value |
+And(/^I Filter For Enrolments With (.*) Of (.*)$/i) do | filter_by, filter_value |
   case filter_by
-    when "Enrolment Methods"
-      pending
-    when "Course Name"
-      pending
+    when "Enrolment Method"
+      Sleep_Until(SelectFromDropDown(ENROLMENT_METHOD_FILTER_ID, "#{filter_value}"))
     when "Status"
-      Sleep_Until(SelectFromDropDown("//select[@id=courseSearchForm_statusIds]", "#{filter_value}"))
-      puts "here"
-      byebug
+      Sleep_Until(SelectFromDropDown(ENROLMENT_STATUS_FILTER_ID, "#{filter_value}"))
   end
 end
