@@ -160,12 +160,18 @@ module Safari
     end
 
 
-    def VerifyAnElementNotExist(type, identifier)
+    def VerifyAnElementNotExist(*section_identifier ,type, identifier)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 5)
-        elements = wait.until {
-          $driver.find_elements(:"#{type}", "#{identifier}")
-        }
+        if section_identifier.empty?
+          elements = wait.until {
+            $driver.find_elements(:"#{type}", "%s" %section_identifier.to_s)
+          }
+        else
+          elements = wait.until {
+            $driver.find_element(:"#{type}", "%s" %section_identifier).find_elements(:"#{type}", "%s" %identifier)
+          }
+        end
         if elements.empty?
           puts COLOR_GREEN + "MATCHED: Item not displayed."
         else

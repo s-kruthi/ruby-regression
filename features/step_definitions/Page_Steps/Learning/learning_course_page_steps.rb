@@ -1004,3 +1004,15 @@ def EditSessionDetails()
   # select availability
   SelectFromDropDown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_EDIT_VALUE)
 end
+
+def EditF2FNotificationTitleDescription
+  WaitForAnElementByIdAndInputValue(F2F_SESSION_NOTIFICATION_TITLE_ID, "Edit Notification")
+  WaitForAnElementByIdAndInputValue(F2F_SESSION_NOTIFICATION_DESCRIPTION_ID, "Edit Notification")
+end
+
+
+def VerifyF2FNotificationTitleDescription()
+  WaitForAnElementByCSSAndTouch(NOTIFICATION_ID)
+  VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_TITLE_XPATH, 'Edit Notification')
+  VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_DESCRIPTION_XPATH, 'Edit Notification')
+end

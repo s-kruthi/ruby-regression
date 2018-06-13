@@ -104,3 +104,12 @@
       And   I Go To The Page Which Has The List Of Current Editing Item
       And   I Should Be Able To Cancel A Session In The Face-to-Face Activity
       And   I Should Be Able To Delete A Session In The Face-to-Face Activity
+
+    @face_to_face_session_notifications @C745
+      Scenario: As An Administrator I Want To Manage Face 2 Face Activity Session Notifications Such As Create Edit Delete
+      Given A Company Admin Creates A New Course With Unique Name
+      Then  I Should Be Able To Add A Face-to-Face Activity
+      When  I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
+      Then  I Should Be Able To Create Face To Face Notification With Name Course Face-to-Face Confirmation
+      And   I Should Be Able To Edit face to face notification with name Course Face-to-Face Confirmation
+      And   I should be able to Delete face to face notification with name Course Face-to-Face Confirmation
