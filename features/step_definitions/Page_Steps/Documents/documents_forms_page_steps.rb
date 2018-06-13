@@ -27,7 +27,7 @@ def enterFormTemplateDetails(form_temp_title, form_temp_title_text)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
 end
 
-
+#TODO Move to Custom Methods
 def SelectSingleFromSelect2InputDropdown(select2_input_id, select2_search_input_class, select2_search_input_text, select2_search_result_class)
   $driver.find_elements(:id, select2_input_id).last.click
   Sleep_Until($driver.find_elements(:class, select2_search_input_class).last.send_keys(select2_search_input_text))
