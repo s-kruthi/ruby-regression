@@ -435,7 +435,7 @@ end
 
 def CreateAllNotifications()
   begin
-    #This line is a workaround used to store the elmo-table contents which will be used to check whether a template has already been added or not
+    #This line is a temporary workaround used to store the elmo-table contents which will be used to check whether a template has already been added or not
     $template_list = $driver.find_element(:id, "elmo-table").text.split("\nEdit\nToggle dropdown to edit appraisal") if $driver.find_elements(:id, "elmo-table").empty? == false
     ClickAddNotificationButton()
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
