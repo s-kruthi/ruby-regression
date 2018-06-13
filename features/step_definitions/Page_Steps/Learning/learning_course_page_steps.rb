@@ -439,7 +439,7 @@ def CreateAllNotifications()
     $template_list = $driver.find_element(:id, "elmo-table").text.split("\nEdit\nToggle dropdown to edit appraisal") if $driver.find_elements(:id, "elmo-table").empty? == false
     ClickAddNotificationButton()
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
-    limit = $driver.find_elements(:class, "select2-result-selectable").count -1
+    limit = $driver.find_elements(:class, "select2-result-selectable").count - 1
     puts "Number of Notification Triggers Found: \"#{limit + 1}\"\n"
     Sleep_Until($driver.find_elements(:class, "select2-drop").last.click)
     Sleep_Until($driver.find_element(:xpath, "//button[contains(.,'×')]").click)
