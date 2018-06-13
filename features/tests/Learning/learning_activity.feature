@@ -57,7 +57,7 @@ Feature: As An Admin I Would Like to Manage Course Activities Which can Further 
     Then  I Should Be Able To Add A File Activity
 
 
-  @learning_high_risk @course_activity_add @course_activity_label_add @C12720
+  @learning_high_risk @course_activity_add @course_activity_label_add @C12721
   Scenario: [Learning]Learning Admin creating New Activities In A Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -75,7 +75,7 @@ Feature: As An Admin I Would Like to Manage Course Activities Which can Further 
     Then  I Should Be Able To Add A Page Activity
 
 
-  @learning_high_risk @course_activity_add @course_activity_post_add @C12720
+  @learning_high_risk @course_activity_add @course_activity_post_add @C16352
   Scenario: [Learning]Learning Admin creating New Activities In A Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
