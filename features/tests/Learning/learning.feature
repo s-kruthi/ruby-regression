@@ -61,7 +61,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To View All The Course Enrolments
 
 
-  @learning_low_risk @course_disable_retrain_enrolments
+  @learning_low_risk @course_disable_retrain_enrolment
   Scenario: [Learning]Learning Admin Can Disable Retrain For Enrolments
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -72,7 +72,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To See The Retrain Disabled For The Enrolment
 
 
-  @learning_low_risk @course_enable_retrain_enrolments
+  @learning_low_risk @course_enable_retrain_enrolment
   Scenario: [Learning]Learning Admin Can Disable Retrain For Enrolments
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -81,3 +81,45 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     And   I Filter For Enrolments With Status Of Completed
     And   I Choose To Enable Retrain For The Enrolment
     Then  I Should Be Able To See The Retrain Enabled For The Enrolment
+
+  @learning_low_risk @course_edit_enrolment_start_end_date
+  Scenario: [Learning]Learning Admin Can Edit Enrolments With Due Date
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Click On "Enrolments" Tab
+    And   I Filter For Enrolments With Status Of Not Started
+    And   I Choose To Edit Enrolment For An Enrolment
+    And   I Edit The Enrolment Start Date To Be "Today's Date"
+    And   I Edit The Enrolment Due Date To Be "A Month From Today"
+    #Check that The Enrolment Due Date checkbox is Checked
+    And   I Save The Changes To The Enrolment
+    Then  I Should See That The Changes Were Successfully Saved
+
+
+  @learning_low_risk @course_edit_enrolment_start_date
+  Scenario: [Learning]Learning Admin Can Edit Enrolments Without Due Date
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Click On "Enrolments" Tab
+    And   I Filter For Enrolments With Status Of Not Started
+    And   I Choose To Edit Enrolment For An Enrolment
+    And   I Edit The Enrolment Start Date To Be "Today's Date"
+    And   I Edit The Enrolment Due Date To Be "NA"
+    And   I Save The Changes To The Enrolment
+    Then  I Should See That The Changes Were Successfully Saved
+
+
+  @learning_low_risk @course_delete_enrolment
+  Scenario: [Learning]Learning Admin Can Delete Enrolment
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Click On "Enrolments" Tab
+    And   I Filter For Enrolments With Status Of Completed
+    And   I Should Be Able To Only Refresh/Delete Enrolment
+    And   I Choose To Delete Enrolment For An Enrolment
+    Then  I Should See That The Enrolment Was Successfully Deleted
+
+
