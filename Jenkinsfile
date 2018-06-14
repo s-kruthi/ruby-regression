@@ -11,7 +11,7 @@ pipeline {
         stage('check in code') {
           steps {
             echo 'Test passed'
-            sh 'cd /var/lib/scriptonce_automation; pwd; git checkout .; git remote -v; git pull origin master'
+            sh 'cd /var/lib/scriptonce_automation; pwd; git checkout .;git clean -f -d; git remote -v;git checkout master; git pull origin master'
           }
         }
         stage('Test Execution') {
@@ -19,7 +19,7 @@ pipeline {
             echo 'test execution in progress..'
             sh '''source ~/.bash_profile
 
-cucumber -xgt @C807 CHANNEL=headless'''
+cucumber -xgt @smoke_learning CHANNEL=headless'''
           }
         }
       }

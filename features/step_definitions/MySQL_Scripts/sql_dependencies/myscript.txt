@@ -1,51 +1,65 @@
 *************************** 1. row ***************************
-            id: 24831
+            id: 26918
           type: 1
    source_type: 1
-       subject: Course Enrol Request Approved
-          body: <p><span style="color:rgb(51, 51, 51); font-family:arial,sans-serif; font-size:10pt">Hi DontTouchAutomationUser,<br />
-Your request to enrol into course_section_automation_QuizActivity_shanku(Approval) has been approved.<br />
-<br />
-Should you have any questions please email&nbsp;<a href="mailto:lnd@tmbank.com.au">lnd@tmbank.com.au</a></span></p>
+       subject: New Enrolment
+          body: <p>Dear&nbsp;DontTouchAutomationUser&nbsp;AARON&nbsp;REBECCA.AARON@elmodemo.com</p>
 
-<p>&nbsp;</p>
+<p>New Enrolment<br />
+SYSTEM_PLACEHOLDER_COMPANY_NAME: ELMO<br />
+SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: HR & Payroll<br />
+SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: ELMO<br />
+SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline<br />
+SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au<br />
+PLACEHOLDER_FIRSTNAME: DontTouchAutomationUser<br />
+PLACEHOLDER_LASTNAME: AARON<br />
+PLACEHOLDER_USERNAME: X1242341<br />
+PLACEHOLDER_COURSE: AssignmentRule_course_automation<br />
+PLACEHOLDER_COURSE_LINK: https://tmsfull.dev.elmodev.com/learning/view-course/982?_l=1<br />
+PLACEHOLDER_COURSE_DUE_DATE: [not specified]<br />
+&lt;DYNAMIC&gt;PLACEHOLDER_RETRAIN_PERIOD: 0 month&lt;/DYNAMIC&gt; &lt;-- Retrain period should not be displayed here</p>
      fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
     replyEmail: {"noreply@elmolearning.com.au":"HROnline"}
-    recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":null,"bcc":null}
- recipient_ids: /3472/
+    recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":{"SIMON.COX@elmodemo.com":"SIMON COX"},"bcc":null}
+ recipient_ids: /3472/3456/
       priority: 1
-  created_time: 1525317336
+  created_time: 1528766300
     fired_time: NULL
         status: 0
-       context: a:1:{s:8:"schedule";i:26261;}
+       context: a:1:{s:8:"schedule";i:28619;}
       branding: a:4:{s:7:"content";a:4:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#195799";s:13:"menuFontColor";s:7:"#ffffff";s:4:"logo";i:1162;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:9;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
-     source_id: 26261
+     source_id: 28619
          count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-                         id: 97
-                  course_id: 787
-               requestor_id: 3472
-                approver_id: 3456
-             approver_level: 1
-                     status: 2
-                    comment: automation in progress<hr/><div class="name" data-name="SIMON COX">
-                Message from SIMON COX</div>automation, approving course request
-                       date: 1525317320
-                 is_deleted: 0
-               deleted_time: NULL
-request_container_path_name: NULL
-  request_container_path_id: NULL
-       external_training_id: NULL
+                 id: 110004
+          course_id: 982
+            user_id: 3472
+ lmsUserEnrolmentId: NULL
+        enrolMethod: 2
+enrolSourceObjectId: 50
+             status: 0
+               cost: 0
+            retrain: 0
+        timeEnroled: 1528766300
+            timeDue: 1528766300
+        timeStarted: 0
+          timeEnded: 0
+        timeExpired: 0
+        timeCreated: 1528766300
+       timeModified: 1528766300
+           isActive: 1
+        modifier_id: NULL
+       retrain_open: 0
 *************************** 1. row ***************************
-          id: 25855
-  trigger_id: Learning.CourseEnrolRequestApprovedTrigger
+          id: 28023
+  trigger_id: Learning.CourseNewEnrolmentTrigger
      user_id: 3472
-  sort_order: 1:196-111-111:787-3472-3456
+  sort_order: 1:196-111-1951:982-3472-110004
    path_name: /196
-     path_id: /787
+     path_id: /982
   is_deleted: 0
 deleted_time: NULL
