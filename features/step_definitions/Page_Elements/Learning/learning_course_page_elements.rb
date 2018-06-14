@@ -38,7 +38,6 @@ COURSE_COPYDELETE_BTN_NAME_ID = "//button[contains(@id,'copyDeleteConfirm')]"
 COURSE_DELETE_SUCCESSFUL_ID = "//div[contains(@class,'modal-body')]"
 
 SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
-SUB_TAB_NOTIFICATIONS_NAME_ID = "//a[contains(.,'Notifications')]"
 
 
 COURSE_AVAILABILITY_ID = "//select[contains(@id,'elmo_learningbundle_course_visible')]"
@@ -219,11 +218,10 @@ FACE_TO_FACE_NOTIFICATION_SELECT2_ID = 'select2-chosen-1'
 FACE_TO_FACE_NOTIFICATION_TOGGLE_BUTTON_XPATH = '//tr[contains(@id, "templateRow")][1]//button[contains(@class, "dropdown-toggle")]'
 FACE_TO_FACE_NOTIFICATION_TOGGLE_DELETE_XPATH = '//tr[contains(@id, "templateRow")][1]//ul[@role="menu"]//a[contains(text()," Delete")]'
 FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID = 'select2-chosen-2'
-FACE_TO_FACE_NOTIFICATION_INPUT_CLASS = 'select2-input'
 FACE_TO_FACE_NOTIFICATION_NAME = 'Course Face-to-Face Confirmation'
-FACE_TO_FACE_NOTIFICATION_SEARCH_RESULT_CLASS = 'select2-result-selectable'
+#Select2 dropdown generic data
+SELECT2_DROPDOWN_ID = "select2-input"
+SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
 AddNotificationNextButtonId = 'templateNotification_button_next'
 EditButtonXpathText = '//a[contains(text(),"Edit")]'
 ModalDialogBodyTextCSS = '.modal-body .bootbox-body-sr'
-
-

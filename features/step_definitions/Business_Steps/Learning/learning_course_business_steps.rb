@@ -462,13 +462,14 @@ Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$
   pending
 end
 
+
 Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With Name ([-\w\s]+)$/i) do |action, face_to_face_notification|
   case action
   when 'Create'
-    ClickOnASubTab(SUB_TAB_NOTIFICATIONS_NAME_ID)
+    ClickOnASubTab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
     ClickAddNotificationButton()
-    SelectSingleFromSelect2InputDropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, FACE_TO_FACE_NOTIFICATION_INPUT_CLASS, FACE_TO_FACE_NOTIFICATION_NAME, FACE_TO_FACE_NOTIFICATION_SEARCH_RESULT_CLASS)
-    SelectSingleFromSelect2InputDropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, FACE_TO_FACE_NOTIFICATION_INPUT_CLASS, FACE_TO_FACE_NOTIFICATION_NAME, FACE_TO_FACE_NOTIFICATION_SEARCH_RESULT_CLASS)
+    SelectSingleFromSelect2InputDropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
+    SelectSingleFromSelect2InputDropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
     Sleep_Until(WaitForAnElementByIdAndTouch(AddNotificationNextButtonId))
     Sleep_Until(SaveNotificationTemplate())
   when 'Edit'
