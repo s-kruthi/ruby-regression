@@ -39,6 +39,7 @@ COURSE_DELETE_SUCCESSFUL_ID = "//div[contains(@class,'modal-body')]"
 
 SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
 
+
 COURSE_AVAILABILITY_ID = "//select[contains(@id,'elmo_learningbundle_course_visible')]"
 
 # SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]" #Legacy Approval Notifications tab name
@@ -206,5 +207,21 @@ MARKER_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-cl
 COMPLETION_NOTIFICATION_CSS = '.toggle[data-toggle]'
 
 
-
-
+#### Face to Face Notification Elements ####
+F2FNotificationEditButtonCSS = '.templateNotification_button_edit'
+NOTIFICATION_ID = 'tr[id*=templateRow]'
+NOTIFICATION_PREVIEW_TITLE_XPATH = '//tr[contains(@id, "templateRow")]/*[1]/*[1]'
+NOTIFICATION_PREVIEW_DESCRIPTION_XPATH = '//tr[contains(@id, "templateRow")]/*[1]/*[3]'
+F2F_SESSION_NOTIFICATION_TITLE_ID = 'templateNotification_title'
+F2F_SESSION_NOTIFICATION_DESCRIPTION_ID = 'templateNotification_description'
+FACE_TO_FACE_NOTIFICATION_SELECT2_ID = 'select2-chosen-1'
+FACE_TO_FACE_NOTIFICATION_TOGGLE_BUTTON_XPATH = '//tr[contains(@id, "templateRow")][1]//button[contains(@class, "dropdown-toggle")]'
+FACE_TO_FACE_NOTIFICATION_TOGGLE_DELETE_XPATH = '//tr[contains(@id, "templateRow")][1]//ul[@role="menu"]//a[contains(text()," Delete")]'
+FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID = 'select2-chosen-2'
+FACE_TO_FACE_NOTIFICATION_NAME = 'Course Face-to-Face Confirmation'
+#Select2 dropdown generic data
+SELECT2_DROPDOWN_ID = "select2-input"
+SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
+AddNotificationNextButtonId = 'templateNotification_button_next'
+EditButtonXpathText = '//a[contains(text(),"Edit")]'
+ModalDialogBodyTextCSS = '.modal-body .bootbox-body-sr'
