@@ -207,7 +207,6 @@ MARKER_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-cl
 COMPLETION_NOTIFICATION_CSS = '.toggle[data-toggle]'
 
 
-<<<<<<< HEAD
 #### Face to Face Notification Elements ####
 F2FNotificationEditButtonCSS = '.templateNotification_button_edit'
 NOTIFICATION_ID = 'tr[id*=templateRow]'
@@ -220,13 +219,10 @@ FACE_TO_FACE_NOTIFICATION_TOGGLE_BUTTON_XPATH = '//tr[contains(@id, "templateRow
 FACE_TO_FACE_NOTIFICATION_TOGGLE_DELETE_XPATH = '//tr[contains(@id, "templateRow")][1]//ul[@role="menu"]//a[contains(text()," Delete")]'
 FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID = 'select2-chosen-2'
 FACE_TO_FACE_NOTIFICATION_NAME = 'Course Face-to-Face Confirmation'
-#Select2 dropdown generic data
-SELECT2_DROPDOWN_ID = "select2-input"
-SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
 AddNotificationNextButtonId = 'templateNotification_button_next'
 EditButtonXpathText = '//a[contains(text(),"Edit")]'
 ModalDialogBodyTextCSS = '.modal-body .bootbox-body-sr'
-=======
+
 
 #### Enrolments Section elements ####
 ENROLMENT_STATUS_FILTER_ID = "//select[@id='courseSearchForm_statusIds']"
@@ -235,7 +231,3 @@ RETRAIN_TOGGLE_ID = "//input[@name='enrolment-retrain']"
 RETRAIN_DISABLE_TOGGLE_ID = '//label[@class="btn btn-primary toggle-on"]'
 RETRAIN_ENABLE_TOGGLE_ID = '//label[@class="btn btn-default active toggle-off"]'
 
-
-
-
->>>>>>> QTA-36 completed modify enable/disable retrain enrolments
