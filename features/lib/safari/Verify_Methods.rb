@@ -165,7 +165,7 @@ module Safari
         wait = Selenium::WebDriver::Wait.new(:timeout => 5)
         if section_identifier.empty?
           elements = wait.until {
-            $driver.find_elements(:"#{type}", "#{identifier})
+            $driver.find_elements(:"#{type}", "#{identifier}")
           }
         else
           elements = wait.until {
