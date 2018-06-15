@@ -83,3 +83,8 @@ INACTIVE_ATTRIBUTE_ID = "data-sinfo"
 VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 
 PAGINATION_ID = "//div[@class='pagination-count']"
+
+#### Onboarding Section ####
+ONBOARDING_USER_SETUP_ID = "//span[contains(.,'Onboarding User Setup')]"
+ACTIVITY_RESUME_TAB_ID = "//a[contains(.,'Activity And Resume')]"
+ONBOARDING_SETUP_TAB_ID = "//a[contains(.,'Onboarding Setup')]"

@@ -419,3 +419,17 @@ When(/^I Reset The Assignment Rule$/) do
   DeactivateTheSearchedAssignment()
   ReActivateTheSearchedAssignment()
 end
+
+
+Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onboarding Section$/i) do | access_type |
+  if access_type == "Be Able"
+    Sleep_Until(VerifyAnElementExists("xpath", ONBOARDING_USER_SETUP_ID))
+    steps %Q{
+    And I Go To Onboarding User Setup Under Onboarding Section
+    }
+    Sleep_Until(VerifyAnElementExists("xpath", ACTIVITY_RESUME_TAB_ID))
+    Sleep_Until(VerifyAnElementExists("xpath", ONBOARDING_SETUP_TAB_ID))
+  elsif access_type == "Not Be Able"
+    Sleep_Until(VerifyAnElementNotExist("xpath", ONBOARDING_USER_SETUP_ID))
+  end
+end
