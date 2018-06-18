@@ -231,3 +231,4 @@ RETRAIN_TOGGLE_ID = "//input[@name='enrolment-retrain']"
 RETRAIN_DISABLE_TOGGLE_ID = '//label[@class="btn btn-primary toggle-on"]'
 RETRAIN_ENABLE_TOGGLE_ID = '//label[@class="btn btn-default active toggle-off"]'
 
+

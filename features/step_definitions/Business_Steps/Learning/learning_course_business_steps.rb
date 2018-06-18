@@ -487,7 +487,6 @@ Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With N
 end
 
 
-And(/^I Filter For Enrolments With (\w+) Of (.*)$/i) do | filter_by, filter_value |
 And(/^I Filter For Enrolments With (.*) Of (.*)$/i) do | filter_by, filter_value |
   if filter_by == "Enrolment Method"
     Sleep_Until(SelectFromDropDown(ENROLMENT_METHOD_FILTER_ID, "#{filter_value}"))
@@ -526,3 +525,72 @@ And(/^I Filter For Enrolments With (.*) Of (.*)$/i) do | filter_by, filter_value
     # if results_count.eql?count then puts COLOR_BLUE + "Results match" end
   end
 end
+
+
+And(/^I Choose To (Edit|Delete) An Enrolment$/i) do | enrolment_action |
+  enrolment_action += " Enrolment"
+  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, enrolment_action)
+end
+
+
+And(/^I Edit The Enrolment (Start|Due) Date To Be "(.*)"$/i) do | date_type, date_value |
+  pending "Blocked by PMS-14875"
+  # if date_value == "Today's Date"
+  #   date_value = DateTime.now.strftime("%d/%m/%Y")
+  # elsif date_value == "A Month From Today"
+  #   date_value = (DateTime.now).next_month.strftime("%d/%m/%Y")
+  # end
+  #
+  # if date_type == "Start"
+  #   $start_date = date_value
+  #   $driver.find_element(:id, "enrolmentEdit_timeEnroled").clear
+  #   byebug
+  #   $driver.find_element(:id, "enrolmentEdit_timeEnroled").send_keys date_value
+  # elsif date_type == "Due"
+  #   if $driver.find_element(:id, "enable-date-timeDue").attribute("checked") == nil
+  #     puts COLOR_BLUE + "Enrolment due date is disabled, so only changed the start date"
+  #     $end_date = "N/A"
+  #   else
+  #     if date_value == "N/A"
+  #       WaitForAnElementByIdAndTouch("enable-date-timeDue")
+  #       #check for enrolment due date to be disabled
+  #       $driver.find_element(:id, "enable-date-timeDue").attribute("checked") == nil
+  #       $driver.find_element(:id, "enrolmentEdit_timeDue").attribute("disabled") == "true"
+  #     else
+  #       #check for enrolment due date checkbox selected
+  #       $driver.find_element(:id, "enable-date-timeDue").attribute("checked") == "true"
+  #       $driver.find_element(:id, "enrolmentEdit_timeDue").clear
+  #       byebug
+  #       $driver.find_element(:id, "enrolmentEdit_timeDue").send_keys date_value
+  #     end
+  #     $end_date = date_value
+  #   end
+  # end
+ end
+
+
+And(/^I Save The Changes To The Enrolment$/i) do
+  WaitForAnElementByXpathAndTouch("//button[contains(.,'Submit')]")
+end
+
+
+Then(/^I Should See That The Changes Were Successfully Saved To The Enrolment$/i) do
+  #checks that the tooltip has the enrolment date changes
+  $driver.find_elements(:xpath,"//span[contains(@data-toggle,'tooltip')]").last.attribute("data-original-title").include? $start_date
+  $driver.find_elements(:xpath,"//span[contains(@data-toggle,'tooltip')]").last.attribute("data-original-title").include? $end_date
+end
+
+
+And(/^I Should Be Able To Only Refresh\/Delete Enrolment$/i) do
+  pending
+  Sleep_Until($driver.find_elements(:xpath, "//table//button[@data-toggle='dropdown']").last.click)
+end
+
+
+Then(/^I Should See That The Enrolment Was Successfully Deleted$/i) do
+  #click on ok in popup
+  pending
+end
+
+
+
