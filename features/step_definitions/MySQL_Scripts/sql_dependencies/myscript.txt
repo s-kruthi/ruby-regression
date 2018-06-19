@@ -1,5 +1,5 @@
 *************************** 1. row ***************************
-            id: 26918
+            id: 26976
           type: 1
    source_type: 1
        subject: New Enrolment
@@ -23,19 +23,19 @@ PLACEHOLDER_COURSE_DUE_DATE: [not specified]<br />
     recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":{"SIMON.COX@elmodemo.com":"SIMON COX"},"bcc":null}
  recipient_ids: /3472/3456/
       priority: 1
-  created_time: 1528766300
-    fired_time: NULL
-        status: 0
-       context: a:1:{s:8:"schedule";i:28619;}
-      branding: a:4:{s:7:"content";a:4:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#195799";s:13:"menuFontColor";s:7:"#ffffff";s:4:"logo";i:1162;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:9;s:4:"type";i:0;}
+  created_time: 1528934885
+    fired_time: 1528935004
+        status: 1
+       context: a:1:{s:8:"schedule";i:28692;}
+      branding: a:4:{s:7:"content";a:4:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#7396b5";s:13:"menuFontColor";s:7:"#ffffff";s:4:"logo";i:1162;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:9;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
-     source_id: 28619
-         count: 0
+     source_id: 28692
+         count: 1
 attachment_ids: []
 *************************** 1. row ***************************
-                 id: 110004
+                 id: 110115
           course_id: 982
             user_id: 3472
  lmsUserEnrolmentId: NULL
@@ -44,21 +44,21 @@ enrolSourceObjectId: 50
              status: 0
                cost: 0
             retrain: 0
-        timeEnroled: 1528766300
-            timeDue: 1528766300
+        timeEnroled: 1529041363
+            timeDue: 1529041363
         timeStarted: 0
           timeEnded: 0
         timeExpired: 0
-        timeCreated: 1528766300
-       timeModified: 1528766300
+        timeCreated: 1529041363
+       timeModified: 1529041363
            isActive: 1
         modifier_id: NULL
        retrain_open: 0
 *************************** 1. row ***************************
-          id: 28023
+          id: 28091
   trigger_id: Learning.CourseNewEnrolmentTrigger
      user_id: 3472
-  sort_order: 1:196-111-1951:982-3472-110004
+  sort_order: 1:196-111-1951:982-3472-110026
    path_name: /196
      path_id: /982
   is_deleted: 0

@@ -409,7 +409,7 @@ end
 
 
 Given(/^I Want To Generate Learning Notification data On Any Staging$/i) do
-  puts  ENV['STAGING']
+  puts  ENV["url"]
   puts "Data Creation in process...".colorize(:blue)
   GenerateLearningDataUsingJmeterRubyService()
 end

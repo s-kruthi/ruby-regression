@@ -99,7 +99,7 @@
         </HTTPSamplerProxy>
         <hashTree>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-            <stringProp name="filename">/Users/shankumahanty/Desktop/JMETER_AUTO/Jmeter_tests/user_id.csv</stringProp>
+            <stringProp name="filename">./user_id.csv</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="variableNames">manager_id,user_id,user_name</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>

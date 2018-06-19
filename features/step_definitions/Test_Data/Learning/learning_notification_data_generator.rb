@@ -1,6 +1,6 @@
 
 def GenerateLearningDataUsingJmeterRubyService()
-  %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/LearningDataAddUser.jmx -Jserver=#{ENV['STAGING']})
+  %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/LearningDataAddUser.jmx -Jserver=staging4.dev.elmodev.com)
   csv = CSV.read('JMETER_AUTO/Jmeter_tests/user_id.csv', :headers=>false)
   puts "manager_id:" + csv[0][0]
   puts "manager_username:" + csv[0][1]
