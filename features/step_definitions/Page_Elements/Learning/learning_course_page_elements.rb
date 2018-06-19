@@ -219,9 +219,21 @@ FACE_TO_FACE_NOTIFICATION_TOGGLE_BUTTON_XPATH = '//tr[contains(@id, "templateRow
 FACE_TO_FACE_NOTIFICATION_TOGGLE_DELETE_XPATH = '//tr[contains(@id, "templateRow")][1]//ul[@role="menu"]//a[contains(text()," Delete")]'
 FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID = 'select2-chosen-2'
 FACE_TO_FACE_NOTIFICATION_NAME = 'Course Face-to-Face Confirmation'
-#Select2 dropdown generic data
-SELECT2_DROPDOWN_ID = "select2-input"
-SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
 AddNotificationNextButtonId = 'templateNotification_button_next'
 EditButtonXpathText = '//a[contains(text(),"Edit")]'
 ModalDialogBodyTextCSS = '.modal-body .bootbox-body-sr'
+
+
+#### Enrolments Section elements ####
+ENROLMENT_STATUS_FILTER_ID = "//select[@id='courseSearchForm_statusIds']"
+ENROLMENT_METHOD_FILTER_ID = "//select[@id='courseSearchForm_enrolmentMethods']"
+RETRAIN_TOGGLE_ID = "//input[@name='enrolment-retrain']"
+RETRAIN_DISABLE_TOGGLE_ID = '//label[@class="btn btn-primary toggle-on"]'
+RETRAIN_ENABLE_TOGGLE_ID = '//label[@class="btn btn-default active toggle-off"]'
+ENROLMENT_START_DATE_ID = "enrolmentEdit_timeEnroled"
+ENROLMENT_DUE_DATE_ID = "enable-date-timeDue"
+ENROLMENT_SUBMIT_BTN = "//button[contains(.,'Submit')]"
+ENROLMENT_TOOLTIP_ID = "//span[contains(@data-toggle,'tooltip')]"
+COURSE_SCORE_ID = "userProfileCompletionForm_score"
+
+

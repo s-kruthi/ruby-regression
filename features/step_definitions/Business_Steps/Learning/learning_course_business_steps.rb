@@ -442,8 +442,8 @@ end
 Then(/^I Should Be Able To View All The Course Enrolments$/i) do
   count = $daos.get_count_course_enrolments()
   if count == 0
-    VerifyAnElementNotExistByCSS("div[class=pagination-count]")
-    #VerifyAnElementNotExist("xpath", PAGINATION_ID)
+    VerifyAnElementNotExist("xpath", PAGINATION_ID)
+    puts COLOR_BLUE + "No Records found"
   else
      results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
      if results_count.eql?count then puts COLOR_BLUE + "Results match" end
@@ -452,14 +452,14 @@ end
 
 
 And(/^I Choose To (Enable|Disable) Retrain For The Enrolment$/i) do | retrain_action |
-  #check the retrain setting and then change setting
-  pending
+  #checks the first enrolment's retrain setting and then changes the setting if needed
+  CheckRetrainSetting()
+  ModifyRetrainSetting(retrain_action)
 end
 
 
-Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$/i) do | retrain_action |
-  #check the retrain setting
-  pending
+Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$/i) do | retrain_setting |
+  if $retrain_setting != 0 then  PressModalClose() end
 end
 
 
@@ -485,3 +485,123 @@ Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With N
     VerifyAnElementNotExist('#body', 'css', 'tr[id*=templateRow]')
   end
 end
+
+
+And(/^I Filter For Enrolments With (.*) Of (.*)$/i) do | filter_by, filter_value |
+  FilterEnrolments(filter_by, filter_value)
+end
+
+
+And(/^I Choose To (Edit|Delete) An Enrolment$/i) do | enrolment_action |
+  enrolment_action += " Enrolment"
+  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, enrolment_action)
+end
+
+
+And(/^I Edit The Enrolment (Start|Due) Date To Be "(.*)"$/i) do | date_type, date_value |
+  pending "Blocked by PMS-14875"
+  if date_value == "Today's Date"
+    date_value = DateTime.now.strftime("%d/%m/%Y")
+  elsif date_value == "A Month From Today"
+    date_value = (DateTime.now).next_month.strftime("%d/%m/%Y")
+  end
+
+  if date_type == "Start"
+    $start_date = date_value
+    $driver.find_element(:id, ENROLMENT_START_DATE_ID).clear
+    WaitForAnElementByIdAndInputValue(ENROLMENT_START_DATE_ID, date_value)
+  elsif date_type == "Due"
+    if $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("checked") == nil
+      puts COLOR_BLUE + "Enrolment due date is disabled, so only changed the start date"
+      $end_date = "N/A"
+    else
+      if date_value == "N/A"
+        WaitForAnElementByIdAndTouch(ENROLMENT_DUE_DATE_ID)
+        #check for enrolment due date to be disabled
+        CheckEnrolmentDueDate("disabled")
+      else
+        #check for enrolment due date checkbox selected
+        CheckEnrolmentDueDate("enabled")
+        $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).clear
+        WaitForAnElementByIdAndInputValue(ENROLMENT_DUE_DATE_ID, date_value)
+      end
+      $end_date = date_value
+    end
+  end
+ end
+
+
+And(/^I Save The Changes To The Enrolment$/i) do
+  WaitForAnElementByXpathAndTouch(ENROLMENT_SUBMIT_BTN)
+end
+
+
+Then(/^I Should See That The Changes Were Successfully Saved To The Enrolment$/i) do
+  #checks that the tooltip has the enrolment date changes
+  CheckEnrolmentTooltip($start_date)
+  CheckEnrolmentTooltip($end_date)
+end
+
+
+And(/^I Should Be Able To Only Refresh\/Delete Enrolment$/i) do
+  pending
+  Sleep_Until($driver.find_elements(:xpath, LIST_DROPDOWN).last.click)
+end
+
+
+Then(/^I Should See That The Enrolment Was Successfully Deleted$/i) do
+  #click on ok in popup
+  PressEnterConfirm()
+end
+
+
+And(/^I Choose To Delete Enrolment From The Actions Menu$/i) do
+  ClickMenuOfFirstItemFromTable(COURSE_PAGE_DROPDOWN, "Delete Enrolment")
+end
+
+
+And(/^I Choose To Mark An Enrolment As Complete$/i) do
+  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, "Mark as Complete")
+ # $driver.find_element(:id, "userProfileCompletionForm_completionDate").clear
+ # $driver.find_element(:id, "userProfileCompletionForm_completionDate").send_keys DateTime.now.strftime("%d/%m/%Y")
+  EnterScore(90)
+  PressEnterConfirm()
+end
+
+
+Then(/^I Should See That The Enrolment Was Successfully Marked As Complete$/i) do
+  #checks that the tooltip for last enrolment has the enrolment completion date as today
+  date_value = DateTime.now.strftime("%d/%m/%Y")
+  CheckEnrolmentTooltip(date_value)
+end
+
+
+And(/^I Choose To Mark Enrolments As Complete From The Actions Menu$/i) do
+  ClickMenuOfFirstItemFromTable(COURSE_PAGE_DROPDOWN, "Mark as Complete")
+  EnterScore(90)
+  PressEnterConfirm()
+end
+
+
+Then(/^I Should See That The Enrolments Was Successfully Marked As Complete$/i) do
+  #checks that the tooltip for first enrolment has the enrolment completion date as today
+  date_value = DateTime.now.strftime("%d/%m/%Y")
+  CheckEnrolmentTooltip(date_value)
+end
+
+
+And(/^I Select (\d+) ([\w\s]+) For Bulk Action$/i) do | selection_number, selection_type |
+  i = 0
+  while(i != selection_number)
+    case selection_type
+      when "Retrain Discrepancies", "Retrain Discrepancy"
+        WaitForDropdownByClassAndTouchTheIndex(COURSE_DISCREPANCY_LISTINGS_ID, i)
+      when "Enrolments", "Enrolment"
+        WaitForDropdownByClassAndTouchTheIndex("add-user", i)
+    end
+    i = i + 1
+  end
+end
+
+
+

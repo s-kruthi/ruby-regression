@@ -1016,3 +1016,94 @@ def VerifyF2FNotificationTitleDescription()
   VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_TITLE_XPATH, 'Edit Notification')
   VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_DESCRIPTION_XPATH, 'Edit Notification')
 end
+
+
+
+def CheckRetrainSetting()
+  $retrain_setting = $driver.find_elements(:xpath, RETRAIN_TOGGLE_ID)[0].attribute("value")
+end
+
+
+def ModifyRetrainSetting(retrain_action)
+  if retrain_action == "Disable"
+    if $retrain_setting == "0"
+      puts COLOR_BLUE + "Retrain setting is currently Disabled"
+      $retrain_setting = 0
+    else
+      $driver.find_elements(:xpath, RETRAIN_DISABLE_TOGGLE_ID)[0].click
+      puts COLOR_BLUE + "Retrain setting has been Disabled"
+      sleep (1)
+    end
+  else
+    if $retrain_setting == "1"
+      puts COLOR_BLUE + "Retrain setting is currently Enabled"
+      $retrain_setting = 0
+    else
+      $driver.find_elements(:xpath, RETRAIN_ENABLE_TOGGLE_ID)[0].click
+      puts COLOR_BLUE + "Retrain setting has been Enabled"
+      sleep (1)
+    end
+  end
+end
+
+
+def CheckEnrolmentTooltip(date_value)
+  #checks that the tooltip for first enrolment has the enrolment completion date as today
+  $driver.find_elements(:xpath, ENROLMENT_TOOLTIP_ID).last.attribute("data-original-title").include? date_value
+end
+
+
+def EnterScore(score_value)
+  WaitForAnElementByIdAndInputValue(COURSE_SCORE_ID, score_value)
+end
+
+
+def CheckEnrolmentDueDate(ability_value)
+  if ability_value == "disabled"
+    #Checks if enrolment due date checkbox is unchecked and if unchecked then its disabled
+    $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("checked") == nil
+    $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("disabled") == "true"
+  elsif ability_value = "enabled"
+    $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("checked") == "true"
+  end
+end
+
+
+def FilterEnrolments(filter_by, filter_value)
+  if filter_by == "Enrolment Method"
+    Sleep_Until(SelectFromDropDown(ENROLMENT_METHOD_FILTER_ID, "#{filter_value}"))
+    #TODO Query needs to be corrected
+    # case filter_value
+    #   when "Manual"
+    #     filter_value = 0
+    #   when "Self"
+    #     filter_value = 1
+    #   when "Rule"
+    #     filter_value = 2
+    #   when "Development Activity"
+    #     filter_value = 3
+    # end
+    # count = $daos.get_count_course_enrolments_by_enrolmethod(filter_value)
+    # results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
+    # if results_count.eql?count then puts COLOR_BLUE + "Results match" end
+  elsif filter_by == "Status"
+    Sleep_Until(SelectFromDropDown(ENROLMENT_STATUS_FILTER_ID, "#{filter_value}"))
+    #TODO Query needs to be corrected
+    # case filter_value
+    #   when "Not Yet Started"
+    #     filter_value = 0
+    #   when "In Progress"
+    #     filter_value = 1
+    #   when "Completed"
+    #     filter_value = 2
+    #   when "Exempted"
+    #     filter_value = 3
+    #   when "Recompletion Required"
+    #     filter_value = 4
+    # end
+    # count = $daos.get_count_course_enrolments_by_status(filter_value)
+    # sleep (2)
+    # results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
+    # if results_count.eql?count then puts COLOR_BLUE + "Results match" end
+  end
+end
