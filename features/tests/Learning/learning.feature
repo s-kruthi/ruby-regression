@@ -82,7 +82,8 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     And   I Choose To Enable Retrain For The Enrolment
     Then  I Should Be Able To See The Retrain Enabled For The Enrolment
 
-  @learning_low_risk @course_edit_enrolment_start_end_date
+
+  @learning_low_risk @course_edit_enrolment_start_end_date @C800 @C801 @PMS-14875
   Scenario: [Learning]Learning Admin Can Edit Enrolments With Due Date
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -97,7 +98,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should See That The Changes Were Successfully Saved To The Enrolment
 
 
-  @learning_low_risk @course_edit_enrolment_start_date
+  @learning_low_risk @course_edit_enrolment_start_date @C800 @C801 @PMS-14875
   Scenario: [Learning]Learning Admin Can Edit Enrolments Without Due Date
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -112,15 +113,53 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should See That The Changes Were Successfully Saved To The Enrolment
 
 
-  @learning_low_risk @course_delete_enrolment @test
+  @learning_low_risk @course_delete_enrolment @C813
   Scenario: [Learning]Learning Admin Can Delete Enrolment
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
     When  I Click On "Enrolments" Tab
     And   I Filter For Enrolments With Status Of Completed
+    And   I Filter For Enrolments With Enrolment Method Of Manual
     #And   I Should Be Able To Only Refresh/Delete Enrolment
     And   I Choose To Delete An Enrolment
     Then  I Should See That The Enrolment Was Successfully Deleted
+
+
+  @learning_low_risk @course_bulkdelete_enrolment @C815
+  Scenario: [Learning]Learning Admin Can Delete Enrolment In Bulk
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Click On "Enrolments" Tab
+    And   I Filter For Enrolments With Status Of Completed
+    And   I Select 3 Enrolments For Bulk Action
+    And   I Choose To Delete Enrolment From The Actions Menu
+    Then  I Should See That The Enrolment Was Successfully Deleted
+
+
+  @learning_low_risk @course_mark_enrolment_complete @C815
+  Scenario: [Learning]Learning Admin Can Mark Enrolment As Complete
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Click On "Enrolments" Tab
+    And   I Filter For Enrolments With Status Of In Progress
+    And   I Choose To Mark An Enrolment As Complete
+    Then  I Should See That The Enrolment Was Successfully Marked As Complete
+
+
+  @learning_low_risk @course_bulkmark_enrolment_complete
+  Scenario: [Learning]Learning Admin Can Mark Enrolments In Bulk As Complete
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Click On "Enrolments" Tab
+    And   I Filter For Enrolments With Status Of In Progress
+    And   I Select 1 Enrolment For Bulk Action
+    And   I Choose To Mark Enrolments As Complete From The Actions Menu
+    Then  I Should See That The Enrolments Was Successfully Marked As Complete
+
+
 
 

@@ -230,5 +230,10 @@ ENROLMENT_METHOD_FILTER_ID = "//select[@id='courseSearchForm_enrolmentMethods']"
 RETRAIN_TOGGLE_ID = "//input[@name='enrolment-retrain']"
 RETRAIN_DISABLE_TOGGLE_ID = '//label[@class="btn btn-primary toggle-on"]'
 RETRAIN_ENABLE_TOGGLE_ID = '//label[@class="btn btn-default active toggle-off"]'
+ENROLMENT_START_DATE_ID = "enrolmentEdit_timeEnroled"
+ENROLMENT_DUE_DATE_ID = "enable-date-timeDue"
+ENROLMENT_SUBMIT_BTN = "//button[contains(.,'Submit')]"
+ENROLMENT_TOOLTIP_ID = "//span[contains(@data-toggle,'tooltip')]"
+COURSE_SCORE_ID = "userProfileCompletionForm_score"
 
 
