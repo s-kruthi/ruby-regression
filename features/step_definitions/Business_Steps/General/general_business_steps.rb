@@ -398,11 +398,5 @@ Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onb
     Sleep_Until(VerifyAnElementExists("xpath", ONBOARDING_SETUP_TAB_ID))
   elsif access_type == "Not Be Able"
     Sleep_Until(VerifyAnElementNotExist("xpath", ONBOARDING_USER_SETUP_ID))
-
-  else
-    begin
-      buttonxPath = "//a[contains(.,'#{button_name}')]"
-      Sleep_Until(WaitForAnElementByXpathAndTouch(buttonxPath))
-    end
   end
 end
