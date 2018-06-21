@@ -1063,7 +1063,7 @@ def CheckEnrolmentDueDate(ability_value)
     #Checks if enrolment due date checkbox is unchecked and if unchecked then its disabled
     $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("checked") == nil
     $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("disabled") == "true"
-  elsif ability_value = "enabled"
+  elsif ability_value == "enabled"
     $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("checked") == "true"
   end
 end
