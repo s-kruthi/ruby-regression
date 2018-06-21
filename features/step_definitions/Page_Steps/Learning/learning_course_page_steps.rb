@@ -101,22 +101,6 @@ def SearchACourse(course_list_search_box_id, course_list_title_value, course_sea
 end
 
 
-#TODO: Pending review and removal as ClickMenuOfFirstItemFromTable(), ClickMenuOfFirstItemFromTable() and DeleteTheCourseFromTable() are identical
-# def EditFirstCourseFromTable(xpath_name, partial_link_text)
-#   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
-#   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
-#   #get url and check if it has edit
-#   $driver.current_url =~ /\/course\/edit/
-# end
-
-
-#This selects the first course from the list and deletes it
-# def DeleteTheCourseFromTable(xpath_name, partial_link_text)
-#   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
-#   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
-# end
-
-
 def ClickMenuOfFirstItemFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
@@ -314,12 +298,6 @@ def EditACourseActivity(course_activity_type)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, QUIZ_TITLE_VALUE + " edit"))
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 1))
-        #Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
-        #Adding question
-        #Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
-        # Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
-
-        #  Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
         ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
@@ -403,8 +381,8 @@ end
 
 def CreateAllNotifications()
   begin
-    #This line is a temporary workaround used to store the elmo-table contents which will be used to check whether a template has already been added or not
-    $template_list = $driver.find_element(:id, "elmo-table").text.split("\nEdit\nToggle dropdown to edit appraisal")
+    #This line is a workaround used to store the elmo-table contents which will be used to check whether a template has already been added or not
+    $template_list = $driver.find_element(:id, "elmo-table").text.split("\nEdit\nToggle dropdown to edit appraisal") if $driver.find_elements(:id, "elmo-table").empty? == false
     ClickAddNotificationButton()
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
     limit = $driver.find_elements(:class, "select2-result-selectable").count - 1
@@ -425,7 +403,6 @@ def AddNotificationTrigger(limit)
     AddNotificationTemplate()
     loop += 1
   end
-  puts "Number of Notification Templates added: \"#{limit + 1}\"\n"
 end
 
 
@@ -703,25 +680,6 @@ end
 def VerifyCourseSectionNotExist(course_section_css)
   VerifyAnElementNotExist("css", course_section_css)
 end
-
-#TODO: Moved to Verify Methods file, can be removed after code review
-# For VerifyAnElementNotExistByCSS sufficient wait must be used before this step. Such as Sleep_Until
-# def VerifyAnElementNotExistByCSS(css)
-#   begin
-#     wait = Selenium::WebDriver::Wait.new(:timeout => 5)
-#     elements = wait.until {
-#       $driver.find_elements(:css, "#{css}")
-#     }
-#     if elements.empty?
-#       puts COLOR_GREEN + "MATCHED: Item not displayed."
-#     else
-#       raise(COLOR_RED + "Item displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
-#     end
-#   rescue Exception => e
-#     puts e.message
-#     $driver.quit
-#   end
-# end
 
 
 def ConditionAnElementNotExistByCSS(css)

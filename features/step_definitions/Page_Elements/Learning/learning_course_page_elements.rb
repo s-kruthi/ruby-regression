@@ -219,6 +219,7 @@ FACE_TO_FACE_NOTIFICATION_TOGGLE_BUTTON_XPATH = '//tr[contains(@id, "templateRow
 FACE_TO_FACE_NOTIFICATION_TOGGLE_DELETE_XPATH = '//tr[contains(@id, "templateRow")][1]//ul[@role="menu"]//a[contains(text()," Delete")]'
 FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID = 'select2-chosen-2'
 FACE_TO_FACE_NOTIFICATION_NAME = 'Course Face-to-Face Confirmation'
+
 AddNotificationNextButtonId = 'templateNotification_button_next'
 EditButtonXpathText = '//a[contains(text(),"Edit")]'
 ModalDialogBodyTextCSS = '.modal-body .bootbox-body-sr'
@@ -235,5 +236,3 @@ ENROLMENT_DUE_DATE_ID = "enable-date-timeDue"
 ENROLMENT_SUBMIT_BTN = "//button[contains(.,'Submit')]"
 ENROLMENT_TOOLTIP_ID = "//span[contains(@data-toggle,'tooltip')]"
 COURSE_SCORE_ID = "userProfileCompletionForm_score"
-
-
