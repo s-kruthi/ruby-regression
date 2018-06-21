@@ -45,8 +45,3 @@ ACTION_DROPDOWN_DEACTIVATE_VALUE = "Deactivate user"
 
 
 INACTIVE_ATTRIBUTE_TEXT = "User is not active"
-
-
-#assignment rules
-ENROLMENT_RULE_ID = 'enrolmentRuleSearch_name'
-SEARCH_ENTER_CSS= 'button[name="search[submit]"]'

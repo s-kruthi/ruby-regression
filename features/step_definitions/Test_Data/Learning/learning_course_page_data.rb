@@ -153,4 +153,3 @@ COURSE_APPROVAL_REASON = "automation, approving course request"
 COMPLETION_VALUE = 'Pass/Fail'
 FEEDBACK_VALUE = 'Yes'
 MARKER_VALUE = 'Manager'
-

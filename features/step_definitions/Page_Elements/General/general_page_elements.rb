@@ -84,7 +84,37 @@ VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 
 PAGINATION_ID = "//div[@class='pagination-count']"
 
+
 #### Onboarding Section ####
 ONBOARDING_USER_SETUP_ID = "//span[contains(.,'Onboarding User Setup')]"
 ACTIVITY_RESUME_TAB_ID = "//a[contains(.,'Activity And Resume')]"
 ONBOARDING_SETUP_TAB_ID = "//a[contains(.,'Onboarding Setup')]"
+
+
+###Select2 dropdown generic page Elements####
+SELECT2_DROPDOWN_ID = "select2-input"
+SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
+
+
+###General Assignment Rules Page Elements####
+ENROLMENT_RULE_ID = 'enrolmentRuleSearch_name'
+SEARCH_ENTER_CSS = 'button[name="search[submit]"]'
+
+
+ASSIGN_RULE_TITLE_ID = "//input[contains(@id,'enrolmentRuleDetails_name')]"
+ASSIGN_RULE_DESC_ID = "//textarea[contains(@id,'enrolmentRuleDetails_description')]"
+ASSIGN_RULE_ADD_COND_ID = "//div[contains(.,'Add Condition')]"
+ASSIGN_RULE_FIELDTYPE_ID = "//select[@id='enrolmentRuleUserFilters_userFilters_0_fieldType']"
+ASSIGN_RULE_REQ_COURSE_CLASS_ID = "elmoPms_courses"
+ASSIGN_RULE_RECMD_COURSE_CLASS_ID = "elmoPms_courses_recommended"
+ASSIGN_RULE_SAVE_BUTTON_ID = "//button[contains(@id,'confirm-button')]"
+ASSIGN_RULE_UNLOCK_BUTTON_ID = "//a[contains(@id,'unlock-button')]"
+
+ASSIGN_RULE_FIELDINPUT_ID_MAP = {
+    "Manager": "elmoPms_userManager",
+    "Location": "elmoPms_userLocation",
+    "Position": "elmoPms_userPosition",
+    "Department": "elmoPms_userDepartment",
+}
+
+ASSIGN_RULE_LIST_ACTION_BTN_ID = "//table//button[@data-toggle='dropdown']"

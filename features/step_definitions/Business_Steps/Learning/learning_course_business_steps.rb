@@ -286,14 +286,6 @@ When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
 end
 
 
-#TODO: Pending Review and removal
-# Then(/^I Should Be Able To Save The Session with the Specified Settings$/i) do
-#   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-#   ModifyACourseActivity(F2F_ACTIVITY_NAME, F2F_ACTIVITY_TYPE)
-#   VerifyFaceToFaceActivitySettings()
-# end
-
-
 When(/^I Go To The Page Which Has The List Of Current Editing Item$/) do
   Sleep_Until(WaitForAnElementByXpathAndTouch(PRECEDING_BREAD_LIST_XPATH))
 end

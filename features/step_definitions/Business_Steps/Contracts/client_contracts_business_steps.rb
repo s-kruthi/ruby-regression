@@ -1,6 +1,7 @@
 When(/^I click on Add New Contract Button$/i) do
   GoToAddClientContractsPage(ADD_NEW_CONTRACT_BTN)
-  end
+end
+
 
 And(/^I Enter New Client Contract Details$/i) do
   Sleep_Until(EnterSubDomainName(CAT_POS_INDEX_ARROW, 0, CAT_POS_INDEX_CLASS, SUBDOMAIN_INDEX_VALUE))
@@ -27,13 +28,16 @@ Then(/^I Should Be Able To Create A Client Contract$/i) do
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CONTRACT_VERIFY_SAVE_SUCCESSFUL_VALUE))
 end
 
+
 Then(/^I Should Be Able To Search For A Specific Active Client Contract$/i) do
   Sleep_Until(SearchForAClientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT))
 end
 
+
 When(/^I Search For A Specific Active Client Contract$/i) do
   Sleep_Until(SearchForAClientContractAndVerify(CONTRACT_SEARCH_ID, CONTRACT_SEARCH_VALUE, CONTRACT_SEARCH_BTN, CONTRACT_SEARCH_RESULT))
 end
+
 
 Then(/^I Should Be Able To De-Activate A Specific Active Client Contract$/i) do
   Sleep_Until(EditAClientContract(CONTRACT_ACTION_DROPDOWN,3, CONTRACT_DROPDOWN_ACTION_ITEM))

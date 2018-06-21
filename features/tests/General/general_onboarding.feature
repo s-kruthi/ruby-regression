@@ -3,7 +3,7 @@
 Feature:
   As a Company Admin I want to manage Users Successfully
 
-  @general_user_add  @general_high_risk @onboarding_high_risk
+  @general_user_add @general_high_risk @onboarding_high_risk
   Scenario: [General] [Onboarding] Company Admin Creating New User
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -18,7 +18,7 @@ Feature:
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Onboarding Users under Onboarding section
-    When  I Click On Add New User Button
+    When  I Click On "Add New User" Button
     And   I Enter New User Details
     Then  I Should Be Able To Add 10 New Users In To The System
 
@@ -74,4 +74,3 @@ Feature:
     And   I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Should Not Be Able To Access The Onboarding User Setup In Onboarding Section
-
