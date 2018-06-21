@@ -71,7 +71,7 @@ Then(/^I Should Be Able To (Deactivate) A Specific Assignment Rule Successfully$
       begin
         Sleep_Until(ClickMenuOfFirstItemFromTable(ASSIGN_RULE_LIST_ACTION_BTN_ID, ASSIGN_RULE_LIST_ACTION_DEACTIVATE))
         Sleep_Until(ClickOnAButtonByLastIndex(ASSIGN_RULE_SAVE_BUTTON_ID))
-        Sleep_Until(VerifyAnElementExistByXPath("//div[contains(@role,'progressbar')]", "Complete"))
+        Sleep_Until(VerifyAnElementExistByXPath(BACKGROUND_JOB_PROCESS_ID, BACKGROUND_JOB_PROCESS_TEXT_VALUE))
       end
     end
 end

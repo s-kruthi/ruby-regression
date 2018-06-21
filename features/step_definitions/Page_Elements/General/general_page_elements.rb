@@ -118,3 +118,4 @@ ASSIGN_RULE_FIELDINPUT_ID_MAP = {
 }
 
 ASSIGN_RULE_LIST_ACTION_BTN_ID = "//table//button[@data-toggle='dropdown']"
+BACKGROUND_JOB_PROCESS_ID = "//div[contains(@role,'progressbar')]"

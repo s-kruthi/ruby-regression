@@ -7,3 +7,4 @@ ASSIGN_RULE_FIELDINPUT_VALUE = "manager1.omar1"
 ###The Unlock button does not have any valid text however, detection of the element with no text is sufficient for validation##
 ASSIGN_RULE_UNLOCK_BUTTON_VALUE = ""
 ASSIGN_RULE_LIST_ACTION_DEACTIVATE = "Deactivate"
+BACKGROUND_JOB_PROCESS_TEXT_VALUE = "Complete"

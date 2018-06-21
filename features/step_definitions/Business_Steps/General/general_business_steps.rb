@@ -1,4 +1,4 @@
-Given(/^i have logged in as a (.*)$/i) do |login_name|
+Given(/^I Have Logged In As A (.*)$/i) do |login_name|
   startWebDriver
   GoToSite()
 
@@ -154,7 +154,7 @@ And(/^I Go To The (.*) Section$/i) do |menu_type|
         GoToNavBarSection(MENU_CAREERS_LINK)
       end
 
-    when "Menu Calender"
+    when "Menu Calendar"
       begin
         GoToNavBarSection(MENU_CALENDER_LINK)
       end
@@ -314,15 +314,15 @@ end
 
 And(/^I Should Be Able To Fill In All Profile Related Information$/i) do
   pending
-  select_gender()
-  enter_preferred_name()
-  select_date_joined()
-  select_terminate_date()
-  select_employement_status()
-  select_date_of_birth()
-  enter_elders_id()
-  select_hay_grade()
-  select_employe()
+  # select_gender()
+  # enter_preferred_name()
+  # select_date_joined()
+  # select_terminate_date()
+  # select_employement_status()
+  # select_date_of_birth()
+  # enter_elders_id()
+  # select_hay_grade()
+  # select_employe()
 end
 
 
@@ -330,10 +330,6 @@ And(/^I Should Be Able To Save The Information Successfully$/i) do
   ClickOnSaveButton(SAVE_BTN_ID)
 end
 
-
-And(/^i should be able to save the information successfully$/i) do
-  ClickOnSaveButton(SAVE_BTN_ID)
-end
 
 ##//TODO: Review and Remova due to redundancy. Method has been moved to the following one
 # When(/^I Click On Add New User Button$/i) do
