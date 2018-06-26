@@ -71,3 +71,30 @@ end
 Then(/^i should be able to view the employee profile for (.*) and verify email address (.*)$/i) do |employee_name, employee_email|
   verify_employee_profile(employee_name, employee_email)
 end
+
+
+And(/^I Set The Note Visibility To (.*)$/i) do |visibility_value|
+  #Clear the default visibility settings so click 4 times
+  #$driver.find_element(:xpath,"//a[contains(@class,'select2-search-choice-close')]").click
+  Sleep_Until(SelectFromDropDown('//select[@id="NoteForm_acl_key"]', "Manager"))
+end
+
+
+And(/^I Click On Add Note Button$/i) do
+  Sleep_Until(WaitForAnElementByIdAndTouch("btnSubmitNote"))
+end
+
+
+Then(/^I Should See That The Note Has Been Added Successfully$/i) do
+  pending
+end
+
+
+And(/^I Enter Note$/i) do
+  pending
+end
+
+
+And(/^I Add An Attachment To The Note$/i) do
+  pending
+end

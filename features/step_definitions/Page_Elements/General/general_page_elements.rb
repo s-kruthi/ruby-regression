@@ -1,5 +1,5 @@
 MENU_PROFILE_LINK = "//a[contains(@href,'/controlpanel/my-profile')]"
-MENU_MY_TEAM_LINK = "//a[contains(@href,'/controlpanel/team-members')]"
+MENU_MY_TEAM_LINK = "//a[contains(.,'My Team')]" #"//a[@href='/controlpanel/team-members')]"
 MENU_LEARNING_LINK = "//a[contains(@href,'/learning/my')]"
 MENU_LEAVE_LINK = "//a[contains(@href,'/dashboard/leave/my/leave-requests')]"
 MENU_DOCUMENTS_LINK = "//a[contains(@href,'/documents')]"
@@ -83,6 +83,8 @@ INACTIVE_ATTRIBUTE_ID = "data-sinfo"
 VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 
 PAGINATION_ID = "//div[@class='pagination-count']"
+
+ADD_NOTE_USERPROFILE_ID = "btnAddNewNote"
 
 
 #### Onboarding Section ####

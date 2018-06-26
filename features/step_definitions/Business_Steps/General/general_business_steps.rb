@@ -228,22 +228,22 @@ When(/^I Click On (.*) Icon$/i) do |click_edit_icon|
   end
 end
 
-
-And(/^I Click On Add (.*) Button$/i) do |add_contact_btn|
-  begin
-    case add_contact_btn
-    when "Emergency Contact Details"
-      begin
-        Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
-      end
-
-    when "Next Of Kin"
-      begin
-        Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
-      end
-    end
-  end
-end
+#TODO: Pending removal after code review, merged with existing step
+# And(/^I Click On Add (.*) Button$/i) do |add_contact_btn|
+#   begin
+#     case add_contact_btn
+#     when "Emergency Contact Details"
+#       begin
+#         Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
+#       end
+#
+#     when "Next Of Kin"
+#       begin
+#         Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
+#       end
+#     end
+#   end
+# end
 
 
 And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
@@ -349,7 +349,7 @@ end
 # end
 
 
-And(/^I Click on "([^"]*)" Button$/i) do |button_name|
+And(/^I Click On "([^"]*)" Button$/i) do |button_name|
 
   case button_name
 
@@ -372,6 +372,21 @@ And(/^I Click on "([^"]*)" Button$/i) do |button_name|
           GoToAddNewUsersPage(OB_ADD_NEW_USER_BTN)
         end
       end
+    end
+
+  when "Add Emergency Contact Details"
+    begin
+      Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
+    end
+
+  when "Add Next Of Kin"
+    begin
+      Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
+    end
+
+  when "Add New Note"
+    begin
+      Sleep_Until(WaitForAnElementByIdAndTouch(ADD_NOTE_USERPROFILE_ID))
     end
 
   else
