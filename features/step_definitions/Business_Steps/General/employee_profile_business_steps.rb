@@ -74,27 +74,26 @@ end
 
 
 And(/^I Set The Note Visibility To (.*)$/i) do |visibility_value|
-  #Clear the default visibility settings so click 4 times
-  #$driver.find_element(:xpath,"//a[contains(@class,'select2-search-choice-close')]").click
-  Sleep_Until(SelectFromDropDown('//select[@id="NoteForm_acl_key"]', "Manager"))
+  SetNoteVisibility(visibility_value)
 end
 
 
 And(/^I Click On Add Note Button$/i) do
-  Sleep_Until(WaitForAnElementByIdAndTouch("btnSubmitNote"))
+  Sleep_Until(WaitForAnElementByIdAndTouch(NOTE_SUBMIT_ID))
+  $time_note_added = (DateTime.now).strftime "%d/%m/%Y %l:%M%p"
 end
 
 
 Then(/^I Should See That The Note Has Been Added Successfully$/i) do
-  pending
+  CheckNoteAdded()
 end
 
 
 And(/^I Enter Note$/i) do
-  pending
+  Sleep_Until(UseCkeditorToEnterText(USER_PROFILE_NOTE_TEXT, 0))
 end
 
 
 And(/^I Add An Attachment To The Note$/i) do
-  pending
+  Sleep_Until(browse_file_select(BROWSE_FILE_ID, FILE_NAME))
 end

@@ -84,6 +84,8 @@ VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 
 PAGINATION_ID = "//div[@class='pagination-count']"
 
+BROWSE_FILE_ID = "//input[contains(@type,'file')]"
+
 ADD_NOTE_USERPROFILE_ID = "btnAddNewNote"
 
 

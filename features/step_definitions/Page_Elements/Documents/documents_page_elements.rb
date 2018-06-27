@@ -78,7 +78,7 @@ FILE_ID = "//ul[contains(.,'Labels')]"
 FILE_CATEGORY_ID = "s2id_category"
 
 FILE_LABEL_ID = "select2-result"
-BROWSE_FILE_ID = "//input[contains(@type,'file')]"
+
 
 FILE_TEMP_SEARCH_BOX = "//input[contains(@placeholder,'Search')]"
 FILE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"

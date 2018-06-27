@@ -43,9 +43,9 @@ Feature:
     And   I Should Be Able To Click Payment Details Sub-Tab
     And   I Should Be Able To Click Recognition Sub-Tab
 
-
-  @general_low_risk @user_profile_addnote @test
-  Scenario Outline: [General]Can Add Note To A User Profile
+  #Currently works on nick01
+  @general_low_risk @user_profile_addnote
+  Scenario Outline: [General]Can Add Note To A User Profile With Different Visibility Settings
     Given I Have Logged In as a Company Manager
     And   I Go To The Menu My Team Section
     And   I Search An Employee named test1.omar1
@@ -58,6 +58,7 @@ Feature:
 
     Examples:
     | visibility_value |
+    | default          |
     | Admin            |
     | Manager          |
     | HR Manager       |
