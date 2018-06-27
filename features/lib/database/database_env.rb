@@ -22,7 +22,7 @@ module Database_env
       $data_base = "pmsdev_" + "#{$site}"
 
       @db = Sequel.connect(:adapter => 'mysql2', :host => '127.0.0.1', :port => port, :user => 'tester', :password => @@DB_PWD, :database => $data_base)
-      puts "INFO: Using port #{port} for Database connection" 
+      puts "[INFO]".colorize(:blue) + " Using port #{port} for Database connection"
     end
 
 

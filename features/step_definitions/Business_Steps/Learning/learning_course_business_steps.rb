@@ -7,14 +7,33 @@ And(/^I Add New Course Details$/i) do
   EnterCourseTitle(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
   EnterCourseCode(NEW_COURSE_CODE_ID, COURSE_CODE_VAL)
   EnterCourseDescription(NEW_COURSE_DESC_TEXT, 0)
+  EnterCourseComplete(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
   EnterCourseRetrain(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
   EnterCourseRetrainOpen(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
-  EnterCourseComplete(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
   EnterCourseAvailability(COURSE_AVAILABILITY_INPUT_ID, COURSE_AVAILABILITY_INPUT_VALUE)
   EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, COURSE_CERTIFICATE_TEMPLATE_VALUE) if COURSE_CERTIFICATE.to_i == 1
   EnterCourseSelfEnrol(COURSE_SELF_ENROLL_INPUT_ID, COURSE_SELF_ENROLL_INPUT_VALUE)
   EnterCourseSectionDescription(COURSE_SHOW_SEC_DESC_INPUT_ID, COURSE_SHOW_SEC_DESC_INPUT_VALUE)
 end
+
+
+#TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
+#New business steps using select2-inputs
+# And(/^I Add New Course Details$/i) do
+#   EnterCourseTitle(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
+#   EnterCourseCode(NEW_COURSE_CODE_ID, COURSE_CODE_VAL)
+#   EnterCourseDescription(NEW_COURSE_DESC_TEXT, 0)
+#   EnterCourseSectionDescription(COURSE_SHOW_SEC_DESC_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_SHOW_SEC_DESC_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+#   EnterCourseCompleteUnit(COURSE_COMPLETE_UNIT_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_COMPLETE_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+#   EnterCourseCompleteValue(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
+#   EnterCourseRetrainUnit(COURSE_RETRAIN_INPUT_UNIT_ID, SELECT2_DROPDOWN_ID, COURSE_RETRAIN_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_RETRAIN.to_i == 1
+#   EnterCourseRetrainValue(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
+#   EnterCourseRetrainOpenUnit(COURSE_RETRAIN_OPEN_INPUT_UNIT_ID, SELECT2_DROPDOWN_ID, COURSE_RETRAIN_OPEN_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_RETRAIN_OPEN.to_i == 1
+#   EnterCourseRetrainOpenValue(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
+#   EnterCourseAvailability(COURSE_AVAILABILITY_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_AVAILABILITY_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+#   EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, COURSE_CERTIFICATE_TEMPLATE_VALUE, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
+#   EnterCourseSelfEnrol(COURSE_SELF_ENROLL_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_SELF_ENROLL_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+# end
 
 
 Then(/^I Should Be Able To Create A New Course$/i) do
@@ -78,11 +97,11 @@ Then(/^I Should Be Able To Add A (.*) Activity$/i) do |course_activity_name|
   AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
 
   case course_activity_name
-    when 'Acknowledgement'
-      CreateAnActivity(course_activity_name)
-    else
-      SelectAnActivity(course_activity_name)
-      CreateAnActivity(course_activity_name)
+  when 'Acknowledgement'
+    CreateAnActivity(course_activity_name)
+  else
+    SelectAnActivity(course_activity_name)
+    CreateAnActivity(course_activity_name)
   end
 end
 
@@ -279,7 +298,7 @@ When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
   CheckActivitySettings(label_name, label_value)
   ClickOnSaveButton(SAVE_BTN_ID)
   if label_name == 'Compulsory'
-    Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID,SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+    Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
   else
     Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SETTINGS_SAVE_VALUE))
   end
@@ -391,11 +410,11 @@ end
 
 
 Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (.*)$/i) do |activity_type, survey_activity_name|
-    SURVEY_ACTIVITY_NAME = survey_activity_name
-    SURVEY_ACTIVITY_TYPE = activity_type
-    ## TODO: Query DB for course activity. If found proceed with search else create activity
-    ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-    ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
+  SURVEY_ACTIVITY_NAME = survey_activity_name
+  SURVEY_ACTIVITY_TYPE = activity_type
+  ## TODO: Query DB for course activity. If found proceed with search else create activity
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+  ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
 end
 
 
@@ -437,21 +456,25 @@ Then(/^I Should Be Able To View All The Course Enrolments$/i) do
     VerifyAnElementNotExist("xpath", PAGINATION_ID)
     puts COLOR_BLUE + "No Records found"
   else
-     results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
-     if results_count.eql?count then puts COLOR_BLUE + "Results match" end
+    results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
+    if results_count.eql? count then
+      puts COLOR_BLUE + "Results match"
+    end
   end
 end
 
 
-And(/^I Choose To (Enable|Disable) Retrain For The Enrolment$/i) do | retrain_action |
+And(/^I Choose To (Enable|Disable) Retrain For The Enrolment$/i) do |retrain_action|
   #checks the first enrolment's retrain setting and then changes the setting if needed
   CheckRetrainSetting()
   ModifyRetrainSetting(retrain_action)
 end
 
 
-Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$/i) do | retrain_setting |
-  if $retrain_setting != 0 then  PressModalClose() end
+Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$/i) do |retrain_setting|
+  if $retrain_setting != 0 then
+    PressModalClose()
+  end
 end
 
 
@@ -479,18 +502,18 @@ Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With N
 end
 
 
-And(/^I Filter For Enrolments With (.*) Of (.*)$/i) do | filter_by, filter_value |
+And(/^I Filter For Enrolments With (.*) Of (.*)$/i) do |filter_by, filter_value|
   FilterEnrolments(filter_by, filter_value)
 end
 
 
-And(/^I Choose To (Edit|Delete) An Enrolment$/i) do | enrolment_action |
+And(/^I Choose To (Edit|Delete) An Enrolment$/i) do |enrolment_action|
   enrolment_action += " Enrolment"
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, enrolment_action)
 end
 
 
-And(/^I Edit The Enrolment (Start|Due) Date To Be "(.*)"$/i) do | date_type, date_value |
+And(/^I Edit The Enrolment (Start|Due) Date To Be "(.*)"$/i) do |date_type, date_value|
   pending "Blocked by PMS-14875"
   if date_value == "Today's Date"
     date_value = DateTime.now.strftime("%d/%m/%Y")
@@ -520,7 +543,7 @@ And(/^I Edit The Enrolment (Start|Due) Date To Be "(.*)"$/i) do | date_type, dat
       $end_date = date_value
     end
   end
- end
+end
 
 
 And(/^I Save The Changes To The Enrolment$/i) do
@@ -554,8 +577,8 @@ end
 
 And(/^I Choose To Mark An Enrolment As Complete$/i) do
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, "Mark as Complete")
- # $driver.find_element(:id, "userProfileCompletionForm_completionDate").clear
- # $driver.find_element(:id, "userProfileCompletionForm_completionDate").send_keys DateTime.now.strftime("%d/%m/%Y")
+  # $driver.find_element(:id, "userProfileCompletionForm_completionDate").clear
+  # $driver.find_element(:id, "userProfileCompletionForm_completionDate").send_keys DateTime.now.strftime("%d/%m/%Y")
   EnterScore(90)
   PressEnterConfirm()
 end
@@ -582,14 +605,14 @@ Then(/^I Should See That The Enrolments Was Successfully Marked As Complete$/i) 
 end
 
 
-And(/^I Select (\d+) ([\w\s]+) For Bulk Action$/i) do | selection_number, selection_type |
+And(/^I Select (\d+) ([\w\s]+) For Bulk Action$/i) do |selection_number, selection_type|
   i = 0
-  while(i != selection_number)
+  while (i != selection_number)
     case selection_type
-      when "Retrain Discrepancies", "Retrain Discrepancy"
-        WaitForDropdownByClassAndTouchTheIndex(COURSE_DISCREPANCY_LISTINGS_ID, i)
-      when "Enrolments", "Enrolment"
-        WaitForDropdownByClassAndTouchTheIndex("add-user", i)
+    when "Retrain Discrepancies", "Retrain Discrepancy"
+      WaitForDropdownByClassAndTouchTheIndex(COURSE_DISCREPANCY_LISTINGS_ID, i)
+    when "Enrolments", "Enrolment"
+      WaitForDropdownByClassAndTouchTheIndex("add-user", i)
     end
     i = i + 1
   end

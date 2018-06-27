@@ -21,6 +21,7 @@ NEW_COURSE_TITLE_ID = "//input[contains(@id,'fullname')]"
 NEW_COURSE_CATEGORY_ID = ""
 NEW_COURSE_CODE_ID = "//input[contains(@id,'shortname')]"
 
+
 COURSE_SHOW_SEC_DESC_INPUT_ID = "//select[contains(@id,'settingsShowSectionDescription')]"
 COURSE_COMPLETE_INPUT_ID = "//select[contains(@id,'duration')]"
 COURSE_RETRAIN_INPUT_ID = "//select[contains(@id,'retrain')]"
@@ -28,6 +29,24 @@ COURSE_RETRAIN_OPEN_INPUT_ID = "//select[contains(@id,'retrainOpen')]"
 COURSE_AVAILABILITY_INPUT_ID = "//select[contains(@id,'visible')]"
 COURSE_CERTIFICATE_TEMPLATE_ID = "//select[contains(@name,'course[cTemplate]')]"
 COURSE_SELF_ENROLL_INPUT_ID = "//select[contains(@id,'allowSelfUnenrol')]"
+
+#TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
+#New element IDs using select2-inputs
+# COURSE_SHOW_SEC_DESC_INPUT_ID = "s2id_elmo_learningbundle_course_settingsShowSectionDescription"
+#
+# COURSE_COMPLETE_UNIT_INPUT_ID = "s2id_elmo_learningbundle_course_restricts_0_durationUnit"
+# COURSE_COMPLETE_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_duration')]"
+#
+# COURSE_RETRAIN_INPUT_UNIT_ID = "s2id_elmo_learningbundle_course_restricts_0_retrainUnit"
+# COURSE_RETRAIN_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_retrain')]"
+#
+# COURSE_RETRAIN_OPEN_INPUT_UNIT_ID = "s2id_elmo_learningbundle_course_restricts_0_retrainOpenUnit"
+# COURSE_RETRAIN_OPEN_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_retrainOpen')]"
+#
+# COURSE_AVAILABILITY_INPUT_ID = "s2id_elmo_learningbundle_course_visible"
+# COURSE_CERTIFICATE_TEMPLATE_ID = "s2id_elmo_learningbundle_course_cTemplate"
+# COURSE_SELF_ENROLL_INPUT_ID = "s2id_elmo_learningbundle_course_allowSelfUnenrol"
+
 COURSE_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 
 
@@ -41,9 +60,6 @@ SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
 
 
 COURSE_AVAILABILITY_ID = "//select[contains(@id,'elmo_learningbundle_course_visible')]"
-
-# SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]" #Legacy Approval Notifications tab name
-# SUB_TAB_COURSE_NOT_NAME_ID = "//a[contains(.,'Course Notifications')]" #Legacy Course Notifications tab name
 
 SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID = "//a[contains(.,'Notifications')]"
 
