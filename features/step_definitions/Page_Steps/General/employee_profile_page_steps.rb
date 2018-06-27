@@ -61,8 +61,8 @@ end
 def CheckNoteAdded()
   #check note added timestamp and by user if visibility is set to Admin/HR Manager then it cant be verified on page
   if $note_visibility_value == 'Manager'||'Any Manager'||'default'
-    $driver.find_elements(:xpath,'//strong[@class="text-info"]')[0].text == "manager1 omar1"
-    $driver.find_elements(:xpath,'//small[@class="text-muted"]')[0].text.include? $time_note_added
+    $driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text == "manager1 omar1"
+    $driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text.include? $time_note_added
     puts COLOR_GREEN + "Note has been added to the user profile"
   end
 end

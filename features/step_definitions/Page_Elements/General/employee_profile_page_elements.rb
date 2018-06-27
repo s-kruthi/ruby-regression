@@ -6,3 +6,5 @@ TFN_DETAILS_SECTION = 'tfn-section'
 
 NOTE_VISIBILITY_CLEAR_ID = "//a[contains(@class,'select2-search-choice-close')]"
 NOTE_SUBMIT_ID = "btnSubmitNote"
+NOTE_POSTED_BY_ID = '//strong[@class="text-info"]'
+NOTE_POSTED_TIME_ID = '//small[@class="text-muted"]'
