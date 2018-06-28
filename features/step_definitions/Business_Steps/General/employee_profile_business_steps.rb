@@ -80,7 +80,7 @@ end
 
 And(/^I Click On Add Note Button$/i) do
   Sleep_Until(WaitForAnElementByIdAndTouch(NOTE_SUBMIT_ID))
-  $time_note_added = (DateTime.now).strftime "%d/%m/%Y %l:%M%p"
+  @time_note_added = (DateTime.now).strftime "%d/%m/%Y %l:%M%p"
 end
 
 
