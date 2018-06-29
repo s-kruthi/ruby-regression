@@ -1,0 +1,1 @@
+ENROL_SUCCESS_MSG_VALUE = "User has been enrolled into the course."
