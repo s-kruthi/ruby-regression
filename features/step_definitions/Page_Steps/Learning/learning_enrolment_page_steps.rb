@@ -11,3 +11,8 @@ def VerifyEnrolmentToCourse()
   #Verify that the user has been enrolled to the course id
   $driver.find_element(:xpath,"//a[contains(@href, #{@course_id})]").text == "Enrolled"
 end
+
+
+def VerifyUnenrollmentToCourse()
+  pending
+end
