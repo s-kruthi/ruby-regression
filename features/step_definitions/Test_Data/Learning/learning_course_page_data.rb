@@ -16,6 +16,28 @@ COURSE_AVAILABILITY_INPUT_VALUE = "Available to all users"
 COURSE_CERTIFICATE_TEMPLATE_VALUE = "InsuranceL"
 COURSE_SELF_ENROLL_INPUT_VALUE = "Yes"
 COURSE_SHOW_SEC_DESC_INPUT_VALUE = "Yes"
+
+
+#TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
+#New page data using select2-inputs
+#
+# COURSE_SHOW_SEC_DESC_INPUT_VALUE = "Yes"
+
+# COURSE_COMPLETE_INPUT_UNIT_VALUE = "Week"
+# COURSE_COMPLETE_INPUT_VALUE = "1"
+#
+# COURSE_RETRAIN_INPUT_UNIT_VALUE = "Month"
+# COURSE_RETRAIN_INPUT_VALUE = "1"
+#
+# COURSE_RETRAIN_OPEN_INPUT_UNIT_VALUE = "Week"
+# COURSE_RETRAIN_OPEN_INPUT_VALUE = "2"
+#
+# COURSE_AVAILABILITY_INPUT_VALUE = "Available to all users"
+
+# COURSE_CERTIFICATE_TEMPLATE_VALUE = "Insurance"
+# COURSE_SELF_ENROLL_INPUT_VALUE = "Yes"
+
+
 COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE = "Course has been saved!"
 
 
