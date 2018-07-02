@@ -279,5 +279,26 @@ module Chrome
         puts e.message
       end
     end
+
+
+    def ClickElementByIndex(type, identifier, index)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        elements = wait.until {
+          $driver.find_elements(:"#{type}", "#{identifier}")[index].click
+        }
+
+        if elements.empty?
+          fail
+        else
+          puts COLOR_GREEN + "MATCHED: Element present"
+        end
+
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element not present, so could not click. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        puts e.message
+      end
+    end
+
   end
 end

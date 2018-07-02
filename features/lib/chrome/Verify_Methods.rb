@@ -233,6 +233,27 @@ module Chrome
       end
     end
 
+
+    def VerifyAnElementExistsByIndex(type, identifier, index)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        element = wait.until {
+          $driver.find_elements(:"#{type}", "#{identifier}")[index]
+        }
+
+        if element.displayed?
+          puts COLOR_GREEN + "MATCHED: Element present"
+        else
+          fail
+        end
+
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element not present. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        puts e.message
+
+      end
+    end
+
   end
 
 end
