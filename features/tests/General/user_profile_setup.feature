@@ -3,7 +3,7 @@
 Feature:
   As a Company Admin I want to manage User Profile Setup
 
-  @general_low_risk @user_details_config
+  @general_low_risk @user_details_config @C762
   Scenario: [General]Company Admin Modifying User Details Section in User Profile Setup
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -20,7 +20,7 @@ Feature:
     And   I Verify That The Configuration Status Is Saved
 
 
-  @general_low_risk @built-in_hierarchies_config
+  @general_low_risk @built-in_hierarchies_config @C779
   Scenario: [General]Company Admin Modifying Built-in Hierarchies Section in User Profile Setup
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -38,7 +38,7 @@ Feature:
     And   I Verify That The Configuration Status Is Saved
 
 
-  @general_low_risk @custom_user_fields_config
+  @general_low_risk @custom_user_fields_config @C778
   Scenario: [General]Company Admin Modifying Custom User Fields Section in User Profile Setup
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
