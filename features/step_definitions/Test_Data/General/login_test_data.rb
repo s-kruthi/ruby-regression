@@ -105,10 +105,10 @@ COMPANY_EMPLOYEE_1_PASS = "Admin1234567"
 # COLOR_CYAN = "\e[0m[ \e[36mINFO\e[0m ] "
 # COLOR_MAGENTA = "\e[0m[ \e[35mINFO\e[0m ] "
 
-COLOR_GREEN = "[PASSED] ".colorize(:green)
-COLOR_RED = "[FAILED] ".colorize(:red)
-COLOR_YELLOW = "[WARN] ".colorize(:yellow)
-COLOR_BLUE = "[INFO] ".colorize(:blue)
-COLOR_CYAN = "[INFO] ".colorize(:cyan)
-COLOR_MAGENTA = "[INFO] ".colorize(:magenta)
+# COLOR_GREEN = "[PASSED] ".colorize(:green)
+# COLOR_RED = "[FAILED] ".colorize(:red)
+# COLOR_YELLOW = "[WARN] ".colorize(:yellow)
+# COLOR_BLUE = "[INFO] ".colorize(:blue)
+# COLOR_CYAN = "[INFO] ".colorize(:cyan)
+# COLOR_MAGENTA = "[INFO] ".colorize(:magenta)
 
