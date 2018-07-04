@@ -25,3 +25,10 @@ end
 WAIT_TIMEOUT = 5
 World(DeviceMethodFactory.for_channel(ENV['CHANNEL']))
 
+COLOR_GREEN = "[PASSED] ".colorize(:green)
+COLOR_RED = "[FAILED] ".colorize(:red)
+COLOR_YELLOW = "[WARN] ".colorize(:yellow)
+COLOR_BLUE = "[INFO] ".colorize(:blue)
+COLOR_CYAN = "[INFO] ".colorize(:cyan)
+COLOR_MAGENTA = "[INFO] ".colorize(:magenta)
+

@@ -61,7 +61,7 @@ end
 def CheckNoteAdded()
   #check that edit and delete options are not there currently doesnt work beacuse of PMS-15737
   #check note added timestamp and by user if visibility is set to Admin/HR Manager then it cant be verified on page
-  if @note_visibility_value == 'Manager'||'Any Manager'||'default'
+  if @note_visibility_value == ('Manager'||'Any Manager'||'default')
     $driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text == "manager1 omar1"
     $driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text.include? @time_note_added
     puts COLOR_GREEN + "Note has been added to the user profile"

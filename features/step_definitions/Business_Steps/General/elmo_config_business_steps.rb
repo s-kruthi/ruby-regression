@@ -43,16 +43,6 @@ And(/^I Click On "([^"]*)" Tab$/i) do |tab_name_id|
 end
 
 
-And(/^I Select "([^"]*)" Option To "([^"]*)"$/i) do |config_selection_name, config_selection_value|
-  pending
-end
-
-
-And(/^I Select "([^"]*)" Dropdown To "([^"]*)"$/i) do |option_name, option_value|
-  pending
-end
-
-
 Then(/^I Should Be Able To Save Configuration Details$/i) do
   ClickOnSaveButton(ELMO_CONFIG_SAVE_ID)
   VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, ELMO_CONFIG_VERIFY_SAVE_SUCCESSFUL_VALUE)
