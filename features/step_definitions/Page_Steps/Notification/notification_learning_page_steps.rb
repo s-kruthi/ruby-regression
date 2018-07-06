@@ -6,7 +6,7 @@ def ConnectToDatabaseAndValidateTheCourseEnrolmentNotification()
     select*from epms_log_message where subject like 'New Enrolment' and recipient_ids like '/3472/3456/' ORDER BY id desc LIMIT 1\\G; \n
     select * from epms_lms_course_enrolment where course_id='392' and user_id='3472' ORDER BY id desc LIMIT 1 \\G; \n
     select * from epms_notifier_notification where trigger_id like 'Learning.CourseNewEnrolmentTrigger'and user_id='3472' ORDER BY id desc LIMIT 1 \\G;")
-  ConnectToEnvironment()
+  ConnectToEnvironment(TMSFULL_DATABASE,'learning_course_assignment.sql')
   begin
      a = @db_result.include?  ("recipient_ids: /3472/3456/")  #true validate that mail goes to both employee and manager
         if a == false  then print "a is not matching \n".colorize(:red) end
@@ -32,7 +32,7 @@ def ConnectToDatabaseAndValidateTheCourseEnrolmentNotification()
   rescue
     print "not valid".colorize(:red)
   ensure
-    ResetTheEnvironment()
+    ResetTheEnvironment(TMSFULL_DATABASE)
   end
 end
 
@@ -43,7 +43,7 @@ def ConnectToDatabaseAndValidateTheCourseEnrolmentRequestNotification()
     select*from epms_log_message where subject like 'Course Enrol Request' and recipient_ids like '/3456/' ORDER BY id desc LIMIT 1\\G; \n
     select * from epms_course_enrol_request where course_id='787' and requestor_id='3472' ORDER BY id desc LIMIT 1 \\G; \n
     select * from epms_notifier_notification where trigger_id like 'Learning.CourseEnrolRequestTrigger' ORDER BY id desc LIMIT 1 \\G;")
-  ConnectToEnvironment()
+  ConnectToEnvironment(TMSFULL_DATABASE,'learning_course_assignment.sql')
   begin
     a = @db_result.include?  ("approver_id: 3456")  #true validate that mail goes to  employee's manager
     if a == false  then print "a is not matching \n".colorize(:red) end
@@ -71,7 +71,7 @@ https://tmsfull.dev.elmodev.com/learning/course-requests<br />')
   rescue
     print "not valid".colorize(:red)
   ensure
-    ResetTheEnvironment()
+    ResetTheEnvironment(TMSFULL_DATABASE)
   end
 end
 
@@ -82,7 +82,7 @@ def ConnectToDatabaseAndValidateTheCourseEnrolmentRequestApprovedNotification()
     select*from epms_log_message where subject like 'Course Enrol Request Approved' and recipient_ids like '/3472/' ORDER BY id desc LIMIT 1\\G; \n
     select * from epms_course_enrol_request where course_id='787' and requestor_id='3472' ORDER BY id desc LIMIT 1 \\G; \n
     select * from epms_notifier_notification where trigger_id like 'Learning.CourseEnrolRequestApprovedTrigger' ORDER BY id desc LIMIT 1 \\G;")
-  ConnectToEnvironment()
+  ConnectToEnvironment(TMSFULL_DATABASE,'learning_course_assignment.sql')
   begin
     a = @db_result.include?  ("approver_id: 3456")  #true validate that mail goes to  employee's manager
     if a == false  then print "a is not matching \n".colorize(:red) end
@@ -111,7 +111,7 @@ Should you have any questions please email&nbsp;<a href="mailto:lnd@tmbank.com.a
   rescue
     print "not valid".colorize(:red)
   ensure
-    ResetTheEnvironment()
+    ResetTheEnvironment(TMSFULL_DATABASE)
     DeleteTheExistingCourseEnrolment('787')
   end
 end
@@ -123,7 +123,7 @@ def ConnectToDatabaseAndValidateTheNewCourseEnrolmentNotification()
     select*from epms_log_message where subject like 'New Enrolment' and recipient_ids like '/3472/3456/' ORDER BY id desc LIMIT 1\\G; \n
     select * from epms_lms_course_enrolment where course_id='982' and user_id='3472' ORDER BY id desc LIMIT 1 \\G; \n
     select * from epms_notifier_notification where trigger_id like 'Learning.CourseNewEnrolmentTrigger'and user_id='3472' ORDER BY id desc LIMIT 1 \\G;")
-  ConnectToEnvironment()
+  ConnectToEnvironment(TMSFULL_DATABASE,'learning_course_assignment.sql')
   begin
     a = @db_result.include?  ("recipient_ids: /3472/3456/")  #true validate that mail goes to both employee and manager
     if a == false  then print "a is not matching \n".colorize(:red) end
@@ -149,6 +149,6 @@ def ConnectToDatabaseAndValidateTheNewCourseEnrolmentNotification()
   rescue
     print "not valid".colorize(:red)
   ensure
-    ResetTheEnvironment()
+    ResetTheEnvironment(TMSFULL_DATABASE)
   end
 end
