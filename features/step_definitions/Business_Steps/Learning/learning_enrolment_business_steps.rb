@@ -3,7 +3,7 @@ When(/^I Click On The Enrol Button For A Course$/i) do
 end
 
 
-Then(/^I Should See The Success Message For The (Enrolment|Unerollment)$/i) do | enrolment_unerollment |
+Then(/^I Should See The Success Message For The (Enrolment|Unenrollment)$/i) do | enrolment_unerollment |
   if enrolment_unerollment == "Enrolment"
     SUCCESS_MSG_VALUE = ENROL_SUCCESS_MSG_VALUE
   else
@@ -22,26 +22,37 @@ And(/^I Should See That I Am (Enrolled|Unenrolled) To The Course$/i) do | enrolm
 end
 
 
-Given(/^A Course Has Self-Unenroll Set To (Yes|No)$/i) do
-  pending
+And(/^The User Has Enrolled To A Course With Self-Unenroll Set To (Yes|No)$/i) do |self_unenroll_allowed|
+  CheckUserEnrolledCourse(self_unenroll_allowed)
 end
 
 
-And(/^The User Has Enrolled To The Course$/i) do
-  pending
-end
-
-
-And(/^I Search For The Course Which Has Self-Unenroll (Enabled|Disabled)$/i) do
-  pending
+And(/^I Search For The Course I Have Enrolled To$/i) do
+  steps "When I Search For A Specific Course Named #{@course_name}"
 end
 
 
 When(/^I Click On The Enrolled Button For The Course$/i) do
-  pending
+  GoToCourseViewPageToUnenrol()
 end
 
 
 And(/^I Click On The Unenrol Button In The Course$/i) do
+  UnenrolFromCourse()
+end
+
+
+Then(/^I Should See That I Cannot Unenroll From The Course$/i) do
+  #check that the Unenrol button is not there
+  CheckNoUnenrolButton()
+end
+
+
+And(/^I Should See The ([\w\s]+) On The Page$/i) do |field_name|
+  pending
+end
+
+
+Then(/^I Should See All The Courses I Am Enrolled To$/i) do
   pending
 end

@@ -9,5 +9,15 @@ module Database_env
               ORDER BY rand();"
       return @db[query].first[:fullname]
     end
+
+
+    def get_userid(username)
+        query = "select id from epms_user
+                 where username = '#{username}'"
+        return @db[query].first[:id]
+    end
+
   end
+
 end
+
