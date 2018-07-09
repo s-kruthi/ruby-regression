@@ -40,8 +40,8 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
 
 
   @learning_low_risk @course_user_enrolments
-  Scenario: [Learning]User Cannot Self-Unenroll From A Course
-    Given I Have Logged In as a Company Employee
+  Scenario: [Learning]User Can View Enroled Courses And Details
+    Given I Have Logged In as a Company Admin
     When  I Go To The Menu Learning Section
     Then  I Should See All The Courses I Am Enrolled To
     And   I Should See The Course Name On The Page

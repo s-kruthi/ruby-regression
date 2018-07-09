@@ -49,10 +49,10 @@ end
 
 
 And(/^I Should See The ([\w\s]+) On The Page$/i) do |field_name|
-  pending
+  CheckCourseDetail(field_name)
 end
 
 
 Then(/^I Should See All The Courses I Am Enrolled To$/i) do
-  pending
+  CheckCoursesEnroled()
 end

@@ -62,3 +62,28 @@ end
 def CheckNoUnenrolButton()
   Sleep_Until(VerifyAnElementNotExist("xpath", UNENROL_BUTTON_ID))
 end
+
+
+def CheckCoursesEnroled()
+  #check enroled courses match the count on My Learning page
+  @count_enroled_courses = $daos.get_enroled_courses(@user_id)
+
+  enroled_courses_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
+  if enroled_courses_count.eql? @count_enroled_courses then
+    puts COLOR_GREEN + "Enroled Course Count matches"
+  end
+end
+
+
+def CheckCourseDetail(field_name)
+  case field_name
+    when "Course Name"
+      Sleep_Until(VerifyAnElementExists("xpath", ENROLED_COURSE_TITLE_ID))
+    when "Course Category"
+      Sleep_Until(VerifyAnElementExists("xpath", ENROLED_COURSE_CATEGORY_ID))
+    when "Course Status"
+      Sleep_Until(VerifyAnElementExists("xpath", ENROLED_COURSE_STATUS_ID))
+    when "Course Due Date"
+      Sleep_Until(VerifyAnElementExists("xpath", ENROLED_COURSE_DUEDATE_ID))
+  end
+end

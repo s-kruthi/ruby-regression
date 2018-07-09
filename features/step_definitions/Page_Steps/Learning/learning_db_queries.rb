@@ -86,7 +86,7 @@ module Database_env
 
     #check whether enrolment record has been deleted after self unenrol(count =0)
     def get_enrolment_status(course_id,user_id)
-      query = "select count(*)
+      query = "select count(*) as count
                from epms_lms_course_enrolment
                where user_id = #{user_id}
                and course_id = #{course_id}"
@@ -101,6 +101,15 @@ module Database_env
                and isActive=1
                and course_id = #{course_id}"
       return @db[query].first[:fullname]
+    end
+
+
+    def get_enroled_courses(user_id)
+      query = "select count(*) as count
+               from epms_lms_course_enrolment
+               where user_id = #{user_id}
+               and isActive = 1"
+      return @db[query].first[:count]
     end
 
 
