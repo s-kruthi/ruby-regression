@@ -2,13 +2,15 @@
 
 Feature:
   As a Company Administrator I would like to edit an
-  employee's personal and payment details
+  employee's details includng personal and payment
 
   @ViewEmploymentDetails @general_high_risk
   Scenario: [General]View Employees hourly Rate and Salary Details (Payment Details)
     Given I Am On The Employee's Payment Details Section
     When  I Try To View The Payment Details Of An Employee For A Particular Employment Type
     Then  I Should Be Able To Unmask The Rate And Salary Details By Tapping The Show Button
+
+
   @ViewTfnDetails @general_high_risk
   Scenario: [General]Add Payment Details ( TFN Details )
     Given I Am On The Employee's Payment Details Section
@@ -40,3 +42,27 @@ Feature:
     And   I Should Be Able To Click Personal Details Sub-Tab
     And   I Should Be Able To Click Payment Details Sub-Tab
     And   I Should Be Able To Click Recognition Sub-Tab
+
+  #Currently works on nick01
+  @general_low_risk @user_profile_addnote
+  Scenario Outline: [General]Can Add Note To A User Profile With Different Visibility Settings
+    Given I Have Logged In as a Company Manager
+    And   I Go To The Menu My Team Section
+    And   I Search An Employee named test1.omar1
+    When  I Click On "Add New Note" Button
+    And   I Enter Note
+    And   I Add An Attachment To The Note
+    And   I Set The Note Visibility To <visibility_value>
+    And   I Click On Add Note Button
+    Then  I Should See That The Note Has Been Added Successfully
+
+    Examples:
+    | visibility_value |
+    | default          |
+    | Admin            |
+    | Manager          |
+    | HR Manager       |
+    | Any Manager      |
+
+
+

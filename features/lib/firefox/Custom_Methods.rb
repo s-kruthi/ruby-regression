@@ -254,5 +254,23 @@ module Firefox
       end
     end
 
+
+    def WaitForToggleDropDownItemAndTouch(toggle_button_xpath, drop_down_item_xpath)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        toggle_button = wait.until {
+          element = $driver.find_element(:xpath, toggle_button_xpath)
+          element if element.displayed?
+        }
+        Sleep_Until(toggle_button.click)
+        dropdown_item = wait.until {
+          element = $driver.find_element(:xpath, drop_down_item_xpath)
+          element if element.displayed?
+        }
+        Sleep_Until(dropdown_item.click)
+      rescue Exception => e
+        puts e.message
+      end
+    end
   end
 end

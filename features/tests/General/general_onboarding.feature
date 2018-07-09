@@ -1,9 +1,9 @@
 @general @onboarding
 
 Feature:
-  As a Company Admin I want to manage Internal Employess Successfully
+  As a Company Admin I want to manage Users Successfully
 
-  @general_user_add  @general_high_risk @onboarding_high_risk
+  @general_user_add @general_high_risk @onboarding_high_risk
   Scenario: [General] [Onboarding] Company Admin Creating New User
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -12,14 +12,16 @@ Feature:
     And   I Enter New User Details
     Then  I Should Be Able To Add 5 New Users In To The System
 
+
   @onboarding_user_add @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]Company Admin Creating New Onboarding User
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Onboarding Users under Onboarding section
-    When  I Click On Add New User Button
+    When  I Click On "Add New User" Button
     And   I Enter New User Details
     Then  I Should Be Able To Add 10 New Users In To The System
+
 
   @hr_add_contact_emergency @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]General User Editing Profile Page - Emergency Contact Details
@@ -31,6 +33,7 @@ Feature:
     And   I Use Add Emergency Contact Details
     Then  I Should Be Able To Add Emergency Contact Details
 
+
   @hr_add_contact_nok @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]Onboarding User Editing Profile Page - Next of Kin
     Given I Have Logged In as a Company Admin
@@ -40,6 +43,7 @@ Feature:
     And   I Click On Add Next Of Kin Button
     And   I Use Add Next Of Kin Details
     Then  I Should Be Able To Add Next Of Kin Details
+
 
   @general_user_deactivate @general_low_risk @onboarding_low_risk
   Scenario: [General][Onboarding]Onboarding or General User List page - De-Activate user
@@ -61,16 +65,12 @@ Feature:
     And   I Should Be Able To Save The Information Successfully
 
 
-
-   # @wip
-#    Scenario: This is a work in progress - WIP
-#      Given I Have Logged In With Given Credential
-#        |login_type|login_name|login_password|login_site|
-#        |Company Admin|company.omar |Admin1234567|tmsfull|
-#        |Company Admin|company.omar|Admin1234567|faraz1 |
-#      And   I Go To The General Users Section
-#      And   I Search For A Specific User
-#      Then  I Should Be Able To Delete The Specific User
-
-
-
+  #Currently works only on nick01 staging
+  @general_low_risk @general_onboarding_user_setup @C16376
+  Scenario: [General][Onboarding]Elmo Admins can only access Onboarding User Setup
+    Given I Have Logged In As A ELMO Admin
+    When  I go to Admin Settings
+    Then  I Should Be Able To Access The Onboarding User Setup In Onboarding Section
+    And   I Have Logged In as a Company Admin
+    And   I go to Admin Settings
+    And   I Should Not Be Able To Access The Onboarding User Setup In Onboarding Section

@@ -15,7 +15,8 @@
 *.dmg
 *.gz
 *.iso
-*.jar
+#Commented out *.jar file since it's removing an essential JMeter file which is required to run JMeter
+#*.jar
 *.rar
 *.tar
 

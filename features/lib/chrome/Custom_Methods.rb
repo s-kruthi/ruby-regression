@@ -253,11 +253,53 @@ module Chrome
           element if element.displayed?
         }
         file_path = File.expand_path('../../..', File.dirname(__FILE__)) + "/test_files/#{file}"
-        upload_button.send_keys(file_path)
-        VerifyAnElementNotExistByCSS(input[id*=fileInput])
+        # upload_button.send_keys(file_path)
+        # VerifyAnElementNotExist('css', 'input[id*=fileInput]')
+        # VerifyAnElementNotExistByCSS(input[id*=fileInput])
       rescue Exception => e
         puts e.message
       end
     end
+
+
+    def WaitForToggleDropDownItemAndTouch(toggle_button_xpath, drop_down_item_xpath)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        toggle_button = wait.until {
+          element = $driver.find_element(:xpath, toggle_button_xpath)
+          element if element.displayed?
+        }
+        Sleep_Until(toggle_button.click)
+        dropdown_item = wait.until {
+          element = $driver.find_element(:xpath, drop_down_item_xpath)
+          element if element.displayed?
+        }
+        Sleep_Until(dropdown_item.click)
+      rescue Exception => e
+        puts e.message
+      end
+    end
+
+
+    def ClickElementByIndex(type, identifier, index)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        elements = wait.until {
+          $driver.find_elements(:"#{type}", "#{identifier}")[index].click
+        }
+
+        if elements.empty?
+          fail
+        else
+          puts COLOR_GREEN + "MATCHED: Element present"
+        end
+
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element not present, so could not click. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        puts e.message
+      end
+    end
+
   end
+
 end

@@ -5,7 +5,7 @@
 
   Feature: Course Activity Scorm Package and Quiz Manipulation
 
-    @add_edit_scorm_package @C1027
+    @smoke_learning @learning_low_risk @add_edit_scorm_package @C1027
     Scenario: As a company admin, i want to be able to add/edit a scorm package and make necessary changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -16,13 +16,13 @@
       Then  I Should Edit The Scorm Section Name And Description
 
 
-    @course_enrolment_lock_course_enrolment_edit_scorm @C1028
+    @learning_low_risk @course_enrolment_lock_course_enrolment_edit_scorm @C1028
     Scenario Outline: User can edit the scorm activity regardless of course lock config or user enrolled in the course
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
       When  I Create A New Course With A Unique Name
-      Then  I Should Be Able To Add A New SCORM Package Activity
+      Then  I Should Be Able To Add A SCORM Package Activity
       Given The "ELMO Admin" Configure The "Lock course with enrolments" To <course_lock>
       But   I Have Logged In As A Company Admin
       When  I Go To Admin Settings
@@ -40,7 +40,7 @@
         |    No       | Enrolled      |
 
 
-    @quiz_activity_edit @C247
+    @smoke_learning @learning_low_risk @quiz_activity_edit @C247
     Scenario: As A Company Admin, I Want To Be Able To Add/edit A Quiz And Make Necessary Changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -51,7 +51,7 @@
       Then  I Should Edit The Quiz activity
 
 
-    @quiz_activity_setting
+    @smoke_learning @learning_low_risk @quiz_activity_setting
     Scenario: Verify Default Settings Of Quiz Activity And Change Activity Settings
     Default settings for Settings is "Completion Terminology: Pass/Fail", "Show Feedback: Yes", "Marker: Manager"
       Given I Have Logged In As A Company Admin
@@ -63,7 +63,7 @@
       Then  I Should Change Quiz Settings
 
 
-    @course_enrolment_lock_course_enrolment_edit_quiz
+    @learning_low_risk @course_enrolment_lock_course_enrolment_edit_quiz
     Scenario Outline: Ability To Edit Quiz Activity As Per Enrolment And System Configuration
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -87,7 +87,8 @@
         |    No       | Enrolled      | Enabled  |
         |    No       | Enrolled      | Enabled  |
 
-    @course_face_to_face_session_management @C1829
+
+    @smoke_learning @learning_low_risk @course_face_to_face_session_management @C1829
     Scenario: As An Administrator I Want To Manage Face 2 Face Course Activity Sessions Such As Create Copy Edit Cancel Delete
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A Face-to-Face Activity
@@ -104,3 +105,13 @@
       And   I Go To The Page Which Has The List Of Current Editing Item
       And   I Should Be Able To Cancel A Session In The Face-to-Face Activity
       And   I Should Be Able To Delete A Session In The Face-to-Face Activity
+
+
+    @smoke_learning @learning_low_risk @face_to_face_session_notifications @C745
+      Scenario: As An Administrator I Want To Manage Face 2 Face Activity Session Notifications Such As Create Edit Delete
+      Given A Company Admin Creates A New Course With Unique Name
+      Then  I Should Be Able To Add A Face-to-Face Activity
+      When  I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
+      Then  I Should Be Able To Create Face To Face Notification With Name Course Face-to-Face Confirmation
+      And   I Should Be Able To Edit face to face notification with name Course Face-to-Face Confirmation
+      And   I should be able to Delete face to face notification with name Course Face-to-Face Confirmation

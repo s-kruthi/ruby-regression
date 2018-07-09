@@ -11694,7 +11694,7 @@ var slider = $.widget( "ui.slider", $.ui.mouse, {
 		stop: null
 	},
 
-	// number of Page_Steps in a slider
+	// number of pages in a slider
 	// (how many times can you page up/down to go through the whole range)
 	numPages: 5,
 

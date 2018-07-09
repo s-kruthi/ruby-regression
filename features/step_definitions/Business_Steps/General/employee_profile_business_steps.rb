@@ -71,3 +71,29 @@ end
 Then(/^i should be able to view the employee profile for (.*) and verify email address (.*)$/i) do |employee_name, employee_email|
   verify_employee_profile(employee_name, employee_email)
 end
+
+
+And(/^I Set The Note Visibility To (.*)$/i) do |visibility_value|
+  SetNoteVisibility(visibility_value)
+end
+
+
+And(/^I Click On Add Note Button$/i) do
+  Sleep_Until(WaitForAnElementByIdAndTouch(NOTE_SUBMIT_ID))
+  @time_note_added = (DateTime.now).strftime "%d/%m/%Y %l:%M%p"
+end
+
+
+Then(/^I Should See That The Note Has Been Added Successfully$/i) do
+  CheckNoteAdded()
+end
+
+
+And(/^I Enter Note$/i) do
+  Sleep_Until(UseCkeditorToEnterText(USER_PROFILE_NOTE_TEXT, 0))
+end
+
+
+And(/^I Add An Attachment To The Note$/i) do
+  Sleep_Until(browse_file_select(BROWSE_FILE_ID, FILE_NAME))
+end

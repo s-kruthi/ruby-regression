@@ -90,6 +90,60 @@ def EnterCourseSectionDescription(course_show_sec_desc_input_id, course_show_sec
 end
 
 
+#TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
+#New page steps using select2-inputs
+# def EnterCourseSectionDescription(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
+#   SelectSingleFromSelect2InputDropdown(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
+# end
+#
+#
+# def EnterCourseCompleteUnit(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
+#     SelectSingleFromSelect2InputDropdown(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
+# end
+#
+#
+# def EnterCourseCompleteValue(course_complete_input_id, course_complete_input_value)
+#   WaitForAnElementByXpathAndInputValue(course_complete_input_id, course_complete_input_value)
+# end
+#
+#
+# def EnterCourseRetrainUnit(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
+#     SelectSingleFromSelect2InputDropdown(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
+# end
+#
+#
+# def EnterCourseRetrainValue(course_retrain_input_id, course_retrain_input_value)
+#   $driver.find_element(:xpath, course_retrain_input_id).clear
+#   WaitForAnElementByXpathAndInputValue(course_retrain_input_id,course_retrain_input_value)
+# end
+#
+#
+# def EnterCourseRetrainOpenUnit(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
+#     SelectSingleFromSelect2InputDropdown(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
+# end
+#
+#
+# def EnterCourseRetrainOpenValue(course_retrain_open_input_id, course_retrain_open_input_value)
+#   $driver.find_element(:xpath, course_retrain_open_input_id).clear
+#   WaitForAnElementByXpathAndInputValue(course_retrain_open_input_id, course_retrain_open_input_value)
+# end
+#
+#
+# def EnterCourseAvailability(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
+#     SelectSingleFromSelect2InputDropdown(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
+# end
+#
+#
+# def EnterCourseCertificateTemplate(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
+#     SelectSingleFromSelect2InputDropdown(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
+# end
+#
+#
+# def EnterCourseSelfEnrol(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
+#     SelectSingleFromSelect2InputDropdown(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
+# end
+
+
 def ClickOnAButtonByXPath(form_template_save_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
 end
@@ -99,22 +153,6 @@ def SearchACourse(course_list_search_box_id, course_list_title_value, course_sea
   Sleep_Until(WaitForAnElementByXpathAndInputValue(course_list_search_box_id, course_list_title_value))
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
-
-
-#TODO: Pending review and removal as ClickMenuOfFirstItemFromTable(), ClickMenuOfFirstItemFromTable() and DeleteTheCourseFromTable() are identical
-# def EditFirstCourseFromTable(xpath_name, partial_link_text)
-#   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
-#   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
-#   #get url and check if it has edit
-#   $driver.current_url =~ /\/course\/edit/
-# end
-
-
-#This selects the first course from the list and deletes it
-# def DeleteTheCourseFromTable(xpath_name, partial_link_text)
-#   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
-#   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
-# end
 
 
 def ClickMenuOfFirstItemFromTable(xpath_name, partial_link_text)
@@ -314,12 +352,6 @@ def EditACourseActivity(course_activity_type)
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, QUIZ_TITLE_VALUE + " edit"))
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 1))
-        #Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_QUESTION_BTN_ID))
-        #Adding question
-        #Sleep_Until(UseCkeditorToEnterText(QUIZ_ACTIVITY_EDITOR_TXT, 2))
-        # Sleep_Until(WaitForAnElementByXpathAndTouch(QUESTION_SAVE_BTN_ID))
-
-        #  Sleep_Until(WaitForAnElementByXpathAndInputValue(QUIZ_PASS_MARK_ID, QUIZ_PASS_MARK_VALUE))
         ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
@@ -703,25 +735,6 @@ def VerifyCourseSectionNotExist(course_section_css)
   VerifyAnElementNotExist("css", course_section_css)
 end
 
-#TODO: Moved to Verify Methods file, can be removed after code review
-# For VerifyAnElementNotExistByCSS sufficient wait must be used before this step. Such as Sleep_Until
-# def VerifyAnElementNotExistByCSS(css)
-#   begin
-#     wait = Selenium::WebDriver::Wait.new(:timeout => 5)
-#     elements = wait.until {
-#       $driver.find_elements(:css, "#{css}")
-#     }
-#     if elements.empty?
-#       puts COLOR_GREEN + "MATCHED: Item not displayed."
-#     else
-#       raise(COLOR_RED + "Item displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
-#     end
-#   rescue Exception => e
-#     puts e.message
-#     $driver.quit
-#   end
-# end
-
 
 def ConditionAnElementNotExistByCSS(css)
   wait = Selenium::WebDriver::Wait.new(:timeout => 5)
@@ -1002,4 +1015,106 @@ def EditSessionDetails()
 
   # select availability
   SelectFromDropDown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_EDIT_VALUE)
+end
+
+def EditF2FNotificationTitleDescription
+  WaitForAnElementByIdAndInputValue(F2F_SESSION_NOTIFICATION_TITLE_ID, "Edit Notification")
+  WaitForAnElementByIdAndInputValue(F2F_SESSION_NOTIFICATION_DESCRIPTION_ID, "Edit Notification")
+end
+
+
+def VerifyF2FNotificationTitleDescription()
+  WaitForAnElementByCSSAndTouch(NOTIFICATION_ID)
+  VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_TITLE_XPATH, 'Edit Notification')
+  VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_DESCRIPTION_XPATH, 'Edit Notification')
+end
+
+
+def CheckRetrainSetting()
+  $retrain_setting = $driver.find_elements(:xpath, RETRAIN_TOGGLE_ID)[0].attribute("value")
+end
+
+
+def ModifyRetrainSetting(retrain_action)
+  if retrain_action == "Disable"
+    if $retrain_setting == "0"
+      puts COLOR_BLUE + "Retrain setting is currently Disabled"
+      $retrain_setting = 0
+    else
+      $driver.find_elements(:xpath, RETRAIN_DISABLE_TOGGLE_ID)[0].click
+      puts COLOR_BLUE + "Retrain setting has been Disabled"
+      sleep (1)
+    end
+  else
+    if $retrain_setting == "1"
+      puts COLOR_BLUE + "Retrain setting is currently Enabled"
+      $retrain_setting = 0
+    else
+      $driver.find_elements(:xpath, RETRAIN_ENABLE_TOGGLE_ID)[0].click
+      puts COLOR_BLUE + "Retrain setting has been Enabled"
+      sleep (1)
+    end
+  end
+end
+
+
+def CheckEnrolmentTooltip(date_value)
+  #checks that the tooltip for first enrolment has the enrolment completion date as today
+  $driver.find_elements(:xpath, ENROLMENT_TOOLTIP_ID).last.attribute("data-original-title").include? date_value
+end
+
+
+def EnterScore(score_value)
+  WaitForAnElementByIdAndInputValue(COURSE_SCORE_ID, score_value)
+end
+
+
+def CheckEnrolmentDueDate(ability_value)
+  if ability_value == "disabled"
+    #Checks if enrolment due date checkbox is unchecked and if unchecked then its disabled
+    $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("checked") == nil
+    $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("disabled") == "true"
+  elsif ability_value == "enabled"
+    $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("checked") == "true"
+  end
+end
+
+
+def FilterEnrolments(filter_by, filter_value)
+  if filter_by == "Enrolment Method"
+    Sleep_Until(SelectFromDropDown(ENROLMENT_METHOD_FILTER_ID, "#{filter_value}"))
+    #TODO Query needs to be corrected
+    # case filter_value
+    #   when "Manual"
+    #     filter_value = 0
+    #   when "Self"
+    #     filter_value = 1
+    #   when "Rule"
+    #     filter_value = 2
+    #   when "Development Activity"
+    #     filter_value = 3
+    # end
+    # count = $daos.get_count_course_enrolments_by_enrolmethod(filter_value)
+    # results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
+    # if results_count.eql?count then puts COLOR_BLUE + "Results match" end
+  elsif filter_by == "Status"
+    Sleep_Until(SelectFromDropDown(ENROLMENT_STATUS_FILTER_ID, "#{filter_value}"))
+    #TODO Query needs to be corrected
+    # case filter_value
+    #   when "Not Yet Started"
+    #     filter_value = 0
+    #   when "In Progress"
+    #     filter_value = 1
+    #   when "Completed"
+    #     filter_value = 2
+    #   when "Exempted"
+    #     filter_value = 3
+    #   when "Recompletion Required"
+    #     filter_value = 4
+    # end
+    # count = $daos.get_count_course_enrolments_by_status(filter_value)
+    # sleep (2)
+    # results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
+    # if results_count.eql?count then puts COLOR_BLUE + "Results match" end
+  end
 end

@@ -135,6 +135,7 @@ module Firefox
       end
     end
 
+
     def VerifySelect2Ability(select2_element_css, setting_ability)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -155,6 +156,31 @@ module Firefox
 
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+        puts e.message
+      end
+    end
+
+
+    def VerifyAnElementNotExist(*section_identifier ,type, identifier)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 5)
+        if section_identifier.empty?
+          elements = wait.until {
+            $driver.find_elements(:"#{type}", "#{identifier}")
+          }
+        else
+          elements = wait.until {
+            $driver.find_element(:"#{type}", "%s" %section_identifier).find_elements(:"#{type}", "%s" %identifier)
+          }
+        end
+        if elements.empty?
+          puts COLOR_GREEN + "MATCHED: Item not displayed."
+        else
+          fail
+        end
+
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Item is displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
@@ -186,5 +212,27 @@ module Firefox
         puts e.message
       end
     end
+
+
+    def VerifyAnElementExists(type, identifier)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        elements = wait.until {
+          $driver.find_elements(:"#{type}", "#{identifier}")
+        }
+
+        if elements.empty?
+          fail
+        else
+          puts COLOR_GREEN + "MATCHED: Element present"
+        end
+
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element not present. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        puts e.message
+      end
+    end
+
   end
+
 end

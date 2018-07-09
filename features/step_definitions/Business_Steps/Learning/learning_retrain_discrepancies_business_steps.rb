@@ -30,15 +30,6 @@ And(/^I See a Filtered List of Retrain Discrepancy Course Results for Learner (.
 end
 
 
-And(/^I Select (\d+) Retrain Discrepancies For Bulk Action$/i) do | selection_number |
-  i = 0
-  while(i != selection_number)
-    WaitForDropdownByClassAndTouchTheIndex(COURSE_DISCREPANCY_LISTINGS_ID, i)
-    i = i + 1
-  end
-end
-
-
 And(/^I Choose To (Fix Retrain|Disable Retrain) From The Actions Menu$/i) do | retrain_action |
   ClickMenuOfFirstItemFromTable(COURSE_PAGE_DROPDOWN, retrain_action)
   PressEnterConfirm()

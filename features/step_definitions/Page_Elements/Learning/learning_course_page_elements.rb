@@ -21,6 +21,7 @@ NEW_COURSE_TITLE_ID = "//input[contains(@id,'fullname')]"
 NEW_COURSE_CATEGORY_ID = ""
 NEW_COURSE_CODE_ID = "//input[contains(@id,'shortname')]"
 
+
 COURSE_SHOW_SEC_DESC_INPUT_ID = "//select[contains(@id,'settingsShowSectionDescription')]"
 COURSE_COMPLETE_INPUT_ID = "//select[contains(@id,'duration')]"
 COURSE_RETRAIN_INPUT_ID = "//select[contains(@id,'retrain')]"
@@ -28,6 +29,24 @@ COURSE_RETRAIN_OPEN_INPUT_ID = "//select[contains(@id,'retrainOpen')]"
 COURSE_AVAILABILITY_INPUT_ID = "//select[contains(@id,'visible')]"
 COURSE_CERTIFICATE_TEMPLATE_ID = "//select[contains(@name,'course[cTemplate]')]"
 COURSE_SELF_ENROLL_INPUT_ID = "//select[contains(@id,'allowSelfUnenrol')]"
+
+#TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
+#New element IDs using select2-inputs
+# COURSE_SHOW_SEC_DESC_INPUT_ID = "s2id_elmo_learningbundle_course_settingsShowSectionDescription"
+#
+# COURSE_COMPLETE_UNIT_INPUT_ID = "s2id_elmo_learningbundle_course_restricts_0_durationUnit"
+# COURSE_COMPLETE_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_duration')]"
+#
+# COURSE_RETRAIN_INPUT_UNIT_ID = "s2id_elmo_learningbundle_course_restricts_0_retrainUnit"
+# COURSE_RETRAIN_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_retrain')]"
+#
+# COURSE_RETRAIN_OPEN_INPUT_UNIT_ID = "s2id_elmo_learningbundle_course_restricts_0_retrainOpenUnit"
+# COURSE_RETRAIN_OPEN_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_retrainOpen')]"
+#
+# COURSE_AVAILABILITY_INPUT_ID = "s2id_elmo_learningbundle_course_visible"
+# COURSE_CERTIFICATE_TEMPLATE_ID = "s2id_elmo_learningbundle_course_cTemplate"
+# COURSE_SELF_ENROLL_INPUT_ID = "s2id_elmo_learningbundle_course_allowSelfUnenrol"
+
 COURSE_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 
 
@@ -39,10 +58,8 @@ COURSE_DELETE_SUCCESSFUL_ID = "//div[contains(@class,'modal-body')]"
 
 SUB_TAB_SECTION_NAME_ID = "//a[contains(.,'Sections')]"
 
-COURSE_AVAILABILITY_ID = "//select[contains(@id,'elmo_learningbundle_course_visible')]"
 
-# SUB_TAB_APROVAL_NOT_NAME_ID = "//a[contains(.,'Approval Notifications')]" #Legacy Approval Notifications tab name
-# SUB_TAB_COURSE_NOT_NAME_ID = "//a[contains(.,'Course Notifications')]" #Legacy Course Notifications tab name
+COURSE_AVAILABILITY_ID = "//select[contains(@id,'elmo_learningbundle_course_visible')]"
 
 SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID = "//a[contains(.,'Notifications')]"
 
@@ -206,5 +223,32 @@ MARKER_CSS = '#s2id_elmo_learningbundle_mod_modquiz_quizSettings_showFeedback-cl
 COMPLETION_NOTIFICATION_CSS = '.toggle[data-toggle]'
 
 
+#### Face to Face Notification Elements ####
+F2FNotificationEditButtonCSS = '.templateNotification_button_edit'
+NOTIFICATION_ID = 'tr[id*=templateRow]'
+NOTIFICATION_PREVIEW_TITLE_XPATH = '//tr[contains(@id, "templateRow")]/*[1]/*[1]'
+NOTIFICATION_PREVIEW_DESCRIPTION_XPATH = '//tr[contains(@id, "templateRow")]/*[1]/*[3]'
+F2F_SESSION_NOTIFICATION_TITLE_ID = 'templateNotification_title'
+F2F_SESSION_NOTIFICATION_DESCRIPTION_ID = 'templateNotification_description'
+FACE_TO_FACE_NOTIFICATION_SELECT2_ID = 'select2-chosen-1'
+FACE_TO_FACE_NOTIFICATION_TOGGLE_BUTTON_XPATH = '//tr[contains(@id, "templateRow")][1]//button[contains(@class, "dropdown-toggle")]'
+FACE_TO_FACE_NOTIFICATION_TOGGLE_DELETE_XPATH = '//tr[contains(@id, "templateRow")][1]//ul[@role="menu"]//a[contains(text()," Delete")]'
+FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID = 'select2-chosen-2'
+FACE_TO_FACE_NOTIFICATION_NAME = 'Course Face-to-Face Confirmation'
+
+AddNotificationNextButtonId = 'templateNotification_button_next'
+EditButtonXpathText = '//a[contains(text(),"Edit")]'
+ModalDialogBodyTextCSS = '.modal-body .bootbox-body-sr'
 
 
+#### Enrolments Section elements ####
+ENROLMENT_STATUS_FILTER_ID = "//select[@id='courseSearchForm_statusIds']"
+ENROLMENT_METHOD_FILTER_ID = "//select[@id='courseSearchForm_enrolmentMethods']"
+RETRAIN_TOGGLE_ID = "//input[@name='enrolment-retrain']"
+RETRAIN_DISABLE_TOGGLE_ID = '//label[@class="btn btn-primary toggle-on"]'
+RETRAIN_ENABLE_TOGGLE_ID = '//label[@class="btn btn-default active toggle-off"]'
+ENROLMENT_START_DATE_ID = "enrolmentEdit_timeEnroled"
+ENROLMENT_DUE_DATE_ID = "enable-date-timeDue"
+ENROLMENT_SUBMIT_BTN = "//button[contains(.,'Submit')]"
+ENROLMENT_TOOLTIP_ID = "//span[contains(@data-toggle,'tooltip')]"
+COURSE_SCORE_ID = "userProfileCompletionForm_score"

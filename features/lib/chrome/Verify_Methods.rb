@@ -161,13 +161,18 @@ module Chrome
     end
 
 
-    #def VerifyAnElementNotExistByCSS(css)
-    def VerifyAnElementNotExist(type, identifier)
+    def VerifyAnElementNotExist(*section_identifier ,type, identifier)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 5)
-        elements = wait.until {
-          $driver.find_elements(:"#{type}", "#{identifier}")
-        }
+        if section_identifier.empty?
+          elements = wait.until {
+            $driver.find_elements(:"#{type}", "#{identifier}")
+          }
+        else
+          elements = wait.until {
+            $driver.find_element(:"#{type}", "%s" %section_identifier).find_elements(:"#{type}", "%s" %identifier)
+          }
+        end
         if elements.empty?
           puts COLOR_GREEN + "MATCHED: Item not displayed."
         else
@@ -207,5 +212,48 @@ module Chrome
         puts e.message
       end
     end
+
+
+    def VerifyAnElementExists(type, identifier)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        elements = wait.until {
+          $driver.find_elements(:"#{type}", "#{identifier}")
+        }
+
+        if elements.empty?
+          fail
+        else
+          puts COLOR_GREEN + "MATCHED: Element present"
+        end
+
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element not present. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        puts e.message
+      end
+    end
+
+
+    def VerifyAnElementExistsByIndex(type, identifier, index)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        element = wait.until {
+          $driver.find_elements(:"#{type}", "#{identifier}")[index]
+        }
+
+        if element.displayed?
+          puts COLOR_GREEN + "MATCHED: Element present"
+        else
+          fail
+        end
+
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element not present. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        puts e.message
+
+      end
+    end
+
   end
+
 end

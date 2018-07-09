@@ -68,6 +68,35 @@ module Database_env
       return enrolments[:enrolmentcount]
     end
 
+    #TODO Query needs to be corrected
+    # def get_count_course_enrolments_by_enrolmethod(enrolmethod)
+    #   query = "select count(*) as enrolmentcount
+    #           from `epms_lms_course_enrolment` e
+    #           inner join epms_user u on u.id = e.user_id
+    #           where e.isActive=1
+    #           and u.is_active=1
+    #           and u.is_deleted=0
+    #           and u.is_elmo=0
+    #           and e.enrolMethod = #{enrolmethod}"
+    #   enrolments = @db[query].first
+    #   return enrolments[:enrolmentcount]
+    # end
+    #
+    # TODO Query needs to be corrected
+    # def get_count_course_enrolments_by_status(status)
+    #   query = "select count(*) as enrolmentcount
+    #           from `epms_lms_course_enrolment` e
+    #           inner join epms_user u on u.id = e.user_id
+    #           where e.isActive=1
+    #           and u.is_active=1
+    #           and u.is_deleted=0
+    #           and u.is_elmo=0
+    #           and e.status = #{status}"
+    #   enrolments = @db[query].first
+    #   return enrolments[:enrolmentcount]
+    # end
+
+
   end
 
 end
