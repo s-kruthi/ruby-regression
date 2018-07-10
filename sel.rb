@@ -2,7 +2,7 @@
  require "selenium-webdriver"
     Selenium::WebDriver::Firefox::Binary.path = "/Applications/Firefox.app/Contents/MacOS/firefox"
     $driver = Selenium::WebDriver.for :firefox, marionette: true
-    $driver = Selenium::WebDriver.for:safari
+    $driver = Selenium::WebDriver.for :safari
     $driver.navigate.to 'https://id.atlassian.com/login?continue=https%3A%2F%2Fjira.atlassian.com%2Fsecure%2FDashboard.jspa&application=jac'
     
     begin

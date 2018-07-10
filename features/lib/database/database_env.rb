@@ -1,3 +1,5 @@
+require 'colorize'
+
 module Database_env
   class DAO
     attr_accessor :db
