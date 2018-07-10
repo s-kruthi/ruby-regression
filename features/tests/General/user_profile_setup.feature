@@ -3,7 +3,7 @@
 Feature:
   As a Company Admin I want to manage User Profile Setup
 
-  @general_low_risk s @C762
+  @general_low_risk @C762
   Scenario: [General]Company Admin Modifying User Details Section in User Profile Setup
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
