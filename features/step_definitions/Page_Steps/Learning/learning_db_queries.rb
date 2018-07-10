@@ -68,6 +68,51 @@ module Database_env
       return enrolments[:enrolmentcount]
     end
 
+    #provides the course name to which user has enrolled and self unenrol is allowed(allowSelfUnenrol=1)
+    def get_course_selfunenrol(self_unerol, userid)
+      query = "select fullname from `mdl_course` mc
+               inner join  epms_lms_course_enrolment elce on elce.course_id = mc.id
+               inner join mdl_course_categories mcc on mcc.id = mc.category
+               where mc.visible = 1
+               and mcc.visible = 1
+               and allowSelfUnenrol = #{self_unerol}
+               and user_id=#{userid}
+               and isActive=1
+               and enrolmethod = 1
+              ORDER BY rand();"
+      return @db[query].first[:fullname]
+    end
+
+
+    #check whether enrolment record has been deleted after self unenrol(count =0)
+    def get_enrolment_status(course_id,user_id)
+      query = "select count(*) as count
+               from epms_lms_course_enrolment
+               where user_id = #{user_id}
+               and course_id = #{course_id}"
+      return @db[query].first[:count]
+    end
+
+
+    def get_enrolment_method(course_id, user_id)
+      query = "select enrolMethod
+               from epms_lms_course_enrolment
+               where user_id=#{user_id}
+               and isActive=1
+               and course_id = #{course_id}"
+      return @db[query].first[:fullname]
+    end
+
+
+    def get_enroled_courses(user_id)
+      query = "select count(*) as count
+               from epms_lms_course_enrolment
+               where user_id = #{user_id}
+               and isActive = 1"
+      return @db[query].first[:count]
+    end
+
+
     #TODO Query needs to be corrected
     # def get_count_course_enrolments_by_enrolmethod(enrolmethod)
     #   query = "select count(*) as enrolmentcount
