@@ -12,6 +12,7 @@ def GoToRecruitmentRequisitionAddPage(new_requisition_btn)
   WaitForAnElementByXpathAndTouch(new_requisition_btn)
 end
 
+
 def EnterNewRecruitmentRequisitionDetails(pos_index_arrow,pos_index_arrow_id,pos_index_class,pos_index_class_id,loc_index_arrow,loc_index_arrow_id,loc_index_class,loc_index_class_id,num_of_position,num_position_input,calender_duedate,requisition_duedate,calender_done_btn)
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(pos_index_arrow,pos_index_arrow_id)
@@ -32,10 +33,12 @@ def EnterNewRecruitmentRequisitionDetails(pos_index_arrow,pos_index_arrow_id,pos
   sleep(1)
 end
 
+
 def CreateANewRecruitmentRequisition(save_btn)
   WaitForAnElementByXpathAndTouch(save_btn)
   sleep(3)
 end
+
 
 def GoToNewJobPostTabUnderARequisition(my_requisition,job_ad_link,new_job_post_link)
   WaitForAnElementByLinkTextAndTouch(my_requisition)
@@ -45,6 +48,8 @@ def GoToNewJobPostTabUnderARequisition(my_requisition,job_ad_link,new_job_post_l
   WaitForAnElementByLinkTextAndTouch(new_job_post_link)
   sleep(2)
 end
+
+
 def AddTheJobDetailsAndSubmitIt(salary_from,salary_from_value,salary_to,salary_to_value,jb_start_date_btn,jb_start_date,jb_end_date,jb_end_date_value,internal_carrer_btn,external_carrer_btn)
   $driver.find_element(:css, 'input[ng-model="jobAd.salaryFrom"]').clear
   WaitForAnElementByCSSAndInputValue(salary_from,salary_from_value)
@@ -65,9 +70,11 @@ def AddTheJobDetailsAndSubmitIt(salary_from,salary_from_value,salary_to,salary_t
   sleep(1)
 end
 
+
 def SaveTheJobAdAndGoToTheLandingPage(save_job)
   WaitForAnElementByCSSAndTouch(save_job)
 end
+
 
 def SignupAndApplyAsACandidate()
   sleep(1)
@@ -149,6 +156,7 @@ def SignupAndApplyAsACandidate()
 
 end
 
+
 def CheckTheCandidateAppearsUnderNewStatus(new_status)
   GoToThePage('https://staging5.dev.elmodev.com/controlpanel/recruitment/requisition/job-app/43')
   sleep(3)
@@ -158,6 +166,7 @@ def CheckTheCandidateAppearsUnderNewStatus(new_status)
   $driver.find_elements(:class, "dropdown-toggle")[9].click
 
 end
+
 
 def MoveTheCandidateFromNewToNotSuitable(add_to_notsuitable)
   WaitForAnElementByCSSAndTouch(add_to_notsuitable)
@@ -172,6 +181,7 @@ def MoveTheCandidateFromNewToNotSuitable(add_to_notsuitable)
 
 end
 
+
 def VerifyThecandidateAppearsUnderNotSuitableCategory()
   if
   $driver.find_elements(:class, "recruitment-candidate-name")[0].text.include? "#{@new_candidate}"
@@ -180,3 +190,29 @@ def VerifyThecandidateAppearsUnderNotSuitableCategory()
     raise VerificationException.new("candidate is missing")
   end
 end
+
+
+def SearchARequisition(requisition_list_search_box_id, requisition_name, requisition_search_btn_id)
+  Sleep_Until($driver.find_element(:xpath, REQUISITION_LIST_SEARCH_BOX_ID).send_keys(requisition_name))
+  Sleep_Until($driver.find_element(:xpath, REQUISITION_SEARCH_BTN_ID).click)
+end
+
+
+def SelectRequisitionStatus(requisition_status)
+  #Since we dont have the Closed status in the dropdown and the select from select2 makes use of index
+  case requisition_status
+  when 4
+    requisition_status = 3
+  when 5
+    requisition_status = 4
+  when 6
+    requisition_status = 5
+  when 7
+    requisition_status = 6
+  end
+  SelectFromSelect2Input(REQUISITION_STATUS_INDEX_ID, 0, REQUISITION_STATUS_RESULT_ID, requisition_status)
+end
+
+#$driver.find_elements(:xpath, '//div[contains(@class,"source-tag-vendor")]//ancestor::div//input[contains(@class, "cbItem")]')[0].click
+#get candidate name
+#$driver.find_elements(:xpath,'//input[contains(@class, "checked")]//following::div//a[contains(@class,"recruitment-candidate-name")]')[0].attribute('text')

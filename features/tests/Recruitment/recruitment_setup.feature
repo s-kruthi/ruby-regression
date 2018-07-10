@@ -37,3 +37,30 @@ Feature:
    When I Move The Candidate From New To Notsuitable Category
    Then I Should Be Able To View The Candidate Under Unsuccessful Category
 
+
+  @recruitment_add_vendor_cc_email
+  Scenario: [Recruitment]Vendor
+   Given I Have Logged In as a Recruitment Admin
+   And I Go To The Menu Recruitment Section
+   And I Click On "Open Requisitions" Tab
+   And I Search For A Specific Requisition Having Vendor Added Candidates
+   And I Click On The Specific Requisition
+   When I Search For The Vendor Submitted Candidate
+    And I Can See The Vendor EmailId In The CC Field By Default
+
+
+  @recruitment_add_vendor_cc_offer
+  Scenario: [Recruitment]Vendor
+    Given I Have Logged In as a Recruitment Admin
+    And I Go To The Menu Recruitment Section
+    And I Click On "Open Requisitions" Tab
+    And I Search For A Specific Requisition Having Vendor Added Candidates
+    And I Click On The Specific Requisition
+    When I Search For The Vendor Submitted Candidate
+    And I Can See The Vendor EmailId In The CC Field By Default
+
+
+
+
+
+

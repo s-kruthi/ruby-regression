@@ -43,3 +43,10 @@ SAVE_JOB = 'button[ng-click="save(addEditForm)"]'
 ################### status Under requisition ##################
 NEW_STATUS = '[ng-click="applyStatusFilter(data.status_new)"]'
 ADD_TO_NOTSUITABLE = 'a[ng-click="markNotSuitable([jobapp.id])"]'
+
+
+##Open Requisitions page###
+REQUISITION_LIST_SEARCH_BOX_ID = '//label[@id="searchDesc"]//following::input[@type="text"]'
+REQUISITION_SEARCH_BTN_ID = '//button[@ng-click="getRequisitions()"]'
+REQUISITION_STATUS_INDEX_ID= "select2-choices"
+REQUISITION_STATUS_RESULT_ID = "select2-result-selectable"
