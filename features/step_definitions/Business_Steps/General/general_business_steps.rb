@@ -33,54 +33,68 @@ Given(/^I Have Logged In As A (.*)$/i) do |login_name|
     begin
       EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
       EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
+      username = COMP_ADMIN_USERNAME
     end
 
   when "Contract Admin"
     begin
       EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
       EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
+      username = COMP_ADMIN_USERNAME
     end
 
   when "Learning Admin"
     begin
       EnterUsername(USER_NAME, LEARNING_ADMIN_USERNAME)
       EnterPassword(PASS_WORD, LEARNING_ADMIN_PASSWORD)
+      username = LEARNING_ADMIN_USERNAME
     end
 
   when "Recruitment Admin"
     begin
       EnterUsername(USER_NAME, RECRUITMENT_ADMIN_USERNAME)
       EnterPassword(PASS_WORD, RECRUITMENT_ADMIN_PASSWORD)
+      username = RECRUITMENT_ADMIN_USERNAME
     end
 
   when "Leave Admin"
     begin
       EnterUsername(USER_NAME, LEAVE_COMPANY_ADMIN_USER)
       EnterPassword(PASS_WORD, LEAVE_COMPANY_ADMIN_PASS)
+      username = LEAVE_COMPANY_ADMIN_USER
     end
 
   when "Company Manager"
     begin
       EnterUsername(USER_NAME, COMPANY_MANAGER_USER)
       EnterPassword(PASS_WORD, COMPANY_MANAGER_PASS)
+      username = COMPANY_MANAGER_USER
     end
 
   when "Company Employee"
     begin
       EnterUsername(USER_NAME, COMPANY_EMPLOYEE_1_USER)
       EnterPassword(PASS_WORD, COMPANY_EMPLOYEE_1_PASS)
+      username = COMPANY_EMPLOYEE_1_USER
     end
+
   when "Specific Automation User"
     begin
       EnterUsername(USER_NAME, DOC_USERNAME)
       EnterPassword(PASS_WORD, DOC_PASSWORD)
+      username = DOC_USERNAME
     end
+
   when "Specific Automation User Manager"
     begin
       EnterUsername(USER_NAME, DOC_MANAGER_NAME)
       EnterPassword(PASS_WORD, DOC_MANAGER_PASSWORD)
+      username = DOC_MANAGER_NAME
     end
   end
+
+  #getting the userid based on the username and saving for later
+  @user_id = $daos.get_userid(username)
 
   LogInAndWaitForTheDashboard(LOGIN_BUTTON, ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
 end
