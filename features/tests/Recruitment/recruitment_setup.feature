@@ -37,7 +37,8 @@ Feature:
    When I Move The Candidate From New To Notsuitable Category
    Then I Should Be Able To View The Candidate Under Unsuccessful Category
 
-
+   
+  #Currently can be run only on ningning01
   @recruitment_low_risk @candidate_email_vendor_cc @C16610
   Scenario: [Recruitment]Vendor Emailid In CCfield Of Email To Candidate
    Given I Have Logged In as a Recruitment Admin
@@ -50,6 +51,7 @@ Feature:
    Then I Can See The Vendor EmailId In The CC Field By Default
 
 
+    #Currently can be run only on ningning01
   @recruitment_low_risk @candidate_offer_vendor_cc @C16612
   Scenario: [Recruitment]Vendor Emailid In CCfield Of Offer To Candidate
     Given I Have Logged In as a Recruitment Admin
