@@ -45,8 +45,17 @@ NEW_STATUS = '[ng-click="applyStatusFilter(data.status_new)"]'
 ADD_TO_NOTSUITABLE = 'a[ng-click="markNotSuitable([jobapp.id])"]'
 
 
-##Open Requisitions page###
+#### Open Requisitions page ####
 REQUISITION_LIST_SEARCH_BOX_ID = '//label[@id="searchDesc"]//following::input[@type="text"]'
 REQUISITION_SEARCH_BTN_ID = '//button[@ng-click="getRequisitions()"]'
 REQUISITION_STATUS_INDEX_ID= "select2-choices"
 REQUISITION_STATUS_RESULT_ID = "select2-result-selectable"
+REQUISITION_SEARCH_RESULT_TITLE_ID = '//a[contains(@class,"requisition-title")]'
+
+#### Requisition Candidates page ####
+CANDIDATE_ACTION_DROPDOWN_ID = '//div[contains(@class,"btn-group ng-scope")]'
+CANDIDATE_SEARCH_BOX_ID = 'recruitmentApplication_keyword'
+CANDIDATE_SEARCH_BUTTON_ID = '//button[@id="recruitmentApplication_keyword"]'
+
+#### Offer page ####
+OFFER_MESSAGE_BUTTON_ID = '//button[contains(.,"Message")]'

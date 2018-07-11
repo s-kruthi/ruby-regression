@@ -121,55 +121,34 @@ end
 
 
 And(/^I Search For A Specific Requisition Having Vendor Added Candidates$/i) do
+  #get requisition from DB
   @requisition = $daos.get_requisition_vendor_candidates()
-  @requisition_name = @requisition[:requisition_title_display]
-  @requisition_id = @requisition[:id]
-  @requisition_status = @requisition[:status]
-  SelectRequisitionStatus(@requisition_status)
-  SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition_name , REQUISITION_SEARCH_BTN_ID)
+
+  unless @requisition
+    puts COLOR_YELLOW + "no requisitions with vendor submitted candidates".upcase
+    skip_this_scenario
+  end
+
+  SelectRequisitionStatus(@requisition[:req_status])
+  SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display] , REQUISITION_SEARCH_BTN_ID)
 end
 
 
 And(/^I Click On The Specific Requisition$/i) do
-  req_title = @requisition_name + ' (' + (@requisition_id.to_s) +')'
-
-  num_requistion_results = $driver.find_elements(:xpath, '//a[contains(@class,"requisition-title")]').size
-  byebug
-  i=0
-  if num_requistion_results > 1
-    while(i!= num_requistion_results)
-      check = $driver.find_elements(:xpath, '//a[contains(@class,"requisition-title")]')[i].attribute('text').include? req_title
-      if check == true
-        element_index = i
-      end
-      i = i+1
-    end
-    $driver.find_elements(:xpath, '//a[contains(@class,"requisition-title")]')[element_index].click
-  else
-     $driver.find_element(:xpath, '//a[contains(@class,"requisition-title")]').click
-  end
-
+  ClickRequisition()
 end
 
 
 When(/^I Search For The Vendor Submitted Candidate$/i) do
-  @requisition_candidate = @requisition[:first_name] + ' ' + @requisition[:last_name]
-  Sleep_Until($driver.find_element(:id, 'recruitmentApplication_keyword').send_keys(@requisition_candidate))
-  Sleep_Until($driver.find_element(:xpath, '//button[@id="recruitmentApplication_keyword"]').click)
-  #Sleep_Until(ClickMenuOfFirstItemFromTable('//div[contains(@class,"btn-group ng-scope")]', 'Send Email'))
-  Sleep_Until(ClickMenuOfFirstItemFromTable('//div[contains(@class,"btn-group ng-scope")]', 'Make an Offer'))
+  SearchCandidate()
 end
 
 
 And(/^I Can See The Vendor EmailId In The CC Field By Default$/i) do
-  #go to email section of the offer
-  $driver.find_element(:xpath, '//button[contains(.,"Message")]').click
-  vendor = @requisition[:fn] + ' ' + @requisition[:fn] + ' (' + @requisition[:email] + ')'
-  byebug
-  $driver.find_element(:xpath, '//li[@class="select2-search-choice"]/div[contains(.,vendor)]')
+  CheckForVendorEmail()
+end
 
-#   get the vendor's user id
-# select erja.vendor_user_id from epms_recruitment_candidate erc
-# inner join epms_recruitment_job_application as erja on erja.candidate_id = erc.id
-# where concat(first_name,' ',last_name) = "Chelsea Taylor"
+
+And(/^I Choose To ([\w\s]+) To The Candidate$/i) do |action|
+  SelectActionToCandidate(action)
 end

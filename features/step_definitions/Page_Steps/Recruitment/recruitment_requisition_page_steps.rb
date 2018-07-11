@@ -213,6 +213,53 @@ def SelectRequisitionStatus(requisition_status)
   SelectFromSelect2Input(REQUISITION_STATUS_INDEX_ID, 0, REQUISITION_STATUS_RESULT_ID, requisition_status)
 end
 
-#$driver.find_elements(:xpath, '//div[contains(@class,"source-tag-vendor")]//ancestor::div//input[contains(@class, "cbItem")]')[0].click
-#get candidate name
-#$driver.find_elements(:xpath,'//input[contains(@class, "checked")]//following::div//a[contains(@class,"recruitment-candidate-name")]')[0].attribute('text')
+
+def SelectActionToCandidate(action)
+  @action = action
+  Sleep_Until(ClickMenuOfFirstItemFromTable(CANDIDATE_ACTION_DROPDOWN_ID, action))
+end
+
+
+def SearchCandidate()
+  @requisition_candidate = @requisition[:candidate_fn] + ' ' + @requisition[:candidate_ln]
+  Sleep_Until(WaitForAnElementByIdAndInputValue(CANDIDATE_SEARCH_BOX_ID, @requisition_candidate))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(CANDIDATE_SEARCH_BUTTON_ID))
+end
+
+
+def CheckForVendorEmail()
+  #concatenating the retrieved vendor's name and email
+  vendor = @requisition[:vendor_fn] + ' ' + @requisition[:vendor_ln] + ' (' + @requisition[:vendor_mail] + ')'
+
+  if @action == "Make an Offer"
+    #go to email section of the offer
+    Sleep_Until(WaitForAnElementByXpathAndTouch(OFFER_MESSAGE_BUTTON_ID))
+  end
+
+  #not using adding the identifier to page elements since passing vendor parameter
+  Sleep_Until(VerifyAnElementExists('xpath', '//li[@class="select2-search-choice"]/div[contains(.,vendor)]'))
+end
+
+
+def ClickRequisition()
+  req_title = @requisition[:requisition_title_display] + ' (' + (@requisition[:req_id].to_s) +')'
+
+  num_requistion_results = $driver.find_elements(:xpath, REQUISITION_SEARCH_RESULT_TITLE_ID).size
+  i=0
+
+  #if the results are more than 1
+  if num_requistion_results > 1
+    while(i!= num_requistion_results)
+      #check that the correct requsition is clicked
+      check = $driver.find_elements(:xpath, REQUISITION_SEARCH_RESULT_TITLE_ID)[i].attribute('text').include? req_title
+      if check == true
+        element_index = i
+      end
+      i = i+1
+    end
+    Sleep_Until(ClickElementByIndex('xpath', REQUISITION_SEARCH_RESULT_TITLE_ID, element_index))
+  else
+    Sleep_Until(WaitForAnElementByXpathAndTouch(REQUISITION_SEARCH_RESULT_TITLE_ID))
+  end
+
+end

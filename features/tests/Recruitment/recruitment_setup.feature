@@ -38,25 +38,27 @@ Feature:
    Then I Should Be Able To View The Candidate Under Unsuccessful Category
 
 
-  @recruitment_add_vendor_cc_email
-  Scenario: [Recruitment]Vendor
+  @recruitment_low_risk @candidate_email_vendor_cc @C16610
+  Scenario: [Recruitment]Vendor Emailid In CCfield Of Email To Candidate
    Given I Have Logged In as a Recruitment Admin
    And I Go To The Menu Recruitment Section
    And I Click On "Open Requisitions" Tab
    And I Search For A Specific Requisition Having Vendor Added Candidates
    And I Click On The Specific Requisition
    When I Search For The Vendor Submitted Candidate
-    And I Can See The Vendor EmailId In The CC Field By Default
+   And I Choose To Send Email To The Candidate
+   Then I Can See The Vendor EmailId In The CC Field By Default
 
 
-  @recruitment_add_vendor_cc_offer
-  Scenario: [Recruitment]Vendor
+  @recruitment_low_risk @candidate_offer_vendor_cc @C16612
+  Scenario: [Recruitment]Vendor Emailid In CCfield Of Offer To Candidate
     Given I Have Logged In as a Recruitment Admin
     And I Go To The Menu Recruitment Section
     And I Click On "Open Requisitions" Tab
     And I Search For A Specific Requisition Having Vendor Added Candidates
     And I Click On The Specific Requisition
     When I Search For The Vendor Submitted Candidate
+    And I Choose To Make an Offer To The Candidate
     And I Can See The Vendor EmailId In The CC Field By Default
 
 
