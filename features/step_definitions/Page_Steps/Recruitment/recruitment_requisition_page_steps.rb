@@ -201,14 +201,18 @@ end
 def SelectRequisitionStatus(requisition_status)
   #Since we dont have the Closed status in the dropdown and the select from select2 makes use of index
   case requisition_status
-  when 4
-    requisition_status = 3
-  when 5
-    requisition_status = 4
-  when 6
-    requisition_status = 5
-  when 7
-    requisition_status = 6
+    when "Open"
+      requisition_status = 1
+    when "Pending"
+      requisition_status = 0
+    when 4, "Rejected"
+      requisition_status = 3
+    when 5, "Finalised"
+      requisition_status = 4
+    when 6,"Withdrawn"
+      requisition_status = 5
+    when 7, "Resubmitted"
+      requisition_status = 6
   end
   SelectFromSelect2Input(REQUISITION_STATUS_INDEX_ID, 0, REQUISITION_STATUS_RESULT_ID, requisition_status)
 end
@@ -261,5 +265,41 @@ def ClickRequisition()
   else
     Sleep_Until(WaitForAnElementByXpathAndTouch(REQUISITION_SEARCH_RESULT_TITLE_ID))
   end
-
 end
+
+
+def EnterRequisitionNote()
+  Sleep_Until(WaitForAnElementByIdAndInputValue(REQUISITION_NOTE_ID, REQUISITION_NOTE_VALUE))
+
+  #check for character counter
+  Sleep_Until(VerifyAnElementExists('id',REQUISITION_NOTE_CHARCOUNTER_ID))
+
+  #checks max allowed no.of characters
+  max_length = $driver.find_element(:id, REQUISITION_NOTE_ID).attribute('ng-maxlength').to_i
+  max_length.eql? 250
+
+  #save note
+  Sleep_Until(WaitForAnElementByIdAndTouch(REQUISITION_NOTE_SAVE_BUTTON_ID))
+  @time_req_note_added = (DateTime.now).strftime "%d/%m/%Y %H:%M"
+
+  #See success message in modal
+  Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, REQUISITION_NOTE_SUCCESS_MSG))
+  PressEnterOK()
+end
+
+
+def CheckNoteInRequisition()
+  $driver.find_element(:xpath, REQUISITION_NOTE_ADDEDBY_ID).text.include? "Company Admin omar"
+  $driver.find_element(:xpath, REQUISITION_NOTE_ADDEDBY_ID).text.include? @time_req_note_added
+  puts COLOR_GREEN + "Note has been added to the Requisition"
+end
+
+
+def GoToRequisitionSection(section_name)
+  case section_name
+    when "Overview"
+      identifier = REQUSITION_OVERVIEW_SECTION_ID
+  end
+  Sleep_Until(WaitForAnElementByXpathAndTouch(identifier))
+end
+

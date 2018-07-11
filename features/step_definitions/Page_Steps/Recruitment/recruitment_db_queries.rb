@@ -21,6 +21,16 @@ module Database_env
       return @db[query].first
     end
 
+
+    def get_requisition_details_no_notes()
+      query = "select distinct id as req_id, requisition_title_display
+              from epms_recruitment_requisition
+              where requisition_note is Null
+              and status =1
+              order by rand();"
+      return @db[query].first
+    end
+
   end
 
 end

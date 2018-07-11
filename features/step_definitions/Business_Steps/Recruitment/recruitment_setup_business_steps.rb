@@ -130,7 +130,7 @@ And(/^I Search For A Specific Requisition Having Vendor Added Candidates$/i) do
   end
 
   SelectRequisitionStatus(@requisition[:req_status])
-  SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display] , REQUISITION_SEARCH_BTN_ID)
+  SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
 end
 
 
@@ -152,3 +152,41 @@ end
 And(/^I Choose To ([\w\s]+) To The Candidate$/i) do |action|
   SelectActionToCandidate(action)
 end
+
+
+And(/^I Search For A Requisition Having ([\w]+) Status$/i) do |status|
+  SelectRequisitionStatus(status)
+end
+
+
+And(/^I Search For A Requisition Having No Notes$/i) do
+  @requisition = $daos.get_requisition_details_no_notes()
+
+  #only open requisitions can have notes newly added
+  SelectRequisitionStatus("Open")
+  SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
+end
+
+
+When(/^I Click On ([\w\s]+) Requisition Note Button$/i) do |button_type|
+  case button_type
+    when "Add New"
+      Sleep_Until(WaitForAnElementByXpathAndTouch(REQUISITION_ADD_NOTE_BUTTON_ID))
+  end
+end
+
+
+And(/^I Enter The Requisition Note$/i) do
+  EnterRequisitionNote()
+end
+
+
+Then(/^I Should See The Note In The Requisition$/i) do
+  CheckNoteInRequisition()
+end
+
+
+And(/^I Go To The Requisition ([\w\s]+) Page$/i) do |section_name|
+  GoToRequisitionSection(section_name)
+end
+
