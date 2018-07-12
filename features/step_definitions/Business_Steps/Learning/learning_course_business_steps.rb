@@ -280,7 +280,10 @@ end
 
 
 And(/^I Re Enrol The Candidate For The Activity$/) do
-  DeleteTheExistingCourseEnrolment('392')
+  ReturnMultipleUserDetails(TMSFULL_DATABASE,'X1242341','course_section_automation_QuizActivity_shanku')
+  puts $data_hash['first_name:']
+  puts $data_hash['course_id:']
+  DeleteTheExistingCourseEnrolment("#{$data_hash['course_id:']}")
   ReEnrolTheCandidateForCourse()
 end
 

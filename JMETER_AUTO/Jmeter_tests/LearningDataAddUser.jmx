@@ -93,7 +93,7 @@
             </elementProp>
             <elementProp name="CONFIG_PATH" elementType="Argument">
               <stringProp name="Argument.name">CONFIG_PATH</stringProp>
-              <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)} </stringProp>
+              <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -712,7 +712,7 @@ manager_username= vars.get(&quot;username1&quot;);
 user_id= vars.get(&quot;new_user_id2&quot;);
 user_name= vars.get(&quot;username&quot;);
 
-f = new FileOutputStream(&quot;${CONFIG_PATH}/user_id.csv&quot;, false); //spec-ify true if you want to overwrite file. Keep blank otherwise.
+f = new FileOutputStream(&quot;${CONFIG_PATH}/learning_user_id.csv&quot;, false); //spec-ify true if you want to overwrite file. Keep blank otherwise.
 p = new PrintStream(f); 
 this.interpreter.setOut(p); 
 p.println(manager_id+&quot;,&quot; +manager_username+&quot;,&quot; +user_id+&quot;,&quot; +user_name );

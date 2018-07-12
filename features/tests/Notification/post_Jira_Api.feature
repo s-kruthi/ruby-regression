@@ -1,4 +1,4 @@
-@booty
+@jira
 Feature: As An Admin i Would Like post my created scenarios to a particular JIRA task.
 
     @post_jira @shan1 @shan1 @NotificationsGeneral

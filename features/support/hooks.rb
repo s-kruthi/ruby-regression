@@ -5,7 +5,7 @@
 
 require 'net/ssh/gateway'
 require 'sequel'
-
+require 'fileutils'
 
 Before do |scenario|
   $tag_counts ||= {}
@@ -13,6 +13,8 @@ Before do |scenario|
     $tag_counts[tag] ||= 0
     $tag_counts[tag] += 1
   end
+  FileUtils.rm_rf Dir.glob("./features/step_definitions/MySQL_Scripts/sql_dependencies/json_data_storage/*.*")
+  File.open('./features/step_definitions/MySQL_Scripts/sql_dependencies/random_sql_script.txt', 'w') {|file| file.truncate(0) }
 end
 
 

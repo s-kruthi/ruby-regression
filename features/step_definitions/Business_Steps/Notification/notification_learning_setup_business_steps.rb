@@ -1,4 +1,5 @@
 Then(/^The User Should Be Instantly Notified About The New Enrolment$/) do
+  ReturnDetailsOfAParticularUser(TMSFULL_DATABASE,DOC_USERNAME)
   ConnectToDatabaseAndValidateTheCourseEnrolmentNotification()
 end
 

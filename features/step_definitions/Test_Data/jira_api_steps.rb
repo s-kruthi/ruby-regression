@@ -24,3 +24,16 @@ Then(/^I Should Be Able To Successfuly Post It To The Desc$/i) do
   end
 
 end
+
+################################## PARAMETRIZED METHOD ####################################
+
+
+  def ReturnCertificateCountForCourses(database)
+    SearchDatabaseForASpecificData(database, Find_CertificateCount)
+    $TotalCertificates = puts $user_data["COUNT(*):"]
+  end
+
+  def Find_CertificateCount()
+    "select COUNT(*) from epms_course_certificate_template"
+  end
+
