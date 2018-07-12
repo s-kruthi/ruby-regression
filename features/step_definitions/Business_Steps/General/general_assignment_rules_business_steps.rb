@@ -11,17 +11,6 @@ When(/^I Reset The Assignment Rule$/) do
   ReActivateTheSearchedAssignment()
 end
 
-Given(/^I Want To Generate Learning Notification data On Any Staging$/i) do
-  if ENV['URL'] == nil
-    ENV['URL'] = 'tmsfull.dev.elmodev.com'
-  else
-    puts "URL = " + ENV["URL"]
-  end
-  $create_against = ENV['URL']
-  puts "Data Creation in process...".colorize(:blue)
-  GenerateLearningDataUsingJmeterRubyService()
-end
-
 
 And(/^I Enter Assignment Rules Details$/i) do
   Sleep_Until(EnterCourseTitle(ASSIGN_RULE_TITLE_ID, ASSIGN_RULE_TITLE_VALUE))

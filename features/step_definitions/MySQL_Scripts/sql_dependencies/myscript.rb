@@ -59,7 +59,8 @@
     end
   end
 
-  def SearchDatabaseForASpecificData(database, sql_query,random_file_name)
+  def SearchDatabaseForASpecificData(database, sql_query)
+    random_file_name = SecureRandom.hex(3)
   StartTunnelIfRequired()
   SecurePasswordConnectToDatabase()
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/random_sql_commands.sql', "use #{database} ; \n

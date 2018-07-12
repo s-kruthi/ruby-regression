@@ -259,6 +259,9 @@ And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
   sleep(2)
   WaitForAnElementByIdAndInputValue(CRS_RQST_ID, CRS_RQST_TXT)
   WaitForAnElementByIdAndTouch(CRS_REQUEST_SBMT)
+  ReturnMultipleUserDetails(TMSFULL_DATABASE,'X1242341',course_name)
+  puts $data_hash['first_name:']
+  puts $data_hash['course_id:']
 end
 
 
