@@ -31,6 +31,17 @@ module Database_env
       return @db[query].first
     end
 
+
+    def get_requisition_details_with_notes(status)
+      query = "select distinct err.id as req_id, requisition_title_display, requisition_note_updater_id, requisition_note_updated_at, eu.first_name, eu.last_name
+             from epms_recruitment_requisition err
+             inner join epms_user eu on eu.id = requisition_note_updater_id
+             where requisition_note is not Null
+             and status =#{status}
+             order by rand();"
+      return @db[query].first
+    end
+
   end
 
 end

@@ -269,10 +269,12 @@ end
 
 
 def EnterRequisitionNote()
+  #clear the contents if any
+  Sleep_Until($driver.find_element(:id, REQUISITION_NOTE_ID).clear)
   Sleep_Until(WaitForAnElementByIdAndInputValue(REQUISITION_NOTE_ID, REQUISITION_NOTE_VALUE))
 
   #check for character counter
-  Sleep_Until(VerifyAnElementExists('id',REQUISITION_NOTE_CHARCOUNTER_ID))
+  Sleep_Until(VerifyAnElementExists('id', REQUISITION_NOTE_CHARCOUNTER_ID))
 
   #checks max allowed no.of characters
   max_length = $driver.find_element(:id, REQUISITION_NOTE_ID).attribute('ng-maxlength').to_i
@@ -303,3 +305,43 @@ def GoToRequisitionSection(section_name)
   Sleep_Until(WaitForAnElementByXpathAndTouch(identifier))
 end
 
+
+def ConfirmDeletion()
+  Sleep_Until(WaitForAnElementByIdAndTouch('deleteRequisitionNoteBtn'))
+end
+
+
+def VerifyDeletion()
+  Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, REQUISITION_NOTE_DEL_MSG))
+  PressEnterOK()
+  steps %{
+    Then  I Should Not See The Edit Button For The Note
+    And   I Should Not See The Delete Button For The Note
+    And   I Should See The Add Note Button For The Note
+        }
+end
+
+
+def VerifyButtons(presence, button_name)
+  if button_name == "Edit"
+    identifier = REQUISITION_NOTE_EDIT_BUTTON_ID
+  elsif button_name == "Delete"
+    identifier = REQUISITION_NOTE_DELETE_BUTTON_ID
+  elsif button_name == "Add Note"
+    identifier = REQUISITION_ADD_NOTE_BUTTON_ID
+  end
+
+  #check for the elements presence/absence
+  if presence == "See"
+    Sleep_Until(VerifyAnElementExists('xpath', identifier))
+  elsif presence == "Not See"
+    Sleep_Until(VerifyAnElementNotExist('xpath',identifier))
+  end
+end
+
+
+def VerifyNoteDetails()
+  req_updated_by = @requisition[:first_name] + ' '+ @requisition[:last_name]
+  time_updated = Time.at(@requisition[:requisition_note_updated_at]).strftime("%d/%m/%Y %H:%M")
+  $driver.find_element(:xpath , REQUISITION_NOTE_ADDEDBY_ID).text.eql? ("Last updated by "+ req_updated_by +" | "+time_updated)
+end

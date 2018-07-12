@@ -71,5 +71,7 @@ REQUISITION_MODAL_ID = '//div[@class="bootbox-body"]'
 REQUISITION_NOTE_SAVE_BUTTON_ID = 'requisitionNoteSaveBtn'
 REQUISITION_NOTE_ID = 'requisitionNote'
 REQUISITION_NOTE_CHARCOUNTER_ID = 'requisitionNotecharCountNumber'
+REQUISITION_NOTE_EDIT_BUTTON_ID = '//button[@ng-click="toggleRequisitionNote(true)" and contains(.,"Edit")]'
+REQUISITION_NOTE_DELETE_BUTTON_ID = '//button[contains(@ng-click,"confirmNoteDelete")]'
 
 REQUSITION_OVERVIEW_SECTION_ID = "//a[contains(@href,'/overview')]"

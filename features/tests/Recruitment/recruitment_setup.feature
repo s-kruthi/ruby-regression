@@ -78,6 +78,60 @@ Feature:
     Then  I Should See The Note In The Requisition
 
 
+  #Currently can be run only on ningning01
+  @recruitment_low_risk @requisition_note
+  Scenario: [Recruitment]Ability To Add Notes To A Requisition
+    Given I Have Logged In as a Recruitment Admin
+    And   I Go To The Menu Recruitment Section
+    And   I Click On "Open Requisitions" Tab
+    And   I Search For A Requisition Having Notes
+    And   I Click On The Specific Requisition
+    When   I Go To The Requisition Overview Page
+    Then  I Should See The Edit Button For The Note
+    And   I Should See The Delete Button For The Note
+    And   I Should Not See The Add Note Button For The Note
+    And   I Should See The Last Updated Details
+
+
+  #Currently can be run only on ningning01
+  @recruitment_low_risk @requisition_note_edit
+  Scenario: [Recruitment]Ability To Edit Notes Added To A Requisition
+    Given I Have Logged In as a Recruitment Admin
+    And   I Go To The Menu Recruitment Section
+    And   I Click On "Open Requisitions" Tab
+    And   I Search For A Requisition Having Notes
+    And   I Click On The Specific Requisition
+    When  I Go To The Requisition Overview Page
+    And   I Click On Edit Requisition Note Button
+    And   I Should Be Able To Edit The Requisition Note
+    Then  I Should See The Last Updated Details
+
+
+  #Currently can be run only on ningning01
+  @recruitment_low_risk @requisition_note_delete
+  Scenario: [Recruitment]Ability To Delete Notes Added To A Requisition
+    Given I Have Logged In as a Recruitment Admin
+    And   I Go To The Menu Recruitment Section
+    And   I Click On "Open Requisitions" Tab
+    And   I Search For A Requisition Having Notes
+    And   I Click On The Specific Requisition
+    When  I Go To The Requisition Overview Page
+    And   I Click On Delete Requisition Note Button
+    And   I Confirm The Deletion Of The Requisition Note
+    Then  I Should See The Deletion Success Message
+
+
+  #Currently can be run only on ningning01
+  @recruitment_low_risk @requisition_note_view_only
+  Scenario: [Recruitment]Ability To Only View Notes Added To A Finalised/Withdrawn Requisition
+    Given I Have Logged In as a Recruitment Admin
+    And   I Go To The Menu Recruitment Section
+    And   I Click On "Open Requisitions" Tab
+    And   I Search For A Finalised Requisition Having Notes
+    And   I Click On The Specific Requisition
+    When  I Go To The Requisition Overview Page
+    Then  I Should Be Able To Only View The Requisition Note
+
 
 
 

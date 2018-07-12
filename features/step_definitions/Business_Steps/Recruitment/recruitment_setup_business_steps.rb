@@ -159,8 +159,17 @@ And(/^I Search For A Requisition Having ([\w]+) Status$/i) do |status|
 end
 
 
-And(/^I Search For A Requisition Having No Notes$/i) do
-  @requisition = $daos.get_requisition_details_no_notes()
+And(/^I Search For A Requisition Having(\s+?|\sNo\s)Notes$/i) do |notes_available|
+  if notes_available == " No "
+    @requisition = $daos.get_requisition_details_no_notes()
+  else
+    @requisition = $daos.get_requisition_details_with_notes(1)
+  end
+
+  unless @requisition
+    puts COLOR_YELLOW + "no requisitions available for this criteria".upcase
+    skip_this_scenario
+  end
 
   #only open requisitions can have notes newly added
   SelectRequisitionStatus("Open")
@@ -171,9 +180,15 @@ end
 When(/^I Click On ([\w\s]+) Requisition Note Button$/i) do |button_type|
   case button_type
     when "Add New"
-      Sleep_Until(WaitForAnElementByXpathAndTouch(REQUISITION_ADD_NOTE_BUTTON_ID))
+      identifier = REQUISITION_ADD_NOTE_BUTTON_ID
+    when "Edit"
+      identifier = REQUISITION_NOTE_EDIT_BUTTON_ID
+    when "Delete"
+      identifier = REQUISITION_NOTE_DELETE_BUTTON_ID
   end
-end
+
+  Sleep_Until(WaitForAnElementByXpathAndTouch(identifier))
+ end
 
 
 And(/^I Enter The Requisition Note$/i) do
@@ -190,3 +205,54 @@ And(/^I Go To The Requisition ([\w\s]+) Page$/i) do |section_name|
   GoToRequisitionSection(section_name)
 end
 
+
+And(/^I Should See The Last Updated Details$/i) do
+  VerifyNoteDetails()
+end
+
+
+Then(/^I Should (See|Not See) The (Edit|Delete|Add Note) button For The Note$/i) do |presence, button_name|
+  VerifyButtons(presence, button_name)
+end
+
+
+And(/^I Should Be Able To Edit The Requisition Note$/i) do
+  EnterRequisitionNote()
+end
+
+
+And(/^I Confirm The Deletion of the Requisition Note$/i) do
+  ConfirmDeletion()
+end
+
+
+Then(/^I Should See The Deletion Success Message$/i) do
+  VerifyDeletion()
+end
+
+
+And(/^I Search For A (Finalised|Withdrawn) Requisition Having Notes$/i) do |requisition_type|
+ if requisition_type == "Finalised"
+   @requisition = $daos.get_requisition_details_with_notes(5)
+ elsif requisition_type == "Withdrawn"
+   @requisition = $daos.get_requisition_details_with_notes(6)
+ end
+
+ unless @requisition
+   puts COLOR_YELLOW + "no requisitions available for this criteria".upcase
+   skip_this_scenario
+ end
+
+ SelectRequisitionStatus(requisition_type)
+ SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
+end
+
+
+Then(/^I Should Be Able To Only View The Requisition Note$/i) do
+  steps %{
+    And   I Should Not See The Edit Button For The Note
+    And   I Should Not See The Delete Button For The Note
+    And   I Should Not See The Add Note Button For The Note
+    And   I Should See The Last Updated Details
+  }
+end
