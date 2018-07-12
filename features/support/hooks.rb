@@ -49,7 +49,7 @@ After do | scenario |
   end
 
   File.open('./features/step_definitions/Test_Data/stored_ids.rb', 'w') {|file| file.truncate(0) }
-  $driver.quit
+    $driver.quit
 end
 
 

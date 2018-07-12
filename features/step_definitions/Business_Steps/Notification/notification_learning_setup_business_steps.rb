@@ -1,7 +1,8 @@
 
 Given(/^I Want To Generate Learning Notification data On Any Staging$/i) do
+  startWebDriver()
   if ENV['url'] == nil
-    ENV['url'] = 'tmsfull.dev.elmodev.com'
+    ENV['url'] = 'tmsfull'
   else
     puts "server provided = " + ENV["url"]
   end
