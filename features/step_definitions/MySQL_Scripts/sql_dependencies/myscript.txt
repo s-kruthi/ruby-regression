@@ -1,5 +1,5 @@
 *************************** 1. row ***************************
-            id: 35887
+            id: 35904
           type: 1
    source_type: 1
        subject: New Enrolment
@@ -23,19 +23,19 @@ PLACEHOLDER_COURSE_DUE_DATE: [not specified]<br />
     recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":{"SIMON.COX@elmodemo.com":"SIMON COX"},"bcc":null}
  recipient_ids: /3472/3456/
       priority: 1
-  created_time: 1531353953
+  created_time: 1531354615
     fired_time: NULL
         status: 0
-       context: a:1:{s:8:"schedule";i:37726;}
+       context: a:1:{s:8:"schedule";i:37743;}
       branding: a:4:{s:7:"content";a:5:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#127452";s:13:"menuFontColor";s:7:"#f6f6f6";s:4:"logo";i:2275;s:16:"headingBannerImg";i:2277;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:6;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
-     source_id: 37726
+     source_id: 37743
          count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-                 id: 119680
+                 id: 119702
           course_id: 392
             user_id: 3472
  lmsUserEnrolmentId: NULL
@@ -44,13 +44,13 @@ enrolSourceObjectId: NULL
              status: 0
                cost: 0
             retrain: 0
-        timeEnroled: 1531353952
-            timeDue: 1531353952
+        timeEnroled: 1531354615
+            timeDue: 1531354615
         timeStarted: 0
           timeEnded: 0
         timeExpired: 0
-        timeCreated: 1531353952
-       timeModified: 1531353952
+        timeCreated: 1531354615
+       timeModified: 1531354615
            isActive: 1
         modifier_id: NULL
        retrain_open: 0

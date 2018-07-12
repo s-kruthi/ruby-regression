@@ -1,7 +1,7 @@
 $VERBOSE = nil
 
 def ReturnDetailsOfAParticularUser(database,emp_username)
-  SearchDatabaseForASpecificData(database, Find_UserDetails(emp_username), 'shan_rand' )
+  SearchDatabaseForASpecificData(database, Find_UserDetails(emp_username), 'file1' )
 end
 
 def Find_UserDetails(emp_username)
@@ -10,7 +10,7 @@ end
 
 # Get all the variables under one method and use it during the course of each test scenario
 def ReturnMultipleUserDetails(database,emp_username, course_name)
-  SearchDatabaseForASpecificData(database, Find_MultipleUserDetails(emp_username, course_name),'shanku_random' )
+  SearchDatabaseForASpecificData(database, Find_MultipleUserDetails(emp_username, course_name),'file2' )
 end
 
 # # you can club multiple and unrelated sql queries into one method , between 2 sql queries put \\G; \n
