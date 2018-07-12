@@ -1,5 +1,5 @@
 *************************** 1. row ***************************
-            id: 36072
+            id: 36181
           type: 1
    source_type: 1
        subject: New Enrolment
@@ -14,8 +14,8 @@ SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au<br />
 PLACEHOLDER_FIRSTNAME: DontTouchAutomationUser<br />
 PLACEHOLDER_LASTNAME: AARON<br />
 PLACEHOLDER_USERNAME: X1242341<br />
-PLACEHOLDER_COURSE: AssignmentRule_course_automation<br />
-PLACEHOLDER_COURSE_LINK: https://tmsfull.elmodev.com/learning/view-course/982?_l=1<br />
+PLACEHOLDER_COURSE: course_section_automation_QuizActivity_shanku<br />
+PLACEHOLDER_COURSE_LINK: https://tmsfull.dev.elmodev.com/learning/view-course/392?_l=1<br />
 PLACEHOLDER_COURSE_DUE_DATE: [not specified]<br />
 &lt;DYNAMIC&gt;PLACEHOLDER_RETRAIN_PERIOD: 0 month&lt;/DYNAMIC&gt; &lt;-- Retrain period should not be displayed here</p>
      fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
@@ -23,43 +23,43 @@ PLACEHOLDER_COURSE_DUE_DATE: [not specified]<br />
     recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":{"SIMON.COX@elmodemo.com":"SIMON COX"},"bcc":null}
  recipient_ids: /3472/3456/
       priority: 1
-  created_time: 1531375793
-    fired_time: 1531375805
-        status: 1
-       context: a:1:{s:8:"schedule";i:37927;}
+  created_time: 1531380199
+    fired_time: NULL
+        status: 0
+       context: a:1:{s:8:"schedule";i:38052;}
       branding: a:4:{s:7:"content";a:5:{s:20:"headingBannerBgColor";s:7:"#000000";s:10:"menuColor1";s:7:"#000000";s:13:"menuFontColor";s:7:"#f6f6f6";s:4:"logo";i:2285;s:16:"headingBannerImg";i:2281;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:6;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
-     source_id: 37927
-         count: 1
+     source_id: 38052
+         count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-                 id: 119855
-          course_id: 982
+                 id: 120018
+          course_id: 392
             user_id: 3472
  lmsUserEnrolmentId: NULL
-        enrolMethod: 2
-enrolSourceObjectId: 50
+        enrolMethod: 0
+enrolSourceObjectId: NULL
              status: 0
                cost: 0
             retrain: 0
-        timeEnroled: 1531375792
-            timeDue: 1531375792
+        timeEnroled: 1531380199
+            timeDue: 1531380199
         timeStarted: 0
           timeEnded: 0
         timeExpired: 0
-        timeCreated: 1531375792
-       timeModified: 1531375792
+        timeCreated: 1531380199
+       timeModified: 1531380199
            isActive: 1
         modifier_id: NULL
        retrain_open: 0
 *************************** 1. row ***************************
-          id: 37136
+          id: 37260
   trigger_id: Learning.CourseNewEnrolmentTrigger
      user_id: 3472
-  sort_order: 1:196-111-1951:982-3472-119855
+  sort_order: 1:196-111-1951:392-3472-120018
    path_name: /196
-     path_id: /982
+     path_id: /392
   is_deleted: 0
 deleted_time: NULL

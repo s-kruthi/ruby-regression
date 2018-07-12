@@ -49,6 +49,7 @@ After do | scenario |
   end
 
   File.open('./features/step_definitions/Test_Data/stored_ids.rb', 'w') {|file| file.truncate(0) }
+  File.write('./features/step_definitions/MySQL_Scripts/sql_dependencies/json_data_storage/GitIgnoreFile.rb', 'here is some text', mode: 'a')
     $driver.quit
 end
 
