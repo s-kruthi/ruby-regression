@@ -38,3 +38,13 @@ Feature:
     When  I Reset The Assignment Rule
     Then  The User Should Be Instantly Notified About The New Course Enrolment
 
+
+  @course_notification_verify @learning_high_risk
+  Scenario: [Learning] Verify That User Receives Notification When Enrolling Into A Course
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To The Menu Learning Section
+    And   I Click On "Course Catalogue" Tab
+    When  I Search For A Specific Course Named DO NOT
+    And   I Click On "Enrol" Button
+    Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient company.omar
