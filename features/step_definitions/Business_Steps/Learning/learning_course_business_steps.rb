@@ -625,4 +625,6 @@ And(/^I Select (\d+) ([\w\s]+) For Bulk Action$/i) do |selection_number, selecti
 end
 
 
-
+And(/^I Create A Random Course For Automation$/) do
+  CreateACourseThroughServices()
+end

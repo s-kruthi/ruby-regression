@@ -1118,3 +1118,16 @@ def FilterEnrolments(filter_by, filter_value)
     # if results_count.eql?count then puts COLOR_BLUE + "Results match" end
   end
 end
+
+def CreateACourseThroughServices()
+  if ENV['MYMAC']
+    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/Learning/LearningCourseAdd.jmx -Jserver=#{$create_against})
+  else
+    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{$create_against})
+  end
+  csv = CSV.read('JMETER_AUTO/Jmeter_tests/Learning/Learning_course_add.csv', :headers=>false)
+  puts "manager_id:" + csv[0][0]
+  puts "manager_username:" + csv[0][1]
+  puts "user_id:" + csv[0][2]
+  puts "username:" + csv[0][3]
+end
