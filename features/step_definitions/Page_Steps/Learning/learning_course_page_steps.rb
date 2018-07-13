@@ -212,6 +212,7 @@ def CreateAnActivity(course_activity_name)
       begin
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(SURVEY_ACTIVITY_EDITOR_TXT, 0))
+        Sleep_Until(UseCkeditorToEnterText(SURVEY_ACTIVITY_EDITOR_TXT, 0))
         ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SURVEY_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end

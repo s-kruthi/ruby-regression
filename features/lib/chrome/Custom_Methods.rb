@@ -284,14 +284,17 @@ module Chrome
     def ClickElementByIndex(type, identifier, index)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        elements = wait.until {
-          $driver.find_elements(:"#{type}", "#{identifier}")[index].click
+
+        element = wait.until {
+          element = $driver.find_elements(:"#{type}", "#{identifier}")[index]
+          element if element.displayed?
         }
 
-        if elements.empty?
-          fail
-        else
+        if element
+          element.click
           puts COLOR_GREEN + "MATCHED: Element present"
+        else
+          fail
         end
 
       rescue Exception => e

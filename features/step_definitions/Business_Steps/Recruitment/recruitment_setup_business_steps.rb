@@ -8,13 +8,16 @@ Given(/^I Am On The Recruitment Requisition Listing Page$/i) do
   sleep(3)
 end
 
+
 When(/^I Click on New Requisition Button$/i) do
   GoToRecruitmentRequisitionAddPage(NEW_REQUISITION_BTN)
 end
 
+
 And(/^I Enter New Requisition Details$/i) do
   EnterNewRecruitmentRequisitionDetails(REQUISITION_POS_INDEX_ARROW,0,REQUISITION_POS_INDEX_CLASS,0,REQUISITION_LOC_INDEX_ARROW,1,REQUISITION_LOC_INDEX_CLASS,0,REQUISITION_NUMBER_OF_POSITION,NUMBER_OF_POSITION_INPUT,REQUISITION_CALENDER_DUEDATE,REQUISITION_DUEDATE,REQUISITION_CALENDER_DONE_BTN)
 end
+
 
 Then(/^I Should Be Able To Create A New Requisition Request$/i) do
   CreateANewRecruitmentRequisition(REQUISITION_SUBMIT_BTN)
@@ -32,29 +35,35 @@ Given(/^I Am On The Recruitment Menu Section$/i) do
   sleep(2)
 end
 
+
 And(/^I Click on The Candidates Button$/i) do
   GoToCandidatesListingPage(CANDIDATES_LIST_PATH)
 end
+
 
 And(/^I am on Candidates Listing Page$/i) do
   SearchAndVerifyCandidatesBtnExists(NEW_CANDIDATE_BTN_XPATH,NEW_CANDIDATE_BTN_LABEL)
   sleep(2)
 end
 
+
 When(/^I Click on New Candidate Button$/i) do
   ClickOnNewCandidateButton(NEW_CANDIDATE_BTN_XPATH)
   sleep(2)
 end
+
 
 And(/^I Enter New Candidate Details$/i) do
   EnterNewCandidateDetails()
   sleep(2)
 end
 
+
 And(/^I Click on The Save Button$/i) do
   ClickOnSaveButton(SAVE_NEW_CANDIDATE_BTN)
   sleep(2)
 end
+
 
 Then(/^I Should Be Able To Create A New Candidate$/i) do
   GoToThePage(RECRUITMENT_CANDIDATE_LANDING_PAGE)
@@ -77,28 +86,173 @@ Given(/^I Am Under A Recruitment Requisition$/i) do
   sleep(1)
 end
 
+
 And(/^I Try To Create A New Job Ad$/i) do
   GoToNewJobPostTabUnderARequisition(MY_REQ_LINK,JOB_AD_LINK,NEW_JOB_POST_LINK)
 end
+
 
 When(/^I Fill The Details Of A New Job Ad$/i) do
   AddTheJobDetailsAndSubmitIt(SALARY_FROM,SALARY_FROM_VALUE,SALARY_TO,SALARY_TO_VALUE,JB_START_DATE_BTN,JB_START_DATE,JB_END_DATE,JB_END_DATE_VALUE,INT_CAR_BTN,EXT_CAR_BTN)
 end
 
+
 Then(/^I Should be Able To Post The New Job$/i) do
   SaveTheJobAdAndGoToTheLandingPage(SAVE_JOB)
 end
+
 
 And(/^I Have A New candidate Applied for A Position$/i) do
   SignupAndApplyAsACandidate()
 
 end
 
+
+
 When(/^I Move The Candidate From New To Notsuitable Category$/i) do
   CheckTheCandidateAppearsUnderNewStatus(NEW_STATUS)
   MoveTheCandidateFromNewToNotSuitable(ADD_TO_NOTSUITABLE)
 end
 
+
 Then(/^I Should Be Able To View The Candidate Under Unsuccessful Category$/i) do
   VerifyThecandidateAppearsUnderNotSuitableCategory()
+end
+
+
+And(/^I Search For A Specific Requisition Having Vendor Added Candidates$/i) do
+  #get requisition from DB
+  @requisition = $daos.get_requisition_vendor_candidates()
+
+  unless @requisition
+    puts COLOR_YELLOW + "no requisitions with vendor submitted candidates".upcase
+    skip_this_scenario
+  end
+
+  SelectRequisitionStatus(@requisition[:req_status])
+  SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
+end
+
+
+And(/^I Click On The Specific Requisition$/i) do
+  ClickRequisition()
+end
+
+
+When(/^I Search For The Vendor Submitted Candidate$/i) do
+  SearchCandidate()
+end
+
+
+And(/^I Can See The Vendor EmailId In The CC Field By Default$/i) do
+  CheckForVendorEmail()
+end
+
+
+And(/^I Choose To ([\w\s]+) To The Candidate$/i) do |action|
+  SelectActionToCandidate(action)
+end
+
+
+And(/^I Search For A Requisition Having ([\w]+) Status$/i) do |status|
+  SelectRequisitionStatus(status)
+end
+
+
+And(/^I Search For A Requisition Having(\s+?|\sNo\s)Notes$/i) do |notes_available|
+  if notes_available == " No "
+    @requisition = $daos.get_requisition_details_no_notes()
+  else
+    @requisition = $daos.get_requisition_details_with_notes(1)
+  end
+
+  unless @requisition
+    puts COLOR_YELLOW + "no requisitions available for this criteria".upcase
+    skip_this_scenario
+  end
+
+  #only open requisitions can have notes newly added
+  SelectRequisitionStatus("Open")
+  SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
+end
+
+
+When(/^I Click On ([\w\s]+) Requisition Note Button$/i) do |button_type|
+  case button_type
+    when "Add New"
+      identifier = REQUISITION_ADD_NOTE_BUTTON_ID
+    when "Edit"
+      identifier = REQUISITION_NOTE_EDIT_BUTTON_ID
+    when "Delete"
+      identifier = REQUISITION_NOTE_DELETE_BUTTON_ID
+  end
+
+  Sleep_Until(WaitForAnElementByXpathAndTouch(identifier))
+ end
+
+
+And(/^I Enter The Requisition Note$/i) do
+  EnterRequisitionNote()
+end
+
+
+Then(/^I Should See The Note In The Requisition$/i) do
+  CheckNoteInRequisition()
+end
+
+
+And(/^I Go To The Requisition ([\w\s]+) Page$/i) do |section_name|
+  GoToRequisitionSection(section_name)
+end
+
+
+And(/^I Should See The Last Updated Details$/i) do
+  VerifyNoteDetails()
+end
+
+
+Then(/^I Should (See|Not See) The (Edit|Delete|Add Note) button For The Note$/i) do |presence, button_name|
+  VerifyButtons(presence, button_name)
+end
+
+
+And(/^I Should Be Able To Edit The Requisition Note$/i) do
+  EnterRequisitionNote()
+end
+
+
+And(/^I Confirm The Deletion of the Requisition Note$/i) do
+  ConfirmDeletion()
+end
+
+
+Then(/^I Should See The Deletion Success Message$/i) do
+  VerifyDeletion()
+end
+
+
+And(/^I Search For A (Finalised|Withdrawn) Requisition Having Notes$/i) do |requisition_type|
+ if requisition_type == "Finalised"
+   @requisition = $daos.get_requisition_details_with_notes(5)
+ elsif requisition_type == "Withdrawn"
+   @requisition = $daos.get_requisition_details_with_notes(6)
+ end
+
+ unless @requisition
+   puts COLOR_YELLOW + "no requisitions available for this criteria".upcase
+   skip_this_scenario
+ end
+
+ SelectRequisitionStatus(requisition_type)
+ SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
+end
+
+
+Then(/^I Should Be Able To Only View The Requisition Note$/i) do
+  steps %{
+    And   I Should Not See The Edit Button For The Note
+    And   I Should Not See The Delete Button For The Note
+    And   I Should Not See The Add Note Button For The Note
+    And   I Should See The Last Updated Details
+  }
 end

@@ -31,4 +31,4 @@ COLOR_YELLOW = "[WARN] ".colorize(:yellow)
 COLOR_BLUE = "[INFO] ".colorize(:blue)
 COLOR_CYAN = "[INFO] ".colorize(:cyan)
 COLOR_MAGENTA = "[INFO] ".colorize(:magenta)
-
+COLOR_WHITE = "[INFO] ".colorize(:white)

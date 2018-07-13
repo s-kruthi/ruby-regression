@@ -24,3 +24,8 @@ CANDIDATE[:PASSWORD] = "Tester1!"
 SALARY_FROM_VALUE = "100000"
 SALARY_TO_VALUE = "200000"
 JB_END_DATE_VALUE = "29/05/2019"
+
+#### REQUISITION NOTE TEST DATA ####
+REQUISITION_NOTE_SUCCESS_MSG = 'Requisition note has been successfully updated.'
+REQUISITION_NOTE_VALUE = "Automated Test Requisition Note"
+REQUISITION_NOTE_DEL_MSG = 'Requisition note has been successfully deleted.'
