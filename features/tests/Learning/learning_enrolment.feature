@@ -51,7 +51,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
 
 
   @course_manual_enrolment  @learning_low_risk  @C794
-  Scenario: [Learning]Manually Enrol User For A Particular Course
+  Scenario: [Learning]Manually Enrol User To A Particular Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
@@ -59,11 +59,11 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I Re Enrol The Candidate For The Activity
 
 
-  @course_manual_enrolment  @learning_low_risk  @C795
+  @course_bulk_enrolment  @learning_high_risk  @C795
   Scenario: [Learning]Manually Bulk Enrol Users Into A Particular Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
     And   I Create A Random Course For Automation
-    When  I Search For A Specific Course Named course_section_automation_QuizActivity_shanku
-    And   I Re Enrol The Candidate For The Activity
+    When  I Search For The Randomly Created Course
+    Then  I Should Be Able To Bulk Enrol Users To That Course

@@ -56,3 +56,9 @@ end
 Then(/^I Should See All The Courses I Am Enrolled To$/i) do
   CheckCoursesEnroled()
 end
+
+Then(/^I Should Be Able To Bulk Enrol Users To That Course$/) do
+  GoToEnrolledUserPage()
+  BulkEnrolUsersToThatCourse()
+  VerifyAllSelectedUsersGotBulkEnrolledToTheCourse("#{$data_hash['course_id:']}")
+end

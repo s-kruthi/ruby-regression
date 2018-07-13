@@ -48,6 +48,11 @@ When(/^I Search For A Specific Course Named (.*)$/i) do |course_search_name|
 end
 
 
+When(/^I Search For The Randomly Created Course$/i) do
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, $randomly_created_course, COURSE_SEARCH_BTN_ID)
+end
+
+
 Then(/^I Should Be Able To Edit The Specific Course$/i) do
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
@@ -626,5 +631,8 @@ end
 
 
 And(/^I Create A Random Course For Automation$/) do
-  CreateACourseThroughServices()
+  Sleep_Until(CreateACourseThroughServices(LEARNING_ADMIN_USERNAME,LEARNING_ADMIN_PASSWORD))
+  Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
+  puts $data_hash['first_name:']
+  puts $data_hash['course_id:']
 end

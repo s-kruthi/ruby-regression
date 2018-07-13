@@ -1,3 +1,3 @@
 use pmsdev_tmsfull ; 
 
-      select id as user_id,manager_id,identifier from epms_user where username='X1242341' ORDER BY id desc LIMIT 1\G; 
+      select COUNT(*) from epms_lms_course_enrolment where course_id ='1641' order by id DESC LIMIT 10\G; 

@@ -684,7 +684,8 @@ end
 
 
 def DeleteTheExistingCourseEnrolment(course_id)
-  $driver.navigate.to("https://tmsfull.dev.elmodev.com/admin/course/#{course_id}/enrolments")
+  enrol_user_url = $site_url.chomp('/dashboard')
+  $driver.navigate.to("#{enrol_user_url}/admin/course/#{course_id}/enrolments")
   Sleep_Until($driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]'))
   $driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]').click
   sleep(1)
@@ -1120,15 +1121,20 @@ def FilterEnrolments(filter_by, filter_value)
   end
 end
 
-def CreateACourseThroughServices()
-  if ENV['MYMAC']
-    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/Learning/LearningCourseAdd.jmx -Jserver=#{$create_against})
+def CreateACourseThroughServices(creator_username, creator_password)
+  if ENV['url'] == nil
+    ENV['url'] = 'tmsfull'
   else
-    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{$create_against})
+    puts "server provided = " + ENV["url"]
   end
-  csv = CSV.read('JMETER_AUTO/Jmeter_tests/Learning/Learning_course_add.csv', :headers=>false)
-  puts "manager_id:" + csv[0][0]
-  puts "manager_username:" + csv[0][1]
-  puts "user_id:" + csv[0][2]
-  puts "username:" + csv[0][3]
+  puts @create_against =  "#{ENV['url']}.dev.elmodev.com"
+  puts "Data Creation in process...".colorize(:blue)
+  if ENV['MYMAC']
+    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password})
+  else
+    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password})
+  end
+  csv = CSV.read('JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv', :headers=>false)
+  puts "course_name:" + csv[0][0]
+  $randomly_created_course = File.read("./JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv").delete!("\n")
 end
