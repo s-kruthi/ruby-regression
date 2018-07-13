@@ -272,5 +272,30 @@ module Firefox
         puts e.message
       end
     end
+
+
+    def ClickElementByIndex(type, identifier, index)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+
+        element = wait.until {
+          element = $driver.find_elements(:"#{type}", "#{identifier}")[index]
+          element if element.displayed?
+        }
+
+        if element
+          element.click
+          puts COLOR_GREEN + "MATCHED: Element present"
+        else
+          fail
+        end
+
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element not present, so could not click. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        puts e.message
+      end
+    end
+
   end
+
 end

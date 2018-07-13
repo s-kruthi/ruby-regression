@@ -10,6 +10,7 @@ REQUISITION_CALENDER_DUEDATE = "//input[@name='dueDate']"
 REQUISITION_CALENDER_DONE_BTN = "//button[@ng-click='isOpen = false']"
 REQUISITION_SUBMIT_BTN = "//button[contains(.,'Submit')]"
 
+
 #Recruitment Candidates Page UI Elements
 NEW_CANDIDATE_BTN_XPATH = "//a[contains(.,'New Candidate')]"
 FIRSTNAME_INPUT_ID = "candidateProfileForm_firstName"
@@ -43,3 +44,34 @@ SAVE_JOB = 'button[ng-click="save(addEditForm)"]'
 ################### status Under requisition ##################
 NEW_STATUS = '[ng-click="applyStatusFilter(data.status_new)"]'
 ADD_TO_NOTSUITABLE = 'a[ng-click="markNotSuitable([jobapp.id])"]'
+
+
+#### Open Requisitions page ####
+REQUISITION_LIST_SEARCH_BOX_ID = '//label[@id="searchDesc"]//following::input[@type="text"]'
+REQUISITION_SEARCH_BTN_ID = '//button[@ng-click="getRequisitions()"]'
+REQUISITION_STATUS_INDEX_ID= "select2-choices"
+REQUISITION_STATUS_RESULT_ID = "select2-result-selectable"
+REQUISITION_SEARCH_RESULT_TITLE_ID = '//a[contains(@class,"requisition-title")]'
+
+
+#### Requisition Candidates page ####
+CANDIDATE_ACTION_DROPDOWN_ID = '//div[contains(@class,"btn-group ng-scope")]'
+CANDIDATE_SEARCH_BOX_ID = 'recruitmentApplication_keyword'
+CANDIDATE_SEARCH_BUTTON_ID = '//button[@id="recruitmentApplication_keyword"]'
+
+
+#### Offer page ####
+OFFER_MESSAGE_BUTTON_ID = '//button[contains(.,"Message")]'
+
+
+#### Requisition Overview Page ####
+REQUISITION_ADD_NOTE_BUTTON_ID = '//button[contains(.,"Note")]'
+REQUISITION_NOTE_ADDEDBY_ID = '//span[contains(@class, "text-bold")]'
+REQUISITION_MODAL_ID = '//div[@class="bootbox-body"]'
+REQUISITION_NOTE_SAVE_BUTTON_ID = 'requisitionNoteSaveBtn'
+REQUISITION_NOTE_ID = 'requisitionNote'
+REQUISITION_NOTE_CHARCOUNTER_ID = 'requisitionNotecharCountNumber'
+REQUISITION_NOTE_EDIT_BUTTON_ID = '//button[@ng-click="toggleRequisitionNote(true)" and contains(.,"Edit")]'
+REQUISITION_NOTE_DELETE_BUTTON_ID = '//button[contains(@ng-click,"confirmNoteDelete")]'
+
+REQUSITION_OVERVIEW_SECTION_ID = "//a[contains(@href,'/overview')]"
