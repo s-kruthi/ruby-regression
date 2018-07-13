@@ -233,6 +233,55 @@ module Firefox
       end
     end
 
-  end
 
+    def VerifyResetSearch(reset_button_css, expected_url)
+      WaitForAnElementByCSSAndTouch(reset_button_css)
+      wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+      url = wait.until {
+        $driver.current_url
+      }
+
+      if url.eql? expected_url
+        puts COLOR_GREEN + "MATCHED: Reset search return to the list"
+      else
+        fail
+      end
+
+    rescue Exception => e
+      raise VerificationException.new(COLOR_RED + "Reset search not return to the list. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+      puts e.message
+    end
+
+
+    def VerifySearchResultElmoTable(expected_amount, search_value)
+#   verify the row amount in the table body and search is included in each row
+      wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+      elements = wait.until {
+        $driver.find_elements(:css, '#elmo-table tbody tr')
+      }
+      if (elements.size.eql? expected_amount) && EachRowIncludeValue(elements ,search_value)
+        puts COLOR_GREEN + "MATCHED: Searched result with correct items"
+      else
+        fail
+      end
+
+    rescue Exception => e
+      raise VerificationException.new(COLOR_RED + "Search result has incorrect item or amount. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+      puts e.message
+    end
+
+
+    def VerifyTableSortedByColumn(table_body_css, column_number, sort)
+      column_values = GetValuesByColumnFromTableByCSS(table_body_css, column_number)
+      if column_values.eql? SortArray(column_values, sort)
+        puts COLOR_GREEN + "MATCHED: Table is sorted by column#{4} #{sort}"
+      else
+        fail
+      end
+
+    rescue Exception => e
+      raise VerificationException.new(COLOR_RED + "Table is not sorted by column#{4} #{sort}")
+      puts e.message
+    end
+  end
 end
