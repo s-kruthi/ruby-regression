@@ -52,6 +52,10 @@ REQUISITION_SEARCH_BTN_ID = '//button[@ng-click="getRequisitions()"]'
 REQUISITION_STATUS_INDEX_ID= "select2-choices"
 REQUISITION_STATUS_RESULT_ID = "select2-result-selectable"
 REQUISITION_SEARCH_RESULT_TITLE_ID = '//a[contains(@class,"requisition-title")]'
+REQUISITION_ACTION_DROPDOWN_ID = '//div[@class="btn-group btn-group-dropdown"]'
+
+#### Approval Page ####
+REQUISITION_APPROVAL_SEARCH_ID = '//input[@ng-model="search.keyword"]'
 
 
 #### Requisition Candidates page ####

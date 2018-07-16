@@ -133,6 +133,26 @@ Feature:
     Then  I Should Be Able To Only View The Requisition Note
 
 
+  #Currently can be run only on ningning01
+  @recruitment_low_risk @requisition_note_view
+  Scenario: [Recruitment]Ability To View Notes Added To A Requisition
+    Given I Have Logged In as a Recruitment Admin
+    And   I Go To The Menu Recruitment Section
+    And   I Click On "Open Requisitions" Tab
+    And   I Search For A Finalised Requisition Having Notes
+    When  I Choose To View Requisition Details For The Requisition
+    Then  I Should Be Able To View The Requisition Note In the Modal
+
+
+  #Currently can be run only on ningning01
+  @recruitment_low_risk @requisition_note_view
+  Scenario: [Recruitment]Ability To View Notes Added To A Requisition
+    Given I Have Logged In as a Recruitment Admin
+    And   I Go To The Menu Recruitment Section
+    And   I Click On "Approval" Tab
+    When  I Search For A Pending Requisition Having Notes
+    And   I View The Requisition For Approval
+    Then  I Should Be Able To View The Requisition Note In The Page
 
 
 

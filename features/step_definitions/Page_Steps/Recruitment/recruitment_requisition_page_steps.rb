@@ -193,8 +193,8 @@ end
 
 
 def SearchARequisition(requisition_list_search_box_id, requisition_name, requisition_search_btn_id)
-  Sleep_Until($driver.find_element(:xpath, REQUISITION_LIST_SEARCH_BOX_ID).send_keys(requisition_name))
-  Sleep_Until($driver.find_element(:xpath, REQUISITION_SEARCH_BTN_ID).click)
+  Sleep_Until($driver.find_element(:xpath, requisition_list_search_box_id).send_keys(requisition_name))
+  Sleep_Until($driver.find_element(:xpath, requisition_search_btn_id).click)
 end
 
 
@@ -245,25 +245,25 @@ def CheckForVendorEmail()
 end
 
 
-def ClickRequisition()
+def ClickRequisition(requisition_search_result_title_id)
   req_title = @requisition[:requisition_title_display] + ' (' + (@requisition[:req_id].to_s) +')'
 
-  num_requistion_results = $driver.find_elements(:xpath, REQUISITION_SEARCH_RESULT_TITLE_ID).size
+  num_requistion_results = $driver.find_elements(:xpath, requisition_search_result_title_id).size
   i=0
 
   #if the results are more than 1
   if num_requistion_results > 1
     while(i!= num_requistion_results)
       #check that the correct requsition is clicked
-      check = $driver.find_elements(:xpath, REQUISITION_SEARCH_RESULT_TITLE_ID)[i].attribute('text').include? req_title
+      check = $driver.find_elements(:xpath, requisition_search_result_title_id)[i].attribute('text').include? req_title
       if check == true
         element_index = i
       end
       i = i+1
     end
-    Sleep_Until(ClickElementByIndex('xpath', REQUISITION_SEARCH_RESULT_TITLE_ID, element_index))
+    Sleep_Until(ClickElementByIndex('xpath', requisition_search_result_title_id, element_index))
   else
-    Sleep_Until(WaitForAnElementByXpathAndTouch(REQUISITION_SEARCH_RESULT_TITLE_ID))
+    Sleep_Until(WaitForAnElementByXpathAndTouch(requisition_search_result_title_id))
   end
 end
 
@@ -343,5 +343,32 @@ end
 def VerifyNoteDetails()
   req_updated_by = @requisition[:first_name] + ' '+ @requisition[:last_name]
   time_updated = Time.at(@requisition[:requisition_note_updated_at]).strftime("%d/%m/%Y %H:%M")
+
   $driver.find_element(:xpath , REQUISITION_NOTE_ADDEDBY_ID).text.eql? ("Last updated by "+ req_updated_by +" | "+time_updated)
+end
+
+
+def ViewRequisitionForApproval()
+  req_title = @requisition[:requisition_title_display] + ' (' + (@requisition[:req_id].to_s) +')'
+
+  #not defining identifier since its parameterised
+  num_requistion_results = $driver.find_elements(:xpath,'//tr[contains(.,req_title)]//button[@ng-click="view(requisition)"]').size
+  i=1
+
+  #if the results are more than 1
+  if num_requistion_results > 1
+    while(i <= num_requistion_results)
+      #check that the correct requsition is clicked
+      check = $driver.find_elements(:xpath, '//tr[contains(.,req_title)]')[i].text.include? req_title
+      if check == true
+        element_index = i
+      end
+      i = i+1
+    end
+
+    #not defining identifier since its parameterised
+    Sleep_Until(ClickElementByIndex('xpath', '//tr[contains(.,req_title)]//button[@ng-click="view(requisition)"]', element_index-1))
+  else
+    Sleep_Until(WaitForAnElementByXpathAndTouch('//tr[contains(.,req_title)]//button[@ng-click="view(requisition)"]'))
+  end
 end
