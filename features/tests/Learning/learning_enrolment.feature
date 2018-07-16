@@ -67,3 +67,16 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I Create A Random Course For Automation
     When  I Search For The Randomly Created Course
     Then  I Should Be Able To Bulk Enrol Users To That Course
+
+
+  @learning_high_risk @enrolment_filter_create @C796
+  Scenario: [Learning]Learning Admin using a Filter can Fetch Specific User For Course Enrolment
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    And   I Search For A Specific Course Named course_section_automation_QuizActivity_shanku
+    And   I Go To The Enrolled User Section For That Course course_section_automation_QuizActivity_shanku
+    When  I Click On "Create Filter" Button
+    And   I select Employee Name as DontTouchAutomationUser
+    Then  I Should Be Able to Create a Filter
+    And   I See A Filtered List Of Course Enrolment Returning User Donttouchautomationuser Aaron

@@ -1,65 +1,30 @@
 *************************** 1. row ***************************
-            id: 36186
-          type: 1
-   source_type: 1
-       subject: New Enrolment
-          body: <p>Dear&nbsp;DontTouchAutomationUser&nbsp;AARON&nbsp;REBECCA.AARON@elmodemo.com</p>
-
-<p>New Enrolment<br />
-SYSTEM_PLACEHOLDER_COMPANY_NAME: ELMO<br />
-SYSTEM_PLACEHOLDER_COMPANY_SYSTEM_NAME: HR & Payroll<br />
-SYSTEM_PLACEHOLDER_COMPANY_SHORT_NAME: ELMO<br />
-SYSTEM_PLACEHOLDER_COMPANY_CONTACT: HROnline<br />
-SYSTEM_PLACEHOLDER_COMPANY_EMAIL: noreply@elmolearning.com.au<br />
-PLACEHOLDER_FIRSTNAME: DontTouchAutomationUser<br />
-PLACEHOLDER_LASTNAME: AARON<br />
-PLACEHOLDER_USERNAME: X1242341<br />
-PLACEHOLDER_COURSE: course_section_automation_QuizActivity_shanku<br />
-PLACEHOLDER_COURSE_LINK: https://tmsfull.dev.elmodev.com/learning/view-course/392?_l=1<br />
-PLACEHOLDER_COURSE_DUE_DATE: [not specified]<br />
-&lt;DYNAMIC&gt;PLACEHOLDER_RETRAIN_PERIOD: 0 month&lt;/DYNAMIC&gt; &lt;-- Retrain period should not be displayed here</p>
-     fromEmail: {"noreply@elmolearning.com.au":"HROnline"}
-    replyEmail: {"noreply@elmolearning.com.au":"HROnline"}
-    recipients: {"to":{"REBECCA.AARON@elmodemo.com":"DontTouchAutomationUser AARON"},"cc":{"SIMON.COX@elmodemo.com":"SIMON COX"},"bcc":null}
- recipient_ids: /3472/3456/
-      priority: 1
-  created_time: 1531380874
-    fired_time: NULL
-        status: 0
-       context: a:1:{s:8:"schedule";i:38057;}
-      branding: a:4:{s:7:"content";a:5:{s:20:"headingBannerBgColor";s:7:"#000000";s:10:"menuColor1";s:7:"#000000";s:13:"menuFontColor";s:7:"#f6f6f6";s:4:"logo";i:2285;s:16:"headingBannerImg";i:2281;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:6;s:4:"type";i:0;}
-      template: NULL
-    is_deleted: 0
-  deleted_time: NULL
-     source_id: 38057
-         count: 0
-attachment_ids: []
-*************************** 1. row ***************************
-                 id: 120023
-          course_id: 392
-            user_id: 3472
- lmsUserEnrolmentId: NULL
-        enrolMethod: 0
-enrolSourceObjectId: NULL
-             status: 0
-               cost: 0
-            retrain: 0
-        timeEnroled: 1531380874
-            timeDue: 1531380874
-        timeStarted: 0
-          timeEnded: 0
-        timeExpired: 0
-        timeCreated: 1531380874
-       timeModified: 1531380874
-           isActive: 1
-        modifier_id: NULL
-       retrain_open: 0
-*************************** 1. row ***************************
-          id: 37265
-  trigger_id: Learning.CourseNewEnrolmentTrigger
-     user_id: 3472
-  sort_order: 1:196-111-1951:392-3472-120023
-   path_name: /196
-     path_id: /392
-  is_deleted: 0
-deleted_time: NULL
+   recipients: {"to":{"STEPHANIE.FLOYD@elmodemo.com":"STEPHANIE FLOYD"},"cc":{"TANYA.CAPOGRECO@elmodemo.com":"TANYA CAPOGRECO"},"bcc":null}
+recipient_ids: /2604/2602/
+*************************** 2. row ***************************
+   recipients: {"to":{"TANYA.CAPOGRECO@elmodemo.com":"TANYA CAPOGRECO"},"cc":{"LAURA.SCHONFELDT@elmodemo.com":"LAURA SCHONFELDT"},"bcc":null}
+recipient_ids: /2602/2599/
+*************************** 3. row ***************************
+   recipients: {"to":{"HRServices@elmodemo.com":"Elders Manager"},"cc":{"LYN.ALLEN@elmodemo.com":"LYNETTE ALLEN"},"bcc":null}
+recipient_ids: /2601/3485/
+*************************** 4. row ***************************
+   recipients: {"to":{"LAURA.SCHONFELDT@elmodemo.com":"LAURA SCHONFELDT"},"cc":{"MARK.ALLISON@elmodemo.com":"MARK ALLISON"},"bcc":null}
+recipient_ids: /2599/5098/
+*************************** 5. row ***************************
+   recipients: {"to":{"VANITA.MILLER@elmodemo.com":"VANITA MILLER"},"cc":{"LAURA.SCHONFELDT@elmodemo.com":"LAURA SCHONFELDT"},"bcc":null}
+recipient_ids: /2598/2599/
+*************************** 6. row ***************************
+   recipients: {"to":{"BARBARA.QI@elmodemo.com":"XIN QI"},"cc":{"VICKI.WALMSLEY@elmodemo.com":"VICTORIA WALMSLEY"},"bcc":null}
+recipient_ids: /2597/5672/
+*************************** 7. row ***************************
+   recipients: {"to":{"HRonline@elmodemo.com":"Elders Elders"},"cc":null,"bcc":null}
+recipient_ids: /2596/
+*************************** 8. row ***************************
+   recipients: {"to":{"zoe.brainbridge@jcu.edu.au":"Ilyas Ilyas"},"cc":null,"bcc":null}
+recipient_ids: /18/
+*************************** 9. row ***************************
+   recipients: {"to":{"login.test@example.com":"Login Test"},"cc":null,"bcc":null}
+recipient_ids: /10/
+*************************** 10. row ***************************
+   recipients: {"to":{"tom.atkins@elmolearning.com.au":"TomAtkins Automation No touch Please"},"cc":null,"bcc":null}
+recipient_ids: /8/

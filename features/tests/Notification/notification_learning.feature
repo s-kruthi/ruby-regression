@@ -8,6 +8,7 @@ Feature:
   Scenario: generate test data For learning
     Given I Want To Generate Learning Notification data On Any Staging
 
+
   @course_assignments  @learning_high_risk @NotificationsLearning @C12706
   Scenario: [Learning]User Enrols For A Particular Course Which triggers Notification to Both The User And His Manager(auto approval)
     Given I Have Logged In as a Learning Admin
@@ -29,6 +30,7 @@ Feature:
     And   I Approve The Course Enrolment Request
     Then  The User Should Be Instantly Notified About The New Enrolment Request
 
+
   @course_assignments_via_rules @learning_high_risk @NotificationsLearning @C1010
   Scenario: [Learning] Verify that user who is assigned a course via assignment rule receives "New Enrolment" notification
     Given I Have Logged In as a Learning Admin
@@ -48,3 +50,14 @@ Feature:
     When  I Search For A Specific Course Named DO NOT
     And   I Click On "Enrol" Button
     Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient company.omar
+
+
+  @course_bulk_enrolment_notification  @learning_high_risk
+  Scenario: [Learning] Bulk Enrol Users Into A Particular Course
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    And   I Create A Random Course For Automation
+    When  I Search For The Randomly Created Course
+    Then  I Should Be Able To Bulk Enrol Users To That Course
+    And   All Bulk Enrolled Users Should Be Instantly Notified About The New Course Enrolment

@@ -291,7 +291,8 @@ And(/^I Re Enrol The Candidate For The Activity$/) do
   ReturnMultipleUserDetails(TMSFULL_DATABASE,'X1242341','course_section_automation_QuizActivity_shanku')
   puts $data_hash['first_name:']
   puts $data_hash['course_id:']
-  DeleteTheExistingCourseEnrolment("#{$data_hash['course_id:']}")
+  GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
+  DeleteTheExistingCourseEnrolment()
   ReEnrolTheCandidateForCourse()
 end
 
@@ -630,9 +631,20 @@ And(/^I Select (\d+) ([\w\s]+) For Bulk Action$/i) do |selection_number, selecti
 end
 
 
-And(/^I Create A Random Course For Automation$/) do
+And(/^I Create A Random Course For Automation$/i) do
   Sleep_Until(CreateACourseThroughServices(LEARNING_ADMIN_USERNAME,LEARNING_ADMIN_PASSWORD))
   Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
   puts $data_hash['first_name:']
   puts $data_hash['course_id:']
+end
+
+And(/^I Go To The Enrolled User Section For That Course (.*)$/i) do |course_name|
+  Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,course_name))
+  puts $data_hash['course_id:']
+  GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
+end
+
+
+And(/^I See A Filtered List Of Course Enrolment Returning User (.*)$/i) do |learner_name|
+  VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
 end

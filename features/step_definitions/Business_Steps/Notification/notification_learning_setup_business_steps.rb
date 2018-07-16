@@ -41,3 +41,7 @@ Then(/^The User Should Be Instantly Notified About The New Course Enrolment$/) d
   puts $data_hash['course_id:']
   ConnectToDatabaseAndValidateTheNewCourseEnrolmentNotification()
 end
+
+Then(/^All Bulk Enrolled Users Should Be Instantly Notified About The New Course Enrolment$/) do
+  ConnectToDatabaseAndValidateBulkNewCourseEnrolmentNotifications()
+end

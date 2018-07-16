@@ -683,9 +683,12 @@ def WithdrawTheCandidateFromF2FSession()
 end
 
 
-def DeleteTheExistingCourseEnrolment(course_id)
+def GoToSpecificCourseEnrolmentSection(course_id)
   enrol_user_url = $site_url.chomp('/dashboard')
   $driver.navigate.to("#{enrol_user_url}/admin/course/#{course_id}/enrolments")
+end
+
+def DeleteTheExistingCourseEnrolment()
   Sleep_Until($driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]'))
   $driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]').click
   sleep(1)

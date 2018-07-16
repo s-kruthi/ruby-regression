@@ -132,7 +132,7 @@ Should you have any questions please email&nbsp;<a href="mailto:lnd@tmbank.com.a
     print "not valid".colorize(:red)
   ensure
     ResetTheEnvironment(TMSFULL_DATABASE)
-    DeleteTheExistingCourseEnrolment('787')
+    DeleteTheExistingCourseEnrolment("#{$data_hash['course_id:']}")
   end
 end
 
@@ -161,6 +161,31 @@ def ConnectToDatabaseAndValidateTheNewCourseEnrolmentNotification()
     if g == false  then print "g is not matching \n".colorize(:red) end
 
     if a & b & c & d & e & f & g
+      print "Yay! Notifications have been triggered \n".colorize(:green)
+    else
+      print "ERROR...Notifications were blocked !!!!!! \n".colorize(:red)
+      raise TunnelException.new("Notifications were blocked ")
+    end
+  rescue
+    print "not valid".colorize(:red)
+  ensure
+    ResetTheEnvironment(TMSFULL_DATABASE)
+  end
+end
+
+def ConnectToDatabaseAndValidateBulkNewCourseEnrolmentNotifications()
+  SearchDatabaseForNotificationTriggers(TMSFULL_DATABASE,
+  " Select recipients,recipient_ids from epms_log_message where subject = 'New Enrolment' order by id DESC LIMIT 10",
+    'learning_course_assignment.sql')
+  begin
+    a = @db_result.include?  ("recipient_ids: /2604/2602/")  #true validate that mail goes to both employee and manager
+    if a == false  then print "a is not matching \n".colorize(:red) end
+    b = @db_result.scan(/recipient_ids/).count == 10  #true validate for employee got enrolled in the course
+    if b == false  then print "b is not matching \n".colorize(:red) end
+    c = @db_result.scan(/recipients/).count == 10  #true validate for employee got enrolled in the course
+    if c == false  then print "c is not matching \n".colorize(:red) end
+
+    if a & b & c
       print "Yay! Notifications have been triggered \n".colorize(:green)
     else
       print "ERROR...Notifications were blocked !!!!!! \n".colorize(:red)
