@@ -252,3 +252,20 @@ ENROLMENT_DUE_DATE_ID = "enable-date-timeDue"
 ENROLMENT_SUBMIT_BTN = "//button[contains(.,'Submit')]"
 ENROLMENT_TOOLTIP_ID = "//span[contains(@data-toggle,'tooltip')]"
 COURSE_SCORE_ID = "userProfileCompletionForm_score"
+
+
+#### Course Certificate Template ####
+CERTIFICATE_TEMP_SEARCH_CSS = '#courseCertificateTemplateSearch_searchTerm'
+CERTIFICATE_TEMP_SEARCH_BTN_ID = 'button[name="search[submit]"]'
+CERT_TEMP_TITLE_FIELD_CSS = 'input[name="course_certificate_template[title]"]'
+CERT_TEMP_DESCRIPTION_CSS = 'textarea[name="course_certificate_template[description]"]'
+CERT_TEMP_LAYOUT_CSS = 'input[name="course_certificate_template[layout]"]'
+CERT_TEMP_BACKGROUND_COLOUR_CSS = 'input[name="course_certificate_template[background_colour]"]'
+CERT_TEMP_CERTIFICATE_TEMPLATE_CSS = 'textarea[name="course_certificate_template[certificate_template]"]'
+CREATE_CERTIFICATE_CSS = '#certificateAdd'
+SAVE_CERTIFICATE_CSS = '#course_certificate_template_save'
+TABLE_HEADER_VALUE = ['Name', 'Description', 'Who', 'When']
+PAGE_TITLE_CSS = '#elmo-table thead'
+TABLE_BODY_CSS = '#elmo-table tbody'
+EDIT_CERTIFICATE_CSS = '.edit-action'
+CLEAR_SEARCH_BTN_CSS = 'a[title="Clear search"]'
