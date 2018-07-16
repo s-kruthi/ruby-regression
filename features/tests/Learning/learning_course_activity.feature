@@ -12,7 +12,6 @@
       And   I Go To Courses Under Learning Section
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A New SCORM Package Activity
-      When  I Go To The Page Which Has The List Of Current Editing Item
       Then  I Should Edit The Scorm Section Name And Description
 
 
@@ -46,7 +45,7 @@
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
       When  I Create A New Course With A Unique Name
-      And  I Should Be Able To Add A New Quiz Activity
+      And  I Should Be Able To Add A Quiz Activity
       And  I Go To The Page Which Has The List Of Current Editing Item
       Then  I Should Edit The Quiz activity
 
@@ -58,7 +57,7 @@
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
       When  I Create A New Course With A Unique Name
-      And   I Should Be Able To Add A New Quiz Activity
+      And   I Should Be Able To Add A Quiz Activity
       And   I Verify That Default Settings For Quiz Is Correct
       Then  I Should Change Quiz Settings
 
@@ -69,7 +68,7 @@
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
       When  I Create A New Course With A Unique Name
-      Then  I Should Be Able To Add A New Quiz Activity
+      Then  I Should Be Able To Add A Quiz Activity
       Given The "ELMO Admin" Configure The "Lock course with enrolments" To <course_lock>
       But   I Have Logged In As A Company Admin
       When  I Go To Admin Settings

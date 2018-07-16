@@ -317,27 +317,27 @@ When(/^I Set (.*) Settings To (.*)$/i) do |label_name, label_value|
 end
 
 
-When(/^I Go To The Page Which Has The List Of Current Editing Item$/) do
+When(/^I Go To The Page Which Has The List Of Current Editing Item$/i) do
   Sleep_Until(WaitForAnElementByXpathAndTouch(PRECEDING_BREAD_LIST_XPATH))
 end
 
 
-Then(/^I Should Edit The ([\s\w]+) .* Name And Description$/) do |edit_target|
+Then(/^I Should Edit The ([\s\w]+) .* Name And Description$/i) do |edit_target|
   FillTitleAndDescriptionFieldAndSave(edit_target)
 end
 
 
-And(/^I Search For Created Course In The Scenario$/) do
+And(/^I Search For Created Course In The Scenario$/i) do
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
 end
 
 
-And(/^I Change The Created Course Enrolment With (\w+) Being (\w+)$/) do |role_type, enrolled|
+And(/^I Change The Created Course Enrolment With (\w+) Being (\w+)$/i) do |role_type, enrolled|
   HandleEnrolmentOfCourse(role_type, enrolled)
 end
 
 
-And(/^I Go To The Sections Of The Created Course$/) do
+And(/^I Go To The Sections Of The Created Course$/i) do
   WaitForAnElementByLinkTextAndTouch("Courses")
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
@@ -347,7 +347,7 @@ end
 
 #### Quiz section Martinma123
 #### ModifyQuizTitleDescription specific for quiz activity due to Save button duplicated
-Then(/^I Should Edit The Quiz activity$/) do
+Then(/^I Should Edit The Quiz activity$/i) do
   ModifyQuizTitleDescription()
 end
 

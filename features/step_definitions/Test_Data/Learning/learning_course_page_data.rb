@@ -175,3 +175,8 @@ COURSE_APPROVAL_REASON = "automation, approving course request"
 COMPLETION_VALUE = 'Pass/Fail'
 FEEDBACK_VALUE = 'Yes'
 MARKER_VALUE = 'Manager'
+
+
+###Certificate Template
+CERT_TEMP_LIST_URL = 'https://' + $site + '.dev.elmodev.com/admin/course-certificate-template/list'
+CERT_TEMP_SAVE_SUCCESSFUL_VALUE = 'Course Certificate Template has been saved!'

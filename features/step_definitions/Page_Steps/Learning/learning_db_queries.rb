@@ -142,6 +142,15 @@ module Database_env
     # end
 
 
-  end
+    def count_certificate_template
+      query = 'select count(*) as certtemplatecount from `epms_course_certificate_template`'
+      templates = @db[query].first
+      return templates[:certtemplatecount]
+    end
 
+    def get_cert_temp_fields_value_by_name(cert_temp_name)
+      query = %Q(select * from `epms_course_certificate_template` where title = "#{cert_temp_name}")
+      return cert_temp_fields_value = @db[query].first
+    end
+  end
 end
