@@ -10,7 +10,7 @@ def EachRowIncludeValue(rows, search_value)
 end
 
 
-def SEARCH_ITEM_NO_SELECT2(search_box_css, search_value, search_btn_css)
+def SearchItemNoSelect2(search_box_css, search_value, search_btn_css)
   Sleep_Until(WaitForAnElementByCSSAndInputValue(search_box_css, search_value))
   Sleep_Until(WaitForAnElementByCSSAndTouch(search_btn_css))
 end

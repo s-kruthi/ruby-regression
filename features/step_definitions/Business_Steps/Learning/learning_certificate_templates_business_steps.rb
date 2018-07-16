@@ -19,7 +19,7 @@ end
 
 
 And(/^I Should Edit The Created Certificate$/i) do
-  SEARCH_ITEM_NO_SELECT2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID)
+  SearchItemNoSelect2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID)
   WaitForAnElementByCSSAndTouch(EDIT_CERTIFICATE_CSS)
   FillFieldsCreateCertTemp(@cert_temp_created, edit='edit')
   Sleep_Until(WaitForAnElementByCSSAndTouch(SAVE_CERTIFICATE_CSS))
@@ -28,7 +28,7 @@ end
 
 
 And(/^I Should Copy The Created Certificate$/i) do
-  SEARCH_ITEM_NO_SELECT2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID)
+  SearchItemNoSelect2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID)
   ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, 'Copy')
   # Todo check the copied template fields equal to DB data enty
   FillFieldsCreateCertTemp(@cert_temp_created, edit='copy')
@@ -38,7 +38,7 @@ end
 
 
 And(/^I should search for The Created Certificate and reset the search$/i) do
-  Sleep_Until(SEARCH_ITEM_NO_SELECT2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID))
+  Sleep_Until(SearchItemNoSelect2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID))
   # Expect to see 2 items as the certificate template has been copied
   VerifySearchResultElmoTable(2, @cert_temp_created)
   VerifyResetSearch(CLEAR_SEARCH_BTN_CSS, CERT_TEMP_LIST_URL)
