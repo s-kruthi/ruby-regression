@@ -95,3 +95,23 @@ COMPANY_MANAGER_PASS = "Admin1234567"
 COMPANY_EMPLOYEE_1_USER = "test1.omar1"
 COMPANY_EMPLOYEE_1_PASS = "Admin1234567"
 
+####### Payroll user credentials ############ "Added by Swathi"
+PAYROLL_ADMIN_USER = "swathi.volety@elmolearning.com.au"
+PAYROLL_ADMIN_PWD = "ea7682"
+
+
+##########Generic Variables for Colored message####################
+# TODO: Review pending removal
+# COLOR_GREEN = "\e[0m[ \e[32mPASSED\e[0m ] "
+# COLOR_RED = "\e[0m[ \e[31mFAILED\e[0m ] "
+# COLOR_YELLOW = "\e[0m[ \e[33mWARN\e[0m ] "
+# COLOR_BLUE = "\e[0m[ \e[34mINFO\e[0m ] "
+# COLOR_CYAN = "\e[0m[ \e[36mINFO\e[0m ] "
+# COLOR_MAGENTA = "\e[0m[ \e[35mINFO\e[0m ] "
+
+# COLOR_GREEN = "[PASSED] ".colorize(:green)
+# COLOR_RED = "[FAILED] ".colorize(:red)
+# COLOR_YELLOW = "[WARN] ".colorize(:yellow)
+# COLOR_BLUE = "[INFO] ".colorize(:blue)
+# COLOR_CYAN = "[INFO] ".colorize(:cyan)
+# COLOR_MAGENTA = "[INFO] ".colorize(:magenta)

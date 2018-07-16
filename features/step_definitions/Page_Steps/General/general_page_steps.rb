@@ -1,10 +1,18 @@
 def GoToSite()
   $site_alias = (ENV["URL"] || ENV["url"]) || 'tmsfull'
   $site_type = (ENV["TYPE"] || ENV["type"]) || 'staging'
+
   $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/dashboard" if ($site_type.to_s.downcase == "prod")    #Change this URL which determines the production TLD
   $site_url = "https://" + "#{$site_alias}" + ".dev.elmodev.com/dashboard" if ($site_type.to_s.downcase == "staging")   #Change this URL which determines the staging TLD
   $site_url = "https://" + "login.elmopayroll.com.au" if ($site_alias.to_s.downcase == "payroll")                        #Change this URL which determines the payroll TLD
   $site_url = "https://" + "survey2.elmodev.com" if ($site_alias.to_s.downcase == "survey2")                             #Change this URL which determines the survey TLD
+
+  # TODO: Change this to a case select condition
+  $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/dashboard" if ($site_type.to_s == "prod" || $site_type.to_s == "PROD")
+  $site_url = "https://" + "#{$site_alias}" + ".dev.elmodev.com/dashboard" if ($site_type.to_s == "staging" || $site_type.to_s == "STAGING")
+
+  $site_url = "https://" + "login.elmopayroll.com.au" if ($site_type.to_s == "payroll" || $site_type.to_s == "PAYROLL") #Added by Swathi
+
   puts "SERVER MODE = " + $site_type.to_s if (ENV["TYPE"] || ENV["type"]) != nil
   $driver.navigate.to($site_url)
 end
