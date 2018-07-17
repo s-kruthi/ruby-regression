@@ -135,7 +135,7 @@ end
 
 
 And(/^I Click On The Specific Requisition$/i) do
-  ClickRequisition()
+  ClickRequisition(REQUISITION_SEARCH_RESULT_TITLE_ID)
 end
 
 
@@ -231,11 +231,13 @@ Then(/^I Should See The Deletion Success Message$/i) do
 end
 
 
-And(/^I Search For A (Finalised|Withdrawn) Requisition Having Notes$/i) do |requisition_type|
+And(/^I Search For A (Finalised|Withdrawn|Pending) Requisition Having Notes$/i) do |requisition_type|
  if requisition_type == "Finalised"
    @requisition = $daos.get_requisition_details_with_notes(5)
  elsif requisition_type == "Withdrawn"
    @requisition = $daos.get_requisition_details_with_notes(6)
+ elsif requisition_type == "Pending"
+   @requisition = $daos.get_requisition_details_with_notes(0)
  end
 
  unless @requisition
@@ -243,8 +245,13 @@ And(/^I Search For A (Finalised|Withdrawn) Requisition Having Notes$/i) do |requ
    skip_this_scenario
  end
 
- SelectRequisitionStatus(requisition_type)
- SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
+ case requisition_type
+   when "Pending"
+     SearchARequisition(REQUISITION_APPROVAL_SEARCH_ID, @requisition[:requisition_title_display], '//button[@ng-click="updateUrl()"]')
+   else
+     SelectRequisitionStatus(requisition_type)
+     SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
+ end
 end
 
 
@@ -255,4 +262,19 @@ Then(/^I Should Be Able To Only View The Requisition Note$/i) do
     And   I Should Not See The Add Note Button For The Note
     And   I Should See The Last Updated Details
   }
+end
+
+
+And(/^I Choose To ([\w\s]+) For The Requisition$/i) do |action|
+  Sleep_Until(ClickMenuOfFirstItemFromTable(REQUISITION_ACTION_DROPDOWN_ID, action))
+end
+
+
+Then(/^I Should Be Able To View The Requisition Note In the (Modal|Page)$/i) do |location|
+  VerifyNoteDetails()
+end
+
+
+And(/^I View The Requisition For Approval$/i) do
+  ViewRequisitionForApproval()
 end
