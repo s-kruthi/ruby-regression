@@ -87,3 +87,33 @@ def CheckCourseDetail(field_name)
       Sleep_Until(VerifyAnElementExists("xpath", ENROLED_COURSE_DUEDATE_ID))
   end
 end
+
+
+def GoToEnrolledUserPage()
+  enrol_user_url = $site_url.chomp('/dashboard')
+  $driver.navigate.to("#{enrol_user_url}/admin/course/#{$data_hash['course_id:']}/enrolments")
+end
+
+
+def BulkEnrolUsersToThatCourse()
+  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch("Bulk Enrol Users"))
+  Sleep_Until(WaitForAnElementByIdAndTouch("select-all"))
+  Sleep_Until(WaitForAnElementByIdAndTouch("enrol-btn"))
+  Sleep_Until(WaitForAnElementByCSSAndTouch('button[data-action="run"]'))
+  sleep(5)
+end
+
+
+def VerifyAllSelectedUsersGotBulkEnrolledToTheCourse(course_id)
+  SearchDatabaseForASpecificData(TMSFULL_DATABASE,FetchBulkEnrolCount(course_id))
+  puts $data_hash['COUNT(*):']
+  if $data_hash['COUNT(*):'] == '10'
+    puts "All #{$data_hash['COUNT(*):']} users got enrolled".colorize(:green)
+  else
+   fail
+  end
+end
+
+def FetchBulkEnrolCount(course_id)
+  "select COUNT(*) from epms_lms_course_enrolment where course_id ='#{course_id}' order by id DESC LIMIT 10"
+end

@@ -48,3 +48,35 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I Should See The Course Category On The Page
     And   I Should See The Course Status On The Page
     And   I Should See The Course Due Date On The Page
+
+
+  @course_manual_enrolment  @learning_low_risk  @C794
+  Scenario: [Learning]Manually Enrol User To A Particular Course
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Search For A Specific Course Named course_section_automation_QuizActivity_shanku
+    And   I Re Enrol The Candidate For The Activity
+
+
+  @course_bulk_enrolment  @learning_high_risk  @C795
+  Scenario: [Learning]Manually Bulk Enrol Users Into A Particular Course
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    And   I Create A Random Course For Automation
+    When  I Search For The Randomly Created Course
+    Then  I Should Be Able To Bulk Enrol Users To That Course
+
+
+  @learning_high_risk @enrolment_filter_create @C796
+  Scenario: [Learning]Learning Admin using a Filter can Fetch Specific User For Course Enrolment
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    And   I Search For A Specific Course Named course_section_automation_QuizActivity_shanku
+    And   I Go To The Enrolled User Section For That Course course_section_automation_QuizActivity_shanku
+    When  I Click On "Create Filter" Button
+    And   I select Employee Name as DontTouchAutomationUser
+    Then  I Should Be Able to Create a Filter
+    And   I See A Filtered List Of Course Enrolment Returning User Donttouchautomationuser Aaron

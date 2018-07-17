@@ -48,6 +48,11 @@ When(/^I Search For A Specific Course Named (.*)$/i) do |course_search_name|
 end
 
 
+When(/^I Search For The Randomly Created Course$/i) do
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, $randomly_created_course, COURSE_SEARCH_BTN_ID)
+end
+
+
 Then(/^I Should Be Able To Edit The Specific Course$/i) do
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
@@ -259,6 +264,9 @@ And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
   sleep(2)
   WaitForAnElementByIdAndInputValue(CRS_RQST_ID, CRS_RQST_TXT)
   WaitForAnElementByIdAndTouch(CRS_REQUEST_SBMT)
+  ReturnMultipleUserDetails(TMSFULL_DATABASE,'X1242341',course_name)
+  puts $data_hash['first_name:']
+  puts $data_hash['course_id:']
 end
 
 
@@ -280,7 +288,11 @@ end
 
 
 And(/^I Re Enrol The Candidate For The Activity$/) do
-  DeleteTheExistingCourseEnrolment('392')
+  ReturnMultipleUserDetails(TMSFULL_DATABASE,'X1242341','course_section_automation_QuizActivity_shanku')
+  puts $data_hash['first_name:']
+  puts $data_hash['course_id:']
+  GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
+  DeleteTheExistingCourseEnrolment()
   ReEnrolTheCandidateForCourse()
 end
 
@@ -616,4 +628,23 @@ And(/^I Select (\d+) ([\w\s]+) For Bulk Action$/i) do |selection_number, selecti
     end
     i = i + 1
   end
+end
+
+
+And(/^I Create A Random Course For Automation$/i) do
+  Sleep_Until(CreateACourseThroughServices(LEARNING_ADMIN_USERNAME,LEARNING_ADMIN_PASSWORD))
+  Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
+  puts $data_hash['first_name:']
+  puts $data_hash['course_id:']
+end
+
+And(/^I Go To The Enrolled User Section For That Course (.*)$/i) do |course_name|
+  Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,course_name))
+  puts $data_hash['course_id:']
+  GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
+end
+
+
+And(/^I See A Filtered List Of Course Enrolment Returning User (.*)$/i) do |learner_name|
+  VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
 end

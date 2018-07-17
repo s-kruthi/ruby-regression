@@ -6,13 +6,6 @@ And(/^I Search For A Specific Assignment Rule Named (.*)$/i) do |rule_name|
 end
 
 
-Given(/^I Want To Generate Learning Notification data On Any Staging$/i) do
-  puts ENV['STAGING']
-  puts "Data Creation in process...".colorize(:blue)
-  GenerateLearningDataUsingJmeterRubyService()
-end
-
-
 When(/^I Reset The Assignment Rule$/) do
   DeactivateTheSearchedAssignment()
   ReActivateTheSearchedAssignment()

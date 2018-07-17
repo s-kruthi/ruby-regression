@@ -9,7 +9,7 @@ def DeactivateTheSearchedAssignment()
   Sleep_Until($driver.find_elements(:css, 'button[data-toggle="dropdown"]' )[0].click)
   Sleep_Until($driver.find_elements(:css, 'a[title="Deactivate"]' )[0].click)
   Sleep_Until($driver.find_element(:id, 'confirm-button').click)
-  sleep(6)
+  sleep(12)
 end
 
 

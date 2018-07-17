@@ -683,8 +683,12 @@ def WithdrawTheCandidateFromF2FSession()
 end
 
 
-def DeleteTheExistingCourseEnrolment(course_id)
-  $driver.navigate.to("https://tmsfull.dev.elmodev.com/admin/course/#{course_id}/enrolments")
+def GoToSpecificCourseEnrolmentSection(course_id)
+  enrol_user_url = $site_url.chomp('/dashboard')
+  $driver.navigate.to("#{enrol_user_url}/admin/course/#{course_id}/enrolments")
+end
+
+def DeleteTheExistingCourseEnrolment()
   Sleep_Until($driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]'))
   $driver.find_element(:css, 'a[data-user="Donttouchautomationuser Aaron"]').click
   sleep(1)
@@ -1118,4 +1122,22 @@ def FilterEnrolments(filter_by, filter_value)
     # results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
     # if results_count.eql?count then puts COLOR_BLUE + "Results match" end
   end
+end
+
+def CreateACourseThroughServices(creator_username, creator_password)
+  if ENV['url'] == nil
+    ENV['url'] = 'tmsfull'
+  else
+    puts "server provided = " + ENV["url"]
+  end
+  puts @create_against =  "#{ENV['url']}.dev.elmodev.com"
+  puts "Data Creation in process...".colorize(:blue)
+  if ENV['MYMAC']
+    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password})
+  else
+    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password})
+  end
+  csv = CSV.read('JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv', :headers=>false)
+  puts "course_name:" + csv[0][0]
+  $randomly_created_course = File.read("./JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv").delete!("\n")
 end
