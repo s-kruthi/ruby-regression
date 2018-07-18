@@ -427,6 +427,12 @@ def ClickOnSaveButton(btn_id)
 end
 
 
+def ClickOnFilterSaveButton(btn_id,filter_name_id,filter_name_value)
+  Sleep_Until(WaitForAnElementByIdAndTouch(btn_id))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(filter_name_id,filter_name_value))
+  sleep (1)
+end
+
 def DeleteASection(section_name)
   Sleep_Until($driver.find_elements(:class, section_name).last.click)
   Sleep_Until(PressEnterConfirm())
@@ -697,12 +703,12 @@ def DeleteTheExistingCourseEnrolment()
 end
 
 
-def ReEnrolTheCandidateForCourse()
+def ReEnrolTheCandidateForCourse(candidate_name)
   WaitForAnElementByPartialLinkTextAndTouch("Manual Enrol Users")
   Sleep_Until($driver.find_element(:id, "s2id_autogen1"))
-  $driver.find_element(:id, "s2id_autogen1").send_keys "Donttouchautomationuser"
+  $driver.find_element(:id, "s2id_autogen1").send_keys "#{candidate_name}"
   begin
-    wait_valid = $driver.find_element(:class, "select2-results-1").text.include? "Donttouchautomationuser"
+    wait_valid = $driver.find_element(:class, "select2-results-1").text.include? "#{candidate_name}"
     Sleep_Until(wait_valid)
   rescue
     sleep(9)

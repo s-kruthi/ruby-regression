@@ -209,6 +209,11 @@ Then(/^I Should Be Able to Create a Filter$/i) do
   Sleep_Until(ClickOnSaveButton(FILTER_SUBMIT_BTN_ID))
 end
 
+Then(/^I Should Be Able to Save a Filter$/i) do
+  Sleep_Until(ClickOnFilterSaveButton(FILTER_SAVE_BTN_ID,FILTER_NAME_ID,FILTER_NAME_VALUE))
+  Sleep_Until(ClickOnSaveButton(FILTER_SUBMIT_BTN_ID))
+end
+
 
 Then(/^I Should Be Able To View The Face-To-Face Activity Session List$/i) do
   WaitForFaceToFaceSessionListAndVerify(F2F_SESSION_HEADING_ID, F2F_SESSION_HEADING_VALUE)
@@ -293,7 +298,7 @@ And(/^I Re Enrol The Candidate For The Activity$/) do
   puts $data_hash['course_id:']
   GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
   DeleteTheExistingCourseEnrolment()
-  ReEnrolTheCandidateForCourse()
+  ReEnrolTheCandidateForCourse('Donttouchautomationuser')
 end
 
 
@@ -638,6 +643,7 @@ And(/^I Create A Random Course For Automation$/i) do
   puts $data_hash['course_id:']
 end
 
+
 And(/^I Go To The Enrolled User Section For That Course (.*)$/i) do |course_name|
   Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,course_name))
   puts $data_hash['course_id:']
@@ -647,4 +653,12 @@ end
 
 And(/^I See A Filtered List Of Course Enrolment Returning User (.*)$/i) do |learner_name|
   VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
+end
+
+
+And(/^I Go To The Enrolled User Section Of That Randomly Created Course$/i) do
+  Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
+  puts $data_hash['course_id:']
+  Sleep_Until(GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}"))
+  Sleep_Until(ReEnrolTheCandidateForCourse('Donttouchautomationuser'))
 end

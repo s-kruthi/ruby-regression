@@ -6,7 +6,7 @@
 
 Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
 
-  @smoke_learning @learning_high_risk @course_add @C238
+  @smoke_learning1 @learning_high_risk @course_add @C238
   Scenario: [Learning]Learning Admin Creating New Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -16,7 +16,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To Create A New Course
 
 
-  @learning_low_risk @course_search @C792
+  @smoke_learning1 @learning_low_risk @course_search @C792
   Scenario: [Learning]Learning Admin Searching New Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -25,7 +25,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To Edit The Specific Course
 
 
-  @learning_low_risk @course_copy
+  @smoke_learning1 @learning_low_risk @course_copy
   Scenario: [Learning]Learning Admin Deleting New Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -34,7 +34,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To Copy The Specific Course
 
 
-  @learning_low_risk @course_delete @C6091
+  @smoke_learning1 @learning_low_risk @course_delete @C6091
   Scenario: [Learning]Learning Admin Deleting New Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -43,7 +43,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To Delete The Specific Course
 
 
-  @learning_low_risk @course_notifications_add
+  @smoke_learning1 @learning_low_risk @course_notifications_add
   Scenario: [Learning]Learning Admin Adding Notification Templates in Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -52,7 +52,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To Add All Notifications
 
 
-  @learning_low_risk @course_view_enrolments
+  @smoke_learning1 @learning_low_risk @course_view_enrolments
   Scenario: [Learning]Learning Admin Can View Course Enrolments
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -61,7 +61,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To View All The Course Enrolments
 
 
-  @learning_low_risk @course_disable_retrain_enrolment
+  @smoke_learning1 @learning_low_risk @course_disable_retrain_enrolment
   Scenario: [Learning]Learning Admin Can Disable Retrain For Enrolments
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -72,7 +72,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To See The Retrain Disabled For The Enrolment
 
 
-  @learning_low_risk @course_enable_retrain_enrolment
+  @smoke_learning1 @learning_low_risk @course_enable_retrain_enrolment
   Scenario: [Learning]Learning Admin Can Disable Retrain For Enrolments
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -83,7 +83,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To See The Retrain Enabled For The Enrolment
 
 
-  @learning_low_risk @course_edit_enrolment_start_end_date @C800 @C801 @PMS-14875
+  @smoke_learning2 @learning_low_risk @course_edit_enrolment_start_end_date @C800 @C801 @PMS-14875
   Scenario: [Learning]Learning Admin Can Edit Enrolments With Due Date
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -98,7 +98,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should See That The Changes Were Successfully Saved To The Enrolment
 
 
-  @learning_low_risk @course_edit_enrolment_start_date @C800 @C801 @PMS-14875
+  @smoke_learning2 @learning_low_risk @course_edit_enrolment_start_date @C800 @C801 @PMS-14875
   Scenario: [Learning]Learning Admin Can Edit Enrolments Without Due Date
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -113,7 +113,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should See That The Changes Were Successfully Saved To The Enrolment
 
 
-  @learning_low_risk @course_delete_enrolment @C813
+  @smoke_learning2 @learning_low_risk @course_delete_enrolment @C813
   Scenario: [Learning]Learning Admin Can Delete Enrolment
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -126,7 +126,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should See That The Enrolment Was Successfully Deleted
 
 
-  @learning_low_risk @course_bulkdelete_enrolment @C815
+  @smoke_learning2 @learning_low_risk @course_bulkdelete_enrolment @C815
   Scenario: [Learning]Learning Admin Can Delete Enrolment In Bulk
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -138,7 +138,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should See That The Enrolment Was Successfully Deleted
 
 
-  @learning_low_risk @course_mark_enrolment_complete @C815
+  @smoke_learning2 @learning_low_risk @course_mark_enrolment_complete @C815
   Scenario: [Learning]Learning Admin Can Mark Enrolment As Complete
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -149,7 +149,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should See That The Enrolment Was Successfully Marked As Complete
 
 
-  @learning_low_risk @course_bulkmark_enrolment_complete
+  @smoke_learning2 @learning_low_risk @course_bulkmark_enrolment_complete
   Scenario: [Learning]Learning Admin Can Mark Enrolments In Bulk As Complete
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings

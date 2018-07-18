@@ -1,15 +1,15 @@
-@Notifications_learning @learning @smoke_learning
+@Notifications_learning @learning
 #@learningTestRailTags
 #C12706 C12257 C12258
 #@learningTestRailTags
 Feature:
   As a user I want to test combinations of Learning Course Activity notifications to test if they were triggered successfully
-  @generate_data @wip
+  @smoke_learning9 @generate_data @wip
   Scenario: generate test data For learning
     Given I Want To Generate Learning Notification data On Any Staging
 
 
-  @course_assignments  @learning_high_risk @NotificationsLearning @C12706
+  @smoke_learning9 @course_assignments  @learning_high_risk @NotificationsLearning @C12706
   Scenario: [Learning]User Enrols For A Particular Course Which triggers Notification to Both The User And His Manager(auto approval)
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -19,7 +19,7 @@ Feature:
     Then  The User Should Be Instantly Notified About The New Enrolment
 
 
-  @course_assignments_approval  @learning_high_risk @NotificationsLearning  @C12257 @C12258
+  @smoke_learning9 @course_assignments_approval  @learning_high_risk @NotificationsLearning  @C12257 @C12258
   Scenario: [Learning]User Enrols For A Particular Course Which triggers Notification to Both The User And His Manager(approval required)
     Given I Have Logged In as a Specific Automation User
     And   I Go To The Menu Learning Section
@@ -31,7 +31,7 @@ Feature:
     Then  The User Should Be Instantly Notified About The New Enrolment Request
 
 
-  @course_assignments_via_rules @learning_high_risk @NotificationsLearning @C1010
+  @smoke_learning9 @course_assignments_via_rules @learning_high_risk @NotificationsLearning @C1010
   Scenario: [Learning] Verify that user who is assigned a course via assignment rule receives "New Enrolment" notification
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -41,7 +41,7 @@ Feature:
     Then  The User Should Be Instantly Notified About The New Course Enrolment
 
 
-  @course_notification_verify @learning_high_risk
+  @smoke_learning9 @course_notification_verify @learning_high_risk
   Scenario: [Learning] Verify That User Receives Notification When Enrolling Into A Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -52,7 +52,7 @@ Feature:
     Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient company.omar
 
 
-  @course_bulk_enrolment_notification  @learning_high_risk
+  @smoke_learning9 @course_bulk_enrolment_notification  @learning_high_risk @C1640
   Scenario: [Learning] Bulk Enrol Users Into A Particular Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings

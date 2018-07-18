@@ -5,7 +5,7 @@
 
 Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
 
-@learning_low_risk @course_retrain_discrepancy_fix @C7206
+  @smoke_learning8 @learning_low_risk @course_retrain_discrepancy_fix @C7206
 Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Fix Retrain
 Given I Have Logged In as a Learning Admin
 And   I go to Admin Settings
@@ -14,7 +14,7 @@ When  I See a List of Discrepancy Courses for Users
 Then  I Should Be Able To Fix Retrain Of A Specific Course
 
 
-@learning_low_risk @course_retrain_discrepancy_disable @C7207
+  @smoke_learning8 @learning_low_risk @course_retrain_discrepancy_disable @C7207
 Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Disable Retrain
 Given I Have Logged In as a Learning Admin
 And   I go to Admin Settings
@@ -23,7 +23,7 @@ When  I See a List of Discrepancy Courses for Users
 Then  I Should Be Able To Disable Retrain Of A Specific Course
 
 
-@learning_low_risk @course_retrain_discrepancy_filter_create @C1804
+  @smoke_learning8 @learning_low_risk @course_retrain_discrepancy_filter_create @C1804
 Scenario: [Learning]Learning Admin using a Filter to apply on Retrain Discrepancies Page Results
 Given I Have Logged In as a Learning Admin
 And   I go to Admin Settings
@@ -34,7 +34,7 @@ Then  I Should Be Able to Create a Filter
 And   I See a Filtered List of Retrain Discrepancy Course Results for Learner Test1 Omar1
 
 
-@learning_low_risk @course_retrain_discrepancy_bulkfix
+  @smoke_learning8 @learning_low_risk @course_retrain_discrepancy_bulkfix
 Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Fix Retrain in Bulk
 Given I Have Logged In as a Learning Admin
 And   I go to Admin Settings
@@ -45,7 +45,7 @@ And   I Choose To Fix Retrain From The Actions Menu
 Then  I Should Be Able To See The Success Message For Fix Retrain For Users
 
 
-@learning_low_risk @course_retrain_discrepancy_bulkdisable
+  @smoke_learning8 @learning_low_risk @course_retrain_discrepancy_bulkdisable
 Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Fix Retrain in Bulk
 Given I Have Logged In as a Learning Admin
 And   I go to Admin Settings

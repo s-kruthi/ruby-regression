@@ -5,7 +5,7 @@
 
 Feature: As An User I Would Like To Manage My Enrolments To Courses
 
-  @learning_low_risk @course_self_enrolment @C7952
+  @smoke_learning7 @learning_low_risk @course_self_enrolment @C7952
   Scenario: [Learning]User Can Self Enrol To A Course
     Given I Have Logged In as a Company Employee
     And   I Go To The Menu Learning Section
@@ -15,7 +15,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I Should See That I Am Enrolled To The Course
 
 
-  @learning_low_risk @course_self_unenroll @C7952
+  @smoke_learning7  @learning_low_risk @course_self_unenroll @C7952
   Scenario: [Learning]User Can Self-Unenroll From A Course
     Given I Have Logged In as a Company Employee
     And   The User Has Enrolled To A Course With Self-Unenroll Set To Yes
@@ -28,7 +28,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I Should See That I Am Unenrolled To The Course
 
 
-  @learning_low_risk @course_no_unenroll @C7953
+  @smoke_learning7 @learning_low_risk @course_no_unenroll @C7953
   Scenario: [Learning]User Cannot Self-Unenroll From A Course
     Given I Have Logged In as a Company Employee
     And   The User Has Enrolled To A Course With Self-Unenroll Set To No
@@ -39,7 +39,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     Then  I Should See That I Cannot Unenroll From The Course
 
 
-  @learning_low_risk @course_user_enrolments
+  @smoke_learning7 @learning_low_risk @course_user_enrolments
   Scenario: [Learning]User Can View Enroled Courses And Details
     Given I Have Logged In as a Company Admin
     When  I Go To The Menu Learning Section
@@ -50,7 +50,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I Should See The Course Due Date On The Page
 
 
-  @course_manual_enrolment  @learning_low_risk  @C794
+  @smoke_learning7 @course_manual_enrolment  @learning_low_risk  @C794
   Scenario: [Learning]Manually Enrol User To A Particular Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -59,7 +59,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I Re Enrol The Candidate For The Activity
 
 
-  @course_bulk_enrolment  @learning_high_risk  @C795
+  @smoke_learning7 @course_bulk_enrolment  @learning_high_risk  @C795
   Scenario: [Learning]Manually Bulk Enrol Users Into A Particular Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -69,7 +69,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     Then  I Should Be Able To Bulk Enrol Users To That Course
 
 
-  @learning_high_risk @enrolment_filter_create @C796
+  @smoke_learning7 @learning_high_risk @enrolment_filter_create @C796
   Scenario: [Learning]Learning Admin using a Filter can Fetch Specific User For Course Enrolment
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -79,4 +79,18 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     When  I Click On "Create Filter" Button
     And   I select Employee Name as DontTouchAutomationUser
     Then  I Should Be Able to Create a Filter
+    And   I See A Filtered List Of Course Enrolment Returning User Donttouchautomationuser Aaron
+
+
+  @smoke_learning8 @learning_high_risk @enrolment_filter_create @C797 @C798
+  Scenario: [Learning]Learning Admin Can Create Save And Reuse A User Filter And Fetch User For Course Enrolment
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    And   I Create A Random Course For Automation
+    When  I Search For The Randomly Created Course
+    And   I Go To The Enrolled User Section Of That Randomly Created Course
+    When  I Click On "Create Filter" Button
+    And   I select Employee Name as DontTouchAutomationUser
+    Then  I Should Be Able to Save a Filter
     And   I See A Filtered List Of Course Enrolment Returning User Donttouchautomationuser Aaron
