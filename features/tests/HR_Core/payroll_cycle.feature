@@ -33,10 +33,12 @@ Feature:
     Then  I Should Be Able To Create The Payroll Cycle Successfully
 
 
-  @hr_core_low_risk @payroll_cycle_edit @wip
+  @hr_core_low_risk @payroll_cycle_edit
   Scenario: [General]Company Admin Can Edit Payroll Cycle
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Payroll Cycle under HR Core section
     When  I Click On Edit Payroll Cycle Button
+    Then  I Edit The Payroll Cycle Details
+    And   I Should Be Able To Edit The Payroll Cycle Successfully
 

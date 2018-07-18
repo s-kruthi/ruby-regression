@@ -28,19 +28,30 @@ module Database_env
       query = "select id, title, created_date, type
                from `epms_hrcore_payroll_cycle` ehpc
                where is_deleted = 0
+               and is_default = 0
                ORDER BY rand();"
       return @db[query].first
     end
 
 
-    def get_count_payroll_cycle()
-      query = "select count(*) as payroll_cyclenum
+    def get_payroll_cycle_by_title(title)
+      query = "select id
                from `epms_hrcore_payroll_cycle` ehpc
                where is_deleted = 0
-               ORDER BY rand();"
-      return @db[query].first[:payroll_cyclenum]
+               and title = '#{title}'"
+      return @db[query].first
+    end
+
+
+    def get_payroll_cycle_by_id(id)
+      query = "select title
+               from `epms_hrcore_payroll_cycle` ehpc
+               where is_deleted = 0
+               and id = #{id}"
+      return @db[query].first[:title]
     end
 
   end
+
 end
 

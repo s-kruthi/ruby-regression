@@ -10,7 +10,7 @@ end
 
 
 And(/^I Should(\s+?|\sNot\s)Be Able To Delete The Payroll Cycle$/i) do |ability|
-  CheckDeletionPayrollCycle()
+  CheckDeletionPayrollCycle(ability)
 end
 
 
@@ -23,7 +23,7 @@ When(/^I Click On (Add|Edit) Payroll Cycle Button$/i) do |action|
   if  action == "Add"
     WaitForAnElementByXpathAndTouch(PAYROLL_CYCLE_ADD_ID)
   elsif action == "Edit"
-    EditPayrollCycleDetails()
+    EditPayrollCycle()
   end
 end
 
@@ -32,6 +32,15 @@ And(/^I Enter The Payroll Cycle Details$/i) do
 end
 
 
-Then(/^I Should Be Able To Create The Payroll Cycle Successfully$/i) do
-  VerifyPayrollCycleCreation()
+Then(/^I Should Be Able To (Create|Edit) The Payroll Cycle Successfully$/i) do |action|
+  if action == "Create"
+    VerifyPayrollCycleCreation()
+  elsif action == "Edit"
+    VerifyPayrollCycleEdit()
+  end
+end
+
+
+Then(/^I Edit The Payroll Cycle Details$/i) do
+  EnterPayrollCycleDetails(PAYROLL_TITLE_EDIT)
 end
