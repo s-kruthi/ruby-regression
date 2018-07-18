@@ -49,7 +49,7 @@ When("I Create A Cost Category With {runtime name}") do |name|
 end
 
 Then(/^I Should Be Able To Create The Learning Cost Category$/) do
-  VerifySuccessAlert(CATEGORY_SUCCESS_XPATH)
+  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_COST_CATEGORY_SAVE_SUCCESSFUL_VALUE)
 end
 
 Then(/^I Can Toggle The Visibility State Of Existing Cost Category$/) do
@@ -68,5 +68,5 @@ end
 Then("I Can Edit The Learning Cost Category With {runtime content}") do |content|
   EditTextInCKEContent(content)
   ClickButtonWithName('Save')
-  VerifySuccessAlert(CATEGORY_SUCCESS_XPATH)
+  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_COST_CATEGORY_SAVE_SUCCESSFUL_VALUE)
 end
