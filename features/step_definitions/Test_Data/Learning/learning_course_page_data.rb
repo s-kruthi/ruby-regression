@@ -42,7 +42,7 @@ COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE = "Course has been saved!"
 
 
 COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully Saved."
-
+COURSE_COST_CATEGORY_SAVE_SUCCESSFUL_VALUE = 'Cost Category has been saved!'
 
 COURSE_LIST_TITLE_VALUE = "Test Course - Please DO NOT DELETE"
 
