@@ -4,7 +4,7 @@ Feature:
   As A Company/HR Admin, I Can Manage Payroll Cycles
 
   #Currently can be run only on payroll03
-  @hr_core_low_risk
+  @hr_core_low_risk @C16629
   Scenario: [General]Company Admin Cannot Delete Payroll Cycle Associated To An User
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -14,7 +14,7 @@ Feature:
     And   I Should Not Be Able To Delete The Payroll Cycle
 
 
-  @hr_core_low_risk @payroll_cycle_delete
+  @hr_core_low_risk @payroll_cycle_delete @C16630
   Scenario: [General]Company Admin Can Delete Payroll Cycle
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -23,7 +23,7 @@ Feature:
     Then  I Should Be Able To Delete The Payroll Cycle
 
 
-  @hr_core_low_risk @payroll_cycle_add
+  @hr_core_low_risk @payroll_cycle_add @C82
   Scenario: [General]Company Admin Can Add Payroll Cycle
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -33,7 +33,7 @@ Feature:
     Then  I Should Be Able To Create The Payroll Cycle Successfully
 
 
-  @hr_core_low_risk @payroll_cycle_edit
+  @hr_core_low_risk @payroll_cycle_edit @C16628
   Scenario: [General]Company Admin Can Edit Payroll Cycle
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
