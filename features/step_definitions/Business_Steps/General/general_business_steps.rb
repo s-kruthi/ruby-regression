@@ -106,9 +106,13 @@ end
 
 
 And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
+
   if menu_section == "Rewards"
     menu_section = "RewardsAdmin"
+  elsif menu_section == "HR Core"
+    menu_section = "HRCore"
   end
+
   begin
     $section_name = "//a[@href='#collapse#{menu_section}']"
     $item_name = "//span[contains(.,'#{menu_type}')]"

@@ -18,7 +18,7 @@ end
 
 def GoToSection(general_expand, users_list_path)
   GoToASection(general_expand)
-  sleep(1)
+  sleep(2)
   GoToItemLandingPage(users_list_path)
 end
 

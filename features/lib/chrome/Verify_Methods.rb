@@ -161,7 +161,7 @@ module Chrome
     end
 
 
-    def VerifyAnElementNotExist(*section_identifier ,type, identifier)
+    def VerifyAnElementNotExist(*section_identifier, type, identifier)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 5)
         if section_identifier.empty?
