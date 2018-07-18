@@ -5,7 +5,7 @@
 
   Feature: Course Activity Scorm Package and Quiz Manipulation
 
-    @smoke_learning @learning_low_risk @add_edit_scorm_package @C1027
+    @smoke_learning6 @learning_low_risk @add_edit_scorm_package @C1027
     Scenario: As a company admin, i want to be able to add/edit a scorm package and make necessary changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -15,7 +15,7 @@
       Then  I Should Edit The Scorm Section Name And Description
 
 
-    @learning_low_risk @course_enrolment_lock_course_enrolment_edit_scorm @C1028
+    @smoke_learning6 @learning_low_risk @course_enrolment_lock_course_enrolment_edit_scorm @C1028
     Scenario Outline: User can edit the scorm activity regardless of course lock config or user enrolled in the course
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -39,7 +39,7 @@
         |    No       | Enrolled      |
 
 
-    @smoke_learning @learning_low_risk @quiz_activity_edit @C247
+    @smoke_learning6 @learning_low_risk @quiz_activity_edit @C247
     Scenario: As A Company Admin, I Want To Be Able To Add/edit A Quiz And Make Necessary Changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -50,7 +50,7 @@
       Then  I Should Edit The Quiz activity
 
 
-    @smoke_learning @learning_low_risk @quiz_activity_setting
+    @smoke_learning6 @learning_low_risk @quiz_activity_setting
     Scenario: Verify Default Settings Of Quiz Activity And Change Activity Settings
     Default settings for Settings is "Completion Terminology: Pass/Fail", "Show Feedback: Yes", "Marker: Manager"
       Given I Have Logged In As A Company Admin
