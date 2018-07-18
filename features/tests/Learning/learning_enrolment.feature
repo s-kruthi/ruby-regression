@@ -80,3 +80,17 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I select Employee Name as DontTouchAutomationUser
     Then  I Should Be Able to Create a Filter
     And   I See A Filtered List Of Course Enrolment Returning User Donttouchautomationuser Aaron
+
+
+  @learning_high_risk @enrolment_filter_create @C797 @C798
+  Scenario: [Learning]Learning Admin Can Create Save And Reuse A User Filter And Fetch User For Course Enrolment
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    And   I Create A Random Course For Automation
+    When  I Search For The Randomly Created Course
+    And   I Go To The Enrolled User Section Of That Randomly Created Course
+    When  I Click On "Create Filter" Button
+    And   I select Employee Name as DontTouchAutomationUser
+    Then  I Should Be Able to Save a Filter
+    And   I See A Filtered List Of Course Enrolment Returning User Donttouchautomationuser Aaron
