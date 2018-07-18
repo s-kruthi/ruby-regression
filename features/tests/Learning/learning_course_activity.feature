@@ -116,6 +116,18 @@
       And   I should be able to Delete face to face notification with name Course Face-to-Face Confirmation
 
 
+    @smoke_learning @learning_low_risk @signup_attendance_manually_mark_attendance @C1830
+    Scenario: Signup Attendance To Face To Face Session And Mark Attendance
+      Given A Face To Face Session With Status Over Is Created For A Course
+      And   I Go To The Page Which Has The List Of Current Editing Item
+      When  I Click On "Attendance" Button
+      Then  I Should Be Able To Manual Signup Company Admin Omar
+      Then  I Should Be Able To Mark Attendance "Fully Attended" With Grade 90 And Mark As Attendance Complete
+      And   I Should Be Able To Mark Attendance "Partially Attended" With Grade 90 And Mark As Attendance Complete
+      And   I Should Be Able To Mark Attendance As No Show With Grade 90
+      And   I Should Be Able To Mark Attendance "Cancelled" With Grade 90 And Mark As Attendance Complete
+
+
     @learning_low_risk @C6071
     Scenario: As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Enrol / Withdraw Myself From The Face-to-face Session
       Given I Have Logged In As A Company Admin
