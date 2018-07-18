@@ -659,6 +659,6 @@ end
 And(/^I Go To The Enrolled User Section Of That Randomly Created Course$/i) do
   Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
   puts $data_hash['course_id:']
-  GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
-  ReEnrolTheCandidateForCourse('Donttouchautomationuser')
+  Sleep_Until(GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}"))
+  Sleep_Until(ReEnrolTheCandidateForCourse('Donttouchautomationuser'))
 end
