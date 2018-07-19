@@ -1,3 +1,6 @@
+class RuntimeErrorException < Exception;
+end
+
 Then(/^I Should Receive A Notification With Trigger Named (.*) For Recipient (.*)$/i) do |notification_trigger_id, recipient_id|
   @notification_list = $daos.get_notification_by_trigger_id_and_recipient_name(notification_trigger_id, recipient_id)
 
@@ -17,9 +20,11 @@ Then(/^I Should Receive A Notification With Trigger Named (.*) For Recipient (.*
     fail
   end
 
-rescue RuntimeError => e
-  puts COLOR_RED + "No notification has been found in epms_log_message table in the last 8 hours. Please check database table manually to verify Notification"
-  raise RuntimeError.new("SQL Error")
-  puts e.message
+  begin
+  rescue RuntimeError => e
+    puts COLOR_RED + "No notification has been found in epms_log_message table in the last 8 hours. Please check database table manually to verify Notification"
+    raise RuntimeErrorException.new("SQL Error")
+    puts e.message
+  end
 end
 
