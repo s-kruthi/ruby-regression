@@ -112,8 +112,8 @@
       Then  I Should Be Able To Add A Face-to-Face Activity
       When  I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
       Then  I Should Be Able To Create Face To Face Notification With Name Course Face-to-Face Confirmation
-      And   I Should Be Able To Edit face to face notification with name Course Face-to-Face Confirmation
-      And   I should be able to Delete face to face notification with name Course Face-to-Face Confirmation
+      And   I Should Be Able To Edit Face To Face Notification With Name Course Face-to-Face Confirmation
+      And   I Should Be Able To Delete Face To Face Notification With Name Course Face-to-Face Confirmation
 
 
     @smoke_learning @learning_low_risk @signup_attendance_manually_mark_attendance @C1830

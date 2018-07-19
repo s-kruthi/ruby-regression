@@ -277,8 +277,7 @@ SIGN_UP_SELECTED_USERS_ID = 'enrol-btn'
 ACTION_TOGGLE_XPATH = "//div[contains(@class, 'pull-right')]//button[contains(@class, 'dropdown-toggle')]"
 MARK_ATTENDANCE_BUTTON_XPATH = "//a[@title='Mark Session Attendance']"
 CANCEL_SIGNUP_BUTTON_XPATH = "//a[@title='Cancel Sign Up']"
-MARK_COMPLETE_TOGGLE_CSS = "div[data-toggle='toggle'"
-Mark_Attendance_Confirm_BUTTON_ID = 'markAttendanceOk'
+MARK_ATTENDANCE_CONFIRM_BUTTON_ID = 'markAttendanceOk'
 ATTENDANCE_DROPDOWN_XPATH = "//*[@id='modFacetofaceSessionAttendanceForm_attendance']"
 GRADE_FIELD_XPATH = "//input[@id='modFacetofaceSessionAttendanceForm_score']"
 MARK_COMPLETE_CHECKBOX_CSS = '#modFacetofaceSessionAttendanceForm_completed'
