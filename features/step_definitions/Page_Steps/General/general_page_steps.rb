@@ -77,9 +77,9 @@ end
 
 def CreateRemainingUsers(counter)
   $driver.navigate.to($site_url)
-  GoToAdminSettings(ADMIN_COG)
-  GoToSection(GENERAL_EXPAND, USERS_LIST_PATH) if $add_user_type == "EMP"
-  GoToSection(ONBOARDING_EXPAND, OB_USERS_LIST_PATH) if $add_user_type == "OB"
+  Sleep_Until(GoToAdminSettings(ADMIN_COG))
+  Sleep_Until(GoToSection(GENERAL_EXPAND, USERS_LIST_PATH)) if $add_user_type == "EMP"
+  Sleep_Until(GoToSection(ONBOARDING_EXPAND, OB_USERS_LIST_PATH)) if $add_user_type == "OB"
   GoToAddNewUsersPage(ADD_NEW_USER_BTN) if $add_user_type == "EMP"
   GoToAddNewUsersPage(OB_ADD_NEW_USER_BTN) if $add_user_type == "OB"
   Sleep_Until(CreateUsers(counter))

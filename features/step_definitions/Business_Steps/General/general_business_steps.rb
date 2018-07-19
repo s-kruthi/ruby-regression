@@ -101,7 +101,7 @@ end
 
 
 And(/^I go to Admin Settings$/i) do
-  GoToAdminSettings(ADMIN_COG)
+  Sleep_Until(GoToAdminSettings(ADMIN_COG))
 end
 
 
@@ -116,7 +116,7 @@ And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
   begin
     $section_name = "//a[@href='#collapse#{menu_section}']"
     $item_name = "//span[contains(.,'#{menu_type}')]"
-    GoToSection($section_name, $item_name)
+    Sleep_Until(GoToSection($section_name, $item_name))
     $add_user_type = "EMP" if menu_type.include? "Users"
     $add_user_type = "OB" if menu_type.include? "Onboarding"
   end

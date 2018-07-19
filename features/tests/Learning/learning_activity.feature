@@ -134,7 +134,7 @@ Feature: As An Admin I Would Like to Manage Course Activities Which can Further 
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
-    When  I Edit A Specific Course Named DO NOT DELETE
+    When  I Edit A Specific Course Named DO NOT DELETE With No Enrolments
     Then  I Should Be Able To Delete A Specific ELMO Survey Activity Named Test ELMO Survey Activity - Please DO NOT DELETE
 
 
@@ -183,7 +183,7 @@ Feature: As An Admin I Would Like to Manage Course Activities Which can Further 
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
-    When  I Edit A Specific Course Named DO NOT DELETE
+    When  I Edit A Specific Course Named DO NOT DELETE With No Enrolments
     Then  I Delete A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
 
 
