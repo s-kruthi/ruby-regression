@@ -1161,6 +1161,7 @@ def CreateACourseThroughServices(creator_username, creator_password)
   $randomly_created_course = File.read("./JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv").delete!("\n")
 end
 
+
 def ManualSignupFaceToFaceSession(name, index)
   WaitForAnElementByPartialLinkTextAndTouch("Manual Sign Up")
   SelectIndexFromSelect2SearchResult(name, 0)
@@ -1183,7 +1184,7 @@ def MarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
   WaitForAnElementByXpathAndClearValue(GRADE_FIELD_XPATH)
   WaitForAnElementByXpathAndInputValue(GRADE_FIELD_XPATH, grade)
   ToggleTo(toggle_yes_no)
-  Sleep_Until(WaitForAnElementByIdAndTouch(Mark_Attendance_Confirm_BUTTON_ID))
+  Sleep_Until(WaitForAnElementByIdAndTouch(MARK_ATTENDANCE_CONFIRM_BUTTON_ID))
   VerifyTableByRowColumnCSS(1, (attendance.gsub(' ', '_').upcase+'_COLUMN_VALUE').constantize)
 end
 
@@ -1194,7 +1195,7 @@ def MarkFaceToFaceSessionAttendanceNoShow(no_show, grade)
   WaitForAnElementByXpathAndClearValue(GRADE_FIELD_XPATH)
   WaitForAnElementByXpathAndInputValue(GRADE_FIELD_XPATH, grade)
   VerifyElementDisableCSS(TOGGLE_BUTTON_CSS)
-  Sleep_Until(WaitForAnElementByIdAndTouch(Mark_Attendance_Confirm_BUTTON_ID))
+  Sleep_Until(WaitForAnElementByIdAndTouch(MARK_ATTENDANCE_CONFIRM_BUTTON_ID))
   VerifyTableByRowColumnCSS(1, NO_SHOW_COLUMN_VALUE)
 end
 
@@ -1202,12 +1203,11 @@ end
 def ToggleTo(yes_no)
   if yes_no.downcase.eql?('yes')
     unless CheckboxCheckedCSS?(MARK_COMPLETE_CHECKBOX_CSS)
-      WaitForAnElementByCSSAndTouch(MARK_COMPLETE_TOGGLE_CSS)
+      WaitForAnElementByCSSAndTouch(TOGGLE_BUTTON_CSS)
     end
-  end
-  if yes_no.downcase.eql?('no')
+  elsif yes_no.downcase.eql?('no')
     if CheckboxCheckedCSS?(MARK_COMPLETE_CHECKBOX_CSS)
-      WaitForAnElementByCSSAndTouch(MARK_COMPLETE_TOGGLE_CSS)
+      WaitForAnElementByCSSAndTouch(TOGGLE_BUTTON_CSS)
     end
   end
 end
