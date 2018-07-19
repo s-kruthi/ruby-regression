@@ -117,7 +117,7 @@
 
 
     @smoke_learning @learning_low_risk @signup_attendance_manually_mark_attendance @C1830
-    Scenario: Signup Attendance To Face To Face Session And Mark Attendance
+    Scenario: Signup Attendance To Face To Face Session And Mark User Attendance
       Given A Face To Face Session With Status Over Is Created For A Course
       And   I Go To The Page Which Has The List Of Current Editing Item
       When  I Click On "Attendance" Button
