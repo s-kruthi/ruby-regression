@@ -11,7 +11,7 @@
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
       When  I Create A New Course With A Unique Name
-      Then  I Should Be Able To Add A New SCORM Package Activity
+      Then  I Should Be Able To Add A SCORM Package Activity
       Then  I Should Edit The Scorm Section Name And Description
 
 
