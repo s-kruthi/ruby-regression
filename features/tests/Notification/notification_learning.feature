@@ -47,7 +47,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To The Menu Learning Section
     And   I Click On "Course Catalogue" Tab
-    When  I Search For A Specific Course Named DO NOT
+    When  I Search For A Specific Course With Enrolments Named DO NOT DELETE
     And   I Click On "Enrol" Button
     Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient company.omar
 

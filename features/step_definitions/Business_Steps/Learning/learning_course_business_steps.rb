@@ -42,9 +42,31 @@ Then(/^I Should Be Able To Create A New Course$/i) do
 end
 
 
-When(/^I Search For A Specific Course Named (.*)$/i) do |course_search_name|
-  course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
+#TODO: Redundant code as this method has been re-written
+# When(/^I Search For A Specific Course Named (.*)$/i) do |course_search_name|
+#   course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+#   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
+# end
+
+
+When(/^I Search For A Specific Course(?: With (Enrolments|No Enrolments))? Named (.*)$/i) do |*enrolment_choice, course_search_name|
+  case enrolment_choice
+
+  when "Enrolments"
+    course_list_result = $daos.get_visible_course_list_by_name_with_enrolments(course_search_name)
+    puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
+    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
+
+  when "No Enrolments"
+    course_list_result = $daos.get_visible_course_list_by_name_with_no_enrolments(course_search_name)
+    puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
+    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
+
+  else
+    course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+    puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
+    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
+  end
 end
 
 
@@ -84,9 +106,9 @@ end
 
 
 When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
-  course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
-
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
+  course_list_result = $daos.get_visible_course_list_by_name_with_no_enrolments(course_search_name)
+  puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 

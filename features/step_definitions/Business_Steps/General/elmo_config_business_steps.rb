@@ -62,4 +62,5 @@ Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/i) do |admin
     When I Change "#{configure_name}" ELMO Configuration To "#{configured_value}"
     Then I Should Be Able To Save Configuration Details
         }
+  $driver.quit
 end

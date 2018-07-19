@@ -6,6 +6,7 @@
 
 Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
 
+
   @smoke_learning1 @learning_high_risk @course_add @C238
   Scenario: [Learning]Learning Admin Creating New Course
     Given I Have Logged In as a Learning Admin
@@ -39,7 +40,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
-    When  I Search For A Specific Course Named DO NOT DELETE
+    When  I Search For A Specific Course With No Enrolments Named DO NOT DELETE
     Then  I Should Be Able To Delete The Specific Course
 
 
@@ -159,7 +160,3 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     And   I Select 1 Enrolment For Bulk Action
     And   I Choose To Mark Enrolments As Complete From The Actions Menu
     Then  I Should See That The Enrolments Was Successfully Marked As Complete
-
-
-
-

@@ -114,3 +114,18 @@
       Then  I Should Be Able To Create Face To Face Notification With Name Course Face-to-Face Confirmation
       And   I Should Be Able To Edit face to face notification with name Course Face-to-Face Confirmation
       And   I should be able to Delete face to face notification with name Course Face-to-Face Confirmation
+
+
+    @learning_low_risk @C6071
+    Scenario: As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Enrol / Withdraw Myself From The Face-to-face Session
+      Given I Have Logged In As A Company Admin
+      And   I Go To Admin Settings
+      And   I Go To Courses Under Learning Section
+      When  I Click On The New Course Button
+      And   I Add New Course Details
+      And   I Select The Availability As All Users
+      Then  I Should Be Able To Create A New Course
+      Then  I Should Be Able To Add A Face-to-Face Activity
+      And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
+      Then  I Should Be Able To Create A Session In The Face-to-Face Activity
+      And   I Have Interacted With An Assigned F2F Course Test Face-to-Face
