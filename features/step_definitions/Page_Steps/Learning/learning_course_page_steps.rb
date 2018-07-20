@@ -831,13 +831,13 @@ def VerifyFaceToFaceActivitySettings()
 end
 
 
-def AddSessionDetails()
+def AddSessionDetails(session_status = '')
   #get the face to face session id from the url
   f2f_id = $driver.current_url.split('/')[6]
 
   Sleep_Until(UseCkeditorToEnterText(POST_ACTIVITY_EDITOR_TXT, 1))
 
-  AddSessionTimings()
+  AddSessionTimings(session_status)
 
   #Enter min capacity
   Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_MIN_CAPACITY_INPUT_ID))
@@ -873,14 +873,27 @@ def AddFile()
 end
 
 
-def AddSessionTimings()
-  Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_PART_CLASS_ID))
+def AddSessionTimings(session_status = '')
+  session_status_downcase = session_status.downcase
   #get time n date
+  Sleep_Until(WaitForAnElementByXpathAndTouch(F2F_SESSION_ADD_PART_CLASS_ID))
   time = DateTime.now
-  #start time is 7 days from now
-  start_time = (time + 7)
-  #finishing after 1hr
-  end_time = start_time + (1 / 24.0)
+  if session_status_downcase.include?('over')
+    #start time is 7 days before now
+    start_time = (time - 7)
+    #finishing after 1hr
+    end_time = start_time + (1 / 24.0)
+  elsif session_status_downcase.include?('progress')
+    #start time is 1 day before now
+    start_time = (time - 1)
+    #finishing is 1 day after now
+    end_time = start_time + 1
+  elsif session_status_downcase.include?('upcoming') || session_status_downcase.empty?
+    #start time is 7 days from now
+    start_time = (time + 7)
+    #finishing after 1hr
+    end_time = start_time + (1 / 24.0)
+  end
   Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_START_TIME).last.send_keys(start_time.strftime('%d/%m/%Y %H:%M')))
   Sleep_Until($driver.find_elements(:xpath, F2F_SESSION_FINISH_TIME).last.send_keys(end_time.strftime('%d/%m/%Y %H:%M')))
   FACE_TO_FACE_SESSION_VALUES['Start Time'.downcase] = start_time.strftime('%d %B %Y %I:%M %p')
@@ -1146,4 +1159,55 @@ def CreateACourseThroughServices(creator_username, creator_password)
   csv = CSV.read('JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv', :headers=>false)
   puts "course_name:" + csv[0][0]
   $randomly_created_course = File.read("./JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv").delete!("\n")
+end
+
+
+def ManualSignupFaceToFaceSession(name, index)
+  WaitForAnElementByPartialLinkTextAndTouch("Manual Sign Up")
+  SelectIndexFromSelect2SearchResult(name, 0)
+  Sleep_Until(WaitForAnElementByIdAndTouch(SIGN_UP_SELECTED_USERS_ID))
+  PressConfirm()
+end
+
+
+def SelectIndexFromSelect2SearchResult(search_value, index)
+  # Sleep_Until($driver.find_element(:id, "s2id_autogen1"))
+  Sleep_Until($driver.find_element(:id, "s2id_autogen1").send_keys(search_value))
+  VerifyAnElementExistById('select2-results-1', search_value)
+  $driver.find_elements(:class, "select2-result")[index].click
+end
+
+
+def MarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
+  WaitForToggleDropDownItemAndTouch(ACTION_TOGGLE_XPATH, MARK_ATTENDANCE_BUTTON_XPATH)
+  SelectFromDropDown(ATTENDANCE_DROPDOWN_XPATH, attendance)
+  WaitForAnElementByXpathAndClearValue(GRADE_FIELD_XPATH)
+  WaitForAnElementByXpathAndInputValue(GRADE_FIELD_XPATH, grade)
+  ToggleTo(toggle_yes_no)
+  Sleep_Until(WaitForAnElementByIdAndTouch(MARK_ATTENDANCE_CONFIRM_BUTTON_ID))
+  VerifyTableByRowColumnCSS(1, (attendance.gsub(' ', '_').upcase+'_COLUMN_VALUE').constantize)
+end
+
+
+def MarkFaceToFaceSessionAttendanceNoShow(no_show, grade)
+  WaitForToggleDropDownItemAndTouch(ACTION_TOGGLE_XPATH, MARK_ATTENDANCE_BUTTON_XPATH)
+  SelectFromDropDown(ATTENDANCE_DROPDOWN_XPATH, no_show)
+  WaitForAnElementByXpathAndClearValue(GRADE_FIELD_XPATH)
+  WaitForAnElementByXpathAndInputValue(GRADE_FIELD_XPATH, grade)
+  VerifyElementDisableCSS(TOGGLE_BUTTON_CSS)
+  Sleep_Until(WaitForAnElementByIdAndTouch(MARK_ATTENDANCE_CONFIRM_BUTTON_ID))
+  VerifyTableByRowColumnCSS(1, NO_SHOW_COLUMN_VALUE)
+end
+
+
+def ToggleTo(yes_no)
+  if yes_no.downcase.eql?('yes')
+    unless CheckboxCheckedCSS?(MARK_COMPLETE_CHECKBOX_CSS)
+      WaitForAnElementByCSSAndTouch(TOGGLE_BUTTON_CSS)
+    end
+  elsif yes_no.downcase.eql?('no')
+    if CheckboxCheckedCSS?(MARK_COMPLETE_CHECKBOX_CSS)
+      WaitForAnElementByCSSAndTouch(TOGGLE_BUTTON_CSS)
+    end
+  end
 end

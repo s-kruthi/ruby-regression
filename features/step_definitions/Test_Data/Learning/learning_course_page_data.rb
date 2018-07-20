@@ -182,3 +182,9 @@ CERT_TEMP_LIST_URL = 'https://' + $site + '.dev.elmodev.com/admin/course-certifi
 CERT_TEMP_SAVE_SUCCESSFUL_VALUE = 'Course Certificate Template has been saved!'
 
 FILTER_NAME_VALUE = 'Automation_filter'
+
+###Face To Face Attendance table value
+FULLY_ATTENDED_COLUMN_VALUE = {3 =>'Fully Attended', 4 => '90', 5 => 'Yes'}
+PARTIALLY_ATTENDED_COLUMN_VALUE = {3 =>'Partially Attended', 4 => '90', 5 => 'Yes'}
+CANCELLED_COLUMN_VALUE = {3 =>'Cancelled', 4 => '90', 5 => 'Yes'}
+NO_SHOW_COLUMN_VALUE = {3 =>'No Show', 4 => '90', 5 => 'No'}

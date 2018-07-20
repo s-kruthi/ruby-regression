@@ -271,3 +271,14 @@ PAGE_TITLE_CSS = '#elmo-table thead'
 TABLE_BODY_CSS = '#elmo-table tbody'
 EDIT_CERTIFICATE_CSS = '.edit-action'
 CLEAR_SEARCH_BTN_CSS = 'a[title="Clear search"]'
+
+### Learning Course Face to Face Session Manual enrol Mark attendance ###
+SIGN_UP_SELECTED_USERS_ID = 'enrol-btn'
+ACTION_TOGGLE_XPATH = "//div[contains(@class, 'pull-right')]//button[contains(@class, 'dropdown-toggle')]"
+MARK_ATTENDANCE_BUTTON_XPATH = "//a[@title='Mark Session Attendance']"
+CANCEL_SIGNUP_BUTTON_XPATH = "//a[@title='Cancel Sign Up']"
+MARK_ATTENDANCE_CONFIRM_BUTTON_ID = 'markAttendanceOk'
+ATTENDANCE_DROPDOWN_XPATH = "//*[@id='modFacetofaceSessionAttendanceForm_attendance']"
+GRADE_FIELD_XPATH = "//input[@id='modFacetofaceSessionAttendanceForm_score']"
+MARK_COMPLETE_CHECKBOX_CSS = '#modFacetofaceSessionAttendanceForm_completed'
+TOGGLE_BUTTON_CSS = 'div[data-toggle="toggle"]'
