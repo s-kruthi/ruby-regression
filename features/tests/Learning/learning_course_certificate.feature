@@ -3,6 +3,7 @@
   #@C16442
   #@learningTestRailTags
 
+#  Currently the Certificate feature is not deployed to TMSFull yet
 Feature: Manage Certificates On The Certificate List Page
   Background: Generate Data When Necessory
     Given Create Certificate Templates Once Less Than 15 Exist In The Database
