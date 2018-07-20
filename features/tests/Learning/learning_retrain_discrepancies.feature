@@ -3,7 +3,7 @@
   #C7206  C7207 C1804
   #@learningTestRailTags
 
-Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
+Feature: As An Admin I Would Like to Manage Retrain Discrepancies For Users
 
   @smoke_learning8 @learning_low_risk @course_retrain_discrepancy_fix @C7206
 Scenario: [Learning]Learning Admin Using Retrain Discrepancies Page to Fix Retrain
