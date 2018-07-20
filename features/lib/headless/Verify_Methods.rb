@@ -282,5 +282,47 @@ module Headless
       raise VerificationException.new(COLOR_RED + "Table is not sorted by column#{4} #{sort}")
       puts e.message
     end
+
+
+    def VerifyTableByRowColumnCSS(table_body_css = '#elmo-table tbody', row, expected_table_column_value_hash)
+      wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+      table_body = wait.until {
+        $driver.find_element(:css, table_body_css)
+      }
+      unmatch_result = ''
+      expected_table_column_value_hash.each do |col_num, expected_value|
+        column_css = table_body_css + " tr:nth-child(#{row})" + " td:nth-child(#{col_num})"
+        page_column_value = $driver.find_element(:css, column_css).text
+        unless page_column_value.eql?(expected_value)
+          unmatch_result += page_column_value + ' unmatch ' + expected_value
+        end
+      end
+      if unmatch_result.empty?
+        puts COLOR_GREEN + "MATCHED: Table columns are as expected"
+      else
+        fail
+      end
+    rescue Exception => e
+      raise VerificationException.new(COLOR_RED + unmatch_result)
+      puts e.message
+    end
+
+
+    def VerifyElementDisableCSS(css)
+      wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+      element = wait.until {
+        $driver.find_element(:css, css)
+      }
+      # When the attribute "disabled = disabled" it will return 'true' as string
+      if element.attribute('disabled').eql?(true.to_s)
+        puts COLOR_GREEN + "MATCHED: Web Element is diabled"
+      else
+        fail
+      end
+    rescue Exception => e
+      raise VerificationException.new(COLOR_RED + "Web Element is not disabled")
+      puts e.message
+    end
+
   end
 end

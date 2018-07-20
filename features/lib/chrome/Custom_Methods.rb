@@ -303,6 +303,15 @@ module Chrome
       end
     end
 
+
+    def CheckboxCheckedCSS?(checkbox)
+      wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+      element = wait.until {
+        $driver.find_element(:css, checkbox)
+      }
+      element.selected?
+    end
+
   end
 
 end
