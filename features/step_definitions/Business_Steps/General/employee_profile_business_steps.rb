@@ -97,3 +97,21 @@ end
 And(/^I Add An Attachment To The Note$/i) do
   Sleep_Until(browse_file_select(BROWSE_FILE_ID, FILE_NAME))
 end
+
+
+When(/^I Search For An Employee With Default Autopay Setting$/i) do
+ user = $daos.get_employee_with_default_autopay()
+
+ $driver.find_element(:id, 'userSearch_name').send_keys(user[:first_name]+ ' ' + user[:last_name])
+ $driver.find_element(:xpath, "//button[@title='Search']").click
+ ClickMenuOfFirstItemFromTable("//table//button[@data-toggle='dropdown']","View Profile")
+ Sleep_Until(ClickOnASubTab("//a[contains(text(),'Payment Details')]"))
+
+ #find autopay setting
+ $driver.find_element(:xpath, "//div[@id='autopay-label']//span").text == "No"
+end
+
+And(/^I Edit The User's Employment Details Section$/i) do
+  $driver.find_element(:id, 'editSection-employmentDetail').click
+  byebug
+end

@@ -1,8 +1,7 @@
 @employee_profile @general
 
 Feature:
-  As a Company Administrator I would like to edit an
-  employee's details includng personal and payment
+As A Company Admin I Would Like To Edit An Employee's Details Including Personal And Payment
 
   @ViewEmploymentDetails @general_high_risk
   Scenario: [General]View Employees hourly Rate and Salary Details (Payment Details)
@@ -65,4 +64,10 @@ Feature:
     | Any Manager      |
 
 
+  @general_low_risk @employee_paymentdetails_autopay @test
+  Scenario: [General] Company Admin Can View Autopay Is Set to Default No
+    Given I Have Logged In as a Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee With Default Autopay Setting
 
