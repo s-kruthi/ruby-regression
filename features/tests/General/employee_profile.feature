@@ -64,7 +64,7 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
     | Any Manager      |
 
 
-  @general_low_risk @employee_paymentdetails_default_autopay
+  @general_low_risk @employee_paymentdetails_default_autopay @test
   Scenario: [General] Company Admin Can View Autopay Default Setting As No
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -73,11 +73,25 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
     Then  I Can View The Default Autopay Setting As No
 
 
-  @general_low_risk @employee_paymentdetails_autopay_yes @test
+  @general_low_risk @employee_paymentdetails_autopay_message @test1
+  Scenario: [General] Company Admin Can View Autopay Message
+    Given I Have Logged In as a Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee With Employment Details
+    And   I Edit The User's Employment Details Section
+    And   I Set The Autopay Setting As Yes
+    Then  I Should Be Displayed With Autopay Message
+
+
+  @general_low_risk @employee_paymentdetails_autopay_edit @test2
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
-    When  I Search For An Employee With Default Autopay Setting
+    When  I Search For An Employee With Employment Details
     And   I Edit The User's Employment Details Section
+    And   I Set The Autopay Setting As Yes
+    Then  I Should Be Able To See The Autopay Setting Changed To Yes
+
 

@@ -75,6 +75,20 @@ module Database_env
       return @db[query].first
     end
 
+
+    def get_employee_with_employment_details()
+      query = "select distinct user_id, first_name,last_name
+               from epms_hrcore_employment_detail ehed
+               inner join epms_user eu on eu.id = ehed.user_id
+               where eu.is_deleted = 0
+               and is_elmo=0
+               and eu.is_active=1
+               and is_onboarding=0
+               and ehed.is_active=1
+               ORDER BY rand();;"
+      return @db[query].first
+    end
+
   end
 
 end
