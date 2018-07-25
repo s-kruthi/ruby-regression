@@ -17,12 +17,11 @@ Then(/^I Should Receive A Notification With Trigger Named (.*) For Recipient (.*
     else
       fail
     end
+
+  rescue RuntimeError => e
+    puts COLOR_RED + "No notification has been found in epms_log_message table in the last 8 hours. Please check database table manually to verify Notification"
+    raise RuntimeError.new("SQL Error")
+    puts e.message
   end
-
-
-rescue RuntimeError => e
-  puts COLOR_RED + "No notification has been found in epms_log_message table in the last 8 hours. Please check database table manually to verify Notification"
-  raise RuntimeError.new("SQL Error")
-  puts e.message
 end
 
