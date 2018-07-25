@@ -1150,7 +1150,7 @@ def CreateACourseThroughServices(creator_username, creator_password)
     puts "server provided = " + ENV["url"]
   end
   puts @create_against =  "#{ENV['url']}.dev.elmodev.com"
-  puts "Data Creation in process...".colorize(:blue)
+  puts "Data Creation in process...".colorize(:light_yellow)
   if ENV['MYMAC']
     %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password})
   else

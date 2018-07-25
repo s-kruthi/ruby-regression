@@ -132,7 +132,8 @@ Should you have any questions please email&nbsp;<a href="mailto:lnd@tmbank.com.a
     print "not valid".colorize(:red)
   ensure
     ResetTheEnvironment(TMSFULL_DATABASE)
-    DeleteTheExistingCourseEnrolment("#{$data_hash['course_id:']}")
+    GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
+    DeleteTheExistingCourseEnrolment()
   end
 end
 

@@ -7,7 +7,7 @@ Given(/^I Want To Generate Learning Notification data On Any Staging$/i) do
     puts "server provided = " + ENV["url"]
   end
   puts $create_against =  "#{ENV['url']}.dev.elmodev.com"
-  puts "Data Creation in process...".colorize(:blue)
+  puts "Data Creation in process...".colorize(:light_yellow)
   GenerateLearningDataUsingJmeterRubyService()
 end
 

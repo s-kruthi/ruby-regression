@@ -2,8 +2,7 @@
  require "selenium-webdriver"
     Selenium::WebDriver::Firefox::Binary.path = "/Applications/Firefox.app/Contents/MacOS/firefox"
     $driver = Selenium::WebDriver.for :firefox, marionette: true
-    $driver = Selenium::WebDriver.for :safari
-    $driver.navigate.to 'https://id.atlassian.com/login?continue=https%3A%2F%2Fjira.atlassian.com%2Fsecure%2FDashboard.jspa&application=jac'
+    $driver.navigate.to 'https://payrollelmoapp-ase-uat.azurewebsites.net/sp/settings/additionalusers'
     
     begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -11,18 +10,18 @@
             element = $driver.find_element(:id, 'username')
             element if element.displayed?
         }
-        select_username.send_keys "xxxxxxxx@gmail.com"
+        select_username.send_keys "swathi.volety@elmolearning.com.au"
         rescue Exception => e
         puts e.message
         $driver.quit
     end
 
-    puts " enter your password"
-    secret = gets.chomp
-    element = $driver.find_element(:id, 'password')
-    element.send_keys "#{secret}"
-    
-    element = $driver.find_element(:id, 'login-submit')
+#    puts " enter your password"
+#    secret = gets.chomp
+    element = $driver.find_element(:id, 'thepassword')
+    element.send_keys "ea7682"
+
+    element = $driver.find_element(:id, 'loginbutton')
     element.click
     puts $driver.title
     

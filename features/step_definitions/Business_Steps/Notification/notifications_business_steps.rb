@@ -1,6 +1,7 @@
 class RuntimeErrorException < Exception;
 end
 
+
 Then(/^I Should Receive A Notification With Trigger Named (.*) For Recipient (.*)$/i) do |notification_trigger_id, recipient_id|
   @notification_list = $daos.get_notification_by_trigger_id_and_recipient_name(notification_trigger_id, recipient_id)
 
@@ -27,4 +28,5 @@ Then(/^I Should Receive A Notification With Trigger Named (.*) For Recipient (.*
     puts e.message
   end
 end
+
 

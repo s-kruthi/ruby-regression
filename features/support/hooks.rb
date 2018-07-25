@@ -15,6 +15,7 @@ Before do |scenario|
   end
   FileUtils.rm_rf Dir.glob("./features/step_definitions/MySQL_Scripts/sql_dependencies/json_data_storage/*.*")
   File.open('./features/step_definitions/MySQL_Scripts/sql_dependencies/random_sql_script.txt', 'w') {|file| file.truncate(0) }
+  File.open('./JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv', 'w') {|file| file.truncate(0) }
 end
 
 
