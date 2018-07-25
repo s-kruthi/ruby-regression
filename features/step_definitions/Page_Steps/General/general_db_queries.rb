@@ -70,6 +70,7 @@ module Database_env
                and is_elmo=0
                and eu.is_active=1
                and is_onboarding=0
+               and ehed.is_active=1
                ORDER BY rand();"
       return @db[query].first
     end
