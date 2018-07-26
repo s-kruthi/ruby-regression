@@ -1,8 +1,4 @@
-# When(/^I Search For A Specific Course(?: With (Enrolments|No Enrolments))? Named (.*)$/i) do |*enrolment_choice, course_search_name|
-#   case enrolment_choice
-
 Given(/^I Have Logged (In|Out)(:? As A (.*))?$/i) do |login_action, login_name|
-
 
     case login_action
     when "In"
@@ -111,7 +107,6 @@ Given(/^I Have Logged (In|Out)(:? As A (.*))?$/i) do |login_action, login_name|
       begin
         LogOutFromTheDashboard(USER_PROFILE_MENU_ICON_ID, LOGOUT_BUTTON_ID)
       end
-
   end
 end
 
