@@ -140,3 +140,5 @@
       Then  I Should Be Able To Add A Face-to-Face Activity
       And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
+      And   I Have Logged Out
+      And   I Have Logged In As A Company Employee
