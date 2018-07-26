@@ -129,7 +129,7 @@
 
 
     @learning_low_risk @C6071
-    Scenario: As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Enrol / Withdraw Myself From The Face-to-face Session
+    Scenario: WIP - As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Enrol / Withdraw Myself From The Face-to-face Session
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
@@ -140,4 +140,3 @@
       Then  I Should Be Able To Add A Face-to-Face Activity
       And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
-      And   I Have Interacted With An Assigned F2F Course Test Face-to-Face
