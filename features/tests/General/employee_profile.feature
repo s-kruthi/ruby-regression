@@ -65,7 +65,7 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
 
 
   #Currently works only on payroll03
-  @general_low_risk @employee_paymentdetails_default_autopay
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_default_autopay
   Scenario: [General] Company Admin Can View Autopay Default Setting As No
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -75,7 +75,7 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
 
 
   #Currently works only on payroll03
-  @general_low_risk @employee_paymentdetails_autopay_message
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_message
   Scenario: [General] Company Admin Can View Autopay Message
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
@@ -87,7 +87,7 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
 
 
   #Currently works only on payroll03
-  @general_low_risk @employee_paymentdetails_autopay_edit
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_edit
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
