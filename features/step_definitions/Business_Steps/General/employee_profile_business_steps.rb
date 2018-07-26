@@ -100,63 +100,50 @@ end
 
 
 When(/^I Search For An Employee With Default Autopay Setting$/i) do
- user = $daos.get_employee_with_default_autopay()
- $driver.find_element(:id, 'userSearch_name').send_keys(user[:first_name]+ ' ' + user[:last_name])
- $driver.find_element(:xpath, "//button[@title='Search']").click
+  SearchForUserWithDefaultAutopaySetting()
 end
 
+
 And(/^I Edit The User's Employment Details Section$/i) do
-  ClickMenuOfFirstItemFromTable("//table//button[@data-toggle='dropdown']","View Profile")
-  Sleep_Until(ClickOnASubTab("//a[contains(text(),'Payment Details')]"))
-  $driver.find_element(:id, 'editSection-employmentDetail').click
+  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+  Sleep_Until(ClickOnASubTab(USER_PAYMENT_DETAILS_TAB_ID))
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_EDIT_BUTTON_ID))
 end
 
 
 Then(/^I Can View The Default Autopay Setting As (Yes|No)$/i) do |setting_value|
-  ClickMenuOfFirstItemFromTable("//table//button[@data-toggle='dropdown']","View Profile")
-  Sleep_Until(ClickOnASubTab("//a[contains(text(),'Payment Details')]"))
-  $driver.find_element(:xpath, "//div[@id='autopay-label']//span").text == setting_value
+  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+  Sleep_Until(ClickOnASubTab(USER_PAYMENT_DETAILS_TAB_ID))
+  CheckAutopaySetting(setting_value)
 end
 
 
 When(/^I Search For An Employee With Employment Details$/i) do
-  user = $daos.get_employee_with_employment_details()
-  $driver.find_element(:id, 'userSearch_name').send_keys(user[:first_name]+ ' ' + user[:last_name])
-  $driver.find_element(:xpath, "//button[@title='Search']").click
+  SearchForUserWithEmpDetails()
 end
 
 
 And(/^I Set The Autopay Setting As (Yes|No)$/i) do |setting_value|
-  sleep 2
-  element_id = 'autopay'
-  autopay_setting = $driver.find_element(:id, 'autopay').selected?
-  if (setting_value == "Yes" and autopay_setting != true)
-    $driver.execute_script("$(#{element_id}).each(function() { var $this=$(this)\;{ $this.parent().trigger('click') } })")
-    sleep 2
-
-    $driver.find_element(:css, "[data-bb-handler='yes']").click
-    sleep 2
-
-    $driver.find_element(:id, 'save').click #name='save' ,Save
-    $driver.find_element(:xpath, "//h4[@class='modal-title']").text == "Confirm Employment Details Update"
-
-    $driver.find_element(:xpath, '//button[@data-bb-handler="success"]').click
-    sleep 2
-    $driver.find_element(:xpath, "//div[@id='autopay-label']//span").text == "Yes"
-  else
-    puts "Autopay is already set with the value "+setting_value
-    $driver.find_element(:xpath, "//button[@id='cancel']").click
-
-  end
+  SetAutopay(setting_value)
 end
 
 
 Then(/^I Should Be Displayed With Autopay Message$/i) do
-  Sleep_Until(VerifyAnElementExistByXPath('//div[@class="bootbox-body"]','You have turned auto pay on, normal hours will be automatically added and process for this employee in Payroll. Would you like to continue?'))
+  Sleep_Until(VerifyAnElementExistByXPath(USER_PAYMENT_DETAILS_AUTOPAY_MODAL_ID,USER_PAYMENT_DETAILS_AUTOPAY_MSG))
 end
 
 
 Then(/^I Should Be Able To See The Autopay Setting Changed To (Yes|No)$/i) do |setting_value|
-  byebug
-  $driver.find_element(:xpath, "//div[@id='autopay-label']//span").text == setting_value
+  CheckAutopaySetting(setting_value)
+end
+
+
+And(/^I Save The Payment Details Changes For Autopay$/i) do
+  Sleep_Until(WaitForAnElementByCSSAndTouch(MODAL_YES_BUTTON_CSS))
+
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
+
+  modal_title = GetTextAssociatedToElement("xpath",USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
+  modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
+  Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
 end

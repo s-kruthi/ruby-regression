@@ -67,3 +67,68 @@ def CheckNoteAdded()
     puts COLOR_GREEN + "Note has been added to the user profile"
   end
 end
+
+
+def CheckAutopaySetting(setting_value)
+  autopay_setting = GetTextAssociatedToElement("xpath", USER_PAYMENT_DETAILS_AUTOPAY_LABEL_ID)
+  if autopay_setting == setting_value
+    puts COLOR_GREEN + "autopay setting value matches".upcase
+  else
+    puts COLOR_RED + "autopay setting value does not match".upcase
+    fail
+  end
+end
+
+
+def GetAutopayToggleSetting()
+  return Sleep_Until($driver.find_element(:id, USER_PAYMENT_DETAILS_AUTOPAY_ID).selected?)
+end
+
+
+def SetAutopay(setting_value)
+  autopay_setting = GetAutopayToggleSetting()
+
+  if (setting_value == "Yes" and autopay_setting != true) || (setting_value == "No" and autopay_setting != false)
+    Sleep_Until(JavascriptClick(USER_PAYMENT_DETAILS_AUTOPAY_ID))
+  else
+    puts "Autopay is already set with the value " + setting_value
+    Sleep_Until(WaitForAnElementByXpathAndTouch(USER_PAYMENT_DETAILS_CANCEL_BUTTON_ID))
+  end
+end
+
+
+def SearchForUserWithEmpDetails()
+  user = $daos.get_employee_with_employment_details()
+
+  if !user.nil?
+    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user[:first_name]+ ' ' + user[:last_name])
+    Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
+  else
+    puts COLOR_YELLOW + "no users available for this criteria".upcase
+    skip_this_scenario
+  end
+
+end
+
+
+def SearchForUserWithDefaultAutopaySetting()
+  user = $daos.get_employee_with_default_autopay()
+
+  if !user.nil?
+    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user[:first_name]+ ' ' + user[:last_name])
+    Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
+  else
+    puts COLOR_YELLOW + "no users available for this criteria".upcase
+    skip_this_scenario
+  end
+end
+
+
+def JavascriptClick(element_id)
+  $driver.execute_script("$(#{element_id}).each(function() { var $this=$(this)\;{ $this.parent().trigger('click') } })")
+end
+
+
+def GetTextAssociatedToElement(type,identifier)
+  return $driver.find_element(:"#{type}", identifier).text
+end

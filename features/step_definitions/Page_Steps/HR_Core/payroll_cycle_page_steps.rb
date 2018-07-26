@@ -3,8 +3,8 @@ def DeletePayrollCycleAssociatedToUser()
   @payroll = $daos.get_paycycle_associated_to_user()
 
   if @payroll.nil?
-  puts COLOR_YELLOW + "no payroll cycles available for this criteria".upcase
-  skip_this_scenario
+    puts COLOR_YELLOW + "no payroll cycles available for this criteria".upcase
+    skip_this_scenario
   end
 
   WaitForAnElementByCSSAndTouch("button[href*='/admin/hrcore/payroll-cycle/delete/#{@payroll[:id]}']")
