@@ -98,7 +98,7 @@ end
 
 
 def SearchForUserWithEmpDetails()
-  user = $daos.get_employee_with_employment_details()
+  user = $daos.get_employee_with_autopay_no()
 
   if !user.nil?
     $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user[:first_name]+ ' ' + user[:last_name])

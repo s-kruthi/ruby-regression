@@ -76,7 +76,7 @@ module Database_env
     end
 
 
-    def get_employee_with_employment_details()
+    def get_employee_with_autopay_no()
       query = "select distinct user_id, first_name,last_name
                from epms_hrcore_employment_detail ehed
                inner join epms_user eu on eu.id = ehed.user_id
@@ -85,7 +85,8 @@ module Database_env
                and eu.is_active=1
                and is_onboarding=0
                and ehed.is_active=1
-               ORDER BY rand();;"
+               and autopay = 0
+               ORDER BY rand();"
       return @db[query].first
     end
 
