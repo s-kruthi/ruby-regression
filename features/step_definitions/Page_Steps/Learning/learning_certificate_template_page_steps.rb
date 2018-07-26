@@ -17,7 +17,6 @@ end
 
 
 def FillFieldsCreateCertTemp(cert_temp_name, edit='')
-  # binding.pry
   WaitForAnElementByCSSAndInputValue(CERT_TEMP_TITLE_FIELD_CSS, cert_temp_name + edit)
   WaitForAnElementByCSSAndInputValue(CERT_TEMP_DESCRIPTION_CSS, 'description' + edit)
   WaitForAnElementByCSSAndInputValue(CERT_TEMP_LAYOUT_CSS, '112' + edit)
