@@ -24,8 +24,8 @@ end
 
 def LogInAndWaitForTheDashboard(tag_name,admin_menu)
   TouchLoginButton(tag_name)
-  puts "Title: " + $driver.title
-  puts "URL: " + $driver.current_url
+  puts COLOR_BLUE + "Title: " + $driver.title
+  puts COLOR_BLUE + "URL: " + $driver.current_url
   sleep(3)
 end
 

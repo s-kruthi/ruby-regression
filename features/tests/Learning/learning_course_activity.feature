@@ -128,8 +128,8 @@
       And   I Should Be Able To Mark Attendance "Cancelled" With Grade 90 And Mark As Attendance Complete
 
 
-    @learning_low_risk @C6071
-    Scenario: WIP - As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Enrol / Withdraw Myself From The Face-to-face Session
+    @learning_low_risk @C6071 @C6070
+    Scenario: As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Self Sign Up / Withdraw Myself From The Face-to-face Session
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
@@ -142,3 +142,13 @@
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
       And   I Have Logged Out
       And   I Have Logged In As A Company Employee
+      And   I Go To The Menu Learning Section
+      And   I Click On "Course Catalogue" Tab
+      And   I Search For A Specific Course With No Enrolments Named DO NOT DELETE
+      And   I Click On The Enrol Button For A Course
+      And   I Click On "My Learning" Tab
+      And   I Search For A Specific Course Named DO NOT DELETE
+      And   I Can View The Learning Course Named DO NOT DELETE
+      When  I Can View The Face-to-Face Session Named Test Face-to-Face
+      Then  I Should Be Able To "Sign Up" For That Session
+      And  I Should Be Able To "Withdraw" For That Session

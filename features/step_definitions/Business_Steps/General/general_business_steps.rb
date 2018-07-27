@@ -360,24 +360,6 @@ And(/^I Should Be Able To Save The Information Successfully$/i) do
 end
 
 
-##//TODO: Review and Remova due to redundancy. Method has been moved to the following one
-# When(/^I Click On Add New User Button$/i) do
-#   begin
-#     case $add_user_type
-#     when "EMP"
-#       begin
-#         GoToAddNewUsersPage(ADD_NEW_USER_BTN)
-#       end
-#
-#     when "OB"
-#       begin
-#         GoToAddNewUsersPage(OB_ADD_NEW_USER_BTN)
-#       end
-#     end
-#   end
-# end
-
-
 And(/^I Click On "([^"]*)" Button$/i) do |button_name|
 
   case button_name
