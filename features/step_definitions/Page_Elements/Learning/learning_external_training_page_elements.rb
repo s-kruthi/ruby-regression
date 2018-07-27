@@ -1,9 +1,19 @@
-LEARNING_EXTERNAL_TRAINING_SETUP_SAVE_ID = '//input[@type="submit"]'
+LEARNING_EXTTRAINING_SETUP_SAVE_ID = '//input[@type="submit"]'
 
-LEARNING_ADD_EXTERNAL_TRAINING_BUTTON_ID = '//a[@href="/learning/external-training/edit"]'
+LEARNING_EXTTRAINING_ADD_BUTTON_ID = '//a[@href="/learning/external-training/edit"]'
 
-# desc disabled id =elmo_learningbundle_external_training_description
-# desc optional/reqd id =elmo_learningbundle_external_training_descriptionRequired
+LEARNING_EXTTRAINING_TOGGLE_ID = 'elmo_learningbundle_external_training_enabled'
+
+LEARNING_EXTTRAINING_SEARCH_BUTTON_ID = 'select-et'
+
+LEARNING_EXTTRAINING_MODAL_ID = "//iframe[@src='/learning/external-training-template/search']"
+
+LEARNING_EXTTRAINING_COURSE_SELECT_ID = "//a[@title='Select']"
+
+LEARNING_EXTTRAINING_COURSE_SUBMIT_ID = "elmo_learningbundle_external_training_submit"
+
+LEARNING_EXTTRAINING_DESC_ID = 'elmo_learningbundle_external_training_description'
+LEARNING_EXTTRAINING_DESC_OPTIONAL_ID = 'elmo_learningbundle_external_training_descriptionRequired'
 #
 # elmo_learningbundle_external_training_completionDate
 # elmo_learningbundle_external_training_completionDateRequired
@@ -11,7 +21,7 @@ LEARNING_ADD_EXTERNAL_TRAINING_BUTTON_ID = '//a[@href="/learning/external-traini
 #elmo_learningbundle_external_training_expiryDate
 # elmo_learningbundle_external_training_expiryDateRequired
 #
-# elmo_learningbundle_external_training_duration
+LEARNING_EXTTRAINING_DURATION_ID = 'elmo_learningbundle_external_training_duration'
 # elmo_learningbundle_external_training_durationRequired
 #
 # elmo_learningbundle_external_training_score
