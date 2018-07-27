@@ -104,7 +104,7 @@ def SearchForUserWithEmpDetails()
     $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user[:first_name]+ ' ' + user[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
-    puts COLOR_YELLOW + "no users available for this criteria".upcase
+    puts COLOR_YELLOW + " no users available for this criteria".upcase
     skip_this_scenario
   end
 
@@ -118,7 +118,7 @@ def SearchForUserWithDefaultAutopaySetting()
     $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user[:first_name]+ ' ' + user[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
-    puts COLOR_YELLOW + "no users available for this criteria".upcase
+    puts COLOR_YELLOW + " no users available for this criteria".upcase
     skip_this_scenario
   end
 end
