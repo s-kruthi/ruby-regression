@@ -97,3 +97,53 @@ end
 And(/^I Add An Attachment To The Note$/i) do
   Sleep_Until(browse_file_select(BROWSE_FILE_ID, FILE_NAME))
 end
+
+
+When(/^I Search For An Employee With Default Autopay Setting$/i) do
+  SearchForUserWithDefaultAutopaySetting()
+end
+
+
+And(/^I Edit The User's Employment Details Section$/i) do
+  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+  Sleep_Until(ClickOnASubTab(USER_PAYMENT_DETAILS_TAB_ID))
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_EDIT_BUTTON_ID))
+end
+
+
+Then(/^I Can View The Default Autopay Setting As (Yes|No)$/i) do |setting_value|
+  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+  Sleep_Until(ClickOnASubTab(USER_PAYMENT_DETAILS_TAB_ID))
+  CheckAutopaySetting(setting_value)
+end
+
+
+When(/^I Search For An Employee With Employment Details$/i) do
+  SearchForUserWithEmpDetails()
+end
+
+
+And(/^I Set The Autopay Setting As (Yes|No)$/i) do |setting_value|
+  SetAutopay(setting_value)
+end
+
+
+Then(/^I Should Be Displayed With Autopay Message$/i) do
+  Sleep_Until(VerifyAnElementExistByXPath(USER_PAYMENT_DETAILS_AUTOPAY_MODAL_ID,USER_PAYMENT_DETAILS_AUTOPAY_MSG))
+end
+
+
+Then(/^I Should Be Able To See The Autopay Setting Changed To (Yes|No)$/i) do |setting_value|
+  CheckAutopaySetting(setting_value)
+end
+
+
+And(/^I Save The Payment Details Changes For Autopay$/i) do
+  Sleep_Until(WaitForAnElementByCSSAndTouch(MODAL_YES_BUTTON_CSS))
+
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
+
+  modal_title = GetTextAssociatedToElement("xpath",USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
+  modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
+  Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
+end

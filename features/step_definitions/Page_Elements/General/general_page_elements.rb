@@ -67,6 +67,7 @@ EM_USER_EMAIL_ID = "//input[contains(@id,'email')]"
 
 SAVE_BTN_ID = "//button[contains(.,'Save')]"
 DONE_BTN_ID = "//button[contains(.,'Done')]"
+SEARCH_RESULTS_ACTIONS_ID = "//table//button[@data-toggle='dropdown']"
 
 
 USERNAME_SEARCH_ID = "//input[@placeholder='Search']"
