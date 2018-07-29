@@ -114,6 +114,20 @@ def VerifyAllSelectedUsersGotBulkEnrolledToTheCourse(course_id)
   end
 end
 
+
 def FetchBulkEnrolCount(course_id)
   "select COUNT(*) from epms_lms_course_enrolment where course_id ='#{course_id}' order by id DESC LIMIT 10"
+end
+
+
+def SearchForTheCourseUnderEnrolmentTab(course_name)
+  Sleep_Until($driver.find_element(:id, "s2id_autogen1"))
+  $driver.find_element(:id, "s2id_autogen1").send_keys "#{course_name}"
+  begin
+    wait_valid = $driver.find_element(:class, "select2-result-label-4").text.include? "#{course_name}"
+    Sleep_Until(wait_valid)
+  rescue
+    sleep(4)
+  end
+  $driver.find_element(:id, "select2-result-label-4").click
 end

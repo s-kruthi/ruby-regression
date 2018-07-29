@@ -62,3 +62,45 @@ Then(/^I Should Be Able To Bulk Enrol Users To That Course$/i) do
   BulkEnrolUsersToThatCourse()
   VerifyAllSelectedUsersGotBulkEnrolledToTheCourse("#{$data_hash['course_id:']}")
 end
+
+
+And(/^I Search For The Randomly Created Course Under Enrolment$/i) do
+  Sleep_Until(SearchForTheCourseUnderEnrolmentTab("#{$randomly_created_course}"))
+end
+
+
+When(/^I Choose To Refresh The Enrolment For Completed Activity$/i) do
+  sleep(4)
+  Sleep_Until(ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, "Refresh Enrolment"))
+end
+
+
+When(/^I Refresh The Enrolment For That Activity$/i) do
+  Sleep_Until(WaitForAnElementByClassAndTouch(ACTIVITY_REFRESH))
+end
+
+
+When(/^I Refresh The Enrolment For All The Activities$/i) do
+  Sleep_Until(WaitForAnElementByClassAndTouch(ALL_ACTIVITY_REFRESH))
+end
+
+
+Then(/^I Should See The Activity Successfully Marked As Not Yet Started$/i) do
+  Sleep_Until(VerifyAnElementExistByClass(ACTIVITY_REFRESH_STATUS_NS, "Not Yet Started"))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(ACTIVITY_REFRESH_MODAL_CLOSE ))
+end
+
+
+And(/^I Should See The Course Status Successfully Marked As (.*)$/i) do |course_status|
+  case course_status
+
+  when "In Progress"
+  Sleep_Until(VerifyAnElementExistByClass(ACTIVITY_REFRESH_STATUS_IP, "In Progress"))
+
+  when "Not Yet Started"
+  Sleep_Until(VerifyAnElementExistByClass(ACTIVITY_REFRESH_STATUS_NS, "Not Yet Started"))
+
+  when "Completed"
+    Sleep_Until(VerifyAnElementExistByClass(ACTIVITY_REFRESH_STATUS_CO, "Completed"))
+  end
+end

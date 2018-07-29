@@ -69,7 +69,7 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
           <collectionProp name="Arguments.arguments">
             <elementProp name="server" elementType="Argument">
               <stringProp name="Argument.name">server</stringProp>
@@ -98,22 +98,27 @@
             </elementProp>
             <elementProp name="CONFIG_PATH" elementType="Argument">
               <stringProp name="Argument.name">CONFIG_PATH</stringProp>
-              <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)} </stringProp>
+              <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="activity_name" elementType="Argument">
               <stringProp name="Argument.name">activity_name</stringProp>
-              <stringProp name="Argument.value">Quiz</stringProp>
+              <stringProp name="Argument.value">Face-To-Face</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="enrolled_user_id" elementType="Argument">
+              <stringProp name="Argument.name">enrolled_user_id</stringProp>
+              <stringProp name="Argument.value">357</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments">
             <elementProp name="server" elementType="Argument">
               <stringProp name="Argument.name">server</stringProp>
-              <stringProp name="Argument.value">staging4.dev.elmodev.com</stringProp>
+              <stringProp name="Argument.value">${__P(server)}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="username" elementType="Argument">
@@ -124,6 +129,16 @@
             <elementProp name="password" elementType="Argument">
               <stringProp name="Argument.name">password</stringProp>
               <stringProp name="Argument.value">${__P(password)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="enrolled_user_id" elementType="Argument">
+              <stringProp name="Argument.name">enrolled_user_id</stringProp>
+              <stringProp name="Argument.value">${__P(enrolled_user_id)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="activity_name" elementType="Argument">
+              <stringProp name="Argument.name">activity_name</stringProp>
+              <stringProp name="Argument.value">${__P(activity_name)}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="course_name" elementType="Argument">
@@ -138,7 +153,7 @@
             </elementProp>
             <elementProp name="CONFIG_PATH" elementType="Argument">
               <stringProp name="Argument.name">CONFIG_PATH</stringProp>
-              <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)} </stringProp>
+              <stringProp name="Argument.value">${__BeanShell(import org.apache.jmeter.services.FileServer; FileServer.getFileServer().getBaseDir();)}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -624,7 +639,29 @@
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
-        <hashTree/>
+        <hashTree>
+          <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">import org.apache.jmeter.services.FileServer;
+
+String path=FileServer.getFileServer().getBaseDir();
+
+course_name = vars.get(&quot;course_name&quot;);
+course_id = vars.get(&quot;course_id&quot;);
+
+f = new FileOutputStream(&quot;${CONFIG_PATH}/learning_course_add.csv&quot;, false); //spec-ify true if you want to overwrite file. Keep blank otherwise.
+p = new PrintStream(f); 
+this.interpreter.setOut(p); 
+p.println(course_name+&quot;,&quot; +course_id);
+f.close();
+
+
+</stringProp>
+          </BeanShellPostProcessor>
+          <hashTree/>
+        </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Go to the course section" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments"/>
@@ -645,7 +682,7 @@
         </HTTPSamplerProxy>
         <hashTree/>
         <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Acknowledgement Controller" enabled="true">
-          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;Acknowledgement&quot; || &quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;Acknowledgement&quot; || &quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
         </IfController>
         <hashTree>
@@ -805,8 +842,8 @@
             </HTTPSamplerProxy>
             <hashTree/>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If all activity" enabled="true">
-            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If All Activity" enabled="true">
+            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
           </IfController>
           <hashTree>
@@ -962,13 +999,13 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="ELMO Module Controller" enabled="true">
-          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;ELMO Module&quot; || &quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="ELMO-Module Controller" enabled="true">
+          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;ELMO-Module&quot; || &quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
         </IfController>
         <hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If ELMO Module" enabled="true">
-            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;ELMO Module&quot;</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If ELMO-Module" enabled="true">
+            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;ELMO-Module&quot;</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
           </IfController>
           <hashTree>
@@ -1091,8 +1128,8 @@
             </HTTPSamplerProxy>
             <hashTree/>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If all activity" enabled="true">
-            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If All Activity" enabled="true">
+            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
           </IfController>
           <hashTree>
@@ -1216,13 +1253,13 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="ELMO Survey Controller" enabled="true">
-          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;ELMO Survey&quot; || &quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="ELMO-Survey Controller" enabled="true">
+          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;ELMO-Survey&quot; || &quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
         </IfController>
         <hashTree>
           <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If ELMO-Survey" enabled="true">
-            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;ELMO Survey&quot;</stringProp>
+            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;ELMO-Survey&quot;</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
           </IfController>
           <hashTree>
@@ -1338,8 +1375,8 @@
             </HTTPSamplerProxy>
             <hashTree/>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If all activity" enabled="true">
-            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If All Activity" enabled="true">
+            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
           </IfController>
           <hashTree>
@@ -1456,13 +1493,13 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Face-to-Face Controller" enabled="true">
-          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;Face-to-Face&quot; || &quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Face-To-Face Controller" enabled="true">
+          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;Face-To-Face&quot; || &quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
         </IfController>
         <hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If face-to-face" enabled="true">
-            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;Face-to-Face&quot;</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Face-To-Face" enabled="true">
+            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;Face-To-Face&quot;</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
           </IfController>
           <hashTree>
@@ -1590,10 +1627,48 @@
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
               <stringProp name="HTTPSampler.response_timeout"></stringProp>
             </HTTPSamplerProxy>
+            <hashTree>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">f2f_activity_number</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;https://${server}/admin/course/edit-modfacetoface/${course_id}/(.*?)&quot;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">URL</stringProp>
+                <stringProp name="RegexExtractor.refname">f2f_session_preview</stringProp>
+                <stringProp name="RegexExtractor.regex">;url=/learning/edit-activity/256/([^&quot;]+)?sectionNum=1&quot; /&gt;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add a session for F2f activity" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${server}</stringProp>
+              <stringProp name="HTTPSampler.port">443</stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">learning/view-activity/${course_id}/facetoface/${f2f_session_preview}/preview</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
             <hashTree/>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If all activity" enabled="true">
-            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If All Activity" enabled="true">
+            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
           </IfController>
           <hashTree>
@@ -1725,7 +1800,7 @@
           </hashTree>
         </hashTree>
         <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Quiz Controller" enabled="true">
-          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;Quiz&quot; || &quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+          <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;Quiz&quot; || &quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
           <boolProp name="IfController.evaluateAll">false</boolProp>
         </IfController>
         <hashTree>
@@ -1974,9 +2049,9 @@
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">quiz_section_token</stringProp>
                 <stringProp name="RegexExtractor.regex">value=&quot;(.*?)&quot; &gt;</stringProp>
-                <stringProp name="RegexExtractor.template">$2$$1$</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">0</stringProp>
+                <stringProp name="RegexExtractor.match_number">2</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
@@ -1985,7 +2060,7 @@
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="elmo_learningbundle_mod_modquizsection${quiz_data_id}_0[_token]" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">${quiz_section_token_g1}</stringProp>
+                    <stringProp name="Argument.value">${quiz_section_token}</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="Argument.name">elmo_learningbundle_mod_modquizsection${quiz_data_id}_0[_token]</stringProp>
@@ -2039,8 +2114,8 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If All activity" enabled="true">
-            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All Activity&quot;</stringProp>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If All Activity" enabled="true">
+            <stringProp name="IfController.condition">&quot;${activity_name}&quot;==&quot;All&quot;</stringProp>
             <boolProp name="IfController.evaluateAll">false</boolProp>
           </IfController>
           <hashTree>
@@ -2284,9 +2359,9 @@
                 <stringProp name="RegexExtractor.useHeaders">false</stringProp>
                 <stringProp name="RegexExtractor.refname">quiz_section_token</stringProp>
                 <stringProp name="RegexExtractor.regex">value=&quot;(.*?)&quot; &gt;</stringProp>
-                <stringProp name="RegexExtractor.template">$2$$1$</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
                 <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number">0</stringProp>
+                <stringProp name="RegexExtractor.match_number">2</stringProp>
               </RegexExtractor>
               <hashTree/>
             </hashTree>
@@ -3544,6 +3619,91 @@ d&#x84;&#x8;²¤É&#x93;(SÚ&#x1a;&#x19;N¥Ë&#x97;0cÊ&#x4;&#x90;&#x80;%µ&#x99
           <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
             <stringProp name="ConstantTimer.delay">100000</stringProp>
           </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Go To Enrolment Section " enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${server}</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">admin/course/${course_id}/enrolments</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers"/>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Try Manual Enrolment " enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${server}</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">admin/course/${course_id}/manual-enrol</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers"/>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Enrol The User For The Course " enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="addedUserIds[]" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${enrolled_user_id}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">addedUserIds[]</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${server}</stringProp>
+          <stringProp name="HTTPSampler.port">443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">admin/course/${course_id}/manual-enrol</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
           <hashTree/>
         </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">

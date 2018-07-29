@@ -9,5 +9,5 @@ def GenerateLearningDataUsingJmeterRubyService()
   puts "manager_id:" + csv[0][0]
   puts "manager_username:" + csv[0][1]
   puts "user_id:" + csv[0][2]
-  puts "username:" + csv[0][3]
+  $created_username = puts "username:" + csv[0][3]
 end

@@ -74,8 +74,9 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
-    And   I Search For A Specific Course Named course_section_automation_QuizActivity_shanku
-    And   I Go To The Enrolled User Section For That Course course_section_automation_QuizActivity_shanku
+    And   I Create A Random Course For Automation
+    And   I Search For The Randomly Created Course
+    And   I Go To The Enrolled User Section Of That Randomly Created Course
     When  I Click On "Create Filter" Button
     And   I select Employee Name as DontTouchAutomationUser
     Then  I Should Be Able to Create a Filter

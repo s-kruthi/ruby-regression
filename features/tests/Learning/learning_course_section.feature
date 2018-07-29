@@ -40,7 +40,7 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
     Then  I Should See The Course course_section_automation_QuizActivity_shanku Status Reset To Not Yet Started
     And   I Re Enrol The Candidate For The Activity
 
-  @smoke_learning7 @ShouldFailUntilFixed @quiz_course_reset_refresh @learning_high_risk @C9234
+   @ShouldFailUntilFixed @quiz_course_reset_refresh @learning_high_risk @C9234
   Scenario: [Learning] Just Refreshing Enrolments For Quiz Activity Resets The Status And Opens The Activity
     Given I Have Logged In as a Specific Automation User
     And   I Go To The Menu Learning Section
@@ -54,3 +54,31 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
     And   I Try To Refresh The Enrolments For That Particular Course
     Then  I Should See The Course course_section_automation_QuizActivity_(FAIL) Status Reset To Not Yet Started
 
+  @smoke_learning7 @individual_course_activity_refresh @learning_high_risk @C812
+    Scenario: [Learning] Just Refreshing Enrolments For Quiz Activity Resets The Status And Opens The Activity
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    And   I Click On "Enrolments" Tab
+    And   I Create A Random Course For Automation With Quiz Activity
+    And   I Search For The Randomly Created Course Under Enrolment
+    And   I Choose To Mark An Enrolment As Complete
+    Then  I Should See That The Enrolment Was Successfully Marked As Complete
+    And   I Choose To Refresh The Enrolment For Completed Activity
+    When  I Refresh The Enrolment For That Activity
+    Then  I Should See The Activity Successfully Marked As Not Yet Started
+    And   I Should See The Course Status Successfully Marked As In Progress
+
+  @smoke_learning7 @bulk_course_activity_refresh @learning_high_risk  @C816
+  Scenario: [Learning] Just Refreshing Enrolments For Quiz Activity Resets The Status And Opens The Activity
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    And   I Click On "Enrolments" Tab
+    And   I Create A Random Course For Automation With All Activity
+    And   I Search For The Randomly Created Course Under Enrolment
+    And   I Choose To Mark An Enrolment As Complete
+    Then  I Should See That The Enrolment Was Successfully Marked As Complete
+    When  I Choose To Refresh The Enrolment For Completed Activity
+    And   I Refresh The Enrolment For All The Activities
+    Then  I Should See The Course Status Successfully Marked As Not Yet Started
