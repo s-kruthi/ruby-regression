@@ -60,7 +60,7 @@ end
 Then(/^I Should Be Able To Bulk Enrol Users To That Course$/i) do
   GoToEnrolledUserPage()
   BulkEnrolUsersToThatCourse()
-  VerifyAllSelectedUsersGotBulkEnrolledToTheCourse("#{$data_hash['course_id:']}")
+  VerifyAllSelectedUsersGotBulkEnrolledToTheCourse("#{$random_course_id}")
 end
 
 

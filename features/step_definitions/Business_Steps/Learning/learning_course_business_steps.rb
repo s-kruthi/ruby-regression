@@ -71,7 +71,7 @@ end
 
 
 When(/^I Search For The Randomly Created Course$/i) do
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, $randomly_created_course, COURSE_SEARCH_BTN_ID)
+  Sleep_Until(SearchACourse(COURSE_LIST_SEARCH_BOX_ID, $randomly_created_course, COURSE_SEARCH_BTN_ID))
 end
 
 
@@ -661,9 +661,9 @@ end
 And(/^I Create A Random Course For Automation$/i) do
   #do DB query and pass the username to find userid and pass on to the next step
   Sleep_Until(CreateACourseThroughServices(LEARNING_ADMIN_USERNAME,LEARNING_ADMIN_PASSWORD,'3472'))
-  # Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
-  # puts $data_hash['first_name:']
-  # puts $data_hash['course_id:']
+  Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
+  puts $data_hash['first_name:']
+  puts $data_hash['course_id:']
 end
 
 
