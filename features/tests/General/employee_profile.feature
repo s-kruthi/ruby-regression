@@ -1,8 +1,7 @@
 @employee_profile @general
 
 Feature:
-  As a Company Administrator I would like to edit an
-  employee's details includng personal and payment
+As A Company Admin I Would Like To Edit An Employee's Details Including Personal And Payment
 
   @ViewEmploymentDetails @general_high_risk
   Scenario: [General]View Employees hourly Rate and Salary Details (Payment Details)
@@ -64,5 +63,39 @@ Feature:
     | HR Manager       |
     | Any Manager      |
 
+
+  #Currently works only on payroll03
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_default_autopay @C16724
+  Scenario: [General] Company Admin Can View Autopay Default Setting As No
+    Given I Have Logged In as a Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee With Default Autopay Setting
+    Then  I Can View The Default Autopay Setting As No
+
+
+  #Currently works only on payroll03
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_message @C16725
+  Scenario: [General] Company Admin Can View Autopay Message
+    Given I Have Logged In as a Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee With Employment Details
+    And   I Edit The User's Employment Details Section
+    And   I Set The Autopay Setting As Yes
+    Then  I Should Be Displayed With Autopay Message
+
+
+  #Currently works only on payroll03
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_edit @C16725
+  Scenario: [General] Company Admin Can View Autopay Is Set to Default No
+    Given I Have Logged In as a Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee With Employment Details
+    And   I Edit The User's Employment Details Section
+    And   I Set The Autopay Setting As Yes
+    And   I Save The Payment Details Changes For Autopay
+    Then  I Should Be Able To See The Autopay Setting Changed To Yes
 
 
