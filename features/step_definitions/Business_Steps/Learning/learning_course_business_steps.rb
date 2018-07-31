@@ -71,7 +71,7 @@ end
 
 
 When(/^I Search For The Randomly Created Course$/i) do
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, $randomly_created_course, COURSE_SEARCH_BTN_ID)
+  Sleep_Until(SearchACourse(COURSE_LIST_SEARCH_BOX_ID, $randomly_created_course, COURSE_SEARCH_BTN_ID))
 end
 
 
@@ -659,12 +659,21 @@ end
 
 
 And(/^I Create A Random Course For Automation$/i) do
-  Sleep_Until(CreateACourseThroughServices(LEARNING_ADMIN_USERNAME,LEARNING_ADMIN_PASSWORD))
+  #do DB query and pass the username to find userid and pass on to the next step
+  Sleep_Until(CreateACourseThroughServices(LEARNING_ADMIN_USERNAME,LEARNING_ADMIN_PASSWORD,'3472'))
   Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
   puts $data_hash['first_name:']
   puts $data_hash['course_id:']
 end
 
+
+And(/^I Create A Random Course For Automation With (.*) Activity$/i) do |activity_name|
+  #do DB query and pass the username to find userid and pass on to the next step
+   Sleep_Until(CreateACourseWithActivityThroughServices(LEARNING_ADMIN_USERNAME,LEARNING_ADMIN_PASSWORD,"3472",activity_name))
+  # Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
+  # puts $data_hash['first_name:']
+  # puts $data_hash['course_id:']
+end
 
 And(/^I Go To The Enrolled User Section For That Course (.*)$/i) do |course_name|
   Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,course_name))
@@ -679,10 +688,10 @@ end
 
 
 And(/^I Go To The Enrolled User Section Of That Randomly Created Course$/i) do
-  Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
-  puts $data_hash['course_id:']
-  Sleep_Until(GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}"))
-  Sleep_Until(ReEnrolTheCandidateForCourse('Donttouchautomationuser'))
+  # Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
+  # puts $data_hash['course_id:']
+  Sleep_Until(GoToSpecificCourseEnrolmentSection("#{$random_course_id}"))
+  #Sleep_Until(ReEnrolTheCandidateForCourse('Donttouchautomationuser'))
 end
 
 Given(/^A Face To Face Session With Status ([\w\s]+) Is Created For A Course$/i) do |session_status|

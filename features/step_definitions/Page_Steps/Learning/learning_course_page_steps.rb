@@ -1143,24 +1143,46 @@ def FilterEnrolments(filter_by, filter_value)
   end
 end
 
-def CreateACourseThroughServices(creator_username, creator_password)
+def CreateACourseThroughServices(creator_username, creator_password, enrolled_user_id)
   if ENV['url'] == nil
     ENV['url'] = 'tmsfull'
   else
     puts "server provided = " + ENV["url"]
   end
   puts @create_against =  "#{ENV['url']}.dev.elmodev.com"
-  puts "Data Creation in process...".colorize(:blue)
+  puts "Data Creation in process...".colorize(:light_yellow)
   if ENV['MYMAC']
-    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password})
+    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password} -Jenrolled_user_id=#{enrolled_user_id})
   else
-    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password})
+    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password} -Jenrolled_user_id=#{enrolled_user_id})
   end
   csv = CSV.read('JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv', :headers=>false)
   puts "course_name:" + csv[0][0]
-  $randomly_created_course = File.read("./JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv").delete!("\n")
+  puts "course_id:" + csv[0][1]
+  $randomly_created_course = csv[0][0]
+  $random_course_id = csv[0][1]
 end
 
+
+def CreateACourseWithActivityThroughServices(creator_username, creator_password, enrolled_user_id, activity_name)
+  if ENV['url'] == nil
+    ENV['url'] = 'tmsfull'
+  else
+    puts "server provided = " + ENV["url"]
+  end
+  puts @create_against =  "#{ENV['url']}.dev.elmodev.com"
+  puts "Data Creation in process...".colorize(:light_yellow)
+  if ENV['MYMAC']
+    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseActivityAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password} -Jenrolled_user_id=#{enrolled_user_id} -Jactivity_name=#{activity_name})
+  else
+    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseActivityAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password} -Jenrolled_user_id=#{enrolled_user_id} -Jactivity_name=#{activity_name})
+  end
+  csv = CSV.read('JMETER_AUTO/Jmeter_tests/Learning/learning_course_add.csv', :headers=>false)
+  puts "course_name:" + csv[0][0]
+  puts "course_id:" + csv[0][1]
+  $randomly_created_course = csv[0][0]
+  $random_course_id = csv[0][1]
+end
 
 def ManualSignupFaceToFaceSession(name, index)
   WaitForAnElementByPartialLinkTextAndTouch("Manual Sign Up")
