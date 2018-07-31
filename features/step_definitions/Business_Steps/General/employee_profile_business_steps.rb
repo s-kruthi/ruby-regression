@@ -78,14 +78,14 @@ And(/^I Set The Note Visibility To (.*)$/i) do |visibility_value|
 end
 
 
-And(/^I Click On Add Note Button$/i) do
+And(/^I Click On (Add|Save) Note Button$/i) do |action|
   Sleep_Until(WaitForAnElementByIdAndTouch(NOTE_SUBMIT_ID))
-  @time_note_added = (DateTime.now).strftime "%d/%m/%Y %l:%M%p"
+  @time_note_added = (DateTime.now).strftime "%d/%m/%Y%l:%M%p"
 end
 
 
-Then(/^I Should See That The Note Has Been Added Successfully$/i) do
-  CheckNoteAdded()
+Then(/^I Should See That The Note Has Been (Added|Edited) Successfully$/i) do |action|
+  CheckNoteAdded(action)
 end
 
 
@@ -146,4 +146,18 @@ And(/^I Save The Payment Details Changes For Autopay$/i) do
   modal_title = GetTextAssociatedToElement("xpath",USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
   modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
   Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
+end
+
+
+When(/^I (Edit|Delete) Note Added By Me$/i) do |action|
+  if action == "Edit"
+    Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_EDIT_BUTTON_ID))
+  else
+    Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_DEL_BUTTON_ID))
+  end
+end
+
+
+Then(/^I Should See That The Note Has Been Deleted Successfully$/i) do
+  pending
 end

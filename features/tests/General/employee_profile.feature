@@ -42,12 +42,13 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
     And   I Should Be Able To Click Payment Details Sub-Tab
     And   I Should Be Able To Click Recognition Sub-Tab
 
+
   #Currently works on nick01
   @general_low_risk @user_profile_addnote
   Scenario Outline: [General]Can Add Note To A User Profile With Different Visibility Settings
-    Given I Have Logged In as a Company Manager
+    Given I Have Logged In As A Company Manager
     And   I Go To The Menu My Team Section
-    And   I Search An Employee named test1.omar1
+    And   I Search An Employee named test1 omar1
     When  I Click On "Add New Note" Button
     And   I Enter Note
     And   I Add An Attachment To The Note
@@ -98,4 +99,24 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
     And   I Save The Payment Details Changes For Autopay
     Then  I Should Be Able To See The Autopay Setting Changed To Yes
 
+
+  #Currently works on nick01
+  @general_low_risk @user_profile_editnote
+  Scenario: [General]Can Edit Note To A User Profile
+    Given I Have Logged In As A Company Manager
+    And   I Go To The Menu My Team Section
+    And   I Search An Employee named test1 omar1
+    When  I Edit Note Added By Me
+    And   I Click On Save Note Button
+    Then  I Should See That The Note Has Been Edited Successfully
+
+
+  #Currently works on nick01
+  @general_low_risk @user_profile_deletenote
+  Scenario: [General]Can Delete Note To A User Profile
+    Given I Have Logged In As A Company Manager
+    And   I Go To The Menu My Team Section
+    And   I Search An Employee named test1 omar1
+    When  I Delete Note Added By Me
+    Then  I Should See That The Note Has Been Deleted Successfully
 

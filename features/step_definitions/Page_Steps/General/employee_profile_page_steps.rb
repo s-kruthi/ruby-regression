@@ -44,6 +44,7 @@ def verify_employee_profile(employee_name, employee_email)
     VerifyAnElementExistByClassAndIndex(USER_PROFILE_BODY_CLASS_NAME, employee_name, 0) #This is the employee profile view
 end
 
+
 def SetNoteVisibility(visibility_value)
   if visibility_value != "default"
     i = 0
@@ -54,17 +55,18 @@ def SetNoteVisibility(visibility_value)
     end
     Sleep_Until(SelectFromDropDown('//select[@id="NoteForm_acl_key"]', "#{visibility_value}"))
   end
-  @note_visibility_value = visibility_value
 end
 
 
-def CheckNoteAdded()
-  #check that edit and delete options are not there currently doesnt work beacuse of PMS-15737
-  #check note added timestamp and by user if visibility is set to Admin/HR Manager then it cant be verified on page
-  if @note_visibility_value == ('Manager'||'Any Manager'||'default')
-    $driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text == "manager1 omar1"
-    $driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text.include? @time_note_added
+def CheckNoteAdded(action)
+  expect($driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text).to eq("manager1 omar1")
+  expect($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).to eq(@time_note_added)
+  VerifyAnElementExists('xpath', NOTE_EDIT_BUTTON_ID)
+  VerifyAnElementExists('xpath', NOTE_DEL_BUTTON_ID)
+  if action == "Added"
     puts COLOR_GREEN + "Note has been added to the user profile"
+  else
+    puts COLOR_GREEN + "Note has been edited"
   end
 end
 
