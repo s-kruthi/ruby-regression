@@ -1,102 +1,113 @@
-Given(/^I Have Logged In As A (.*)$/i) do |login_name|
-  startWebDriver
-  GoToSite()
+Given(/^I Have Logged (In|Out)(:? As A (.*))?$/i) do |login_action, login_name|
 
-  case login_name
-  when "ELMO Setup Admin"
-    begin
-      GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-      EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
-      EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
+    case login_action
+    when "In"
+      startWebDriver
+      GoToSite()
 
-      loginToSystem(LOGIN_BUTTON)
+      begin
+        case login_name
 
-      GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-      EnterUsername(USER_NAME, ELMO_SETUP_ADMIN_USERNAME)
-      EnterPassword(PASS_WORD, ELMO_SETUP_ADMIN_PASSWORD)
-      loginToSystem(LOGIN_BUTTON)
-    end
+        when "ELMO Setup Admin"
+          begin
+            GoToThePage(ADMIN_SETUP_LANDING_PAGE)
+            EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
 
-  when "ELMO Super Admin"
-    begin
-      EnterUsername(USER_NAME, ELMO_SUPER_USERNAME)
-      EnterPassword(PASS_WORD, ELMO_SUPER_PASSWORD)
-    end
+            loginToSystem(LOGIN_BUTTON)
 
-  when "ELMO Admin"
-    begin
-      EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
-      EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
-    end
+            GoToThePage(ADMIN_SETUP_LANDING_PAGE)
+            EnterUsername(USER_NAME, ELMO_SETUP_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, ELMO_SETUP_ADMIN_PASSWORD)
+            loginToSystem(LOGIN_BUTTON)
+          end
 
-  when "Company Admin"
-    begin
-      EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
-      EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
-      username = COMP_ADMIN_USERNAME
-    end
+        when "ELMO Super Admin"
+          begin
+            EnterUsername(USER_NAME, ELMO_SUPER_USERNAME)
+            EnterPassword(PASS_WORD, ELMO_SUPER_PASSWORD)
+          end
 
-  when "Contract Admin"
-    begin
-      EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
-      EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
-      username = COMP_ADMIN_USERNAME
-    end
+        when "ELMO Admin"
+          begin
+            EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
+          end
 
-  when "Learning Admin"
-    begin
-      EnterUsername(USER_NAME, LEARNING_ADMIN_USERNAME)
-      EnterPassword(PASS_WORD, LEARNING_ADMIN_PASSWORD)
-      username = LEARNING_ADMIN_USERNAME
-    end
+        when "Company Admin"
+          begin
+            EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
+            username = COMP_ADMIN_USERNAME
+          end
 
-  when "Recruitment Admin"
-    begin
-      EnterUsername(USER_NAME, RECRUITMENT_ADMIN_USERNAME)
-      EnterPassword(PASS_WORD, RECRUITMENT_ADMIN_PASSWORD)
-      username = RECRUITMENT_ADMIN_USERNAME
-    end
+        when "Contract Admin"
+          begin
+            EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
+            username = COMP_ADMIN_USERNAME
+          end
 
-  when "Leave Admin"
-    begin
-      EnterUsername(USER_NAME, LEAVE_COMPANY_ADMIN_USER)
-      EnterPassword(PASS_WORD, LEAVE_COMPANY_ADMIN_PASS)
-      username = LEAVE_COMPANY_ADMIN_USER
-    end
+        when "Learning Admin"
+          begin
+            EnterUsername(USER_NAME, LEARNING_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, LEARNING_ADMIN_PASSWORD)
+            username = LEARNING_ADMIN_USERNAME
+          end
 
-  when "Company Manager"
-    begin
-      EnterUsername(USER_NAME, COMPANY_MANAGER_USER)
-      EnterPassword(PASS_WORD, COMPANY_MANAGER_PASS)
-      username = COMPANY_MANAGER_USER
-    end
+        when "Recruitment Admin"
+          begin
+            EnterUsername(USER_NAME, RECRUITMENT_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, RECRUITMENT_ADMIN_PASSWORD)
+            username = RECRUITMENT_ADMIN_USERNAME
+          end
 
-  when "Company Employee"
-    begin
-      EnterUsername(USER_NAME, COMPANY_EMPLOYEE_1_USER)
-      EnterPassword(PASS_WORD, COMPANY_EMPLOYEE_1_PASS)
-      username = COMPANY_EMPLOYEE_1_USER
-    end
+        when "Leave Admin"
+          begin
+            EnterUsername(USER_NAME, LEAVE_COMPANY_ADMIN_USER)
+            EnterPassword(PASS_WORD, LEAVE_COMPANY_ADMIN_PASS)
+            username = LEAVE_COMPANY_ADMIN_USER
+          end
 
-  when "Specific Automation User"
-    begin
-      EnterUsername(USER_NAME, DOC_USERNAME)
-      EnterPassword(PASS_WORD, DOC_PASSWORD)
-      username = DOC_USERNAME
-    end
+        when "Company Manager"
+          begin
+            EnterUsername(USER_NAME, COMPANY_MANAGER_USER)
+            EnterPassword(PASS_WORD, COMPANY_MANAGER_PASS)
+            username = COMPANY_MANAGER_USER
+          end
 
-  when "Specific Automation User Manager"
-    begin
-      EnterUsername(USER_NAME, DOC_MANAGER_NAME)
-      EnterPassword(PASS_WORD, DOC_MANAGER_PASSWORD)
-      username = DOC_MANAGER_NAME
-    end
+        when "Company Employee"
+          begin
+            EnterUsername(USER_NAME, COMPANY_EMPLOYEE_1_USER)
+            EnterPassword(PASS_WORD, COMPANY_EMPLOYEE_1_PASS)
+            username = COMPANY_EMPLOYEE_1_USER
+          end
+
+        when "Specific Automation User"
+          begin
+            EnterUsername(USER_NAME, DOC_USERNAME)
+            EnterPassword(PASS_WORD, DOC_PASSWORD)
+            username = DOC_USERNAME
+          end
+
+        when "Specific Automation User Manager"
+          begin
+            EnterUsername(USER_NAME, DOC_MANAGER_NAME)
+            EnterPassword(PASS_WORD, DOC_MANAGER_PASSWORD)
+            username = DOC_MANAGER_NAME
+          end
+        end
+
+        #getting the userid based on the username and saving for later
+        @user_id = $daos.get_userid(username)
+        LogInAndWaitForTheDashboard(LOGIN_BUTTON, ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
+      end
+
+    when "Out"
+      begin
+        LogOutFromTheDashboard(USER_PROFILE_MENU_ICON_ID, LOGOUT_BUTTON_ID)
+      end
   end
-
-  #getting the userid based on the username and saving for later
-  @user_id = $daos.get_userid(username)
-
-  LogInAndWaitForTheDashboard(LOGIN_BUTTON, ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
 end
 
 
@@ -347,24 +358,6 @@ end
 And(/^I Should Be Able To Save The Information Successfully$/i) do
   ClickOnSaveButton(SAVE_BTN_ID)
 end
-
-
-##//TODO: Review and Remova due to redundancy. Method has been moved to the following one
-# When(/^I Click On Add New User Button$/i) do
-#   begin
-#     case $add_user_type
-#     when "EMP"
-#       begin
-#         GoToAddNewUsersPage(ADD_NEW_USER_BTN)
-#       end
-#
-#     when "OB"
-#       begin
-#         GoToAddNewUsersPage(OB_ADD_NEW_USER_BTN)
-#       end
-#     end
-#   end
-# end
 
 
 And(/^I Click On "([^"]*)" Button$/i) do |button_name|
