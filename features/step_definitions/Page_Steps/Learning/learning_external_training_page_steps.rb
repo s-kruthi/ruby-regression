@@ -2,6 +2,7 @@
 def CheckConfigFields(field_ability)
   # .enabled? to check whether they are locked or not
   # hash of all the fields
+  pending
 end
 
 
