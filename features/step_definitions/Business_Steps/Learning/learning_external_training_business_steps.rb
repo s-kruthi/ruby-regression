@@ -9,11 +9,11 @@ And(/^I (Enable|Disable) The External Training For Users$/i) do |action|
   end
   #library disabled -> $driver.find_element(:id, 'elmo_learningbundle_external_training_libraryOnly').selected? == false
 
-  if action == "Enable"
-   steps %{ Then I Should See That The Configuration Fields Gets Unlocked }
-  elsif action == "Disable"
-    steps %{ Then I Should See That The Configuration Fields Gets Locked }
-  end
+  # if action == "Enable"
+  #  steps %{ Then I Should See That The Configuration Fields Gets Unlocked }
+  # elsif action == "Disable"
+  #   steps %{ Then I Should See That The Configuration Fields Gets Locked }
+  # end
 end
 
 
