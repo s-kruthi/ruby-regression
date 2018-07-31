@@ -6,30 +6,42 @@ def GoToThePage(login_page)
   # $newme = "testfancy#{new_email_user}"
 end
 
+
 def EnterUsername(username,value)
   WaitForAnElementByIdAndInputValue(username, value)
 end
+
 
 def EnterPassword(password, value)
   WaitForAnElementByIdAndInputValue(password, value)
 end
 
+
 def EnterEmail(email, value)
   WaitForAnElementByIdAndInputValue(email, value)
 end
 
+
 def LogInAndWaitForTheDashboard(tag_name,admin_menu)
   TouchLoginButton(tag_name)
-  # Wait_For(3)
-  # WaitForAnElementById(admin_menu)
-  puts "Title: " + $driver.title
-  puts "URL: " + $driver.current_url
+  puts COLOR_BLUE + "Title: " + $driver.title
+  puts COLOR_BLUE + "URL: " + $driver.current_url
   sleep(3)
 end
+
+
+def LogOutFromTheDashboard(user_profile_icon, logout_button)
+  Sleep_Until(WaitForAnElementByIdAndTouch(user_profile_icon))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(logout_button))
+  sleep(1)
+  $driver.quit
+end
+
 
 def TouchLoginButton(tag_name)
   WaitForAnElementByTagNameAndTouch(tag_name)
 end
+
 
 def GoToTheSuccessionMenuPageAsAdmin(admin_cog,succession_expand)
   WaitForAnElementByClass(admin_cog)
@@ -42,14 +54,17 @@ def TouchAdminMenu(admin_menu)
   WaitForAnElementByClassAndTouch(admin_menu)
 end
 
+
 def GoToSuccessionLandingPage(succession_expand)
   sleep(4)
   WaitForAnElementByPartialLinkTextAndTouch(succession_expand)
 end
 
+
 def GoToTheSuccessionSetupPageAsAdmin(succession_review_setup_path)
   WaitForAnElementByXpathAndTouch(succession_review_setup_path)
 end
+
 
 def CreateANewSuccessionPlan(new_plan_btn,title_id,title_value,save_btn,succession_review_link)
   sleep(3)
@@ -61,12 +76,13 @@ def CreateANewSuccessionPlan(new_plan_btn,title_id,title_value,save_btn,successi
   WaitForAnElementByLinkAndTouch(succession_review_link)
 end
 
+
 def SearchTheNewlyCreatedSuccessionPlan(search_path,search_value)
   WaitForAnElementByXpathAndInputValue(search_path,search_value)
 end
 
+
 def DeleteTheFirstSuccessionPlanFromTheTable(dropdown,index_value)
- #2.times do
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(dropdown,index_value)
   sleep(1)
@@ -75,8 +91,9 @@ def DeleteTheFirstSuccessionPlanFromTheTable(dropdown,index_value)
   PressEnterConfirm()
   sleep(2)
   PressEnterOK()
- # end
 end
+
+
 def DeleteTheFirstAssignedSuccessionPlanFromTheTable(dropdown,index_value)
   sleep(2)
   WaitForDropdownByClassAndTouchTheIndex(dropdown,index_value)
@@ -85,6 +102,7 @@ def DeleteTheFirstAssignedSuccessionPlanFromTheTable(dropdown,index_value)
   sleep(1)
   PressEnterConfirm()
 end
+
 
 def HideTheFirstSuccessionPlanFromTheTable(dropdown,index_value,hide_path)
   sleep(1)
@@ -95,6 +113,7 @@ def HideTheFirstSuccessionPlanFromTheTable(dropdown,index_value,hide_path)
   PressEnterConfirm()
   sleep(2)
 end
+
 
 def GoToTheShowHiddenScreenAndMakeThePlanVisible(show_hidden_btn,visible_btn,show_visible_btn)
   WaitForAnElementByXpathAndTouch(show_hidden_btn)
@@ -107,6 +126,7 @@ def GoToTheShowHiddenScreenAndMakeThePlanVisible(show_hidden_btn,visible_btn,sho
   sleep(1)
 end
 
+
 def SearchAndVerifyTheSuccessionReturnsSuccessfully(search_field,search_value,search_btn,search_result)
   sleep(1)
   WaitForAnElementByXpathAndInputValue(search_field,search_value)
@@ -114,6 +134,7 @@ def SearchAndVerifyTheSuccessionReturnsSuccessfully(search_field,search_value,se
   WaitForAnElementByClassAndTouch(search_btn)
   VerifyAnElementExistByClass(search_result,search_value)
 end
+
 
 def VerifyTheMessageCannotBeDeletedExist(message_class,message_body )
   sleep(1)
