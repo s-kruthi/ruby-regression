@@ -153,11 +153,16 @@ When(/^I (Edit|Delete) Note Added By Me$/i) do |action|
   if action == "Edit"
     Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_EDIT_BUTTON_ID))
   else
+    @posted_by = $driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text
+    @posted_time = $driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text
     Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_DEL_BUTTON_ID))
+    PressEnterConfirm()
+    PressEnterOK()
   end
 end
 
 
 Then(/^I Should See That The Note Has Been Deleted Successfully$/i) do
-  pending
+  expect($driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text).not_to eq(@posted_by)
+  expect($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).not_to eq(@posted_time)
 end
