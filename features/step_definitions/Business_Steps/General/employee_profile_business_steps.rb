@@ -78,14 +78,15 @@ And(/^I Set The Note Visibility To (.*)$/i) do |visibility_value|
 end
 
 
-And(/^I Click On Add Note Button$/i) do
+And(/^I Click On (Add|Save) Note Button$/i) do |action|
   Sleep_Until(WaitForAnElementByIdAndTouch(NOTE_SUBMIT_ID))
-  @time_note_added = (DateTime.now).strftime "%d/%m/%Y %l:%M%p"
+  time_note_added = DateTime.now.strftime('%s').to_i
+  @time_note_added = Time.at(time_note_added).strftime "%d/%m/%Y %-l:%M%p"
 end
 
 
-Then(/^I Should See That The Note Has Been Added Successfully$/i) do
-  CheckNoteAdded()
+Then(/^I Should See That The Note Has Been (Added|Edited) Successfully$/i) do |action|
+  CheckNoteAdded(action)
 end
 
 
@@ -139,11 +140,41 @@ end
 
 
 And(/^I Save The Payment Details Changes For Autopay$/i) do
-  Sleep_Until(WaitForAnElementByCSSAndTouch(MODAL_YES_BUTTON_CSS))
+  SaveAutopayChanges()
+end
 
-  Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
 
-  modal_title = GetTextAssociatedToElement("xpath",USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
-  modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
-  Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
+When(/^I (Edit|Delete) Note Added By Me$/i) do |action|
+  if action == "Edit"
+    EditNote()
+  else
+    DeleteNote()
+  end
+end
+
+
+Then(/^I Should See That The Note Has Been Deleted Successfully$/i) do
+  VerifyDeletionOfNote()
+end
+
+
+And(/^I Search For A User named ([\w\s]+)$/i) do |user_name|
+  $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user_name)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
+end
+
+
+And(/^I View The User's Profile$/i) do
+  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+end
+
+
+Then(/^I Should See That I Can Manage The Notes Added To The User$/i) do
+  VerifyAnElementExists('xpath', NOTE_EDIT_BUTTON_ID)
+  VerifyAnElementExists('xpath', NOTE_DEL_BUTTON_ID)
+end
+
+
+Then(/^I Should Not Be Able To See Notes Section$/i) do
+  VerifyAnElementNotExist('id', 'notes-section')
 end

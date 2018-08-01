@@ -44,6 +44,7 @@ def verify_employee_profile(employee_name, employee_email)
     VerifyAnElementExistByClassAndIndex(USER_PROFILE_BODY_CLASS_NAME, employee_name, 0) #This is the employee profile view
 end
 
+
 def SetNoteVisibility(visibility_value)
   if visibility_value != "default"
     i = 0
@@ -54,17 +55,20 @@ def SetNoteVisibility(visibility_value)
     end
     Sleep_Until(SelectFromDropDown('//select[@id="NoteForm_acl_key"]', "#{visibility_value}"))
   end
-  @note_visibility_value = visibility_value
 end
 
 
-def CheckNoteAdded()
-  #check that edit and delete options are not there currently doesnt work beacuse of PMS-15737
-  #check note added timestamp and by user if visibility is set to Admin/HR Manager then it cant be verified on page
-  if @note_visibility_value == ('Manager'||'Any Manager'||'default')
-    $driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text == "manager1 omar1"
-    $driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text.include? @time_note_added
+def CheckNoteAdded(action)
+  expect($driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text).to eq("manager1 omar1")
+
+  VerifyAnElementExists('xpath', NOTE_EDIT_BUTTON_ID)
+  VerifyAnElementExists('xpath', NOTE_DEL_BUTTON_ID)
+
+  if action == "Added"
+    expect($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).to eq(@time_note_added)
     puts COLOR_GREEN + "Note has been added to the user profile"
+  else
+    puts COLOR_GREEN + "Note has been edited"
   end
 end
 
@@ -131,4 +135,37 @@ end
 
 def GetTextAssociatedToElement(type,identifier)
   return $driver.find_element(:"#{type}", identifier).text
+end
+
+
+def EditNote()
+  Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_EDIT_BUTTON_ID))
+  steps %{ And I Enter Note}
+end
+
+
+def DeleteNote()
+  @posted_time = $driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text
+  Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_DEL_BUTTON_ID))
+  Sleep_Until(PressEnterConfirm())
+  Sleep_Until(PressEnterOK())
+end
+
+
+def VerifyDeletionOfNote()
+  #checks for the absence of the post by checking the posted time
+  expect($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).not_to eq(@posted_time)
+end
+
+
+def SaveAutopayChanges()
+  Sleep_Until(WaitForAnElementByCSSAndTouch(MODAL_YES_BUTTON_CSS))
+
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
+
+  modal_title = GetTextAssociatedToElement("xpath",USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
+  modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
+
+  #keeping history for tracking history
+  Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
 end
