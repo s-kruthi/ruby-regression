@@ -80,7 +80,7 @@ end
 
 And(/^I Click On (Add|Save) Note Button$/i) do |action|
   Sleep_Until(WaitForAnElementByIdAndTouch(NOTE_SUBMIT_ID))
-  @time_note_added = (DateTime.now).strftime "%d/%m/%Y%l:%M%p"
+  @time_note_added = (DateTime.now).strftime "%d/%m/%Y %-l:%M%p"
 end
 
 
@@ -139,30 +139,41 @@ end
 
 
 And(/^I Save The Payment Details Changes For Autopay$/i) do
-  Sleep_Until(WaitForAnElementByCSSAndTouch(MODAL_YES_BUTTON_CSS))
-
-  Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
-
-  modal_title = GetTextAssociatedToElement("xpath",USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
-  modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
-  Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
+  SaveAutopayChanges()
 end
 
 
 When(/^I (Edit|Delete) Note Added By Me$/i) do |action|
   if action == "Edit"
-    Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_EDIT_BUTTON_ID))
+    EditNote()
   else
-    @posted_by = $driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text
-    @posted_time = $driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text
-    Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_DEL_BUTTON_ID))
-    PressEnterConfirm()
-    PressEnterOK()
+    DeleteNote()
   end
 end
 
 
 Then(/^I Should See That The Note Has Been Deleted Successfully$/i) do
-  expect($driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text).not_to eq(@posted_by)
-  expect($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).not_to eq(@posted_time)
+  VerifyDeletionOfNote()
+end
+
+
+And(/^I Search For A User named ([\w\s]+)$/i) do |user_name|
+  $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user_name)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
+end
+
+
+And(/^I View The User's Profile$/i) do
+  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+end
+
+
+Then(/^I Should See That I Can Manage The Notes Added To The User$/i) do
+  VerifyAnElementExists('xpath', NOTE_EDIT_BUTTON_ID)
+  VerifyAnElementExists('xpath', NOTE_DEL_BUTTON_ID)
+end
+
+
+Then(/^I Should Not Be Able To See Notes Section$/i) do
+  VerifyAnElementNotExist('id', 'notes-section')
 end

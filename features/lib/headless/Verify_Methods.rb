@@ -173,13 +173,13 @@ module Headless
           }
         end
         if elements.empty?
-          puts COLOR_GREEN + "MATCHED: Item not displayed."
+          puts COLOR_GREEN + "MATCHED: Element is not displayed."
         else
           fail
         end
 
       rescue Exception => e
-        raise VerificationException.new(COLOR_RED + "Item is displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        raise VerificationException.new(COLOR_RED + "Element is displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end

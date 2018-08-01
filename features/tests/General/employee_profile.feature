@@ -44,7 +44,7 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
 
 
   #Currently works on nick01
-  @general_low_risk @user_profile_addnote
+  @general_low_risk @user_profile_note @user_profile_addnote @C16458
   Scenario Outline: [General]Can Add Note To A User Profile With Different Visibility Settings
     Given I Have Logged In As A Company Manager
     And   I Go To The Menu My Team Section
@@ -101,7 +101,7 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
 
 
   #Currently works on nick01
-  @general_low_risk @user_profile_editnote
+  @general_low_risk @user_profile_note @user_profile_editnote @C16877
   Scenario: [General]Can Edit Note To A User Profile
     Given I Have Logged In As A Company Manager
     And   I Go To The Menu My Team Section
@@ -112,11 +112,32 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
 
 
   #Currently works on nick01
-  @general_low_risk @user_profile_deletenote
+  @general_low_risk @user_profile_note @user_profile_deletenote @C16877
   Scenario: [General]Can Delete Note To A User Profile
     Given I Have Logged In As A Company Manager
     And   I Go To The Menu My Team Section
     And   I Search An Employee named test1 omar1
     When  I Delete Note Added By Me
     Then  I Should See That The Note Has Been Deleted Successfully
+
+
+  #Currently works on nick01
+  @general_low_risk @user_profile_note @user_profile_managenote @C16456
+  Scenario: [General]Company Admin Can Manage Notes
+    Given I Have Logged In As A Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    And   I Search For A User named test1 omar1
+    When  I View The User's Profile
+    Then  I Should See That I Can Manage The Notes Added To The User
+
+
+  @general_low_risk @user_profile_note @C7585
+  Scenario: [General]User Cannot View Notes Section On Own Profile
+    Given I Have Logged In As A Company Employee
+    When  I Go To The Menu Profile Section
+    Then  I Should Not Be Able To See Notes Section
+
+
+
 
