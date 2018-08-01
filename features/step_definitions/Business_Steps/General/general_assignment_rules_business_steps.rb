@@ -43,7 +43,7 @@ And(/^I Enter Assignment Rules Required Course Name As (.*)/i) do |assign_rule_r
     ClickOnSelect2MultiSelectDropDownAndInputValue(ASSIGN_RULE_REQ_COURSE_CLASS_ID, course_list_result)
   
   else
-    puts COLOR_YELLOW + "Assignment Rule not found. Please check the database manually".upcase
+    puts COLOR_YELLOW + "Course not found. Please check the database manually".upcase
     skip_this_scenario
   end
 end
@@ -55,7 +55,7 @@ And(/^I Enter Assignment Rules Recommended Course Name As (.*)$/i) do |assign_ru
     ClickOnSelect2MultiSelectDropDownAndInputValue(ASSIGN_RULE_RECMD_COURSE_CLASS_ID, course_list_result)
   
   else
-    puts COLOR_YELLOW + "Assignment Rule not found. Please check the database manually".upcase
+    puts COLOR_YELLOW + "Course Rule not found. Please check the database manually".upcase
     skip_this_scenario
   end
 end

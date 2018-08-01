@@ -71,7 +71,7 @@ When(/^I Search For A Specific Course(?: With (Enrolments|No Enrolments))? Named
         SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
       
       else
-        puts COLOR_YELLOW + "Course not no enrolments not found. Please check the database manually".upcase
+        puts COLOR_YELLOW + "Course with no enrolments not found. Please check the database manually".upcase
         skip_this_scenario
       end
     
