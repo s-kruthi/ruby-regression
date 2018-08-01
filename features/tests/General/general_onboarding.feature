@@ -5,11 +5,11 @@ Feature:
 
   @general_user_add @general_high_risk @onboarding_high_risk
   Scenario: [General] [Onboarding] Company Admin Creating New User
-    Given I Have Logged In as a ELMO Admin
+    Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
-    Then  I Should Be Able To Add 5 New "ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager2.omar2" As Manager Username
+    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name
 
 
   @onboarding_user_add @general_high_risk @onboarding_high_risk

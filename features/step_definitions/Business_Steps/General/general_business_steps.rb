@@ -1,4 +1,4 @@
-Given(/^I Have Logged (In|Out)(:? As A (.*))?$/i) do |login_action, login_name|
+Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
   case login_action
     when "In"
       startWebDriver
