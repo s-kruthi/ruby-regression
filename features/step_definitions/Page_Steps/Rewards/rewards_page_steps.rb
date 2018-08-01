@@ -23,8 +23,3 @@ end
 def ClickSaveBadge(badge_create_save_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(badge_create_save_btn_id))
 end
-
-# TODO: This is a recursive method and will be removed in a later commit
-# def VerifySuccessAlertMessage(badge_save_success_id, badge_save_success_value)
-#   Sleep_Until(VerifySuccessAlertMessage(badge_save_success_id, badge_save_success_value))
-# end

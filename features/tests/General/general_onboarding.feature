@@ -5,12 +5,11 @@ Feature:
 
   @general_user_add @general_high_risk @onboarding_high_risk
   Scenario: [General] [Onboarding] Company Admin Creating New User
-    Given I Have Logged In as a Company Admin
+    Given I Have Logged In as a ELMO Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
-    And   I Enter New User Details
-    Then  I Should Be Able To Add 5 New Users In To The System
+    Then  I Should Be Able To Add 5 New "ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager2.omar2" As Manager Username
 
 
   @onboarding_user_add @general_high_risk @onboarding_high_risk
@@ -18,19 +17,17 @@ Feature:
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Onboarding Users under Onboarding section
-    When  I Click On "Add New User" Button
-    And   I Enter New User Details
-    Then  I Should Be Able To Add 10 New Users In To The System
+    When  I Click On "New Onboarding User" Button
+    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.omar1" As Manager Username
 
 
   @hr_add_contact_emergency @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]General User Editing Profile Page - Emergency Contact Details
     Given I Have Logged In as a Company Admin
     And   I Go To The Menu Profile Section
-    And   I Click On Personal Details Sub Tab
+    And   I Click On "Personal Details" Sub Tab
     When  I Click On Edit Emergency Contact Details Icon
-    And   I Click On Add Emergency Contact Details Button
-    And   I Use Add Emergency Contact Details
+    And   I Use Add "Emergency Contact" Details
     Then  I Should Be Able To Add Emergency Contact Details
 
 
@@ -38,9 +35,8 @@ Feature:
   Scenario: [General][Onboarding]Onboarding User Editing Profile Page - Next of Kin
     Given I Have Logged In as a Company Admin
     And   I Go To The Menu Profile Section
-    And   I Click On Personal Details Sub Tab
+    And   I Click On "Personal Details" Sub Tab
     When  I Click On Edit Next Of Kin Icon
-    And   I Click On Add Next Of Kin Button
     And   I Use Add Next Of Kin Details
     Then  I Should Be Able To Add Next Of Kin Details
 

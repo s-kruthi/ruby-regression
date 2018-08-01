@@ -2,6 +2,7 @@ def ClickAssignContract(assign_contract_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(assign_contract_btn_id))
 end
 
+
 def SearchUser(user_type)
   if user_type == "existing"
     $user = $daos.get_existing_user_detail_with_no_contract
@@ -12,6 +13,7 @@ def SearchUser(user_type)
     $driver.find_elements(:xpath, SEARCH_DROPDOWN_ID).last.click
     Sleep_Until($driver.find_elements(:class, SEARCH_BOX_CLASS).last.send_keys(username))
 end
+
 
 def IdentifyUser(user_type)
   username = $user[:first_name]+" "+$user[:last_name]
@@ -24,27 +26,32 @@ def IdentifyUser(user_type)
   end
 end
 
+
 def ChooseUserForContract(confirm_assign_contract_btn_id)
   Sleep_Until($driver.find_elements(:class, SEARCH_RESULTS_CLASS).first.click)
   Sleep_Until(WaitForAnElementByXpathAndTouch(confirm_assign_contract_btn_id))
 end
 
+
 def ConfirmUserPendingContractWorkflow()
   workflow_status = 1 #pending status
   user_id = $user[:id]
   username = $user[:first_name]+" "+$user[:last_name]
-
-  #verify in the DB
+  
   contract_workflow_id = $daos.get_user_contract_workflow_id(user_id,workflow_status)
-
-  if contract_workflow_id!= nil
+  if !contract_workflow_id.nil?
     #search by username
     Sleep_Until(WaitForAnElementByIdAndInputValue(CONTRACT_WORKFLOW_SEARCH_BOX_ID, username))
     Sleep_Until(WaitForAnElementByXpathAndTouch(SEARCH_BUTTON_ID))
     employee_name = $driver.find_element(:class, 'pull-left').text()
     employee_name.eql?username
+  
+  else
+    puts COLOR_YELLOW + "Contract Workflow not found. Please check the database manually".upcase
+    skip_this_scenario
   end
 end
+
 
 def VerifyAssignSuccessMessage(assign_confirmation_msg_class, assign_confirmation_msg_text)
   Sleep_Until(VerifyAnElementExistByClass(assign_confirmation_msg_class, assign_confirmation_msg_text))

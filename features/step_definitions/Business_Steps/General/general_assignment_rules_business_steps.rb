@@ -39,13 +39,25 @@ end
 
 And(/^I Enter Assignment Rules Required Course Name As (.*)/i) do |assign_rule_req_course_name|
   course_list_result = $daos.get_assignment_rules_course_list_by_name(assign_rule_req_course_name)
-  ClickOnSelect2MultiSelectDropDownAndInputValue(ASSIGN_RULE_REQ_COURSE_CLASS_ID, course_list_result)
+  if !course_list_result.nil?
+    ClickOnSelect2MultiSelectDropDownAndInputValue(ASSIGN_RULE_REQ_COURSE_CLASS_ID, course_list_result)
+  
+  else
+    puts COLOR_YELLOW + "Assignment Rule not found. Please check the database manually".upcase
+    skip_this_scenario
+  end
 end
 
 
 And(/^I Enter Assignment Rules Recommended Course Name As (.*)$/i) do |assign_rule_rec_course_name|
   course_list_result = $daos.get_assignment_rules_course_list_by_name(assign_rule_rec_course_name)
-  ClickOnSelect2MultiSelectDropDownAndInputValue(ASSIGN_RULE_RECMD_COURSE_CLASS_ID, course_list_result)
+  if !course_list_result.nil?
+    ClickOnSelect2MultiSelectDropDownAndInputValue(ASSIGN_RULE_RECMD_COURSE_CLASS_ID, course_list_result)
+  
+  else
+    puts COLOR_YELLOW + "Assignment Rule not found. Please check the database manually".upcase
+    skip_this_scenario
+  end
 end
 
 

@@ -14,7 +14,7 @@ MENU_REPORTS_LINK = "//a[contains(@href,'/report')]"
 
 GENERAL_EXPAND = "//a[@href='#collapseGeneral']"
 USERS_LIST_PATH = "//span[contains(.,'Users')]"
-
+USERS_NAV_LINK = "//a[contains(@href,'/admin/users')]"
 ADD_NEW_USER_BTN = "//a[contains(.,' Add New User')]"
 
 NEW_USER_FIRST_NAME_ID = "//input[contains(@id,'firstName')]"
@@ -29,9 +29,12 @@ MANAGER_SELECT_RESULT_ID = "select2-result-selectable"
 ONBOARDING_EXPAND = "//a[@href='#collapseOnboarding']"
 OB_USERS_LIST_PATH = "//span[contains(.,'Onboarding Users')]"
 OB_ADD_NEW_USER_BTN = "//a[contains(.,' New Onboarding User')]"
+OB_USER_NAV_LINK = "//a[contains(.,'Onboarding Users')]"
 
 SELECT_START_DATE_ID = "//input[contains(@id,'user_startDate')]"
 SELECT_EXPIRY_DATE_ID = "//input[contains(@id,'expiryDate')]"
+
+SELECT_ISELMO_DROPDOWN_ID = "//select[contains(@id,'user_isElmo')]"
 
 USER_CREATE_SAVE_BTN_ID = "//button[@id='user_save']"
 
