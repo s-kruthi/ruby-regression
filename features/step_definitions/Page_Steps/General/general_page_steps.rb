@@ -60,7 +60,6 @@ def CreateUsers(loop, arg1, arg2, arg3, arg4, arg5)
   Sleep_Until(SelectDate(SELECT_START_DATE_ID, SELECT_START_DATE_VALUE)) if SELECT_START_DATE.to_i == 1
   Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, SELECT_EXPIRY_DATE_VALUE)) if SELECT_EXPIRY_DATE.to_i == 1
   Sleep_Until(SelectFromDropDown(SELECT_ISELMO_DROPDOWN_ID, "Yes")) if arg2 == "ELMO"
-  Sleep_Until(SelectFromDropDown(SELECT_ISELMO_DROPDOWN_ID, "No")) if arg2 == "Non-ELMO"
   Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, USER_PASSWORD_VALUE))
   Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, USER_PASSWORD_VALUE))
   Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))

@@ -366,7 +366,7 @@
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Continuing Professional Development Under Learning Section
-      And   I Click On "Categories" Sub Tab
+      And   I Click On "Categories" Tab
       When  I Click On "New Category" Button
       And   I Enter CPD "New Category" Details
       Then  I Should Be Able To Add CPD "New Category" Successfully
