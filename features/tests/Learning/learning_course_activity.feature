@@ -359,3 +359,25 @@
       Then  I Should Be Able To "Sign Up" For That Session
       And   I Should Be Able To "Withdraw" For That Session
       Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient test1.omar1
+
+
+    @learning_low_risk @course_cpd_category_add @C1772
+    Scenario: As a company Administrator, I want to manage Continuing Professional Development (CPD) Categories
+      Given I Have Logged In As A Company Admin
+      And   I Go To Admin Settings
+      And   I Go To Continuing Professional Development Under Learning Section
+      And   I Click On "Categories" Tab
+      When  I Click On "New Category" Button
+      And   I Enter CPD "New Category" Details
+      Then  I Should Be Able To Add CPD "New Category" Successfully
+      
+      
+    @learning_low_risk @course_cpd_add @C1771
+    Scenario: As A Company Administrator, I Want To Manage Continuing Professional Development (CPD) Points
+      Given I Have Logged In As A Company Admin
+      And   I Go To Admin Settings
+      And   I Go To Continuing Professional Development Under Learning Section
+      When  I Click On "New Plan" Button
+      And   I Enter CPD "New Plan" Details
+      And   I Select CPD "Category" Named "DO NOT DELETE"
+      Then  I Should Be Able To Add CPD "New Plan" Successfully

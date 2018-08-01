@@ -1,17 +1,9 @@
 def GoToSite()
-
-  # Use override from ENV variable if there's any to go to any specific domain name, if there's no specified one, use default from BDD
   $site_alias = (ENV["URL"] || ENV["url"]) || 'tmsfull'
-
-  # Use override from ENV variable if there's any to go to any staging or prod site, if there's no specified one, use default from BDD
   $site_type = (ENV["TYPE"] || ENV["type"]) || 'staging'
-
-  # TODO: Change this to a case select condition
   $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/dashboard" if ($site_type.to_s == "prod" || $site_type.to_s == "PROD")
   $site_url = "https://" + "#{$site_alias}" + ".dev.elmodev.com/dashboard" if ($site_type.to_s == "staging" || $site_type.to_s == "STAGING")
-
   puts "SERVER MODE = " + $site_type.to_s if (ENV["TYPE"] || ENV["type"]) != nil
-
   $driver.navigate.to($site_url)
 end
 
@@ -44,20 +36,19 @@ def GoToAddNewUsersPage(add_new_user_btn)
 end
 
 
-def AddUserDetails(limit)
-  i = 2 if limit >= 2
-  i = 1 if limit < 2
-  for loop in i..limit do
-    CreateRemainingUsers(loop)
+def AddUserDetails(arg1, arg2, arg3, arg4, arg5)
+  i = 1
+  for loop in i..arg1 do
+    CreateUsers(loop, arg1, arg2, arg3, arg4, arg5)
     loop += 1
   end
 end
 
 
-def CreateUsers(loop)
-  first_name = NEW_USER_FIRST_NAME_PREFIX + loop.to_s
-  last_name = NEW_USER_LAST_NAME_PREFIX + loop.to_s if $add_user_type == "EMP"
-  last_name = NEW_USER_LAST_NAME_PREFIX + loop.to_s + ".ob" if $add_user_type == "OB"
+def CreateUsers(loop, arg1, arg2, arg3, arg4, arg5)
+  first_name = arg3 + loop.to_s
+  last_name = arg4 + loop.to_s if $add_user_type == "EMP"
+  last_name = arg4 + loop.to_s + ".ob" if $add_user_type == "OB"
   user_name = first_name + "." + last_name
   email_address = user_name + NEW_USER_EMAIL_SUFFIX
   Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, first_name))
@@ -65,24 +56,22 @@ def CreateUsers(loop)
   Sleep_Until(EnterUserDetails(NEW_USER_USERNAME_ID, user_name)) if $add_user_type == "EMP"
   Sleep_Until(EnterUserDetails(NEW_USER_EMAIL_ID, email_address))
   Sleep_Until(SelectTimeZone(SELECT_TIMEZONE_ID, SELECT_TIMEZONE_VALUE)) if SELECT_TIMEZONE.to_i == 1
-  Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, MANAGER_SELECT_INPUT_VALUE, MANAGER_SELECT_RESULT_ID)) if SELECT_MANAGER.to_i == 1
+  Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID)) if arg5
   Sleep_Until(SelectDate(SELECT_START_DATE_ID, SELECT_START_DATE_VALUE)) if SELECT_START_DATE.to_i == 1
   Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, SELECT_EXPIRY_DATE_VALUE)) if SELECT_EXPIRY_DATE.to_i == 1
+  Sleep_Until(SelectFromDropDown(SELECT_ISELMO_DROPDOWN_ID, "Yes")) if arg2 == "ELMO"
   Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, USER_PASSWORD_VALUE))
   Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, USER_PASSWORD_VALUE))
-  ClickOnSaveButton(SAVE_BTN_ID)
-  sleep (2)
-end
+  Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
+  case $add_user_type
+  when "EMP"
+  Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless loop == arg1
+  Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_NEW_USER_BTN)) unless loop == arg1
 
-
-def CreateRemainingUsers(counter)
-  $driver.navigate.to($site_url)
-  Sleep_Until(GoToAdminSettings(ADMIN_COG))
-  Sleep_Until(GoToSection(GENERAL_EXPAND, USERS_LIST_PATH)) if $add_user_type == "EMP"
-  Sleep_Until(GoToSection(ONBOARDING_EXPAND, OB_USERS_LIST_PATH)) if $add_user_type == "OB"
-  GoToAddNewUsersPage(ADD_NEW_USER_BTN) if $add_user_type == "EMP"
-  GoToAddNewUsersPage(OB_ADD_NEW_USER_BTN) if $add_user_type == "OB"
-  Sleep_Until(CreateUsers(counter))
+  when "OB"
+  Sleep_Until(WaitForAnElementByXpathAndTouch(OB_USER_NAV_LINK)) unless loop == arg1
+  Sleep_Until(WaitForAnElementByXpathAndTouch(OB_ADD_NEW_USER_BTN)) unless loop == arg1
+  end
 end
 
 

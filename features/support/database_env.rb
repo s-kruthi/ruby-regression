@@ -23,10 +23,10 @@ module Database_env
       @db = Sequel.connect(:adapter => 'mysql2', :host => '127.0.0.1', :port => port, :user => 'tester', :password => @@DB_PWD, :database => $data_base)
       Sequel.default_timezone = :local
       Sequel.database_timezone = :local
+      @db.convert_tinyint_to_bool = false
       puts "[INFO] ".colorize(:blue) + "Database connection on port: #{port}"
       puts "[INFO] ".colorize(:blue) + "Database name: #{$data_base}\n"
     end
-
   end
 end
 

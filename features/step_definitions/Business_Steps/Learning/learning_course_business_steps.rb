@@ -51,21 +51,40 @@ end
 
 When(/^I Search For A Specific Course(?: With (Enrolments|No Enrolments))? Named (.*)$/i) do |*enrolment_choice, course_search_name|
   case enrolment_choice
-
-  when "Enrolments"
-    course_list_result = $daos.get_visible_course_list_by_name_with_enrolments(course_search_name)
-    puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
-    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
-
-  when "No Enrolments"
-    course_list_result = $daos.get_visible_course_list_by_name_with_no_enrolments(course_search_name)
-    puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
-    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
-
-  else
-    course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
-    puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
-    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
+    
+    when "Enrolments"
+      course_list_result = $daos.get_visible_course_list_by_name_with_enrolments(course_search_name)
+      if !course_list_result.nil?
+        puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
+        SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
+      
+      else
+        puts COLOR_YELLOW + "Course with enrolments not found. Please check the database manually".upcase
+        skip_this_scenario
+      end
+    
+    
+    when "No Enrolments"
+      course_list_result = $daos.get_visible_course_list_by_name_with_no_enrolments(course_search_name)
+      if !course_list_result.nil?
+        puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
+        SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
+      
+      else
+        puts COLOR_YELLOW + "Course with no enrolments not found. Please check the database manually".upcase
+        skip_this_scenario
+      end
+    
+    else
+      course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
+      if !course_list_result.nil?
+        puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
+        SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
+      
+      else
+        puts COLOR_YELLOW + "Course not found. Please check the database manually".upcase
+        skip_this_scenario
+      end
   end
 end
 
@@ -107,10 +126,17 @@ end
 
 When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name_with_no_enrolments(course_search_name)
+  if !course_list_result.nil?
   puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+
+  else
+    puts COLOR_YELLOW + "Course not found. Please check the database manually".upcase
+    skip_this_scenario
+  end
 end
+
 
 
 And(/^I Open A Specific Activity Named (.*)$/i) do |f2f_activity_name|
@@ -211,8 +237,14 @@ end
 
 And(/^I Click On The Menu Of A Specific Course Named (.*)$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
-  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  if !course_list_result.nil?
+    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
+    ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  
+  else
+    puts COLOR_YELLOW + "Course not found. Please check the database manually".upcase
+    skip_this_scenario
+  end
 end
 
 

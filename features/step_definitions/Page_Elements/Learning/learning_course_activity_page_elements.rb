@@ -1,3 +1,10 @@
 F2F_SESSION_SIGNUP_BUTTON_ID = "//a[contains(@title,'Sign Up')]"
 F2F_SESSION_WITHDRAW_BUTTON_ID = "//a[contains(.,'Withdraw')]"
 F2F_SESSION_WITHDRAW_MSG_ID = "//textarea[contains(@id,'withdraw-reason')]"
+
+CPD_CATEGORY_TITLE_ID = "//input[contains(@id,'elmo_learningbundle_cpdcategory_name')]"
+CPD_PLAN_TITLE_ID = "//input[contains(@id,'elmo_learningbundle_cpdplan_name')]"
+CPD_PLAN_CATEGORY_DROPDOWN_ID = "//select[contains(@id,'cpdCategory')]"
+CPD_PLAN_START_DATE_ID = "//input[contains(@id,'elmo_learningbundle_cpdplan_startTime')]"
+CPD_PLAN_END_DATE_ID = "//input[contains(@id,'elmo_learningbundle_cpdplan_endTime')]"
+CPD_PLAN_POINTS_REQ_ID = "//input[contains(@id,'elmo_learningbundle_cpdplan_unitsRequired')]"
