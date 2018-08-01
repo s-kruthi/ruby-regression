@@ -1,6 +1,12 @@
 When(/^I See a List of Discrepancy Courses for Users$/i) do
   discrepancy_course = $daos.get_course_discrepancy_list()
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, discrepancy_course, COURSE_SEARCH_BTN_ID)
+  if !discrepancy_course.nil?
+    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, discrepancy_course, COURSE_SEARCH_BTN_ID)
+  
+  else
+    puts COLOR_YELLOW + "Course Discrepancy List not found. Please check the database manually".upcase
+    skip_this_scenario
+  end
 end
 
 

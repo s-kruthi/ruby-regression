@@ -106,8 +106,6 @@ module Chrome
         if expected_text == true
           puts "#{text} matched"
         else
-          # TODO: Pending review and removal as it’s now redundant and has been added in the After hook
-          # $driver.save_screenshot("./features/Screenshots/#{ENV['CHANNEL']}/#{text}Screenshot.png")
           raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         end
       rescue Exception => e
@@ -209,6 +207,7 @@ module Chrome
       begin
         WaitForAnElementByXpathAndInputValue(browse_file_id, sample_filename)
         sleep (1)
+      
       rescue Exception => e
         puts e.message
         $driver.quit

@@ -163,9 +163,23 @@ module Database_env
       return templates[:certtemplatecount]
     end
 
+    
     def get_cert_temp_fields_value_by_name(cert_temp_name)
       query = "SELECT * FROM epms_course_certificate_template WHERE title = '#{cert_temp_name}';"
       return cert_temp_fields_value = @db[query].first
     end
+
+
+    def get_visible_cpd_plan_by_name(arg)
+      query = "SELECT * FROM epms_cpd_plan WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1";
+      return @db[query].first
+    end
+
+
+    def get_visible_cpd_category_by_name(arg)
+      query = "SELECT * FROM epms_cpd_category WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1";
+      return @db[query].first
+    end
   end
 end
+
