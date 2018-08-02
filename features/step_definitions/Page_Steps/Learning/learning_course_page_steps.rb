@@ -849,13 +849,14 @@ def AddSessionDetails(session_status = '')
 
   #check for location and facilitator settings for the course
   course_f2f_settings = $daos.get_f2f_location_facilitator_settings(f2f_id)
-  if course_f2f_settings[:location].to_s == 'true'
+
+  if course_f2f_settings[:location] == 1
     Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_LOCATION_INPUT_ID))
     Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_LOCATION_INPUT_ID, F2F_SESSION_LOCATION_INPUT_VALUE))
   else
     puts COLOR_BLUE + "Location is disabled for the Face to Face Activity"
   end
-  if course_f2f_settings[:facilitator].to_s == 'true'
+  if course_f2f_settings[:facilitator] == 1
     Sleep_Until(WaitForAnElementByXpathAndClearValue(F2F_SESSION_FACILITATOR_INPUT_ID))
     Sleep_Until(WaitForAnElementByXpathAndInputValue(F2F_SESSION_FACILITATOR_INPUT_ID, F2F_SESSION_FACILITATOR_INPUT_VALUE))
   else
