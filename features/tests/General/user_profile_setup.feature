@@ -58,6 +58,7 @@ Feature:
     And   I Verify That The Configuration Status Is Saved
 
 
+  #currently can be run only on payroll03
   @general_low_risk @test
   Scenario: [General]Company Admin Can Modify Payroll Related Fields In User Profile Setup
     Given That Cost Centre and Company(Legal Entity) Fields Are Visible
