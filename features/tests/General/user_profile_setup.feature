@@ -59,7 +59,7 @@ Feature:
 
 
   #currently can be run only on payroll03
-  @general_low_risk @test
+  @general_low_risk @cost_centre_user_field @legal_entity_user_field @C16890
   Scenario: [General]Company Admin Can Modify Payroll Related Fields In User Profile Setup
     Given That Cost Centre and Company(Legal Entity) Fields Are Visible
     And   I Have Logged In As A Company Admin
@@ -70,7 +70,13 @@ Feature:
     And   I Can See That I Can Modify The Company(Legal Entity) Settings
 
 
-  @general_low_risk @test1
-  Scenario: [General]Company Admin Can Modify Payroll Related Fields In User Profile Setup
-    Given That I am in Site Setup Tool
+  #currently can be run only on payroll03
+  @general_low_risk @cost_centre_enabled @C16888
+  Scenario: [General]Cost Centres Section Is Not Accessible When Cost Centre Is Enabled
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
+    Then  I Should Not Be Able To Access Cost Centres Under HR Core Section
+
+
+
 

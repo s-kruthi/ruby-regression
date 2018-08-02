@@ -55,7 +55,8 @@ Then(/^I Can See That I Can Modify The ([\w\s\(\)]+) Settings$/i) do |field|
 end
 
 
-Given(/^That I am in Site Setup Tool$/i) do
-  startWebDriver
-  GoToSiteSetupTool()
+Then(/^I Should Not Be Able To Access Cost Centres under HR Core section$/i) do
+  GoToASection("//a[@href='#collapseHRCore']")
+  sleep(2)
+  Sleep_Until(VerifyAnElementNotExist('xpath','//a[@href="/admin/costCentre/"]'))
 end
