@@ -19,9 +19,22 @@ end
 def FillFieldsCreateCertTemp(cert_temp_name, edit='')
   WaitForAnElementByCSSAndInputValue(CERT_TEMP_TITLE_FIELD_CSS, cert_temp_name + edit)
   WaitForAnElementByCSSAndInputValue(CERT_TEMP_DESCRIPTION_CSS, 'description' + edit)
-  WaitForAnElementByCSSAndInputValue(CERT_TEMP_LAYOUT_CSS, '112' + edit)
-  WaitForAnElementByCSSAndInputValue(CERT_TEMP_BACKGROUND_COLOUR_CSS, '222' + edit)
-  WaitForAnElementByCSSAndInputValue(CERT_TEMP_CERTIFICATE_TEMPLATE_CSS, '111' + edit)
+  WaitForAnElementByCSSAndTouch(TEMPLATE_LAYOUT_PORTRAIT_CSS)
+  Sleep_Until(WaitForAnElementByIdAndTouch(SELECT_FILE_ID))
+  Sleep_Until(WaitForSelectFileButtonAndUploadFile(PNG_FILE_NAME))
+  WaitForAnElementByCSSAndInputValue(CERT_TEMP_BACKGROUND_COLOUR_CSS, '#9bcbe5')
+end
+
+
+def FillFieldsEditCertTemp(cert_temp_name, edit='')
+  WaitForAnElementByCSSAndInputValue(CERT_TEMP_TITLE_FIELD_CSS, cert_temp_name + edit)
+  WaitForAnElementByCSSAndInputValue(CERT_TEMP_DESCRIPTION_CSS, 'description' + edit)
+  WaitForAnElementByCSSAndTouch(TEMPLATE_LAYOUT_PORTRAIT_CSS)
+  Sleep_Until(WaitForAnElementByCSSAndTouch(GLYPHICON_DELETE))
+  Sleep_Until(PressEnterConfirm())
+  Sleep_Until(WaitForAnElementByIdAndTouch(SELECT_FILE_ID))
+  Sleep_Until(WaitForSelectFileButtonAndUploadFile(PNG_FILE_NAME))
+  WaitForAnElementByCSSAndInputValue(CERT_TEMP_BACKGROUND_COLOUR_CSS, '#9bcbe5')
 end
 
 
@@ -44,12 +57,16 @@ def GetValuesByColumnFromTableByCSS(table_body_css, column_number)
 end
 
 
-def SortArray(arr, sort)
+def SortArray(arr, sort, datatype)
+  if datatype.downcase.include?('time')
+    arr = arr.map{|value| DateTime.strptime(value, '%d/%m/%Y %I:%M:%S %P')}
+  end
   if sort.downcase.include?('asc')
     arr.sort
   elsif sort.downcase.include?('desc')
     arr.sort.reverse!
   end
+  arr.map!{|value| value.strftime('%d/%m/%Y %I:%M:%S %P')}
 end
 
 

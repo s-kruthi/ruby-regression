@@ -248,7 +248,7 @@ module Headless
         }
         file_path = File.expand_path('../../..', File.dirname(__FILE__)) + "/test_files/#{file}"
         upload_button.send_keys(file_path)
-        VerifyAnElementNotExistByCSS(input[id*=fileInput])
+        # VerifyAnElementNotExistByCSS(input[id*=fileInput])
       rescue Exception => e
         puts e.message
       end

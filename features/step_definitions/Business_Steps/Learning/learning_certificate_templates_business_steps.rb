@@ -5,7 +5,7 @@ end
 
 When(/^I should see the (\w\S+) listed in (\w+) order$/i) do |items, sort|
   CheckTableHeader(TABLE_HEADER_VALUE,PAGE_TITLE_CSS)
-  VerifyTableSortedByColumn(TABLE_BODY_CSS, 4, sort)
+  VerifyTableSortedByColumn(TABLE_BODY_CSS, 4, sort, 'datetime')
 end
 
 
@@ -21,8 +21,9 @@ end
 And(/^I Should Edit The Created Certificate$/i) do
   SearchItemNoSelect2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID)
   WaitForAnElementByCSSAndTouch(EDIT_CERTIFICATE_CSS)
-  FillFieldsCreateCertTemp(@cert_temp_created, edit='edit')
+  FillFieldsEditCertTemp(@cert_temp_created, edit='edit')
   Sleep_Until(WaitForAnElementByCSSAndTouch(SAVE_CERTIFICATE_CSS))
+  PressConfirm()
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CERT_TEMP_SAVE_SUCCESSFUL_VALUE))
 end
 
@@ -31,8 +32,8 @@ And(/^I Should Copy The Created Certificate$/i) do
   SearchItemNoSelect2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID)
   ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, 'Copy')
   # Todo check the copied template fields equal to DB data enty
-  FillFieldsCreateCertTemp(@cert_temp_created, edit='copy')
-  WaitForAnElementByCSSAndTouch(SAVE_CERTIFICATE_CSS)
+  FillFieldsEditCertTemp(@cert_temp_created, edit='copy')
+  Sleep_Until(WaitForAnElementByCSSAndTouch(SAVE_CERTIFICATE_CSS))
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CERT_TEMP_SAVE_SUCCESSFUL_VALUE))
 end
 

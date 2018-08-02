@@ -199,7 +199,6 @@ module Database_env
       INNER JOIN mdl_course c ON c.id = f.course
       WHERE c.fullname LIKE '%#{course_name}%'"
       signups = @db[query]
-      binding.pry
       return signups
     end
 
