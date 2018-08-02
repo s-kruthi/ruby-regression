@@ -58,3 +58,31 @@ def GetSelectedValueFromDropdown(dropdown_identifier)
       return select_list.first_selected_option.text
     end
 end
+
+
+def CheckFieldVisibility(field_name)
+  case field_name
+    when 'Company Legal Entity'
+      name = 'userFieldsVisible_legalEntity'
+    when 'Cost Centre'
+      name = 'userFieldsVisible_costCentre'
+  end
+
+  field_visibility = $daos.get_epms_config_enabled(name)
+  if field_visibility == '1'
+    puts COLOR_BLUE + "Field is visible to Everyone"
+  else
+    puts COLOR_BLUE + "Field is Hidden/visible to Nobody"
+  end
+
+  return field_visibility
+end
+
+
+def GoToSiteSetupTool()
+  $driver.navigate.to("https://sitesetup.dev.elmodev.com/#/")
+  $driver.navigate.to("https://sitesetup.dev.elmodev.com/#/login")
+  byebug
+  $driver.find_element(:xpath, '//input[@id="email-undefined-Email-12219"]').send_keys('admin')
+  $driver.find_element(:id, 'password-undefined-Password-11052').send_keys('admin1234567')
+end

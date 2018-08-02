@@ -25,3 +25,37 @@ And(/^I Verify That The Configuration Status Is (Saved|Unsaved)$/i) do |save_sta
     puts COLOR_BLUE + "Config was not changed"
   end
 end
+
+
+Given(/^That Cost Centre and Company\(Legal Entity\) Fields Are Visible$/i) do
+  steps %{
+          Given That Cost Centre Field Is Visible
+          And That Company Legal Entity Field Is Visible
+          }
+end
+
+
+Given(/^That ([\w\s]+) Field Is (Visible|Hidden)$/i) do |field_name, field_visibility|
+  visible = CheckFieldVisibility(field_name)
+
+  if field_visibility == 'Visible'
+    expect(visible).to eq('1')
+    @visible = true
+  else
+    expect(visible).to eq('0')
+    @visible = false
+  end
+end
+
+
+Then(/^I Can See That I Can Modify The ([\w\s\(\)]+) Settings$/i) do |field|
+  steps %{And I Click On "#{field}" item from left side bar under "Built-In Hierarchies" section
+          And I Click On "#{field}" item from left side bar under "Built-In Hierarchies" section
+         }
+end
+
+
+Given(/^That I am in Site Setup Tool$/i) do
+  startWebDriver
+  GoToSiteSetupTool()
+end

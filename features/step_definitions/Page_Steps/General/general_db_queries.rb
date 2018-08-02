@@ -63,6 +63,12 @@ module Database_env
       return @db[query].first
     end
 
+    def get_epms_config_enabled(name)
+      query = "select value from epms_config
+               where name = '#{name}'"
+      return @db[query].first[:value]
+    end
+
   end
 
 end

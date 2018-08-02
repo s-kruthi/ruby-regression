@@ -56,3 +56,20 @@ Feature:
     And   I select "Profile" dropdown to "Company Admin Only"
     Then  I Should Be Able To Save The Custom User Fields Configuration
     And   I Verify That The Configuration Status Is Saved
+
+
+  @general_low_risk @test
+  Scenario: [General]Company Admin Can Modify Payroll Related Fields In User Profile Setup
+    Given That Cost Centre and Company(Legal Entity) Fields Are Visible
+    And   I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To User Profile Setup under General section
+    When  I Click On "User Profile Setup" Tab
+    Then  I Can See That I Can Modify The Cost Centre Settings
+    And   I Can See That I Can Modify The Company(Legal Entity) Settings
+
+
+  @general_low_risk @test1
+  Scenario: [General]Company Admin Can Modify Payroll Related Fields In User Profile Setup
+    Given That I am in Site Setup Tool
+

@@ -51,7 +51,10 @@ After do | scenario |
 
   File.open('./features/step_definitions/Test_Data/stored_ids.rb', 'w') {|file| file.truncate(0) }
   File.write('./features/step_definitions/MySQL_Scripts/sql_dependencies/json_data_storage/GitIgnoreFile.txt', 'here is the text file to fix the gitignore issue', mode: 'a')
+
+  if !$driver.nil?
     $driver.quit
+  end
 end
 
 

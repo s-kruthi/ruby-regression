@@ -22,7 +22,14 @@ def ClickOnSideBarItem(config_section_item, config_section_name)
       end
 
     when "Built-In Hierarchies"
-      config_section_item = config_section_item.downcase
+      case config_section_item
+        when 'Cost Centre'
+          config_section_item = "costCentre"
+        when 'Company(Legal Entity)'
+          config_section_item = "legalEntity"
+        else
+          config_section_item = config_section_item.downcase
+      end
 
     when "Custom User Fields"
       case config_section_item
