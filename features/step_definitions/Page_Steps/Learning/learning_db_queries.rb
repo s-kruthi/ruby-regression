@@ -181,27 +181,6 @@ module Database_env
       return @db[query].first
     end
 
-
-    def get_face_to_face_session_signup_first_last_name(course_name)
-      query = "SELECT CONCAT(u.first_name + u.last_name) AS Name FROM epms_user u
-        INNER JOIN epms_course_facetoface_signups su ON u.id = su.user_id
-        INNER JOIN epms_course_facetoface_session fs ON su.session_id =  fs.id
-        INNER JOIN epms_course_facetoface f ON f.id = fs.facetoface_id
-        INNER JOIN mdl_course c ON c.id = f.course
-        WHERE c.fullname LIKE '%#{course_name}%'"
-
-      query = "SELECT first_name, last_name,
-             CONCAT(first_name, ' ', last_name) AS name
-      FROM epms_user u
-      INNER JOIN epms_course_facetoface_signups su ON u.id = su.user_id
-      INNER JOIN epms_course_facetoface_session fs ON su.session_id =  fs.id
-      INNER JOIN epms_course_facetoface f ON f.id = fs.facetoface_id
-      INNER JOIN mdl_course c ON c.id = f.course
-      WHERE c.fullname LIKE '%#{course_name}%'"
-      signups = @db[query]
-      return signups
-    end
-
   end
 end
 
