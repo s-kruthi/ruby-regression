@@ -248,14 +248,32 @@ And(/^I Click On The Menu Of A Specific Course Named (.*)$/i) do |course_search_
 end
 
 
-And(/^I select (.*) as (.*)$/i) do |dropdown_name, dropdown_value|
+And(/^I Select "(.*)" Select2 Dropdown As "(.*)"$/i) do |dropdown_name, dropdown_value|
   case dropdown_name
   when "Employee Name"
     begin
       Sleep_Until(SelectSingleFromSelect2InputDropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
     end
   end
+end
 
+
+And(/^I Select "(.*)" Classic Dropdown As "(.*)"$/i) do |dropdown_name, dropdown_value|
+  begin
+    CLASSIC_DROPDOWN_ELEMENT_ID_MAP.each do |key, value|
+      if key.to_s.eql? dropdown_name
+        Sleep_Until(SelectFromDropDown("#{value}", dropdown_value))
+        Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
+        @element_found = 1
+      
+      else
+        @element_found = 0
+      end
+    end
+   
+    puts COLOR_YELLOW + "Please check CLASSIC_DROPDOWN_ELEMENT_ID_MAP table. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})".upcase if @element_found == 0
+    skip_this_scenario if @element_found == 0
+  end
 end
 
 

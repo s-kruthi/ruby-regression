@@ -78,7 +78,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I Search For The Randomly Created Course
     And   I Go To The Enrolled User Section Of That Randomly Created Course
     When  I Click On "Create Filter" Button
-    And   I select Employee Name as DontTouchAutomationUser
+    And   I select "Employee Name" Select2 Dropdown as "DontTouchAutomationUser"
     Then  I Should Be Able to Create a Filter
     And   I See A Filtered List Of Course Enrolment Returning User Donttouchautomationuser Aaron
 
@@ -92,6 +92,6 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     When  I Search For The Randomly Created Course
     And   I Go To The Enrolled User Section Of That Randomly Created Course
     When  I Click On "Create Filter" Button
-    And   I select Employee Name as DontTouchAutomationUser
+    And   I select "Employee Name" Select2 Dropdown As "DontTouchAutomationUser"
     Then  I Should Be Able to Save a Filter
     And   I See A Filtered List Of Course Enrolment Returning User Donttouchautomationuser Aaron

@@ -2,12 +2,13 @@ When(/^I Change "([^"]*)" Elmo Configuration To "([^"]*)"/i) do |elmo_configurat
   begin
   ELMO_CONFIG_SETTINGS.each do |key, value|
     if key.to_s.eql? elmo_configuration_name
-      if ($driver.find_element(:xpath, "#{value}").displayed?) == true
+      if $driver.find_element(:xpath, "#{value}").displayed?
         Sleep_Until(SelectFromDropDown("#{value}", elmo_configuration_value))
         $configuration_found = 1
       end
     end
   end
+
   puts COLOR_RED + "The specified Configuration cannot be found. Please check Test Data Section." if $configuration_found != 1
 
   rescue Exception => e

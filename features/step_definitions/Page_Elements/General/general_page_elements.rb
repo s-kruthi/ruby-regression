@@ -45,7 +45,6 @@ USER_PASSWORD_RECONFIRM_ID = "//input[contains(@id,'user_password_second')]"
 
 ADD_USER_SAVE_SUCCESS_ID = "//div[contains(@class,'alert alert-success')]"
 
-
 SUB_TAB_ACTIVITY_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/personal')]"
 SUB_TAB_RESUME_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/resume')]"
 SUB_TAB_MYCAREER_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/my-career')]"
@@ -127,3 +126,7 @@ ASSIGN_RULE_FIELDINPUT_ID_MAP = {
 
 ASSIGN_RULE_LIST_ACTION_BTN_ID = "//table//button[@data-toggle='dropdown']"
 BACKGROUND_JOB_PROCESS_ID = "//div[contains(@role,'progressbar')]"
+
+CLASSIC_DROPDOWN_ELEMENT_ID_MAP = {
+    "Role": "//select[contains(@id,'userRole_role')]"
+}

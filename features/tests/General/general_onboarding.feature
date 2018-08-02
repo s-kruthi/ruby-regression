@@ -9,7 +9,13 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
-    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name
+    Then  I Should Be Able To Add 12 New "Non-ELMO" Users In To The System With "general.manager" As First Name And "test" As Last Name
+    And   I Click On "Role" Tab
+    And   I Select "Role" Classic Dropdown As "Manager"
+    And   I Click On "Users" Breadcrum Menu
+    And   I Click On "Notify Users" Button
+    And   I Click On "Notify All Users" Button
+    Then  I Should Be Able to Notify All Users
 
 
   @onboarding_user_add @general_high_risk @onboarding_high_risk

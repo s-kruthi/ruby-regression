@@ -25,6 +25,12 @@ And(/^I Should Be Able To Unmask The TFN Number By Tapping The Show Button$/i) d
 end
 
 
+Then(/^I Should Be Able To View Activity Sub-Tab$/i) do
+  pending
+  ##This requires logic change to determine the landing page as that one does not have a hyperlink
+end
+
+
 And(/^i should be able to click (.*) sub-tab$/i) do |sub_tab_name|
 
   case sub_tab_name

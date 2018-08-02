@@ -221,7 +221,7 @@ end
 
 
 Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The System With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager Username)?$/i) do |arg1, arg2, arg3, arg4, arg5|
-   AddUserDetails(arg1, arg2, arg3, arg4, arg5)
+  CreateUsers(arg1, arg2, arg3, arg4, arg5)
 end
 
 
@@ -362,9 +362,7 @@ end
 
 
 And(/^I Click On "([^"]*)" Button$/i) do |button_name|
-
   case button_name
-
   when "Create Filter"
     begin
       buttonxPath = "//button[contains(.,'#{button_name}')]"
@@ -406,7 +404,6 @@ And(/^I Click On "([^"]*)" Button$/i) do |button_name|
       buttonxPath = "//a[contains(.,'#{button_name}')]"
       Sleep_Until(WaitForAnElementByXpathAndTouch(buttonxPath))
     end
-
   end
 end
 
@@ -422,4 +419,17 @@ Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onb
   elsif access_type == "Not Be Able"
     Sleep_Until(VerifyAnElementNotExist("xpath", ONBOARDING_USER_SETUP_ID))
   end
+end
+
+
+And(/^I Click On "([^"]*)" Breadcrum Menu$/) do |arg|
+  breadcrum_xpath = "//a[contains(.,'#{arg}')]"
+  Sleep_Until(WaitForAnElementByXpathAndTouch(breadcrum_xpath))
+end
+
+
+
+Then(/^I Should Be Able to Notify All Users$/) do
+  Sleep_Until(PressConfirm())
+  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_NOTIFY_SUCCESS_MSG_VALUE)
 end
