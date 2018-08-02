@@ -180,6 +180,7 @@ module Database_env
       query = "SELECT * FROM epms_cpd_category WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1";
       return @db[query].first
     end
+
   end
 end
 

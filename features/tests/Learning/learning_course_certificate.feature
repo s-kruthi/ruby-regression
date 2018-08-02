@@ -8,8 +8,8 @@ Feature: Manage Certificates On The Certificate List Page
   Background: Generate Data When Necessory
     Given Create Certificate Templates Once Less Than 15 Exist In The Database
 
-  @smoke_learning6 @learning_low_risk @learning_manage_certificates @C16442
-  Scenario: As A Learning Admin, I Can Manage A Specific Certificate On The Certificate List Page
+  @smoke_learning6 @learning_low_risk @learning_manage_certificates @C16442 @C16440 @C16441 @C16551 @C16553 @C16554 @C16555 @C16736
+  Scenario: As A Learning Admin, I Can Manage A Specific Certificate Template On The Template List Page
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     When  I Go To Course Certificate Templates Under Learning Section

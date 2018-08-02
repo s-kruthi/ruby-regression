@@ -270,9 +270,9 @@ module Headless
     end
 
 
-    def VerifyTableSortedByColumn(table_body_css, column_number, sort)
+    def VerifyTableSortedByColumn(table_body_css, column_number, sort, datatype = '')
       column_values = GetValuesByColumnFromTableByCSS(table_body_css, column_number)
-      if column_values.eql? SortArray(column_values, sort)
+      if column_values.eql? SortArray(column_values, sort, datatype)
         puts COLOR_GREEN + "MATCHED: Table is sorted by column#{4} #{sort}"
       else
         fail

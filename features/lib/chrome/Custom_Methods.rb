@@ -252,7 +252,7 @@ module Chrome
           element if element.displayed?
         }
         file_path = File.expand_path('../../..', File.dirname(__FILE__)) + "/test_files/#{file}"
-        # upload_button.send_keys(file_path)
+        upload_button.send_keys(file_path)
         # VerifyAnElementNotExist('css', 'input[id*=fileInput]')
         # VerifyAnElementNotExistByCSS(input[id*=fileInput])
       rescue Exception => e
