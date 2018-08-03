@@ -11,7 +11,23 @@ And(/^I Add New Course Details$/i) do
   EnterCourseRetrain(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
   EnterCourseRetrainOpen(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
   EnterCourseAvailability(COURSE_AVAILABILITY_INPUT_ID, COURSE_AVAILABILITY_INPUT_VALUE)
-  EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, COURSE_CERTIFICATE_TEMPLATE_VALUE) if COURSE_CERTIFICATE.to_i == 1
+  @course_cert_template_name = $daos.get_cert_temp_name_legacy
+  if !@course_cert_template_name.nil?
+    EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, @course_cert_template_name) if COURSE_CERTIFICATE.to_i == 1
+
+  else
+    puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
+    skip_this_scenario
+  end
+# ##TODO: PMS-5534 - Using the new database for querying a certificate template title once this project is deployed
+#   @certificate_template_name = $daos.get_cert_temp_name
+#   if !@certificate_template_name.nil?
+#     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, @certificate_template_name) if COURSE_CERTIFICATE.to_i == 1
+#
+#   else
+#     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
+#     skip_this_scenario
+#   end
   EnterCourseSelfEnrol(COURSE_SELF_ENROLL_INPUT_ID, COURSE_SELF_ENROLL_INPUT_VALUE)
   EnterCourseSectionDescription(COURSE_SHOW_SEC_DESC_INPUT_ID, COURSE_SHOW_SEC_DESC_INPUT_VALUE)
 end
@@ -20,6 +36,7 @@ end
 #TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
 #New business steps using select2-inputs
 # And(/^I Add New Course Details$/i) do
+#   @course_cert_template_name = $daos.get_cert_temp_name_legacy
 #   EnterCourseTitle(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
 #   EnterCourseCode(NEW_COURSE_CODE_ID, COURSE_CODE_VAL)
 #   EnterCourseDescription(NEW_COURSE_DESC_TEXT, 0)
@@ -31,7 +48,22 @@ end
 #   EnterCourseRetrainOpenUnit(COURSE_RETRAIN_OPEN_INPUT_UNIT_ID, SELECT2_DROPDOWN_ID, COURSE_RETRAIN_OPEN_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_RETRAIN_OPEN.to_i == 1
 #   EnterCourseRetrainOpenValue(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
 #   EnterCourseAvailability(COURSE_AVAILABILITY_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_AVAILABILITY_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
-#   EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, COURSE_CERTIFICATE_TEMPLATE_VALUE, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
+#   if !@course_cert_template_name.nil?
+#     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, @course_cert_template_name, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
+#
+#   else
+#     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
+#     skip_this_scenario
+#   end
+# ##TODO: PMS-5534 - Using the new database for querying a certificate template title once this project is deployed
+#   @certificate_template_name = $daos.get_cert_temp_name
+#   if !@certificate_template_name.nil?
+#     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, @certificate_template_name, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
+#
+#   else
+#     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
+#     skip_this_scenario
+#   end
 #   EnterCourseSelfEnrol(COURSE_SELF_ENROLL_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_SELF_ENROLL_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
 # end
 
@@ -40,13 +72,6 @@ Then(/^I Should Be Able To Create A New Course$/i) do
   ClickOnSaveButton(SAVE_BTN_ID)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE))
 end
-
-
-#TODO: Redundant code as this method has been re-written
-# When(/^I Search For A Specific Course Named (.*)$/i) do |course_search_name|
-#   course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
-#   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
-# end
 
 
 When(/^I Search For A Specific Course(?: With (Enrolments|No Enrolments))? Named (.*)$/i) do |*enrolment_choice, course_search_name|

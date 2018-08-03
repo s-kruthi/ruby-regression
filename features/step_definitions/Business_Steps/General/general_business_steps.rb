@@ -422,11 +422,10 @@ Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onb
 end
 
 
-And(/^I Click On "([^"]*)" Breadcrum Menu$/) do |arg|
-  breadcrum_xpath = "//a[contains(.,'#{arg}')]"
-  Sleep_Until(WaitForAnElementByXpathAndTouch(breadcrum_xpath))
+And(/^I Click On "([^"]*)" Breadcrumb Menu$/) do |arg|
+  breadcrumb_xpath = "//a[contains(.,'#{arg}')]"
+  Sleep_Until(WaitForAnElementByXpathAndTouch(breadcrumb_xpath))
 end
-
 
 
 Then(/^I Should Be Able to Notify All Users$/) do

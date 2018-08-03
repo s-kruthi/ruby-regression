@@ -163,6 +163,22 @@ module Database_env
       return templates[:certtemplatecount]
     end
 
+
+    def get_cert_temp_name_legacy()
+      query = "SELECT value FROM epms_config WHERE module = 'lms' AND NAME LIKE '%template%name%'
+      AND VALUE NOT IN ('')
+      ORDER BY RAND() LIMIT 1;"
+      return @db[query].first[:value]
+    end
+
+    
+    def get_cert_temp_name()
+      query = "SELECT id, user_id, title, description, is_active, layout, is_deleted FROM epms_course_certificate_template
+      WHERE is_active = 1 AND is_deleted = 0 ORDER BY RAND() DESC LIMIT 1;"
+      return @db[query].first[:title]
+
+    end
+    
     
     def get_cert_temp_fields_value_by_name(cert_temp_name)
       query = "SELECT * FROM epms_course_certificate_template WHERE title = '#{cert_temp_name}';"
@@ -171,13 +187,13 @@ module Database_env
 
 
     def get_visible_cpd_plan_by_name(arg)
-      query = "SELECT * FROM epms_cpd_plan WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1";
+      query = "SELECT * FROM epms_cpd_plan WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1;"
       return @db[query].first
     end
 
 
     def get_visible_cpd_category_by_name(arg)
-      query = "SELECT * FROM epms_cpd_category WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1";
+      query = "SELECT * FROM epms_cpd_category WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1;"
       return @db[query].first
     end
 

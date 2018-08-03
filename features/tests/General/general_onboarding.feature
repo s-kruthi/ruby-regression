@@ -12,7 +12,7 @@ Feature:
     Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name
     And   I Click On "Role" Tab
     And   I Select "Role" Classic Dropdown As "Manager"
-    And   I Click On "Users" Breadcrum Menu
+    And   I Click On "Users" Breadcrumb Menu
     And   I Click On "Notify Users" Button
     And   I Click On "Notify All Users" Button
     Then  I Should Be Able to Notify All Users
