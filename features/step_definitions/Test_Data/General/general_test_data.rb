@@ -45,3 +45,5 @@ ACTION_DROPDOWN_DEACTIVATE_VALUE = "Deactivate user"
 
 
 INACTIVE_ATTRIBUTE_TEXT = "User is not active"
+USER_NOTIFY_SUCCESS_MSG_VALUE = "Successfully notify user."
+ROLE_CHANGE_SUCCESS_MSG_VALUE = "×  User role has been updated!"

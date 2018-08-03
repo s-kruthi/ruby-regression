@@ -29,7 +29,7 @@ Given I Have Logged In as a Learning Admin
 And   I go to Admin Settings
 And   I Go To Retrain Discrepancies under Learning section
 When  I Click On "Create Filter" Button
-And   I select Employee Name as Test1 Omar1
+And   I Select "Employee Name" Select2 Dropdown As "Test1 Omar1"
 Then  I Should Be Able to Create a Filter
 And   I See a Filtered List of Retrain Discrepancy Course Results for Learner Test1 Omar1
 
