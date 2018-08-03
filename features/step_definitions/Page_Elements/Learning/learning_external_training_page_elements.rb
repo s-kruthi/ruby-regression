@@ -12,28 +12,31 @@ LEARNING_EXTTRAINING_COURSE_SELECT_ID = "//a[@title='Select']"
 
 LEARNING_EXTTRAINING_COURSE_SUBMIT_ID = "elmo_learningbundle_external_training_submit"
 
-LEARNING_EXTTRAINING_DESC_ID = 'elmo_learningbundle_external_training_description'
-LEARNING_EXTTRAINING_DESC_OPTIONAL_ID = 'elmo_learningbundle_external_training_descriptionRequired'
-#
-# elmo_learningbundle_external_training_completionDate
-# elmo_learningbundle_external_training_completionDateRequired
-#
-#elmo_learningbundle_external_training_expiryDate
-# elmo_learningbundle_external_training_expiryDateRequired
-#
-LEARNING_EXTTRAINING_DURATION_ID = 'elmo_learningbundle_external_training_duration'
-# elmo_learningbundle_external_training_durationRequired
-#
-# elmo_learningbundle_external_training_score
-# elmo_learningbundle_external_training_scoreRequired
-#
-# elmo_learningbundle_external_training_cpdPoints
-# elmo_learningbundle_external_training_cpdPointsRequired
-#
-# elmo_learningbundle_external_training_attachment
-# elmo_learningbundle_external_training_attachmentRequired
-#
-# elmo_learningbundle_external_training_comment
-# elmo_learningbundle_external_training_commentRequired
-#
-# :id, 'elmo_learningbundle_external_training_libraryOnly'
+
+LEARNING_EXTTRAINING_MAIN_CONFIG_ELEMENT_MAP = {
+  "Library": 'elmo_learningbundle_external_training_libraryOnly',
+  "Description": 'elmo_learningbundle_external_training_description',
+  'Completion Date': 'elmo_learningbundle_external_training_completionDate',
+  'Expiry Date': 'elmo_learningbundle_external_training_expiryDate',
+  'Duration': 'elmo_learningbundle_external_training_duration',
+  'Score': 'elmo_learningbundle_external_training_score',
+  'CPD Points': 'elmo_learningbundle_external_training_cpdPoints',
+  'Attachment': 'elmo_learningbundle_external_training_attachment',
+  'Comment': 'elmo_learningbundle_external_training_comment'
+}
+
+LEARNING_EXTTRAINING_ADDN_CONFIG_ELEMENT_MAP = {
+  'Description Optional': 'elmo_learningbundle_external_training_descriptionRequired',
+  'Completion Date Optional': 'elmo_learningbundle_external_training_completionDateRequired',
+  'Expiry Date Optional': 'elmo_learningbundle_external_training_expiryDateRequired',
+  'Duration Optional': 'elmo_learningbundle_external_training_durationRequired',
+  'Score Optional': 'elmo_learningbundle_external_training_scoreRequired',
+  'CPD Points Optional': 'elmo_learningbundle_external_training_cpdPointsRequired',
+  'Attachment Optional': 'elmo_learningbundle_external_training_attachmentRequired',
+  'Comment Optional': 'elmo_learningbundle_external_training_commentRequired'
+}
+
+LEARNING_EXTTRAINING_COURSE_NAME_ID = 'elmo_learningbundle_external_training_courseName'
+
+LEARNING_EXTTRAINING_COURSE_ATTACHMENTS_ID = 'elmo_learningbundle_external_training_attachments'
+
