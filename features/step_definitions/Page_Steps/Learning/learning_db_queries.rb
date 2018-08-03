@@ -27,10 +27,10 @@ module Database_env
 
 
     def get_visible_course_list_by_name_with_no_enrolments(partial_course_name)
-      query = "FROM mdl_course c
+      query = "SELECT c.id, c.fullname FROM mdl_course c
       INNER JOIN mdl_course_categories cc ON cc.id = c.category AND cc.visible = 1
       LEFT JOIN epms_lms_course_enrolment e ON c.id = e.course_id AND e.isActive = 1
-      WHERE e.id IS NULL AND c.visible = 1 AND c.fullname LIKE '%#{partial_course_name}%';"
+      WHERE e.id IS NULL AND c.visible = 1 AND c.fullname LIKE '%#{partial_course_name}%' ORDER BY c.id DESC LIMIT 1;"
       return @db[query].first
     end
 
