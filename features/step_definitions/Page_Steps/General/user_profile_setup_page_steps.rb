@@ -69,13 +69,20 @@ def CheckFieldVisibility(field_name)
   end
 
   field_visibility = $daos.get_epms_config_enabled(name)
-  if field_visibility == '1'
-    puts COLOR_BLUE + "Field is visible to Everyone"
+
+  if !field_visibility.nil?
+    if field_visibility[:value] == '1'
+      puts COLOR_BLUE + "Field is visible to Everyone"
+    else
+      puts COLOR_BLUE + "Field is Hidden/visible to Nobody"
+    end
+
+    return field_visibility[:value]
   else
-    puts COLOR_BLUE + "Field is Hidden/visible to Nobody"
+    puts COLOR_BLUE + 'Field ' + field_name + ' is not Enabled in Config'
+    skip_this_scenario
   end
 
-  return field_visibility
 end
 
 
