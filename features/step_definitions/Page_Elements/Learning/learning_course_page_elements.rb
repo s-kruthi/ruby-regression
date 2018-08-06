@@ -275,9 +275,15 @@ CLEAR_SEARCH_BTN_CSS = 'a[title="Clear search"]'
 SIGN_UP_SELECTED_USERS_ID = 'enrol-btn'
 ACTION_TOGGLE_XPATH = "//div[contains(@class, 'pull-right')]//button[contains(@class, 'dropdown-toggle')]"
 MARK_ATTENDANCE_BUTTON_XPATH = "//a[@title='Mark Session Attendance']"
+BULK_MARK_ATTENDANCE_BUTTON_XPATH = '//div[contains(@class, "btn-group-nowrap")]//a[@title="Mark Session Attendance"]'
 CANCEL_SIGNUP_BUTTON_XPATH = "//a[@title='Cancel Sign Up']"
 MARK_ATTENDANCE_CONFIRM_BUTTON_ID = 'markAttendanceOk'
 ATTENDANCE_DROPDOWN_XPATH = "//*[@id='modFacetofaceSessionAttendanceForm_attendance']"
 GRADE_FIELD_XPATH = "//input[@id='modFacetofaceSessionAttendanceForm_score']"
 MARK_COMPLETE_CHECKBOX_CSS = '#modFacetofaceSessionAttendanceForm_completed'
 TOGGLE_BUTTON_CSS = 'div[data-toggle="toggle"]'
+
+### Learning Course Face to Face Session Bulk enrol Mark attendance ###
+SERVICE_FACE_TO_FACE_SESSION_NAME = 'ELMO Face-to-Face'
+PAGINATION_CSS = '.pagination-count'
+BULK_ACTIONS_TOGGLE_XPATH = "//div[contains(@class, 'btn-group-nowrap')]//button[contains(@class, 'dropdown-toggle')]"

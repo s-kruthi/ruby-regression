@@ -85,3 +85,56 @@ Then(/^I Should Be Able To Add CPD "([^"]*)" Successfully$/i) do |arg|
       VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CPD_PLAN_SAVE_SUCCESS_TXT)
   end
 end
+
+And(/^I Go To The Face To Face Session Of The Course$/i) do
+  steps %{
+    And   I go to Admin Settings
+    And   I Go To Courses under Learning section
+    When  I Search For The Randomly Created Course
+  }
+  ClickLinkButtonWithName('Edit')
+  ClickOnATab('Sections')
+  WaitForAnElementByPartialLinkTextAndTouch(SERVICE_FACE_TO_FACE_SESSION_NAME)
+end
+
+
+When(/^I Go To The Atetndance Of The Session$/i) do
+  ClickLinkButtonWithName('Attendance')
+end
+
+When(/^I Go To Attendance Page From Bulk Signup$/) do
+  WaitForAnElementByPartialLinkTextAndTouch('Attendance')
+end
+
+Then(/^I Should Bulk Sign Up Users On Page$/i) do
+  WaitForAnElementByPartialLinkTextAndTouch('Bulk Sign Up')
+  @selected_user_amount = 5
+  Sleep_Until(SelectUsersPage(@selected_user_amount))
+  Sleep_Until(WaitForAnElementByIdAndTouch('enrol-btn'))
+  PressConfirm()
+  # The sleep to wait for the AJAX progress bar to finish
+  sleep(10)
+  VerifyCheckboxSelectedByCSS('.add-user', @selected_user_amount)
+end
+
+
+Then(/^I Should Bulk Sign Up All Users$/i) do
+  before_enrol_num = GetNumberFromPagination()
+  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch('Bulk Sign Up'))
+  Sleep_Until(WaitForAnElementByIdAndTouch('enrol-all-btn'))
+  Sleep_Until(PressConfirm())
+  # Wait 10 seconds for enrol all users processing
+  sleep(10)
+  # Wait for Bulk Enrol all user before cancel
+  Sleep_Until(WaitForAnElementByCSSAndTouch('button[data-action="cancel"]'))
+  # The sleep to wait for the AJAX progress bar to finish
+  sleep(2)
+  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch('Attendance'))
+  after_enrol_num = GetNumberFromPagination()
+  VerifyNumberChange(before_enrol_num, after_enrol_num, 'increase')
+end
+
+
+Then(/^I Should Bulk Mark Attendance All Users$/i) do
+  BulkMarkFaceToFaceSessionAttendance('Fully Attended', 90, 'yes')
+end
