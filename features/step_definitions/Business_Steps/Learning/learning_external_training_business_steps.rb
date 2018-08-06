@@ -1,48 +1,28 @@
 And(/^I (Enable|Disable) The External Training For Users$/i) do |action|
-  toggle_setting = CheckExtTrainingSetting()
+  SetTrainingSetting(action)
 
-  if action != toggle_setting
-    $driver.execute_script("$(#{LEARNING_EXTTRAINING_TOGGLE_ID}).each(function() { var $this=$(this)\;{ $this.parent().trigger('click') } })")
-    puts COLOR_GREEN + " External Training has now been set to " + action +"d"
-  else
-    puts "External Training is already set to "+ action + "d"
+  if action == "Enable"
+    steps %{ Then I Should See That The Configuration Fields Get Unlocked }
+  elsif action == "Disable"
+    steps %{ Then I Should See That The Configuration Fields Get Locked }
   end
-  #library disabled -> $driver.find_element(:id, 'elmo_learningbundle_external_training_libraryOnly').selected? == false
-
-  # if action == "Enable"
-  #  steps %{ Then I Should See That The Configuration Fields Gets Unlocked }
-  # elsif action == "Disable"
-  #   steps %{ Then I Should See That The Configuration Fields Gets Locked }
-  # end
 end
 
 
-Then(/^I Should See That The Configuration Fields Gets (Unlocked|Locked)$/i) do |field_ability|
+Then(/^I Should See That The Configuration Fields Get (Unlocked|Locked)$/i) do |field_ability|
   CheckConfigFields(field_ability)
 end
 
 
-And(/^I Enable The ([\w\s]+) Field$/i) do |field_name|
-  case field_name
-    when 'Description'
-      identifier = LEARNING_EXTTRAINING_DESC_ID
-    when 'Training Duration'
-      identifier = LEARNING_EXTTRAINING_DURATION_ID
-  end
+And(/^I (Enable|Disable) The ([\w\s]+) Field$/i) do |setting, field_name|
   #check enabled/disabled then click
-  CheckAndEnable(identifier,field_name)
+  CheckAndEnable(field_name,setting)
 end
 
 
 And(/^I Set The ([\w\s]+) Field As (Optional|Required)$/i) do |field_name, field_need|
-  case field_name
-    when 'Description'
-      identifier = LEARNING_EXTTRAINING_DESC_OPTIONAL_ID
-    when 'Training Duration'
-      identifier = LEARNING_EXTTRAINING_DURATION_ID
-  end
   #check enabled/disabled then click
-  CheckAndSet(identifier,field_name, field_need)
+  CheckAndSet(field_name, field_need)
 end
 
 
@@ -68,6 +48,7 @@ Given(/^That External Training Is Enabled For Users$/i) do
          When  I Go To External Training under Learning section
          And   I Enable The External Training For Users
          And   I Should Be Able To Save The Configuration Successfully
+         Then  I Have Logged Out
   }
 end
 
@@ -82,17 +63,75 @@ And(/^I Add An External Training$/i) do
   #switching to external training frame
   $driver.switch_to.frame $driver.find_element(:xpath, LEARNING_EXTTRAINING_MODAL_ID)
   Sleep_Until(WaitForAnElementByXpathAndTouch(LEARNING_EXTTRAINING_COURSE_SELECT_ID))
+
+  #switching back to main window
+  $driver.switch_to.window(@old_win)
 end
 
 
 Then(/^I Should See That I Can Successfully Submit My Course Request$/i) do
-  #switching back to main window
-  $driver.switch_to.window(@old_win)
-
   Sleep_Until(WaitForAnElementByIdAndTouch(LEARNING_EXTTRAINING_COURSE_SUBMIT_ID))
   PressEnterConfirm()
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, LEARNING_EXTTRAINING_ADD_SUCCESSFUL_VALUE))
 end
+
+
+Given(/^That ([\w\s]+) Is (Disabled|Enabled) For External Training$/i) do |field_name, setting|
+  if setting == 'Enabled'
+    action = 'Enable'
+  else
+    action = 'Disable'
+  end
+  steps %{
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    When  I Go To External Training under Learning section
+    And   I Enable The External Training For Users
+    And   I #{action} The #{field_name} Field
+    And   I Should Be Able To Save The Configuration Successfully
+    Then  I Have Logged Out
+  }
+end
+
+
+
+And(/^I Can Add My Own External Training Course Name$/i) do
+  Sleep_Until(WaitForAnElementByXpathAndTouch(LEARNING_EXTTRAINING_ADD_BUTTON_ID))
+  expect($driver.find_element(:id, LEARNING_EXTTRAINING_COURSE_NAME_ID).enabled?).to eq(true)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEARNING_EXTTRAINING_COURSE_NAME_ID, LEARNING_EXTTRAINING_COURSE_NAME))
+end
+
+
+Then(/^I Should See That The ([\w\s]+) Field Is(\s+?|\sNot\s)Displayed$/i) do |field_name, ability|
+  CheckFieldDisplayed(field_name,ability)
+end
+
+
+And(/^I Click On The Library Sub-Tab$/i) do
+  Sleep_Until(ClickOnASubTab(LEARNING_EXTTRAINING_LIB_SUBTAB_ID))
+end
+
+
+And(/^I (Add|Edit) An External Course Template$/i) do |action|
+  if action == 'Add'
+    Sleep_Until(WaitForAnElementByXpathAndTouch(LEARNING_EXTTRAINING_COURSE_TEMPLATE_ADD_ID))
+    AddCourseTemplateDetails()
+    @action = "Add"
+  elsif action == 'Edit'
+    Sleep_Until(ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"Edit"))
+    AddCourseTemplateDetails()
+    @action = "Edit"
+  end
+end
+
+
+Then(/^I Should Be Able To Save The Changes$/i) do
+  SaveTemplate()
+end
+
+
+
+
 
 
 
