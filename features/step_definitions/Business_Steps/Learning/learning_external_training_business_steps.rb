@@ -2,14 +2,14 @@ And(/^I (Enable|Disable) The External Training For Users$/i) do |action|
   SetTrainingSetting(action)
 
   if action == "Enable"
-    steps %{ Then I Should See That The Configuration Fields Gets Unlocked }
+    steps %{ Then I Should See That The Configuration Fields Get Unlocked }
   elsif action == "Disable"
-    steps %{ Then I Should See That The Configuration Fields Gets Locked }
+    steps %{ Then I Should See That The Configuration Fields Get Locked }
   end
 end
 
 
-Then(/^I Should See That The Configuration Fields Gets (Unlocked|Locked)$/i) do |field_ability|
+Then(/^I Should See That The Configuration Fields Get (Unlocked|Locked)$/i) do |field_ability|
   CheckConfigFields(field_ability)
 end
 
