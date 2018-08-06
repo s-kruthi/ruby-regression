@@ -316,6 +316,8 @@ module Chrome
       expected_table_column_value_hash.each do |col_num, expected_value|
         column_css = table_body_css + " tr:nth-child(#{row})" + " td:nth-child(#{col_num})"
         page_column_value = $driver.find_element(:css, column_css).text
+        puts column_css
+        puts page_column_value
         unless page_column_value.eql?(expected_value)
           unmatch_result += page_column_value + ' unmatch ' + expected_value
         end
