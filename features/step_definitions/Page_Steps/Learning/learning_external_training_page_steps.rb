@@ -117,3 +117,31 @@ def CheckFieldDisplayed(field_name, ability)
   end
 end
 
+
+def AddCourseTemplateDetails()
+  ClearField('id', LEARNING_EXTTRAINING_COURSE_TEMPLATE_NAME_ID)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEARNING_EXTTRAINING_COURSE_TEMPLATE_NAME_ID, LEARNING_EXTTRAINING_COURSE_TEMP_NAME))
+  Sleep_Until(UseCkeditorToEnterText(LEARNING_EXTTRAINING_COURSE_TEMP_DESC,0))
+  ClearField('id', LEARNING_EXTTRAINING_COURSE_TEMPLATE_DUR_ID)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEARNING_EXTTRAINING_COURSE_TEMPLATE_DUR_ID, LEARNING_EXTTRAINING_COURSE_TEMP_DUR))
+  ClearField('id', LEARNING_EXTTRAINING_COURSE_TEMPLATE_CPD_ID)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEARNING_EXTTRAINING_COURSE_TEMPLATE_CPD_ID, LEARNING_EXTTRAINING_COURSE_TEMP_CPD))
+end
+
+
+def SaveTemplate()
+  Sleep_Until(WaitForAnElementByIdAndTouch(LEARNING_EXTTRAINING_COURSE_TEMPLATE_SAVE_ID))
+
+  #Verifying addition
+  if @action == 'Add'
+    expect($driver.find_element(:xpath, LEARNING_EXTTRAINING_COURSE_TEMPLATE_NAME_BREADCRUMB).text).not_to eq('New Template')
+    expect($driver.find_element(:xpath, LEARNING_EXTTRAINING_COURSE_TEMPLATE_NAME_BREADCRUMB).text).to eq('Automated Test External Tra...')
+  end
+end
+
+
+#Clears input fields
+def ClearField(type, identifier)
+  $driver.find_element(:"#{type}", identifier).clear()
+end
+

@@ -107,6 +107,27 @@ Then(/^I Should See That The ([\w\s]+) Field Is(\s+?|\sNot\s)Displayed$/i) do |f
 end
 
 
+And(/^I Click On The Library Sub-Tab$/i) do
+  Sleep_Until(ClickOnASubTab(LEARNING_EXTTRAINING_LIB_SUBTAB_ID))
+end
+
+
+And(/^I (Add|Edit) An External Course Template$/i) do |action|
+  if action == 'Add'
+    Sleep_Until(WaitForAnElementByXpathAndTouch(LEARNING_EXTTRAINING_COURSE_TEMPLATE_ADD_ID))
+    AddCourseTemplateDetails()
+    @action = "Add"
+  elsif action == 'Edit'
+    Sleep_Until(ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"Edit"))
+    AddCourseTemplateDetails()
+    @action = "Edit"
+  end
+end
+
+
+Then(/^I Should Be Able To Save The Changes$/i) do
+  SaveTemplate()
+end
 
 
 

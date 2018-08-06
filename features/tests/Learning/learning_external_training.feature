@@ -73,3 +73,24 @@ Feature: As An Admin I Would Like to Manage External Training
     When  I Go To The Menu Learning Section
     And   I Add An External Training
     Then  I Should See That The Expiry Date Field Is Not Displayed
+
+
+  @learning_low_risk @external_training_course_template_add @test
+  Scenario: [Learning]Learning Admin Can Edit External Training Course Template
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    When  I Go To External Training under Learning section
+    And   I Click On The Library Sub-Tab
+    And   I Add An External Course Template
+    Then  I Should Be Able To Save The Changes
+
+
+  @learning_low_risk @external_training_course_template_edit @C1801
+  Scenario: [Learning]Learning Admin Can Edit External Training Course Template
+    Given I Have Logged In as a Learning Admin
+    And   I go to Admin Settings
+    When  I Go To External Training under Learning section
+    And   I Click On The Library Sub-Tab
+    And   I Edit An External Course Template
+    Then  I Should Be Able To Save The Changes
+

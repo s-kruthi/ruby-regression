@@ -40,3 +40,18 @@ LEARNING_EXTTRAINING_COURSE_NAME_ID = 'elmo_learningbundle_external_training_cou
 
 LEARNING_EXTTRAINING_COURSE_ATTACHMENTS_ID = 'elmo_learningbundle_external_training_attachments'
 
+
+#### Course Template Page ####
+LEARNING_EXTTRAINING_LIB_SUBTAB_ID = '//a[@href="/admin/external-training-template/list"]'
+
+LEARNING_EXTTRAINING_COURSE_TEMPLATE_ADD_ID = '//a[@href="/admin/external-training-template/edit"]'
+
+LEARNING_EXTTRAINING_COURSE_TEMPLATE_SAVE_ID = 'elmo_learningbundle_external_training_template_save'
+
+LEARNING_EXTTRAINING_COURSE_TEMPLATE_NAME_ID = 'elmo_learningbundle_external_training_template_courseName'
+
+LEARNING_EXTTRAINING_COURSE_TEMPLATE_DUR_ID = 'elmo_learningbundle_external_training_template_duration'
+
+LEARNING_EXTTRAINING_COURSE_TEMPLATE_CPD_ID = 'elmo_learningbundle_external_training_template_cpdPoints'
+
+LEARNING_EXTTRAINING_COURSE_TEMPLATE_NAME_BREADCRUMB = '//a[@href = "#new-template"]'
