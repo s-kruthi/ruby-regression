@@ -1813,7 +1813,7 @@ f.close();
                   </elementProp>
                   <elementProp name="elmo_learningbundle_mod_facetofacesession[maxCapacity]" elementType="HTTPArgument">
                     <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">10</stringProp>
+                    <stringProp name="Argument.value">100000</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                     <boolProp name="HTTPArgument.use_equals">true</boolProp>
                     <stringProp name="Argument.name">elmo_learningbundle_mod_facetofacesession[maxCapacity]</stringProp>
