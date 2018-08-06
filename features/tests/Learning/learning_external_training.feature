@@ -75,7 +75,7 @@ Feature: As An Admin I Would Like to Manage External Training
     Then  I Should See That The Expiry Date Field Is Not Displayed
 
 
-  @learning_low_risk @external_training_course_template_add @test
+  @learning_low_risk @external_training_course_template_add
   Scenario: [Learning]Learning Admin Can Edit External Training Course Template
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
