@@ -1233,3 +1233,33 @@ def ToggleTo(yes_no)
     end
   end
 end
+
+
+def BulkMarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
+  SelectUsersPage(5)
+  WaitForToggleDropDownItemAndTouch(BULK_ACTIONS_TOGGLE_XPATH, BULK_MARK_ATTENDANCE_BUTTON_XPATH)
+  SelectFromDropDown(ATTENDANCE_DROPDOWN_XPATH, attendance)
+  WaitForAnElementByXpathAndClearValue(GRADE_FIELD_XPATH)
+  WaitForAnElementByXpathAndInputValue(GRADE_FIELD_XPATH, grade)
+  ToggleTo(toggle_yes_no)
+  Sleep_Until(WaitForAnElementByIdAndTouch(MARK_ATTENDANCE_CONFIRM_BUTTON_ID))
+  VerifyTableByRowColumnCSS(1, (attendance.gsub(' ', '_').upcase+'_COLUMN_VALUE').constantize)
+end
+
+
+def GetNumberFromPagination
+  wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+  pag_text = wait.until {pag_text = $driver.find_element(:css, PAGINATION_CSS).text}
+  pattern = /^.* of (\d+) .*$/
+  pag_text[pattern, 1]
+end
+
+
+def SelectUsersPage(amount)
+  wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+  check_boxes = wait.until {$driver.find_elements(:css, '.add-user')}
+  for i in 1..amount do
+    element_index = i - 1
+    check_boxes[element_index].click
+  end
+end

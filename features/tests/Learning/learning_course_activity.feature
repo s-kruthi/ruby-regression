@@ -334,6 +334,19 @@
       And   I Should Be Able To Mark Attendance "Cancelled" With Grade 90 And Mark As Attendance Complete
 
 
+    @smoke_learning @learning_low_risk @signup_attendance_bulk_mark_attendance @C1831 @C1832
+    Scenario: Signup Attendance To Face To Face Session And Mark User Attendance
+      Given I Create A Random Course For Automation With Face-To-Face Activity
+      And   I Have Logged In as a Company Admin
+      And   I Go To The Face To Face Session Of The Course
+      When  I Go To The Atetndance Of The Session
+      Then  I Should Bulk Sign Up Users On Page
+      When  I Go To Attendance Page From Bulk Signup
+      Then  I Should Bulk Sign Up All Users
+      When  I Go To Attendance Page From Bulk Signup
+      Then  I Should Bulk Mark Attendance All Users
+
+
     @learning_low_risk @C6071 @C6070
     Scenario: As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Self Sign Up / Withdraw Myself From The Face-to-face Session
       Given I Have Logged In As A Company Admin
