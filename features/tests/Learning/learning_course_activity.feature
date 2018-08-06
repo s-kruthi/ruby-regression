@@ -339,7 +339,7 @@
       Given I Create A Random Course For Automation With Face-To-Face Activity
       And   I Have Logged In as a Company Admin
       And   I Go To The Face To Face Session Of The Course
-      When  I Go To The Atetndance Of The Session
+      When  I Go To The Attendance Of The Session
       Then  I Should Bulk Sign Up Users On Page
       When  I Go To Attendance Page From Bulk Signup
       Then  I Should Bulk Sign Up All Users

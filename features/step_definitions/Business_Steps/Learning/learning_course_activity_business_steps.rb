@@ -98,7 +98,7 @@ And(/^I Go To The Face To Face Session Of The Course$/i) do
 end
 
 
-When(/^I Go To The Atetndance Of The Session$/i) do
+When(/^I Go To The Attendance Of The Session$/i) do
   ClickLinkButtonWithName('Attendance')
 end
 
