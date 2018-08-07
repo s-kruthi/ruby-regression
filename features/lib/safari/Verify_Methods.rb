@@ -343,7 +343,7 @@ module Safari
     end
 
 
-    def VerifyCheckboxSelectedByCSS(css, selected_number)
+    def VerifyCheckboxSelectedByCSS(css, selected_number, verify_message)
       wait = Selenium::WebDriver::Wait.new(:timeout => 10)
       elements = wait.until {
         $driver.find_elements(:css, css)
@@ -354,12 +354,12 @@ module Safari
         element_index = i - 1
         # When the attribute "disabled = disabled" it will return 'true' as string
         unless elements[element_index].attribute('disabled').eql? 'true'
-          result << "#{i} user is not signedup"
+          result << "#{i} not #{verify_message}"
         end
       end
 
       if result.size == 0
-        puts COLOR_GREEN + "MATCHED: User successfully signed up"
+        puts COLOR_GREEN + "MATCHED: Successful #{verify_message}"
       else
         fail
       end

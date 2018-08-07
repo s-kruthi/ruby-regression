@@ -1245,7 +1245,7 @@ def BulkMarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
   ToggleTo(toggle_yes_no)
   Sleep_Until(WaitForAnElementByIdAndTouch(MARK_ATTENDANCE_CONFIRM_BUTTON_ID))
   # Wait for bulk mark attenace which triggered AJAX
-  sleep(2)
+  sleep(5)
   VerifyTableByRowColumnCSS(1, (attendance.gsub(' ', '_').upcase+'_COLUMN_VALUE').constantize)
 end
 

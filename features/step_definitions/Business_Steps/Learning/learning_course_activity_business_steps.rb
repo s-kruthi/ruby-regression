@@ -113,8 +113,8 @@ Then(/^I Should Bulk Sign Up Users On Page$/i) do
   Sleep_Until(WaitForAnElementByIdAndTouch('enrol-btn'))
   PressConfirm()
   # The sleep to wait for the AJAX progress bar to finish
-  sleep(10)
-  VerifyCheckboxSelectedByCSS('.add-user', @selected_user_amount)
+  sleep(20)
+  VerifyCheckboxSelectedByCSS('.add-user', @selected_user_amount, 'user signup')
 end
 
 
