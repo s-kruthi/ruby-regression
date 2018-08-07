@@ -69,6 +69,25 @@ module Database_env
       return @db[query].first
     end
 
+
+    def check_legal_entity_exists(abn_num)
+      query = "select exists
+              (select 1
+              from epms_legal_entity where abn = '#{abn_num}')
+              as presence"
+      return @db[query].first
+    end
+
+
+    def get_legal_entity_details()
+      query = "select id, business_name
+              from epms_legal_entity
+              where is_default = 0
+              and is_deleted = 0
+              ORDER BY rand();"
+      return @db[query].first
+    end
+
   end
 
 end

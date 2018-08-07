@@ -44,3 +44,42 @@ def random_abn()
     final_numbers.join
     return final_numbers.join.to_i
 end
+
+
+def AddLegalEntity()
+  Sleep_Until(WaitForAnElementByXpathAndTouch(LEGAL_ENTITY_ADD_ID))
+
+  #check db for abn is not in use
+  begin
+    @abn_num = random_abn()
+    exists = $daos.check_legal_entity_exists(@abn_num)
+  end until exists[:presence] == 0
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_ABN_ID, @abn_num))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_BUS_NAME_ID, LEGAL_ENTITY_BUS_NAME + Time.now.strftime("%Y%m%d%H%M%S")))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_ADDR1_ID, LEGAL_ENTITY_ADDR1))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_SUBURB_ID, LEGAL_ENTITY_ADDR1))
+  Sleep_Until(SelectFromDropDown(LEGAL_ENTITY_STATE_DROPDOWN_ID, 'Victoria'))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_POSTCODE_ID, '3003'))
+  Sleep_Until(SelectFromDropDown(LEGAL_ENTITY_COUNTRY_DROPDOWN_ID, 'India'))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_CONTACTNAME_ID, '3003'))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_EMAIL_ID, 'test@test.com'))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_PHONE_ID, '0123456789'))
+  # $driver.find_element(:id,LEGAL_ENTITY_ISACTIVE_ID).selected?
+  # $driver.find_element(:id,LEGAL_ENTITY_ISDEF_ID).selected?
+  # identifier = LEGAL_ENTITY_ISACTIVE_ID
+  #
+  # $driver.execute_script("$(#{identifier}).each(function() { var $this=$(this)\;{ $this.parent().trigger('click') } })")
+  Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
+end
+
+
+def EditLegalEntity()
+  @legal_entity = $daos.get_legal_entity_details()
+  Sleep_Until(WaitForAnElementByIdAndInputValue(SEARCH_FIELD_ID, @legal_entity[:business_name]))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
+  id = @legal_entity[:id]
+  byebug
+  $driver.find_element(:xpath, '//a[@href="/admin/legal-entity/edit/#{id}"]')
+  byebug
+
+end

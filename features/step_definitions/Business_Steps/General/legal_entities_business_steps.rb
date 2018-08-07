@@ -10,19 +10,25 @@ end
 
 
 And(/^I Can (Add|Edit) A Legal Entity$/i) do |action|
-  Sleep_Until(WaitForAnElementByXpathAndTouch(LEGAL_ENTITY_ADD_ID))
-  abn_num = random_abn()
-  #check db for abn is not in use
-  byebug
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_ABN_ID, abn_num))
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_BUS_NAME_ID, (LEGAL_ENTITY_BUS_NAME +Time.now.strftime("%Y%m%d%H%M%S").to_s)))
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_ADDR1_ID, LEGAL_ENTITY_ADDR1))
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_SUBURB_ID, LEGAL_ENTITY_ADDR1))
-  Sleep_Until(SelectFromDropDown(LEGAL_ENTITY_STATE_DROPDOWN_ID, 'Australia'))
-  byebug
+  if action == 'Add'
+    AddLegalEntity()
+  else
+    EditLegalEntity()
+  end
 end
 
 
 Then(/^I Should Not See The ATO Details Tab$/i) do
   Sleep_Until(VerifyAnElementNotExist('xpath', '//a[@href="/admin/company/ato-details"]'))
+end
+
+
+Then(/^I Should See That Legal Entity Is Successfully Added$/i) do
+  exists = $daos.check_legal_entity_exists(@abn_num)
+  expect(exists[:presence]).to eq(1)
+end
+
+
+Then(/^I Should See That Legal Entity Is Updated Successfully$/i) do
+
 end
