@@ -324,5 +324,49 @@ module Safari
       puts e.message
     end
 
+
+    def VerifyNumberChange(before, after, expect_increase_decrease)
+      result = ''
+      if expect_increase_decrease.downcase.include?('increase')
+        result = before.to_i < after.to_i
+      elsif expect_increase_decrease.downcase.include?('decrease')
+        result = before_to_i > after.to_i
+      end
+      if result
+        puts COLOR_GREEN + "MATCHED: Number is #{expect_increase_decrease} as expected"
+      else
+        fail
+      end
+    rescue Exception => e
+      raise VerificationException.new(COLOR_RED + "Number is not #{expect_increase_decrease}")
+      puts e.message
+    end
+
+
+    def VerifyCheckboxSelectedByCSS(css, selected_number, verify_message)
+      wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+      elements = wait.until {
+        $driver.find_elements(:css, css)
+      }
+
+      result = []
+      for i in 1..selected_number
+        element_index = i - 1
+        # When the attribute "disabled = disabled" it will return 'true' as string
+        unless elements[element_index].attribute('disabled').eql? 'true'
+          result << "#{i} not #{verify_message}"
+        end
+      end
+
+      if result.size == 0
+        puts COLOR_GREEN + "MATCHED: Successful #{verify_message}"
+      else
+        fail
+      end
+
+    rescue Exception => e
+      raise VerificationException.new(COLOR_RED + result.join(','))
+      puts e.message
+    end
   end
 end
