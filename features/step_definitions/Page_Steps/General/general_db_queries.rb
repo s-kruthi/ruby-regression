@@ -79,12 +79,32 @@ module Database_env
     end
 
 
-    def get_legal_entity_details()
+    #only editing non-default entities
+    def get_legal_entity_details_for_edit()
       query = "select id, business_name
               from epms_legal_entity
               where is_default = 0
               and is_deleted = 0
               ORDER BY rand();"
+      return @db[query].first
+    end
+
+
+    def get_legal_entity_details()
+      query = "select id, abn, business_name, is_default, is_active
+              from epms_legal_entity
+              where is_deleted = 0
+              ORDER BY rand();"
+      return @db[query].first
+    end
+
+
+    def get_default_entity_details()
+      query = "select id, business_name
+              from epms_legal_entity
+              where is_deleted = 0
+              and is_default = 1
+              and is_active = 1"
       return @db[query].first
     end
 

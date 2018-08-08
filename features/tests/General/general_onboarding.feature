@@ -76,3 +76,10 @@ Feature:
     And   I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Should Not Be Able To Access The Onboarding User Setup In Onboarding Section
+
+
+  @test
+  Scenario: [General]Default Legal Entity Is Set For Newly Created User
+    Given That I Have Created A New User
+    And   I Click On "Profile" Tab
+    Then  I Should See That The Default Entity Is Set For the Company Field

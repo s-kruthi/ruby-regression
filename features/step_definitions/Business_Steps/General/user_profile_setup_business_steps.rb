@@ -27,10 +27,10 @@ And(/^I Verify That The Configuration Status Is (Saved|Unsaved)$/i) do |save_sta
 end
 
 
-Given(/^That Cost Centre and Company\(Legal Entity\) Fields Are Visible$/i) do
+Given(/^That Cost Centre and Company\(Legal Entity\) Fields Are Enabled$/i) do
   steps %{
           Given That Cost Centre Field Is Visible
-          And That Company Legal Entity Field Is Visible
+          And That Legal Entity Is Enabled
           }
 end
 

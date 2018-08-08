@@ -54,32 +54,140 @@ def AddLegalEntity()
     @abn_num = random_abn()
     exists = $daos.check_legal_entity_exists(@abn_num)
   end until exists[:presence] == 0
+
+  #Entering mandatory details
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_ABN_ID, @abn_num))
+
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_BUS_NAME_ID, LEGAL_ENTITY_BUS_NAME + Time.now.strftime("%Y%m%d%H%M%S")))
+
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_ADDR1_ID, LEGAL_ENTITY_ADDR1))
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_SUBURB_ID, LEGAL_ENTITY_ADDR1))
-  Sleep_Until(SelectFromDropDown(LEGAL_ENTITY_STATE_DROPDOWN_ID, 'Victoria'))
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_POSTCODE_ID, '3003'))
-  Sleep_Until(SelectFromDropDown(LEGAL_ENTITY_COUNTRY_DROPDOWN_ID, 'India'))
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_CONTACTNAME_ID, '3003'))
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_EMAIL_ID, 'test@test.com'))
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_PHONE_ID, '0123456789'))
-  # $driver.find_element(:id,LEGAL_ENTITY_ISACTIVE_ID).selected?
-  # $driver.find_element(:id,LEGAL_ENTITY_ISDEF_ID).selected?
-  # identifier = LEGAL_ENTITY_ISACTIVE_ID
-  #
-  # $driver.execute_script("$(#{identifier}).each(function() { var $this=$(this)\;{ $this.parent().trigger('click') } })")
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_SUBURB_ID, LEGAL_ENTITY_SUBURB))
+
+  Sleep_Until(SelectFromDropDown(LEGAL_ENTITY_STATE_DROPDOWN_ID, LEGAL_ENTITY_STATE))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_POSTCODE_ID, LEGAL_ENTITY_POSTCODE))
+
+  Sleep_Until(SelectFromDropDown(LEGAL_ENTITY_COUNTRY_DROPDOWN_ID, LEGAL_ENTITY_COUNTRY))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_CONTACTNAME_ID, LEGAL_ENTITY_CONTACTNAME))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_EMAIL_ID, LEGAL_ENTITY_EMAIL))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_PHONE_ID, LEGAL_ENTITY_TEL))
+
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
 
 
 def EditLegalEntity()
-  @legal_entity = $daos.get_legal_entity_details()
+  SearchToEdit()
+
+  #edit contact name and save
+  ClearField('id', LEGAL_ENTITY_CONTACTNAME_ID)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_CONTACTNAME_ID, 'Automated Edit'))
+  Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
+end
+
+def SearchToEdit()
+  #get legal entity to edit
+  @legal_entity = $daos.get_legal_entity_details_for_edit()
+
+  #search and click to edit
   Sleep_Until(WaitForAnElementByIdAndInputValue(SEARCH_FIELD_ID, @legal_entity[:business_name]))
   Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
-  id = @legal_entity[:id]
-  byebug
-  $driver.find_element(:xpath, '//a[@href="/admin/legal-entity/edit/#{id}"]')
-  byebug
-
+  $driver.find_element(:xpath, '//a[@href="/admin/legal-entity/edit/'+@legal_entity[:id].to_s+'"]').click
 end
+
+
+def CheckAndSetDefault(identifier)
+  default = $driver.find_element(:id, identifier).selected?
+
+  if default == true
+    puts COLOR_BLUE + "Entity is set to Default".upcase
+  else
+    JavascriptClick(identifier)
+    puts COLOR_BLUE + "Entity has now been set to Default".upcase
+  end
+end
+
+
+def CheckPageDisplay()
+  @legal_entity = $daos.get_legal_entity_details()
+
+  puts @legal_entity
+
+  #search and click to edit
+  Sleep_Until(WaitForAnElementByIdAndInputValue(SEARCH_FIELD_ID, @legal_entity[:business_name]))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
+
+  #checks business name is displayed correctly
+  expect($driver.find_element(:xpath, '//a[@href="/admin/legal-entity/edit/'+@legal_entity[:id].to_s+'"]').text).to eq(@legal_entity[:business_name])
+
+  #checks ABN is displayed correctly
+  expect($driver.find_element(:xpath, '//span[contains(.,"'+@legal_entity[:business_name]+'")]//../following-sibling::td[1]').text).to eq(@legal_entity[:abn])
+
+  #Check for Default on page
+  if @legal_entity[:is_default] == 1
+    puts COLOR_BLUE + "Entity is set as default".upcase
+    #check for tick mark
+    expect($driver.find_element(:xpath, '//span[contains(.,"'+@legal_entity[:business_name]+'")]//../following-sibling::td[2]/span').attribute('class')).to eq('glyphicon glyphicon-ok')
+  else
+    puts COLOR_BLUE + "Entity is not set as default".upcase
+
+    #checks that no tick mark
+    VerifyAnElementNotExist('xpath', '//span[contains(.,"'+@legal_entity[:business_name]+'")]//../following-sibling::td[2]/span')
+  end
+
+  #Check for Active on page
+  if @legal_entity[:is_active] == 1
+    puts COLOR_BLUE + "Entity is active".upcase
+
+    #check for tick mark
+    expect($driver.find_element(:xpath, '//span[contains(.,"'+@legal_entity[:business_name]+'")]//../following-sibling::td[3]/span').attribute('class')).to eq('glyphicon glyphicon-ok')
+  else
+    puts COLOR_BLUE + "Entity is inactive".upcase
+
+    #checks that no tick mark
+    VerifyAnElementNotExist('xpath', '//span[contains(.,"'+@legal_entity[:business_name]+'")]//../following-sibling::td[3]/span')
+  end
+end
+
+
+def VerifyABNLookup()
+  sleep(2)
+  field_value = $driver.find_element(:id, 'legal_entity_businessName').attribute('value')
+  expect(field_value).to eq('SCIENTIFIC INSTRUMENT MANUFACTURING & REPAIR CO')
+end
+
+
+def EnterExisitingEntityDetails()
+  @legal_entity = $daos.get_legal_entity_details()
+
+  #Entering mandatory details
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_ABN_ID, @legal_entity[:abn]))
+
+  # #clear field as abn lookup will populate the field
+  # ClearField('id', LEGAL_ENTITY_BUS_NAME_ID)
+  # Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_BUS_NAME_ID, LEGAL_ENTITY_BUS_NAME + Time.now.strftime("%Y%m%d%H%M%S")))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_ADDR1_ID, LEGAL_ENTITY_ADDR1))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_SUBURB_ID, LEGAL_ENTITY_SUBURB))
+
+  Sleep_Until(SelectFromDropDown(LEGAL_ENTITY_STATE_DROPDOWN_ID, LEGAL_ENTITY_STATE))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_POSTCODE_ID, LEGAL_ENTITY_POSTCODE))
+
+  Sleep_Until(SelectFromDropDown(LEGAL_ENTITY_COUNTRY_DROPDOWN_ID, LEGAL_ENTITY_COUNTRY))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_CONTACTNAME_ID, LEGAL_ENTITY_CONTACTNAME))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_EMAIL_ID, LEGAL_ENTITY_EMAIL))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_PHONE_ID, LEGAL_ENTITY_TEL))
+
+  byebug
+  Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
+end
+

@@ -432,3 +432,22 @@ Then(/^I Should Be Able to Notify All Users$/) do
   Sleep_Until(PressConfirm())
   VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_NOTIFY_SUCCESS_MSG_VALUE)
 end
+
+
+Then(/^I Should See That The Default Entity Is Set For the Company Field$/) do
+  default_legal_entity = $daos.get_default_entity_details()
+  field_value = $driver.find_element(:id, 'legalEntity-container').text
+  expect(field_value.split("\n")[0]).to eq(default_legal_entity[:business_name])
+end
+
+
+
+Given(/^That I Have Created A New User$/) do
+  user_first_name = 'payroll_auto' + Time.now.strftime("%Y%m%d%H%M%S")
+  steps %Q{
+  Given I Have Logged In as a Company Admin
+And   I go to Admin Settings
+And   I Go To Users under General section
+When  I Click On "Add New User" Button
+Then  I Should Be Able To Add 1 New "Non-ELMO" Users In To The System With "#{user_first_name}" As First Name And "test" As Last Name}
+end
