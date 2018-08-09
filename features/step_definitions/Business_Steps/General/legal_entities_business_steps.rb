@@ -82,9 +82,16 @@ end
 
 
 Then(/^I Should Not Be Able To Create Legal Entities With Same ABN$/i) do
-  byebug
   expect($driver.find_element(:xpath, '//div[contains(@class,"alert-danger")]/input').attribute('id')).to eq(LEGAL_ENTITY_ABN_ID)
   expect($driver.find_element(:xpath, '//div[contains(@class,"alert-danger")]/ul/li').text).to eq('This value is already used.')
+end
+
+
+Then(/^I Should See That I Cannot Set It Back As Not Default$/i) do
+  Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
+  expect($driver.find_element(:id, LEGAL_ENTITY_ISACTIVE_ID).enabled?).to be false
+  expect($driver.find_element(:id, LEGAL_ENTITY_ISDEF_ID).enabled?).to be false
+  puts COLOR_GREEN + "There has to be one default legal entity, so cannot set it back to not default".upcase
 end
 
 

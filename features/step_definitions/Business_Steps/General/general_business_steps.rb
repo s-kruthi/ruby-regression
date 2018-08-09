@@ -456,7 +456,7 @@ Given(/^That I Have Created A New User$/) do
 end
 
 
-And(/^I Click On The Profile Tab Of The([^\"]*) User$/) do
+And(/^I Click On The Profile Tab Of The([^\"]*) User$/) do |user_type|
   Sleep_Until(WaitForAnElementByXpathAndTouch(USER_PROFILE_TAB_ID))
 end
 

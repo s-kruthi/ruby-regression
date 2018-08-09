@@ -79,7 +79,7 @@ Feature:
 
 
   #currently can be run only on payroll03
-  @general_low_risk @new_user_details_legal_entity @legal_entity @C16922
+  @general_low_risk @new_user_details_legal_entity @legal_entities @C16922
   Scenario: [General]Default Legal Entity Is Set For Newly Created User
     Given That Legal Entity Is Enabled
     And   That Company Legal Entity Field Is Visible
@@ -88,21 +88,9 @@ Feature:
     Then  I Should See That The Default Entity Is Set For the User's Company Field
 
 
-#  #currently can be run only on payroll03
-#  @general_low_risk @existing_user_details_legal_entity @legal_entity @C16923
-#  Scenario: [General]Default Legal Entity Is Set For Existing Users
-#    Given That Legal Entity Is Enabled
-#    And   That Company Legal Entity Field Is Visible
-#    And   I Have Logged In As A Company Admin
-#    And   I go to Admin Settings
-#    And   I Go To Users under General section
-#    When  I Choose To Edit An Existing User's Profile
-#    Then  I Should See That The Default Entity Is Set For the User's Company Field
-
-
   #currently can be run only on payroll03
-  @general_low_risk @legal_entity @user_details_legal_entity_edit @test
-  Scenario: [General]Default Legal Entity Is Set For Existing Users
+  @general_low_risk @legal_entities @user_details_legal_entity_edit
+  Scenario: [General]Company Admin Can Choose From Existing Legal Entities For Users
     Given That Company Legal Entity Field Is Editable
     And   I Have Logged In As A Company Admin
     And   I go to Admin Settings
