@@ -86,10 +86,26 @@ def CheckFieldVisibility(field_name)
 end
 
 
-def GoToSiteSetupTool()
-  $driver.navigate.to("https://sitesetup.dev.elmodev.com/#/")
-  $driver.navigate.to("https://sitesetup.dev.elmodev.com/#/login")
-  byebug
-  $driver.find_element(:xpath, '//input[@id="email-undefined-Email-12219"]').send_keys('admin')
-  $driver.find_element(:id, 'password-undefined-Password-11052').send_keys('admin1234567')
+def CheckFieldEditability(field_name)
+  case field_name
+    when 'Company Legal Entity'
+      name = 'userFieldsLocked_legalEntity'
+    when 'Cost Centre'
+      name = 'userFieldsLocked_costCentre'
+  end
+
+  field_editablity = $daos.get_epms_config_enabled(name)
+
+  if !field_editablity.nil?
+    if field_editablity[:value] == '0'
+      puts COLOR_BLUE + "Field is editable to Everyone"
+    else
+      puts COLOR_BLUE + "Field is not Editable"
+    end
+
+    return field_editablity[:value]
+  else
+    puts COLOR_BLUE + 'Field ' + field_name + ' is not Enabled in Config'
+    skip_this_scenario
+  end
 end

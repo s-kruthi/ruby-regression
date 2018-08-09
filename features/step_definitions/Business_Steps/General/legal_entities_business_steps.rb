@@ -82,7 +82,9 @@ end
 
 
 Then(/^I Should Not Be Able To Create Legal Entities With Same ABN$/i) do
-  pending "due to PR-1166"
+  byebug
+  expect($driver.find_element(:xpath, '//div[contains(@class,"alert-danger")]/input').attribute('id')).to eq(LEGAL_ENTITY_ABN_ID)
+  expect($driver.find_element(:xpath, '//div[contains(@class,"alert-danger")]/ul/li').text).to eq('This value is already used.')
 end
 
 

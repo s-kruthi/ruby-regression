@@ -1,5 +1,7 @@
 @general @legal_entities
 
+#currently can be run only on payroll03
+
 Feature:
   As A Company Admin I Want To Manage Legal Entities
 
@@ -89,3 +91,11 @@ Feature:
     And   I Click On Add Legal Entity Button
     And   I Enter Existing Legal Entity Details
     Then  I Should Not Be Able To Create Legal Entities With Same ABN
+
+
+  @general_low_risk @legal_entities_default @C16914
+  Scenario: [General]One Legal Entity Has To Be Set As Default
+    Given That Legal Entity Is Enabled
+    And   I Have Logged In as a Company Admin
+    When  I go to Admin Settings
+    And   I Go To Legal Entities under General section

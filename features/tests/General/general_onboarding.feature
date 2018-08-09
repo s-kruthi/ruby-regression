@@ -78,8 +78,36 @@ Feature:
     And   I Should Not Be Able To Access The Onboarding User Setup In Onboarding Section
 
 
-  @test
+  #currently can be run only on payroll03
+  @general_low_risk @new_user_details_legal_entity @legal_entity @C16922
   Scenario: [General]Default Legal Entity Is Set For Newly Created User
-    Given That I Have Created A New User
-    And   I Click On "Profile" Tab
-    Then  I Should See That The Default Entity Is Set For the Company Field
+    Given That Legal Entity Is Enabled
+    And   That Company Legal Entity Field Is Visible
+    And   That I Have Created A New User
+    When  I Click On The Profile Tab Of The Newly Created User
+    Then  I Should See That The Default Entity Is Set For the User's Company Field
+
+
+#  #currently can be run only on payroll03
+#  @general_low_risk @existing_user_details_legal_entity @legal_entity @C16923
+#  Scenario: [General]Default Legal Entity Is Set For Existing Users
+#    Given That Legal Entity Is Enabled
+#    And   That Company Legal Entity Field Is Visible
+#    And   I Have Logged In As A Company Admin
+#    And   I go to Admin Settings
+#    And   I Go To Users under General section
+#    When  I Choose To Edit An Existing User's Profile
+#    Then  I Should See That The Default Entity Is Set For the User's Company Field
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @legal_entity @user_details_legal_entity_edit @test
+  Scenario: [General]Default Legal Entity Is Set For Existing Users
+    Given That Company Legal Entity Field Is Editable
+    And   I Have Logged In As A Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Choose To Edit An Existing User's Profile
+    Then  I Can See That I Choose To Set The Company Legal Entity From the Existing Entities
+
+

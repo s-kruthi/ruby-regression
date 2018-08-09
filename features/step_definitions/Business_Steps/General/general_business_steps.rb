@@ -434,20 +434,47 @@ Then(/^I Should Be Able to Notify All Users$/) do
 end
 
 
-Then(/^I Should See That The Default Entity Is Set For the Company Field$/) do
+Then(/^I Should See That The Default Entity Is Set For the User's Company Field$/) do
   default_legal_entity = $daos.get_default_entity_details()
-  field_value = $driver.find_element(:id, 'legalEntity-container').text
-  expect(field_value.split("\n")[0]).to eq(default_legal_entity[:business_name])
-end
 
+  field_value = $driver.find_element(:id, 'legalEntity-container').text
+
+  #comparing the value from the db with the page
+  expect(field_value.split("\n")[0]).to eq(default_legal_entity[:business_name])
+  puts COLOR_GREEN + "User is set with the default legal entity for company field".upcase
+end
 
 
 Given(/^That I Have Created A New User$/) do
   user_first_name = 'payroll_auto' + Time.now.strftime("%Y%m%d%H%M%S")
   steps %Q{
-  Given I Have Logged In as a Company Admin
-And   I go to Admin Settings
-And   I Go To Users under General section
-When  I Click On "Add New User" Button
-Then  I Should Be Able To Add 1 New "Non-ELMO" Users In To The System With "#{user_first_name}" As First Name And "test" As Last Name}
+        Given I Have Logged In as a Company Admin
+        And   I go to Admin Settings
+        And   I Go To Users under General section
+        When  I Click On "Add New User" Button
+        Then  I Should Be Able To Add 1 New "Non-ELMO" Users In To The System With "#{user_first_name}" As First Name And "test" As Last Name}
 end
+
+
+And(/^I Click On The Profile Tab Of The([^\"]*) User$/) do
+  Sleep_Until(WaitForAnElementByXpathAndTouch(USER_PROFILE_TAB_ID))
+end
+
+
+When(/^I Choose To Edit An Existing User's Profile$/) do
+  steps %{Then I Should Be Able To use Edit User Profile Action On The Specific User}
+end
+
+
+Then(/^I Can See That I Choose To Set The Company Legal Entity From the Existing Entities$/) do
+  # get count from legal entity table
+  legal_entity = $daos.get_count_active_legal_entity()
+
+  $driver.find_element(:id, USER_LEGAL_ENTITY_FIELD_ID).click
+  $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%%')
+  sleep (2)
+  # search results should be equal to count
+  expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to eq(legal_entity[:count])
+end
+
+

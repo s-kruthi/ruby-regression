@@ -60,3 +60,16 @@ Then(/^I Should Not Be Able To Access Cost Centres under HR Core section$/i) do
   sleep(2)
   Sleep_Until(VerifyAnElementNotExist('xpath','//a[@href="/admin/costCentre/"]'))
 end
+
+
+And(/^That ([\w\s]+) Field Is (Editable|Uneditable)$/i) do |field_name, field_editablity|
+  editable = CheckFieldEditability(field_name)
+
+  if field_editablity == 'Editable'
+    expect(editable).to eq('0')
+    @editable = true
+  else
+    expect(editable).to eq('1')
+    @editable = false
+  end
+end

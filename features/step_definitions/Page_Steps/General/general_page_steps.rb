@@ -67,7 +67,7 @@ def CreateUsers(arg1, arg2, arg3, arg4, arg5)
         Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, USER_PASSWORD_VALUE))
         Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, USER_PASSWORD_VALUE))
         Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
-        byebug
+
         case $add_user_type
           when "EMP"
             Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless loop == arg1

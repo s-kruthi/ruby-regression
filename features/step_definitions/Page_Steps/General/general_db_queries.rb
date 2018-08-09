@@ -108,6 +108,14 @@ module Database_env
       return @db[query].first
     end
 
+    def get_count_active_legal_entity()
+      query = "select count(*) as count
+              from epms_legal_entity
+              where is_deleted = 0
+              and is_active = 1"
+      return @db[query].first
+    end
+
   end
 
 end

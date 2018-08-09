@@ -187,7 +187,6 @@ def EnterExisitingEntityDetails()
 
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_PHONE_ID, LEGAL_ENTITY_TEL))
 
-  byebug
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
 
