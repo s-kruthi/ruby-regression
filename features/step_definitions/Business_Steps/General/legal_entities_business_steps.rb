@@ -93,6 +93,3 @@ Then(/^I Should See That I Cannot Set It Back As Not Default$/i) do
   expect($driver.find_element(:id, LEGAL_ENTITY_ISDEF_ID).enabled?).to be false
   puts COLOR_GREEN + "There has to be one default legal entity, so cannot set it back to not default".upcase
 end
-
-
-

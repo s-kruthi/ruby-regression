@@ -472,7 +472,9 @@ Then(/^I Can See That I Choose To Set The Company Legal Entity From the Existing
 
   $driver.find_element(:id, USER_LEGAL_ENTITY_FIELD_ID).click
   $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%%')
-  sleep (2)
+
+  Sleep_Until(WaitForAnElementByClass(SELECT2_DROPDOWN_RESULT_CLASS))
+
   # search results should be equal to count
   expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to eq(legal_entity[:count])
 end
