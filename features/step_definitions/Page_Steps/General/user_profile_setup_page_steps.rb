@@ -73,11 +73,11 @@ def CheckFieldVisibility(field_name)
   if !field_visibility.nil?
     if field_visibility[:value] == '1'
       puts COLOR_BLUE + "Field is visible to Everyone"
-    elsif field_editablity[:value] == '0'
+    elsif field_visibility[:value] == '0'
       puts COLOR_BLUE + "Field is not Visible"
-    elsif field_editablity[:value] == '2'
+    elsif field_visibility[:value] == '2'
       puts COLOR_BLUE + "Field is visible by Company Admin Only"
-    elsif field_editablity[:value] == '3'
+    elsif field_visibility[:value] == '3'
       puts COLOR_BLUE + "Field is editable by Manager and Company Admin Only"
     end
 
@@ -98,20 +98,20 @@ def CheckFieldEditability(field_name)
       name = 'userFieldsLocked_costCentre'
   end
 
-  field_editablity = $daos.get_epms_config_enabled(name)
+  field_editability = $daos.get_epms_config_enabled(name)
 
-  if !field_editablity.nil?
-    if field_editablity[:value] == '0'
+  if !field_editability.nil?
+    if field_editability[:value] == '0'
       puts COLOR_BLUE + "Field is editable by Everyone"
-    elsif field_editablity[:value] == '1'
+    elsif field_editability[:value] == '1'
       puts COLOR_BLUE + "Field is not Editable"
-    elsif field_editablity[:value] == '2'
+    elsif field_editability[:value] == '2'
       puts COLOR_BLUE + "Field is editable by Company Admin Only"
-    elsif field_editablity[:value] == '3'
+    elsif field_editability[:value] == '3'
       puts COLOR_BLUE + "Field is editable by Manager and Company Admin Only"
     end
 
-    return field_editablity[:value]
+    return field_editability[:value]
   else
     puts COLOR_BLUE + 'Field ' + field_name + ' is not Enabled in Config'
     skip_this_scenario

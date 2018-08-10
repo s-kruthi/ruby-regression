@@ -16,4 +16,4 @@ LEGAL_ENTITY_EMAIL = 'test@test.com'
 
 LEGAL_ENTITY_TEL = '0123456789'
 
-LEGAL_ENTITY_SAVE_SUCCESSFUL_VALUE = 'Legal Entity updated successfully'
+LEGAL_ENTITY_SAVE_SUCCESSFUL_VALUE = 'Legal Entity saved successfully'

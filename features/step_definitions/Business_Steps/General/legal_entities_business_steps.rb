@@ -82,7 +82,7 @@ end
 
 
 Then(/^I Should Not Be Able To Create Legal Entities With Same ABN$/i) do
-  Sleep_Until(WaitForAnElementByXpath(LEGAL_ENTITY_ALERT_ID))
+  Sleep_Until(WaitForAnElementByXPath(LEGAL_ENTITY_ALERT_ID))
   expect($driver.find_element(:xpath, LEGAL_ENTITY_ALERT_ID).attribute('id')).to eq(LEGAL_ENTITY_ABN_ID)
   expect($driver.find_element(:xpath, LEGAL_ENTITY_ABN_ALERT_ID).text).to eq('This value is already used.')
 end

@@ -62,10 +62,10 @@ Then(/^I Should Not Be Able To Access Cost Centres under HR Core section$/i) do
 end
 
 
-And(/^That ([\w\s]+) Field Is (Editable|Uneditable)$/i) do |field_name, field_editablity|
+And(/^That ([\w\s]+) Field Is (Editable|Uneditable)$/i) do |field_name, field_editability|
   editable = CheckFieldEditability(field_name)
 
-  if field_editablity == 'Editable'
+  if field_editability == 'Editable'
     expect(editable).not_to eq('1')
     @editable = true
   else
