@@ -470,10 +470,10 @@ Then(/^I Can See That I Choose To Set The Company Legal Entity From the Existing
   # get count from legal entity table
   legal_entity = $daos.get_count_active_legal_entity()
 
-  $driver.find_element(:id, USER_LEGAL_ENTITY_FIELD_ID).click
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_LEGAL_ENTITY_FIELD_ID))
   $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%%')
 
-  Sleep_Until(WaitForAnElementByClass(SELECT2_DROPDOWN_RESULT_CLASS))
+  sleep(2)
 
   # search results should be equal to count
   expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to eq(legal_entity[:count])
