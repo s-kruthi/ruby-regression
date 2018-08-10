@@ -96,6 +96,18 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Choose To Edit An Existing User's Profile
-    Then  I Can See That I Choose To Set The Company Legal Entity From the Existing Entities
+    Then  I Can See That I Choose To Set The Company Legal Entity From The Existing Entities
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @user_details_cost_centre_edit @payroll_cost_centre @test
+  Scenario: [General]Company Admin Can Set Cost Centre From Existing Values In Elmo Payroll
+    Given That Cost Centre Field Is Editable
+    And   I Have Logged In As A Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Choose To Edit An Existing User's Profile
+    Then  I Should See The Cost Centre Field
+    And   I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres
 
 

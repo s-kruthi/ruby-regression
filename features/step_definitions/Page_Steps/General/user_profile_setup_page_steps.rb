@@ -73,8 +73,12 @@ def CheckFieldVisibility(field_name)
   if !field_visibility.nil?
     if field_visibility[:value] == '1'
       puts COLOR_BLUE + "Field is visible to Everyone"
-    else
-      puts COLOR_BLUE + "Field is Hidden/visible to Nobody"
+    elsif field_editablity[:value] == '0'
+      puts COLOR_BLUE + "Field is not Visible"
+    elsif field_editablity[:value] == '2'
+      puts COLOR_BLUE + "Field is visible by Company Admin Only"
+    elsif field_editablity[:value] == '3'
+      puts COLOR_BLUE + "Field is editable by Manager and Company Admin Only"
     end
 
     return field_visibility[:value]
@@ -98,9 +102,13 @@ def CheckFieldEditability(field_name)
 
   if !field_editablity.nil?
     if field_editablity[:value] == '0'
-      puts COLOR_BLUE + "Field is editable to Everyone"
-    else
+      puts COLOR_BLUE + "Field is editable by Everyone"
+    elsif field_editablity[:value] == '1'
       puts COLOR_BLUE + "Field is not Editable"
+    elsif field_editablity[:value] == '2'
+      puts COLOR_BLUE + "Field is editable by Company Admin Only"
+    elsif field_editablity[:value] == '3'
+      puts COLOR_BLUE + "Field is editable by Manager and Company Admin Only"
     end
 
     return field_editablity[:value]

@@ -437,7 +437,7 @@ end
 Then(/^I Should See That The Default Entity Is Set For the User's Company Field$/) do
   default_legal_entity = $daos.get_default_entity_details()
 
-  field_value = $driver.find_element(:id, 'legalEntity-container').text
+  field_value = $driver.find_element(:id, USER_LEGAL_ENTITY_FIELD_ID).text
 
   #comparing the value from the db with the page
   expect(field_value.split("\n")[0]).to eq(default_legal_entity[:business_name])
@@ -470,7 +470,7 @@ Then(/^I Can See That I Choose To Set The Company Legal Entity From the Existing
   # get count from legal entity table
   legal_entity = $daos.get_count_active_legal_entity()
 
-  Sleep_Until(WaitForAnElementByIdAndTouch(USER_LEGAL_ENTITY_FIELD_ID))
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_LEGAL_ENTITY_SELECT2_ID))
   $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%%')
 
   sleep(2)
@@ -479,4 +479,23 @@ Then(/^I Can See That I Choose To Set The Company Legal Entity From the Existing
   expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to eq(legal_entity[:count])
 end
 
+Then(/^I Should See The Cost Centre Field$/) do
+  Sleep_Until(VerifyAnElementExists('id',USER_COST_CENTRE_FIELD_ID))
+end
 
+
+And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres$/) do
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_COST_CENTRE_SELECT2_ID))
+  $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
+
+  #wait as making call to Elmo Payroll
+  sleep(5)
+
+  result_count = $driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size
+  if result_count > 0
+    expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to be > 0
+  else
+    puts COLOR_BLUE + "No Cost Centres Found, please check ELMO Payroll for cost codes manually"
+    skip_this_scenario
+  end
+end

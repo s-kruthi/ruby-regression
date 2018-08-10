@@ -39,7 +39,7 @@ Given(/^That ([\w\s]+) Field Is (Visible|Hidden)$/i) do |field_name, field_visib
   visible = CheckFieldVisibility(field_name)
 
   if field_visibility == 'Visible'
-    expect(visible).to eq('1')
+    expect(visible).not_to eq('0')
     @visible = true
   else
     expect(visible).to eq('0')
@@ -66,7 +66,7 @@ And(/^That ([\w\s]+) Field Is (Editable|Uneditable)$/i) do |field_name, field_ed
   editable = CheckFieldEditability(field_name)
 
   if field_editablity == 'Editable'
-    expect(editable).to eq('0')
+    expect(editable).not_to eq('1')
     @editable = true
   else
     expect(editable).to eq('1')

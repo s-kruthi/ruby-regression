@@ -27,3 +27,7 @@ LEGAL_ENTITY_ISACTIVE_ID = 'legal_entity_isActive'
 LEGAL_ENTITY_ISDEF_ID = 'legal_entity_isDefault'
 
 LEGAL_ENTITY_SAVE_ID = 'legal_entity_save'
+
+LEGAL_ENTITY_ALERT_ID = '//div[contains(@class,"alert-danger")]/input'
+
+LEGAL_ENTITY_ABN_ALERT_ID ='//div[contains(@class,"alert-danger")]/ul/li'
