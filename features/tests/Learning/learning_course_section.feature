@@ -24,7 +24,7 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
     And   I Search For A Specific Course Named course_section_automation_f2f_shanku
     And   I Try To Refresh The Enrolments For That Particular Course
     Then  I Should See The Course course_section_automation_f2f_shanku Status Reset To Not Yet Started
-    And   I Withdraw The Candidate From Session
+    #And   I Withdraw The Candidate From Session
 
   @smoke_learning6 @HappyPath @quiz_course_refresh @learning_high_risk @C9222
   Scenario: [Learning]ReEnrolling The Candidates For Quiz activity Post Refresh Enrolments Resets The Status And Opens The Activity
@@ -69,7 +69,7 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
     Then  I Should See The Activity Successfully Marked As Not Yet Started
     And   I Should See The Course Status Successfully Marked As In Progress
 
-  @smoke_learning7 @bulk_course_activity_refresh @learning_high_risk  @C816
+  @smoke_learning7 @bulk_course_activity_refresh @learning_high_risk @C816
   Scenario: [Learning] Just Refreshing Enrolments For Quiz Activity Resets The Status And Opens The Activity
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
