@@ -485,6 +485,7 @@ end
 
 
 And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres$/) do
+  sleep(2)
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_COST_CENTRE_SELECT2_ID))
   $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
 
