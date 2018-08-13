@@ -25,6 +25,7 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
             begin
               EnterUsername(USER_NAME, ELMO_SUPER_USERNAME)
               EnterPassword(PASS_WORD, ELMO_SUPER_PASSWORD)
+              username = ELMO_SUPER_USERNAME
             end
           
           when "ELMO Admin"
@@ -422,19 +423,19 @@ Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onb
 end
 
 
-And(/^I Click On "([^"]*)" Breadcrumb Menu$/) do |arg|
+And(/^I Click On "([^"]*)" Breadcrumb Menu$/i) do |arg|
   breadcrumb_xpath = "//a[contains(.,'#{arg}')]"
   Sleep_Until(WaitForAnElementByXpathAndTouch(breadcrumb_xpath))
 end
 
 
-Then(/^I Should Be Able to Notify All Users$/) do
+Then(/^I Should Be Able to Notify All Users$/i) do
   Sleep_Until(PressConfirm())
   VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_NOTIFY_SUCCESS_MSG_VALUE)
 end
 
 
-Then(/^I Should See That The Default Entity Is Set For the User's Company Field$/) do
+Then(/^I Should See That The Default Entity Is Set For the User's Company Field$/i) do
   default_legal_entity = $daos.get_default_entity_details()
 
   field_value = $driver.find_element(:id, USER_LEGAL_ENTITY_FIELD_ID).text
@@ -445,7 +446,7 @@ Then(/^I Should See That The Default Entity Is Set For the User's Company Field$
 end
 
 
-Given(/^That I Have Created A New User$/) do
+Given(/^That I Have Created A New User$/i) do
   user_first_name = 'payroll_auto' + Time.now.strftime("%Y%m%d%H%M%S")
   steps %Q{
         Given I Have Logged In as a Company Admin
@@ -456,17 +457,17 @@ Given(/^That I Have Created A New User$/) do
 end
 
 
-And(/^I Click On The Profile Tab Of The([^\"]*) User$/) do |user_type|
+And(/^I Click On The Profile Tab Of The([^\"]*) User$/i) do |user_type|
   Sleep_Until(WaitForAnElementByXpathAndTouch(USER_PROFILE_TAB_ID))
 end
 
 
-When(/^I Choose To Edit An Existing User's Profile$/) do
+When(/^I Choose To Edit An Existing User's Profile$/i) do
   steps %{Then I Should Be Able To use Edit User Profile Action On The Specific User}
 end
 
 
-Then(/^I Can See That I Can Choose To Set The Company Legal Entity From the Existing Entities$/) do
+Then(/^I Can See That I Can Choose To Set The Company Legal Entity From the Existing Entities$/i) do
   # get count from legal entity table
   legal_entity = $daos.get_count_active_legal_entity()
 
@@ -480,12 +481,12 @@ Then(/^I Can See That I Can Choose To Set The Company Legal Entity From the Exis
 end
 
 
-Then(/^I Should See The Cost Centre Field$/) do
+Then(/^I Should See The Cost Centre Field$/i) do
   Sleep_Until(VerifyAnElementExists('id',USER_COST_CENTRE_FIELD_ID))
 end
 
 
-And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres$/) do
+And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres$/i) do
   sleep(2)
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_COST_CENTRE_SELECT2_ID))
   $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
