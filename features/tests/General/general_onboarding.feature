@@ -96,7 +96,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Choose To Edit An Existing User's Profile
-    Then  I Can See That I Choose To Set The Company Legal Entity From The Existing Entities
+    Then  I Can See That I Can Choose To Set The Company Legal Entity From The Existing Entities
 
 
   #currently can be run only on payroll03

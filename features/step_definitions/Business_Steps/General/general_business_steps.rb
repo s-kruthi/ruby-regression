@@ -466,7 +466,7 @@ When(/^I Choose To Edit An Existing User's Profile$/) do
 end
 
 
-Then(/^I Can See That I Choose To Set The Company Legal Entity From the Existing Entities$/) do
+Then(/^I Can See That I Can Choose To Set The Company Legal Entity From the Existing Entities$/) do
   # get count from legal entity table
   legal_entity = $daos.get_count_active_legal_entity()
 
