@@ -479,6 +479,7 @@ Then(/^I Can See That I Choose To Set The Company Legal Entity From the Existing
   expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to eq(legal_entity[:count])
 end
 
+
 Then(/^I Should See The Cost Centre Field$/) do
   Sleep_Until(VerifyAnElementExists('id',USER_COST_CENTRE_FIELD_ID))
 end
