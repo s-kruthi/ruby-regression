@@ -116,6 +116,21 @@ module Database_env
       return @db[query].first
     end
 
+
+    def get_legal_entity_details_linked_to_user()
+      query = "select distinct ele.id, business_name
+              from epms_legal_entity ele
+              inner join epms_user_legal_entity eule on eule.legal_entity_id = ele.id
+              inner join epms_user eu on eu.id = eule.user_id
+              where ele.is_deleted = 0
+              and ele.is_active = 1
+              and is_elmo = 0
+              and eu.is_active = 1
+              and is_onboarding = 0
+              ORDER BY rand();"
+      return @db[query].first
+    end
+
   end
 
 end

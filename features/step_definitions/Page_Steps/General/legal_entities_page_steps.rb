@@ -81,7 +81,10 @@ end
 
 
 def EditLegalEntity()
-  SearchToEdit()
+  #get legal entity to edit
+  @legal_entity = $daos.get_legal_entity_details_for_edit()
+
+  SearchToEdit(@legal_entity)
 
   #edit contact name and save
   ClearField('id', LEGAL_ENTITY_CONTACTNAME_ID)
@@ -89,14 +92,11 @@ def EditLegalEntity()
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
 
-def SearchToEdit()
-  #get legal entity to edit
-  @legal_entity = $daos.get_legal_entity_details_for_edit()
-
+def SearchToEdit(legal_entity)
   #search and click to edit
-  Sleep_Until(WaitForAnElementByIdAndInputValue(SEARCH_FIELD_ID, @legal_entity[:business_name]))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(SEARCH_FIELD_ID, legal_entity[:business_name]))
   Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
-  $driver.find_element(:xpath, '//a[@href="/admin/legal-entity/edit/'+@legal_entity[:id].to_s+'"]').click
+  $driver.find_element(:xpath, '//a[@href="/admin/legal-entity/edit/'+legal_entity[:id].to_s+'"]').click
 end
 
 
@@ -186,6 +186,18 @@ def EnterExisitingEntityDetails()
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_EMAIL_ID, LEGAL_ENTITY_EMAIL))
 
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_PHONE_ID, LEGAL_ENTITY_TEL))
+
+  Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
+end
+
+
+def EditLegalEntityLinkedToUser()
+  @legal_entity = $daos.get_legal_entity_details_linked_to_user()
+
+  SearchToEdit(@legal_entity)
+
+  #set active toggle to No
+  JavascriptClick(LEGAL_ENTITY_ISACTIVE_ID)
 
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end

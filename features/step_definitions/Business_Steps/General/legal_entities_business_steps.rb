@@ -66,7 +66,10 @@ end
 
 
 And(/^I Edit The Legal Entity To Set It As Default$/i) do
-  SearchToEdit()
+  #get legal entity to edit
+  @legal_entity = $daos.get_legal_entity_details_for_edit()
+
+  SearchToEdit(@legal_entity)
   CheckAndSetDefault(LEGAL_ENTITY_ISDEF_ID)
 end
 
@@ -82,9 +85,9 @@ end
 
 
 Then(/^I Should Not Be Able To Create Legal Entities With Same ABN$/i) do
-  Sleep_Until(WaitForAnElementByXPath(LEGAL_ENTITY_ALERT_ID))
-  expect($driver.find_element(:xpath, LEGAL_ENTITY_ALERT_ID).attribute('id')).to eq(LEGAL_ENTITY_ABN_ID)
-  expect($driver.find_element(:xpath, LEGAL_ENTITY_ABN_ALERT_ID).text).to eq('This value is already used.')
+  Sleep_Until(WaitForAnElementByXPath(LEGAL_ENTITY_ABN_ALERT_ID))
+  expect($driver.find_element(:xpath, LEGAL_ENTITY_ABN_ALERT_ID).attribute('id')).to eq(LEGAL_ENTITY_ABN_ID)
+  expect($driver.find_element(:xpath, LEGAL_ENTITY_ALERT_TEXT_ID).text).to eq(LEGAL_ENTITY_ABN_IN_USE_ERR_VALUE)
 end
 
 
@@ -93,4 +96,15 @@ Then(/^I Should See That I Cannot Set It Back As Not Default$/i) do
   expect($driver.find_element(:id, LEGAL_ENTITY_ISACTIVE_ID).enabled?).to be false
   expect($driver.find_element(:id, LEGAL_ENTITY_ISDEF_ID).enabled?).to be false
   puts COLOR_GREEN + "There has to be one default legal entity, so cannot set it back to not default".upcase
+end
+
+
+And(/^I Edit The Legal Entity Linked To User To Deactivate$/i) do
+  EditLegalEntityLinkedToUser()
+end
+
+
+Then(/^I Should See That I Cannot Deactivate Legal Entity Linked To User$/i) do
+  Sleep_Until(WaitForAnElementByXPath(LEGAL_ENTITY_ALERT_ID))
+  expect($driver.find_element(:xpath, LEGAL_ENTITY_ALERT_TEXT_ID).text).to eq(LEGAL_ENTITY_LINKED_TO_USER_ERR_VALUE)
 end
