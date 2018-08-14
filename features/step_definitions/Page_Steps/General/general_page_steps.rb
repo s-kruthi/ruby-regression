@@ -36,52 +36,21 @@ def GoToAddNewUsersPage(add_new_user_btn)
 end
 
 
-def CreateUsers(arg1, arg2, arg3, arg4, arg5)
-  i = 1
-  for loop in i..arg1 do
-    
-    begin
-      first_name = arg3 + loop.to_s
-      last_name = arg4 + loop.to_s if $add_user_type == "EMP"
-      last_name = arg4 + loop.to_s + ".ob" if $add_user_type == "OB"
-      user_name = first_name + "." + last_name
-      email_address = user_name + NEW_USER_EMAIL_SUFFIX
-      #Check if user already exists in the database or not. If exists, skip the current creation and continue with the loop. Else, create the user
-      user_list_result = $daos.get_userid(user_name)
-      if !user_list_result.nil?
-        puts COLOR_YELLOW + "User #{user_list_result} already exists in the database. Creating next user".upcase
-        $user_found = 1
-        next
-      
-      else
-        $user_found = 0
-        Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, first_name))
-        Sleep_Until(EnterUserDetails(NEW_USER_LAST_NAME_ID, last_name))
-        Sleep_Until(EnterUserDetails(NEW_USER_USERNAME_ID, user_name)) if $add_user_type == "EMP"
-        Sleep_Until(EnterUserDetails(NEW_USER_EMAIL_ID, email_address))
-        Sleep_Until(SelectTimeZone(SELECT_TIMEZONE_ID, SELECT_TIMEZONE_VALUE)) if SELECT_TIMEZONE.to_i == 1
-        Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID)) if arg5
-        Sleep_Until(SelectDate(SELECT_START_DATE_ID, SELECT_START_DATE_VALUE)) if SELECT_START_DATE.to_i == 1
-        Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, SELECT_EXPIRY_DATE_VALUE)) if SELECT_EXPIRY_DATE.to_i == 1
-        Sleep_Until(SelectFromDropDown(SELECT_ISELMO_DROPDOWN_ID, "Yes")) if arg2 == "ELMO"
-        Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, USER_PASSWORD_VALUE))
-        Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, USER_PASSWORD_VALUE))
-        Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
-        case $add_user_type
-          when "EMP"
-            Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless loop == arg1
-            Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_NEW_USER_BTN)) unless loop == arg1
-          
-          when "OB"
-            Sleep_Until(WaitForAnElementByXpathAndTouch(OB_USER_NAV_LINK)) unless loop == arg1
-            Sleep_Until(WaitForAnElementByXpathAndTouch(OB_ADD_NEW_USER_BTN)) unless loop == arg1
-        end
-      end
-    end
+def CreateUsers(loop, arg2, arg3, arg4, arg5)
+  begin
+    Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, @@first_name))
+    Sleep_Until(EnterUserDetails(NEW_USER_LAST_NAME_ID, @@last_name))
+    Sleep_Until(EnterUserDetails(NEW_USER_USERNAME_ID, @@user_name)) if $add_user_type == "EMP"
+    Sleep_Until(EnterUserDetails(NEW_USER_EMAIL_ID, @@email_address))
+    Sleep_Until(SelectTimeZone(SELECT_TIMEZONE_ID, NEW_USER_DETAILS_MAP[:timezone_value])) if SELECT_TIMEZONE.to_i == 1
+    Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID)) if arg5
+    Sleep_Until(SelectDate(SELECT_START_DATE_ID, NEW_USER_DETAILS_MAP[:start_date_value])) if SELECT_START_DATE.to_i == 1
+    Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, NEW_USER_DETAILS_MAP[:expiry_date_value])) if SELECT_EXPIRY_DATE.to_i == 1
+    Sleep_Until(SelectFromDropDown(SELECT_ISELMO_DROPDOWN_ID, "Yes")) if arg2 == "ELMO"
+    Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
+    Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
+    Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
   end
-  
-  puts COLOR_YELLOW + "All users to be created are already existing. Scenario has been skipped".upcase if $user_found == 1
-  skip_this_scenario if $user_found == 1
 end
 
 

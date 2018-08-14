@@ -102,7 +102,7 @@ end
 
 
 And(/^I Add An Attachment To The Note$/i) do
-  Sleep_Until(browse_file_select(BROWSE_FILE_ID, FILE_NAME))
+  Sleep_Until(BrowseFileSelect(BROWSE_FILE_ID, FILE_NAME))
 end
 
 

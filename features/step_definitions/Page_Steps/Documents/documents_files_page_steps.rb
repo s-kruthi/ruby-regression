@@ -22,7 +22,7 @@ end
 
 
 def select_a_file(browse_file_id, sample_filename)
-  browse_file_select(browse_file_id, sample_filename)
+  BrowseFileSelect(browse_file_id, sample_filename)
 end
 
 

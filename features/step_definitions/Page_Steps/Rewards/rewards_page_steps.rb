@@ -9,7 +9,7 @@ end
 
 def SelectAnImage(browse_image_id, sample_filename)
   sleep(1)
-  browse_file_select(browse_image_id, sample_filename)
+  BrowseFileSelect(browse_image_id, sample_filename)
 end
 
 def ClickDoneBtn(image_submit_btn_id)
