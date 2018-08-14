@@ -273,6 +273,9 @@ module Firefox
     end
 
 
+    #Syntax:
+    # ClickElement("id", "username")
+    # ClickElement("class", "select2-arrow", 1)
     def ClickElement(type, identifier, index = nil)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
