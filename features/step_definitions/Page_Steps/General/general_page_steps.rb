@@ -36,7 +36,6 @@ def GoToAddNewUsersPage(add_new_user_btn)
 end
 
 
-
 def CreateUsers(loop, arg2, arg3, arg4, arg5)
   begin
     Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, @@first_name))

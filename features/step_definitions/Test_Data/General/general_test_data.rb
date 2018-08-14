@@ -15,8 +15,9 @@ NEW_USER_DETAILS_MAP = {
 }
 
 
-ADD_USER_SAVE_SUCCESS_VALUE = "User details have been updated!"
+MANAGER_SELECT_INPUT_VALUE = "manager1.omar1"
 
+ADD_USER_SAVE_SUCCESS_VALUE = "User details have been updated!"
 
 EM_USER__NAME_VALUE = "Automation Test User"
 EM_USER_RELATIONSHIP_VALUE = "Tester"
