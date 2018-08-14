@@ -58,3 +58,62 @@ def GetSelectedValueFromDropdown(dropdown_identifier)
       return select_list.first_selected_option.text
     end
 end
+
+
+def CheckFieldVisibility(field_name)
+  case field_name
+    when 'Company Legal Entity'
+      name = 'userFieldsVisible_legalEntity'
+    when 'Cost Centre'
+      name = 'userFieldsVisible_costCentre'
+  end
+
+  field_visibility = $daos.get_epms_config_enabled(name)
+
+  if !field_visibility.nil?
+    if field_visibility[:value] == '1'
+      puts COLOR_BLUE + "Field is visible to Everyone"
+    elsif field_visibility[:value] == '0'
+      puts COLOR_BLUE + "Field is not Visible"
+    elsif field_visibility[:value] == '2'
+      puts COLOR_BLUE + "Field is visible by Company Admin Only"
+    elsif field_visibility[:value] == '3'
+      puts COLOR_BLUE + "Field is editable by Manager and Company Admin Only"
+    end
+
+    return field_visibility[:value]
+  else
+    puts COLOR_BLUE + 'Field ' + field_name + ' is not Enabled in Config'
+    skip_this_scenario
+  end
+
+end
+
+
+def CheckFieldEditability(field_name)
+  case field_name
+    when 'Company Legal Entity'
+      name = 'userFieldsLocked_legalEntity'
+    when 'Cost Centre'
+      name = 'userFieldsLocked_costCentre'
+  end
+
+  field_editability = $daos.get_epms_config_enabled(name)
+
+  if !field_editability.nil?
+    if field_editability[:value] == '0'
+      puts COLOR_BLUE + "Field is editable by Everyone"
+    elsif field_editability[:value] == '1'
+      puts COLOR_BLUE + "Field is not Editable"
+    elsif field_editability[:value] == '2'
+      puts COLOR_BLUE + "Field is editable by Company Admin Only"
+    elsif field_editability[:value] == '3'
+      puts COLOR_BLUE + "Field is editable by Manager and Company Admin Only"
+    end
+
+    return field_editability[:value]
+  else
+    puts COLOR_BLUE + 'Field ' + field_name + ' is not Enabled in Config'
+    skip_this_scenario
+  end
+end

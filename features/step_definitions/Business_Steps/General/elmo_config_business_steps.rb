@@ -54,6 +54,7 @@ And(/^Verify That "Configuration Status" Is Displayed As "([^"]*)"$/i) do |confi
   pending
 end
 
+
 Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/i) do |admin_type, configure_name, configured_value|
   steps %Q{
     Given I Have Logged In As A #{admin_type}
@@ -64,4 +65,14 @@ Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/i) do |admin
     Then I Should Be Able To Save Configuration Details
         }
   $driver.quit
+end
+
+
+When(/^I Click On The Branding Selection Field$/i) do
+  $driver.find_element(:id, 'elmoConfiguration_brandingSelectionField').click
+end
+
+
+Then(/^I Can Choose Legal Entity As The Branding Selection Field$/i) do
+  Sleep_Until(SelectFromDropDown("//select[@id='elmoConfiguration_brandingSelectionField']", 'Legal Entity'))
 end

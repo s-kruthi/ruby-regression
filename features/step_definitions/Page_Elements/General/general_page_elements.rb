@@ -1,3 +1,13 @@
+#### Generic element identifiers ####
+VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
+
+PAGINATION_ID = "//div[@class='pagination-count']"
+
+BROWSE_FILE_ID = "//input[contains(@type,'file')]"
+
+SELECT2_DROPDOWN_ID = "select2-input"
+SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
+
 MENU_PROFILE_LINK = "//a[contains(@href,'/controlpanel/my-profile')]"
 MENU_MY_TEAM_LINK = "//a[contains(.,'My Team')]" #"//a[@href='/controlpanel/team-members')]"
 MENU_LEARNING_LINK = "//a[contains(@href,'/learning/my')]"
@@ -11,12 +21,12 @@ MENU_CONTRACTS_LINK = "//a[contains(@href,'/contract/')]"
 MENU_SUCCESSION_LINK = "//a[contains(@href,'/succession/calibration/')]"
 MENU_REPORTS_LINK = "//a[contains(@href,'/report')]"
 
-
 GENERAL_EXPAND = "//a[@href='#collapseGeneral']"
 USERS_LIST_PATH = "//span[contains(.,'Users')]"
 USERS_NAV_LINK = "//a[contains(@href,'/admin/users')]"
 ADD_NEW_USER_BTN = "//a[contains(.,' Add New User')]"
 
+#### ADD USERS PAGE ####
 NEW_USER_FIRST_NAME_ID = "//input[contains(@id,'firstName')]"
 NEW_USER_LAST_NAME_ID = "//input[@id='user_lastName']"
 NEW_USER_USERNAME_ID = "//input[@id='user_username']"
@@ -45,6 +55,8 @@ USER_PASSWORD_RECONFIRM_ID = "//input[contains(@id,'user_password_second')]"
 
 ADD_USER_SAVE_SUCCESS_ID = "//div[contains(@class,'alert alert-success')]"
 
+
+#### My Profile elements ####
 SUB_TAB_ACTIVITY_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/personal')]"
 SUB_TAB_RESUME_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/resume')]"
 SUB_TAB_MYCAREER_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/my-career')]"
@@ -52,13 +64,11 @@ SUB_TAB_PERSONAL_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/persona
 SUB_TAB_PAYMENT_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/payment')]"
 SUB_TAB_RECOGNITION_NAME_ID = "//a[contains(@href,'/controlpanel/my-profile/recommendation')]"
 
-
 EDIT_EM_CONTACT_BTN_ID = "//button[contains(@title,'Edit Emergency Contact Details')]"
 EDIT_NOK_CONTACT_BTN_ID = "//button[contains(@title,'Edit Next of Kin')]"
 
 ADD_EM_CONTACT_BTN_ID =  "//button[@title='Add Emergency Contact Details']"
 ADD_NOK_CONTACT_BTN_ID =  "//button[contains(@title,'Add Next of Kin')]"
-
 
 EM_USER__NAME_ID = "//input[contains(@id,'name')]"
 EM_USER_RELATIONSHIP_ID = "//input[contains(@id,'relationship')]"
@@ -66,28 +76,16 @@ EM_USER_ADDRESS_ID = "//input[contains(@id,'autocomplete_address')]"
 EM_USER_MOBILE_ID = "mobile"
 EM_USER_EMAIL_ID = "//input[contains(@id,'email')]"
 
-
 SAVE_BTN_ID = "//button[contains(.,'Save')]"
 DONE_BTN_ID = "//button[contains(.,'Done')]"
 SEARCH_RESULTS_ACTIONS_ID = "//table//button[@data-toggle='dropdown']"
 
-
 USERNAME_SEARCH_ID = "//input[@placeholder='Search']"
-
-
 USERNAME_SEARCH_BTN = "//button[contains(@name,'search[submit]')]"
 ACTION_DROPDOWN_CLASS_NAME = "dropdown-toggle"
 
-
 INACTIVE_CLASS_ID = "is-not-active"
 INACTIVE_ATTRIBUTE_ID = "data-sinfo"
-
-
-VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
-
-PAGINATION_ID = "//div[@class='pagination-count']"
-
-BROWSE_FILE_ID = "//input[contains(@type,'file')]"
 
 ADD_NOTE_USERPROFILE_ID = "btnAddNewNote"
 
@@ -98,15 +96,9 @@ ACTIVITY_RESUME_TAB_ID = "//a[contains(.,'Activity And Resume')]"
 ONBOARDING_SETUP_TAB_ID = "//a[contains(.,'Onboarding Setup')]"
 
 
-###Select2 dropdown generic page Elements####
-SELECT2_DROPDOWN_ID = "select2-input"
-SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
-
-
 ###General Assignment Rules Page Elements####
 ENROLMENT_RULE_ID = 'enrolmentRuleSearch_name'
 SEARCH_ENTER_CSS = 'button[name="search[submit]"]'
-
 
 ASSIGN_RULE_TITLE_ID = "//input[contains(@id,'enrolmentRuleDetails_name')]"
 ASSIGN_RULE_DESC_ID = "//textarea[contains(@id,'enrolmentRuleDetails_description')]"
@@ -130,3 +122,13 @@ BACKGROUND_JOB_PROCESS_ID = "//div[contains(@role,'progressbar')]"
 CLASSIC_DROPDOWN_ELEMENT_ID_MAP = {
     "Role": "//select[contains(@id,'userRole_role')]"
 }
+
+
+#### User Details page elements ####
+USER_PROFILE_TAB_ID = '//a[contains(@href, "edit-user-profile")]'
+
+USER_LEGAL_ENTITY_FIELD_ID ='legalEntity-container'
+USER_LEGAL_ENTITY_SELECT2_ID = 's2id_user_legalEntity'
+
+USER_COST_CENTRE_FIELD_ID = 'costCentre-container'
+USER_COST_CENTRE_SELECT2_ID = 's2id_user_costCentre'

@@ -25,3 +25,51 @@ And(/^I Verify That The Configuration Status Is (Saved|Unsaved)$/i) do |save_sta
     puts COLOR_BLUE + "Config was not changed"
   end
 end
+
+
+Given(/^That Cost Centre and Company\(Legal Entity\) Fields Are Enabled$/i) do
+  steps %{
+          Given That Cost Centre Field Is Visible
+          And That Legal Entity Is Enabled
+          }
+end
+
+
+Given(/^That ([\w\s]+) Field Is (Visible|Hidden)$/i) do |field_name, field_visibility|
+  visible = CheckFieldVisibility(field_name)
+
+  if field_visibility == 'Visible'
+    expect(visible).not_to eq('0')
+    @visible = true
+  else
+    expect(visible).to eq('0')
+    @visible = false
+  end
+end
+
+
+Then(/^I Can See That I Can Modify The ([\w\s\(\)]+) Settings$/i) do |field|
+  steps %{And I Click On "#{field}" item from left side bar under "Built-In Hierarchies" section
+          And I Click On "#{field}" item from left side bar under "Built-In Hierarchies" section
+         }
+end
+
+
+Then(/^I Should Not Be Able To Access Cost Centres under HR Core section$/i) do
+  GoToASection("//a[@href='#collapseHRCore']")
+  sleep(2)
+  Sleep_Until(VerifyAnElementNotExist('xpath','//a[@href="/admin/costCentre/"]'))
+end
+
+
+And(/^That ([\w\s]+) Field Is (Editable|Uneditable)$/i) do |field_name, field_editability|
+  editable = CheckFieldEditability(field_name)
+
+  if field_editability == 'Editable'
+    expect(editable).not_to eq('1')
+    @editable = true
+  else
+    expect(editable).to eq('1')
+    @editable = false
+  end
+end

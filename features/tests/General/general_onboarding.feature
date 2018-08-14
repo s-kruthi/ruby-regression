@@ -76,3 +76,38 @@ Feature:
     And   I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Should Not Be Able To Access The Onboarding User Setup In Onboarding Section
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @new_user_details_legal_entity @legal_entities @C16922
+  Scenario: [General]Default Legal Entity Is Set For Newly Created User
+    Given That Legal Entity Is Enabled
+    And   That Company Legal Entity Field Is Visible
+    And   That I Have Created A New User
+    When  I Click On The Profile Tab Of The Newly Created User
+    Then  I Should See That The Default Entity Is Set For the User's Company Field
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @legal_entities @user_details_legal_entity_edit
+  Scenario: [General]Company Admin Can Choose From Existing Legal Entities For Users
+    Given That Company Legal Entity Field Is Editable
+    And   I Have Logged In As A Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Choose To Edit An Existing User's Profile
+    Then  I Can See That I Can Choose To Set The Company Legal Entity From The Existing Entities
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @user_details_cost_centre_edit @payroll_cost_centre @C16941
+  Scenario: [General]Company Admin Can Set Cost Centre From Existing Values In Elmo Payroll
+    Given That Cost Centre Field Is Editable
+    And   I Have Logged In As A Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Choose To Edit An Existing User's Profile
+    Then  I Should See The Cost Centre Field
+    And   I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres
+
+
