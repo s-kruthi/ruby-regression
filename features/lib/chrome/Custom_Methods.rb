@@ -203,7 +203,7 @@ module Chrome
     end
 
 
-    def browse_file_select(browse_file_id, sample_filename)
+    def BrowseFileSelect(browse_file_id, sample_filename)
       begin
         WaitForAnElementByXpathAndInputValue(browse_file_id, sample_filename)
         sleep (1)
@@ -280,12 +280,13 @@ module Chrome
     end
 
 
-    def ClickElementByIndex(type, identifier, index)
+    def ClickElement(type, identifier, index = nil)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
 
         element = wait.until {
-          element = $driver.find_elements(:"#{type}", "#{identifier}")[index]
+          element = $driver.find_element(:"#{type}", "#{identifier}") if index == nil
+          element = $driver.find_elements(:"#{type}", "#{identifier}")[index] if index != nil
           element if element.displayed?
         }
 
