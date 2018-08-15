@@ -261,7 +261,7 @@ def ClickRequisition(requisition_search_result_title_id)
       end
       i = i+1
     end
-    Sleep_Until(ClickElementByIndex('xpath', requisition_search_result_title_id, element_index))
+    Sleep_Until(ClickElement('xpath', requisition_search_result_title_id, element_index))
   else
     Sleep_Until(WaitForAnElementByXpathAndTouch(requisition_search_result_title_id))
   end
@@ -367,7 +367,7 @@ def ViewRequisitionForApproval()
     end
 
     #not defining identifier since its parameterised
-    Sleep_Until(ClickElementByIndex('xpath', '//tr[contains(.,req_title)]//button[@ng-click="view(requisition)"]', element_index-1))
+    Sleep_Until(ClickElement('xpath', '//tr[contains(.,req_title)]//button[@ng-click="view(requisition)"]', element_index-1))
   else
     Sleep_Until(WaitForAnElementByXpathAndTouch('//tr[contains(.,req_title)]//button[@ng-click="view(requisition)"]'))
   end

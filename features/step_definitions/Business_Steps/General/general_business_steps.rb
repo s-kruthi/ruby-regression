@@ -221,14 +221,57 @@ And(/^I Go To The (.*) Section$/i) do |menu_type|
 end
 
 
-Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The System With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager Username)?$/i) do |arg1, arg2, arg3, arg4, arg5|
-  CreateUsers(arg1, arg2, arg3, arg4, arg5)
+Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The System With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?$/i) do |arg1, arg2, arg3, arg4, arg5|
+  #This step also sets the roletype to the specified value
+  i = 1  #Change it if the starting suffix value needs to be from a different value
+  total = i + arg1  #Total number of users to be created
+  for loop in i..total do
+    begin
+      @@first_name = arg3 + loop.to_s
+      @@last_name = arg4 + loop.to_s if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
+      @@last_name = arg4 + loop.to_s + ".ob" if $add_user_type == "OB"
+      @@user_name = @@first_name + "." + @@last_name
+      @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value] #Email = firstname.lastname@email_suffix
+
+      #Check if user already exists in the database or not. If exists, skip the current creation and continue with the loop. Else, create the user
+      user_list_result = $daos.get_userid(@@user_name)
+      if !user_list_result.nil?
+        puts COLOR_YELLOW + "User #{user_list_result} already exists in the database. Creating next user".upcase
+        $user_found = 1
+        next
+      
+      else
+        $user_found = 0
+        begin
+          CreateUsers(loop, arg2, @@first_name, @@last_name, arg5)
+          #The following steps help set the role type as well immediately after creating the user within the loop. Change the value to 'Manager' for manager Roletype or others
+          steps %Q{
+                  And   I Click On "Role" Tab
+                  And   I Select "Role" Classic Dropdown As "Employee"
+                  }
+          case $add_user_type    #Case used to click on different buttons since Users click on 'Add New User' and Onboarding users click on 'New Onboarding User' button
+            when "EMP"
+              Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless loop >= total
+              Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_NEW_USER_BTN)) unless loop >= total
+  
+            when "OB"
+              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_USER_NAV_LINK)) unless loop >= total
+              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_ADD_NEW_USER_BTN)) unless loop >= total
+          end
+        end
+      end
+      
+    end
+  end
+  
+  puts COLOR_YELLOW + "All users to be created are already existing. Scenario has been skipped".upcase if $user_found == 1
+  skip_this_scenario if $user_found == 1 #Skip the rest of the scenario since it's no longer valid
 end
 
 
 And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
   begin
-    case sub_tab_name
+    case sub_tab_name       #Since these are derived using href, case is used to differentiate between specific ones
     when "Personal Details"
       begin
         Sleep_Until(ClickOnASubTab(SUB_TAB_PERSONAL_NAME_ID))
