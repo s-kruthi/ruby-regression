@@ -9,7 +9,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
-    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.test1" As Manager Username
+    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.test1" As Manager
     And   I Click On "Users" Breadcrumb Menu
     And   I Click On "Notify Users" Button
     And   I Click On "Notify All Users" Button
@@ -22,7 +22,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Onboarding Users under Onboarding section
     When  I Click On "New Onboarding User" Button
-    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.omar1" As Manager Username
+    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.omar1" As Manager
 
 
   @hr_add_contact_emergency @general_high_risk @onboarding_high_risk
