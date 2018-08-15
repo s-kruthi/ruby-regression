@@ -95,10 +95,13 @@ COMPANY_MANAGER_PASS = "Admin1234567"
 COMPANY_EMPLOYEE_1_USER = "test1.omar1"
 COMPANY_EMPLOYEE_1_PASS = "Admin1234567"
 
-####### Payroll user credentials ############ "Added by Swathi"
-PAYROLL_ADMIN_USER = "swathi.volety@elmolearning.com.au"
-PAYROLL_ADMIN_PWD = "ea7682"
+####### Payroll user credentials ############
+PAYROLL_PROD_ADMIN_USER = "va8.swathi@gmail.com"
+PAYROLL_PROD_ADMIN_PWD = "Elmo@tiff2112"
 
+####### Payroll user credentials ############
+PAYROLL_STAG_ADMIN_USER = "swathi.volety@elmolearning.com.au"
+PAYROLL_STAG_ADMIN_PWD = "ea7682"
 
 ##########Generic Variables for Colored message####################
 # TODO: Review pending removal

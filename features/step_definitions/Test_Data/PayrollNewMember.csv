@@ -1,0 +1,18 @@
+Employee ID,Title,Name,Surname,Additional Name,Gender,Date Of Birth,Address1,Physical Suburb,Address State,Post Code,Location,Legacy Number,Employing State,Employing Entity,Date Employed,Group Employed,Status,positions,Marital,Passport Number,cost center,Contractor ABN,Annual Package,Normal Hours Paid,Rate Name,ROP,Roster,Award Code,Auto Pay,Auto Pay Roster,Leave Loading Rule,Email,Mobile,Home Telephone,Facsimile,Tax File Number,Declaration Date,Declaration Lodged Status,Tax Type,Resident For Tax,Tax Table,Help,SFSS,Extra Tax,Annual Assistance,Variation Reference,Variation Value,Calculate SGC,Concessional Cap,Superannuation Pay Element,Super Fund,Superannuation Member Number,Self Managed,Super Account,Super Reporting,TFN For Superannuation,Opening Annual Leave,Personal Opening,Time In Lieu Opening,Long Service Opening,Accrues Annual,Accrues Time In Lieu,Accrues Long Service,Accrues Personal,Bank Account Name,BSB,Account,Lodgement Reference,Pay Point,Payslip Layout
+AUTO,Mrs,autofirst,autosur,autoaddn,Male,15/09/1993,Ellis St,Chatswood,New South Wales,2067,Bondi Junction,15002,New South Wales,,30/12/2010,,Permanent,,Single,,Test A,,87000,38,,44.02834008,,,TRUE,,TRUE,payrolltestelmo@yopmail.com,0411 111 122,,02 8976 6789,533 211 550,1/07/2017,Lodged electronically,Individual non-business,FALSE,Scale 1 - No tax free threshold,FALSE,FALSE,0,0,,,TRUE,FALSE,Superannuation,AustralianSuper,1232515258,FALSE,,,TRUE,40,15,0,5,TRUE,TRUE,TRUE,TRUE,autofirst autosur,123456,890678464,Automation,,Modern payslip
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70
+append random,,append random,append random,append random,,,"append random:
+102 Ellis St",,,,,randon number,,,,,,,,,,,,,,,,,,,,,,,,,,,,,should vary,,,,,,,,,,,randon number,,,,,,,,,,,,,,random number,random number,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,TFN Declaration,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,Profile,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,Pay Details,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,Leave Details,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
