@@ -231,7 +231,6 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
       @@last_name = arg4 + loop.to_s if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
       @@last_name = arg4 + loop.to_s + ".ob" if $add_user_type == "OB"
       @@user_name = @@first_name + "." + @@last_name
-      byebug
       @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value] #Email = firstname.lastname@email_suffix
 
       #Check if user already exists in the database or not. If exists, skip the current creation and continue with the loop. Else, create the user
