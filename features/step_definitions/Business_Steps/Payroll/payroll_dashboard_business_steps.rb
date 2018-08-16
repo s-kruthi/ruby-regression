@@ -13,6 +13,7 @@ And(/^I Choose The Pay Cycle As ([^"]*)$/) do |pay_cycle_type|
   end
 end
 
+
 Then(/^I perform required actions in the Data Input step$/) do
 
   ClickTab(ADD_NEW_MEMBER_XPATH)
@@ -43,17 +44,21 @@ Then(/^I perform required actions in the Data Input step$/) do
 
 end
 
+
 And(/^I click Next in the Check Reports step$/) do
   ClickNext(NEXT_XPATH)
 end
+
 
 Then(/^I change the Pay Cycle Status to Closed$/) do
   ChangePayCycleStatus(STATUS_XPATH)
 end
 
+
 And(/^I click Next in the Make Payment step$/) do
   ClickNext(NEXT_XPATH)
 end
+
 
 And(/^I Generate and verify "([^"]*)" is displayed in the Send Payslips step$/) do |verfiy_text|
   GeneratePayslips(GENERATE_PAYSLIPS_XPATH, CLK_GENERATE_PAYSLIPS_XPATH)
@@ -61,15 +66,18 @@ And(/^I Generate and verify "([^"]*)" is displayed in the Send Payslips step$/) 
 
 end
 
+
 Then(/^I click on Distribute payslips ad send the payslips and validate$/) do
   DistributePayslips(DISTR_PAYSLIPS_XPATH,SEND_ENABLED_XPATH,CONFIRM_SEND_PAYSLIPS_XPATH)
   #ValidatePayslipsSent(CLICK_SEND_DISABLED)
 
 end
 
+
 And(/^I click Next in the Send Payslips step$/) do
   ClickNext(NEXT_XPATH)
 end
+
 
 And(/^I Commit the paycycle$/) do
   CommitPaycycle(COMMIT_PAY_CYCLE_XPATH,COMMIT_CONFIRM_XPATH)

@@ -27,6 +27,7 @@ And(/^I Fill All The Details In TFN Declaration Page And Continue$/) do
   ClickContinue(CONTINUE_CSS)
 end
 
+
 And(/^I Fill All The Details In Profile Page And Continue$/) do
   SelectDrpDwn(EMPLYOMENT_XPATH,$employment)
   SelectDrpDwn(GENDER_XPATH,$gender)
@@ -66,8 +67,8 @@ And(/^I Fill All The Details In Profile Page And Continue$/) do
     puts "Previous button is present in the Profile section"
   end
   ClickContinue(CONTINUE_CSS)
-
 end
+
 
 And(/^I Fill All The Details In Pay Details Page And Continue$/) do
   SelectDrpDwn(PAYCYCLE_XPATH,$paycycle)
@@ -93,8 +94,8 @@ And(/^I Fill All The Details In Pay Details Page And Continue$/) do
     puts "Previous button is present in the Pay Details section"
   end
   ClickContinue(CONTINUE_CSS)
-
 end
+
 
 And(/^I Fill All The Details In Leave Details And Continue$/) do
   #"Accrue annual leave?" details
@@ -171,6 +172,7 @@ And(/^I Fill All The Details In Leave Details And Continue$/) do
   ClickContinue(CONTINUE_CSS)
 end
 
+
 Then(/^I Confirm To Add New Member$/) do
   VerifyMember(MEMBER_CSS)
   begin
@@ -195,8 +197,8 @@ Then(/^I Confirm To Add New Member$/) do
 
     ClickCreateAndClose(CREATE_NEW_CLOSE,$create_close_index)
   end
-
 end
+
 
 Then(/^I Verify The New Member Created$/) do
   sleep(3)

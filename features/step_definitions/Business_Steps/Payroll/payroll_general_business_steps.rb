@@ -41,17 +41,16 @@ And(/^I Navigate To The Workforce Menu And Select (.*)$/) do |submenu|
   puts $driver.title
   begin
     Sleep_Until(NavigateMenu(WORKFORCE_MENU))
+    submenu_name = "//a[contains(.,'#{submenu}')]"
     case submenu
     when "Add Member"
       begin
         sleep(3)
-        submenu_name = "//a[contains(.,'#{submenu}')]"
         Sleep_Until(GoToAMenu(submenu_name))
       end
     when "Member Details"
       begin
         sleep(5)
-        submenu_name = "//a[contains(.,'#{submenu}')]"
         Sleep_Until(GoToAMenu(submenu_name))
       end
     end

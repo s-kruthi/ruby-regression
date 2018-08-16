@@ -23,6 +23,7 @@ And(/^I Navigate To the Input Menu And Select ([^"]*)$/) do |submenu|
   end
 end
 
+
 And(/^I Click On Add Termination And Fill And Verify All The Details In Terminate Employee Screen$/) do
   Sleep_Until(ClkAddTermination(ADD_TERM_XPATH))
   Sleep_Until(SelectTermEmp(XPATH_LOC_TYPE,TERM_NAME_XPATH))
@@ -45,6 +46,7 @@ And(/^I Click On Add Termination And Fill And Verify All The Details In Terminat
   Sleep_Until(TermSaveClose(SAVE_CLOSE_XPATH))
 end
 
+
 Then(/^I Click On Add Timesheet And Enter The Timesheet Details$/) do
   Sleep_Until(ClkAddTimesheet(ADD_TIMESHEET_XPATH))
   Sleep_Until(EnterTimeDetails(ADD_TIME_NAME_XPATH,$add_timesheet_emp))
@@ -57,6 +59,7 @@ Then(/^I Click On Add Timesheet And Enter The Timesheet Details$/) do
   Sleep_Until(InputCheckFields(CSS_LOC_TYPE,TIME_CLOSE_CSS,"CLOSE button"))
 
 end
+
 
 Then(/^I Click On Save To Update The Timesheet Entries$/) do
   Sleep_Until(ClkSaveTimesheet(TIME_SAVE_CSS))
