@@ -78,6 +78,7 @@ def VerifyCreateButtons(css,text,ind)
 end
 
 def EnterNewEmpName(link,value)
+  puts "New employee created is: " + value
   Sleep_Until(WaitForAnElementByXpathAndInputValue(link,value))
   Wait_For(5)
 end

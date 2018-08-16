@@ -199,7 +199,7 @@ Then(/^I Confirm To Add New Member$/) do
 end
 
 Then(/^I Verify The New Member Created$/) do
-  Wait_For(3)
+  sleep(3)
   EnterNewEmpName(SEARCH_EMP_XPATH,$emp_name)
   EmpSearch(XPATH_LOC_TYPE,SEARCH_DRP_XPATH,1)
   FetchEmpNameID(XPATH_LOC_TYPE,EMPNAME_ID_XPATH)
