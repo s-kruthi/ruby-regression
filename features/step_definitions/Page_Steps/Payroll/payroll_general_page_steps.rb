@@ -11,6 +11,9 @@ def LoginToPayroll(class_name)
   Wait_For(3)
   puts $driver.title
 end
+def NavigateDashboard(link_to_nav)
+  Sleep_Until(WaitForAnElementByCSSAndTouch(link_to_nav))
+end
 
 def NavigateMenu(link_to_nav)
   Sleep_Until(WaitForAnElementByXpathAndTouch(link_to_nav))
