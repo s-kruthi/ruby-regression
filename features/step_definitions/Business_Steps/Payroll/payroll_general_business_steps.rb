@@ -22,7 +22,7 @@ end
 And(/^I Navigate To The Dashboard Menu And Select ([^"]*)$/) do |menu|
 
   begin
-    sleep(3)
+    sleep(7)
     Sleep_Until(NavigateMenu(DASHBOARD_MENU))
     case menu
     when "Main Dashboard"
