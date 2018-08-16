@@ -6,9 +6,8 @@ def ProvidePassword(password, value)
   Sleep_Until(WaitForAnElementByIdAndInputValue(password, value))
 end
 
-def LoginToPayroll(class_name)
-  Sleep_Until(WaitForAnElementByXpathAndTouch(class_name))
-  Wait_For(3)
+def LoginToPayroll(link)
+  Sleep_Until(WaitForAnElementByIdAndTouch(link))
   puts $driver.title
 end
 def NavigateDashboard(link_to_nav)
