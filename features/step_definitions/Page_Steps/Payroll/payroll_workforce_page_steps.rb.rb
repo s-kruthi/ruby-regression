@@ -18,7 +18,7 @@ end
 
 def EnterDateField(type,dateclklink,index,datesellink)
   #Sleep_Until(WaitForAnElementByXpathAndTouch(dateclklink))
-  ClickElementByIndex(type,dateclklink,index)
+  ClickElement(type,dateclklink,index)
   Sleep_Until(WaitForAnElementByXpathAndTouch(datesellink))
 end
 
@@ -28,7 +28,7 @@ def EnterTermDate(dateclklink,datesellink)
 end
 
 def ValidateToggleText(tag,val)
-  Sleep_Until(VerifyAnElementExistsPrintText(tag,val))
+  Sleep_Until(VerifyAnElementExistsAndPrintText(tag,val))
 end
 def ToggleValue(residentfortaxlink)
   Sleep_Until(WaitForAnElementByXpathAndTouch(residentfortaxlink))
@@ -84,12 +84,12 @@ end
 
 def EmpSearch(type,identifier,index)
   sleep 5
-  Sleep_Until(ClickElementByIndex(type, identifier, index))
+  Sleep_Until(ClickElement(type, identifier, index))
   puts "New Member is created successfully"
 end
 
 def FetchEmpNameID(type,val)
   Wait_For(5)
-  Sleep_Until(VerifyAnElementExistsPrintText(type,val))
+  Sleep_Until(VerifyAnElementExistsAndPrintText(type,val))
 end
 

@@ -24,23 +24,23 @@ def EnterTimeDetails(link,val)
 end
 
 def CheckRateOfPay(type,id)
-  Sleep_Until(VerifyAnElementExistsPrintText(type, id))
+  Sleep_Until(VerifyAnElementExistsAndPrintText(type, id))
   puts "Rate of Pay is present"
 end
 
 def CheckCostCentre(type,id)
-  Sleep_Until(VerifyAnElementExistsPrintText(type, id))
+  Sleep_Until(VerifyAnElementExistsAndPrintText(type, id))
   puts "Allocate to cost centre is present"
 end
 
 def ChkLoadingFactor(type,id)
-  Sleep_Until(VerifyAnElementExistsPrintText(type, id))
+  Sleep_Until(VerifyAnElementExistsAndPrintText(type, id))
   puts "Loading Factor is present"
 end
 
 def InputCheckFields(type,id,text)
   puts "The default value of " + text + " is: "
-  Sleep_Until(VerifyAnElementExistsPrintText(type, id))
+  Sleep_Until(VerifyAnElementExistsAndPrintText(type, id))
 end
 
 def ClkSaveTimesheet(link)

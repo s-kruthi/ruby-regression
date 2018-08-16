@@ -5,23 +5,24 @@ Given(/^I Log In As A (.*)$/i) do |pr_login_name|
   case pr_login_name
   when "Prod Payroll Admin"
     begin
-      ProvideUsername(PAYROLL_USER, PAYROLL_PROD_ADMIN_USER)
-      ProvidePassword(PAYROLL_PSWD, PAYROLL_PROD_ADMIN_PWD)
-      LoginToPayroll(PAYROLL_LOGIN)
+      Sleep_Until(ProvideUsername(PAYROLL_USER, PAYROLL_PROD_ADMIN_USER))
+      Sleep_Until(ProvidePassword(PAYROLL_PSWD, PAYROLL_PROD_ADMIN_PWD))
+      Sleep_Until(LoginToPayroll(PAYROLL_LOGIN))
     end
   when "Staging Payroll Admin"
     begin
-      ProvideUsername(PAYROLL_USER, PAYROLL_STAG_ADMIN_USER)
-      ProvidePassword(PAYROLL_PSWD, PAYROLL_STAG_ADMIN_PWD)
-      LoginToPayroll(PAYROLL_LOGIN)
+      Sleep_Until(ProvideUsername(PAYROLL_USER, PAYROLL_STAG_ADMIN_USER))
+      Sleep_Until(ProvidePassword(PAYROLL_PSWD, PAYROLL_STAG_ADMIN_PWD))
+      Sleep_Until(LoginToPayroll(PAYROLL_LOGIN))
     end
   end
 end
 
 
-And(/^I Navigate To The Dashboard Menu and select "([^"]*)"$/) do |menu|
+And(/^I Navigate To The Dashboard Menu And Select ([^"]*)$/) do |menu|
 
   begin
+    sleep(3)
     Sleep_Until(NavigateMenu(DASHBOARD_MENU))
     case menu
     when "Main Dashboard"
@@ -29,29 +30,29 @@ And(/^I Navigate To The Dashboard Menu and select "([^"]*)"$/) do |menu|
         Sleep_Until(NavigateMenu(MAIN_DASHBOARD))
       end
     when "Adhoc Dashboard"
-      NavigateMenu(ADHOC_DASHBOARD)
+      Sleep_Until(NavigateMenu(ADHOC_DASHBOARD))
     end
   end
 end
 
 
-And(/^I navigate To the Workforce Menu and select "([^"]*)"$/) do |submenu|
-  Wait_For(5)
+And(/^I Navigate To The Workforce Menu And Select (.*)$/) do |submenu|
+  sleep(3)
   puts $driver.title
   begin
-    NavigateMenu(WORKFORCE_MENU)
+    Sleep_Until(NavigateMenu(WORKFORCE_MENU))
     case submenu
     when "Add Member"
       begin
-        Wait_For(5)
+        sleep(3)
         submenu_name = "//a[contains(.,'#{submenu}')]"
-        GoToAMenu(submenu_name)
+        Sleep_Until(GoToAMenu(submenu_name))
       end
     when "Member Details"
       begin
-        Wait_For(3)
+        sleep(5)
         submenu_name = "//a[contains(.,'#{submenu}')]"
-        GoToAMenu(submenu_name)
+        Sleep_Until(GoToAMenu(submenu_name))
       end
     end
   end

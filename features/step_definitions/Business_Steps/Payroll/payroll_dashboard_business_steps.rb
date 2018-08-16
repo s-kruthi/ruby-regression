@@ -1,13 +1,13 @@
-And(/^I choose the pay cycle as "([^"]*)"$/) do |pay_cycle_type|
+And(/^I Choose The Pay Cycle As ([^"]*)$/) do |pay_cycle_type|
   begin
     case pay_cycle_type
     when "Monthly Pay"
       begin
-        SelectPayCycle(pay_cycle_type)
+        Sleep_Until(SelectPayCycle(pay_cycle_type))
       end
     when "Weekly Pay"
       begin
-        SelectWeeklyPayCycle(pay_cycle_type)
+        Sleep_Until(SelectWeeklyPayCycle(pay_cycle_type))
       end
     end
   end

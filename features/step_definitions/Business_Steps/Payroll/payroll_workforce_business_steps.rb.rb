@@ -1,4 +1,4 @@
-And(/^I fill all the details in TFN Declaration page and continue$/) do
+And(/^I Fill All The Details In TFN Declaration Page And Continue$/) do
 
   begin
     ValidateField(TFN_DECLARATION_CSS,$tfn_decl)
@@ -27,7 +27,7 @@ And(/^I fill all the details in TFN Declaration page and continue$/) do
   ClickContinue(CONTINUE_CSS)
 end
 
-And(/^I fill all the details in Profile page and continue$/) do
+And(/^I Fill All The Details In Profile Page And Continue$/) do
   SelectDrpDwn(EMPLYOMENT_XPATH,$employment)
   SelectDrpDwn(GENDER_XPATH,$gender)
   SelectDrpDwn(MARITAL_XPATH,$marital)
@@ -69,7 +69,7 @@ And(/^I fill all the details in Profile page and continue$/) do
 
 end
 
-And(/^I fill all the details in Pay Details page and continue$/) do
+And(/^I Fill All The Details In Pay Details Page And Continue$/) do
   SelectDrpDwn(PAYCYCLE_XPATH,$paycycle)
   EnterStdHours(STD_WORK_HRS_CSS,$stdworkhrs)
   begin
@@ -96,7 +96,7 @@ And(/^I fill all the details in Pay Details page and continue$/) do
 
 end
 
-And(/^I fill all the details in Leave Details and continue$/) do
+And(/^I Fill All The Details In Leave Details And Continue$/) do
   #"Accrue annual leave?" details
   begin
     if $accrues_annual == "TRUE"
@@ -171,7 +171,7 @@ And(/^I fill all the details in Leave Details and continue$/) do
   ClickContinue(CONTINUE_CSS)
 end
 
-Then(/^I confirm to add new member$/) do
+Then(/^I Confirm To Add New Member$/) do
   VerifyMember(MEMBER_CSS)
   begin
     FieldExistence(XPATH_LOC_TYPE,AUTO_GEN_MEM_XPATH)
@@ -198,7 +198,7 @@ Then(/^I confirm to add new member$/) do
 
 end
 
-Then(/^I verify the new member created$/) do
+Then(/^I Verify The New Member Created$/) do
   Wait_For(3)
   EnterNewEmpName(SEARCH_EMP_XPATH,$emp_name)
   EmpSearch(XPATH_LOC_TYPE,SEARCH_DRP_XPATH,1)

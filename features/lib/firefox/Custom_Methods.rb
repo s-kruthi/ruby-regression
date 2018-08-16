@@ -308,7 +308,7 @@ module Firefox
       element.selected?
     end
 
-    def VerifyAnElementExistsPrintText(type, identifier)
+    def VerifyAnElementExistsAndPrintText(type, identifier)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         element = wait.until {
