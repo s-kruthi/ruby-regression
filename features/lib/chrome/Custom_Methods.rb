@@ -316,11 +316,6 @@ module Chrome
     end
 
 
-    def PressEnterKey(type,identifier)
-      $driver.find_element(:"#{type}", "#{identifier}").send_keys :enter
-    end
-
-
     def VerifyAnElementExistsAndPrintText(type, identifier)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -339,6 +334,11 @@ module Chrome
         raise VerificationException.new(COLOR_RED + "Element not present. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
+    end
+
+
+    def PressEnterKey(type,identifier)
+      $driver.find_element(:"#{type}", "#{identifier}").send_keys :enter
     end
 
   end
