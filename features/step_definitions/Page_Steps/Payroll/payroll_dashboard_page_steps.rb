@@ -9,6 +9,7 @@ def SelectPayCycle(paycycle_value)
   $payment_date = $driver.find_element(:class,'widget-thumb-body').text
 end
 
+
 def SelectWeeklyPayCycle(paycycle_value)
   Wait_For(2)
   Sleep_Until($driver.find_element(:css,'input[role="combobox"]').clear)
@@ -22,20 +23,24 @@ def SelectWeeklyPayCycle(paycycle_value)
   $payment_date = $driver.find_element(:class,'widget-thumb-body').text
 end
 
+
 def ClickNext(next_button)
   Wait_For(3)
   Sleep_Until(WaitForAnElementByXpathAndTouch(next_button))
 end
 
+
 def ChangePayCycleStatus(status_button)
   Sleep_Until(WaitForAnElementByXpathAndTouch(status_button))
 end
+
 
 def GeneratePayslips(generate_payslips,click_gen)
   Wait_For(3)
   Sleep_Until(WaitForAnElementByXpathAndTouch(generate_payslips))
   Sleep_Until(WaitForAnElementByXpathAndTouch(click_gen))
 end
+
 
 def DistributePayslips(distribute_payslips,send_click,confirm_send)
   Sleep_Until(WaitForAnElementByXpathAndTouch(distribute_payslips))
@@ -45,11 +50,13 @@ def DistributePayslips(distribute_payslips,send_click,confirm_send)
   Sleep_Until(WaitForAnElementByXpathAndTouch(confirm_send))
 end
 
+
 def VerifyViewPayslips(view_all_payslips,text)
   Wait_For(10)
   Sleep_Until(VerifyAnElementExistByXPath(view_all_payslips,text))
   puts "View All Payslips is displayed"
 end
+
 
 def ValidatePayslipsSent(send_click)
   Wait_For(5)
@@ -57,10 +64,12 @@ def ValidatePayslipsSent(send_click)
   puts "All the payslips are sent"
 end
 
+
 def CommitPaycycle(click_commit,commit_confirm)
   Sleep_Until(WaitForAnElementByXpathAndTouch(click_commit))
   Sleep_Until(WaitForAnElementByXpathAndTouch(commit_confirm))
 end
+
 
 def ConfirmLoginDetails(click_login,click_pswd,username,password,confirm_btn)
 
@@ -70,6 +79,7 @@ def ConfirmLoginDetails(click_login,click_pswd,username,password,confirm_btn)
   #Sleep_Until(WaitForAnElementByXpathAndTouch(confirm_btn))
   $driver.find_element(:xpath,"//div[@class='modal-header']//button[@type='button']").click
 end
+
 
 def ClickTab(link)
   Wait_For(2)

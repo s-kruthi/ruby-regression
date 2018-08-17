@@ -1,6 +1,8 @@
 Given(/^I Log In As A (.*)$/i) do |pr_login_name|
   startWebDriver
   GoToSite()
+  $driver.navigate.refresh
+  sleep(5)
 
   case pr_login_name
   when "Prod Payroll Admin"
