@@ -44,7 +44,7 @@ def CheckLoadingFactor(type, id)
 end
 
 
-def InputCheckFields(type,id,text)
+def CheckFields(type, id, text)
   puts "The default value of " + text + " is: "
   Sleep_Until(VerifyAnElementExists(type, id))
 end

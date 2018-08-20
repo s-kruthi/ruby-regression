@@ -1,10 +1,5 @@
-def ProvideUsername(username,value)
-  Sleep_Until(WaitForAnElementByIdAndInputValue(username, value))
-end
-
-
-def ProvidePassword(password, value)
-  Sleep_Until(WaitForAnElementByIdAndInputValue(password, value))
+def ProvideLoginDetails(type,value)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(type,value))
 end
 
 
@@ -27,4 +22,9 @@ end
 def GoToAMenu(tab_name)
   Sleep_Until(WaitForAnElementByXpathAndTouch(tab_name))
   Wait_For(3)
+end
+
+def ClickTab(link)
+  Wait_For(2)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(link))
 end

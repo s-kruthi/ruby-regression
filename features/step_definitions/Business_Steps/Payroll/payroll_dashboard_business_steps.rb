@@ -5,81 +5,83 @@ And(/^I Choose The Pay Cycle As ([^"]*)$/) do |pay_cycle_type|
       begin
         Sleep_Until(SelectPayCycle(pay_cycle_type))
       end
+
     when "Weekly Pay"
       begin
         Sleep_Until(SelectWeeklyPayCycle(pay_cycle_type))
       end
+
     end
   end
 end
 
 
-Then(/^I perform required actions in the Data Input step$/) do
+Then(/^I Perform Required Actions In The Data Input Step$/) do
 
   Sleep_Until(ClickTab(ADD_NEW_MEMBER_XPATH))
   steps %Q{
-    And I fill all the details in TFN Declaration page and continue
-    And I fill all the details in Profile page and continue
-    And I fill all the details in Pay Details page and continue
-    And I fill all the details in Leave Details and continue
-    Then I confirm to add new member
+    And I Fill All The Details In TFN Declaration Page And Continue
+    And I Fill All The Details In Profile Page And Continue
+    And I Fill All The Details In Pay Details Page And Continue
+    And I Fill All The Details In Leave Details And Continue
+    Then I Confirm To Add New Member
       }
   Wait_For(5)
 
   ClickTab(TERM_MEMBER_XPATH)
   steps %Q{
-    When  I navigate To the Input Menu and select "Termination entries"
-    Then  I click on Add Termination and fill and Verify all the details in Terminate employee screen
-    And   I Navigate To The Dashboard Menu and select "Main Dashboard"
-    And   I choose the pay cycle as "Monthly Pay"
+    When  I Navigate To The Input Menu And Select "Termination Entries"
+    Then  I Click On Add Termination And Fill And Verify All The Details In Terminate Employee Screen
+    And   I Navigate To The Dashboard Menu And Select "Main Dashboard"
+    And   I Choose The Pay Cycle As "Monthly Pay"
       }
 
   ClickTab(ENTER_TIMESHEETS_XPATH)
   steps %Q{
-    And   I click on ADD TIMESHEET and enter the timesheet details
-    Then  I click on save to update the timesheet entries
-    And   I Navigate To The Dashboard Menu and select "Main Dashboard"
-    And   I choose the pay cycle as "Monthly Pay"
+    And   I Click On ADD TIMESHEET And Enter The Timesheet Details
+    Then  I Click On Save To Update The Timesheet Entries
+    And   I Navigate To The Dashboard Menu And Select "Main Dashboard"
+    And   I Choose The Pay Cycle As "Monthly Pay"
       }
 
 end
 
 
-And(/^I click Next in the Check Reports step$/) do
+And(/^I Click Next In The Check Reports Step$/) do
   Sleep_Until(ClickNext(NEXT_XPATH))
 end
 
 
-Then(/^I change the Pay Cycle Status to Closed$/) do
+Then(/^I Change The Pay Cycle Status To Closed$/) do
   Sleep_Until(ChangePayCycleStatus(STATUS_XPATH))
 end
 
 
-And(/^I click Next in the Make Payment step$/) do
+And(/^I Click Next In The Make Payment Step$/) do
   ClickNext(NEXT_XPATH)
 end
 
 
-And(/^I Generate and verify "([^"]*)" is displayed in the Send Payslips step$/) do |verfiy_text|
+And(/^I Generate And Verify "([^"]*)" Is Displayed In The Send Payslips Step$/) do |verfiy_text|
   GeneratePayslips(GENERATE_PAYSLIPS_XPATH, CLK_GENERATE_PAYSLIPS_XPATH)
   VerifyViewPayslips(VIEW_ALL_PAYSLIPS_XPATH,verfiy_text)
 
 end
 
 
-Then(/^I click on Distribute payslips ad send the payslips and validate$/) do
+Then(/^I Click On Distribute Payslips Ad Send The Payslips And Validate$/) do
   DistributePayslips(DISTR_PAYSLIPS_XPATH,SEND_ENABLED_XPATH,CONFIRM_SEND_PAYSLIPS_XPATH)
   #ValidatePayslipsSent(CLICK_SEND_DISABLED)
 
 end
 
 
-And(/^I click Next in the Send Payslips step$/) do
+And(/^I Click Next In The Send Payslips Step$/) do
   ClickNext(NEXT_XPATH)
 end
 
 
-And(/^I Commit the paycycle$/) do
+And(/^I Commit The Paycycle$/) do
   CommitPaycycle(COMMIT_PAY_CYCLE_XPATH,COMMIT_CONFIRM_XPATH)
   ConfirmLoginDetails(CONFIRM_USERNAME_XPATH,CONFIRM_PASSWORD_XPATH,PAYROLL_ADMIN_USER,PAYROLL_ADMIN_PWD,CONFIRM_XPATH)
 end

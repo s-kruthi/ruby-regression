@@ -79,9 +79,3 @@ def ConfirmLoginDetails(click_login,click_pswd,username,password,confirm_btn)
   #Sleep_Until(WaitForAnElementByXpathAndTouch(confirm_btn))
   $driver.find_element(:xpath,confirm_btn).click
 end
-
-
-def ClickTab(link)
-  Wait_For(2)
-  Sleep_Until(WaitForAnElementByXpathAndTouch(link))
-end
