@@ -42,7 +42,7 @@ Thumbs.db
 Gemfile.lock
 
 # Folders
-features/screenshots/chrome/screenshot/*
-features/screenshots/firefox/screenshot/*
-features/screenshots/safari/screenshot/*
-features/screenshots/headless/screenshot/*
+/features/Screenshots/chrome/*.screenshot*
+/features/Screenshots/firefox/*.screenshot*
+/features/Screenshots/headless/*.screenshot*
+/features/Screenshots/safari/*.screenshot*
