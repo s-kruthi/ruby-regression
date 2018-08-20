@@ -16,7 +16,7 @@ end
 
 Then(/^I perform required actions in the Data Input step$/) do
 
-  ClickTab(ADD_NEW_MEMBER_XPATH)
+  Sleep_Until(ClickTab(ADD_NEW_MEMBER_XPATH))
   steps %Q{
     And I fill all the details in TFN Declaration page and continue
     And I fill all the details in Profile page and continue
@@ -46,12 +46,12 @@ end
 
 
 And(/^I click Next in the Check Reports step$/) do
-  ClickNext(NEXT_XPATH)
+  Sleep_Until(ClickNext(NEXT_XPATH))
 end
 
 
 Then(/^I change the Pay Cycle Status to Closed$/) do
-  ChangePayCycleStatus(STATUS_XPATH)
+  Sleep_Until(ChangePayCycleStatus(STATUS_XPATH))
 end
 
 
@@ -81,6 +81,5 @@ end
 
 And(/^I Commit the paycycle$/) do
   CommitPaycycle(COMMIT_PAY_CYCLE_XPATH,COMMIT_CONFIRM_XPATH)
-  ConfirmLoginDetails(CONFIRM_LOGIN_DETAILS_XPATH,CONFIRM_PASSWORD_XPATH,PAYROLL_ADMIN_USER,PAYROLL_ADMIN_PWD,CONFIRM_XPATH)
+  ConfirmLoginDetails(CONFIRM_USERNAME_XPATH,CONFIRM_PASSWORD_XPATH,PAYROLL_ADMIN_USER,PAYROLL_ADMIN_PWD,CONFIRM_XPATH)
 end
-

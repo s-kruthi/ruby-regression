@@ -1,26 +1,26 @@
 def SelectPayCycle(paycycle_value)
   Wait_For(2)
-  Sleep_Until($driver.find_element(:css,'input[role="combobox"]').clear)
+  Sleep_Until($driver.find_element(:css, PAY_CYCLE_CLEAR_CSS).clear)
   Wait_For(2)
-  Sleep_Until($driver.find_element(:css,'input[role="combobox"]').send_keys "#{paycycle_value}")
+  Sleep_Until($driver.find_element(:css,PAY_CYCLE_CLEAR_CSS).send_keys "#{paycycle_value}")
   Wait_For(2)
-  Sleep_Until($driver.find_element(:css,'input[role="combobox"]').send_keys :enter)
+  Sleep_Until($driver.find_element(:css,PAY_CYCLE_CLEAR_CSS).send_keys :enter)
   Wait_For(2)
-  $payment_date = $driver.find_element(:class,'widget-thumb-body').text
+  $payment_date = $driver.find_element(:class,PAYMENT_DATE_CLASS).text
 end
 
 
 def SelectWeeklyPayCycle(paycycle_value)
   Wait_For(2)
-  Sleep_Until($driver.find_element(:css,'input[role="combobox"]').clear)
+  Sleep_Until($driver.find_element(:css,PAY_CYCLE_CLEAR_CSS).clear)
   Wait_For(2)
-  Sleep_Until($driver.find_element(:css,'input[role="combobox"]').send_keys "#{paycycle_value}")
+  Sleep_Until($driver.find_element(:css,PAY_CYCLE_CLEAR_CSS).send_keys "#{paycycle_value}")
   Wait_For(2)
-  Sleep_Until($driver.find_element(:css,'input[role="combobox"]').send_keys :enter)
+  Sleep_Until($driver.find_element(:css,PAY_CYCLE_CLEAR_CSS).send_keys :enter)
   Wait_For(2)
-  Sleep_Until($driver.find_element(:css,'input[role="combobox"]').send_keys :enter)
+  Sleep_Until($driver.find_element(:css,PAY_CYCLE_CLEAR_CSS).send_keys :enter)
   Wait_For(2)
-  $payment_date = $driver.find_element(:class,'widget-thumb-body').text
+  $payment_date = $driver.find_element(:class,PAYMENT_DATE_CLASS).text
 end
 
 
@@ -77,7 +77,7 @@ def ConfirmLoginDetails(click_login,click_pswd,username,password,confirm_btn)
   Sleep_Until(WaitForAnElementByXpathAndInputValue(click_pswd,password))
   Wait_For(3)
   #Sleep_Until(WaitForAnElementByXpathAndTouch(confirm_btn))
-  $driver.find_element(:xpath,"//div[@class='modal-header']//button[@type='button']").click
+  $driver.find_element(:xpath,confirm_btn).click
 end
 
 

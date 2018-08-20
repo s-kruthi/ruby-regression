@@ -4,13 +4,13 @@ def FillTextField(field,value)
 end
 
 
-def SelectDrpDwn(linkpath,val)
+def SelectDropDown(linkpath, val)
   Sleep_Until(SelectFromDropDown(linkpath,val))
 end
 
 
-def ValidateField(tfndedclcss,tfndeclval)
-  Sleep_Until(VerifyAnElementExistByCSS(tfndedclcss,tfndeclval))
+def ValidateField(tfndeclass,tfndeclval)
+  Sleep_Until(VerifyAnElementExistByCSS(tfndeclass,tfndeclval))
 end
 
 
@@ -26,14 +26,14 @@ def EnterDateField(type,dateclklink,index,datesellink)
 end
 
 
-def EnterTermDate(dateclklink,datesellink)
+def EnterTerminationDate(dateclklink, datesellink)
   Sleep_Until(WaitForAnElementByXpathAndTouch(dateclklink))
   Sleep_Until(WaitForAnElementByXpathAndTouch(datesellink))
 end
 
 
 def ValidateToggleText(tag,val)
-  Sleep_Until(VerifyAnElementExistsAndPrintText(tag,val))
+  Sleep_Until(VerifyAnElementExists(tag,val))
 end
 
 
@@ -103,7 +103,7 @@ end
 
 
 def EmpSearch(type,identifier,index)
-  sleep 5
+  sleep(7)
   Sleep_Until(ClickElement(type, identifier, index))
   puts "New Member is created successfully"
 end
@@ -111,5 +111,5 @@ end
 
 def FetchEmpNameID(type,val)
   Wait_For(5)
-  Sleep_Until(VerifyAnElementExistsAndPrintText(type,val))
+  Sleep_Until(VerifyAnElementExists(type,val))
 end

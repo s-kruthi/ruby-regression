@@ -13,7 +13,7 @@ SEND_DISABLED_XPATH = "//div[@class='dx-toolbar-before']//div[@class='dx-item-co
 CONFIRM_SEND_PAYSLIPS_XPATH = "//div[@class='dx-toolbar-center']//div[1]//div[1]//div[1]//div[1]"
 COMMIT_PAY_CYCLE_XPATH = "//div[contains(text(),'Commit paycycle')]"
 COMMIT_CONFIRM_XPATH = "//button[contains(text(),'Confirm')]"
-CONFIRM_LOGIN_DETAILS_XPATH = "//div[@class='col-md-8']//div[1]//div[1]//input[1]"
+CONFIRM_USERNAME_XPATH = "//div[@class='col-md-8']//div[1]//div[1]//input[1]"
 CONFIRM_PASSWORD_XPATH = "//input[@type='password']"
 CONFIRM__XPATH = "//button[contains(text(),'I am ready to commit my pay cycle')]"
 ADD_NEW_MEMBER_XPATH = "//div[contains(text(),'Add new member')]"
@@ -33,7 +33,6 @@ TERMINATION_REPORT_XPATH = "//div[contains(text(),'Termination report')]"
 EFT_REPORT_XPATH = "//div[contains(text(),'EFT report')]"
 CREATE_ABA_XPATH = "//div[contains(text(),'Create ABA')]"
 GENERAL_LEDGER_REPORT_XPATH = "//div[contains(text(),'General ledger report')]"
-
-
-
-
+PAY_CYCLE_CLEAR_CSS = 'input[role="combobox"]'
+PAYMENT_DATE_CLASS = 'widget-thumb-body'
+CONFIRM_LOGIN_DETAILS_XPATH = "//div[@class='modal-header']//button[@type='button']"

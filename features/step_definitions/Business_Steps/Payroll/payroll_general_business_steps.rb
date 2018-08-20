@@ -1,8 +1,6 @@
 Given(/^I Log In As A (.*)$/i) do |pr_login_name|
   startWebDriver
   GoToSite()
-  $driver.navigate.refresh
-  sleep(5)
 
   case pr_login_name
   when "Prod Payroll Admin"
@@ -13,6 +11,8 @@ Given(/^I Log In As A (.*)$/i) do |pr_login_name|
     end
   when "Staging Payroll Admin"
     begin
+      $driver.navigate.refresh
+      sleep(5)
       Sleep_Until(ProvideUsername(PAYROLL_USER, PAYROLL_STAG_ADMIN_USER))
       Sleep_Until(ProvidePassword(PAYROLL_PSWD, PAYROLL_STAG_ADMIN_PWD))
       Sleep_Until(LoginToPayroll(PAYROLL_LOGIN))
