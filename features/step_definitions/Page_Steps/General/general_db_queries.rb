@@ -63,6 +63,74 @@ module Database_env
       return @db[query].first
     end
 
+    def get_epms_config_enabled(name)
+      query = "select value from epms_config
+               where name = '#{name}'"
+      return @db[query].first
+    end
+
+
+    def check_legal_entity_exists(abn_num)
+      query = "select exists
+              (select 1
+              from epms_legal_entity where abn = '#{abn_num}')
+              as presence"
+      return @db[query].first
+    end
+
+
+    #only editing non-default entities
+    def get_legal_entity_details_for_edit()
+      query = "select id, business_name
+              from epms_legal_entity
+              where is_default = 0
+              and is_deleted = 0
+              ORDER BY rand();"
+      return @db[query].first
+    end
+
+
+    def get_legal_entity_details()
+      query = "select id, abn, business_name, is_default, is_active
+              from epms_legal_entity
+              where is_deleted = 0
+              ORDER BY rand();"
+      return @db[query].first
+    end
+
+
+    def get_default_entity_details()
+      query = "select id, business_name
+              from epms_legal_entity
+              where is_deleted = 0
+              and is_default = 1
+              and is_active = 1"
+      return @db[query].first
+    end
+
+    def get_count_active_legal_entity()
+      query = "select count(*) as count
+              from epms_legal_entity
+              where is_deleted = 0
+              and is_active = 1"
+      return @db[query].first
+    end
+
+
+    def get_legal_entity_details_linked_to_user()
+      query = "select distinct ele.id, business_name
+              from epms_legal_entity ele
+              inner join epms_user_legal_entity eule on eule.legal_entity_id = ele.id
+              inner join epms_user eu on eu.id = eule.user_id
+              where ele.is_deleted = 0
+              and ele.is_active = 1
+              and is_elmo = 0
+              and eu.is_active = 1
+              and is_onboarding = 0
+              ORDER BY rand();"
+      return @db[query].first
+    end
+
   end
 
 end

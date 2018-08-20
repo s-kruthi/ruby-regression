@@ -56,3 +56,27 @@ Feature:
     And   I select "Profile" dropdown to "Company Admin Only"
     Then  I Should Be Able To Save The Custom User Fields Configuration
     And   I Verify That The Configuration Status Is Saved
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @cost_centre_user_field @legal_entity_user_field @payroll_cost_centre @C16890 @C16920
+  Scenario: [General]Company Admin Can Modify Payroll Related Fields In User Profile Setup
+    Given That Cost Centre and Company(Legal Entity) Fields Are Enabled
+    And   I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To User Profile Setup under General section
+    When  I Click On "User Profile Setup" Tab
+    Then  I Can See That I Can Modify The Cost Centre Settings
+    And   I Can See That I Can Modify The Company(Legal Entity) Settings
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @cost_centre_enabled @payroll_cost_centre @C16888
+  Scenario: [General]Cost Centres Section Is Not Accessible When Cost Centre Is Enabled
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
+    Then  I Should Not Be Able To Access Cost Centres Under HR Core Section
+
+
+
+

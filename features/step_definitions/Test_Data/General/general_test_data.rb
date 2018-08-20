@@ -6,23 +6,18 @@ SELECT_TIMEZONE = 0
 
 USE_ACTIVE_INACTIVE_FILTER = 0
 
-
-NEW_USER_FIRST_NAME_PREFIX = "auto"
-NEW_USER_LAST_NAME_PREFIX = "test"
-NEW_USER_EMAIL_SUFFIX = "@elmodev.com"
+NEW_USER_DETAILS_MAP = {
+    email_prefix_value: "@elmodev.com",
+    timezone_value: "Sydney",
+    start_date_value: (DateTime.now).prev_month.strftime("%d/%m/%Y"),
+    expiry_date_value: (DateTime.now).next_year.strftime("%d/%m/%Y"),
+    user_password_value: "Admin1234567",
+}
 
 
 MANAGER_SELECT_INPUT_VALUE = "manager1.omar1"
 
-
-SELECT_START_DATE_VALUE = (DateTime.now).prev_month.strftime "%d/%m/%Y"
-SELECT_EXPIRY_DATE_VALUE = (DateTime.now).next_year.strftime "%d/%m/%Y"
-SELECT_TIMEZONE_VALUE = "Sydney"
-USER_PASSWORD_VALUE = "Admin1234567"
-
-
 ADD_USER_SAVE_SUCCESS_VALUE = "User details have been updated!"
-
 
 EM_USER__NAME_VALUE = "Automation Test User"
 EM_USER_RELATIONSHIP_VALUE = "Tester"

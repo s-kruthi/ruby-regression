@@ -25,6 +25,7 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
             begin
               EnterUsername(USER_NAME, ELMO_SUPER_USERNAME)
               EnterPassword(PASS_WORD, ELMO_SUPER_PASSWORD)
+              username = ELMO_SUPER_USERNAME
             end
           
           when "ELMO Admin"
@@ -228,14 +229,57 @@ And(/^I Go To The (.*) Section$/i) do |menu_type|
 end
 
 
-Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The System With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager Username)?$/i) do |arg1, arg2, arg3, arg4, arg5|
-  CreateUsers(arg1, arg2, arg3, arg4, arg5)
+Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The System With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?$/i) do |arg1, arg2, arg3, arg4, arg5|
+  #This step also sets the roletype to the specified value
+  i = 1  #Change it if the starting suffix value needs to be from a different value
+  total = i + arg1  #Total number of users to be created
+  for loop in i..total do
+    begin
+      @@first_name = arg3 + loop.to_s
+      @@last_name = arg4 + loop.to_s if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
+      @@last_name = arg4 + loop.to_s + ".ob" if $add_user_type == "OB"
+      @@user_name = @@first_name + "." + @@last_name
+      @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value] #Email = firstname.lastname@email_suffix
+
+      #Check if user already exists in the database or not. If exists, skip the current creation and continue with the loop. Else, create the user
+      user_list_result = $daos.get_userid(@@user_name)
+      if !user_list_result.nil?
+        puts COLOR_YELLOW + "User #{user_list_result} already exists in the database. Creating next user".upcase
+        $user_found = 1
+        next
+      
+      else
+        $user_found = 0
+        begin
+          CreateUsers(loop, arg2, @@first_name, @@last_name, arg5)
+          #The following steps help set the role type as well immediately after creating the user within the loop. Change the value to 'Manager' for manager Roletype or others
+          steps %Q{
+                  And   I Click On "Role" Tab
+                  And   I Select "Role" Classic Dropdown As "Employee"
+                  }
+          case $add_user_type    #Case used to click on different buttons since Users click on 'Add New User' and Onboarding users click on 'New Onboarding User' button
+            when "EMP"
+              Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless loop >= total
+              Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_NEW_USER_BTN)) unless loop >= total
+  
+            when "OB"
+              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_USER_NAV_LINK)) unless loop >= total
+              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_ADD_NEW_USER_BTN)) unless loop >= total
+          end
+        end
+      end
+      
+    end
+  end
+  
+  puts COLOR_YELLOW + "All users to be created are already existing. Scenario has been skipped".upcase if $user_found == 1
+  skip_this_scenario if $user_found == 1 #Skip the rest of the scenario since it's no longer valid
 end
 
 
 And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
   begin
-    case sub_tab_name
+    case sub_tab_name       #Since these are derived using href, case is used to differentiate between specific ones
     when "Personal Details"
       begin
         Sleep_Until(ClickOnASubTab(SUB_TAB_PERSONAL_NAME_ID))
@@ -430,13 +474,82 @@ Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onb
 end
 
 
-And(/^I Click On "([^"]*)" Breadcrumb Menu$/) do |arg|
+And(/^I Click On "([^"]*)" Breadcrumb Menu$/i) do |arg|
   breadcrumb_xpath = "//a[contains(.,'#{arg}')]"
   Sleep_Until(WaitForAnElementByXpathAndTouch(breadcrumb_xpath))
 end
 
 
-Then(/^I Should Be Able to Notify All Users$/) do
+Then(/^I Should Be Able to Notify All Users$/i) do
   Sleep_Until(PressConfirm())
   VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_NOTIFY_SUCCESS_MSG_VALUE)
+end
+
+
+Then(/^I Should See That The Default Entity Is Set For the User's Company Field$/i) do
+  default_legal_entity = $daos.get_default_entity_details()
+
+  field_value = $driver.find_element(:id, USER_LEGAL_ENTITY_FIELD_ID).text
+
+  #comparing the value from the db with the page
+  expect(field_value.split("\n")[0]).to eq(default_legal_entity[:business_name])
+  puts COLOR_GREEN + "User is set with the default legal entity for company field".upcase
+end
+
+
+Given(/^That I Have Created A New User$/i) do
+  user_first_name = 'payroll_auto' + Time.now.strftime("%Y%m%d%H%M%S")
+  steps %Q{
+        Given I Have Logged In as a Company Admin
+        And   I go to Admin Settings
+        And   I Go To Users under General section
+        When  I Click On "Add New User" Button
+        Then  I Should Be Able To Add 1 New "Non-ELMO" Users In To The System With "#{user_first_name}" As First Name And "test" As Last Name}
+end
+
+
+And(/^I Click On The Profile Tab Of The([^\"]*) User$/i) do |user_type|
+  Sleep_Until(WaitForAnElementByXpathAndTouch(USER_PROFILE_TAB_ID))
+end
+
+
+When(/^I Choose To Edit An Existing User's Profile$/i) do
+  steps %{Then I Should Be Able To use Edit User Profile Action On The Specific User}
+end
+
+
+Then(/^I Can See That I Can Choose To Set The Company Legal Entity From the Existing Entities$/i) do
+  # get count from legal entity table
+  legal_entity = $daos.get_count_active_legal_entity()
+
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_LEGAL_ENTITY_SELECT2_ID))
+  $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%%')
+
+  sleep(2)
+
+  # search results should be equal to count
+  expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to eq(legal_entity[:count])
+end
+
+
+Then(/^I Should See The Cost Centre Field$/i) do
+  Sleep_Until(VerifyAnElementExists('id',USER_COST_CENTRE_FIELD_ID))
+end
+
+
+And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres$/i) do
+  sleep(2)
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_COST_CENTRE_SELECT2_ID))
+  $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
+
+  #wait as making call to Elmo Payroll
+  sleep(5)
+
+  result_count = $driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size
+  if result_count > 0
+    expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to be > 0
+  else
+    puts COLOR_BLUE + "No Cost Centres Found, please check ELMO Payroll for cost codes manually"
+    skip_this_scenario
+  end
 end

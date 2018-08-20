@@ -9,9 +9,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
-    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.test1" As manager username
-    And   I Click On "Role" Tab
-    And   I Select "Role" Classic Dropdown As "Manager"
+    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.test1" As Manager
     And   I Click On "Users" Breadcrumb Menu
     And   I Click On "Notify Users" Button
     And   I Click On "Notify All Users" Button
@@ -24,7 +22,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Onboarding Users under Onboarding section
     When  I Click On "New Onboarding User" Button
-    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.omar1" As Manager Username
+    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.omar1" As Manager
 
 
   @hr_add_contact_emergency @general_high_risk @onboarding_high_risk
@@ -76,3 +74,38 @@ Feature:
     And   I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Should Not Be Able To Access The Onboarding User Setup In Onboarding Section
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @new_user_details_legal_entity @legal_entities @C16922
+  Scenario: [General]Default Legal Entity Is Set For Newly Created User
+    Given That Legal Entity Is Enabled
+    And   That Company Legal Entity Field Is Visible
+    And   That I Have Created A New User
+    When  I Click On The Profile Tab Of The Newly Created User
+    Then  I Should See That The Default Entity Is Set For the User's Company Field
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @legal_entities @user_details_legal_entity_edit
+  Scenario: [General]Company Admin Can Choose From Existing Legal Entities For Users
+    Given That Company Legal Entity Field Is Editable
+    And   I Have Logged In As A Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Choose To Edit An Existing User's Profile
+    Then  I Can See That I Can Choose To Set The Company Legal Entity From The Existing Entities
+
+
+  #currently can be run only on payroll03
+  @general_low_risk @user_details_cost_centre_edit @payroll_cost_centre @C16941
+  Scenario: [General]Company Admin Can Set Cost Centre From Existing Values In Elmo Payroll
+    Given That Cost Centre Field Is Editable
+    And   I Have Logged In As A Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Choose To Edit An Existing User's Profile
+    Then  I Should See The Cost Centre Field
+    And   I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres
+
+
