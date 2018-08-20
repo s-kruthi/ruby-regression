@@ -690,7 +690,9 @@ end
 
 
 def GoToSpecificCourseEnrolmentSection(course_id)
-  enrol_user_url = $site_url.chomp('/dashboard')
+  $driver.navigate.to($site_url)
+  enrol_user_url = $driver.current_url.chomp('/dashboard')
+  puts "#{enrol_user_url}/admin/course/#{course_id}/enrolments"
   $driver.navigate.to("#{enrol_user_url}/admin/course/#{course_id}/enrolments")
 end
 

@@ -25,6 +25,9 @@
 *.sqlite
 .byebug_history
 
+# ignore all logs
+*.log
+
 # OS generated files #
 ######################
 .DS_Store

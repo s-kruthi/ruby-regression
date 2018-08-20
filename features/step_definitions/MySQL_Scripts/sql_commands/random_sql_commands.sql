@@ -1,3 +1,5 @@
 use pmsdev_tmsfull ; 
 
-      select COUNT(*) from epms_lms_course_enrolment where course_id ='1912' order by id DESC LIMIT 10\G; 
+      select first_name from epms_user where username='admin.shanku' ORDER BY id desc LIMIT 1 \G; 
+
+    select id as course_id from mdl_course where fullname='course_section_automation_QuizActivity_shanku' ORDER BY id desc\G; 
