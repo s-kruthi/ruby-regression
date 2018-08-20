@@ -41,8 +41,8 @@ Thumbs.db
 # GEM related exceptions
 Gemfile.lock
 
-# Folders
-/features/Screenshots/chrome/*.screenshot*
-/features/Screenshots/firefox/*.screenshot*
-/features/Screenshots/headless/*.screenshot*
-/features/Screenshots/safari/*.screenshot*
+#Screenshot Folders
+/features/screenshots/chrome/screenshot*.*
+/features/screenshots/firefox/screenshot*.*
+/features/screenshots/headless/screenshot*.*
+/features/screenshots/safari/screenshot*.*
