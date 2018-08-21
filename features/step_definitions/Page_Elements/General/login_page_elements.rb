@@ -8,3 +8,5 @@ LOGIN_BUTTON = 'button'
 LOGOUT_BUTTON_ID = "//a[contains(.,'Sign Out')]"
 RESET_BUTTON = "//button[@type='submit']"
 FORGOT_PASSWORD_LINK = "//a[contains(.,'Forgot Password')]"
+
+PASSWORD = 'thepassword'

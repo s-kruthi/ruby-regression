@@ -309,6 +309,11 @@ module Headless
       element.selected?
     end
 
+
+    def PressEnterKey(type,identifier)
+      $driver.find_element(:"#{type}", "#{identifier}").send_keys :enter
+    end
+
   end
 
 end

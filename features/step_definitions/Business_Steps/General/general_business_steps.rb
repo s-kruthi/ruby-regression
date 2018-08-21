@@ -1,128 +1,128 @@
 Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
   case login_action
-    when "In"
-      startWebDriver
-      GoToSite()
-      
-      begin
-        case login_name
-          
-          when "ELMO Setup Admin"
-            begin
-              GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-              EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
-              EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
-              
-              loginToSystem(LOGIN_BUTTON)
-              
-              GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-              EnterUsername(USER_NAME, ELMO_SETUP_ADMIN_USERNAME)
-              EnterPassword(PASS_WORD, ELMO_SETUP_ADMIN_PASSWORD)
-              loginToSystem(LOGIN_BUTTON)
-            end
-          
-          when "ELMO Super Admin"
-            begin
-              EnterUsername(USER_NAME, ELMO_SUPER_USERNAME)
-              EnterPassword(PASS_WORD, ELMO_SUPER_PASSWORD)
-              username = ELMO_SUPER_USERNAME
-            end
-          
-          when "ELMO Admin"
-            begin
-              EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
-              EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
-              username = ELMO_ADMIN_USERNAME
-            end
-          
-          when "Company Admin"
-            begin
-              EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
-              EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
-              username = COMP_ADMIN_USERNAME
-            end
-          
-          when "Contract Admin"
-            begin
-              EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
-              EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
-              username = COMP_ADMIN_USERNAME
-            end
-          
-          when "Learning Admin"
-            begin
-              EnterUsername(USER_NAME, LEARNING_ADMIN_USERNAME)
-              EnterPassword(PASS_WORD, LEARNING_ADMIN_PASSWORD)
-              username = LEARNING_ADMIN_USERNAME
-            end
-          
-          when "Recruitment Admin"
-            begin
-              EnterUsername(USER_NAME, RECRUITMENT_ADMIN_USERNAME)
-              EnterPassword(PASS_WORD, RECRUITMENT_ADMIN_PASSWORD)
-              username = RECRUITMENT_ADMIN_USERNAME
-            end
-          
-          when "Leave Admin"
-            begin
-              EnterUsername(USER_NAME, LEAVE_COMPANY_ADMIN_USER)
-              EnterPassword(PASS_WORD, LEAVE_COMPANY_ADMIN_PASS)
-              username = LEAVE_COMPANY_ADMIN_USER
-            end
-          
-          when "Company Manager"
-            begin
-              EnterUsername(USER_NAME, COMPANY_MANAGER_USER)
-              EnterPassword(PASS_WORD, COMPANY_MANAGER_PASS)
-              username = COMPANY_MANAGER_USER
-            end
-          
-          when "Company Employee"
-            begin
-              EnterUsername(USER_NAME, COMPANY_EMPLOYEE_1_USER)
-              EnterPassword(PASS_WORD, COMPANY_EMPLOYEE_1_PASS)
-              username = COMPANY_EMPLOYEE_1_USER
-            end
-          
-          when "Specific Automation User"
-            begin
-              EnterUsername(USER_NAME, DOC_USERNAME)
-              EnterPassword(PASS_WORD, DOC_PASSWORD)
-              username = DOC_USERNAME
-            end
-          
-          when "Specific Automation User Manager"
-            begin
-              EnterUsername(USER_NAME, DOC_MANAGER_NAME)
-              EnterPassword(PASS_WORD, DOC_MANAGER_PASSWORD)
-              username = DOC_MANAGER_NAME
-            end
+  when "In"
+    startWebDriver
+    GoToSite()
 
-          when "Automation Company Admin"
-            begin
-              EnterUsername(USER_NAME, AUTO_COMP_ADMIN_NAME)
-              EnterPassword(PASS_WORD, AUTO_COMP_ADMIN_PASSWORD)
-              username = AUTO_COMP_ADMIN_NAME
-            end
+    begin
+      case login_name
 
+      when "ELMO Setup Admin"
+        begin
+          GoToThePage(ADMIN_SETUP_LANDING_PAGE)
+          EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
+          EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
+
+          loginToSystem(LOGIN_BUTTON)
+
+          GoToThePage(ADMIN_SETUP_LANDING_PAGE)
+          EnterUsername(USER_NAME, ELMO_SETUP_ADMIN_USERNAME)
+          EnterPassword(PASS_WORD, ELMO_SETUP_ADMIN_PASSWORD)
+          loginToSystem(LOGIN_BUTTON)
         end
-        
-        #getting the userid based on the username and saving for later
-        @user_id = $daos.get_userid(username)
-        if !@user_id.nil?
-          puts COLOR_BLUE + "Id: '#{@user_id[:id]}', Username: #{@user_id[:username]}, is_elmo: '#{@user_id[:is_elmo]}', is_notified: '#{@user_id[:is_notified]}', confirmed: '#{@user_id[:confirmed]}', is_deleted: '#{@user_id[:is_deleted]}'"
-        
-        else
-          puts COLOR_YELLOW + "Unable to retrieve User ID. Please check the database manually".upcase
-          skip_this_scenario
+
+      when "ELMO Super Admin"
+        begin
+          EnterUsername(USER_NAME, ELMO_SUPER_USERNAME)
+          EnterPassword(PASS_WORD, ELMO_SUPER_PASSWORD)
+          username = ELMO_SUPER_USERNAME
         end
-        LogInAndWaitForTheDashboard(LOGIN_BUTTON, ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
+
+      when "ELMO Admin"
+        begin
+          EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
+          EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
+          username = ELMO_ADMIN_USERNAME
+        end
+
+      when "Company Admin"
+        begin
+          EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
+          EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
+          username = COMP_ADMIN_USERNAME
+        end
+
+      when "Contract Admin"
+        begin
+          EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
+          EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
+          username = COMP_ADMIN_USERNAME
+        end
+
+      when "Learning Admin"
+        begin
+          EnterUsername(USER_NAME, LEARNING_ADMIN_USERNAME)
+          EnterPassword(PASS_WORD, LEARNING_ADMIN_PASSWORD)
+          username = LEARNING_ADMIN_USERNAME
+        end
+
+      when "Recruitment Admin"
+        begin
+          EnterUsername(USER_NAME, RECRUITMENT_ADMIN_USERNAME)
+          EnterPassword(PASS_WORD, RECRUITMENT_ADMIN_PASSWORD)
+          username = RECRUITMENT_ADMIN_USERNAME
+        end
+
+      when "Leave Admin"
+        begin
+          EnterUsername(USER_NAME, LEAVE_COMPANY_ADMIN_USER)
+          EnterPassword(PASS_WORD, LEAVE_COMPANY_ADMIN_PASS)
+          username = LEAVE_COMPANY_ADMIN_USER
+        end
+
+      when "Company Manager"
+        begin
+          EnterUsername(USER_NAME, COMPANY_MANAGER_USER)
+          EnterPassword(PASS_WORD, COMPANY_MANAGER_PASS)
+          username = COMPANY_MANAGER_USER
+        end
+
+      when "Company Employee"
+        begin
+          EnterUsername(USER_NAME, COMPANY_EMPLOYEE_1_USER)
+          EnterPassword(PASS_WORD, COMPANY_EMPLOYEE_1_PASS)
+          username = COMPANY_EMPLOYEE_1_USER
+        end
+
+      when "Specific Automation User"
+        begin
+          EnterUsername(USER_NAME, DOC_USERNAME)
+          EnterPassword(PASS_WORD, DOC_PASSWORD)
+          username = DOC_USERNAME
+        end
+
+      when "Specific Automation User Manager"
+        begin
+          EnterUsername(USER_NAME, DOC_MANAGER_NAME)
+          EnterPassword(PASS_WORD, DOC_MANAGER_PASSWORD)
+          username = DOC_MANAGER_NAME
+        end
+
+      when "Automation Company Admin"
+        begin
+          EnterUsername(USER_NAME, AUTO_COMP_ADMIN_NAME)
+          EnterPassword(PASS_WORD, AUTO_COMP_ADMIN_PASSWORD)
+          username = AUTO_COMP_ADMIN_NAME
+        end
+
       end
-    
-    when "Out"
-      begin
-        LogOutFromTheDashboard(USER_PROFILE_MENU_ICON_ID, LOGOUT_BUTTON_ID)
+
+      #getting the userid based on the username and saving for later
+      @user_id = $daos.get_userid(username)
+      if !@user_id.nil?
+        puts COLOR_BLUE + "Id: '#{@user_id[:id]}', Username: #{@user_id[:username]}, is_elmo: '#{@user_id[:is_elmo]}', is_notified: '#{@user_id[:is_notified]}', confirmed: '#{@user_id[:confirmed]}', is_deleted: '#{@user_id[:is_deleted]}'"
+
+      else
+        puts COLOR_YELLOW + "Unable to retrieve User ID. Please check the database manually".upcase
+        skip_this_scenario
       end
+      LogInAndWaitForTheDashboard(LOGIN_BUTTON, ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
+    end
+
+  when "Out"
+    begin
+      LogOutFromTheDashboard(USER_PROFILE_MENU_ICON_ID, LOGOUT_BUTTON_ID)
+    end
   end
 end
 
@@ -247,7 +247,7 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
         puts COLOR_YELLOW + "User #{user_list_result} already exists in the database. Creating next user".upcase
         $user_found = 1
         next
-      
+
       else
         $user_found = 0
         begin
@@ -258,20 +258,20 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
                   And   I Select "Role" Classic Dropdown As "Employee"
                   }
           case $add_user_type    #Case used to click on different buttons since Users click on 'Add New User' and Onboarding users click on 'New Onboarding User' button
-            when "EMP"
-              Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless loop >= total
-              Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_NEW_USER_BTN)) unless loop >= total
-  
-            when "OB"
-              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_USER_NAV_LINK)) unless loop >= total
-              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_ADD_NEW_USER_BTN)) unless loop >= total
+          when "EMP"
+            Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless loop >= total
+            Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_NEW_USER_BTN)) unless loop >= total
+
+          when "OB"
+            Sleep_Until(WaitForAnElementByXpathAndTouch(OB_USER_NAV_LINK)) unless loop >= total
+            Sleep_Until(WaitForAnElementByXpathAndTouch(OB_ADD_NEW_USER_BTN)) unless loop >= total
           end
         end
       end
-      
+
     end
   end
-  
+
   puts COLOR_YELLOW + "All users to be created are already existing. Scenario has been skipped".upcase if $user_found == 1
   skip_this_scenario if $user_found == 1 #Skip the rest of the scenario since it's no longer valid
 end
