@@ -90,7 +90,8 @@ end
 
 
 def GoToEnrolledUserPage()
-  enrol_user_url = $site_url.chomp('/dashboard')
+  Sleep_Until($driver.navigate.to($site_url))
+  enrol_user_url = $driver.current_url.chomp('/dashboard')
   $driver.navigate.to("#{enrol_user_url}/admin/course/#{$random_course_id}/enrolments")
 end
 

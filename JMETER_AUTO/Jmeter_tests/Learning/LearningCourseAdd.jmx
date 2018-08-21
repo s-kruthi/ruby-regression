@@ -73,17 +73,17 @@
           <collectionProp name="Arguments.arguments">
             <elementProp name="server" elementType="Argument">
               <stringProp name="Argument.name">server</stringProp>
-              <stringProp name="Argument.value">elmosandpit1.elmotalent.com.au</stringProp>
+              <stringProp name="Argument.value">tmsfull.dev.elmodev.com</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="username" elementType="Argument">
               <stringProp name="Argument.name">username</stringProp>
-              <stringProp name="Argument.value">admin</stringProp>
+              <stringProp name="Argument.value">admin.shanku</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="password" elementType="Argument">
               <stringProp name="Argument.name">password</stringProp>
-              <stringProp name="Argument.value">admin1234567</stringProp>
+              <stringProp name="Argument.value">Tester1!</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="course_name" elementType="Argument">
@@ -103,7 +103,7 @@
             </elementProp>
             <elementProp name="enrolled_user_id" elementType="Argument">
               <stringProp name="Argument.name">enrolled_user_id</stringProp>
-              <stringProp name="Argument.value">357</stringProp>
+              <stringProp name="Argument.value">100</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
           </collectionProp>
@@ -253,7 +253,7 @@
             <stringProp name="RegexExtractor.regex">class=&quot;form-control&quot; value=&quot;(.*?)&quot;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default"></stringProp>
-            <stringProp name="RegexExtractor.match_number">3</stringProp>
+            <stringProp name="RegexExtractor.match_number">2</stringProp>
           </RegexExtractor>
           <hashTree/>
         </hashTree>
@@ -351,6 +351,13 @@
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">elmo_learningbundle_course[restricts][0][retrainOpen]</stringProp>
               </elementProp>
+              <elementProp name="elmo_learningbundle_course[save]" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">elmo_learningbundle_course[save]</stringProp>
+              </elementProp>
               <elementProp name="elmo_learningbundle_course[settingsShowSectionDescription]" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">0</stringProp>
@@ -371,13 +378,6 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">elmo_learningbundle_course[summary]</stringProp>
-              </elementProp>
-              <elementProp name="elmo_learningbundle_course[units]" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">0.00</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">elmo_learningbundle_course[units]</stringProp>
               </elementProp>
               <elementProp name="elmo_learningbundle_course[visible]" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
@@ -583,6 +583,13 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">review</stringProp>
+              </elementProp>
+              <elementProp name="elmo_learningbundle_course[save]" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">elmo_learningbundle_course[save]</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>

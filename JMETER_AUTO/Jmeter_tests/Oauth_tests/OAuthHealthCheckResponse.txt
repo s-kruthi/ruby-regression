@@ -1,0 +1,15 @@
+2018/06/25 10:17:13	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1
+2018/06/25 10:17:13	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1
+2018/06/25 10:17:13	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1
+2018/06/25 10:17:12	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1
+2018/06/25 10:17:13	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1
+2018/06/25 10:19:18	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
+2018/06/25 10:19:19	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
+2018/06/25 10:19:18	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
+2018/06/25 10:19:19	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
+2018/06/25 10:19:18	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
+2018/06/29 09:06:54	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
+2018/06/29 09:06:54	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
+2018/06/29 09:06:54	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
+2018/06/29 09:06:54	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
+2018/06/29 09:06:53	oauth get user info(with auth token)	401	https://faraz1.elmodev.com/oauth2-server/auth/get-resource-owner-details	1	1	Shankus-MacBook-Pro.local
