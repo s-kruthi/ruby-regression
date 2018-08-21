@@ -1,3 +1,5 @@
+#Main dashboard elements
+
 MAIN_DASHBOARD = "//a[@href='/au/dashboard/home']"
 ADHOC_DASHBOARD = "//a[@href='/sp/dashboard/adhocs']"
 PAY_CYCLE_CLASS_NAME ="dx-dropdowneditor-icon"
