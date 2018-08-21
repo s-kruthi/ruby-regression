@@ -33,10 +33,12 @@ MY_DOCUMENT_PAGE = 'https://tmsfull.dev.elmodev.com/documents'
 DOCUMENT_ADMIN_PAGE = 'https://tmsfull.dev.elmodev.com/admin/'
 DOC_SEC_PROF_USER = 'autsecprousr'
 DOC_SEC_PROF_PASS = 'Tester1!'
-DOC_USERNAME = 'X1242341'
+DOC_USERNAME = 'admin.shanku'
 DOC_PASSWORD = 'Tester1!'
-DOC_MANAGER_NAME = 'X1201531'
+DOC_MANAGER_NAME = 'shanku.manager'
 DOC_MANAGER_PASSWORD = 'Tester1!'
+AUTO_COMP_ADMIN_NAME = 'auto.comp.admin'
+AUTO_COMP_ADMIN_PASSWORD = 'Tester1!'
 
 ####### employee profile details page ########
 EMPLOYEE_PROFILE_PAGE = "https://staging4.dev.elmodev.com/controlpanel/user-profile/619/payment"

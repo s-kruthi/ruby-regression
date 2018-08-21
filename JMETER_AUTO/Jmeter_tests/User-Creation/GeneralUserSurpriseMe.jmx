@@ -76,6 +76,71 @@
               <stringProp name="Argument.value">${__P(server)}</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
+            <elementProp name="firstname" elementType="Argument">
+              <stringProp name="Argument.name">firstname</stringProp>
+              <stringProp name="Argument.value">${__V(testfancy${__RandomString(7,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-$!#0123456789,)})}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="lastname" elementType="Argument">
+              <stringProp name="Argument.name">lastname</stringProp>
+              <stringProp name="Argument.value">zoomba</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="username" elementType="Argument">
+              <stringProp name="Argument.name">username</stringProp>
+              <stringProp name="Argument.value">${__V(testfancy${__RandomString(8,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,)}zoomba)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="userRole" elementType="Argument">
+              <stringProp name="Argument.name">userRole</stringProp>
+              <stringProp name="Argument.value">${__P(role)} </stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="identifier_manager" elementType="Argument">
+              <stringProp name="Argument.name">identifier_manager</stringProp>
+              <stringProp name="Argument.value">${__P(identifier_manager)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="start_date" elementType="Argument">
+              <stringProp name="Argument.name">start_date</stringProp>
+              <stringProp name="Argument.value">3/2/2017</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Use thes Variables for debugging " enabled="false">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="firstname" elementType="Argument">
+              <stringProp name="Argument.name">firstname</stringProp>
+              <stringProp name="Argument.value">${__V(testfancy${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,)})}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="lastname" elementType="Argument">
+              <stringProp name="Argument.name">lastname</stringProp>
+              <stringProp name="Argument.value">zoomba</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="username" elementType="Argument">
+              <stringProp name="Argument.name">username</stringProp>
+              <stringProp name="Argument.value">${__V(testfancy${__RandomString(6,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,)}zoomba)}</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="identifier_manager" elementType="Argument">
+              <stringProp name="Argument.name">identifier_manager</stringProp>
+              <stringProp name="Argument.value"></stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="userRole" elementType="Argument">
+              <stringProp name="Argument.name">userRole</stringProp>
+              <stringProp name="Argument.value">6</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="SERVER" elementType="Argument">
+              <stringProp name="Argument.name">SERVER</stringProp>
+              <stringProp name="Argument.value">tmsfull.elmodev.com</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
           </collectionProp>
         </Arguments>
         <hashTree/>
@@ -177,18 +242,6 @@
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
         </HTTPSamplerProxy>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
-            <stringProp name="filename">/Users/shankumahanty/Desktop/JMETER_AUTO/Jmeter_tests/GeneralUserAdd.csv</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="variableNames">start_date</stringProp>
-            <stringProp name="delimiter">,</stringProp>
-            <boolProp name="quotedData">false</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="shareMode">shareMode.all</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-          </CSVDataSet>
-          <hashTree/>
           <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
             <stringProp name="RegexExtractor.useHeaders">false</stringProp>
             <stringProp name="RegexExtractor.refname">token_user</stringProp>
@@ -198,66 +251,6 @@
             <stringProp name="RegexExtractor.match_number">0</stringProp>
             <stringProp name="Sample.scope">all</stringProp>
           </RegexExtractor>
-          <hashTree/>
-          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="firstname" elementType="Argument">
-                <stringProp name="Argument.name">firstname</stringProp>
-                <stringProp name="Argument.value">${__V(testfancy${__RandomString(7,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-$!#0123456789,)})}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="lastname" elementType="Argument">
-                <stringProp name="Argument.name">lastname</stringProp>
-                <stringProp name="Argument.value">zoomba</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="username" elementType="Argument">
-                <stringProp name="Argument.name">username</stringProp>
-                <stringProp name="Argument.value">${__V(testfancy${__RandomString(8,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,)}zoomba)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="userRole" elementType="Argument">
-                <stringProp name="Argument.name">userRole</stringProp>
-                <stringProp name="Argument.value">${__P(role)} </stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="identifier_manager" elementType="Argument">
-                <stringProp name="Argument.name">identifier_manager</stringProp>
-                <stringProp name="Argument.value">${__P(identifier_manager)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </Arguments>
-          <hashTree/>
-          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Use thes Variables for debugging " enabled="false">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="firstname" elementType="Argument">
-                <stringProp name="Argument.name">firstname</stringProp>
-                <stringProp name="Argument.value">${__V(testfancy${__RandomString(5,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,)})}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="lastname" elementType="Argument">
-                <stringProp name="Argument.name">lastname</stringProp>
-                <stringProp name="Argument.value">zoomba</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="username" elementType="Argument">
-                <stringProp name="Argument.name">username</stringProp>
-                <stringProp name="Argument.value">${__V(testfancy${__RandomString(6,ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,)}zoomba)}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="identifier_manager" elementType="Argument">
-                <stringProp name="Argument.name">identifier_manager</stringProp>
-                <stringProp name="Argument.value">659</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="userRole" elementType="Argument">
-                <stringProp name="Argument.name">userRole</stringProp>
-                <stringProp name="Argument.value">3</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </Arguments>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="save the new user" enabled="true">

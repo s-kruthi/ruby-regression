@@ -97,6 +97,14 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
           EnterPassword(PASS_WORD, DOC_MANAGER_PASSWORD)
           username = DOC_MANAGER_NAME
         end
+
+      when "Automation Company Admin"
+        begin
+          EnterUsername(USER_NAME, AUTO_COMP_ADMIN_NAME)
+          EnterPassword(PASS_WORD, AUTO_COMP_ADMIN_PASSWORD)
+          username = AUTO_COMP_ADMIN_NAME
+        end
+
       end
 
       #getting the userid based on the username and saving for later

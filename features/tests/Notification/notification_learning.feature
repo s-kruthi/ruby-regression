@@ -4,14 +4,14 @@
 #@learningTestRailTags
 Feature:
   As a user I want to test combinations of Learning Course Activity notifications to test if they were triggered successfully
-  @smoke_learning9 @generate_data @wip
+   @generate_data
   Scenario: generate test data For learning
-    Given I Want To Generate Learning Notification data On Any Staging
+    Given I Want To Create A User Data For Learning
 
 
   @smoke_learning9 @course_assignments  @learning_high_risk @NotificationsLearning @C12706
   Scenario: [Learning]User Enrols For A Particular Course Which triggers Notification to Both The User And His Manager(auto approval)
-    Given I Have Logged In as a Learning Admin
+    Given I Have Logged In as a Automation Company Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
     When  I Search For A Specific Course Named course_section_automation_QuizActivity_shanku
@@ -23,7 +23,7 @@ Feature:
   Scenario: [Learning]User Enrols For A Particular Course Which triggers Notification to Both The User And His Manager(approval required)
     Given I Have Logged In as a Specific Automation User
     And   I Go To The Menu Learning Section
-    And   I Have Enrolled For An Assigned quiz Course course_section_automation_QuizActivity_shanku(Approval)
+    And   I Have Enrolled For An Assigned quiz Course Notification_QuizActivity_(Approval_Required)
     Then  The Approver Should Be Instantly Notified About The New Enrolment Request
     When  I Have Logged In as a Specific Automation User Manager
     And   I Go To The Menu Learning Section
@@ -33,7 +33,7 @@ Feature:
 
   @smoke_learning9 @course_assignments_via_rules @learning_high_risk @NotificationsLearning @C1010
   Scenario: [Learning] Verify that user who is assigned a course via assignment rule receives "New Enrolment" notification
-    Given I Have Logged In as a Learning Admin
+    Given I Have Logged In as a Automation Company Admin
     And   I go to Admin Settings
     And   I Go To Assignment Rules under General section
     And   I Search For A Specific Assignment Rule Named notification_course_assignment
@@ -54,7 +54,7 @@ Feature:
 
   @smoke_learning9 @course_bulk_enrolment_notification  @learning_high_risk @C1640
   Scenario: [Learning] Bulk Enrol Users Into A Particular Course
-    Given I Have Logged In as a Learning Admin
+    Given I Have Logged In as a Automation Company Admin
     And   I go to Admin Settings
     And   I Go To Courses under Learning section
     And   I Create A Random Course For Automation

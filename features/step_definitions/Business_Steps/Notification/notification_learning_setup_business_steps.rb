@@ -1,5 +1,5 @@
 
-Given(/^I Want To Generate Learning Notification data On Any Staging$/i) do
+Given(/^I Want To Create A User Data For (.*)$/i) do |module_name|
   startWebDriver()
   if ENV['url'] == nil
     ENV['url'] = 'tmsfull'
@@ -7,7 +7,7 @@ Given(/^I Want To Generate Learning Notification data On Any Staging$/i) do
     puts "server provided = " + ENV["url"]
   end
   puts $create_against =  "#{ENV['url']}.dev.elmodev.com"
-  puts "Data Creation in process...".colorize(:light_yellow)
+  puts "Data Creation in process for #{module_name} module".colorize(:light_yellow)
   GenerateLearningDataUsingJmeterRubyService()
 end
 

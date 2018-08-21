@@ -25,6 +25,9 @@
 *.sqlite
 .byebug_history
 
+# ignore all logs
+*.log
+
 # OS generated files #
 ######################
 .DS_Store
@@ -38,8 +41,8 @@ Thumbs.db
 # GEM related exceptions
 Gemfile.lock
 
-# Folders
-features/screenshots/chrome/screenshot/*
-features/screenshots/firefox/screenshot/*
-features/screenshots/safari/screenshot/*
-features/screenshots/headless/screenshot/*
+#Screenshot Folders
+/features/screenshots/chrome/screenshot*.*
+/features/screenshots/firefox/screenshot*.*
+/features/screenshots/headless/screenshot*.*
+/features/screenshots/safari/screenshot*.*

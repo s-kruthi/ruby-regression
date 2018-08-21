@@ -359,6 +359,7 @@ end
 
 
 And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
+  #binding.pry
   GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
   SearchTheAssignedCourse(course_name)
   Sleep_Until(VerifyAnElementExistByCSS("span[title=\"#{course_name}\"]", course_name))
@@ -366,7 +367,7 @@ And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
   sleep(2)
   WaitForAnElementByIdAndInputValue(CRS_RQST_ID, CRS_RQST_TXT)
   WaitForAnElementByIdAndTouch(CRS_REQUEST_SBMT)
-  ReturnMultipleUserDetails(TMSFULL_DATABASE,'X1242341',course_name)
+  ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,course_name)
   puts $data_hash['first_name:']
   puts $data_hash['course_id:']
 end
@@ -390,7 +391,7 @@ end
 
 
 And(/^I Re Enrol The Candidate For The Activity$/) do
-  ReturnMultipleUserDetails(TMSFULL_DATABASE,'X1242341','course_section_automation_QuizActivity_shanku')
+  ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,'course_section_automation_QuizActivity_shanku')
   puts $data_hash['first_name:']
   puts $data_hash['course_id:']
   GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
@@ -735,7 +736,10 @@ end
 
 And(/^I Create A Random Course For Automation$/i) do
   #do DB query and pass the username to find userid and pass on to the next step
-  Sleep_Until(CreateACourseThroughServices(LEARNING_ADMIN_USERNAME,LEARNING_ADMIN_PASSWORD,'3472'))
+  Sleep_Until(ReturnDetailsOfAParticularUser(TMSFULL_DATABASE,DOC_USERNAME))
+  puts $data_hash['first_name:']
+  puts $data_hash['user_id:']
+  Sleep_Until(CreateACourseThroughServices(AUTO_COMP_ADMIN_NAME,AUTO_COMP_ADMIN_PASSWORD,"#{$data_hash['user_id:']}"))
   Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
   puts $data_hash['first_name:']
   puts $data_hash['course_id:']
@@ -744,10 +748,10 @@ end
 
 And(/^I Create A Random Course For Automation With (.*) Activity$/i) do |activity_name|
   #do DB query and pass the username to find userid and pass on to the next step
-   Sleep_Until(CreateACourseWithActivityThroughServices(LEARNING_ADMIN_USERNAME,LEARNING_ADMIN_PASSWORD,"3472",activity_name))
-  # Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,"#{$randomly_created_course}"))
-  # puts $data_hash['first_name:']
-  # puts $data_hash['course_id:']
+  Sleep_Until(ReturnDetailsOfAParticularUser(TMSFULL_DATABASE,DOC_USERNAME))
+  puts $data_hash['first_name:']
+  puts $data_hash['user_id:']
+  Sleep_Until(CreateACourseWithActivityThroughServices(AUTO_COMP_ADMIN_NAME,AUTO_COMP_ADMIN_PASSWORD,"#{$data_hash['user_id:']}",activity_name))
 end
 
 And(/^I Go To The Enrolled User Section For That Course (.*)$/i) do |course_name|
