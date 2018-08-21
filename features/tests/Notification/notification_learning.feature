@@ -6,7 +6,7 @@ Feature:
   As a user I want to test combinations of Learning Course Activity notifications to test if they were triggered successfully
    @generate_data
   Scenario: generate test data For learning
-    Given I Want To Generate Learning Notification data On Any Staging
+    Given I Want To Create A User Data For Learning
 
 
   @smoke_learning9 @course_assignments  @learning_high_risk @NotificationsLearning @C12706
