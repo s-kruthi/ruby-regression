@@ -233,6 +233,7 @@ NOTIFICATION_PREVIEW_DESCRIPTION_XPATH = '//tr[contains(@id, "templateRow")]/*[1
 F2F_SESSION_NOTIFICATION_TITLE_ID = 'templateNotification_title'
 F2F_SESSION_NOTIFICATION_DESCRIPTION_ID = 'templateNotification_description'
 FACE_TO_FACE_NOTIFICATION_SELECT2_ID = 'select2-chosen-1'
+FACE_TO_FACE_NOTIFICATION_EMAIL_SUBJECT_ID = 'templateNotification_channels_0_subject'
 FACE_TO_FACE_NOTIFICATION_TOGGLE_BUTTON_XPATH = '//tr[contains(@id, "templateRow")][1]//button[contains(@class, "dropdown-toggle")]'
 FACE_TO_FACE_NOTIFICATION_TOGGLE_DELETE_XPATH = '//tr[contains(@id, "templateRow")][1]//ul[@role="menu"]//a[contains(text()," Delete")]'
 FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID = 'select2-chosen-2'

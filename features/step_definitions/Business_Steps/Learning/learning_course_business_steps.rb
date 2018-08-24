@@ -599,8 +599,8 @@ Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With N
     ClickOnASubTab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
     ClickAddNotificationButton()
     SelectSingleFromSelect2InputDropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
-    SelectSingleFromSelect2InputDropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
     Sleep_Until(WaitForAnElementByIdAndTouch(AddNotificationNextButtonId))
+    WaitForAnElementByIdAndInputValue(FACE_TO_FACE_NOTIFICATION_EMAIL_SUBJECT_ID, 'Face to Face Notification')
     Sleep_Until(SaveNotificationTemplate())
   when 'Edit'
     WaitForAnElementByCSSAndTouch(F2FNotificationEditButtonCSS)
@@ -789,7 +789,7 @@ Then(/^I Should Be Able To Create A Session With Status ([\w\s]+) In The Face-to
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
-Then(/^I should be able to manual signup ([\w\s]+)$/i) do |first_last_name|
+Then(/^I should be able to manual signup (.*)$/i) do |first_last_name|
   ManualSignupFaceToFaceSession(first_last_name, 0)
 end
 
