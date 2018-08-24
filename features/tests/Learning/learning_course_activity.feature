@@ -327,7 +327,7 @@
       Given A Face To Face Session With Status Over Is Created For A Course
       And   I Go To The Page Which Has The List Of Current Editing Item
       When  I Click On "Attendance" Button
-      Then  I Should Be Able To Manual Signup Company Admin Omar
+      Then  I Should Be Able To Manual Signup ELMO Compàny Admin
       Then  I Should Be Able To Mark Attendance "Fully Attended" With Grade 90 And Mark As Attendance Complete
       And   I Should Be Able To Mark Attendance "Partially Attended" With Grade 90 And Mark As Attendance Complete
       And   I Should Be Able To Mark Attendance As No Show With Grade 90
