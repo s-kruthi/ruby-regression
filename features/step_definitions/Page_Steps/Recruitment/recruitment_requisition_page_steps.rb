@@ -214,7 +214,7 @@ def SelectRequisitionStatus(requisition_status)
     when 7, "Resubmitted"
       requisition_status = 6
   end
-  SelectFromSelect2Input(REQUISITION_STATUS_INDEX_ID, 0, REQUISITION_STATUS_RESULT_ID, requisition_status)
+  SelectFromSelect2Dropdown(REQUISITION_STATUS_INDEX_ID, 0, REQUISITION_STATUS_RESULT_ID, requisition_status)
 end
 
 

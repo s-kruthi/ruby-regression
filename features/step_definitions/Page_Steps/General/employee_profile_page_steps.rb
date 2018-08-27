@@ -53,7 +53,7 @@ def SetNoteVisibility(visibility_value)
       Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_VISIBILITY_CLEAR_ID))
       i = i + 1
     end
-    Sleep_Until(SelectFromDropDown('//select[@id="NoteForm_acl_key"]', "#{visibility_value}"))
+    Sleep_Until(SelectFromDropdown('//select[@id="NoteForm_acl_key"]', "#{visibility_value}"))
   end
 end
 

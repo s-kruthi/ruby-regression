@@ -15,7 +15,7 @@ NEW_USER_DETAILS_MAP = {
 }
 
 
-MANAGER_SELECT_INPUT_VALUE = "manager1.omar1"
+MANAGER_SELECT_INPUT_VALUE = "manager1.scriptonce1"
 
 ADD_USER_SAVE_SUCCESS_VALUE = "User details have been updated!"
 

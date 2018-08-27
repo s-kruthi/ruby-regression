@@ -9,7 +9,7 @@ Feature: As A Learning Admin I Would Like To Manage Assignment Rules For Users
     And   I Go To Assignment Rules under General section
     When  I Click On "New Rule" Button
     And   I Enter Assignment Rules Details
-    And   I Enter Assignment Rules Condition For Manager As manager1.omar1
+    And   I Enter Assignment Rules Condition For Manager As manager1.scriptonce1
     And   I Enter Assignment Rules Required Course Name As Competition and Consumer
     And   I Enter Assignment Rules Recommended Course Name As Sexual Harassment
     Then  I Should Be Able To Save an Assignment Rule successfully

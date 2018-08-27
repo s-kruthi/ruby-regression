@@ -60,5 +60,5 @@ end
 
 
 def ConfigureLockCourseWithEnrolments(dropdown_id_xpath, dropdown_value)
-  SelectFromDropDown(dropdown_id_xpath, dropdown_value)
+  SelectFromDropdown(dropdown_id_xpath, dropdown_value)
 end

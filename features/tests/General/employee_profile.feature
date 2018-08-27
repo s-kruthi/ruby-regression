@@ -33,8 +33,8 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
   Scenario: [General]View Employee Profile to Verify Sub Tabs
     Given I Have Logged In as a Company Manager
     And   I Go To The Menu My Team Section
-    And   I Search An Employee named test1.omar1
-    Then  I Should Be Able To View The Employee Profile for test1.omar1 and verify Email address test1.omar1@elmodev.com
+    And   I Search An Employee named auto1.test1
+    Then  I Should Be Able To View The Employee Profile for auto1.test1 and verify Email address auto1.test1@elmodev.com
 #    And   I Should Be Able To Click Activity Sub-Tab
     And   I Should Be Able To Click Resume Sub-Tab
     And   I Should Be Able To Click My Career Sub-Tab

@@ -4584,7 +4584,7 @@ $(function(){
 
                         &lt;td&gt;ELMO&lt;/td&gt;
             &lt;td&gt;Company Admin&lt;/td&gt;
-            &lt;td&gt;company.omar@elmodev.com&lt;/td&gt;
+            &lt;td&gt;company.scriptonce@elmodev.com&lt;/td&gt;
                                         &lt;td class=&quot;actions text-right&quot;&gt;
                                                 
                                 
@@ -4632,7 +4632,7 @@ $(function(){
          &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;            
         
         &lt;li &gt;
-            &lt;a title=&quot;Log in as this user&quot; href=&quot;/switch-user?_login_as=company.omar&quot; &gt;                        &lt;span class=&quot;glyphicon glyphicon-keys&quot;&gt;&lt;/span&gt;&amp;nbsp;                Log in as this user
+            &lt;a title=&quot;Log in as this user&quot; href=&quot;/switch-user?_login_as=company.scriptonce&quot; &gt;                        &lt;span class=&quot;glyphicon glyphicon-keys&quot;&gt;&lt;/span&gt;&amp;nbsp;                Log in as this user
             &lt;/a&gt;
         &lt;/li&gt;
     &lt;/ul&gt;
@@ -5523,7 +5523,7 @@ $(function(){
          &lt;li role=&quot;separator&quot; class=&quot;divider&quot;&gt;&lt;/li&gt;            
         
         &lt;li &gt;
-            &lt;a title=&quot;Log in as this user&quot; href=&quot;/switch-user?_login_as=admin.omar&quot; &gt;                        &lt;span class=&quot;glyphicon glyphicon-keys&quot;&gt;&lt;/span&gt;&amp;nbsp;                Log in as this user
+            &lt;a title=&quot;Log in as this user&quot; href=&quot;/switch-user?_login_as=admin.scriptonce&quot; &gt;                        &lt;span class=&quot;glyphicon glyphicon-keys&quot;&gt;&lt;/span&gt;&amp;nbsp;                Log in as this user
             &lt;/a&gt;
         &lt;/li&gt;
     &lt;/ul&gt;

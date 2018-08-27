@@ -42,7 +42,7 @@ def SetUserfieldConfig(option_name, option_value)
   selected_value = GetSelectedValueFromDropdown("//select[@id='#{userfield_id}']")
 
   if selected_value != option_value
-    Sleep_Until(SelectFromDropDown("//select[@id='#{userfield_id}']", option_value))
+    Sleep_Until(SelectFromDropdown("//select[@id='#{userfield_id}']", option_value))
     @save_status = "Changed"
     puts COLOR_BLUE + "Field has been set with the specified value"
   else

@@ -49,7 +49,7 @@ def CreateUsers(loop, arg2, arg3, arg4, arg5)
     Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID)) if arg5
     Sleep_Until(SelectDate(SELECT_START_DATE_ID, NEW_USER_DETAILS_MAP[:start_date_value])) if SELECT_START_DATE.to_i == 1
     Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, NEW_USER_DETAILS_MAP[:expiry_date_value])) if SELECT_EXPIRY_DATE.to_i == 1
-    Sleep_Until(SelectFromDropDown(SELECT_ISELMO_DROPDOWN_ID, "Yes")) if arg2 == "ELMO"
+    Sleep_Until(SelectFromDropdown(SELECT_ISELMO_DROPDOWN_ID, "Yes")) if arg2 == "ELMO"
     Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
     Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
     Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
@@ -78,7 +78,7 @@ end
 
 
 def SelectTimeZone(select_timezone_id, select_timezone_value)
-  Sleep_Until(SelectFromDropDown(select_timezone_id, select_timezone_value))
+  Sleep_Until(SelectFromDropdown(select_timezone_id, select_timezone_value))
 end
 
 

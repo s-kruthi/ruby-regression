@@ -9,19 +9,19 @@ EMO_ADMIN_USERNAME = 'shanadmin'
 EMO_ADMIN_PASSWORD = 'Tester1!'
 SPECIFIC_USERNAME = 'X1222347'
 EMAIL_ADD = 'REBECCA.AARON@elmodemo.com'
-COMP_ADMIN_USERNAME = 'company.omar'
+COMP_ADMIN_USERNAME = 'company.scriptonce'
 COMP_ADMIN_PASSWORD = 'Admin1234567'
 
 
 ELMO_SUPER_USERNAME = 'admin'
 ELMO_SUPER_PASSWORD = 'admin1234567'
 
-ELMO_ADMIN_USERNAME = 'admin.omar'
+ELMO_ADMIN_USERNAME = 'admin.scriptonce'
 ELMO_ADMIN_PASSWORD = 'Admin1234567'
 ####### Recruitment user credentials ###########
 
 REQUISITION_LANDING_PAGE = 'https://staging5.dev.elmodev.com/controlpanel/recruitment/requisition/requisition'
-RECRUITMENT_ADMIN_USERNAME = 'company.omar'
+RECRUITMENT_ADMIN_USERNAME = 'company.scriptonce'
 RECRUITMENT_ADMIN_PASSWORD = 'Admin1234567'
 RECRUITMENT_LANDING_PAGE = 'https://staging4.dev.elmodev.com/dashboard'
 RECRUITMENT_CANDIDATE_LANDING_PAGE = 'https://staging4.dev.elmodev.com/admin/candidates/listAll'
@@ -84,17 +84,17 @@ EMPLOYEE_CONTRACTS_LANDING_PAGE = 'https://hung01.dev.elmodev.com/setup/login'
 #####Learning -F2F credentials ###############
 # ELMO_LEARNING_LANDING_PAGE = 'https://tmsfull.dev.elmodev.com/dashboard'
 ELMO_LEARNING_LANDING_PAGE = 'https://tony01.dev.elmodev.com/dashboard'
-LEARNING_ADMIN_USERNAME = 'company.omar'
+LEARNING_ADMIN_USERNAME = 'company.scriptonce'
 LEARNING_ADMIN_PASSWORD = 'Admin1234567'
 
 ####### User credentials ###########
 MANAGER_USERNAME = 'X1201531'
 MANAGER_PASSWORD = 'Tester1!'
 
-COMPANY_MANAGER_USER = "manager1.omar1"
+COMPANY_MANAGER_USER = "manager1.scriptonce1"
 COMPANY_MANAGER_PASS = "Admin1234567"
 
-COMPANY_EMPLOYEE_1_USER = "test1.omar1"
+COMPANY_EMPLOYEE_1_USER = "auto1.test1"
 COMPANY_EMPLOYEE_1_PASS = "Admin1234567"
 
 ####### Payroll user credentials ############
@@ -104,19 +104,3 @@ PAYROLL_PROD_ADMIN_PWD = "Elmo@tiff2112"
 ####### Payroll user credentials ############
 PAYROLL_STAG_ADMIN_USER = "swathi.volety@elmolearning.com.au"
 PAYROLL_STAG_ADMIN_PWD = "ea7682"
-
-##########Generic Variables for Colored message####################
-# TODO: Review pending removal
-# COLOR_GREEN = "\e[0m[ \e[32mPASSED\e[0m ] "
-# COLOR_RED = "\e[0m[ \e[31mFAILED\e[0m ] "
-# COLOR_YELLOW = "\e[0m[ \e[33mWARN\e[0m ] "
-# COLOR_BLUE = "\e[0m[ \e[34mINFO\e[0m ] "
-# COLOR_CYAN = "\e[0m[ \e[36mINFO\e[0m ] "
-# COLOR_MAGENTA = "\e[0m[ \e[35mINFO\e[0m ] "
-
-# COLOR_GREEN = "[PASSED] ".colorize(:green)
-# COLOR_RED = "[FAILED] ".colorize(:red)
-# COLOR_YELLOW = "[WARN] ".colorize(:yellow)
-# COLOR_BLUE = "[INFO] ".colorize(:blue)
-# COLOR_CYAN = "[INFO] ".colorize(:cyan)
-# COLOR_MAGENTA = "[INFO] ".colorize(:magenta)

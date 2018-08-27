@@ -16,7 +16,7 @@ end
 
 
 def EnterSubDomainName(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
-  SelectFromSelect2Input(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+  SelectFromSelect2Dropdown(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
   sleep(1)
 end
 
@@ -54,7 +54,7 @@ end
 
 
 def EnterCurrencyValue(currency_option_id, currency_option_value)
-  SelectFromDropDown(currency_option_id, currency_option_value)
+  SelectFromDropdown(currency_option_id, currency_option_value)
   sleep(1)
 end
 
@@ -70,9 +70,9 @@ end
 
 
 def EnterProductsSelectionValue(product_option_id, product_option_value_1, product_option_value_2, product_option_value_3)
-  SelectFromDropDown(product_option_id, product_option_value_1)
-  SelectFromDropDown(product_option_id, product_option_value_2)
-  SelectFromDropDown(product_option_id, product_option_value_3)
+  SelectFromDropdown(product_option_id, product_option_value_1)
+  SelectFromDropdown(product_option_id, product_option_value_2)
+  SelectFromDropdown(product_option_id, product_option_value_3)
 end
 
 
@@ -92,7 +92,7 @@ end
 
 
 def EnterIsCreditCardClientValue(is_cc_client_id, is_cc_client_value)
-  SelectFromDropDown(is_cc_client_id, is_cc_client_value)
+  SelectFromDropdown(is_cc_client_id, is_cc_client_value)
   sleep(1)
 
 end
