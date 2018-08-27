@@ -53,7 +53,7 @@ And(/^I Select CPD "(Category|Plan)" Named "([^"]*)"$/) do |arg1, arg2|
       cpd_category_name_result = $daos.get_visible_cpd_category_by_name(arg2)
       if !cpd_category_name_result.nil?
         puts COLOR_BLUE + "Using CPD Plan '#{cpd_category_name_result[:name]}' with ID #{cpd_category_name_result[:id]}"
-        SelectFromDropDown(CPD_PLAN_CATEGORY_DROPDOWN_ID, "#{cpd_category_name_result[:name]}")
+        SelectFromDropdown(CPD_PLAN_CATEGORY_DROPDOWN_ID, "#{cpd_category_name_result[:name]}")
       
       else
         puts COLOR_YELLOW + "CPD Category not found. Please check the database manually".upcase
@@ -64,7 +64,7 @@ And(/^I Select CPD "(Category|Plan)" Named "([^"]*)"$/) do |arg1, arg2|
       cpd_plan_name_result = $daos.get_visible_cpd_plan_by_name(arg2)
       if !cpd_plan_name_result.nil?
         puts COLOR_BLUE + "Using CPD Plan '#{cpd_plan_name_result[:name]}' with ID #{cpd_plan_name_result[:id]}"
-        SelectFromDropDown(CPD_PLAN_CATEGORY_DROPDOWN_ID, "#{cpd_plan_name_result[:name]}")
+        SelectFromDropdown(CPD_PLAN_CATEGORY_DROPDOWN_ID, "#{cpd_plan_name_result[:name]}")
   
       else
         puts COLOR_YELLOW + "CPD Plan not found. Please check the database manually".upcase

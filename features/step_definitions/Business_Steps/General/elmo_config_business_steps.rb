@@ -3,7 +3,7 @@ When(/^I Change "([^"]*)" Elmo Configuration To "([^"]*)"/i) do |elmo_configurat
   ELMO_CONFIG_SETTINGS.each do |key, value|
     if key.to_s.eql? elmo_configuration_name
       if $driver.find_element(:xpath, "#{value}").displayed?
-        Sleep_Until(SelectFromDropDown("#{value}", elmo_configuration_value))
+        Sleep_Until(SelectFromDropdown("#{value}", elmo_configuration_value))
         $configuration_found = 1
       end
     end
@@ -74,5 +74,5 @@ end
 
 
 Then(/^I Can Choose Legal Entity As The Branding Selection Field$/i) do
-  Sleep_Until(SelectFromDropDown("//select[@id='elmoConfiguration_brandingSelectionField']", 'Legal Entity'))
+  Sleep_Until(SelectFromDropdown("//select[@id='elmoConfiguration_brandingSelectionField']", 'Legal Entity'))
 end

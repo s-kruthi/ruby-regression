@@ -29,7 +29,7 @@ EMP_CONTRACT_SEARCH_RESULT = "//td[contains(.,'This is a TEST. Please do not del
 #
 # CONTACT_FIRSTNAME_VALUE = "Test"
 # CONTACT_LASTNAME_VALUE = "Team"
-# CONTACT_EMAIL_VALUE = "test1.omar1@elmodev.com"
+# CONTACT_EMAIL_VALUE = "auto1.test1@elmodev.com"
 # CONTACT_ADDRESS_VALUE = "This is a test. Please DO NOT modify"
 #
 # CONTRACT_SEARCH_VALUE = "Staging4"

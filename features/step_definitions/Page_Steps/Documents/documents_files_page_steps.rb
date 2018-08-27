@@ -11,7 +11,7 @@ end
 #Sleep_Until(enterFileCategory(FILE_CATEGORY_ID, FILE_CATEGORY_VALUE))
 
 def enterFileCategory(dropdown_id, dropdown_value)
-  SelectSingleFromSelect2InputDropdown(dropdown_id, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS)
+  SingleSelectFromSelect2Dropdown(dropdown_id, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS)
 end
 
 
@@ -27,7 +27,7 @@ end
 
 
 def selectFileAvailability(availability_id, availability_value)
-  SelectFromDropDown(availability_id, availability_value)
+  SelectFromDropdown(availability_id, availability_value)
 end
 
 

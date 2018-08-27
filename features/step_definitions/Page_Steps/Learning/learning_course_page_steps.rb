@@ -12,7 +12,7 @@ end
 
 
 def MakeItVisibleToAllUsers()
-  SelectFromDropDown(COURSE_AVAILABILITY_ID, 'Available to all users')
+  SelectFromDropdown(COURSE_AVAILABILITY_ID, 'Available to all users')
 end
 
 
@@ -56,49 +56,49 @@ end
 
 
 def EnterCourseRetrain(course_retrain_input_id, course_retrain_input_value)
-  SelectFromDropDown(course_retrain_input_id, course_retrain_input_value)
+  SelectFromDropdown(course_retrain_input_id, course_retrain_input_value)
 end
 
 
 def EnterCourseRetrainOpen(course_retrain_open_input_id, course_retrain_open_input_value)
-  SelectFromDropDown(course_retrain_open_input_id, course_retrain_open_input_value)
+  SelectFromDropdown(course_retrain_open_input_id, course_retrain_open_input_value)
 end
 
 
 def EnterCourseComplete(course_complete_input_id, course_complete_input_value)
-  SelectFromDropDown(course_complete_input_id, course_complete_input_value)
+  SelectFromDropdown(course_complete_input_id, course_complete_input_value)
 end
 
 
 def EnterCourseAvailability(course_availability_input_id, course_availability_input_value)
-  SelectFromDropDown(course_availability_input_id, course_availability_input_value)
+  SelectFromDropdown(course_availability_input_id, course_availability_input_value)
 end
 
 
 def EnterCourseCertificateTemplate(course_certificate_template_id, course_certificate_template_value)
-  SelectFromDropDown(course_certificate_template_id, course_certificate_template_value)
+  SelectFromDropdown(course_certificate_template_id, course_certificate_template_value)
 end
 
 
 def EnterCourseSelfEnrol(course_self_enroll_input_id, course_self_enroll_input_value)
-  SelectFromDropDown(course_self_enroll_input_id, course_self_enroll_input_value)
+  SelectFromDropdown(course_self_enroll_input_id, course_self_enroll_input_value)
 end
 
 
 def EnterCourseSectionDescription(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
-  SelectFromDropDown(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
+  SelectFromDropdown(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
 end
 
 
 #TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
 #New page steps using select2-inputs
 # def EnterCourseSectionDescription(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
-#   SelectSingleFromSelect2InputDropdown(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
+#   SingleSelectFromSelect2Dropdown(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
 # end
 #
 #
 # def EnterCourseCompleteUnit(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
-#     SelectSingleFromSelect2InputDropdown(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
 # end
 #
 #
@@ -108,7 +108,7 @@ end
 #
 #
 # def EnterCourseRetrainUnit(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
-#     SelectSingleFromSelect2InputDropdown(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
 # end
 #
 #
@@ -119,7 +119,7 @@ end
 #
 #
 # def EnterCourseRetrainOpenUnit(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
-#     SelectSingleFromSelect2InputDropdown(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
 # end
 #
 #
@@ -130,17 +130,17 @@ end
 #
 #
 # def EnterCourseAvailability(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
-#     SelectSingleFromSelect2InputDropdown(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
 # end
 #
 #
 # def EnterCourseCertificateTemplate(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
-#     SelectSingleFromSelect2InputDropdown(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
 # end
 #
 #
 # def EnterCourseSelfEnrol(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
-#     SelectSingleFromSelect2InputDropdown(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
 # end
 
 
@@ -292,7 +292,7 @@ def CreateAnActivity(course_activity_name)
       begin
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY2_TITLE_VALUE))
         Sleep_Until(UseCkeditorToEnterText(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
-        Sleep_Until(SelectSingleFromSelect2InputDropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
+        Sleep_Until(SingleSelectFromSelect2Dropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
         ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
@@ -411,7 +411,7 @@ def EditACourseActivity(course_activity_type)
         Sleep_Until(WaitForAnElementByXpathAndClearValue(COURSE_ACTIVITY_TITLE_ID))
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY2_TITLE_VALUE + " edit"))
         Sleep_Until(UseCkeditorToEnterText(SURVEY2_ACTIVITY_EDITOR_TXT, 0))
-        Sleep_Until(SelectSingleFromSelect2InputDropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
+        Sleep_Until(SingleSelectFromSelect2Dropdown(SURVEY2_CONTENT_DROPDOWN_INPUT_ID, SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS, SURVEY2_CONTACT_DROPDOWN_INPUT_VALUE, SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS))
         ClickOnSaveButton(SAVE_BTN_ID)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
@@ -866,7 +866,7 @@ def AddSessionDetails(session_status = '')
   end
 
   # select availability
-  SelectFromDropDown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_INPUT_VALUE)
+  SelectFromDropdown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_INPUT_VALUE)
 end
 
 
@@ -1041,7 +1041,7 @@ def EditSessionDetails()
   end
 
   # select availability
-  SelectFromDropDown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_EDIT_VALUE)
+  SelectFromDropdown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_EDIT_VALUE)
 end
 
 def EditF2FNotificationTitleDescription
@@ -1109,7 +1109,7 @@ end
 
 def FilterEnrolments(filter_by, filter_value)
   if filter_by == "Enrolment Method"
-    Sleep_Until(SelectFromDropDown(ENROLMENT_METHOD_FILTER_ID, "#{filter_value}"))
+    Sleep_Until(SelectFromDropdown(ENROLMENT_METHOD_FILTER_ID, "#{filter_value}"))
     #TODO Query needs to be corrected
     # case filter_value
     #   when "Manual"
@@ -1125,7 +1125,7 @@ def FilterEnrolments(filter_by, filter_value)
     # results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
     # if results_count.eql?count then puts COLOR_BLUE + "Results match" end
   elsif filter_by == "Status"
-    Sleep_Until(SelectFromDropDown(ENROLMENT_STATUS_FILTER_ID, "#{filter_value}"))
+    Sleep_Until(SelectFromDropdown(ENROLMENT_STATUS_FILTER_ID, "#{filter_value}"))
     #TODO Query needs to be corrected
     # case filter_value
     #   when "Not Yet Started"
@@ -1205,7 +1205,7 @@ end
 
 def MarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
   WaitForToggleDropDownItemAndTouch(ACTION_TOGGLE_XPATH, MARK_ATTENDANCE_BUTTON_XPATH)
-  SelectFromDropDown(ATTENDANCE_DROPDOWN_XPATH, attendance)
+  SelectFromDropdown(ATTENDANCE_DROPDOWN_XPATH, attendance)
   WaitForAnElementByXpathAndClearValue(GRADE_FIELD_XPATH)
   WaitForAnElementByXpathAndInputValue(GRADE_FIELD_XPATH, grade)
   ToggleTo(toggle_yes_no)
@@ -1216,7 +1216,7 @@ end
 
 def MarkFaceToFaceSessionAttendanceNoShow(no_show, grade)
   WaitForToggleDropDownItemAndTouch(ACTION_TOGGLE_XPATH, MARK_ATTENDANCE_BUTTON_XPATH)
-  SelectFromDropDown(ATTENDANCE_DROPDOWN_XPATH, no_show)
+  SelectFromDropdown(ATTENDANCE_DROPDOWN_XPATH, no_show)
   WaitForAnElementByXpathAndClearValue(GRADE_FIELD_XPATH)
   WaitForAnElementByXpathAndInputValue(GRADE_FIELD_XPATH, grade)
   VerifyElementDisableCSS(TOGGLE_BUTTON_CSS)
@@ -1241,7 +1241,7 @@ end
 def BulkMarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
   SelectUsersPage(5)
   WaitForToggleDropDownItemAndTouch(BULK_ACTIONS_TOGGLE_XPATH, BULK_MARK_ATTENDANCE_BUTTON_XPATH)
-  SelectFromDropDown(ATTENDANCE_DROPDOWN_XPATH, attendance)
+  SelectFromDropdown(ATTENDANCE_DROPDOWN_XPATH, attendance)
   WaitForAnElementByXpathAndClearValue(GRADE_FIELD_XPATH)
   WaitForAnElementByXpathAndInputValue(GRADE_FIELD_XPATH, grade)
   ToggleTo(toggle_yes_no)

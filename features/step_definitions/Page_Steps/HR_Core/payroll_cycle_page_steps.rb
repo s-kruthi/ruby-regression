@@ -57,7 +57,7 @@ def EnterPayrollCycleDetails(title = PAYROLL_CYCLE_TITLE + Time.now.strftime("%Y
   $driver.find_element(:id, PAYROLL_CYCLE_STARTDATE_ID).clear()
   WaitForAnElementByIdAndInputValue(PAYROLL_CYCLE_STARTDATE_ID, (DateTime.now.strftime "%d/%m/%Y"))
 
-  SelectFromDropDown(PAYROLL_CYCLE_TYPE_ID, 'Monthly')
+  SelectFromDropdown(PAYROLL_CYCLE_TYPE_ID, 'Monthly')
 
   WaitForAnElementByIdAndTouch(PAYROLL_CYCLE_SAVE_ID)
 end

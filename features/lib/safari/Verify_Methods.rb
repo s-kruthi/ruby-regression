@@ -1,10 +1,10 @@
 module Safari
   module Verify_Methods
-
+    
     class VerificationException < Exception;
     end
-
-
+    
+    
     def VerifyAnElementExistById(id, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -18,14 +18,14 @@ module Safari
         else
           fail
         end
-
+      
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
-
-
+    
+    
     def VerifyAnElementExistByClass(class_name, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -39,14 +39,14 @@ module Safari
         else
           fail
         end
-
+      
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
-
-
+    
+    
     def VerifyAnElementExistByXPath(xpath, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -60,14 +60,14 @@ module Safari
         else
           fail
         end
-
+      
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
-
-
+    
+    
     def VerifyAnElementExistByName(name, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -81,14 +81,14 @@ module Safari
         else
           fail
         end
-
+      
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
-
-
+    
+    
     def VerifyAnElementExistByCSS(css, text)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -102,14 +102,14 @@ module Safari
         else
           fail
         end
-
+      
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
-
-
+    
+    
     ####Verify element and Select2 elements ability to change Martinma123
     def VerifyElementAbilityByCSS(element_css, setting_ability)
       begin
@@ -128,13 +128,14 @@ module Safari
         else
           fail
         end
-
+      
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
-
+    
+    
     def VerifySelect2Ability(select2_element_css, setting_ability)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -152,15 +153,15 @@ module Safari
         else
           fail
         end
-
+      
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Element ability is not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
         puts e.message
       end
     end
-
-
-    def VerifyAnElementNotExist(*section_identifier ,type, identifier)
+    
+    
+    def VerifyAnElementNotExist(*section_identifier, type, identifier)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 5)
         if section_identifier.empty?
@@ -177,14 +178,15 @@ module Safari
         else
           fail
         end
-
+      
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Element is displayed. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
-
-
+    
+    
+    # verify the column with title and value such as col1: "Name" col2: "Elmo"
     def VerifyColumnTextsMatchExpectedCSS(column_css, column_hash_title_value)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -198,7 +200,7 @@ module Safari
             unmatched_item.push(column)
           end
         end
-
+        
         if unmatched_item.size.zero?
           puts COLOR_GREEN + 'Page elements matched'
         else
@@ -211,47 +213,68 @@ module Safari
         puts e.message
       end
     end
-
-
+    
+    
     def VerifyAnElementExists(type, identifier)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
         elements = wait.until {
           $driver.find_elements(:"#{type}", "#{identifier}")
         }
-
+        
         if elements.empty?
           fail
         else
           puts COLOR_GREEN + "MATCHED: Element present"
         end
-
+      
       rescue Exception => e
         raise VerificationException.new(COLOR_RED + "Element not present. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
         puts e.message
       end
     end
-
-
+    
+    
+    def VerifyAnElementExistsByIndex(type, identifier, index)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        element = wait.until {
+          $driver.find_elements(:"#{type}", "#{identifier}")[index]
+        }
+        
+        if element.displayed?
+          puts COLOR_GREEN + "MATCHED: Element present"
+        else
+          fail
+        end
+      
+      rescue Exception => e
+        raise VerificationException.new(COLOR_RED + "Element not present. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+        puts e.message
+      
+      end
+    end
+    
+    
     def VerifyResetSearch(reset_button_css, expected_url)
       WaitForAnElementByCSSAndTouch(reset_button_css)
       wait = Selenium::WebDriver::Wait.new(:timeout => 10)
       url = wait.until {
         $driver.current_url
       }
-
+      
       if url.eql? expected_url
         puts COLOR_GREEN + "MATCHED: Reset search return to the list"
       else
         fail
       end
-
+    
     rescue Exception => e
       raise VerificationException.new(COLOR_RED + "Reset search not return to the list. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
       puts e.message
     end
-
-
+    
+    
     def VerifySearchResultElmoTable(expected_amount, search_value)
 #   verify the row amount in the table body and search is included in each row
       wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -263,13 +286,13 @@ module Safari
       else
         fail
       end
-
+    
     rescue Exception => e
       raise VerificationException.new(COLOR_RED + "Search result has incorrect item or amount. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
       puts e.message
     end
-
-
+    
+    
     def VerifyTableSortedByColumn(table_body_css, column_number, sort, datatype = '')
       column_values = GetValuesByColumnFromTableByCSS(table_body_css, column_number)
       if column_values.eql? SortArray(column_values, sort, datatype)
@@ -277,13 +300,13 @@ module Safari
       else
         fail
       end
-
+    
     rescue Exception => e
       raise VerificationException.new(COLOR_RED + "Table is not sorted by column#{4} #{sort}")
       puts e.message
     end
-
-
+    
+    
     def VerifyTableByRowColumnCSS(table_body_css = '#elmo-table tbody', row, expected_table_column_value_hash)
       wait = Selenium::WebDriver::Wait.new(:timeout => 10)
       table_body = wait.until {
@@ -293,6 +316,8 @@ module Safari
       expected_table_column_value_hash.each do |col_num, expected_value|
         column_css = table_body_css + " tr:nth-child(#{row})" + " td:nth-child(#{col_num})"
         page_column_value = $driver.find_element(:css, column_css).text
+        puts column_css
+        puts page_column_value
         unless page_column_value.eql?(expected_value)
           unmatch_result += page_column_value + ' unmatch ' + expected_value
         end
@@ -306,8 +331,8 @@ module Safari
       raise VerificationException.new(COLOR_RED + unmatch_result)
       puts e.message
     end
-
-
+    
+    
     def VerifyElementDisableCSS(css)
       wait = Selenium::WebDriver::Wait.new(:timeout => 10)
       element = wait.until {
@@ -323,8 +348,8 @@ module Safari
       raise VerificationException.new(COLOR_RED + "Web Element is not disabled")
       puts e.message
     end
-
-
+    
+    
     def VerifyNumberChange(before, after, expect_increase_decrease)
       result = ''
       if expect_increase_decrease.downcase.include?('increase')
@@ -341,32 +366,68 @@ module Safari
       raise VerificationException.new(COLOR_RED + "Number is not #{expect_increase_decrease}")
       puts e.message
     end
-
-
+    
+    
     def VerifyCheckboxSelectedByCSS(css, selected_number, verify_message)
       wait = Selenium::WebDriver::Wait.new(:timeout => 10)
       elements = wait.until {
         $driver.find_elements(:css, css)
       }
-
+      
       result = []
       for i in 1..selected_number
         element_index = i - 1
         # When the attribute "disabled = disabled" it will return 'true' as string
         unless elements[element_index].attribute('disabled').eql? 'true'
-          result << "#{i} not #{verify_message}"
+          result << "#{i} #{verify_message}"
         end
       end
-
+      
       if result.size == 0
         puts COLOR_GREEN + "MATCHED: Successful #{verify_message}"
       else
         fail
       end
-
+    
     rescue Exception => e
       raise VerificationException.new(COLOR_RED + result.join(','))
       puts e.message
     end
+    
+    
+    def VerifyAnElementExistByCSSAndIndex(css,text,index_value)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_elements(:css, "#{css}")[index_value]
+          element if element.displayed?
+        }
+        select_item.text.include? "#{text}"
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+    
+    
+    def VerifyAnElementExistByClassAndIndex(class_name,text,index_value)
+      begin
+        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
+        select_item = wait.until {
+          element = $driver.find_elements(:class, "#{class_name}")[index_value]
+          element if element.displayed?
+        }
+        expected_text = select_item.text.include? "#{text}"
+        if expected_text == true
+          puts "#{text} matched"
+        else
+          raise VerificationException.new("Verification ERROR...Text is not matching(check screenshot under features->Screenshots->#{ENV['CHANNEL']})")
+        end
+      rescue Exception => e
+        puts e.message
+        $driver.quit
+      end
+    end
+  
   end
 end

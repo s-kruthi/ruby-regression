@@ -277,7 +277,7 @@ And(/^I Select "(.*)" Select2 Dropdown As "(.*)"$/i) do |dropdown_name, dropdown
   case dropdown_name
   when "Employee Name"
     begin
-      Sleep_Until(SelectSingleFromSelect2InputDropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
+      Sleep_Until(SingleSelectFromSelect2Dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
     end
   end
 end
@@ -287,7 +287,7 @@ And(/^I Select "(.*)" Classic Dropdown As "(.*)"$/i) do |dropdown_name, dropdown
   begin
     CLASSIC_DROPDOWN_ELEMENT_ID_MAP.each do |key, value|
       if key.to_s.eql? dropdown_name
-        Sleep_Until(SelectFromDropDown("#{value}", dropdown_value))
+        Sleep_Until(SelectFromDropdown("#{value}", dropdown_value))
         Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
         @element_found = 1
       
@@ -598,8 +598,8 @@ Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With N
   when 'Create'
     ClickOnASubTab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
     ClickAddNotificationButton()
-    SelectSingleFromSelect2InputDropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
-    SelectSingleFromSelect2InputDropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
+    SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
+    SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
     Sleep_Until(WaitForAnElementByIdAndTouch(AddNotificationNextButtonId))
     Sleep_Until(SaveNotificationTemplate())
   when 'Edit'
