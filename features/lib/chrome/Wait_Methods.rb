@@ -138,96 +138,6 @@ module Chrome
     end
 
 
-    def WaitForDropdownByClassAndTouchTheIndex(class_name,index_value)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        select_item = wait.until {
-          element = $driver.find_elements(:class, "#{class_name}")[index_value]
-          element if element.displayed?
-        }
-        select_item.click
-      rescue Exception => e
-        puts e.message
-        $driver.quit
-      end
-    end
-
-
-    def WaitForAnElementByXpathAndTouchTheIndex(xpath,index_value)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        select_item = wait.until {
-          element = $driver.find_elements(:xpath, "#{xpath}")[index_value]
-          element if element.displayed?
-        }
-        select_item.click
-      rescue Exception => e
-        puts e.message
-        $driver.quit
-      end
-    end
-
-
-    def WaitForAnElementByIdAndTouchTheIndex(id,index_value)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        select_item = wait.until {
-          element = $driver.find_elements(:id, "#{id}")[index_value]
-          element if element.displayed?
-        }
-        select_item.click
-      rescue Exception => e
-        puts e.message
-        $driver.quit
-      end
-    end
-
-
-    def WaitForAnElementByPartialLinkTextAndTouchTheIndex(partial_link_text,index_value)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        select_item = wait.until {
-          element = $driver.find_elements(:partial_link_text, "#{partial_link_text}")[index_value]
-          element if element.displayed?
-        }
-        select_item.click
-      rescue Exception => e
-        puts e.message
-        $driver.quit
-      end
-    end
-
-
-    def WaitForAnElementByCssAndTouchTheIndex(css,index_value)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        select_item = wait.until {
-          element = $driver.find_elements(:css, "#{css}")[index_value]
-          element if element.displayed?
-        }
-        select_item.click
-      rescue Exception => e
-        puts e.message
-        $driver.quit
-      end
-    end
-
-
-    def WaitForAlertWindowAndTouchAcceptOrDismiss(accept_or_dismiss)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        alert_window = wait.until { $driver.switch_to.alert }
-      rescue Selenium::WebDriver::Error::NoAlertOpenError => e
-        puts e.message
-      end
-      if accept_or_dismiss.downcase === "accept"
-        alert_window.accept
-      elsif accept_or_dismiss.downcase === "dismiss"
-        alert_window.dismiss
-      end
-    end
-
-
     def WaitForSelectFileButtonAndUploadFile(file)
       begin
         wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -243,28 +153,9 @@ module Chrome
         puts e.message
       end
     end
-
-
-    def WaitForToggleDropDownItemAndTouch(toggle_button_xpath, drop_down_item_xpath)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        toggle_button = wait.until {
-          element = $driver.find_element(:xpath, toggle_button_xpath)
-          element if element.displayed?
-        }
-        Sleep_Until(toggle_button.click)
-        dropdown_item = wait.until {
-          element = $driver.find_element(:xpath, drop_down_item_xpath)
-          element if element.displayed?
-        }
-        Sleep_Until(dropdown_item.click)
-      rescue Exception => e
-        puts e.message
-      end
-    end
-
-
-    #Syntax:
+    
+    
+    # Syntax:
     # ClickElement("id", "username")
     # ClickElement("class", "select2-arrow", 1)
     def ClickElement(type, identifier, index = nil)
