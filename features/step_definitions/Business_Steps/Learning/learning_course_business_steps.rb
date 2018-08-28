@@ -284,6 +284,7 @@ And(/^I Select "(.*)" Select2 Dropdown As "(.*)"$/i) do |dropdown_name, dropdown
     begin
       Sleep_Until(SingleSelectFromSelect2Dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
     end
+    WaitForSelectFileButtonAndUploadFile
   end
 end
 
