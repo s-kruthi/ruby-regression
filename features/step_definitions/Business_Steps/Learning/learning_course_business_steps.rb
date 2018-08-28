@@ -275,10 +275,17 @@ end
 
 And(/^I Select "(.*)" Select2 Dropdown As "(.*)"$/i) do |dropdown_name, dropdown_value|
   case dropdown_name
+<<<<<<< HEAD
     when "Employee Name"
       begin
         Sleep_Until(SingleSelectFromSelect2Dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
       end
+=======
+  when "Employee Name"
+    begin
+      Sleep_Until(SingleSelectFromSelect2Dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
+    end
+>>>>>>> 98c50fbcc484e2ab97d2413ccaef4c810b5053aa
   end
 end
 
@@ -595,25 +602,26 @@ end
 
 Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With Name ([-\w\s]+)$/i) do |action, face_to_face_notification|
   case action
-    when 'Create'
-      ClickOnASubTab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
-      ClickAddNotificationButton()
-      SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
-      SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
-      Sleep_Until(WaitForAnElementByIdAndTouch(AddNotificationNextButtonId))
-      WaitForAnElementByIdAndInputValue(FACE_TO_FACE_NOTIFICATION_EMAIL_SUBJECT_ID, 'Face to Face Notification')
-      Sleep_Until(SaveNotificationTemplate())
-    when 'Edit'
-      WaitForAnElementByCSSAndTouch(F2FNotificationEditButtonCSS)
-      EditF2FNotificationTitleDescription()
-      Sleep_Until(SaveNotificationTemplate())
-      VerifyF2FNotificationTitleDescription()
-    when 'Delete'
-      WaitForToggleDropDownItemAndTouch(FACE_TO_FACE_NOTIFICATION_TOGGLE_BUTTON_XPATH, FACE_TO_FACE_NOTIFICATION_TOGGLE_DELETE_XPATH)
-      Sleep_Until(PressEnterConfirm())
-      VerifyAnElementExistByCSS(ModalDialogBodyTextCSS, 'Item has been deleted successfully')
-      PressEnterOK()
-      VerifyAnElementNotExist('#body', 'css', 'tr[id*=templateRow]')
+  when 'Create'
+    ClickOnASubTab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
+    ClickAddNotificationButton()
+    SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
+    SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
+    Sleep_Until(WaitForAnElementByIdAndTouch(AddNotificationNextButtonId))
+    WaitForAnElementByIdAndInputValue(FACE_TO_FACE_NOTIFICATION_EMAIL_SUBJECT_ID, 'Face to Face Notification')
+    Sleep_Until(SaveNotificationTemplate())
+  when 'Edit'
+    WaitForAnElementByCSSAndTouch(F2FNotificationEditButtonCSS)
+    EditF2FNotificationTitleDescription()
+    Sleep_Until(SaveNotificationTemplate())
+    VerifyF2FNotificationTitleDescription()
+  when 'Delete'
+    WaitForToggleDropDownItemAndTouch(FACE_TO_FACE_NOTIFICATION_TOGGLE_BUTTON_XPATH, FACE_TO_FACE_NOTIFICATION_TOGGLE_DELETE_XPATH)
+    Sleep_Until(PressEnterConfirm())
+    VerifyAnElementExistByCSS(ModalDialogBodyTextCSS, 'Item has been deleted successfully')
+    PressEnterOK()
+    VerifyAnElementNotExist('#body', 'css', 'tr[id*=templateRow]')
+>>>>>>> 98c50fbcc484e2ab97d2413ccaef4c810b5053aa
   end
 end
 
