@@ -275,17 +275,15 @@ end
 
 And(/^I Select "(.*)" Select2 Dropdown As "(.*)"$/i) do |dropdown_name, dropdown_value|
   case dropdown_name
-<<<<<<< HEAD
     when "Employee Name"
       begin
         Sleep_Until(SingleSelectFromSelect2Dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
       end
-=======
+
   when "Employee Name"
     begin
       Sleep_Until(SingleSelectFromSelect2Dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
     end
->>>>>>> 98c50fbcc484e2ab97d2413ccaef4c810b5053aa
   end
 end
 
@@ -621,7 +619,6 @@ Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With N
     VerifyAnElementExistByCSS(ModalDialogBodyTextCSS, 'Item has been deleted successfully')
     PressEnterOK()
     VerifyAnElementNotExist('#body', 'css', 'tr[id*=templateRow]')
->>>>>>> 98c50fbcc484e2ab97d2413ccaef4c810b5053aa
   end
 end
 
