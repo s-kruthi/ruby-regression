@@ -1,0 +1,42 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.o
+*.so
+.idea*
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+#Commented out *.jar file since it's removing an essential JMeter file which is required to run JMeter
+#*.jar
+*.rar
+*.tar
+
+# Logs and databases #
+######################
+*.sqlite
+.byebug_history
+
+# ignore all logs
+*.log
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# GEM related exceptions
+Gemfile.lock
