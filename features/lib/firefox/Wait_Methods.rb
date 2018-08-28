@@ -123,38 +123,6 @@ module Firefox
     end
     
     
-    def WaitForToggleButtonStateChangedByXpath(toggle_xpath, toggle_value)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        wait.until {
-          $driver.find_element(:xpath, toggle_xpath).text === toggle_value
-        }
-      
-      rescue Exception => e
-        fail
-        raise VerificationException.new(COLOR_RED + "Element not found. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
-        puts e.message
-      end
-    end
-    
-    
-    def WaitForSelectFileButtonAndUploadFile(file)
-      begin
-        wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-        upload_button = wait.until {
-          element = $driver.find_element(:css, 'input[id*=fileInput]')
-          element if element.displayed?
-        }
-        file_path = File.expand_path('../../..', File.dirname(__FILE__)) + "/test_files/#{file}"
-        upload_button.send_keys(file_path)
-          # VerifyAnElementNotExist('css', 'input[id*=fileInput]')
-          # VerifyAnElementNotExistByCSS(input[id*=fileInput])
-      rescue Exception => e
-        puts e.message
-      end
-    end
-    
-    
     # Syntax:
     # ClickElement("id", "username")
     # ClickElement("class", "select2-arrow", 1)
