@@ -14,7 +14,7 @@ And(/^I Add New Course Details$/i) do
   @course_cert_template_name = $daos.get_cert_temp_name_legacy
   if !@course_cert_template_name.nil?
     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, @course_cert_template_name) if COURSE_CERTIFICATE.to_i == 1
-
+  
   else
     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
     skip_this_scenario
@@ -126,25 +126,25 @@ end
 
 Then(/^I Should Be Able To (Edit|Copy|Delete) The Specific Course$/i) do |course_action|
   case course_action
-
-  when 'Edit'
-    begin
-      ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
-    end
-
-  when 'Copy'
-    begin
-      ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_COPY)
-      Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
-      VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_COPY_SUCCESSFUL_VALUE)
-    end
-
-  when 'Delete'
-    begin
-      ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
-      Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
-      VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
-    end
+    
+    when 'Edit'
+      begin
+        ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+      end
+    
+    when 'Copy'
+      begin
+        ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_COPY)
+        Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
+        VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_COPY_SUCCESSFUL_VALUE)
+      end
+    
+    when 'Delete'
+      begin
+        ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_DELETE)
+        Sleep_Until(CourseActionConfirm(COURSE_COPYDELETE_BTN_NAME_ID))
+        VerifySuccessAlertMessage(COURSE_DELETE_SUCCESSFUL_ID, COURSE_DELETE_SUCCESSFUL_VALUE)
+      end
   end
 end
 
@@ -152,10 +152,10 @@ end
 When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name_with_no_enrolments(course_search_name)
   if !course_list_result.nil?
-  puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
-  ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
-
+    puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
+    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result[:fullname], COURSE_SEARCH_BTN_ID)
+    ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
+  
   else
     puts COLOR_YELLOW + "Course not found. Please check the database manually".upcase
     skip_this_scenario
@@ -173,20 +173,20 @@ end
 Then(/^I Should Be Able To Add A (.*) Activity$/i) do |course_activity_name|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
-
+  
   case course_activity_name
-  when 'Acknowledgement'
-    CreateAnActivity(course_activity_name)
-  else
-    SelectAnActivity(course_activity_name)
-    CreateAnActivity(course_activity_name)
+    when 'Acknowledgement'
+      CreateAnActivity(course_activity_name)
+    else
+      SelectAnActivity(course_activity_name)
+      CreateAnActivity(course_activity_name)
   end
 end
 
 
 Then(/^I Should Be Able To (Edit|Delete) A (.*) Activity Named (.*)$/i) do |course_activity_action, course_activity_type, course_activity_title|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-
+  
   ModifyACourseActivity(course_activity_action, course_activity_title)
   EditACourseActivity(course_activity_type)
   # #get course id from url
@@ -215,35 +215,35 @@ end
 
 Then(/^I Should Be Able To (Create|Edit|Delete|Copy|Cancel) A Session In The Face-to-Face Activity$/i) do |modify_session_type|
   case modify_session_type
-  when 'Create'
-    ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
-    AddSessionDetails()
-    ClickOnSaveButton(SAVE_BTN_ID)
-    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
-
-  when 'Edit'
-    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
-    EditSessionDetails()
-    ClickOnSaveButton(SAVE_BTN_ID)
-    PressConfirm()
-    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
-
-  when 'Delete'
-    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
-    PressConfirm()
-    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
-
-  when 'Copy'
-    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_COPY)
-    PressEnterConfirm()
-    ClickOnSaveButton(SAVE_BTN_ID)
-    Sleep_Until(PressConfirm())
-    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
-
-  when 'Cancel'
-    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_CANCEL)
-    Sleep_Until(PressConfirm())
-    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
+    when 'Create'
+      ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
+      AddSessionDetails()
+      ClickOnSaveButton(SAVE_BTN_ID)
+      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+    
+    when 'Edit'
+      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
+      EditSessionDetails()
+      ClickOnSaveButton(SAVE_BTN_ID)
+      PressConfirm()
+      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+    
+    when 'Delete'
+      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
+      PressConfirm()
+      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
+    
+    when 'Copy'
+      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_COPY)
+      PressEnterConfirm()
+      ClickOnSaveButton(SAVE_BTN_ID)
+      Sleep_Until(PressConfirm())
+      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+    
+    when 'Cancel'
+      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_CANCEL)
+      Sleep_Until(PressConfirm())
+      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
   end
 end
 
@@ -275,10 +275,16 @@ end
 
 And(/^I Select "(.*)" Select2 Dropdown As "(.*)"$/i) do |dropdown_name, dropdown_value|
   case dropdown_name
+    when "Employee Name"
+      begin
+        Sleep_Until(SingleSelectFromSelect2Dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
+      end
+
   when "Employee Name"
     begin
-      Sleep_Until(SelectSingleFromSelect2InputDropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
+      Sleep_Until(SingleSelectFromSelect2Dropdown(EMPLOYEE_NAME_DROPDOWN_ID, SELECT2_DROPDOWN_ID, dropdown_value, SELECT2_DROPDOWN_RESULT_CLASS))
     end
+    WaitForSelectFileButtonAndUploadFile
   end
 end
 
@@ -287,7 +293,7 @@ And(/^I Select "(.*)" Classic Dropdown As "(.*)"$/i) do |dropdown_name, dropdown
   begin
     CLASSIC_DROPDOWN_ELEMENT_ID_MAP.each do |key, value|
       if key.to_s.eql? dropdown_name
-        Sleep_Until(SelectFromDropDown("#{value}", dropdown_value))
+        Sleep_Until(SelectFromDropdown("#{value}", dropdown_value))
         Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
         @element_found = 1
       
@@ -295,7 +301,7 @@ And(/^I Select "(.*)" Classic Dropdown As "(.*)"$/i) do |dropdown_name, dropdown
         @element_found = 0
       end
     end
-   
+    
     puts COLOR_YELLOW + "Please check CLASSIC_DROPDOWN_ELEMENT_ID_MAP table. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})".upcase if @element_found == 0
     skip_this_scenario if @element_found == 0
   end
@@ -598,7 +604,8 @@ Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With N
   when 'Create'
     ClickOnASubTab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
     ClickAddNotificationButton()
-    SelectSingleFromSelect2InputDropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
+    SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
+    SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
     Sleep_Until(WaitForAnElementByIdAndTouch(AddNotificationNextButtonId))
     WaitForAnElementByIdAndInputValue(FACE_TO_FACE_NOTIFICATION_EMAIL_SUBJECT_ID, 'Face to Face Notification')
     Sleep_Until(SaveNotificationTemplate())
@@ -635,7 +642,7 @@ And(/^I Edit The Enrolment (Start|Due) Date To Be "(.*)"$/i) do |date_type, date
   elsif date_value == "A Month From Today"
     date_value = (DateTime.now).next_month.strftime("%d/%m/%Y")
   end
-
+  
   if date_type == "Start"
     $start_date = date_value
     $driver.find_element(:id, ENROLMENT_START_DATE_ID).clear
@@ -724,10 +731,10 @@ And(/^I Select (\d+) ([\w\s]+) For Bulk Action$/i) do |selection_number, selecti
   i = 0
   while (i != selection_number)
     case selection_type
-    when "Retrain Discrepancies", "Retrain Discrepancy"
-      WaitForDropdownByClassAndTouchTheIndex(COURSE_DISCREPANCY_LISTINGS_ID, i)
-    when "Enrolments", "Enrolment"
-      WaitForDropdownByClassAndTouchTheIndex("add-user", i)
+      when "Retrain Discrepancies", "Retrain Discrepancy"
+        WaitForDropdownByClassAndTouchTheIndex(COURSE_DISCREPANCY_LISTINGS_ID, i)
+      when "Enrolments", "Enrolment"
+        WaitForDropdownByClassAndTouchTheIndex("add-user", i)
     end
     i = i + 1
   end

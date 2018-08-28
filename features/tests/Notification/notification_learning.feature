@@ -49,7 +49,7 @@ Feature:
     And   I Click On "Course Catalogue" Tab
     When  I Search For A Specific Course With Enrolments Named DO NOT DELETE
     And   I Click On "Enrol" Button
-    Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient company.omar
+    Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient company.scriptonce
 
 
   @smoke_learning9 @course_bulk_enrolment_notification  @learning_high_risk @C1640

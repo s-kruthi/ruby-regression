@@ -14,7 +14,7 @@ end
 
 
 def SelectEmployeeContractCategory(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
-  SelectFromSelect2Input(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
+  SelectFromSelect2Dropdown(pos_index_arrow, pos_index_arrow_id, pos_index_class, pos_index_class_id)
   sleep(1)
 end
 

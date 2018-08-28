@@ -5,7 +5,7 @@ end
 
 
 def SelectDropDown(linkpath, val)
-  Sleep_Until(SelectFromDropDown(linkpath,val))
+  Sleep_Until(SelectFromDropdown(linkpath,val))
 end
 
 

@@ -17,7 +17,7 @@ def ClickDoneBtn(image_submit_btn_id)
 end
 
 def SelectBadgeAvailability(select_availability_id, select_availability_value)
-  Sleep_Until(SelectFromDropDown(select_availability_id, select_availability_value))
+  Sleep_Until(SelectFromDropdown(select_availability_id, select_availability_value))
 end
 
 def ClickSaveBadge(badge_create_save_btn_id)

@@ -371,7 +371,7 @@
       When  I Can View The Face-to-Face Session Named Test Face-to-Face
       Then  I Should Be Able To "Sign Up" For That Session
       And   I Should Be Able To "Withdraw" For That Session
-      Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient test1.omar1
+      Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient auto1.test1
 
 
     @learning_low_risk @course_cpd_category_add @C1772
