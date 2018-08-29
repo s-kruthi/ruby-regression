@@ -310,6 +310,7 @@ end
 
 Then(/^I Should Be Able to Create a Filter$/i) do
   Sleep_Until(ClickOnSaveButton(FILTER_SUBMIT_BTN_ID))
+  puts COLOR_BLUE + "User Filter has been created for Employee " + @user[:name]
 end
 
 Then(/^I Should Be Able to Save a Filter$/i) do
