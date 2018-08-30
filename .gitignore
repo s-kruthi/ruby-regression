@@ -42,16 +42,16 @@ Thumbs.db
 Gemfile.lock
 
 #Screenshot Folders
-/features/screenshots/chrome/screenshot*.*
-/features/screenshots/firefox/screenshot*.*
-/features/screenshots/headless/screenshot*.*
-/features/screenshots/safari/screenshot*.*
+#/features/screenshots/chrome/screenshot*.*
+#/features/screenshots/firefox/screenshot*.*
+#/features/screenshots/headless/screenshot*.*
+#/features/screenshots/safari/screenshot*.*
 
 #Screenshot folders (ignore casing)
-#/features/[Ss]creenshots/chrome/[Ss]creenshot*.*
-#/features/[Ss]creenshots/firefox/[Ss]creenshot*.*
-#/features/[Ss]creenshots/headless/[Ss]creenshot*.*
-#/features/[Ss]creenshots/safari/[Ss]creenshot*.*
+/features/[Ss]creenshots/chrome/[Ss]creenshot*.*
+/features/[Ss]creenshots/firefox/[Ss]creenshot*.*
+/features/[Ss]creenshots/headless/[Ss]creenshot*.*
+/features/[Ss]creenshots/safari/[Ss]creenshot*.*
 
 #Folders ignored by the public repository
-#/features/lib/**
+/features/lib/**
