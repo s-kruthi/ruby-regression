@@ -1,4 +1,5 @@
-  def StartTheTunnel()
+$VERBOSE = nil
+def StartTheTunnel()
     %x(chmod 755 features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.sh) #change modify user permission to execute bash script
     puts "modified permissions"
     tunnel = %x(./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.sh) #starts ssh tunneling

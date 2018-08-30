@@ -6,7 +6,7 @@ Given(/^I Want To Create A User Data For (.*)$/i) do |module_name|
   else
     puts "server provided = " + ENV["url"]
   end
-  puts $create_against =  "#{ENV['url']}.dev.elmodev.com"
+  puts $create_against =  "#{ENV['url']}.elmodev.com"
   puts "Data Creation in process for #{module_name} module".colorize(:light_yellow)
   GenerateLearningDataUsingJmeterRubyService()
 end
