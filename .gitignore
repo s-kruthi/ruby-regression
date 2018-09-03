@@ -6,6 +6,7 @@
 *.o
 *.so
 .idea*/*
+features/.idea/*
 
 # Packages #
 ############
