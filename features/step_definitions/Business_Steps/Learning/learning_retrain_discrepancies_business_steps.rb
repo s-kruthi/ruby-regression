@@ -58,8 +58,11 @@ When(/^I Filter For An Employee With Discrepancies$/i) do
 
   if !@user.nil?
     #create filter for user
+    steps %{When  I Click On "Create Filter" Button}
+
+    puts COLOR_BLUE + "User Filter has been created for Employee " + @user[:name]
+
     steps %{
-    When  I Click On "Create Filter" Button
     And   I Select "Employee Name" Select2 Dropdown As "#{@user[:name]}"
     Then  I Should Be Able to Create a Filter
     }
@@ -68,4 +71,3 @@ When(/^I Filter For An Employee With Discrepancies$/i) do
     skip_this_scenario
   end
 end
-
