@@ -2,7 +2,7 @@ When(/^I Click On The New Course Button$/i) do
   ClickOnAButtonByXPath(CREATE_NEW_COURSE_BTN)
 end
 
-TODO: Redundant code after PMS-14710 has been released
+# TODO: Redundant code after PMS-14710 has been released
 And(/^I Add New Course Details$/i) do
   EnterCourseTitle(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
   EnterCourseCode(NEW_COURSE_CODE_ID, COURSE_CODE_VAL)
