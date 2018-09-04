@@ -2,53 +2,18 @@ When(/^I Click On The New Course Button$/i) do
   ClickOnAButtonByXPath(CREATE_NEW_COURSE_BTN)
 end
 
-# TODO: Redundant code after PMS-14710 has been released
-# And(/^I Add New Course Details$/i) do
-#   EnterCourseTitle(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
-#   EnterCourseCode(NEW_COURSE_CODE_ID, COURSE_CODE_VAL)
-#   EnterCourseDescription(NEW_COURSE_DESC_TEXT, 0)
-#   EnterCourseComplete(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
-#   EnterCourseRetrain(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
-#   EnterCourseRetrainOpen(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
-#   EnterCourseAvailability(COURSE_AVAILABILITY_INPUT_ID, COURSE_AVAILABILITY_INPUT_VALUE)
-#   @course_cert_template_name = $daos.get_cert_temp_name_legacy
-#   if !@course_cert_template_name.nil?
-#     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, @course_cert_template_name) if COURSE_CERTIFICATE.to_i == 1
-#
-#   else
-#     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
-#     skip_this_scenario
-#   end
-# # ##TODO: PMS-5534 - Using the new database for querying a certificate template title once this project is deployed
-# #   @certificate_template_name = $daos.get_cert_temp_name
-# #   if !@certificate_template_name.nil?
-# #     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, @certificate_template_name) if COURSE_CERTIFICATE.to_i == 1
-# #
-# #   else
-# #     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
-# #     skip_this_scenario
-# #   end
-#   EnterCourseSelfEnrol(COURSE_SELF_ENROLL_INPUT_ID, COURSE_SELF_ENROLL_INPUT_VALUE)
-#   EnterCourseSectionDescription(COURSE_SHOW_SEC_DESC_INPUT_ID, COURSE_SHOW_SEC_DESC_INPUT_VALUE)
-# end
-
-
-# TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
+TODO: Redundant code after PMS-14710 has been released
 And(/^I Add New Course Details$/i) do
-  @course_cert_template_name = $daos.get_cert_temp_name_legacy
   EnterCourseTitle(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
   EnterCourseCode(NEW_COURSE_CODE_ID, COURSE_CODE_VAL)
   EnterCourseDescription(NEW_COURSE_DESC_TEXT, 0)
-  EnterCourseSectionDescription(COURSE_SHOW_SEC_DESC_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_SHOW_SEC_DESC_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
-  EnterCourseCompleteUnit(COURSE_COMPLETE_UNIT_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_COMPLETE_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
-  EnterCourseCompleteValue(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
-  EnterCourseRetrainUnit(COURSE_RETRAIN_INPUT_UNIT_ID, SELECT2_DROPDOWN_ID, COURSE_RETRAIN_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_RETRAIN.to_i == 1
-  EnterCourseRetrainValue(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
-  EnterCourseRetrainOpenUnit(COURSE_RETRAIN_OPEN_INPUT_UNIT_ID, SELECT2_DROPDOWN_ID, COURSE_RETRAIN_OPEN_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_RETRAIN_OPEN.to_i == 1
-  EnterCourseRetrainOpenValue(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
-  EnterCourseAvailability(COURSE_AVAILABILITY_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_AVAILABILITY_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+  EnterCourseComplete(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
+  EnterCourseRetrain(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
+  EnterCourseRetrainOpen(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
+  EnterCourseAvailability(COURSE_AVAILABILITY_INPUT_ID, COURSE_AVAILABILITY_INPUT_VALUE)
+  @course_cert_template_name = $daos.get_cert_temp_name_legacy
   if !@course_cert_template_name.nil?
-    EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, @course_cert_template_name, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
+    EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, @course_cert_template_name) if COURSE_CERTIFICATE.to_i == 1
 
   else
     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
@@ -57,14 +22,49 @@ And(/^I Add New Course Details$/i) do
 # ##TODO: PMS-5534 - Using the new database for querying a certificate template title once this project is deployed
 #   @certificate_template_name = $daos.get_cert_temp_name
 #   if !@certificate_template_name.nil?
-#     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, @certificate_template_name, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
+#     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, @certificate_template_name) if COURSE_CERTIFICATE.to_i == 1
 #
 #   else
 #     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
 #     skip_this_scenario
 #   end
-  EnterCourseSelfEnrol(COURSE_SELF_ENROLL_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_SELF_ENROLL_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+  EnterCourseSelfEnrol(COURSE_SELF_ENROLL_INPUT_ID, COURSE_SELF_ENROLL_INPUT_VALUE)
+  EnterCourseSectionDescription(COURSE_SHOW_SEC_DESC_INPUT_ID, COURSE_SHOW_SEC_DESC_INPUT_VALUE)
 end
+
+
+# TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
+# And(/^I Add New Course Details$/i) do
+#   @course_cert_template_name = $daos.get_cert_temp_name_legacy
+#   EnterCourseTitle(NEW_COURSE_TITLE_ID, NEW_COURSE_TITLE_VALUE)
+#   EnterCourseCode(NEW_COURSE_CODE_ID, COURSE_CODE_VAL)
+#   EnterCourseDescription(NEW_COURSE_DESC_TEXT, 0)
+#   EnterCourseSectionDescription(COURSE_SHOW_SEC_DESC_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_SHOW_SEC_DESC_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+#   EnterCourseCompleteUnit(COURSE_COMPLETE_UNIT_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_COMPLETE_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+#   EnterCourseCompleteValue(COURSE_COMPLETE_INPUT_ID, COURSE_COMPLETE_INPUT_VALUE)
+#   EnterCourseRetrainUnit(COURSE_RETRAIN_INPUT_UNIT_ID, SELECT2_DROPDOWN_ID, COURSE_RETRAIN_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_RETRAIN.to_i == 1
+#   EnterCourseRetrainValue(COURSE_RETRAIN_INPUT_ID, COURSE_RETRAIN_INPUT_VALUE) if COURSE_RETRAIN.to_i == 1
+#   EnterCourseRetrainOpenUnit(COURSE_RETRAIN_OPEN_INPUT_UNIT_ID, SELECT2_DROPDOWN_ID, COURSE_RETRAIN_OPEN_INPUT_UNIT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_RETRAIN_OPEN.to_i == 1
+#   EnterCourseRetrainOpenValue(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
+#   EnterCourseAvailability(COURSE_AVAILABILITY_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_AVAILABILITY_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+#   if !@course_cert_template_name.nil?
+#     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, @course_cert_template_name, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
+#
+#   else
+#     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
+#     skip_this_scenario
+#   end
+# # ##TODO: PMS-5534 - Using the new database for querying a certificate template title once this project is deployed
+# #   @certificate_template_name = $daos.get_cert_temp_name
+# #   if !@certificate_template_name.nil?
+# #     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, @certificate_template_name, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
+# #
+# #   else
+# #     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
+# #     skip_this_scenario
+# #   end
+#   EnterCourseSelfEnrol(COURSE_SELF_ENROLL_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_SELF_ENROLL_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
+# end
 
 
 Then(/^I Should Be Able To Create A New Course$/i) do
