@@ -23,26 +23,28 @@ NEW_COURSE_CODE_ID = "//input[contains(@id,'shortname')]"
 
 
 # TODO: Redundant code after PMS-14710 has been released
-# COURSE_SHOW_SEC_DESC_INPUT_ID = "//select[contains(@id,'settingsShowSectionDescription')]"
-# COURSE_COMPLETE_INPUT_ID = "//select[contains(@id,'duration')]"
-# COURSE_RETRAIN_INPUT_ID = "//select[contains(@id,'retrain')]"
-# COURSE_RETRAIN_OPEN_INPUT_ID = "//select[contains(@id,'retrainOpen')]"
-# COURSE_AVAILABILITY_INPUT_ID = "//select[contains(@id,'visible')]"
-# COURSE_CERTIFICATE_TEMPLATE_ID = "//select[contains(@name,'course[cTemplate]')]"
-# COURSE_SELF_ENROLL_INPUT_ID = "//select[contains(@id,'allowSelfUnenrol')]"
+COURSE_SHOW_SEC_DESC_INPUT_ID = "//select[contains(@id,'settingsShowSectionDescription')]"
+COURSE_COMPLETE_INPUT_ID = "//select[contains(@id,'duration')]"
+COURSE_RETRAIN_INPUT_ID = "//select[contains(@id,'retrain')]"
+COURSE_RETRAIN_OPEN_INPUT_ID = "//select[contains(@id,'retrainOpen')]"
+COURSE_AVAILABILITY_INPUT_ID = "//select[contains(@id,'visible')]"
+COURSE_CERTIFICATE_TEMPLATE_ID = "//select[contains(@name,'course[cTemplate]')]"
+COURSE_SELF_ENROLL_INPUT_ID = "//select[contains(@id,'allowSelfUnenrol')]"
 
-COURSE_SHOW_SEC_DESC_INPUT_ID = "s2id_elmo_learningbundle_course_settingsShowSectionDescription"
-COURSE_COMPLETE_UNIT_INPUT_ID = "s2id_elmo_learningbundle_course_restricts_0_durationUnit"
-COURSE_COMPLETE_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_duration')]"
-COURSE_RETRAIN_INPUT_UNIT_ID = "s2id_elmo_learningbundle_course_restricts_0_retrainUnit"
-COURSE_RETRAIN_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_retrain')]"
-COURSE_RETRAIN_OPEN_INPUT_UNIT_ID = "s2id_elmo_learningbundle_course_restricts_0_retrainOpenUnit"
-COURSE_RETRAIN_OPEN_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_retrainOpen')]"
-COURSE_AVAILABILITY_INPUT_ID = "s2id_elmo_learningbundle_course_visible"
-COURSE_CERTIFICATE_TEMPLATE_ID = "s2id_elmo_learningbundle_course_cTemplate"
-COURSE_SELF_ENROLL_INPUT_ID = "s2id_elmo_learningbundle_course_allowSelfUnenrol"
+# TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
+# COURSE_SHOW_SEC_DESC_INPUT_ID = "s2id_elmo_learningbundle_course_settingsShowSectionDescription"
+# COURSE_COMPLETE_UNIT_INPUT_ID = "s2id_elmo_learningbundle_course_restricts_0_durationUnit"
+# COURSE_COMPLETE_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_duration')]"
+# COURSE_RETRAIN_INPUT_UNIT_ID = "s2id_elmo_learningbundle_course_restricts_0_retrainUnit"
+# COURSE_RETRAIN_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_retrain')]"
+# COURSE_RETRAIN_OPEN_INPUT_UNIT_ID = "s2id_elmo_learningbundle_course_restricts_0_retrainOpenUnit"
+# COURSE_RETRAIN_OPEN_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_retrainOpen')]"
+# COURSE_AVAILABILITY_INPUT_ID = "s2id_elmo_learningbundle_course_visible"
+# COURSE_CERTIFICATE_TEMPLATE_ID = "s2id_elmo_learningbundle_course_cTemplate"
+# COURSE_SELF_ENROLL_INPUT_ID = "s2id_elmo_learningbundle_course_allowSelfUnenrol"
+
+
 COURSE_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
-
 
 COURSE_LIST_SEARCH_BOX_ID = "//input[contains(@id,'searchText')]"
 COURSE_SEARCH_BTN_ID = "//button[contains(@type,'submit')]"

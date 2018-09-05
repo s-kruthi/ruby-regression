@@ -56,91 +56,92 @@ end
 
 
 # TODO: Redundant code after PMS-14710 has been released
-# def EnterCourseRetrain(course_retrain_input_id, course_retrain_input_value)
-#   SelectFromDropdown(course_retrain_input_id, course_retrain_input_value)
+def EnterCourseRetrain(course_retrain_input_id, course_retrain_input_value)
+  SelectFromDropdown(course_retrain_input_id, course_retrain_input_value)
+end
+
+
+def EnterCourseRetrainOpen(course_retrain_open_input_id, course_retrain_open_input_value)
+  SelectFromDropdown(course_retrain_open_input_id, course_retrain_open_input_value)
+end
+
+
+def EnterCourseComplete(course_complete_input_id, course_complete_input_value)
+  SelectFromDropdown(course_complete_input_id, course_complete_input_value)
+end
+
+
+def EnterCourseAvailability(course_availability_input_id, course_availability_input_value)
+  SelectFromDropdown(course_availability_input_id, course_availability_input_value)
+end
+
+
+def EnterCourseCertificateTemplate(course_certificate_template_id, course_certificate_template_value)
+  SelectFromDropdown(course_certificate_template_id, course_certificate_template_value)
+end
+
+
+def EnterCourseSelfEnrol(course_self_enroll_input_id, course_self_enroll_input_value)
+  SelectFromDropdown(course_self_enroll_input_id, course_self_enroll_input_value)
+end
+
+
+def EnterCourseSectionDescription(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
+  SelectFromDropdown(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
+end
+
+
+# TODO: PMS-14710 - Using case select for Learning Logic Gap project. This will be implemented once changes are deployed in production/tmsfull
+# def EnterCourseSectionDescription(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
+#   SingleSelectFromSelect2Dropdown(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
 # end
 #
 #
-# def EnterCourseRetrainOpen(course_retrain_open_input_id, course_retrain_open_input_value)
-#   SelectFromDropdown(course_retrain_open_input_id, course_retrain_open_input_value)
+# def EnterCourseCompleteUnit(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
 # end
 #
 #
-# def EnterCourseComplete(course_complete_input_id, course_complete_input_value)
-#   SelectFromDropdown(course_complete_input_id, course_complete_input_value)
+# def EnterCourseCompleteValue(course_complete_input_id, course_complete_input_value)
+#   WaitForAnElementByXpathAndInputValue(course_complete_input_id, course_complete_input_value)
 # end
 #
 #
-# def EnterCourseAvailability(course_availability_input_id, course_availability_input_value)
-#   SelectFromDropdown(course_availability_input_id, course_availability_input_value)
+# def EnterCourseRetrainUnit(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
 # end
 #
 #
-# def EnterCourseCertificateTemplate(course_certificate_template_id, course_certificate_template_value)
-#   SelectFromDropdown(course_certificate_template_id, course_certificate_template_value)
+# def EnterCourseRetrainValue(course_retrain_input_id, course_retrain_input_value)
+#   $driver.find_element(:xpath, course_retrain_input_id).clear
+#   WaitForAnElementByXpathAndInputValue(course_retrain_input_id,course_retrain_input_value)
 # end
 #
 #
-# def EnterCourseSelfEnrol(course_self_enroll_input_id, course_self_enroll_input_value)
-#   SelectFromDropdown(course_self_enroll_input_id, course_self_enroll_input_value)
+# def EnterCourseRetrainOpenUnit(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
 # end
 #
 #
-# def EnterCourseSectionDescription(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
-#   SelectFromDropdown(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
+# def EnterCourseRetrainOpenValue(course_retrain_open_input_id, course_retrain_open_input_value)
+#   $driver.find_element(:xpath, course_retrain_open_input_id).clear
+#   WaitForAnElementByXpathAndInputValue(course_retrain_open_input_id, course_retrain_open_input_value)
 # end
-
-
-def EnterCourseSectionDescription(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
-  SingleSelectFromSelect2Dropdown(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
-end
-
-
-def EnterCourseCompleteUnit(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
-    SingleSelectFromSelect2Dropdown(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
-end
-
-
-def EnterCourseCompleteValue(course_complete_input_id, course_complete_input_value)
-  WaitForAnElementByXpathAndInputValue(course_complete_input_id, course_complete_input_value)
-end
-
-
-def EnterCourseRetrainUnit(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
-    SingleSelectFromSelect2Dropdown(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
-end
-
-
-def EnterCourseRetrainValue(course_retrain_input_id, course_retrain_input_value)
-  $driver.find_element(:xpath, course_retrain_input_id).clear
-  WaitForAnElementByXpathAndInputValue(course_retrain_input_id,course_retrain_input_value)
-end
-
-
-def EnterCourseRetrainOpenUnit(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
-    SingleSelectFromSelect2Dropdown(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
-end
-
-
-def EnterCourseRetrainOpenValue(course_retrain_open_input_id, course_retrain_open_input_value)
-  $driver.find_element(:xpath, course_retrain_open_input_id).clear
-  WaitForAnElementByXpathAndInputValue(course_retrain_open_input_id, course_retrain_open_input_value)
-end
-
-
-def EnterCourseAvailability(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
-    SingleSelectFromSelect2Dropdown(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
-end
-
-
-def EnterCourseCertificateTemplate(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
-    SingleSelectFromSelect2Dropdown(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
-end
-
-
-def EnterCourseSelfEnrol(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
-    SingleSelectFromSelect2Dropdown(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
-end
+#
+#
+# def EnterCourseAvailability(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
+# end
+#
+#
+# def EnterCourseCertificateTemplate(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
+# end
+#
+#
+# def EnterCourseSelfEnrol(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
+#     SingleSelectFromSelect2Dropdown(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
+# end
 
 
 def ClickOnAButtonByXPath(form_template_save_btn)
