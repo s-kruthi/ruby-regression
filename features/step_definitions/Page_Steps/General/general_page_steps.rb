@@ -18,9 +18,24 @@ def GoToSection(general_expand, users_list_path)
 end
 
 
+# TODO: Legacy admin menu icon at the top right. This code will stop working once the new site UI changes are deployed.
+# def GoToAdminSettings(admin_cog)
+#   WaitForAnElementByClass(admin_cog)
+#   TouchAdminMenu(admin_cog)
+# end
+
+
+# NOTE: This is a modified version of the legacy admin settings clicking to facilitate new UI deployed in tmsfull. The new menu system will be used when URL=tmsfull. Other sites will continue
+# Using Legacy Admin menu clicking system
 def GoToAdminSettings(admin_cog)
-  WaitForAnElementByClass(admin_cog)
-  TouchAdminMenu(admin_cog)
+  case $site_alias
+    when "tmsfull"
+      WaitForAnElementByXpathAndTouch(ADMIN_SETTINGS_ID)
+    
+    else
+      WaitForAnElementByClass(admin_cog)
+      TouchAdminMenu(admin_cog)
+  end
 end
 
 
