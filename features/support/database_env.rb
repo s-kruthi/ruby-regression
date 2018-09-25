@@ -15,7 +15,7 @@ module Database_env
       @@DB_PWD = ENV['db_pwd'] || ENV['DB_PWD']
 
       $site = (ENV["URL"] || ENV["url"]) || 'tmsfull'
-      $data_base = (ENV["DB"] || ENV["db"] || 'pmsdev_tmsfull' if $site == 'payroll') || "pmsdev_" + "#{$site}"
+      $data_base = (ENV["DB"] || ENV["db"] || 'pmsdev_tmsfull' if $site == 'payroll') || "pmsdev_" + ($site.split(".dev").join ",")
 
       $gateway = Net::SSH::Gateway.new(@@HOST, @@SSH_USER, :password => @@PWD)
       port = $gateway.open(@@DB_HOST, 3306)

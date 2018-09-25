@@ -48,7 +48,7 @@ module Database_env
               e.retrain != 0 AND
               c.visible != 0 AND
               DATE_SUB(DATE_ADD(FROM_UNIXTIME(e.timeEnded), INTERVAL e.retrain MONTH), INTERVAL e.retrain_open DAY) <= CURDATE();"
-      return @db[query].first[:courseName]
+      return @db[query].first
     end
 
 
@@ -188,6 +188,25 @@ module Database_env
 
     def get_visible_cpd_category_by_name(arg)
       query = "SELECT * FROM epms_cpd_category WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1;"
+      return @db[query].first
+    end
+
+
+    def get_user_with_course_discrepancy()
+      query = "SELECT distinct concat (u.`first_name`,' ',u.`last_name`) as name
+              FROM epms_lms_course_enrolment e
+              INNER JOIN mdl_course c ON e.course_id = c.id
+              INNER JOIN epms_user u ON e.user_id = u.id
+              INNER JOIN mdl_course_categories cc ON cc.id = c.category
+              WHERE u.is_elmo = 0 AND
+              u.is_active = 1 AND
+              u.is_deleted = 0 AND
+              e.isActive = 1 AND
+              e.status = 2 AND
+              e.retrain != 0 AND
+              c.visible != 0 AND
+              DATE_SUB(DATE_ADD(FROM_UNIXTIME(e.timeEnded), INTERVAL e.retrain MONTH), INTERVAL e.retrain_open DAY) <= CURDATE()
+              order by rand();"
       return @db[query].first
     end
 

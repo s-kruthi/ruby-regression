@@ -73,7 +73,7 @@
           <collectionProp name="Arguments.arguments">
             <elementProp name="server" elementType="Argument">
               <stringProp name="Argument.name">server</stringProp>
-              <stringProp name="Argument.value">tmsfull.dev.elmodev.com</stringProp>
+              <stringProp name="Argument.value">tmsfull.elmodev.com</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="username" elementType="Argument">
@@ -253,11 +253,11 @@
             <stringProp name="RegexExtractor.regex">class=&quot;form-control&quot; value=&quot;(.*?)&quot;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default"></stringProp>
-            <stringProp name="RegexExtractor.match_number">2</stringProp>
+            <stringProp name="RegexExtractor.match_number">3</stringProp>
           </RegexExtractor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="When I save a new course" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="When I save a new course" enabled="false">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="elmo_learningbundle_course[_token]" elementType="HTTPArgument">
@@ -420,7 +420,7 @@
           </RegexExtractor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="(NEW)When I save a new course" enabled="false">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="(NEW)When I save a new course" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
               <elementProp name="elmo_learningbundle_course[_token]" elementType="HTTPArgument">

@@ -2,7 +2,7 @@ def GoToSite()
   $site_alias = (ENV["URL"] || ENV["url"]) || 'tmsfull'
   $site_type = (ENV["TYPE"] || ENV["type"]) || 'staging'
   $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/dashboard" if ($site_type.to_s.downcase == "prod")    #Change this URL which determines the production TLD
-  $site_url = "https://" + "#{$site_alias}" + ".dev.elmodev.com/dashboard" if ($site_type.to_s.downcase == "staging")   #Change this URL which determines the staging TLD
+  $site_url = "https://" + "#{$site_alias}" + ".elmodev.com/dashboard" if ($site_type.to_s.downcase == "staging")   #Change this URL which determines the staging TLD
   $site_url = "https://" + "login.elmopayroll.com.au" if ($site_type.to_s.downcase == "payroll_prod")                         #Payroll site exception
   $site_url = "https://" + "payrollelmoapp-ase-uat.azurewebsites.net" if ($site_type.to_s.downcase == "payroll_staging")   #Payroll site exception
   $site_url = "https://" + "survey2.elmodev.com" if ($site_alias.to_s.downcase == "survey2")                             #Change this URL which determines the survey TLD
@@ -18,9 +18,24 @@ def GoToSection(general_expand, users_list_path)
 end
 
 
+# TODO: Legacy admin menu icon at the top right. This code will stop working once the new site UI changes are deployed.
+# def GoToAdminSettings(admin_cog)
+#   WaitForAnElementByClass(admin_cog)
+#   TouchAdminMenu(admin_cog)
+# end
+
+
+# NOTE: This is a modified version of the legacy admin settings clicking to facilitate new UI deployed in tmsfull. The new menu system will be used when URL=tmsfull. Other sites will continue
+# Using Legacy Admin menu clicking system
 def GoToAdminSettings(admin_cog)
-  WaitForAnElementByClass(admin_cog)
-  TouchAdminMenu(admin_cog)
+  case $site_alias
+    when "tmsfull"
+      WaitForAnElementByXpathAndTouch(ADMIN_SETTINGS_ID)
+    
+    else
+      WaitForAnElementByClass(admin_cog)
+      TouchAdminMenu(admin_cog)
+  end
 end
 
 

@@ -28,10 +28,8 @@ Scenario: [Learning]Learning Admin using a Filter to apply on Retrain Discrepanc
 Given I Have Logged In as a Learning Admin
 And   I go to Admin Settings
 And   I Go To Retrain Discrepancies under Learning section
-When  I Click On "Create Filter" Button
-And   I Select "Employee Name" Select2 Dropdown As "Test1 Omar1"
-Then  I Should Be Able to Create a Filter
-And   I See a Filtered List of Retrain Discrepancy Course Results for Learner Test1 Omar1
+When  I Filter For An Employee With Discrepancies
+Then  I See a Filtered List of Retrain Discrepancy Course Results for Learner
 
 
   @smoke_learning8 @learning_low_risk @course_retrain_discrepancy_bulkfix

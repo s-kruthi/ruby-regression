@@ -1,8 +1,8 @@
 When(/^I See a List of Discrepancy Courses for Users$/i) do
   discrepancy_course = $daos.get_course_discrepancy_list()
+
   if !discrepancy_course.nil?
-    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, discrepancy_course, COURSE_SEARCH_BTN_ID)
-  
+    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, discrepancy_course[:courseName], COURSE_SEARCH_BTN_ID)
   else
     puts COLOR_YELLOW + "Course Discrepancy List not found. Please check the database manually".upcase
     skip_this_scenario
@@ -31,8 +31,8 @@ Then(/^I Should Be Able To (.*) Of A Specific Course$/i) do |retrain_action|
 end
 
 
-And(/^I See a Filtered List of Retrain Discrepancy Course Results for Learner (.*)$/i) do |learner_name|
-  VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
+And(/^I See a Filtered List of Retrain Discrepancy Course Results for Learner$/i) do
+  VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{@user[:name]}")
 end
 
 
@@ -52,3 +52,22 @@ Then(/^I Should Be Able To See The Success Message For (Fix|Disable) Retrain For
   end
 end
 
+
+When(/^I Filter For An Employee With Discrepancies$/i) do
+  @user = $daos.get_user_with_course_discrepancy()
+
+  if !@user.nil?
+    #create filter for user
+    steps %{When  I Click On "Create Filter" Button}
+
+    puts COLOR_BLUE + "User Filter has been created for Employee " + @user[:name]
+
+    steps %{
+    And   I Select "Employee Name" Select2 Dropdown As "#{@user[:name]}"
+    Then  I Should Be Able to Create a Filter
+    }
+  else
+    puts COLOR_YELLOW + "No Course Discrepancies found for any active user. Please check the database manually".upcase
+    skip_this_scenario
+  end
+end
