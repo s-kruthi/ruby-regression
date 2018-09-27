@@ -1,3 +1,4 @@
+
 def GoToSite()
   $site_alias = (ENV["URL"] || ENV["url"]) || 'tmsfull'
   $site_type = (ENV["TYPE"] || ENV["type"]) || 'staging'
@@ -27,16 +28,16 @@ end
 
 # NOTE: This is a modified version of the legacy admin settings clicking to facilitate new UI deployed in tmsfull. The new menu system will be used when URL=tmsfull. Other sites will continue
 # Using Legacy Admin menu clicking system
-def GoToAdminSettings(admin_cog)
-  case $site_alias
-    when "tmsfull"
-      WaitForAnElementByXpathAndTouch(ADMIN_SETTINGS_ID)
-    
-    else
-      WaitForAnElementByClass(admin_cog)
-      TouchAdminMenu(admin_cog)
-  end
-end
+# def GoToAdminSettings(admin_cog)
+#   case $site_alias
+#     when "tmsfull"
+#       WaitForAnElementByXpathAndTouch(ADMIN_SETTINGS_ID)
+#
+#     else
+#       WaitForAnElementByClass(admin_cog)
+#       TouchAdminMenu(admin_cog)
+#   end
+# end
 
 
 def GoToASection(section_expand)
@@ -128,3 +129,14 @@ def ClickOnASubTab(sub_tab_name_id)
 end
 
 
+# TODO this new class "elmo-icon-admin needs to be added to classic view, till then please keep the navbar set to vertical menu for faster test execution"
+def GoToAdminSettings(admin_cog)
+  begin
+    WaitForAnElementByClass("elmo-icon-admin")
+    TouchAdminMenu("elmo-icon-admin")
+  rescue
+    puts "slow execution : horizontal navbar mode on, please change it to vertical"
+    WaitForAnElementByClass(admin_cog)
+    TouchAdminMenu(admin_cog)
+  end
+end
