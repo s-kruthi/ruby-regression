@@ -1,3 +1,4 @@
+require 'csv'
 csv = CSV.read('features/step_definitions/Test_Data/PayrollNewMember.csv', :headers=>false)
 
 # Details required to fill TFN Declaration section
