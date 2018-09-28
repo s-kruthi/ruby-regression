@@ -190,7 +190,7 @@
       Then  I Delete A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
 
 
-    @smoke_learning5 @learning_low_risk @course_activity_f2f_session_notifications_add
+    @learning_low_risk @course_activity_f2f_session_notifications_add
     Scenario: [Learning]Learning Admin Adding Notification Templates in Face-to-Face Activity
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings

@@ -182,34 +182,34 @@ Then(/^I Should Be Able To Add A (.*) Activity$/i) do |course_activity_name|
   end
 end
 
-
-Then(/^I Should Be Able To (Edit|Delete) A (.*) Activity Named (.*)$/i) do |course_activity_action, course_activity_type, course_activity_title|
-  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  
-  ModifyACourseActivity(course_activity_action, course_activity_title)
-  EditACourseActivity(course_activity_type)
-  # #get course id from url
-  # #course_id = $driver.current_url.split('/')[6]
-  #
-  # #check if activity exists, if not create activity
-  # # AddANewSection(COURSE_ADD_A_SECTION_BTN_ID),SelectAnActivity(course_activity_type),CreateAnActivity(course_activity_type)
-  #
-  # case course_activity_type
-  #   when "Acknowledgement"
-  #     count = $daos.get_course_activity(course_id)
-  #
-  #   when "ELMO Module"
-  #   when "ELMO Survey"
-  #   when "Face-to-Face"
-  #   when "Quiz"
-  #   when "SCORM Package"
-  #   when "File"
-  #   when "Label"
-  #   when "Page"
-  #   when "Post"
-  #   when "ELMO Survey (new)"
-  # end
-end
+# WIP: This is a work in progress to further extend the Edit and Delete functionality to different module based scenario - Kruthi
+# Then(/^I Should Be Able To (Edit|Delete) A (.*) Activity Named (.*)$/i) do |course_activity_action, course_activity_type, course_activity_title|
+#   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+#
+#   ModifyACourseActivity(course_activity_action, course_activity_title)
+#   EditACourseActivity(course_activity_type)
+#   # #get course id from url
+#   # #course_id = $driver.current_url.split('/')[6]
+#   #
+#   # #check if activity exists, if not create activity
+#   # # AddANewSection(COURSE_ADD_A_SECTION_BTN_ID),SelectAnActivity(course_activity_type),CreateAnActivity(course_activity_type)
+#   #
+#   # case course_activity_type
+#   #   when "Acknowledgement"
+#   #     count = $daos.get_course_activity(course_id)
+#   #
+#   #   when "ELMO Module"
+#   #   when "ELMO Survey"
+#   #   when "Face-to-Face"
+#   #   when "Quiz"
+#   #   when "SCORM Package"
+#   #   when "File"
+#   #   when "Label"
+#   #   when "Page"
+#   #   when "Post"
+#   #   when "ELMO Survey (new)"
+#   # end
+# end
 
 
 Then(/^I Should Be Able To (Create|Edit|Delete|Copy|Cancel) A Session In The Face-to-Face Activity$/i) do |modify_session_type|

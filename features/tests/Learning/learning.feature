@@ -84,7 +84,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To See The Retrain Enabled For The Enrolment
 
 
-  @smoke_learning2 @learning_low_risk @course_edit_enrolment_start_end_date @C800 @C801 @PMS-14875
+  @learning_low_risk @course_edit_enrolment_start_end_date @C800 @C801 @PMS-14875
   Scenario: [Learning]Learning Admin Can Edit Enrolments With Due Date
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -99,7 +99,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should See That The Changes Were Successfully Saved To The Enrolment
 
 
-  @smoke_learning2 @learning_low_risk @course_edit_enrolment_start_date @C800 @C801 @PMS-14875
+  @learning_low_risk @course_edit_enrolment_start_date @C800 @C801 @PMS-14875
   Scenario: [Learning]Learning Admin Can Edit Enrolments Without Due Date
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
@@ -114,7 +114,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should See That The Changes Were Successfully Saved To The Enrolment
 
 
-  @smoke_learning2 @learning_low_risk @course_delete_enrolment @C813
+  @learning_low_risk @course_delete_enrolment @C813
   Scenario: [Learning]Learning Admin Can Delete Enrolment
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
