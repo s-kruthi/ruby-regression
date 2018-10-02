@@ -17,9 +17,7 @@ pipeline {
         stage('Test Execution') {
           steps {
             echo 'test execution in progress..'
-            sh '''source ~/.bash_profile
-
-cucumber -xgt @smoke_learning1 CHANNEL=headless'''
+            sh 'source ~/.bash_profile ; cucumber -xgt @smoke_learning1 CHANNEL=headless'
           }
         }
       }
