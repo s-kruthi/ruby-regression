@@ -14,12 +14,12 @@ end
 
 
 def VerifyUnenrollmentToCourse()
-  enrolment = $daos.get_enrolment_status(@course_id, @user_id)
+  enrolment = $daos.get_enrolment_status(@course_id, @user_id[:id])
   if enrolment == nil
     puts COLOR_GREEN + "User unenrolment successful"
   else
     #check enrolment changed from self to rule
-    enrolment_method = $daos.get_enrolment_method(@course_id, @user_id)
+    enrolment_method = $daos.get_enrolment_method(@course_id, @user_id[:id])
     if enrolment_method == 2
       puts COLOR_GREEN + "User self unenrolment was successful, but course enrolment is by Rule"
     end
