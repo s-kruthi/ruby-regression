@@ -34,8 +34,8 @@ def CheckUserEnrolledCourse(self_unenroll_allowed)
     self_unenrol = 0
   end
 
-  #check and get coursename with self enrolment
-  @course_name = $daos.get_course_selfunenrol(self_unenrol, @user_id)
+#  INFO: Check database mdl_course table in the database and return Course Fullname with self enrolment being Yes/No
+  @course_name = $daos.get_course_selfunenrol(self_unenrol, @user_id[:id])
 
   unless @course_name
     puts COLOR_YELLOW + "User has not enrolled to any course with Self-unenroll enabled".upcase
