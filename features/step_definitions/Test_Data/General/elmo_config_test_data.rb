@@ -36,5 +36,5 @@ ACTIVITY_RESUME_SELECTION = {
 
 
 USER_IN_ROLE = {
-    "Employee": "Tomatkins Automation No Touch Please",
+    "Employee": "Elmo Test",
 }
