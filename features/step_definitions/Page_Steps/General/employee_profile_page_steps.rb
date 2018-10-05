@@ -59,7 +59,7 @@ end
 
 
 def CheckNoteAdded(action)
-  expect($driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text).to eq("manager1 omar1")
+  expect($driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text).to eq("manager1 scriptonce1")
 
   VerifyAnElementExists('xpath', NOTE_EDIT_BUTTON_ID)
   VerifyAnElementExists('xpath', NOTE_DEL_BUTTON_ID)

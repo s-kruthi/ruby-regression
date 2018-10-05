@@ -4,6 +4,7 @@ SEARCH_EMPLOYEE_LIST_CLASS = "//a[contains(@class,'team-member-link')]"
 EMPLOYMENT_DETAILS_SECTION = 'employmentDetail-section'
 TFN_DETAILS_SECTION = 'tfn-section'
 
+NOTES_SECTION_ID = 'notes-section'
 NOTE_VISIBILITY_CLEAR_ID = "//a[contains(@class,'select2-search-choice-close')]"
 NOTE_SUBMIT_ID = "btnSubmitNote"
 NOTE_POSTED_BY_ID = '//strong[@class="text-info"]'

@@ -151,6 +151,7 @@ end
 
 
 When(/^I (Edit|Delete) Note Added By Me$/i) do |action|
+  Sleep_Until(WaitForAnElementByIdAndTouch(NOTES_SECTION_ID))
   if action == "Edit"
     EditNote()
   else
