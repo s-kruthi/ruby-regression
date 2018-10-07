@@ -1,7 +1,7 @@
 @employee_profile @general
 
 Feature:
-As A Company Admin I Would Like To Edit An Employee's Details Including Personal And Payment
+  As A Company Admin I Would Like To Edit An Employee's Details Including Personal And Payment
 
   @ViewEmploymentDetails @general_high_risk
   Scenario: [General]View Employees hourly Rate and Salary Details (Payment Details)
@@ -43,12 +43,11 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
     And   I Should Be Able To Click Recognition Sub-Tab
 
 
-  #Currently works on nick01
   @general_low_risk @user_profile_note @user_profile_addnote @C16458
   Scenario Outline: [General]Can Add Note To A User Profile With Different Visibility Settings
     Given I Have Logged In As A Company Manager
     And   I Go To The Menu My Team Section
-    And   I Search An Employee named test1 omar1
+    And   I Search An Employee named auto1 scriptonce
     When  I Click On "Add New Note" Button
     And   I Enter Note
     And   I Add An Attachment To The Note
@@ -57,12 +56,12 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
     Then  I Should See That The Note Has Been Added Successfully
 
     Examples:
-    | visibility_value |
-    | default          |
-    | Admin            |
-    | Manager          |
-    | HR Manager       |
-    | Any Manager      |
+      | visibility_value |
+      | default          |
+      | Admin            |
+      | Manager          |
+      | HR Manager       |
+      | Any Manager      |
 
 
   #Currently works only on payroll03
@@ -100,34 +99,31 @@ As A Company Admin I Would Like To Edit An Employee's Details Including Personal
     Then  I Should Be Able To See The Autopay Setting Changed To Yes
 
 
-  #Currently works on nick01
   @general_low_risk @user_profile_note @user_profile_editnote @C16877
   Scenario: [General]Can Edit Note To A User Profile
     Given I Have Logged In As A Company Manager
     And   I Go To The Menu My Team Section
-    And   I Search An Employee named test1 omar1
+    And   I Search An Employee named auto1 scriptonce
     When  I Edit Note Added By Me
     And   I Click On Save Note Button
     Then  I Should See That The Note Has Been Edited Successfully
 
 
-  #Currently works on nick01
   @general_low_risk @user_profile_note @user_profile_deletenote @C16877
   Scenario: [General]Can Delete Note To A User Profile
     Given I Have Logged In As A Company Manager
     And   I Go To The Menu My Team Section
-    And   I Search An Employee named test1 omar1
+    And   I Search An Employee named auto1 scriptonce
     When  I Delete Note Added By Me
     Then  I Should See That The Note Has Been Deleted Successfully
 
 
-  #Currently works on nick01
   @general_low_risk @user_profile_note @user_profile_managenote @C16456
   Scenario: [General]Company Admin Can Manage Notes
     Given I Have Logged In As A Company Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
-    And   I Search For A User named test1 omar1
+    And   I Search For A User named auto1 scriptonce
     When  I View The User's Profile
     Then  I Should See That I Can Manage The Notes Added To The User
 
