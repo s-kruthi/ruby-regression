@@ -28,7 +28,8 @@ end
 
 
 And(/^I Search For The Course I Have Enrolled To$/i) do
-  steps "When I Search For A Specific Course Named #{@course_name}"
+  puts COLOR_BLUE + "Using Course '#{@course[:fullname]}' with id '#{@course[:course_id]}'"
+  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @course_name, COURSE_SEARCH_BTN_ID)
 end
 
 

@@ -79,7 +79,7 @@ module Database_env
 
     #provides the course name to which user has enrolled and self unenrol is allowed(allowSelfUnenrol=1)
     def get_course_selfunenrol(self_unenrol, userid)
-      query = "SELECT fullname FROM mdl_course mc
+      query = "SELECT fullname, course_id FROM mdl_course mc
                INNER JOIN epms_lms_course_enrolment elce ON elce.course_id = mc.id
                INNER JOIN mdl_course_categories mcc ON mcc.id = mc.category
                WHERE mc.visible = 1
@@ -89,7 +89,7 @@ module Database_env
                AND isActive = 1
                AND enrolmethod = 1
                ORDER BY rand();"
-      return @db[query].first[:fullname]
+      return @db[query].first
     end
 
 
