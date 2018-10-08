@@ -43,7 +43,7 @@ def CheckUserEnrolledCourse(self_unenroll_allowed)
     skip_this_scenario
   end
 
-  puts COLOR_BLUE + "User is enrolled to course " + @course[:fullname] + " which is has self unenrol set"
+  puts COLOR_BLUE + "User is enrolled to course " + @course[:fullname] + " which has self unenrol set"
 end
 
 
