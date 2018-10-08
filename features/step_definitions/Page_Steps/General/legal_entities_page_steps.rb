@@ -155,7 +155,7 @@ end
 
 
 def VerifyABNLookup()
-  sleep(2)
+  sleep(4)
   field_value = $driver.find_element(:id, 'legal_entity_businessName').attribute('value')
   expect(field_value).to eq('SCIENTIFIC INSTRUMENT MANUFACTURING & REPAIR CO')
 end
