@@ -74,17 +74,11 @@ def CreateCertTemplateWhenLess(item_to_create, number)
   templatenumber =  $daos.count_certificate_template
   jmeter_file = item_to_create.to_s.downcase.gsub(/\s/,'_') + '.jmx'
   # ToDo will use parameters in JMeter non-GUI mode for the loop count
-  if ENV['MYMAC']
-    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password} -Jenrolled_user_id=#{enrolled_user_id})
-  else
-    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Learning/LearningCourseAdd.jmx -Jserver=#{@create_against} -Jusername=#{creator_username} -Jpassword=#{creator_password} -Jenrolled_user_id=#{enrolled_user_id})
-  end
-
   if templatenumber < number
     if ENV['MYMAC']
-      %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/#{jmeter_file} -Jserver=#{@create_against}
+      %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/#{jmeter_file} -Jserver=#{@create_against})
     else
-      %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/#{jmeter_file} -Jserver=#{@create_against}
+      %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/#{jmeter_file} -Jserver=#{@create_against})
     end
   end
 end
