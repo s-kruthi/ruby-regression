@@ -70,6 +70,13 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
           username = LEAVE_COMPANY_ADMIN_USER
         end
 
+      when "Payroll Admin"
+          begin
+            EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
+            username = COMP_ADMIN_USERNAME
+          end
+
       when "Company Manager"
         begin
           EnterUsername(USER_NAME, COMPANY_MANAGER_USER)
@@ -177,6 +184,11 @@ And(/^I Go To The (.*) Section$/i) do |menu_type|
     when "Menu Leave"
       begin
         GoToNavBarSection(MENU_LEAVE_LINK)
+      end
+
+    when "Menu Payroll"
+      begin
+        GoToNavBarSection(MENU_PAYROLL_LINK)
       end
 
     when "Menu Documents"
