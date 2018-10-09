@@ -14,12 +14,13 @@ end
 
 
 def VerifyUnenrollmentToCourse()
-  enrolment = $daos.get_enrolment_status(@course_id, @user_id[:id])
-  if enrolment == nil
+  enrolment = $daos.get_enrolment_status(@course[:course_id], @user_id[:id])
+
+  if enrolment == 0
     puts COLOR_GREEN + "User unenrolment successful"
   else
     #check enrolment changed from self to rule
-    enrolment_method = $daos.get_enrolment_method(@course_id, @user_id[:id])
+    enrolment_method = $daos.get_enrolment_method(@course[:course_id], @user_id[:id])
     if enrolment_method == 2
       puts COLOR_GREEN + "User self unenrolment was successful, but course enrolment is by Rule"
     end
@@ -35,12 +36,14 @@ def CheckUserEnrolledCourse(self_unenroll_allowed)
   end
 
 #  INFO: Check database mdl_course table in the database and return Course Fullname with self enrolment being Yes/No
-  @course_name = $daos.get_course_selfunenrol(self_unenrol, @user_id[:id])
+  @course = $daos.get_course_selfunenrol(self_unenrol, @user_id[:id])
 
-  unless @course_name
+  unless @course
     puts COLOR_YELLOW + "User has not enrolled to any course with Self-unenroll enabled".upcase
     skip_this_scenario
   end
+
+  puts COLOR_BLUE + "User is enrolled to course " + @course[:fullname] + " which has self unenrol set"
 end
 
 

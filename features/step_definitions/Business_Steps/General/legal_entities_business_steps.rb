@@ -65,12 +65,11 @@ Then(/^I Should View Name, ABN, Is Default And Active Fields For Legal Entity$/i
 end
 
 
-And(/^I Edit The Legal Entity To Set It As Default$/i) do
-  #get legal entity to edit
-  @legal_entity = $daos.get_legal_entity_details_for_edit()
+And(/^I Edit The Default Legal Entity$/i) do
+  #get default legal entity
+  @legal_entity = $daos.get_default_entity_details()
 
   SearchToEdit(@legal_entity)
-  CheckAndSetDefault(LEGAL_ENTITY_ISDEF_ID)
 end
 
 
@@ -91,11 +90,11 @@ Then(/^I Should Not Be Able To Create Legal Entities With Same ABN$/i) do
 end
 
 
-Then(/^I Should See That I Cannot Set It Back As Not Default$/i) do
+Then(/^I Should See That I Cannot Set It As Not Default$/i) do
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
   expect($driver.find_element(:id, LEGAL_ENTITY_ISACTIVE_ID).enabled?).to be false
   expect($driver.find_element(:id, LEGAL_ENTITY_ISDEF_ID).enabled?).to be false
-  puts COLOR_GREEN + "There has to be one default legal entity, so cannot set it back to not default".upcase
+  puts COLOR_GREEN + "There has to be one default legal entity, so cannot set it to not default".upcase
 end
 
 
