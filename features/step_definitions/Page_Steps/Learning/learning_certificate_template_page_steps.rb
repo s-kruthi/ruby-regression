@@ -75,7 +75,11 @@ def CreateCertTemplateWhenLess(item_to_create, number)
   jmeter_file = item_to_create.to_s.downcase.gsub(/\s/,'_') + '.jmx'
   # ToDo will use parameters in JMeter non-GUI mode for the loop count
   if templatenumber < number
-    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/#{jmeter_file} -Jserver=#{ENV["URL"] || ENV["url"]}.dev.elmodev.com)
+    if ENV['MYMAC']
+      %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/#{jmeter_file} -Jserver=#{@create_against})
+    else
+      %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/#{jmeter_file} -Jserver=#{@create_against})
+    end
   end
 end
 

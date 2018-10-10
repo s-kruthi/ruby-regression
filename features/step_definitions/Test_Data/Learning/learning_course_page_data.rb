@@ -167,7 +167,7 @@ MARKER_VALUE = 'Manager'
 
 
 ###Certificate Template
-CERT_TEMP_LIST_URL = "https://#{$site}.dev.elmodev.com/admin/course-certificate-template/list"
+CERT_TEMP_LIST_URL = "https://#{$site}.elmodev.com/admin/course-certificate-template/list"
 CERT_TEMP_SAVE_SUCCESSFUL_VALUE = 'Course Certificate Template has been saved!'
 FILTER_NAME_VALUE = 'Automation_filter'
 PNG_FILE_NAME = 'small-world.png'
