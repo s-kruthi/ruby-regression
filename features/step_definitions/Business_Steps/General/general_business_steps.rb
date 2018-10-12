@@ -398,7 +398,6 @@ Then(/^I Should Be Able To use (.*) Action on The Specific User$/i) do |specifie
 
     when "Edit User Profile"
       begin
-        byebug
         ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_EDIT_VALUE)
       end
     end

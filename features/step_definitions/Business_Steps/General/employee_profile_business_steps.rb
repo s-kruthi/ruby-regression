@@ -233,7 +233,6 @@ end
 
 
 And(/^I Set The Date of Birth As (\d{1,2}\/\d{1,2}\/\d{4})$/i) do |date_of_birth|
-  byebug
   Sleep_Until(SelectDate(USER_DOB_FIELD_ID, date_of_birth))
 end
 

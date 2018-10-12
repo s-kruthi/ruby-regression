@@ -34,8 +34,31 @@ def SetSuperDetails()
   #selecting the first option from the results
   Sleep_Until(WaitForAnElementByClassAndTouch(SELECT2_DROPDOWN_RESULT_CLASS))
 
-  byebug
-  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_SUPERDETAILS_MEMBERSHIPNO_ID, membership_num))
+  $driver.find_elements(:id, USER_SUPERDETAILS_MEMBERSHIPNO_ID)[1].clear()
+  $driver.find_elements(:id, USER_SUPERDETAILS_MEMBERSHIPNO_ID)[1].send_keys(membership_num)
 
   ClickOnSaveButton(SAVE_BTN_ID)
 end
+
+
+def SetContactDetails()
+  Sleep_Until(ClickOnASubTab(USER_PERSONAL_DETAILS_TAB_ID))
+
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_CONTACT_DETAILS_EDIT_BUTTON_ID))
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_CONTACT_DETAILS_EDIT_BUTTON_ID))
+
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_MOBILE_ID, 1234567890))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_ADDR1_ID, 'Collins St'))
+
+  Sleep_Until(SelectFromDropdown(USER_CONTACTDETAILS_COUNTRY_ID, 'Australia'))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_SUBURB_ID, 'West Melbourne'))
+
+  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_POSTCODE_ID, 3000))
+
+  ClickOnSaveButton(SAVE_BTN_ID)
+end
+
+

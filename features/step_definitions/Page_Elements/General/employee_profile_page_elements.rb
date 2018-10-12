@@ -23,6 +23,7 @@ MODAL_YES_BUTTON_CSS = '[data-bb-handler="yes"]'
 USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID = "//h4[@class='modal-title']"
 KEEP_HISTORY_BUTTON_ID = '//button[@data-bb-handler="success"]'
 USER_PAYMENT_DETAILS_TAB_ID = "//a[contains(text(),'Payment Details')]"
+USER_PERSONAL_DETAILS_TAB_ID = "//a[contains(text(),'Personal Details')]"
 
 
 #### USER PAYMENT DETAILS SECTION ####
@@ -39,3 +40,12 @@ USER_SUPERDETAILS_EDIT_BUTTON_ID = 'editSection-superannuation'
 USER_SUPERDETAILS_ADD_BUTTON_ID = 'add-btn'
 USER_SUPERDETAILS_SUPERNAME_ID = 's2id_guid'
 USER_SUPERDETAILS_MEMBERSHIPNO_ID = 'membershipNumber'
+
+
+#### USER PERSONAL DETAILS SECTION ####
+USER_CONTACT_DETAILS_EDIT_BUTTON_ID = 'editSection-contactDetails'
+USER_CONTACTDETAILS_MOBILE_ID = 'mobile'
+USER_CONTACTDETAILS_ADDR1_ID = "country_addressLine1"
+USER_CONTACTDETAILS_COUNTRY_ID = "//select[@id='country_country']"
+USER_CONTACTDETAILS_SUBURB_ID = 'country_suburb'
+USER_CONTACTDETAILS_POSTCODE_ID = 'country_postcode'
