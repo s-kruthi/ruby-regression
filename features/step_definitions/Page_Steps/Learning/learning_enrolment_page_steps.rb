@@ -69,7 +69,7 @@ end
 
 def CheckCoursesEnroled()
   #check enroled courses match the count on My Learning page
-  @count_enroled_courses = $daos.get_enroled_courses(@user_id)
+  @count_enroled_courses = $daos.get_enroled_courses(@user_id[:id])
 
   enroled_courses_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
   if enroled_courses_count.eql? @count_enroled_courses then
