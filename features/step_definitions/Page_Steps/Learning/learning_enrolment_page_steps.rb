@@ -68,7 +68,6 @@ end
 
 
 def CheckCoursesEnroled()
-  byebug
   #check enroled courses match the count on My Learning page
   @count_enroled_courses = $daos.get_enroled_courses(@user_id[:id])
 
