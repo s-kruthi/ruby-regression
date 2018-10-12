@@ -69,6 +69,8 @@ def CreateUsers(loop, arg2, arg3, arg4, arg5)
     Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
     Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
     Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
+
+    puts COLOR_BLUE + "Created new user with firstname '" + @@first_name + "' and lastname as '" + @@last_name +"'"
   end
 end
 
@@ -138,5 +140,41 @@ def GoToAdminSettings(admin_cog)
     puts "slow execution : horizontal navbar mode on, please change it to vertical"
     WaitForAnElementByClass(admin_cog)
     TouchAdminMenu(admin_cog)
+  end
+end
+
+
+def CreateAUser(user_type, firstname, lastname, manager_name, role)
+
+  if role.nil?
+    #if role is not specified the user is created with the default role of Employee
+    role_name = 'Employee'
+  else
+    role_name = role
+  end
+
+  @@first_name = firstname
+  @@last_name = lastname if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
+  @@last_name = lastname + ".ob" if $add_user_type == "OB"
+  @@user_name = @@first_name + "." + @@last_name
+  @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value] #Email = firstname.lastname@email_suffix
+
+  #Check if user already exists in the database or not. If exists, skip the current creation else, create the user
+  user_list_result = $daos.get_userid(@@user_name)
+  if !user_list_result.nil?
+    puts COLOR_YELLOW + "User #{user_list_result} already exists in the database.".upcase
+    skip_this_scenario
+  else
+    CreateUsers(0, user_type, @@first_name, @@last_name, manager_name)
+
+    if role_name != 'Employee'
+    #setting the role as well immediately after creating the user.
+      steps %Q{
+                  And   I Click On "Role" Tab
+                  And   I Select "Role" Classic Dropdown As "#{role_name}"
+                  }
+    end
+
+    puts COLOR_BLUE + "Created new user with role '" + role_name.upcase + "'"
   end
 end

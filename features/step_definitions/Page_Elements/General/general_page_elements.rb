@@ -125,7 +125,7 @@ CLASSIC_DROPDOWN_ELEMENT_ID_MAP = {
 }
 
 
-#### User Details page elements ####
+#### User Details/Profile page elements ####
 USER_PROFILE_TAB_ID = '//a[contains(@href, "edit-user-profile")]'
 
 USER_LEGAL_ENTITY_FIELD_ID ='legalEntity-container'
@@ -133,3 +133,10 @@ USER_LEGAL_ENTITY_SELECT2_ID = 's2id_user_legalEntity'
 
 USER_COST_CENTRE_FIELD_ID = 'costCentre-container'
 USER_COST_CENTRE_SELECT2_ID = 's2id_user_costCentre'
+
+
+USER_POSITION_FIELD_ID = 'position-container'
+USER_POSITION_SELECT2_ID = 's2id_user_position'
+
+
+USER_DOB_FIELD_ID = "//input[contains(@id, 'user_personalInfo_dob')]"

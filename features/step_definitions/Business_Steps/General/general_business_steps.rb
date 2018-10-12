@@ -377,7 +377,11 @@ end
 
 And(/^I Search For A Specific User Named (.*)$/i) do |username_search_value|
   $username_search_value = username_search_value
+
   UseActiveInactiveFilter() if USE_ACTIVE_INACTIVE_FILTER.to_i == 1
+
+  USERNAME_SEARCH_RESULT_VALUE = "//td[contains(.,'#{$username_search_value}@elmodev.com')]"
+
   search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, $username_search_value, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
 end
 
@@ -394,6 +398,7 @@ Then(/^I Should Be Able To use (.*) Action on The Specific User$/i) do |specifie
 
     when "Edit User Profile"
       begin
+        byebug
         ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_EDIT_VALUE)
       end
     end
@@ -492,14 +497,20 @@ And(/^I Click On "([^"]*)" Breadcrumb Menu$/i) do |arg|
 end
 
 
-Then(/^I Should Be Able to Notify All Users$/i) do
+Then(/^I Should Be Able to (Notify|Activate) All Users$/i) do |action|
   Sleep_Until(PressConfirm())
-  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_NOTIFY_SUCCESS_MSG_VALUE)
+  if action == 'Notify'
+    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_NOTIFY_SUCCESS_MSG_VALUE)
+  else
+    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_ACTIVATE_SUCCESS_MSG_VALUE)
+  end
 end
 
 
 Then(/^I Should See That The Default Entity Is Set For the User's Company Field$/i) do
   default_legal_entity = $daos.get_default_entity_details()
+
+  sleep (2)
 
   field_value = $driver.find_element(:id, USER_LEGAL_ENTITY_FIELD_ID).text
 
@@ -516,7 +527,7 @@ Given(/^That I Have Created A New User$/i) do
         And   I go to Admin Settings
         And   I Go To Users under General section
         When  I Click On "Add New User" Button
-        Then  I Should Be Able To Add 1 New "Non-ELMO" Users In To The System With "#{user_first_name}" As First Name And "test" As Last Name}
+        Then  I Should Be Able To Add A New "Non-ELMO" User With "#{user_first_name}" As First Name And "test" As Last Name}
 end
 
 
@@ -564,4 +575,9 @@ And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Cent
     puts COLOR_BLUE + "No Cost Centres Found, please check ELMO Payroll for cost codes manually"
     skip_this_scenario
   end
+end
+
+
+Then(/^I Should Be Able To Add A New "(Non-ELMO|ELMO)" User With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?(:? And "([^"]*)" As Role)?$/i) do |arg1, arg2, arg3, arg4, arg5|
+  CreateAUser(arg1, arg2, arg3, arg4, arg5)
 end

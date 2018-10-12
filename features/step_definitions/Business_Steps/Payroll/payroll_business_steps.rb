@@ -26,15 +26,21 @@ Then(/^The Company Data Should Be Sent Successfully$/i) do
 
   puts COLOR_BLUE + "Check Record/Log file for Exported Date: " + export_date
 
-  # status_id = '//span[text()="'+export_date+'"]/../following-sibling::td/span[@title="Success"]'
-
   sleep(10)
 
   Sleep_Until(VerifyAnElementExists('xpath','//a[@title="Dismiss"]'))
-  #
-  # byebug
-  #
-  # Sleep_Until(VerifyAnElementExists('xpath',status_id))
 end
+
+
+And(/^All The Necessary Details Of The Employee Required For Payroll Are Added$/i) do
+  SetEmployeeProfileDetails()
+  steps %{
+    And   I Click On "Users" Breadcrumb Menu
+    And   I Search For A Specific User named #{@@user_name}
+    And   I Edit The User's Employment Details Section}
+  SetEmployeeEmploymentDetails()
+  SetSuperDetails()
+end
+
 
 

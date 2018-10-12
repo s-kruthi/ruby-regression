@@ -185,3 +185,55 @@ end
 Then(/^I Should Not Be Able To See Notes Section$/i) do
   VerifyAnElementNotExist('id', 'notes-section')
 end
+
+
+And(/^I Set The Cost Centre From The Existing Cost Centres$/i) do
+  sleep(2)
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_COST_CENTRE_SELECT2_ID))
+  $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
+
+  #wait as making call to Elmo Payroll
+  sleep(5)
+
+  if ($driver.find_elements(:class, 'select2-no-results')[1].text == " No matches found")
+    puts COLOR_YELLOW + "No Cost Centres exist in Elmo Payroll, hence cannot add cost centre for user"
+    skip_this_scenario
+  end
+
+  #selecting the first option from the results
+  Sleep_Until(WaitForAnElementByClassAndTouch(SELECT2_DROPDOWN_RESULT_CLASS))
+end
+
+
+And(/^I Set The Position From The Existing Positions$/i) do
+  sleep(2)
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_POSITION_SELECT2_ID))
+  $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
+
+  #wait
+  sleep(10)
+
+  # get count of positions table
+  positions_count = $daos.get_count_enabled_positions()
+
+
+  if positions_count[:count] == 0
+    if ($driver.find_elements(:class, 'select2-no-results')[1].text == " No matches found")
+     puts COLOR_YELLOW + "No Positions exist, hence cannot set the position for user"
+     skip_this_scenario
+    end
+  else
+    # search results should be equal to count
+    expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to eq(positions_count[:count])
+
+    #selecting the first option from the results
+    Sleep_Until(WaitForAnElementByClassAndTouch(SELECT2_DROPDOWN_RESULT_CLASS))
+  end
+end
+
+
+And(/^I Set The Date of Birth As (\d{1,2}\/\d{1,2}\/\d{4})$/i) do |date_of_birth|
+  byebug
+  Sleep_Until(SelectDate(USER_DOB_FIELD_ID, date_of_birth))
+end
+
