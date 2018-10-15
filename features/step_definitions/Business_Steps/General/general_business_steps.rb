@@ -70,6 +70,7 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
           username = LEAVE_COMPANY_ADMIN_USER
         end
 
+      # User with security profiles Payroll Admin and HR manager
       when "Payroll Admin"
           begin
             EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)

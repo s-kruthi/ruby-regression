@@ -12,8 +12,9 @@ And(/^I Send (Company|Employee) Data To Elmo Payroll$/i) do |data_type|
   steps %{
   And   I Go To The Menu Payroll Section}
 
-  case data_type
-    when data_type == 'Employee'
+  sleep(1)
+
+  if data_type == 'Employee'
       Sleep_Until(ClickOnASubTab(PAYROLL_EMPDATA_TAB))
   end
 end
@@ -29,11 +30,7 @@ Then(/^The (Company|Employee) Data Should Be Sent Successfully$/i) do |data_type
   #cpaturing the export date and time to check the log file
   export_date = Time.at(export_date_epoch).strftime('%d/%m/%Y %H:%M')
 
-  puts COLOR_BLUE + "Check Record/Log file for Exported Date: " + export_date
-  #
-  # sleep(10)
-  #
-  # Sleep_Until(VerifyAnElementExists('xpath','//a[@title="Dismiss"]'))
+  puts COLOR_BLUE + "Check Record/Log file manually for the Exported Date: " + export_date
 end
 
 
@@ -46,10 +43,15 @@ And(/^All The Necessary Details Of The Employee Required For Payroll Are Added$/
     And   I Search For A Specific User named #{@@user_name}
     And   I Edit The User's Employment Details Section}
   SetEmployeeEmploymentDetails()
-  sleep(1)
+
+  sleep(2)
   SetSuperDetails()
-  sleep(1)
+
+  sleep(2)
   SetContactDetails()
+
+  # #closing the session where new user details are set
+  # $driver.quit
 end
 
 
