@@ -248,7 +248,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(UseCkeditorToEnterText(SCORM_ACTIVITY_EDITOR_TXT, 0))
         Sleep_Until(WaitForAnElementByIdAndTouch(SELECT_FILE_ID))
         Sleep_Until(WaitForSelectFileButtonAndUploadFile(SCORM_FILE_NAME))
-        ClickOnSaveButton(SAVE_BTN_ID)
+        Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         sleep(2)
       end
