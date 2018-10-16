@@ -11,15 +11,6 @@ EMO_ADMIN_USERNAME = 'shanadmin'
 EMO_ADMIN_PASSWORD = 'Tester1!'
 SPECIFIC_USERNAME = 'X1222347'
 EMAIL_ADD = 'REBECCA.AARON@elmodemo.com'
-COMP_ADMIN_USERNAME = 'company.scriptonce'
-COMP_ADMIN_PASSWORD = 'Admin1234567'
-
-
-ELMO_SUPER_USERNAME = 'admin'
-ELMO_SUPER_PASSWORD = 'admin1234567'
-
-ELMO_ADMIN_USERNAME = 'admin.scriptonce'
-ELMO_ADMIN_PASSWORD = 'Admin1234567'
 
 
 ####### Recruitment user credentials ###########
@@ -109,12 +100,25 @@ COMPANY_MANAGER_PASS = "Admin1234567"
 COMPANY_EMPLOYEE_1_USER = "auto1.test1"
 COMPANY_EMPLOYEE_1_PASS = "Admin1234567"
 
+COMP_ADMIN_USERNAME = 'company.scriptonce'
+COMP_ADMIN_PASSWORD = 'Admin1234567'
+
+ELMO_SUPER_USERNAME = 'admin'
+ELMO_SUPER_PASSWORD = 'admin1234567'
+
+ELMO_ADMIN_USERNAME = 'admin.scriptonce'
+ELMO_ADMIN_PASSWORD = 'Admin1234567'
+
+PAYROLL_ADMIN_USERNAME = 'payroll.scriptonce'
+PAYROLL_ADMIN_PASSWORD = 'Admin1234567'
+
+
+#TODO Remove after code review since payroll has its own repo
+####### Payroll user credentials ############
+# PAYROLL_PROD_ADMIN_USER = "va8.swathi@gmail.com"
+# PAYROLL_PROD_ADMIN_PWD = "Elmo@tiff2112"
+
 
 ####### Payroll user credentials ############
-PAYROLL_PROD_ADMIN_USER = "va8.swathi@gmail.com"
-PAYROLL_PROD_ADMIN_PWD = "Elmo@tiff2112"
-
-
-####### Payroll user credentials ############
-PAYROLL_STAG_ADMIN_USER = "swathi.volety@elmolearning.com.au"
-PAYROLL_STAG_ADMIN_PWD = "ea7682"
+# PAYROLL_STAG_ADMIN_USER = "swathi.volety@elmolearning.com.au"
+# PAYROLL_STAG_ADMIN_PWD = "ea7682"

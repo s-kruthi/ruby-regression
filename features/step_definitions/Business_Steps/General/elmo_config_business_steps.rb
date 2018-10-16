@@ -78,13 +78,13 @@ Then(/^I Can Choose Legal Entity As The Branding Selection Field$/i) do
 end
 
 
-Given(/^That Contracts Is Disabled For New Users$/i) do
+Given(/^Contracts Is Disabled For New (:?OB )?Users$/i) do |user_type|
   steps %Q{
     Given I Have Logged In As A ELMO Admin
     And I go to Admin Settings
     And I Go To General Setup under General section
     And I Click On "ELMO Configuration" Tab
-    When I Change "New User Contract" ELMO Configuration To "Disabled"
+    When I Change "New #{user_type}User Contract" ELMO Configuration To "Disabled"
     Then I Should Be Able To Save Configuration Details
   }
   $driver.quit

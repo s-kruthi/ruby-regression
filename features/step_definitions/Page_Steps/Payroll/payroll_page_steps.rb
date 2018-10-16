@@ -3,7 +3,9 @@ def SetEmployeeProfileDetails()
         And I Click On The Profile Tab Of The User
         And I Should See That The Default Entity Is Set For the User's Company Field
         And I Set The Position From The Existing Positions
-        And I Set The Date of Birth As 19/01/1980}
+        And I Set The Date of Birth As 19/01/1980
+  }
+
   Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
 end
 
@@ -17,6 +19,7 @@ def SetEmployeeEmploymentDetails()
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_EMPLOYMENTDETAILS_STATEEMPLOYED_ID))
   #selecting the first option from the results
   Sleep_Until(WaitForAnElementByClassAndTouch(SELECT2_DROPDOWN_RESULT_CLASS))
+
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
 end
 

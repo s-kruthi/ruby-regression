@@ -69,11 +69,7 @@ def CreateUsers(loop, arg2, arg3, arg4, arg5, arg6)
 
     Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID)) if arg5
 
-    if arg6
-      Sleep_Until(SelectDate(SELECT_START_DATE_ID, arg6)) if SELECT_START_DATE.to_i == 1
-    else
-      Sleep_Until(SelectDate(SELECT_START_DATE_ID, NEW_USER_DETAILS_MAP[:start_date_value])) if SELECT_START_DATE.to_i == 1
-    end
+    Sleep_Until(SelectDate(SELECT_START_DATE_ID, arg6)) if SELECT_START_DATE.to_i == 1
 
     Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, NEW_USER_DETAILS_MAP[:expiry_date_value])) if SELECT_EXPIRY_DATE.to_i == 1
 

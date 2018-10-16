@@ -73,9 +73,9 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
       # User with security profiles Payroll Admin and HR manager
       when "Payroll Admin"
           begin
-            EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
-            EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
-            username = COMP_ADMIN_USERNAME
+            EnterUsername(USER_NAME, PAYROLL_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, PAYROLL_ADMIN_PASSWORD)
+            username = PAYROLL_ADMIN_USERNAME
           end
 
       when "Company Manager"
@@ -264,7 +264,7 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
       else
         $user_found = 0
         begin
-          CreateUsers(loop, arg2, @@first_name, @@last_name, arg5)
+          CreateUsers(loop, arg2, @@first_name, @@last_name, arg5, NEW_USER_DETAILS_MAP[:start_date_value])
           #The following steps help set the role type as well immediately after creating the user within the loop. Change the value to 'Manager' for manager Roletype or others
           steps %Q{
                   And   I Click On "Role" Tab
@@ -500,6 +500,19 @@ end
 Then(/^I Should Be Able to (Notify|Activate) All Users$/i) do |action|
   Sleep_Until(PressConfirm())
 
+  if $add_user_type == 'EMP' then onboarding = 0 else onboarding = 1 end
+
+  #get count of users that need to be activated
+  count_users_tobeactivated = $daos.get_count_userstobeactivated(onboarding)
+
+  #confirm background process when users are more than 4
+  if count_users_tobeactivated[:count] >= 4
+    $driver.find_elements(:xpath, BACKGRNDPROCESS_CONFIRM_ID).last.click
+
+    #waiting for background process to complete
+    sleep(5)
+  end
+
   if action == 'Notify'
     VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_NOTIFY_SUCCESS_MSG_VALUE)
   else
@@ -521,7 +534,7 @@ Then(/^I Should See That The Default Entity Is Set For the User's Company Field$
 end
 
 
-Given(/^That I Have Created A New User$/i) do
+Given(/^I Have Created A New User$/i) do
   user_first_name = 'payroll_auto' + Time.now.strftime("%Y%m%d%H%M%S")
   steps %Q{
         Given I Have Logged In as a Company Admin

@@ -134,9 +134,11 @@ USER_LEGAL_ENTITY_SELECT2_ID = 's2id_user_legalEntity'
 USER_COST_CENTRE_FIELD_ID = 'costCentre-container'
 USER_COST_CENTRE_SELECT2_ID = 's2id_user_costCentre'
 
-
 USER_POSITION_FIELD_ID = 'position-container'
 USER_POSITION_SELECT2_ID = 's2id_user_position'
 
-
 USER_DOB_FIELD_ID = "//input[contains(@id, 'user_personalInfo_dob')]"
+
+
+#### Background process confirmation ####
+BACKGRNDPROCESS_CONFIRM_ID = '//button[@data-action="run"]'
