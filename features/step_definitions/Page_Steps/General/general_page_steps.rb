@@ -55,19 +55,34 @@ def GoToAddNewUsersPage(add_new_user_btn)
 end
 
 
-def CreateUsers(loop, arg2, arg3, arg4, arg5)
+def CreateUsers(loop, arg2, arg3, arg4, arg5, arg6)
   begin
     Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, @@first_name))
+
     Sleep_Until(EnterUserDetails(NEW_USER_LAST_NAME_ID, @@last_name))
+
     Sleep_Until(EnterUserDetails(NEW_USER_USERNAME_ID, @@user_name)) if $add_user_type == "EMP"
+
     Sleep_Until(EnterUserDetails(NEW_USER_EMAIL_ID, @@email_address))
+
     Sleep_Until(SelectTimeZone(SELECT_TIMEZONE_ID, NEW_USER_DETAILS_MAP[:timezone_value])) if SELECT_TIMEZONE.to_i == 1
+
     Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID)) if arg5
-    Sleep_Until(SelectDate(SELECT_START_DATE_ID, NEW_USER_DETAILS_MAP[:start_date_value])) if SELECT_START_DATE.to_i == 1
+
+    if arg6
+      Sleep_Until(SelectDate(SELECT_START_DATE_ID, arg6)) if SELECT_START_DATE.to_i == 1
+    else
+      Sleep_Until(SelectDate(SELECT_START_DATE_ID, NEW_USER_DETAILS_MAP[:start_date_value])) if SELECT_START_DATE.to_i == 1
+    end
+
     Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, NEW_USER_DETAILS_MAP[:expiry_date_value])) if SELECT_EXPIRY_DATE.to_i == 1
+
     Sleep_Until(SelectFromDropdown(SELECT_ISELMO_DROPDOWN_ID, "Yes")) if arg2 == "ELMO"
+
     Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
+
     Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
+
     Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
 
     puts COLOR_BLUE + "Created new user with firstname '" + @@first_name + "' and lastname as '" + @@last_name +"'"
@@ -161,18 +176,21 @@ def CreateAUser(user_type, firstname, lastname, manager_name, role)
 
   #Check if user already exists in the database or not. If exists, skip the current creation else, create the user
   user_list_result = $daos.get_userid(@@user_name)
+
   if !user_list_result.nil?
     puts COLOR_YELLOW + "User #{user_list_result} already exists in the database.".upcase
     skip_this_scenario
   else
-    CreateUsers(0, user_type, @@first_name, @@last_name, manager_name)
+    #TODO can change it when PR-1787 is fixed
+    #setting the start date to a very date for Elmo Payroll
+    CreateUsers(0, user_type, @@first_name, @@last_name, manager_name,'01/06/2016')
 
     if role_name != 'Employee'
     #setting the role as well immediately after creating the user.
       steps %Q{
                   And   I Click On "Role" Tab
                   And   I Select "Role" Classic Dropdown As "#{role_name}"
-                  }
+      }
     end
 
     puts COLOR_BLUE + "Created new user with role '" + role_name.upcase + "'"

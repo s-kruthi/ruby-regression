@@ -10,7 +10,8 @@ end
 
 And(/^I Send (Company|Employee) Data To Elmo Payroll$/i) do |data_type|
   steps %{
-  And   I Go To The Menu Payroll Section}
+    And   I Go To The Menu Payroll Section
+  }
 
   sleep(1)
 
@@ -21,7 +22,6 @@ end
 
 
 Then(/^The (Company|Employee) Data Should Be Sent Successfully$/i) do |data_type|
-
   #Click the Send Data button to send data to Elmo Payroll
   Sleep_Until(WaitForAnElementByXpathAndTouch("//button[@ng-click='listVm.executeJob()']"))
 
@@ -41,7 +41,9 @@ And(/^All The Necessary Details Of The Employee Required For Payroll Are Added$/
   steps %{
     And   I Click On "Users" Breadcrumb Menu
     And   I Search For A Specific User named #{@@user_name}
-    And   I Edit The User's Employment Details Section}
+    And   I Edit The User's Employment Details Section
+  }
+
   SetEmployeeEmploymentDetails()
 
   sleep(2)
@@ -50,8 +52,13 @@ And(/^All The Necessary Details Of The Employee Required For Payroll Are Added$/
   sleep(2)
   SetContactDetails()
 
-  # #closing the session where new user details are set
-  # $driver.quit
+  #need to activate the user to send user data to Payroll
+  steps %{
+          And   I Click On "Users" Breadcrumb Menu
+        And   I Click On "Notify Users" Button
+        And   I Click On "Activate All Users" Button
+        Then  I Should Be Able to Activate All Users
+  }
 end
 
 

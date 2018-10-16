@@ -6,6 +6,7 @@ SELECT_TIMEZONE = 0
 
 USE_ACTIVE_INACTIVE_FILTER = 0
 
+
 NEW_USER_DETAILS_MAP = {
     email_prefix_value: "@elmodev.com",
     timezone_value: "Sydney",
@@ -17,7 +18,9 @@ NEW_USER_DETAILS_MAP = {
 
 MANAGER_SELECT_INPUT_VALUE = "manager1.scriptonce1"
 
+
 ADD_USER_SAVE_SUCCESS_VALUE = "User details have been updated!"
+
 
 EM_USER__NAME_VALUE = "Automation Test User"
 EM_USER_RELATIONSHIP_VALUE = "Tester"

@@ -45,8 +45,16 @@ def SetContactDetails()
   Sleep_Until(ClickOnASubTab(USER_PERSONAL_DETAILS_TAB_ID))
 
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_CONTACT_DETAILS_EDIT_BUTTON_ID))
-  Sleep_Until(WaitForAnElementByIdAndTouch(USER_CONTACT_DETAILS_EDIT_BUTTON_ID))
+  sleep (1)
 
+  #checking if the form is displayed, if not then click again on the edit button
+  if $driver.find_elements(:id, USER_CONTACTDETAILS_MOBILE_ID).size == 0
+    form_present = 0
+  end
+
+  if form_present == 0
+    Sleep_Until(WaitForAnElementByIdAndTouch(USER_CONTACT_DETAILS_EDIT_BUTTON_ID))
+  end
 
   Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_MOBILE_ID, 1234567890))
 

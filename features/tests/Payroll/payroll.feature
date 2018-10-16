@@ -12,7 +12,8 @@ Feature: As A Payroll Admin I Can Send Data To Payroll
 
   @employee_data
   Scenario: [Payroll]As A Payroll Admin I Can Send New Employee Data To Elmo Payroll
-    Given That I Have Created A New User
+    Given That Contracts Is Disabled For New Users
+    And   That I Have Created A New User
     And   All The Necessary Details Of The Employee Required For Payroll Are Added
     And   I Have Logged In as a Payroll Admin
     When  I Send Employee Data To Elmo Payroll
