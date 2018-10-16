@@ -70,6 +70,14 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
           username = LEAVE_COMPANY_ADMIN_USER
         end
 
+      # User with security profiles Payroll Admin and HR manager
+      when "Payroll Admin"
+          begin
+            EnterUsername(USER_NAME, PAYROLL_ADMIN_USERNAME)
+            EnterPassword(PASS_WORD, PAYROLL_ADMIN_PASSWORD)
+            username = PAYROLL_ADMIN_USERNAME
+          end
+
       when "Company Manager"
         begin
           EnterUsername(USER_NAME, COMPANY_MANAGER_USER)
@@ -179,6 +187,11 @@ And(/^I Go To The (.*) Section$/i) do |menu_type|
         GoToNavBarSection(MENU_LEAVE_LINK)
       end
 
+    when "Menu Payroll"
+      begin
+        GoToNavBarSection(MENU_PAYROLL_LINK)
+      end
+
     when "Menu Documents"
       begin
         GoToNavBarSection(MENU_DOCUMENTS_LINK)
@@ -251,7 +264,7 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
       else
         $user_found = 0
         begin
-          CreateUsers(loop, arg2, @@first_name, @@last_name, arg5)
+          CreateUsers(loop, arg2, @@first_name, @@last_name, arg5, NEW_USER_DETAILS_MAP[:start_date_value])
           #The following steps help set the role type as well immediately after creating the user within the loop. Change the value to 'Manager' for manager Roletype or others
           steps %Q{
                   And   I Click On "Role" Tab
@@ -365,7 +378,11 @@ end
 
 And(/^I Search For A Specific User Named (.*)$/i) do |username_search_value|
   $username_search_value = username_search_value
+
   UseActiveInactiveFilter() if USE_ACTIVE_INACTIVE_FILTER.to_i == 1
+
+  USERNAME_SEARCH_RESULT_VALUE = "//td[contains(.,'#{$username_search_value}@elmodev.com')]"
+
   search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, $username_search_value, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
 end
 
@@ -480,14 +497,34 @@ And(/^I Click On "([^"]*)" Breadcrumb Menu$/i) do |arg|
 end
 
 
-Then(/^I Should Be Able to Notify All Users$/i) do
+Then(/^I Should Be Able to (Notify|Activate) All Users$/i) do |action|
   Sleep_Until(PressConfirm())
-  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_NOTIFY_SUCCESS_MSG_VALUE)
+
+  if $add_user_type == 'EMP' then onboarding = 0 else onboarding = 1 end
+
+  #get count of users that need to be activated
+  count_users_tobeactivated = $daos.get_count_userstobeactivated(onboarding)
+
+  #confirm background process when users are more than 4
+  if count_users_tobeactivated[:count] >= 4
+    $driver.find_elements(:xpath, BACKGRNDPROCESS_CONFIRM_ID).last.click
+
+    #waiting for background process to complete
+    sleep(5)
+  end
+
+  if action == 'Notify'
+    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_NOTIFY_SUCCESS_MSG_VALUE)
+  else
+    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_ACTIVATE_SUCCESS_MSG_VALUE)
+  end
 end
 
 
 Then(/^I Should See That The Default Entity Is Set For the User's Company Field$/i) do
   default_legal_entity = $daos.get_default_entity_details()
+
+  sleep (2)
 
   field_value = $driver.find_element(:id, USER_LEGAL_ENTITY_FIELD_ID).text
 
@@ -497,14 +534,14 @@ Then(/^I Should See That The Default Entity Is Set For the User's Company Field$
 end
 
 
-Given(/^That I Have Created A New User$/i) do
+Given(/^I Have Created A New User$/i) do
   user_first_name = 'payroll_auto' + Time.now.strftime("%Y%m%d%H%M%S")
   steps %Q{
         Given I Have Logged In as a Company Admin
         And   I go to Admin Settings
         And   I Go To Users under General section
         When  I Click On "Add New User" Button
-        Then  I Should Be Able To Add 1 New "Non-ELMO" Users In To The System With "#{user_first_name}" As First Name And "test" As Last Name}
+        Then  I Should Be Able To Add A New "Non-ELMO" User With "#{user_first_name}" As First Name And "test" As Last Name}
 end
 
 
@@ -552,4 +589,9 @@ And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Cent
     puts COLOR_BLUE + "No Cost Centres Found, please check ELMO Payroll for cost codes manually"
     skip_this_scenario
   end
+end
+
+
+Then(/^I Should Be Able To Add A New "(Non-ELMO|ELMO)" User With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?(:? And "([^"]*)" As Role)?$/i) do |arg1, arg2, arg3, arg4, arg5|
+  CreateAUser(arg1, arg2, arg3, arg4, arg5)
 end

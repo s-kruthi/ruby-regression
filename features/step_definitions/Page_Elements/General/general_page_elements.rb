@@ -12,6 +12,7 @@ MENU_PROFILE_LINK = "//a[contains(@href,'/controlpanel/my-profile')]"
 MENU_MY_TEAM_LINK = "//a[contains(.,'My Team')]" #"//a[@href='/controlpanel/team-members')]"
 MENU_LEARNING_LINK = "//a[contains(@href,'/learning/my')]"
 MENU_LEAVE_LINK = "//a[contains(@href,'/dashboard/leave/my/leave-requests')]"
+MENU_PAYROLL_LINK = "//a[@title='Payroll']"
 MENU_DOCUMENTS_LINK = "//a[contains(@href,'/documents')]"
 MENU_PERFORMANCE_LINK = "//a[contains(@href,'/dashboard/my-performance')]"
 MENU_RECRUITMENT_LINK = "//a[contains(@href,'/controlpanel/recruitment/requisition/requisition')]"
@@ -124,7 +125,7 @@ CLASSIC_DROPDOWN_ELEMENT_ID_MAP = {
 }
 
 
-#### User Details page elements ####
+#### User Details/Profile page elements ####
 USER_PROFILE_TAB_ID = '//a[contains(@href, "edit-user-profile")]'
 
 USER_LEGAL_ENTITY_FIELD_ID ='legalEntity-container'
@@ -132,3 +133,12 @@ USER_LEGAL_ENTITY_SELECT2_ID = 's2id_user_legalEntity'
 
 USER_COST_CENTRE_FIELD_ID = 'costCentre-container'
 USER_COST_CENTRE_SELECT2_ID = 's2id_user_costCentre'
+
+USER_POSITION_FIELD_ID = 'position-container'
+USER_POSITION_SELECT2_ID = 's2id_user_position'
+
+USER_DOB_FIELD_ID = "//input[contains(@id, 'user_personalInfo_dob')]"
+
+
+#### Background process confirmation ####
+BACKGRNDPROCESS_CONFIRM_ID = '//button[@data-action="run"]'

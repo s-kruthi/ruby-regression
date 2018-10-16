@@ -1,5 +1,7 @@
 #####General ELMO credentials ###############
 ELMO_LANDING_PAGE = 'https://tmsfull.dev.elmodev.com/dashboard'
+
+
 #NEW_USER_EDIT_PAGE = 'https://staging1.dev.elmodev.com/controlpanel/edit-user-password/20519'
 NEW_USER_EDIT_PAGE ='https://staging4.dev.elmodev.com/controlpanel/change-password/'
 NEW_USER_LOGIN_PAGE = 'https://tmsfull.dev.elmodev.com'
@@ -9,17 +11,9 @@ EMO_ADMIN_USERNAME = 'shanadmin'
 EMO_ADMIN_PASSWORD = 'Tester1!'
 SPECIFIC_USERNAME = 'X1222347'
 EMAIL_ADD = 'REBECCA.AARON@elmodemo.com'
-COMP_ADMIN_USERNAME = 'company.scriptonce'
-COMP_ADMIN_PASSWORD = 'Admin1234567'
 
 
-ELMO_SUPER_USERNAME = 'admin'
-ELMO_SUPER_PASSWORD = 'admin1234567'
-
-ELMO_ADMIN_USERNAME = 'admin.scriptonce'
-ELMO_ADMIN_PASSWORD = 'Admin1234567'
 ####### Recruitment user credentials ###########
-
 REQUISITION_LANDING_PAGE = 'https://staging5.dev.elmodev.com/controlpanel/recruitment/requisition/requisition'
 RECRUITMENT_ADMIN_USERNAME = 'company.scriptonce'
 RECRUITMENT_ADMIN_PASSWORD = 'Admin1234567'
@@ -27,6 +21,7 @@ RECRUITMENT_LANDING_PAGE = 'https://staging4.dev.elmodev.com/dashboard'
 RECRUITMENT_CANDIDATE_LANDING_PAGE = 'https://staging4.dev.elmodev.com/admin/candidates/listAll'
 RECRUITMENT_COMP_USER = 'rec_comp_admin'
 RECRUITMENT_COMP_PASS = 'Tester1!'
+
 
 ####### user credentials ###########
 MY_DOCUMENT_PAGE = 'https://tmsfull.dev.elmodev.com/documents'
@@ -40,8 +35,10 @@ DOC_MANAGER_PASSWORD = 'Tester1!'
 AUTO_COMP_ADMIN_NAME = 'auto.comp.admin'
 AUTO_COMP_ADMIN_PASSWORD = 'Tester1!'
 
+
 ####### employee profile details page ########
 EMPLOYEE_PROFILE_PAGE = "https://staging4.dev.elmodev.com/controlpanel/user-profile/619/payment"
+
 
 ####### Leave user credentials ########
 ADMIN_LANDING_PAGE = 'https://staging4.dev.elmodev.com/admin/'
@@ -66,8 +63,11 @@ ELMO_SETUP_ADMIN_PASSWORD = 'admin'
 
 
 CLIENT_CONTRACTS_LANDING_PAGE = 'https://elmo.dev.elmodev.com/setup/client/contract'
+
+
 ######## Scheduled Report landing page ###########
 REPORTS_LANDING_PAGE = 'https://staging7.dev.elmodev.com/report#/?pageType=reportList'
+
 
 ######### Learning -course credentials #######################
 ADMIN_COURSE_PAGE = 'https://staging7.dev.elmodev.com/admin/courses'
@@ -78,14 +78,17 @@ MANAGER_COURSE_PASS = ''
 EMPLOYEE_COURSE_USER = ''
 EMPLOYEE_COURSE_PASS = ''
 
+
 ####### Employee Contract credentials ########
 EMPLOYEE_CONTRACTS_LANDING_PAGE = 'https://hung01.dev.elmodev.com/setup/login'
+
 
 #####Learning -F2F credentials ###############
 # ELMO_LEARNING_LANDING_PAGE = 'https://tmsfull.dev.elmodev.com/dashboard'
 ELMO_LEARNING_LANDING_PAGE = 'https://tony01.dev.elmodev.com/dashboard'
 LEARNING_ADMIN_USERNAME = 'company.scriptonce'
 LEARNING_ADMIN_PASSWORD = 'Admin1234567'
+
 
 ####### User credentials ###########
 MANAGER_USERNAME = 'X1201531'
@@ -97,10 +100,25 @@ COMPANY_MANAGER_PASS = "Admin1234567"
 COMPANY_EMPLOYEE_1_USER = "auto1.test1"
 COMPANY_EMPLOYEE_1_PASS = "Admin1234567"
 
+COMP_ADMIN_USERNAME = 'company.scriptonce'
+COMP_ADMIN_PASSWORD = 'Admin1234567'
+
+ELMO_SUPER_USERNAME = 'admin'
+ELMO_SUPER_PASSWORD = 'admin1234567'
+
+ELMO_ADMIN_USERNAME = 'admin.scriptonce'
+ELMO_ADMIN_PASSWORD = 'Admin1234567'
+
+PAYROLL_ADMIN_USERNAME = 'payroll.scriptonce'
+PAYROLL_ADMIN_PASSWORD = 'Admin1234567'
+
+
+#TODO Remove after code review since payroll has its own repo
 ####### Payroll user credentials ############
-PAYROLL_PROD_ADMIN_USER = "va8.swathi@gmail.com"
-PAYROLL_PROD_ADMIN_PWD = "Elmo@tiff2112"
+# PAYROLL_PROD_ADMIN_USER = "va8.swathi@gmail.com"
+# PAYROLL_PROD_ADMIN_PWD = "Elmo@tiff2112"
+
 
 ####### Payroll user credentials ############
-PAYROLL_STAG_ADMIN_USER = "swathi.volety@elmolearning.com.au"
-PAYROLL_STAG_ADMIN_PWD = "ea7682"
+# PAYROLL_STAG_ADMIN_USER = "swathi.volety@elmolearning.com.au"
+# PAYROLL_STAG_ADMIN_PWD = "ea7682"

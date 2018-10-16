@@ -81,8 +81,10 @@ end
 
 
 def EditLegalEntity()
-  #get legal entity to edit
+  #get non-default legal entity to edit
   @legal_entity = $daos.get_legal_entity_details_for_edit()
+
+  puts COLOR_BLUE + "Editing entity "+ @legal_entity[:business_name]
 
   SearchToEdit(@legal_entity)
 

@@ -131,6 +131,27 @@ module Database_env
       return @db[query].first
     end
 
+
+    def get_count_enabled_positions()
+      query = "select count(*) as count
+              from epms_position
+              where is_deleted = 0"
+      return @db[query].first
+    end
+
+
+    #gets the count of users to be activated/notified
+    def get_count_userstobeactivated(onboarding)
+      query = "select count(*) as count
+               from epms_user
+               where is_active = 1
+               and is_notified= 0
+               and is_deleted= 0
+               and confirmed = 0
+               and is_onboarding=#{onboarding}"
+      return @db[query].first
+    end
+
   end
 
 end

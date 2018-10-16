@@ -6,6 +6,7 @@ SELECT_TIMEZONE = 0
 
 USE_ACTIVE_INACTIVE_FILTER = 0
 
+
 NEW_USER_DETAILS_MAP = {
     email_prefix_value: "@elmodev.com",
     timezone_value: "Sydney",
@@ -17,7 +18,9 @@ NEW_USER_DETAILS_MAP = {
 
 MANAGER_SELECT_INPUT_VALUE = "manager1.scriptonce1"
 
+
 ADD_USER_SAVE_SUCCESS_VALUE = "User details have been updated!"
+
 
 EM_USER__NAME_VALUE = "Automation Test User"
 EM_USER_RELATIONSHIP_VALUE = "Tester"
@@ -25,11 +28,11 @@ EM_USER_ADDRESS_VALUE = "520 Oxford St, Bondi Junction, New South Wales, Austral
 EM_USER_MOBILE_VALUE = "0430000000"
 EM_USER_EMAIL_VALUE = "auto.test@elmodev.com"
 
+#TODO Remove after review since USERNAME_SEARCH_VALUE is not being used and USERNAME_SEARCH_RESULT_VALUE has been parameterised
+# USERNAME_SEARCH_VALUE = "auto1.test1"
 
-USERNAME_SEARCH_VALUE = "auto1.test1"
 
-
-USERNAME_SEARCH_RESULT_VALUE = "//td[contains(.,'auto1.test1@elmodev.com')]"
+#USERNAME_SEARCH_RESULT_VALUE = "//td[contains(.,'auto1.test1@elmodev.com')]"
 
 
 ACTION_DROPDOWN_INDEX_VALUE = 4
@@ -42,3 +45,4 @@ ACTION_DROPDOWN_DEACTIVATE_VALUE = "Deactivate user"
 INACTIVE_ATTRIBUTE_TEXT = "User is not active"
 USER_NOTIFY_SUCCESS_MSG_VALUE = "Successfully notify user."
 ROLE_CHANGE_SUCCESS_MSG_VALUE = "×  User role has been updated!"
+USER_ACTIVATE_SUCCESS_MSG_VALUE = "Successfully activate user"
