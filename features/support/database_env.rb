@@ -14,9 +14,11 @@ module Database_env
       @@PWD = ENV['ssh_pwd'] || ENV['SSH_PWD']
       @@DB_PWD = ENV['db_pwd'] || ENV['DB_PWD']
 
+      # Site name is provided via URL/url parameter. Otherwise it defaults to tmsfull
       $site = (ENV["URL"] || ENV["url"]) || 'tmsfull'
-      $data_base = (ENV["DB"] || ENV["db"] || 'pmsdev_tmsfull' if $site == 'payroll') || "pmsdev_" + ($site.split(".dev").join ",")
-
+      # Database name is provided either via DB/db parameter, otherwise taken from $site parameter if it exists, otherwise defaults to pmsdev_tmsfull
+      $data_base = ENV["DB"] || ENV["db"] || ("pmsdev_" + ($site.split(".dev").join ",") if $site != nil) || 'pmsdev_tmsfull'
+    
       $gateway = Net::SSH::Gateway.new(@@HOST, @@SSH_USER, :password => @@PWD)
       port = $gateway.open(@@DB_HOST, 3306)
 
