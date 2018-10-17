@@ -113,6 +113,13 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
           username = AUTO_COMP_ADMIN_NAME
         end
 
+      else
+          begin
+            EnterUsername(USER_NAME, @username)
+            EnterPassword(PASS_WORD, @user_pwd)
+            username = @username
+          end
+
       end
 
       #getting the userid based on the username and saving for later
@@ -595,3 +602,11 @@ end
 Then(/^I Should Be Able To Add A New "(Non-ELMO|ELMO)" User With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?(:? And "([^"]*)" As Role)?$/i) do |arg1, arg2, arg3, arg4, arg5|
   CreateAUser(arg1, arg2, arg3, arg4, arg5)
 end
+
+
+Given(/^I Have Logged In Using The Username "(.*)" And Password "(.*)"$/i) do |user_name, user_pwd|
+  @username = user_name
+  @user_pwd = user_pwd
+  steps %{And I Have Logged In As A Employee}
+end
+
