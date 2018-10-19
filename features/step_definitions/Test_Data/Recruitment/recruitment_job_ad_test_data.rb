@@ -13,3 +13,9 @@ RECRUITMENT_JOB_AD_COUNTRY_VALUE = 'Australia'
 JOBAD_APPLY_SUCCESSFUL_VALUE = 'Your application has been submitted. Please click a link below.'
 
 PDF_FILE_NAME = "sample.pdf"
+
+RECRUITMENT_JOBAPPLN_CANDIDATE_EMAIL_VALUE = 'autocandidate@elmodev.com'
+
+RECRUITMENT_JOBAPPLN_CANDIDATE_FNAME_VALUE = 'Autocandidate'
+
+RECRUITMENT_JOBAPPLN_CANDIDATE_LNAME_VALUE = 'Scriptonce'

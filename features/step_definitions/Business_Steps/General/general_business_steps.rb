@@ -604,9 +604,14 @@ Then(/^I Should Be Able To Add A New "(Non-ELMO|ELMO)" User With "(.*)" As First
 end
 
 
-Given(/^I Have Logged In Using The Username "(.*)" And Password "(.*)"$/i) do |user_name, user_pwd|
+Given(/^I Have Logged In As (An Employee|Vendor) Using The Username "(.*)" And Password "(.*)"$/i) do |user_type, user_name, user_pwd|
   @username = user_name
   @user_pwd = user_pwd
-  steps %{And I Have Logged In As A Employee}
+
+  if user_type == 'Vendor'
+    @vendor_login = 1
+  end
+
+  steps %{And I Have Logged In As A #{user_type}}
 end
 

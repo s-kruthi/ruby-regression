@@ -29,7 +29,7 @@ end
 def LoginToExtPortal(external_portal, user_name, user_pwd)
   startWebDriver
 
-  $external_portal = external_portal
+  @external_portal = external_portal
   GoToSite()
 
   EnterUsername(USER_NAME, user_name)
@@ -45,6 +45,13 @@ end
 
 
 def SearchJobAd(jobad_title)
-  Sleep_Until(WaitForAnElementByIdAndInputValue(SEARCH_JOBAD_ID, jobad_title))
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(SEARCH_JOBAD_ID, jobad_title))
   Sleep_Until(WaitForAnElementByXpathAndTouch(SEARCH_BUTTON_ID))
+end
+
+
+def EnterCandidateDetails()
+  Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_JOBAPPLN_CANDIDATE_EMAIL_ID, RECRUITMENT_JOBAPPLN_CANDIDATE_EMAIL_VALUE))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_JOBAPPLN_CANDIDATE_FNAME_ID, RECRUITMENT_JOBAPPLN_CANDIDATE_FNAME_VALUE))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_JOBAPPLN_CANDIDATE_LNAME_ID, RECRUITMENT_JOBAPPLN_CANDIDATE_LNAME_VALUE))
 end

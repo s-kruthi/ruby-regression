@@ -9,7 +9,7 @@ When(/^I Apply For The Job Ad Titled "(.*)"$/i) do | job_title |
 end
 
 
-And(/^I Upload My (Resume|Cover Letter)$/i) do | document_type |
+And(/^I Upload (My |The )(Resume|Cover Letter)$/i) do | arg1, document_type |
   if document_type == "Resume"
     element_id = RECRUITMENT_JOBAD_RESUME_UPLOAD_ID
   else
@@ -33,7 +33,7 @@ And(/^I Upload Other Documents$/i) do
 end
 
 
-And(/^I Provide My Contact Details$/i) do
+And(/^I Provide( My| The Candidate) Contact Details$/i) do | arg1 |
   ClearInputFields(6)
   EnterJobAdContactDetails()
 
@@ -60,4 +60,17 @@ end
 
 And(/^I Search For The Job Ad Titled "(.*)"$/i) do | jobad_title |
   SearchJobAd(jobad_title)
+end
+
+
+When(/^I Submit Candidate For The Job Ad Titled "(.*)"$/i) do | job_title |
+  steps %{And I Apply For The Job Ad Titled "#{job_title}"}
+end
+
+
+And(/^I Enter Candidate Details$/i) do
+  EnterCandidateDetails()
+
+  #navigate to the next step
+  Sleep_Until(WaitForAnElementByIdAndTouch(RECRUITMENT_JOBAD_NEXT_ID))
 end
