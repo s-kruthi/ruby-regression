@@ -23,5 +23,6 @@ RECRUITMENT_JOBAD_POSTCODE_ID = '//input[@name="postcode"]'
 RECRUITMENT_JOBAD_COUNTRY_ID = '//select[@name="country"]'
 
 
-
-
+#### External Career Portal ####
+BROWSE_JOBS_LINK = "//a[contains(@href,'/jobs')]"
+SEARCH_JOBAD_ID = 'search-text'

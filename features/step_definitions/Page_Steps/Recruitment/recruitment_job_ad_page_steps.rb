@@ -24,3 +24,27 @@ def EnterJobAdContactDetails()
 
   Sleep_Until(SelectFromDropdown(RECRUITMENT_JOBAD_COUNTRY_ID, RECRUITMENT_JOB_AD_COUNTRY_VALUE))
 end
+
+
+def LoginToExtPortal(external_portal, user_name, user_pwd)
+  startWebDriver
+
+  $external_portal = external_portal
+  GoToSite()
+
+  EnterUsername(USER_NAME, user_name)
+  EnterPassword(PASS_WORD, user_pwd)
+
+  TouchLoginButton(LOGIN_BUTTON)
+  puts COLOR_BLUE + "Title: " + $driver.title
+  puts COLOR_BLUE + "URL: " + $driver.current_url
+  sleep(3)
+
+  expect($driver.current_url).to include('/view-profile')
+end
+
+
+def SearchJobAd(jobad_title)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(SEARCH_JOBAD_ID, jobad_title))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(SEARCH_BUTTON_ID))
+end
