@@ -7,13 +7,13 @@ RECRUITMENT_JOBAD_SUBMIT_ID ="jobAppnSubmit"
 JOBAD_APPLY_SUCCESSFUL_ID = '//div[@class="modal-body ng-scope"]'
 
 
-#### Job Application Resume step elements ####
+#### Job Ad Resume step elements ####
 RECRUITMENT_JOBAD_RESUME_UPLOAD_ID = "//input[@id='resumeFile']"
 RECRUITMENT_JOBAD_COVERLETTER_UPLOAD_ID = "//div[@id='coverLetterFile']//input[@id='resumeFile']"
 RECRUITMENT_JOBAD_ADDDOC_ID = '//button[@ng-click="addDocument()"]'
 
 
-#### Job Application Contact Details ####
+#### Job Ad Contact Details ####
 RECRUITMENT_JOBAD_HOMEPH_ID = '//input[@name="homePhone"]'
 RECRUITMENT_JOBAD_MOBILE_ID = '//input[@name="mobile"]'
 RECRUITMENT_JOBAD_ADDR1_ID = '//input[@name="addressLine1"]'
