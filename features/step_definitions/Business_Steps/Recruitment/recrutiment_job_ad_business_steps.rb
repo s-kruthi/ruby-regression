@@ -37,6 +37,7 @@ And(/^I Provide My Contact Details$/i) do
   ClearInputFields(6)
   EnterJobAdContactDetails()
 
+  #navigate to the next step
   Sleep_Until(WaitForAnElementByIdAndTouch(RECRUITMENT_JOBAD_NEXT_ID))
 end
 
@@ -46,3 +47,17 @@ Then(/^I Should Be Able To Successfully Apply For The Job Ad$/i) do
   VerifySuccessAlertMessage(JOBAD_APPLY_SUCCESSFUL_ID, JOBAD_APPLY_SUCCESSFUL_VALUE)
 end
 
+
+Given(/^I Have Logged In To The External Career Portal (.*) Using The Username "(.*)" And Password "(.*)"$/i) do | ext_portal, user_name, user_pwd|
+  LoginToExtPortal(ext_portal, user_name, user_pwd)
+end
+
+
+When(/^I Go To The Browse Jobs Page$/i) do
+  GoToNavBarSection(BROWSE_JOBS_LINK)
+end
+
+
+And(/^I Search For The Job Ad Titled "(.*)"$/i) do | jobad_title |
+  SearchJobAd(jobad_title)
+end
