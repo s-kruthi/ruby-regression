@@ -1,6 +1,7 @@
 When(/^I Apply For The Job Ad Titled "(.*)"$/i) do | job_title |
   jobad_xpath = "//a[text() = '#{job_title}']"
 
+  #Try doing a database cleanup before applying
   #click on the job ad title
   Sleep_Until(ClickElement('xpath', jobad_xpath))
 
@@ -60,6 +61,19 @@ end
 
 And(/^I Search For The Job Ad Titled "(.*)"$/i) do | jobad_title |
   SearchJobAd(jobad_title)
+end
+
+
+And(/^I Should Be Able To Successfully "(Verify|Remove)" The "(Internal|External|Vendor)" Job Ad Named "(.*)" for Username "(.*)" From Database$/i) do |recruitment_action, recruitment_job_ad_type, recruitment_job_title, candidate_email|
+  case recruitment_action
+    when "Verify"
+      job_ad_result = $daos.verify_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
+      puts job_ad_result
+      
+    when "Remove"
+      job_ad_result = $daos.remove_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
+      puts job_ad_result
+  end
 end
 
 

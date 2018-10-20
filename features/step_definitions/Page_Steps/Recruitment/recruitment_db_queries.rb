@@ -1,5 +1,5 @@
 module Database_env
-
+  
   class DAO
     #get req,candidate(shortlisted, interview) and vendor details having vendor submitted candidates
     def get_requisition_vendor_candidates()
@@ -20,8 +20,8 @@ module Database_env
                ORDER BY rand();"
       return @db[query].first
     end
-
-
+    
+    
     def get_requisition_details_no_notes()
       query = "select distinct id as req_id, requisition_title_display
               from epms_recruitment_requisition
@@ -30,8 +30,8 @@ module Database_env
               order by rand();"
       return @db[query].first
     end
-
-
+    
+    
     def get_requisition_details_with_notes(status)
       query = "select distinct err.id as req_id, requisition_title_display, requisition_note_updater_id, requisition_note_updated_at, eu.first_name, eu.last_name
              from epms_recruitment_requisition err
@@ -41,7 +41,76 @@ module Database_env
              order by rand();"
       return @db[query].first
     end
-
+    
+    
+    def verify_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
+      case recruitment_job_ad_type
+        when "Internal"
+          query = "SELECT * FROM epms_recruitment_job_application AS epa
+                  INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
+                  INNER JOIN epms_user AS epu ON epa.user_id = epu.id
+                  WHERE epj.title LIKE '%#{recruitment_job_title}%'
+                  AND epa.user_id IS NOT NULL
+                  AND epu.email LIKE '%#{candidate_email}%';"
+          return @db[query].first
+        
+        when "External"
+          query = "SELECT * FROM epms_recruitment_job_application AS epa
+                  INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
+                  INNER JOIN epms_recruitment_candidate AS epc ON epa.candidate_id = epc.id
+                  WHERE epj.title LIKE '%#{recruitment_job_title}%'
+                  AND epa.candidate_id IS NOT NULL
+                  AND epc.email LIKE '%#{candidate_email}%';"
+          return @db[query].first
+        
+        when "Vendor"
+          query = "SELECT * FROM epms_recruitment_job_application AS epa
+                  INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
+                  INNER JOIN epms_recruitment_candidate AS epc ON epa.candidate_id = epc.id
+                  WHERE epj.title LIKE '%#{recruitment_job_title}%'
+                  AND epa.candidate_id IS NOT NULL
+                  AND epc.id IS NOT NULL
+                  AND epc.email LIKE '%#{candidate_email}%';"
+          return @db[query].first
+      end
+    end
+    
+    
+    def remove_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
+      case recruitment_job_ad_type
+        when "Internal"
+          query = "DELETE FROM epms_recruitment_job_application WHERE id IN
+                  (SELECT id FROM (SELECT epa.id FROM epms_recruitment_job_application AS epa
+                  INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
+                  INNER JOIN epms_user AS epu ON epa.user_id = epu.id
+                  WHERE epj.title LIKE '%#{recruitment_job_title}%'
+                  AND epa.user_id IS NOT NULL
+                  AND epu.email LIKE '%#{candidate_email}%') AS eid);"
+          return @db[query].first
+        
+        when "External"
+          query = "DELETE FROM epms_recruitment_job_application WHERE id IN
+                  (SELECT id FROM (SELECT epa.id FROM epms_recruitment_job_application AS epa
+                  INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
+                  INNER JOIN epms_recruitment_candidate AS epc ON epa.candidate_id = epc.id
+                  WHERE epj.title LIKE '%#{recruitment_job_title}%'
+                  AND epa.candidate_id IS NOT NULL
+                  AND epc.email LIKE '%#{candidate_email}%') AS eid);"
+          return @db[query].first
+        
+        when "Vendor"
+          query = "DELETE FROM epms_recruitment_job_application WHERE id IN
+                  (SELECT id FROM (SELECT epa.id FROM epms_recruitment_job_application AS epa
+                  INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
+                  INNER JOIN epms_recruitment_candidate AS epc ON epa.candidate_id = epc.id
+                  WHERE epj.title LIKE '%#{recruitment_job_title}%'
+                  AND epa.candidate_id IS NOT NULL
+                  AND epc.id IS NOT NULL
+                  AND epc.email LIKE '%#{candidate_email}%') AS eid);"
+          return @db[query].first
+      
+      end
+    end
+  
   end
-
 end
