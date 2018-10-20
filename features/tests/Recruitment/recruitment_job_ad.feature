@@ -15,6 +15,8 @@ Feature:
     And   I Upload Other Documents
     And   I Provide My Contact Details
     Then  I Should Be Able To Successfully Apply For The Job Ad
+    And   I Should Be Able To Successfully "Verify" The "Internal" Job Ad Named "Gui%Internal" for Username "auto1.scriptonce1" From Database
+    And   I Should Be Able To Successfully "Remove" The "Internal" Job Ad Named "Gui%Internal" for Username "auto1.scriptonce1" From Database
 
 
   @recruitment_external_jobad
@@ -28,6 +30,8 @@ Feature:
     And   I Upload Other Documents
     And   I Provide My Contact Details
     Then  I Should Be Able To Successfully Apply For The Job Ad
+    And   I Should Be Able To Successfully "Verify" The "External" Job Ad Named "Gui%External" for Username "test@mail.com" From Database
+    And   I Should Be Able To Successfully "Remove" The "External" Job Ad Named "Gui%External" for Username "test@mail.com" From Database
 
 
   @recruitment_vendor_jobad
@@ -42,3 +46,5 @@ Feature:
     And   I Upload Other Documents
     And   I Provide The Candidate Contact Details
     Then  I Should Be Able To Successfully Apply For The Job Ad
+    And   I Should Be Able To Successfully "Verify" The "Vendor" Job Ad Named "Gui%Vendor" for Username "autocandidate@elmodev.com" From Database
+    And   I Should Be Able To Successfully "Remove" The "Vendor" Job Ad Named "Gui%Vendor" for Username "autocandidate@elmodev.com" From Database
