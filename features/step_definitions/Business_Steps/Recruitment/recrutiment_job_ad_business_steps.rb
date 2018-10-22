@@ -88,3 +88,22 @@ And(/^I Enter Candidate Details$/i) do
   #navigate to the next step
   Sleep_Until(WaitForAnElementByIdAndTouch(RECRUITMENT_JOBAD_NEXT_ID))
 end
+
+
+Given(/^I Am On The External Career Site (.*)$/i) do | external_portal |
+  NavigateToCareerSite(external_portal)
+end
+
+
+When(/^I Provide Details To Create Profile$/i) do
+  EnterProfileDetails()
+
+  #clicking on Create Profile button
+  Sleep_Until(WaitForAnElementByIdAndTouch('candidateForm_save'))
+end
+
+
+Then(/^I Should Be Able To Successfully Create A Profile$/i) do
+  expect($driver.current_url).to include('/view-profile')
+end
+
