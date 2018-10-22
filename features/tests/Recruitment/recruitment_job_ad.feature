@@ -48,3 +48,10 @@ Feature:
     Then  I Should Be Able To Successfully Apply For The Job Ad
     And   I Should Be Able To Successfully "Verify" The "Vendor" Job Ad Named "Gui%Vendor" for Username "autocandidate@elmodev.com" From Database
     And   I Should Be Able To Successfully "Remove" The "Vendor" Job Ad Named "Gui%Vendor" for Username "autocandidate@elmodev.com" From Database
+
+
+  @recruitment_externalcandidate_createprofile @test
+  Scenario: [Recruitment]External candidate can create a profile
+    Given  I Am On The External Career Site tmsdevfull
+    When   I Provide Details To Create Profile
+    Then   I Should Be Able To Successfully Create A Profile
