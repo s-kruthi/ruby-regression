@@ -104,6 +104,16 @@ end
 
 
 Then(/^I Should Be Able To Successfully Create A Profile$/i) do
+  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, RECRUITMENT_EXTCANDIDATE_CREATE_SUCCESS_VALUE)
   expect($driver.current_url).to include('/view-profile')
 end
 
+
+When(/^I Want To Create (\d+) External Candidate Profiles*$/i) do | num_candidates |
+  CreateExternalCandidateProfiles(num_candidates)
+end
+
+
+Then(/^I Should Be Create (\d+) External Candidate Profiles* Successfully$/i) do | num_candidates |
+  VerifyCreationExtCandidates(num_candidates)
+end

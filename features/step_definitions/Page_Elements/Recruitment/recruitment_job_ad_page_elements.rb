@@ -26,6 +26,7 @@ RECRUITMENT_JOBAD_COUNTRY_ID = '//select[@name="country"]'
 #### External Career Portal ####
 BROWSE_JOBS_LINK = "//a[contains(@href,'/jobs')]"
 SEARCH_JOBAD_ID = '//input[@placeholder="Search"]'
+RECRUITMENT_EXTPORTAL_SIGNOUT_ID = "//a[contains(@href,'/logout')]"
 
 
 #### Candidate Details ####
@@ -34,3 +35,9 @@ RECRUITMENT_JOBAPPLN_CANDIDATE_FNAME_ID = 'candidateFirstName'
 RECRUITMENT_JOBAPPLN_CANDIDATE_LNAME_ID = 'candidateLastName'
 
 
+#### External Candidate Profile Details ####
+RECRUITMENT_EXTCANDIDATE_PROFILE_FNAME_ID = 'candidateForm_firstName'
+RECRUITMENT_EXTCANDIDATE_PROFILE_LNAME_ID = 'candidateForm_lastName'
+RECRUITMENT_EXTCANDIDATE_PROFILE_EMAIL_ID = 'candidateForm_email'
+RECRUITMENT_EXTCANDIDATE_PROFILE_PWD_ID = 'candidateForm_password_first'
+RECRUITMENT_EXTCANDIDATE_PROFILE_REPEATPWD_ID = 'candidateForm_password_second'
