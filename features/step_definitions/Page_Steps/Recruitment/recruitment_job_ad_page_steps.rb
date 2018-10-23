@@ -71,11 +71,44 @@ def EnterProfileDetails()
   lastname = 'scriptonce' + suffix
 
 
-  Sleep_Until(WaitForAnElementByIdAndInputValue('candidateForm_firstName', 'auto_ext'))
-  Sleep_Until(WaitForAnElementByIdAndInputValue('candidateForm_lastName', lastname))
-  Sleep_Until(WaitForAnElementByIdAndInputValue('candidateForm_email', ext_candiate_email))
-  Sleep_Until(WaitForAnElementByIdAndInputValue('candidateForm_password_first', 'Admin1234567'))
-  Sleep_Until(WaitForAnElementByIdAndInputValue('candidateForm_password_second', 'Admin1234567'))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_EXTCANDIDATE_PROFILE_FNAME_ID, RECRUITMENT_EXTCANDIDATE_PROFILE_FNAME_VALUE))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_EXTCANDIDATE_PROFILE_LNAME_ID, lastname))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_EXTCANDIDATE_PROFILE_EMAIL_ID, ext_candiate_email))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_EXTCANDIDATE_PROFILE_PWD_ID, RECRUITMENT_EXTCANDIDATE_PROFILE_PWD_VALUE))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_EXTCANDIDATE_PROFILE_REPEATPWD_ID, RECRUITMENT_EXTCANDIDATE_PROFILE_PWD_VALUE))
 
-  puts COLOR_BLUE + 'Created new candidate with firstname "auto_ext", lastname "'+ lastname + '" having email "'+ ext_candiate_email +'"'
+  puts COLOR_BLUE + 'Creating new candidate with firstname "auto_ext", lastname "'+ lastname + '" having email "'+ ext_candiate_email +'"'
+end
+
+
+def CreateExternalCandidateProfiles(num_candidates)
+  #getting the num of existing candidates to compare aftet creation
+  @num_existing_candidates = $daos.get_count_candidates()
+
+  i = 1
+  while i <= num_candidates
+    EnterProfileDetails()
+    Sleep_Until(WaitForAnElementByIdAndTouch('candidateForm_save'))
+    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, RECRUITMENT_EXTCANDIDATE_CREATE_SUCCESS_VALUE)
+    LogoutExtPortal()
+    i+=1
+  end
+end
+
+
+def LogoutExtPortal()
+  Sleep_Until(ClickElement('xpath', RECRUITMENT_EXTPORTAL_SIGNOUT_ID, 1))
+end
+
+
+def VerifyCreationExtCandidates(num_candidates)
+  #getting the count of candidates to verify creation
+  count_ext_candidates = $daos.get_count_candidates()
+
+  total = @num_existing_candidates + num_candidates
+
+  #comparing current count to (earlier count + num of candidates created now)
+  expect(count_ext_candidates).to eq(total)
+
+  puts COLOR_GREEN + 'Successfully created '+ num_candidates.to_s + ' external candidates'
 end

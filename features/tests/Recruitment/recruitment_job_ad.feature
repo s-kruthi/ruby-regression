@@ -50,8 +50,15 @@ Feature:
     And   I Should Be Able To Successfully "Remove" The "Vendor" Job Ad Named "Gui%Vendor" for Username "autocandidate@elmodev.com" From Database
 
 
-  @recruitment_externalcandidate_createprofile @test
+  @recruitment_externalcandidate_createprofile
   Scenario: [Recruitment]External candidate can create a profile
     Given  I Am On The External Career Site tmsdevfull
     When   I Provide Details To Create Profile
     Then   I Should Be Able To Successfully Create A Profile
+
+
+  @recruitment_externalcandidate_createprofile
+  Scenario: [Recruitment]Can Create External Candidate Profiles
+    Given  I Am On The External Career Site tmsdevfull
+    When   I Want To Create 2 External Candidate Profile
+    Then   I Should Be Create 2 External Candidate Profile Successfully
