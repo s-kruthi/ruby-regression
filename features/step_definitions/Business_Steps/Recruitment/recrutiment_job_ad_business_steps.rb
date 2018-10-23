@@ -114,6 +114,6 @@ When(/^I Want To Create (\d+) External Candidate Profiles*$/i) do | num_candidat
 end
 
 
-Then(/^I Should Be Create (\d+) External Candidate Profiles* Successfully$/i) do | num_candidates |
+Then(/^I Should Be Able To Create (\d+) External Candidate Profiles* Successfully$/i) do | num_candidates |
   VerifyCreationExtCandidates(num_candidates)
 end
