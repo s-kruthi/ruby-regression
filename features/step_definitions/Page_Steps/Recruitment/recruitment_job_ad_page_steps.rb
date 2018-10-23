@@ -82,7 +82,7 @@ end
 
 
 def CreateExternalCandidateProfiles(num_candidates)
-  #getting the num of existing candidates to compare aftet creation
+  #getting the num of existing candidates to compare after creation
   @num_existing_candidates = $daos.get_count_candidates()
 
   i = 1

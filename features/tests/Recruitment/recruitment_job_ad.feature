@@ -60,5 +60,5 @@ Feature:
   @recruitment_externalcandidate_createprofile
   Scenario: [Recruitment]Can Create External Candidate Profiles
     Given  I Am On The External Career Site tmsdevfull
-    When   I Want To Create 2 External Candidate Profile
-    Then   I Should Be Create 2 External Candidate Profile Successfully
+    When   I Want To Create 2 External Candidate Profiles
+    Then   I Should Be Able To Create 2 External Candidate Profiles Successfully
