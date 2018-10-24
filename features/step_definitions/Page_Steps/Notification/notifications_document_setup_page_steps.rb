@@ -146,12 +146,12 @@ end
 
 def VerifyTheSubmittedFormIsInLockedState()
   sleep(3)
-  street_no = $driver.find_element(:id, "documentForm_form_field_75_street_no").attribute('disabled')
-  street = $driver.find_element(:id, "documentForm_form_field_75_street").attribute('disabled')
-  suburb = $driver.find_element(:id, "documentForm_form_field_75_suburb").attribute('disabled')
-  state = $driver.find_element(:id, "documentForm_form_field_75_state").attribute('disabled')
-  postcode = $driver.find_element(:id, "documentForm_form_field_75_postcode").attribute('disabled')
-  datepicker = $driver.find_element(:id, "documentForm_form_field_73_default").attribute('disabled')
+  street_no = $driver.find_element(:id, "#{STREET_NUM_ID}").attribute('disabled')
+  street = $driver.find_element(:id, "#{STREET_ID}").attribute('disabled')
+  suburb = $driver.find_element(:id, "#{SUBURB_ID}").attribute('disabled')
+  state = $driver.find_element(:id, "#{STATE_ID}").attribute('disabled')
+  postcode = $driver.find_element(:id, "#{POSTCODE_ID}").attribute('disabled')
+  datepicker = $driver.find_element(:id, "#{DATE_PICKER_ID}").attribute('disabled')
 
   if street_no && street && suburb && state && postcode && datepicker == "true"
     puts "form template is locked"
