@@ -1,4 +1,9 @@
-use pmsdev_tmsfull ; 
- select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \G; 
- select*from epms_log_message where subject like 'Document Assigned' or subject like 'Document Due' \G; 
- select*from epms_notifier_notification where trigger_id= 'Document.DocumentAssignedTrigger' and trigger_id= 'Document.DocumentDueTrigger' or path_id='/222' \G;
+use pmsdev_xerxes ; 
+
+  select*from epms_log_message where subject like '%Document Assigned%' and recipient_ids ='/98/' ORDER BY id desc LIMIT 1\G; 
+
+  select*from epms_log_message where subject like '%Document Due%' and recipient_ids ='/98/' ORDER BY id desc LIMIT 1\G; 
+
+  select*from epms_notifier_notification where trigger_id= 'Document.DocumentAssignedTrigger' and path_id='/42' ORDER BY id desc LIMIT 1\G; 
+
+  select*from epms_notifier_notification where trigger_id= 'Document.DocumentDueTrigger' and path_id='/42' ORDER BY id desc LIMIT 1\G;

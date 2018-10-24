@@ -1,6 +1,6 @@
 SEARCH_FIELD_ID = 'searchForm_searchText'
-ACTION_BUTTON_CLASS = "dropdown-toggle"
-ASSIGN_BUTTON_PATH = "//a[contains(@title,'Assign Template')]"
+ACTION_BUTTON_CSS = 'button[data-toggle="dropdown"]'
+ASSIGN_BUTTON_PATH = "Assign Template"
 USER_SEARCH_FIELD_ID = 'search-text'
 CHECKBOX_ID = 'check_0'
 ASSIGN_TO_SCLTD_USR_BTN = "//button[@data-trigger='assign-selected']"
@@ -8,12 +8,14 @@ EXISTING_ASSIGNMENT_PATH = "//a[contains(.,'Existing Assignments')]"
 VIEW_BUTTON_PATH = "//a[contains(@href,'/documents/view/')]"
 
 ############ User Document submission page ######################
-STREET_NUM_ID = 'documentForm_form_field_181_street_no'
-STREET_ID = 'documentForm_form_field_181_street'
-SUBURB_ID = 'documentForm_form_field_181_suburb'
-STATE_ID = 'documentForm_form_field_181_state'
-POSTCODE_ID = 'documentForm_form_field_181_postcode'
-DATE_PICKER_ID = 'documentForm_form_field_184_default'
+FIRSTNAME_ID = 'documentForm_form_field_71_first_name'
+LASTNAME_ID = 'documentForm_form_field_71_last_name'
+DATE_PICKER_ID = 'documentForm_form_field_73_default'
+STREET_NUM_ID = 'documentForm_form_field_75_street_no'
+STREET_ID = 'documentForm_form_field_75_street'
+SUBURB_ID = 'documentForm_form_field_75_suburb'
+STATE_ID = 'documentForm_form_field_75_state'
+POSTCODE_ID = 'documentForm_form_field_75_postcode'
 TODAY_DATE_CLASS = 'today'
 SUBMIT_FOR_APPROVAL = "//button[@data-trigger='document-action-submit']"
 ENTER_MESSAGE_ID = 'documentSubmitForm_message'
