@@ -62,3 +62,7 @@ Feature:
     Given  I Am On The External Career Site tmsdevfull
     When   I Want To Create 2 External Candidate Profiles
     Then   I Should Be Able To Create 2 External Candidate Profiles Successfully
+
+  @recruitment_externalcandidate @jmetertest
+  Scenario: [Recruitment]Can Create External Candidate Profiles
+    Given  I Am Creating Candidates On The External Career Site tmsdevfull

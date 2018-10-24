@@ -112,3 +112,20 @@ def VerifyCreationExtCandidates(num_candidates)
 
   puts COLOR_GREEN + 'Successfully created '+ num_candidates.to_s + ' external candidates'
 end
+
+
+def CreateExternalCandidateUsingJmeter()
+  $create_against = $site_url.gsub("https://","").split("/",2)[0]
+  $method_path = $site_url.gsub("https://","").split("/",2)[1].gsub("/login","")
+
+  if ENV['MYMAC']
+    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Recruitment/ExternalCareerSite.jmx -Jserver=#{$create_against} -Jmpath=#{$method_path})
+  else
+    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/Recruitment/ExternalCareerSite.jmx -Jserver=#{$create_against} -Jmpath=#{$method_path})
+  end
+  # csv = CSV.read('JMETER_AUTO/Jmeter_tests/Learning/learning_user_id.csv', :headers=>false)
+  # puts "manager_id:" + csv[0][0]
+  # puts "manager_username:" + csv[0][1]
+  # puts "user_id:" + csv[0][2]
+  # $created_username = puts "username:" + csv[0][3]
+end
