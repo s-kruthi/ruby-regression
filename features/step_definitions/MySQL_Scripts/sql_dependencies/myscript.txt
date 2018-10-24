@@ -1,5 +1,5 @@
 *************************** 1. row ***************************
-            id: 357
+            id: 369
           type: 1
    source_type: 1
        subject: Document Rejected
@@ -13,31 +13,31 @@
 
 <p>To access the document and make changes, please click the link below</p>
 
-<p>&lt;a href=&quot;https://xerxes.dev.elmodev.com/documents/view/37?_l=1&quot;&gt;https://xerxes.dev.elmodev.com/documents/view/37&lt;/a&gt;</p>
+<p>&lt;a href=&quot;https://xerxes.dev.elmodev.com/documents/view/42?_l=1&quot;&gt;https://xerxes.dev.elmodev.com/documents/view/42&lt;/a&gt;</p>
 
 <p>If you have received this email in error or require further assistance, please contact your System Administrator at uat@elmotalent.com.au&nbsp;</p>
      fromEmail: {"uat@elmotalent.com.au":"ELMO UAT"}
     replyEmail: {"uat@elmotalent.com.au":"ELMO UAT"}
     recipients: {"to":{"shanku.mahanty@elmolearning.com.au":"DontTouchAutomationUser AARON"},"cc":null,"bcc":null}
       priority: 1
-  created_time: 1540362781
+  created_time: 1540365511
     fired_time: NULL
         status: 0
-       context: a:1:{s:8:"schedule";i:369;}
+       context: a:1:{s:8:"schedule";i:381;}
       branding: a:4:{s:7:"content";a:4:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#195799";s:13:"menuFontColor";s:7:"#ffffff";s:4:"logo";i:97;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:3;s:4:"type";i:0;}
       template: NULL
     is_deleted: 0
   deleted_time: NULL
  recipient_ids: /98/
-     source_id: 369
+     source_id: 381
          count: 0
 attachment_ids: []
 *************************** 1. row ***************************
-          id: 284
+          id: 296
   trigger_id: Document.DocumentRejectedTrigger
      user_id: 98
-  sort_order: 1:161-164:37-17
+  sort_order: 1:161-164:42-19
    path_name: /161
-     path_id: /37
+     path_id: /42
   is_deleted: 0
 deleted_time: NULL

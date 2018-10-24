@@ -1,3 +1,5 @@
+$VERBOSE = nil
+
 
 def SearchTheTemplateToBeAssigned(search_field_id, value)
   WaitForAnElementByIdAndInputValue(search_field_id, value)
@@ -49,14 +51,9 @@ def DeleteTheExistingAssignedDocumentsForUser(dropdown,index_value)
  end
 end
 
-class NotificationException < Exception;
-end
-class TunnelException < Exception;
-end
-
 
 def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
-  StartTheTunnel()
+  StartTunnelIfRequired()
   SecurePasswordConnectToDatabase()
   #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql', "use #{XERXES_DATABASE} ; \n
@@ -116,7 +113,7 @@ def ConfirmAndCompleteDocument(enter_message_id, doc_comp_message, document_comp
 end
 
 def ConnectToDatabaseAndValidateTheDocumentAwaitingNotifications()
-  StartTheTunnel()
+  StartTunnelIfRequired()
   SecurePasswordConnectToDatabase()
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql', "use #{XERXES_DATABASE} ; \n
   select*from epms_log_message where subject like 'Document Awaiting Approval' and recipient_ids like '/131/' ORDER BY id desc LIMIT 1\\G; \n
@@ -177,7 +174,7 @@ def GoToTheAwaitingApprovalSectionAndApproveTheDocument(doc_approve_button, ente
 end
 
 def ConnectToDatabaseAndValidateTheDocumentApprovedNotifications()
-  StartTheTunnel()
+  StartTunnelIfRequired()
   SecurePasswordConnectToDatabase()
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql', "use #{XERXES_DATABASE} ; \n
   select*from epms_log_message where subject like 'Document Approved' and recipient_ids like '/98/' ORDER BY id desc LIMIT 1\\G; \n
@@ -218,7 +215,7 @@ def GoToTheAwaitingApprovalSectionAndRejectTheDocument(doc_approval_path, doc_re
 end
 
 def ConnectToDatabaseAndValidateTheDocumentRejectedNotifications()
-  StartTheTunnel()
+  StartTunnelIfRequired()
   SecurePasswordConnectToDatabase()
   File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql', "use #{XERXES_DATABASE} ; \n
   select*from epms_log_message where subject like 'Document Rejected' and recipient_ids like '/98/' ORDER BY id desc LIMIT 1\\G; \n
