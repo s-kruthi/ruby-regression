@@ -1,7 +1,9 @@
-SEARCH_TEMPLATE = 'cool stuff'
+SEARCH_TEMPLATE = 'Automation personal Details'
 SEARCH_USER = 'DontTouchAutomationUser AARON'
 
 #### user document submission ####
+FIRSTNAME_VALUE = 'Martian'
+LASTNAME_VALUE = 'Baby'
 STREET_NUM_VAL = '23'
 STREET_VAL = 'oxford'
 SUBURB_VAL = 'Bondi Jn'

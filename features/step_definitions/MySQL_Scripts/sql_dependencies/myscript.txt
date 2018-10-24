@@ -1,30 +1,41 @@
 *************************** 1. row ***************************
-   recipients: {"to":{"ningning.wang@elmolearning.com.au":"NingNing Wang"},"cc":{"ningning.wang@elmolearning.com.au":"NingNing Wang"},"bcc":null}
-recipient_ids: /86/86/
-*************************** 2. row ***************************
-   recipients: {"to":{"elmotestrecadmin@noreply.com":"ELMO Test Recruitment Admin"},"cc":null,"bcc":null}
-recipient_ids: /82/
-*************************** 3. row ***************************
-   recipients: {"to":{"elmotestfacetoface@noreply.com":"ELMO Test F2F Logic Gaps"},"cc":null,"bcc":null}
-recipient_ids: /80/
-*************************** 4. row ***************************
-   recipients: {"to":{"elmotesthr@noreply.com":"ELMO Test HR Manager"},"cc":null,"bcc":null}
-recipient_ids: /68/
-*************************** 5. row ***************************
-   recipients: {"to":{"graham.crawford@elmotalent.com.au":"ELMO Test Company Admin"},"cc":null,"bcc":null}
-recipient_ids: /67/
-*************************** 6. row ***************************
-   recipients: {"to":{"elmotestcontractadmin@noreply.com":"ELMO Test Contract Admin"},"cc":null,"bcc":null}
-recipient_ids: /66/
-*************************** 7. row ***************************
-   recipients: {"to":{"elmotestlearnadmin@noreply.com":"ELMO Test Learning Admin"},"cc":null,"bcc":null}
-recipient_ids: /65/
-*************************** 8. row ***************************
-   recipients: {"to":{"elmotestsecond@noreply.com":"ELMO Test Second Level Manager"},"cc":{"elmotestsecond@noreply.com":"ELMO Test Second Level Manager"},"bcc":null}
-recipient_ids: /64/64/
-*************************** 9. row ***************************
-   recipients: {"to":{"elmotestmanager@noreply.com":"ELMO Test Manager"},"cc":null,"bcc":null}
-recipient_ids: /63/
-*************************** 10. row ***************************
-   recipients: {"to":{"graham.crawford@elmolearning.com.au":"ELMO Test"},"cc":{"elmotestmanager@noreply.com":"ELMO Test Manager"},"bcc":null}
-recipient_ids: /61/63/
+            id: 335
+          type: 1
+   source_type: 1
+       subject: Document Awaiting Approval
+          body: <p>Hi DontTouchAutomationManager,</p>
+
+<p>::ASSIGNEEFRISTNAME:: AARON has completed Automation personal Details and requires your action and approval. The following comments (if any) were included:</p>
+
+<p>Document completed&nbsp;</p>
+
+<p>To approve the document, please follow the link below to log into the system to approve the document:</p>
+
+<p>&lt;a href=&quot;https://xerxes.dev.elmodev.com/documents/view/31?_l=1&quot;&gt;https://xerxes.dev.elmodev.com/documents/view/31&lt;/a&gt;</p>
+
+<p>If you have received this email in error or require further assistance, please contact your System Administrator at uat@elmotalent.com.au&nbsp;</p>
+     fromEmail: {"uat@elmotalent.com.au":"ELMO UAT"}
+    replyEmail: {"uat@elmotalent.com.au":"ELMO UAT"}
+    recipients: {"to":{"testfancyQixyL4zoomba@mail.com":"DontTouchAutomationManager Rebecca"},"cc":null,"bcc":null}
+      priority: 1
+  created_time: 1540360125
+    fired_time: NULL
+        status: 0
+       context: a:1:{s:8:"schedule";i:347;}
+      branding: a:4:{s:7:"content";a:4:{s:20:"headingBannerBgColor";s:7:"#ffffff";s:10:"menuColor1";s:7:"#195799";s:13:"menuFontColor";s:7:"#ffffff";s:4:"logo";i:97;}s:7:"cacheId";s:6:"type:0";s:2:"id";i:3;s:4:"type";i:0;}
+      template: NULL
+    is_deleted: 0
+  deleted_time: NULL
+ recipient_ids: /131/
+     source_id: 347
+         count: 0
+attachment_ids: []
+*************************** 1. row ***************************
+          id: 262
+  trigger_id: Document.DocumentSubmittedTrigger
+     user_id: 98
+  sort_order: 1:161-164:31-7
+   path_name: /161
+     path_id: /31
+  is_deleted: 0
+deleted_time: NULL

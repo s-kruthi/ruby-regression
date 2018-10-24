@@ -6,10 +6,10 @@ def SearchTheTemplateToBeAssigned(search_field_id, value)
   sleep(2)
 end
 
-def AssignTheTemplate(action_button_class,ac_btn_val,assign_button_path)
-  WaitForDropdownByClassAndTouchTheIndex(action_button_class,ac_btn_val)
-  sleep(1)
-  WaitForAnElementByXpathAndTouch(assign_button_path)
+def AssignTheTemplate(action_button_css,assign_button_path)
+  WaitForAnElementByCSSAndTouch(action_button_css)
+  sleep(2)
+  Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(assign_button_path))
 end
 
 def AssignTemplateToAUser(search_field_id, value, checkbox_id,assign_to_slctd_usr)
@@ -21,20 +21,20 @@ def AssignTemplateToAUser(search_field_id, value, checkbox_id,assign_to_slctd_us
   WaitForAnElementByIdAndTouch(checkbox_id)
   sleep(1)
   WaitForAnElementByXpathAndTouch(assign_to_slctd_usr)
+  sleep(2)
+  WaitForAnElementByCSSAndTouch('button[data-action="run"]')
   sleep(7)
 end
 
 def GrabThePathIDForAssignedUser(existing_assignment_path,view_button_path, view_btn_index)
   WaitForAnElementByXpathAndTouch(existing_assignment_path)
-  sleep(3)
+  sleep(2)
   WaitForAnElementByXpathAndTouchTheIndex(view_button_path, view_btn_index)
-  sleep(4)
+  sleep(2)
   path_url = $driver.current_url
   path_id = path_url.split('/')[-1]
-  $current_path_id = "/#{path_id}"
-  puts $current_path_id
-  #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql', "use #{TMSFULL_DATABASE} ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Assigned' or subject like 'Document Due' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentAssignedTrigger' and trigger_id= 'Document.DocumentDueTrigger' or path_id='#{$current_path_id}' \\G;")
+  $current_doc_path_id = "/#{path_id}"
+  puts $current_doc_path_id
 end
 
 def DeleteTheExistingAssignedDocumentsForUser(dropdown,index_value)
@@ -42,7 +42,7 @@ def DeleteTheExistingAssignedDocumentsForUser(dropdown,index_value)
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(dropdown,index_value)
   sleep(1)
-  WaitForAnElementByClassAndTouch("delete-action")
+  WaitForAnElementByCSSAndTouch('a[title="Delete Form"]')
   sleep(1)
   PressEnterConfirm()
   sleep(4)
@@ -53,45 +53,58 @@ class NotificationException < Exception;
 end
 class TunnelException < Exception;
 end
+
+
 def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
   StartTheTunnel()
+  SecurePasswordConnectToDatabase()
+  #put the current_path_id at the end in the SQL query under document_assigned.sql file by following below method
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql', "use #{XERXES_DATABASE} ; \n
+  select*from epms_log_message where subject like '%Document Assigned%' and recipient_ids ='/98/' ORDER BY id desc LIMIT 1\\G; \n
+  select*from epms_log_message where subject like '%Document Due%' and recipient_ids ='/98/' ORDER BY id desc LIMIT 1\\G; \n
+  select*from epms_notifier_notification where trigger_id= 'Document.DocumentAssignedTrigger' and path_id='#{$current_doc_path_id}' ORDER BY id desc LIMIT 1\\G; \n
+  select*from epms_notifier_notification where trigger_id= 'Document.DocumentDueTrigger' and path_id='#{$current_doc_path_id}' ORDER BY id desc LIMIT 1\\G;")
+  ConnectToEnvironment(XERXES_DATABASE,'document_assigned.sql','myscript.txt')
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_assigned.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
-    frs = result.include?  ("is_notified: 1") #true validate
-    trs = result.include?  ("subject: Document Assigned") #true validate
-    # krs = result.include?  ("subject: Document Due") #true validate
-    prs = result.include?  ("trigger_id: Document.DocumentAssignedTrigger") #true validate
-    # mrs = result.include?  ("trigger_id: Document.DocumentDueTrigger") #true validate
-    if frs && trs && krs && prs && mrs
-      puts "Yay! Notification has been triggered"
+    a = @db_result.include?  ("subject: Document Assigned") #true validate
+    if a == false  then print "a is not matching \n".colorize(:red) end
+    b = @db_result.include?   ("subject: Document Due") #true validate
+    if b == false  then print "b is not matching \n".colorize(:red) end
+    c = @db_result.include?  ("trigger_id: Document.DocumentAssignedTrigger") #true validate
+    if c == false  then print "c is not matching \n".colorize(:red) end
+    d = @db_result.include?   ("trigger_id: Document.DocumentDueTrigger") #true validate
+    if d == false  then print "d is not matching \n".colorize(:red) end
+
+    if a & b & c & d
+      print "Yay! Notifications have been triggered \n".colorize(:green)
     else
-      raise NotificationException.new("ERROR...Notifications were blocked !!!!!! ")
+      print "ERROR...Notifications were blocked !!!!!! \n".colorize(:red)
+      raise TunnelException.new("Notifications were blocked ")
     end
-
   rescue
-    puts "not valid"
-
+    print "not valid".colorize(:red)
   ensure
-    %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
-    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
-    $driver.quit
+    ResetTheEnvironment(XERXES_DATABASE)
   end
 end
 
+
 def GoToTheParticularAssignedDocument()
   sleep(2)
-  WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_path_id}']")
+  WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_doc_path_id}']")
   sleep(2)
 end
 
-def FillAndSubmitTheAssignedTemplate(street_no_id,street_no_value,street_id,street_value,suburb_id,suburb_value,state_id,state_value,postcode_id,postcode_value,date_picker,today_date,submit_approval)
+
+def FillAndSubmitTheAssignedTemplate(firstname_id,firstname_value,lastname_id,lastname_value,date_picker,street_no_id,street_no_value,street_id,street_value,suburb_id,suburb_value,state_id,state_value,postcode_id,postcode_value,submit_approval)
+  WaitForAnElementByIdAndInputValue(firstname_id,firstname_value)
+  WaitForAnElementByIdAndInputValue(lastname_id,lastname_value)
+  WaitForAnElementByIdAndInputValue(date_picker, '24/10/1989')
   WaitForAnElementByIdAndInputValue(street_no_id,street_no_value)
   WaitForAnElementByIdAndInputValue(street_id,street_value)
   WaitForAnElementByIdAndInputValue(suburb_id,suburb_value)
   WaitForAnElementByIdAndInputValue(state_id,state_value)
   WaitForAnElementByIdAndInputValue(postcode_id,postcode_value)
-  WaitForAnElementByIdAndTouch(date_picker)
-  WaitForDropdownByClassAndTouchTheIndex(today_date, 2)
   WaitForAnElementByXpathAndTouch(submit_approval)
 end
 
@@ -100,41 +113,45 @@ def ConfirmAndCompleteDocument(enter_message_id, doc_comp_message, document_comp
   WaitForAnElementByIdAndInputValue(enter_message_id, doc_comp_message)
   WaitForAnElementByXpathAndTouch(document_complete)
   sleep(1)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql', "use #{TMSFULL_DATABASE} ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Awaiting Approval' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentSubmittedTrigger' and path_id='#{$current_path_id}' \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheDocumentAwaitingNotifications()
   StartTheTunnel()
+  SecurePasswordConnectToDatabase()
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql', "use #{XERXES_DATABASE} ; \n
+  select*from epms_log_message where subject like 'Document Awaiting Approval' and recipient_ids like '/131/' ORDER BY id desc LIMIT 1\\G; \n
+  select*from epms_notifier_notification where trigger_id= 'Document.DocumentSubmittedTrigger' and path_id='#{$current_doc_path_id}' ORDER BY id desc LIMIT 1\\G;")
+  ConnectToEnvironment(XERXES_DATABASE,'document_awaiting_approval.sql','myscript.txt')
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_awaiting_approval.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
-    frs = result.include?  ("is_notified: 1") #true validate
-    trs = result.include?  ("subject: Document Awaiting Approval") #true validate
-    krs = result.include?  ("recipient_ids: /3472/") #true validate
-    prs = result.include?  ("trigger_id: Document.DocumentSubmittedTrigger") #true validate
-    if frs && trs && krs && prs
-      puts "Yay! Notification has been triggered"
+    a = @db_result.include?  ("subject: Document Awaiting Approval") #true validate
+    if a == false  then print "a is not matching \n".colorize(:red) end
+    b = @db_result.include?   ("recipient_ids: /131/") #true validate
+    if b == false  then print "b is not matching \n".colorize(:red) end
+    c = @db_result.include?  ("trigger_id: Document.DocumentSubmittedTrigger") #true validate
+    if c == false  then print "c is not matching \n".colorize(:red) end
+
+    if a & b & c
+      print "Yay! Notifications have been triggered \n".colorize(:green)
     else
-      raise NotificationException.new("ERROR...Notifications were blocked !!!!!! ")
+      print "ERROR...Notifications were blocked !!!!!! \n".colorize(:red)
+      raise TunnelException.new("Notifications were blocked ")
     end
-
   rescue
-    puts "not valid"
-
+    print "not valid".colorize(:red)
   ensure
-    %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
-    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
-    $driver.quit
+    ResetTheEnvironment(XERXES_DATABASE)
   end
 end
 
+
 def VerifyTheSubmittedFormIsInLockedState()
   sleep(3)
-  street_no = $driver.find_element(:id, "documentForm_form_field_181_street_no").attribute('disabled')
-  street = $driver.find_element(:id, "documentForm_form_field_181_street").attribute('disabled')
-  suburb = $driver.find_element(:id, "documentForm_form_field_181_suburb").attribute('disabled')
-  state = $driver.find_element(:id, "documentForm_form_field_181_state").attribute('disabled')
-  postcode = $driver.find_element(:id, "documentForm_form_field_181_postcode").attribute('disabled')
-  datepicker = $driver.find_element(:id, "documentForm_form_field_184_default").attribute('disabled')
+  street_no = $driver.find_element(:id, "documentForm_form_field_75_street_no").attribute('disabled')
+  street = $driver.find_element(:id, "documentForm_form_field_75_street").attribute('disabled')
+  suburb = $driver.find_element(:id, "documentForm_form_field_75_suburb").attribute('disabled')
+  state = $driver.find_element(:id, "documentForm_form_field_75_state").attribute('disabled')
+  postcode = $driver.find_element(:id, "documentForm_form_field_75_postcode").attribute('disabled')
+  datepicker = $driver.find_element(:id, "documentForm_form_field_73_default").attribute('disabled')
 
   if street_no && street && suburb && state && postcode && datepicker == "true"
     puts "form template is locked"
@@ -146,8 +163,8 @@ def GoToTheAwaitingApprovalSection(doc_approval_path)
   sleep(1)
   WaitForAnElementByXpathAndTouch(doc_approval_path)
   sleep(4)
-  # WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_path_id}']")
-  WaitForAnElementByXpathAndTouch("//a[@href='/documents/view/221']")
+  WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_doc_path_id}']")
+  # WaitForAnElementByXpathAndTouch("//a[@href='/documents/view/221']")
   sleep(1)
 end
 def GoToTheAwaitingApprovalSectionAndApproveTheDocument(doc_approve_button, enter_approval_message_id, approved_message, confirm_approval)
@@ -157,30 +174,33 @@ def GoToTheAwaitingApprovalSectionAndApproveTheDocument(doc_approve_button, ente
   WaitForAnElementByIdAndInputValue(enter_approval_message_id, approved_message)
   WaitForAnElementByXpathAndTouch(confirm_approval)
   sleep(3)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql', "use #{TMSFULL_DATABASE} ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Approved' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentApprovedTrigger' and path_id='#{$current_path_id}' \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheDocumentApprovedNotifications()
   StartTheTunnel()
+  SecurePasswordConnectToDatabase()
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql', "use #{XERXES_DATABASE} ; \n
+  select*from epms_log_message where subject like 'Document Approved' and recipient_ids like '/98/' ORDER BY id desc LIMIT 1\\G; \n
+  select*from epms_notifier_notification where trigger_id= 'Document.DocumentApprovedTrigger' and path_id='#{$current_doc_path_id}' ORDER BY id desc LIMIT 1\\G;")
+  ConnectToEnvironment(XERXES_DATABASE,'document_approved.sql','myscript.txt')
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_approved.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
-    frs = result.include?  ("is_notified: 1") #true validate
-    trs = result.include?  ("subject: Document Approved") #true validate
-    krs = result.include?  ("recipient_ids: /3472/") #true validate
-    prs = result.include?  ("trigger_id: Document.DocumentApprovedTrigger") #true validate
-    if frs && trs && krs && prs
-      puts "Yay! Notification has been triggered"
+    a = @db_result.include?  ("subject: Document Approved") #true validate
+    if a == false  then print "a is not matching \n".colorize(:red) end
+    b = @db_result.include?   ("recipient_ids: /98/") #true validate
+    if b == false  then print "b is not matching \n".colorize(:red) end
+    c = @db_result.include?  ("trigger_id: Document.DocumentApprovedTrigger") #true validate
+    if c == false  then print "c is not matching \n".colorize(:red) end
+
+    if a & b & c
+      print "Yay! Notifications have been triggered \n".colorize(:green)
     else
-      raise NotificationException.new("ERROR...Notifications were blocked !!!!!! ")
+      print "ERROR...Notifications were blocked !!!!!! \n".colorize(:red)
+      raise TunnelException.new("Notifications were blocked ")
     end
-
   rescue
-    puts "not valid"
-
+    print "not valid".colorize(:red)
   ensure
-    %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
-    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
-    $driver.quit
+    ResetTheEnvironment(XERXES_DATABASE)
   end
 end
 
@@ -188,36 +208,39 @@ def GoToTheAwaitingApprovalSectionAndRejectTheDocument(doc_approval_path, doc_re
   sleep(1)
   WaitForAnElementByXpathAndTouch(doc_approval_path)
   sleep(4)
-  WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_path_id}']")
+  WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_doc_path_id}']")
   sleep(3)
   WaitForAnElementByXpathAndTouch(doc_reject_button)
   sleep(1)
   WaitForAnElementByIdAndInputValue(enter_rejection_message_id, approved_message)
   WaitForAnElementByXpathAndTouch(confirm_reject)
   sleep(3)
-  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql', "use #{TMSFULL_DATABASE} ; \n select*from epms_user where email='REBECCA.AARON@elmodemo.com' and first_name='DontTouchAutomationUser' and is_notified='1' \\G; \n select*from epms_log_message where subject like 'Document Rejected' and recipient_ids like '/3472/' \\G; \n select*from epms_notifier_notification where trigger_id= 'Document.DocumentRejectedTrigger' and path_id='#{$current_path_id}' \\G;")
 end
 
 def ConnectToDatabaseAndValidateTheDocumentRejectedNotifications()
   StartTheTunnel()
+  SecurePasswordConnectToDatabase()
+  File.write('./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql', "use #{XERXES_DATABASE} ; \n
+  select*from epms_log_message where subject like 'Document Rejected' and recipient_ids like '/98/' ORDER BY id desc LIMIT 1\\G; \n
+  select*from epms_notifier_notification where trigger_id= 'Document.DocumentRejectedTrigger' and path_id='#{$current_doc_path_id}' ORDER BY id desc LIMIT 1\\G;")
+  ConnectToEnvironment(XERXES_DATABASE,'document_rejected.sql','myscript.txt')
   begin
-    result = %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/document_rejected.sql | tee ./features/step_definitions/MySQL_Scripts/sql_dependencies/myscript.txt) # connect to DB -> run SQL -> save it in text file
-    frs = result.include?  ("is_notified: 1") #true validate
-    trs = result.include?  ("subject: Document Rejected") #true validate
-    krs = result.include?  ("recipient_ids: /3472/") #true validate
-    prs = result.include?  ("trigger_id: Document.DocumentRejectedTrigger") #true validate
-    if frs && trs && krs && prs
-      puts "Yay! Notification has been triggered"
+    a = @db_result.include?  ("subject: Document Rejected") #true validate
+    if a == false  then print "a is not matching \n".colorize(:red) end
+    b = @db_result.include?   ("recipient_ids: /98/") #true validate
+    if b == false  then print "b is not matching \n".colorize(:red) end
+    c = @db_result.include?  ("trigger_id: Document.DocumentRejectedTrigger") #true validate
+    if c == false  then print "c is not matching \n".colorize(:red) end
+
+    if a & b & c
+      print "Yay! Notifications have been triggered \n".colorize(:green)
     else
-      raise NotificationException.new("ERROR...Notifications were blocked !!!!!! ")
+      print "ERROR...Notifications were blocked !!!!!! \n".colorize(:red)
+      raise TunnelException.new("Notifications were blocked ")
     end
-
   rescue
-    puts "not valid"
-
+    print "not valid".colorize(:red)
   ensure
-    %x(mysql -utester -pMuraf3cAR #{TMSFULL_DATABASE} -h127.0.0.1 --port 33060 < ./features/step_definitions/MySQL_Scripts/sql_commands/epms_log_message_delete.sql) #deletes the log files
-    %x(kill -9 `ps aux | grep 3306 | grep -v grep | grep -v Server | awk '{print $2}'`) #kills ssh tunneling
-    $driver.quit
+    ResetTheEnvironment(XERXES_DATABASE)
   end
 end

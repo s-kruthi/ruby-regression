@@ -4,9 +4,9 @@ ELMO_LANDING_PAGE = 'https://tmsfull.dev.elmodev.com/dashboard'
 
 #NEW_USER_EDIT_PAGE = 'https://staging1.dev.elmodev.com/controlpanel/edit-user-password/20519'
 NEW_USER_EDIT_PAGE ='https://staging4.dev.elmodev.com/controlpanel/change-password/'
-NEW_USER_LOGIN_PAGE = 'https://tmsfull.dev.elmodev.com'
-ADMIN_DOC_TEMPLATE_PAGE = 'https://tmsfull.dev.elmodev.com/admin/documents/template'
-EXISTING_ASSIGNMENT_PAGE = 'https://tmsfull.dev.elmodev.com/admin/documents/assignments/18'
+NEW_USER_LOGIN_PAGE = 'https://tmsfull.elmodev.com'
+ADMIN_DOC_TEMPLATE_PAGE = 'https://xerxes.dev.elmodev.com/admin/documents/template'
+EXISTING_ASSIGNMENT_PAGE = 'https://xerxes.dev.elmodev.com/admin/documents/assignments/1'
 EMO_ADMIN_USERNAME = 'shanadmin'
 EMO_ADMIN_PASSWORD = 'Tester1!'
 SPECIFIC_USERNAME = 'X1222347'
@@ -24,7 +24,7 @@ RECRUITMENT_COMP_PASS = 'Tester1!'
 
 
 ####### user credentials ###########
-MY_DOCUMENT_PAGE = 'https://tmsfull.dev.elmodev.com/documents'
+MY_DOCUMENT_PAGE = 'https://xerxes.dev.elmodev.com/documents'
 DOCUMENT_ADMIN_PAGE = 'https://tmsfull.dev.elmodev.com/admin/'
 DOC_SEC_PROF_USER = 'autsecprousr'
 DOC_SEC_PROF_PASS = 'Tester1!'
