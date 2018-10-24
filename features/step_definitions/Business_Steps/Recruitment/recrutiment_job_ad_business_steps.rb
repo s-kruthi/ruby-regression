@@ -92,6 +92,10 @@ end
 
 Given(/^I Am On The External Career Site (.*)$/i) do | external_portal |
   NavigateToCareerSite(external_portal)
+  puts $site_url
+  puts @external_portal
+
+  CreateExternalCandidateUsingJmeter()
 end
 
 
@@ -116,4 +120,10 @@ end
 
 Then(/^I Should Be Able To Create (\d+) External Candidate Profiles* Successfully$/i) do | num_candidates |
   VerifyCreationExtCandidates(num_candidates)
+end
+
+
+Given(/^I Am Creating Candidates On The External Career Site (.*)$/i) do | external_portal |
+  NavigateToCareerSite(external_portal)
+  CreateExternalCandidateUsingJmeter()
 end
