@@ -37,5 +37,5 @@ Feature:
     Then  I Should Be Instantly Notified About My Document Awaiting Approval
     And   As A Manager I Go To My Document Page
     When  I Review And Reject The Submitted Document
-    Then  The User Should Be Instantly Notified About The Document Being Approved
+    Then  The User Should Be Instantly Notified About The Document Being Rejected
 
