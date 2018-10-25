@@ -46,10 +46,10 @@ And(/^All The Necessary Details Of The Employee Required For Payroll Are Added$/
 
   SetEmployeeEmploymentDetails()
 
-  sleep(2)
+  sleep(4)
   SetSuperDetails()
 
-  sleep(2)
+  sleep(4)
   SetContactDetails()
 
   #need to activate the user to send user data to Payroll
