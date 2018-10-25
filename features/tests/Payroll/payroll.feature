@@ -2,7 +2,7 @@
 
 Feature: As A Payroll Admin I Can Send Data To Payroll
 
-  @send_company_data
+  @smoke_payroll @send_company_data
   Scenario: [Payroll]As A Payroll Admin I Can Send Company Data To Elmo Payroll
     Given I Have Logged In as a Company Admin
     When  I Make Changes To Legal Entity
@@ -11,7 +11,7 @@ Feature: As A Payroll Admin I Can Send Data To Payroll
     Then  The Company Data Should Be Sent Successfully
 
 
-  @send_newemployee_data
+  @smoke_payroll @send_newemployee_data
   Scenario: [Payroll]As A Payroll Admin I Can Send New Employee Data To Elmo Payroll
     Given Contracts Is Disabled For New Users
     And   I Have Created A New User
