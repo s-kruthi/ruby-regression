@@ -20,6 +20,7 @@ RECRUITMENT_JOBAPPLN_CANDIDATE_FNAME_VALUE = 'Autocandidate'
 
 RECRUITMENT_JOBAPPLN_CANDIDATE_LNAME_VALUE = 'Scriptonce'
 
+RECRUITMENT_JOBAPPLN_ALERT_VALUE = 'You have already applied to the job'
 
 #### External Candidate Profile Creation ####
 RECRUITMENT_EXTCANDIDATE_PROFILE_FNAME_VALUE = 'auto_ext'
