@@ -136,6 +136,10 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
 
   when "Out"
     begin
+      nav_menu = $daos.get_nav_menu_setting()
+      if nav_menu[:value] == '1'
+        USER_PROFILE_MENU_ICON_ID = USER_PROFILE_VERTICALMENU_ICON_ID
+      end
       LogOutFromTheDashboard(USER_PROFILE_MENU_ICON_ID, LOGOUT_BUTTON_ID)
     end
   end

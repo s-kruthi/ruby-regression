@@ -129,3 +129,16 @@ def CreateExternalCandidateUsingJmeter()
   # puts "user_id:" + csv[0][2]
   # $created_username = puts "username:" + csv[0][3]
 end
+
+
+#verifies that the alert message is displayed when a user applies to an already applied job ad
+def VerifyAlertMessageForCandidate()
+  VerifyErrorAlertMessage(VERIFY_ALERT_ID, RECRUITMENT_JOBAPPLN_ALERT_VALUE)
+
+  #verifying that the error message contains the job title
+  VerifyAnElementExistByXPath(VERIFY_ALERT_ID, @job_title)
+
+  #verifying that the error message contains todays date since we just applied for the job
+  applied_date = Time.now.strftime("%d/%m/%Y")
+  VerifyAnElementExistByXPath(VERIFY_ALERT_ID, applied_date)
+end

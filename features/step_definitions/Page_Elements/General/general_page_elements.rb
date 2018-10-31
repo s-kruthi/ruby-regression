@@ -1,5 +1,6 @@
 #### Generic element identifiers ####
 VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
+VERIFY_ALERT_ID = "//div[contains(@class,'alert alert-danger')]"
 
 PAGINATION_ID = "//div[@class='pagination-count']"
 

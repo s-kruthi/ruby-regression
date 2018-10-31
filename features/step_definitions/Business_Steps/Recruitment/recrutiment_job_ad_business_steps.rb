@@ -127,3 +127,61 @@ Given(/^I Am Creating Candidates On The External Career Site (.*)$/i) do | exter
   NavigateToCareerSite(external_portal)
   CreateExternalCandidateUsingJmeter()
 end
+
+
+Given(/^I Have Already Applied As An Employee For The Job Ad titled "(.*)"$/i) do | job_ad |
+  steps %{
+    Given I Have Logged In As An Employee Using The Username "auto1.scriptonce1" And Password "Admin1234567"
+    And   I Go To The Menu Careers Section
+    And   I Search For The Job Ad Titled "#{job_ad}"
+    When  I Apply For The Job Ad Titled "#{job_ad}"
+    And   I Upload My Resume
+    And   I Upload My Cover Letter
+    And   I Upload Other Documents
+    And   I Provide My Contact Details
+    Then  I Should Be Able To Successfully Apply For The Job Ad
+  }
+  Sleep_Until(WaitForAnElementByXpathAndTouch(MENU_CAREERS_LINK))
+  steps %{ And   I Have Logged Out}
+end
+
+
+And(/^I Try To Apply For The Job Ad Titled "(.*)" As An (Employee|External Candidate)$/i) do | job_ad, candidate_type |
+  @job_title = job_ad
+
+  case candidate_type
+    when 'Employee'
+      steps %{
+        And   I Go To The Menu Careers Section
+      }
+    when 'External Candidate'
+      GoToNavBarSection(BROWSE_JOBS_LINK)
+  end
+  steps %{
+    And   I Search For The Job Ad Titled "#{job_ad}"
+    When  I Apply For The Job Ad Titled "#{job_ad}"
+  }
+end
+
+
+Then(/^I Should Be Able To See A Message Alerting The User That The Job Has Already Been Applied To$/i) do
+  VerifyAlertMessageForCandidate()
+end
+
+
+Given(/^I Have Already Applied As An External Candidate For The Job Ad titled "(.*)" On The External Career Portal (.*)$/i) do | job_ad, ext_career_portal |
+  steps %{
+    Given I Have Logged In To The External Career Portal #{ext_career_portal} Using The Username "auto_ext1.scriptonce1@elmodev.com" And Password "Admin1234567"
+    And   I Go To The Browse Jobs Page
+    And   I Search For The Job Ad Titled "#{job_ad}"
+    When  I Apply For The Job Ad Titled "#{job_ad}"
+    And   I Upload My Resume
+    And   I Upload My Cover Letter
+    And   I Upload Other Documents
+    And   I Provide My Contact Details
+    Then  I Should Be Able To Successfully Apply For The Job Ad
+  }
+  Sleep_Until(WaitForAnElementByXpathAndTouch(BROWSE_JOBS_LINK))
+  LogoutExtPortal()
+end
+

@@ -206,3 +206,8 @@ def CreateAUser(user_type, firstname, lastname, manager_name, role)
     puts COLOR_BLUE + "Created new user with role '" + role_name.upcase + "'"
   end
 end
+
+
+def VerifyErrorAlertMessage(alert_id, alert_msg)
+  Sleep_Until(VerifyAnElementExistByXPath(alert_id, alert_msg))
+end
