@@ -21,7 +21,7 @@ Feature:
 
   @recruitment_external_jobad
   Scenario: [Recruitment]External candidate with profile can apply for an External Job Ad
-    Given I Have Logged In To The External Career Portal test Using The Username "auto1.candidate1@elmodev.com" And Password "Admin1234567"
+    Given I Have Logged In To The External Career Portal test Using The Username "candidate1.scriptonce1" And Password "Admin1234567"
     And   I Go To The Browse Jobs Page
     And   I Search For The Job Ad Titled "Quality Assurance Tester - Automation - External"
     When  I Apply For The Job Ad Titled "Quality Assurance Tester - Automation - External"
@@ -30,13 +30,13 @@ Feature:
     And   I Upload Other Documents
     And   I Provide My Contact Details
     Then  I Should Be Able To Successfully Apply For The Job Ad
-    And   I Should Be Able To Successfully "Verify" The "External" Job Ad Named "Quality Assurance%External" for Username "auto1.candidate1@elmodev.com" From Database
-    And   I Should Be Able To Successfully "Remove" The "External" Job Ad Named "Quality Assurance%External" for Username "auto1.candidate1@elmodev.com" From Database
+    And   I Should Be Able To Successfully "Verify" The "External" Job Ad Named "Quality Assurance%External" for Username "candidate1.scriptonce1@elmodev.com" From Database
+    And   I Should Be Able To Successfully "Remove" The "External" Job Ad Named "Quality Assurance%External" for Username "candidate1.scriptonce1@elmodev.com" From Database
 
 
   @recruitment_vendor_jobad
   Scenario: [Recruitment]Vendor can submit candidate for a Job Ad
-    Given I Have Logged In As Vendor Using The Username "auto1.vendor1@elmodev.com" And Password "Admin1234567"
+    Given I Have Logged In As Vendor Using The Username "vendor1.scriptonce1@elmodev.com" And Password "Admin1234567"
     And   I Go To The Browse Jobs Page
     And   I Search For The Job Ad Titled "Quality Assurance Tester - Automation - Vendor"
     When  I Submit Candidate For The Job Ad Titled "Quality Assurance Tester - Automation - Vendor"
@@ -46,8 +46,8 @@ Feature:
     And   I Upload Other Documents
     And   I Provide The Candidate Contact Details
     Then  I Should Be Able To Successfully Apply For The Job Ad
-    And   I Should Be Able To Successfully "Verify" The "Vendor" Job Ad Named "Quality Assurance%Vendor" for Username "auto1.candidate1@elmodev.com" From Database
-    And   I Should Be Able To Successfully "Remove" The "Vendor" Job Ad Named "Quality Assurance%Vendor" for Username "auto1.candidate1@elmodev.com" From Database
+    And   I Should Be Able To Successfully "Verify" The "Vendor" Job Ad Named "Quality Assurance%Vendor" for Username "candidate1.scriptonce1@elmodev.com" From Database
+    And   I Should Be Able To Successfully "Remove" The "Vendor" Job Ad Named "Quality Assurance%Vendor" for Username "candidate1.scriptonce1@elmodev.com" From Database
 
 
   @recruitment_externalcandidate_createprofile
@@ -80,7 +80,7 @@ Feature:
   @recruitment_test
   Scenario: [Recruitment]Cannot Apply For Job Ads Already Applied For
     Given  I Have Already Applied As An External Candidate For The Job Ad titled "Position 1" On The External Career Portal test
-    When   I Have Logged In To The External Career Portal test Using The Username "auto1.candidate1@elmodev.com" And Password "Admin1234567"
+    When   I Have Logged In To The External Career Portal test Using The Username "candidate1.scriptonce1@elmodev.com" And Password "Admin1234567"
     And    I Try To Apply For The Job Ad Titled "Position 1" As An External Candidate
     Then   I Should Be Able To See A Message Alerting The User That The Job Has Already Been Applied To
-    And    I Should Be Able To Successfully "Remove" The "External" Job Ad Named "Position 1" for Username "auto1.candidate1@elmodev.com" From Database
+    And    I Should Be Able To Successfully "Remove" The "External" Job Ad Named "Position 1" for Username "candidate1.scriptonce1" From Database
