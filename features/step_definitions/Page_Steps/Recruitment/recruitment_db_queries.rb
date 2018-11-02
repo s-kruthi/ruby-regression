@@ -46,32 +46,53 @@ module Database_env
     def verify_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
       case recruitment_job_ad_type
         when "Internal"
-          query = "SELECT * FROM epms_recruitment_job_application AS epa
+          query1 = "SELECT * FROM epms_recruitment_job_application AS epa
                   INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
                   INNER JOIN epms_user AS epu ON epa.user_id = epu.id
                   WHERE epj.title LIKE '%#{recruitment_job_title}%'
                   AND epa.user_id IS NOT NULL
                   AND epu.email LIKE '%#{candidate_email}%';"
-          return @db[query].first
-        
+
+          query2 = "select row_count() as affected;"
+
+          #Executing the select query to verify job appln
+          @db.execute(query1)
+
+          #returning the number of rows affected
+          return @db[query2].first
+
         when "External"
-          query = "SELECT * FROM epms_recruitment_job_application AS epa
+          query1 = "SELECT * FROM epms_recruitment_job_application AS epa
                   INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
                   INNER JOIN epms_recruitment_candidate AS epc ON epa.candidate_id = epc.id
                   WHERE epj.title LIKE '%#{recruitment_job_title}%'
                   AND epa.candidate_id IS NOT NULL
                   AND epc.email LIKE '%#{candidate_email}%';"
-          return @db[query].first
-        
+
+          query2 = "select row_count() as affected;"
+
+          #Executing the select query to verify job appln
+          @db.execute(query1)
+
+          #returning the number of rows affected
+          return @db[query2].first
+
         when "Vendor"
-          query = "SELECT * FROM epms_recruitment_job_application AS epa
+          query1 = "SELECT * FROM epms_recruitment_job_application AS epa
                   INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
                   INNER JOIN epms_recruitment_candidate AS epc ON epa.candidate_id = epc.id
                   WHERE epj.title LIKE '%#{recruitment_job_title}%'
                   AND epa.candidate_id IS NOT NULL
                   AND epc.id IS NOT NULL
                   AND epc.email LIKE '%#{candidate_email}%';"
-          return @db[query].first
+
+          query2 = "select row_count() as affected;"
+
+          #Executing the select query to verify job appln
+          @db.execute(query1)
+
+          #returning the number of rows affected
+          return @db[query2].first
       end
     end
     
@@ -79,27 +100,41 @@ module Database_env
     def remove_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
       case recruitment_job_ad_type
         when "Internal"
-          query = "DELETE FROM epms_recruitment_job_application WHERE id IN
+          query1 = "DELETE FROM epms_recruitment_job_application WHERE id IN
                   (SELECT id FROM (SELECT epa.id FROM epms_recruitment_job_application AS epa
                   INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
                   INNER JOIN epms_user AS epu ON epa.user_id = epu.id
                   WHERE epj.title LIKE '%#{recruitment_job_title}%'
                   AND epa.user_id IS NOT NULL
                   AND epu.email LIKE '%#{candidate_email}%') AS eid);"
-          return @db[query].first
+
+          query2 = "select row_count() as affected;"
+
+          #Executing the delete query
+          @db.execute(query1)
+
+          #returning the number of rows affected
+          return @db[query2].first
         
         when "External"
-          query = "DELETE FROM epms_recruitment_job_application WHERE id IN
+          query1 = "DELETE FROM epms_recruitment_job_application WHERE id IN
                   (SELECT id FROM (SELECT epa.id FROM epms_recruitment_job_application AS epa
                   INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
                   INNER JOIN epms_recruitment_candidate AS epc ON epa.candidate_id = epc.id
                   WHERE epj.title LIKE '%#{recruitment_job_title}%'
                   AND epa.candidate_id IS NOT NULL
                   AND epc.email LIKE '%#{candidate_email}%') AS eid);"
-          return @db[query].first
+
+          query2 = "select row_count() as affected;"
+
+          #Executing the delete query
+          @db.execute(query1)
+
+          #returning the number of rows affected
+          return @db[query2].first
         
         when "Vendor"
-          query = "DELETE FROM epms_recruitment_job_application WHERE id IN
+          query1 = "DELETE FROM epms_recruitment_job_application WHERE id IN
                   (SELECT id FROM (SELECT epa.id FROM epms_recruitment_job_application AS epa
                   INNER JOIN epms_recruitment_job_ad AS epj ON epa.requisition_id = epj.requisition_id
                   INNER JOIN epms_recruitment_candidate AS epc ON epa.candidate_id = epc.id
@@ -107,8 +142,14 @@ module Database_env
                   AND epa.candidate_id IS NOT NULL
                   AND epc.id IS NOT NULL
                   AND epc.email LIKE '%#{candidate_email}%') AS eid);"
-          return @db[query].first
-      
+
+          query2 = "select row_count() as affected;"
+
+          #Executing the delete query
+          @db.execute(query1)
+
+          #returning the number of rows affected
+          return @db[query2].first
       end
     end
 
