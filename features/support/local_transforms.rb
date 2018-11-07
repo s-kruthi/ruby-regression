@@ -1,4 +1,4 @@
-# Explaination for the use of Cucumber transformer:
+# Explanation for the use of Cucumber transformer:
 # The regex is the Gherkin syntax in the Feature file, name is the technical term and the transformer is the actual value used in the runtime
 
 ParameterType(

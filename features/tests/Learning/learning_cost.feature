@@ -11,6 +11,7 @@ Feature: Manage cost category for learning
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
     And   I Go To Cost Categories Under Learning Section
+    #   Find the local_transforms.rb for the undefined Gherkin step
     When  I Create A Cost Category With A Unique Name
     Then  I Should Be Able To Create The Learning Cost Category
 
@@ -21,4 +22,5 @@ Feature: Manage cost category for learning
     And   I Go To Cost Categories Under Learning Section
     Then  I Can Toggle The Visibility State Of Existing Cost Category
     When  I Edit The Cost Category
+    #   Find the local_transforms.rb for the undefined Gherkin step
     Then  I Can Edit The Learning Cost Category With A Unique Sentence

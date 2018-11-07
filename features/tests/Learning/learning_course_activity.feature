@@ -216,6 +216,7 @@
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A SCORM Package Activity
       Then  I Should Edit The Scorm Section Name And Description
@@ -226,6 +227,7 @@
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A SCORM Package Activity
       Given The "ELMO Admin" Configure The "Lock course with enrolments" To <course_lock>
@@ -250,6 +252,7 @@
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       And  I Should Be Able To Add A Quiz Activity
       And  I Go To The Page Which Has The List Of Current Editing Item
@@ -262,6 +265,7 @@
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       And   I Should Be Able To Add A Quiz Activity
       And   I Verify That Default Settings For Quiz Is Correct
@@ -273,6 +277,7 @@
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A Quiz Activity
       Given The "ELMO Admin" Configure The "Lock course with enrolments" To <course_lock>
@@ -295,6 +300,7 @@
 
     @smoke_learning @learning_low_risk @course_face_to_face_session_management @C1829
     Scenario: As An Administrator I Want To Manage Face 2 Face Course Activity Sessions Such As Create Copy Edit Cancel Delete
+      #   Find the local_transforms.rb for the undefined Gherkin step
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A Face-to-Face Activity
       And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
@@ -314,6 +320,7 @@
 
     @smoke_learning @learning_low_risk @face_to_face_session_notifications @C745
       Scenario: As An Administrator I Want To Manage Face 2 Face Activity Session Notifications Such As Create Edit Delete
+      #   Find the local_transforms.rb for the undefined Gherkin step
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A Face-to-Face Activity
       When  I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
@@ -328,6 +335,7 @@
       And   I Go To The Page Which Has The List Of Current Editing Item
       When  I Click On "Attendance" Button
       Then  I Should Be Able To Manual Signup ELMO Compàny Admin
+      #   Find the local_transforms.rb for the undefined Gherkin step
       Then  I Should Be Able To Mark Attendance "Fully Attended" With Grade 90 And Mark As Attendance Complete
       And   I Should Be Able To Mark Attendance "Partially Attended" With Grade 90 And Mark As Attendance Complete
       And   I Should Be Able To Mark Attendance As No Show With Grade 90

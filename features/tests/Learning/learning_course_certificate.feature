@@ -15,6 +15,7 @@ Feature: Manage Certificates On The Certificate List Page
     When  I Go To Course Certificate Templates Under Learning Section
 #   Check templates are listed with required column whose values are defined in test data. Create templates(>10) when necessary.
     Then  I Should See The Certificates Listed In Descending Order
+#   Find the local_transforms.rb for the undefined Gherkin step
     Then  I Should Create A Certificate With A Unique Name
     When  I Go To The Page Which Has The List Of Current Editing Item
     Then  I Should Edit The Created Certificate
