@@ -57,7 +57,7 @@ Feature:
     Then   I Should Be Able To Successfully Create A Profile
 
 
-  @recruitment_externalcandidate_createprofile
+  @recruitment_externalcandidate_createprofile_bulk
   Scenario: [Recruitment]Can Create External Candidate Profiles
     Given  I Am On The External Career Site test
     When   I Want To Create 2 External Candidate Profiles
@@ -68,19 +68,19 @@ Feature:
     Given  I Am Creating Candidates On The External Career Site test
 
 
-  @recruitment_test
+  @recruitment_appliedjob_internal_errormsg
   Scenario: [Recruitment]Cannot Apply For Job Ads Already Applied For
-    Given  I Have Already Applied As An Employee For The Job Ad titled "Position 1"
+    Given  I Have Already Applied As An Employee For The Job Ad titled "Quality Assurance Tester - Automation - Internal"
     When   I Have Logged In As An Employee Using The Username "auto1.scriptonce1" And Password "Admin1234567"
-    And    I Try To Apply For The Job Ad Titled "Position 1" As An Employee
+    And    I Try To Apply For The Job Ad Titled "Quality Assurance Tester - Automation - Internal" As An Employee
     Then   I Should Be Able To See A Message Alerting The User That The Job Has Already Been Applied To
-    And    I Should Be Able To Successfully "Remove" The "Internal" Job Ad Named "Position 1" for Username "auto1.scriptonce1" From Database
+    And    I Should Be Able To Successfully "Remove" The "Internal" Job Ad Named "Quality Assurance%Internal" for Username "auto1.scriptonce1" From Database
 
 
-  @recruitment_test
+  @recruitment_appliedjob_external_errormsg
   Scenario: [Recruitment]Cannot Apply For Job Ads Already Applied For
-    Given  I Have Already Applied As An External Candidate For The Job Ad titled "Position 1" On The External Career Portal test
+    Given  I Have Already Applied As An External Candidate For The Job Ad titled "Quality Assurance Tester - Automation - External" On The External Career Portal test
     When   I Have Logged In To The External Career Portal test Using The Username "candidate1.scriptonce1@elmodev.com" And Password "Admin1234567"
     And    I Try To Apply For The Job Ad Titled "Position 1" As An External Candidate
     Then   I Should Be Able To See A Message Alerting The User That The Job Has Already Been Applied To
-    And    I Should Be Able To Successfully "Remove" The "External" Job Ad Named "Position 1" for Username "candidate1.scriptonce1" From Database
+    And    I Should Be Able To Successfully "Remove" The "External" Job Ad Named "Quality Assurance%External" for Username "candidate1.scriptonce1" From Database
