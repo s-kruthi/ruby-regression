@@ -1,5 +1,5 @@
 #Requisition Page UI Elements
-REQUISITION_TAB = "Requisition"
+REQUISITIONS_TAB = "//a[contains(@href, 'open-requisition')]"
 NEW_REQUISITION_BTN = "//button[contains(.,'New Requisition')]"
 REQUISITION_POS_INDEX_ARROW = "select2-arrow"
 REQUISITION_POS_INDEX_CLASS = "select2-result"
@@ -54,6 +54,14 @@ REQUISITION_STATUS_RESULT_ID = "select2-result-selectable"
 REQUISITION_SEARCH_RESULT_TITLE_ID = '//a[contains(@class,"requisition-title")]'
 REQUISITION_ACTION_DROPDOWN_ID = '//div[@class="btn-group btn-group-dropdown"]'
 
+REQUISITION_OVERVIEW_SUBTAB_ID = '//a[contains(@href, "overview")]'
+REQUISITION_JOBADS_SUBTAB_ID = '//a[@role="menuitem"][contains(@href, "jobad")]'
+REQUISITION_INTERVIEWS_SUBTAB_ID = '//a[@role="menuitem"][contains(@href, "interviews")]'
+REQUISITION_PANELREVIEWS_SUBTAB_ID = '//a[@role="menuitem"][contains(@href, "panel-review")]'
+REQUISITION_OFFERS_SUBTAB_ID = '//a[@role="menuitem"][contains(@href, "offers")]'
+REQUISITION_COSTS_SUBTAB_ID = '//a[@role="menuitem"][contains(@href, "costs")]'
+
+
 #### Approval Page ####
 REQUISITION_APPROVAL_SEARCH_ID = '//input[@ng-model="search.keyword"]'
 
@@ -62,6 +70,13 @@ REQUISITION_APPROVAL_SEARCH_ID = '//input[@ng-model="search.keyword"]'
 CANDIDATE_ACTION_DROPDOWN_ID = '//div[contains(@class,"btn-group ng-scope")]'
 CANDIDATE_SEARCH_BOX_ID = 'recruitmentApplication_keyword'
 CANDIDATE_SEARCH_BUTTON_ID = '//button[@id="recruitmentApplication_keyword"]'
+REQUISITION_CANDIDATE_SELECTALL_ID = "//input[@id='cbSelectAll']"
+REQUISTION_CANDIDATE_SELECTCHKBX_ID = '//input[@type="checkbox"]'
+
+REQUISITION_PAGE_DROPDOWN_ID = '//button[@ng-click="getJobApplicationIds()"]'
+REQUISITION_EMAILCANDIDATE_SUBJ_ID = '//input[@name="subject"]'
+REQUISITION_EMAILCANDIDATE_ATCH_ID = '//button[@ng-click="addAttachment()"]'
+REQUISITION_EMAILCANDIDATE_SEND_ID = '//button[@ng-click="send(emailForm)"]'
 
 
 #### Offer page ####

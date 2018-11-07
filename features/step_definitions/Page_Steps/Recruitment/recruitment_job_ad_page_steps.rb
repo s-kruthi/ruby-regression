@@ -142,3 +142,23 @@ def VerifyAlertMessageForCandidate()
   applied_date = Time.now.strftime("%d/%m/%Y")
   VerifyAnElementExistByXPath(VERIFY_ALERT_ID, applied_date)
 end
+
+
+def VerifyJobApplnDB(recruitment_job_ad_type, recruitment_job_title, candidate_email)
+  job_ad_result = $daos.verify_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
+
+  #mysql row_count() returns -1 for select query
+  if job_ad_result[:affected].eql? -1
+    puts COLOR_GREEN + "Candidate was successful in applying to the job ad"
+  else
+    puts COLOR_RED + "Insuccessful application, check manually"
+  end
+end
+
+
+def RemoveJobApplnDB(recruitment_job_ad_type, recruitment_job_title, candidate_email)
+  #deleting the applied job
+  job_ad_result = $daos.remove_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
+
+  puts COLOR_GREEN + "Number of rows affected: " + job_ad_result[:affected].to_s
+end

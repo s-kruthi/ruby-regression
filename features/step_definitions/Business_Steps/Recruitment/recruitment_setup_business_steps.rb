@@ -278,3 +278,66 @@ end
 And(/^I View The Requisition For Approval$/i) do
   ViewRequisitionForApproval()
 end
+
+
+And(/^I Search For The Requisition Titled ([\w\s]+)$/i) do | req_title |
+  SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, req_title, REQUISITION_SEARCH_BTN_ID)
+
+  #click first requistion in the list
+  ClickOnRequisitionTitle(REQUISITION_SEARCH_RESULT_TITLE_ID)
+end
+
+
+When(/^I Click The ([\w\s]+) Sub Tab$/i) do | sub_tab_name |
+  case sub_tab_name
+    when 'Overview'
+      SUB_TAB_ID = REQUISITION_OVERVIEW_SUBTAB_ID
+
+    when 'Job Ads'
+      SUB_TAB_ID = REQUISITION_JOADS_SUBTAB_ID
+
+    when 'Interviews'
+      SUB_TAB_ID = REQUISITION_INTERVIEWS_SUBTAB_ID
+
+    when 'Panel Reviews'
+      SUB_TAB_ID = REQUISITION_PANELREVIEWS_SUBTAB_ID
+
+    when 'Offers'
+      SUB_TAB_ID = REQUISITION_OFFERS_SUBTAB_ID
+
+    when 'Costs'
+      SUB_TAB_ID = REQUISITION_COSTS_SUBTAB_ID
+  end
+  Sleep_Until(ClickOnASubTab(SUB_TAB_ID))
+end
+
+
+And(/^I Choose To ([\w\s]+) From The Bulk Actions$/i) do | bulk_action_name |
+  ClickMenuOfFirstItemFromTable(REQUISITION_PAGE_DROPDOWN_ID, bulk_action_name)
+end
+
+
+When(/^I Select (All The|[\d]+) Candidate[s]?$/i) do | num_select |
+  SelectCandidate(num_select)
+end
+
+
+And(/^I Compose The Email$/i) do
+  ComposeEmail()
+end
+
+
+And(/^I Send The Composed Email$/i) do
+  SendEmailToCandidate()
+end
+
+
+Then(/^I Should Be Able To Verify That The Emails Have Been Sent$/i) do
+  VerifyRecruitmentMailToCandidate()
+end
+
+
+
+
+
+

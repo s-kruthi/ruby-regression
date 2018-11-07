@@ -155,6 +155,18 @@ Feature:
     Then  I Should Be Able To View The Requisition Note In The Page
 
 
+  @recruitment_low_risk @bulk_email_allcandidates @me
+  Scenario: [Recruitment]Ability To Send Email In Bulk For All Candidates
+    Given I Have Logged In as a Recruitment Admin
+    And   I Go To The Menu Recruitment Section
+    And   I Click On "Requisitions" Tab
+    And   I Search For The Requisition Titled Front End developer
+    When  I Select 1 Candidate
+    And   I Choose To Email Selected Candidates From The Bulk Actions
+    And   I Compose The Email
+    And   I Send The Composed Email
+    Then  I Should Be Able To Verify That The Emails Have Been Sent
+
 
 
 
