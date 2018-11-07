@@ -211,21 +211,23 @@
       And   I Should Be Able to Sort The The Face-To-Face Activity Session List By Location
 
 
-    @smoke_learning6 @learning_low_risk @add_edit_scorm_package @C1027
+    @smoke_learning6 @learning_low_risk @add_edit_scorm_package @C1027 @loc_transform
     Scenario: As a company admin, i want to be able to add/edit a scorm package and make necessary changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A SCORM Package Activity
       Then  I Should Edit The Scorm Section Name And Description
 
 
-    @smoke_learning6 @learning_low_risk @course_enrolment_lock_course_enrolment_edit_scorm @C1028
+    @smoke_learning6 @learning_low_risk @course_enrolment_lock_course_enrolment_edit_scorm @C1028 @loc_transform
     Scenario Outline: User can edit the scorm activity regardless of course lock config or user enrolled in the course
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A SCORM Package Activity
       Given The "ELMO Admin" Configure The "Lock course with enrolments" To <course_lock>
@@ -245,34 +247,37 @@
         |    No       | Enrolled      |
 
 
-    @smoke_learning6 @learning_low_risk @quiz_activity_edit @C247
+    @smoke_learning6 @learning_low_risk @quiz_activity_edit @C247 @loc_transform
     Scenario: As A Company Admin, I Want To Be Able To Add/edit A Quiz And Make Necessary Changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       And  I Should Be Able To Add A Quiz Activity
       And  I Go To The Page Which Has The List Of Current Editing Item
       Then  I Should Edit The Quiz activity
 
 
-    @smoke_learning6 @learning_low_risk @quiz_activity_setting
+    @smoke_learning6 @learning_low_risk @quiz_activity_setting @loc_transform
     Scenario: Verify Default Settings Of Quiz Activity And Change Activity Settings
     Default settings for Settings is "Completion Terminology: Pass/Fail", "Show Feedback: Yes", "Marker: Manager"
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       And   I Should Be Able To Add A Quiz Activity
       And   I Verify That Default Settings For Quiz Is Correct
       Then  I Should Change Quiz Settings
 
 
-    @learning_low_risk @course_enrolment_lock_course_enrolment_edit_quiz
+    @learning_low_risk @course_enrolment_lock_course_enrolment_edit_quiz @loc_transform
     Scenario Outline: Ability To Edit Quiz Activity As Per Enrolment And System Configuration
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
+      #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A Quiz Activity
       Given The "ELMO Admin" Configure The "Lock course with enrolments" To <course_lock>
@@ -293,8 +298,9 @@
         |    No       | Enrolled      | Enabled  |
 
 
-    @smoke_learning @learning_low_risk @course_face_to_face_session_management @C1829
+    @smoke_learning @learning_low_risk @course_face_to_face_session_management @C1829 @loc_transform
     Scenario: As An Administrator I Want To Manage Face 2 Face Course Activity Sessions Such As Create Copy Edit Cancel Delete
+      #   Find the local_transforms.rb for the undefined Gherkin step
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A Face-to-Face Activity
       And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
@@ -312,8 +318,9 @@
       And   I Should Be Able To Delete A Session In The Face-to-Face Activity
 
 
-    @smoke_learning @learning_low_risk @face_to_face_session_notifications @C745
+    @smoke_learning @learning_low_risk @face_to_face_session_notifications @C745 @loc_transform
       Scenario: As An Administrator I Want To Manage Face 2 Face Activity Session Notifications Such As Create Edit Delete
+      #   Find the local_transforms.rb for the undefined Gherkin step
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A Face-to-Face Activity
       When  I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
@@ -322,12 +329,13 @@
       And   I Should Be Able To Delete Face To Face Notification With Name Course Face-to-Face Confirmation
 
 
-    @smoke_learning @learning_low_risk @signup_attendance_manually_mark_attendance @C1830
+    @smoke_learning @learning_low_risk @signup_attendance_manually_mark_attendance @C1830 @loc_transform
     Scenario: Signup Attendance To Face To Face Session And Mark User Attendance
       Given A Face To Face Session With Status Over Is Created For A Course
       And   I Go To The Page Which Has The List Of Current Editing Item
       When  I Click On "Attendance" Button
       Then  I Should Be Able To Manual Signup ELMO Compàny Admin
+      #   Find the local_transforms.rb for the undefined Gherkin step
       Then  I Should Be Able To Mark Attendance "Fully Attended" With Grade 90 And Mark As Attendance Complete
       And   I Should Be Able To Mark Attendance "Partially Attended" With Grade 90 And Mark As Attendance Complete
       And   I Should Be Able To Mark Attendance As No Show With Grade 90
