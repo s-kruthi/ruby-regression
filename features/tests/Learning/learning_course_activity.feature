@@ -211,7 +211,7 @@
       And   I Should Be Able to Sort The The Face-To-Face Activity Session List By Location
 
 
-    @smoke_learning6 @learning_low_risk @add_edit_scorm_package @C1027
+    @smoke_learning6 @learning_low_risk @add_edit_scorm_package @C1027 @loc_transorm
     Scenario: As a company admin, i want to be able to add/edit a scorm package and make necessary changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -222,7 +222,7 @@
       Then  I Should Edit The Scorm Section Name And Description
 
 
-    @smoke_learning6 @learning_low_risk @course_enrolment_lock_course_enrolment_edit_scorm @C1028
+    @smoke_learning6 @learning_low_risk @course_enrolment_lock_course_enrolment_edit_scorm @C1028 @loc_transorm
     Scenario Outline: User can edit the scorm activity regardless of course lock config or user enrolled in the course
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -247,7 +247,7 @@
         |    No       | Enrolled      |
 
 
-    @smoke_learning6 @learning_low_risk @quiz_activity_edit @C247
+    @smoke_learning6 @learning_low_risk @quiz_activity_edit @C247 @loc_transorm
     Scenario: As A Company Admin, I Want To Be Able To Add/edit A Quiz And Make Necessary Changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -259,7 +259,7 @@
       Then  I Should Edit The Quiz activity
 
 
-    @smoke_learning6 @learning_low_risk @quiz_activity_setting
+    @smoke_learning6 @learning_low_risk @quiz_activity_setting @loc_transorm
     Scenario: Verify Default Settings Of Quiz Activity And Change Activity Settings
     Default settings for Settings is "Completion Terminology: Pass/Fail", "Show Feedback: Yes", "Marker: Manager"
       Given I Have Logged In As A Company Admin
@@ -272,7 +272,7 @@
       Then  I Should Change Quiz Settings
 
 
-    @learning_low_risk @course_enrolment_lock_course_enrolment_edit_quiz
+    @learning_low_risk @course_enrolment_lock_course_enrolment_edit_quiz @loc_transorm
     Scenario Outline: Ability To Edit Quiz Activity As Per Enrolment And System Configuration
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -298,7 +298,7 @@
         |    No       | Enrolled      | Enabled  |
 
 
-    @smoke_learning @learning_low_risk @course_face_to_face_session_management @C1829
+    @smoke_learning @learning_low_risk @course_face_to_face_session_management @C1829 @loc_transorm
     Scenario: As An Administrator I Want To Manage Face 2 Face Course Activity Sessions Such As Create Copy Edit Cancel Delete
       #   Find the local_transforms.rb for the undefined Gherkin step
       Given A Company Admin Creates A New Course With Unique Name
@@ -318,7 +318,7 @@
       And   I Should Be Able To Delete A Session In The Face-to-Face Activity
 
 
-    @smoke_learning @learning_low_risk @face_to_face_session_notifications @C745
+    @smoke_learning @learning_low_risk @face_to_face_session_notifications @C745 @loc_transorm
       Scenario: As An Administrator I Want To Manage Face 2 Face Activity Session Notifications Such As Create Edit Delete
       #   Find the local_transforms.rb for the undefined Gherkin step
       Given A Company Admin Creates A New Course With Unique Name
@@ -329,7 +329,7 @@
       And   I Should Be Able To Delete Face To Face Notification With Name Course Face-to-Face Confirmation
 
 
-    @smoke_learning @learning_low_risk @signup_attendance_manually_mark_attendance @C1830
+    @smoke_learning @learning_low_risk @signup_attendance_manually_mark_attendance @C1830 @loc_transorm @loc_transorm
     Scenario: Signup Attendance To Face To Face Session And Mark User Attendance
       Given A Face To Face Session With Status Over Is Created For A Course
       And   I Go To The Page Which Has The List Of Current Editing Item
