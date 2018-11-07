@@ -416,11 +416,11 @@ def SelectCandidate(num_select)
   if num_select == 'All The'
     Sleep_Until(ClickElement('xpath', REQUISITION_CANDIDATE_SELECTALL_ID))
   else
-    i = 0
-    while (i != num_select)
-      JavascriptClick("//input[@type='checkbox'][disabled!='disabled']")
-      Sleep_Until(ClickElement('xpath', REQUISTION_CANDIDATE_SELECTCHKBX_ID))
-      i = i + 1
+    val = 2
+
+    while (val < (num_select.to_i+2) && !($driver.find_elements(:xpath, "//input[@type='checkbox']")[val].attribute('disabled') == 'true'))
+        Sleep_Until(ClickElement('xpath', "//input[@type='checkbox']", val))
+        val = val + 1
     end
   end
 end

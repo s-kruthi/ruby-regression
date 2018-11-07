@@ -161,7 +161,7 @@ Feature:
     And   I Go To The Menu Recruitment Section
     And   I Click On "Requisitions" Tab
     And   I Search For The Requisition Titled Front End developer
-    When  I Select 1 Candidate
+    When  I Select All The Candidates
     And   I Choose To Email Selected Candidates From The Bulk Actions
     And   I Compose The Email
     And   I Send The Composed Email

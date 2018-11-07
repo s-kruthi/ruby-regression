@@ -147,7 +147,12 @@ end
 
 
 def ClickOnATab(tab_name)
-  Sleep_Until($driver.find_element(:xpath, "//a[contains(.,'#{tab_name}')]").click)
+  case tab_name
+    when 'Requisitions'
+      Sleep_Until(ClickElement('xpath', REQUISITIONS_TAB))
+    else
+      Sleep_Until($driver.find_element(:xpath, "//a[contains(.,'#{tab_name}')]").click)
+  end
 end
 
 

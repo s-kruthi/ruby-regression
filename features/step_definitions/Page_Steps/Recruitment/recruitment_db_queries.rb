@@ -161,6 +161,15 @@ module Database_env
                and is_deleted = 0"
       return @db[query].first[:count]
     end
-  
+
+
+    def get_recruitment_msg_details(user_id)
+      query = "select send_date
+               from epms_recruitment_message
+               where from_id = #{user_id}
+               order by id DESC"
+      return @db[query].first[:send_date]
+    end
+
   end
 end
