@@ -155,7 +155,7 @@ Feature:
     Then  I Should Be Able To View The Requisition Note In The Page
 
 
-  @recruitment_low_risk @bulk_email_allcandidates @me
+  @recruitment_low_risk @bulk_email_allcandidates
   Scenario: [Recruitment]Ability To Send Email In Bulk For All Candidates
     Given I Have Logged In as a Recruitment Admin
     And   I Go To The Menu Recruitment Section
