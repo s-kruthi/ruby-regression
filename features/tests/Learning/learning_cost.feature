@@ -15,7 +15,7 @@ Feature: Manage cost category for learning
     When  I Create A Cost Category With A Unique Name
     Then  I Should Be Able To Create The Learning Cost Category
 
-  @smoke_learning5 @manipulate_learning_cost_category @C1802 @learning_high_risk @loc_transform @loc_transform
+  @smoke_learning5 @manipulate_learning_cost_category @C1802 @learning_high_risk @loc_transform
   Scenario: [Learning]Create A New Cost Category
     Given I Have Logged In As A Learning Admin
     When   I Go To Admin Settings
