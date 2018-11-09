@@ -22,7 +22,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Onboarding Users under Onboarding section
     When  I Click On "New Onboarding User" Button
-    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "test" As Last Name And "manager1.scriptonce1" As Manager
+    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "scriptonce" As Last Name And "manager1.scriptonce1" As Manager
 
 
   @hr_add_contact_emergency @general_high_risk @onboarding_high_risk
