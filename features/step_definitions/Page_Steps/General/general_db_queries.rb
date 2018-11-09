@@ -59,6 +59,7 @@ module Database_env
                and is_onboarding=0
                and ehed.is_active=1
                and autopay = 0
+               or autopay is NULL
                ORDER BY rand();"
       return @db[query].first
     end

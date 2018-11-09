@@ -168,6 +168,7 @@ end
 And(/^I Search For A User named ([\w\s]+)$/i) do |user_name|
   $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user_name)
   Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
+ ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, 2, ACTION_DROPDOWN_EDIT_VALUE)
 end
 
 
@@ -234,5 +235,17 @@ end
 
 And(/^I Set The Date of Birth As (\d{1,2}\/\d{1,2}\/\d{4})$/i) do |date_of_birth|
   Sleep_Until(SelectDate(USER_DOB_FIELD_ID, date_of_birth))
+end
+
+
+And(/^I Can Set Multiple Cost Centres For The User$/i) do
+  byebug
+  if result_count == 0
+    puts COLOR_BLUE + "No Cost Centres Found, please check ELMO Payroll for cost codes manually"
+    skip_this_scenario
+  end
+
+  sleep(2)
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_COST_CENTRE_SELECT2_ID))
 end
 

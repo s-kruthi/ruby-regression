@@ -112,6 +112,8 @@ ELMO_ADMIN_PASSWORD = 'Admin1234567'
 PAYROLL_ADMIN_USERNAME = 'payroll.scriptonce'
 PAYROLL_ADMIN_PASSWORD = 'Admin1234567'
 
+HRMGR_ADMIN_USERNAME = 'hrmanager.scriptonce'
+HRMGR_ADMIN_PASSWORD = 'Admin1234567'
 
 #TODO Remove after code review since payroll has its own repo
 ####### Payroll user credentials ############
