@@ -63,21 +63,19 @@ Feature:
       | HR Manager       |
       | Any Manager      |
 
-
-  #Currently works only on payroll03
-  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_default_autopay @C16724
+    
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_default_autopay @C16724 @me
   Scenario: [General] Company Admin Can View Autopay Default Setting As No
-    Given I Have Logged In as a Company Admin
+    Given I Have Logged In As A Payroll Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Search For An Employee With Default Autopay Setting
     Then  I Can View The Default Autopay Setting As No
 
 
-  #Currently works only on payroll03
-  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_message @C16725
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_message @C16725 @me
   Scenario: [General] Company Admin Can View Autopay Message
-    Given I Have Logged In as a Company Admin
+    Given I Have Logged In As A Payroll Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Search For An Employee With Employment Details
@@ -86,10 +84,9 @@ Feature:
     Then  I Should Be Displayed With Autopay Message
 
 
-  #Currently works only on payroll03
-  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_edit @C16725
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_edit @C16725 @me1
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
-    Given I Have Logged In as a Company Admin
+    Given I Have Logged In As A Payroll Admin
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Search For An Employee With Employment Details

@@ -74,7 +74,10 @@ end
 
 
 def CheckAutopaySetting(setting_value)
+  sleep (4)
+
   autopay_setting = GetTextAssociatedToElement("xpath", USER_PAYMENT_DETAILS_AUTOPAY_LABEL_ID)
+
   if autopay_setting == setting_value
     puts COLOR_GREEN + "autopay setting value matches".upcase
   else
@@ -85,7 +88,7 @@ end
 
 
 def GetAutopayToggleSetting()
-  return Sleep_Until($driver.find_element(:id, USER_PAYMENT_DETAILS_AUTOPAY_ID).selected?)
+  return $driver.find_element(:id, USER_PAYMENT_DETAILS_AUTOPAY_ID).selected?
 end
 
 
@@ -159,6 +162,7 @@ end
 
 
 def SaveAutopayChanges()
+  byebug
   Sleep_Until(WaitForAnElementByCSSAndTouch(MODAL_YES_BUTTON_CSS))
 
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))

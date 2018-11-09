@@ -8,4 +8,4 @@ USER_DETAILS_CONFIRMATION_MODAL_TITLE = "Confirm Employment Details Update"
 
 
 #### PAYMENT DETAILS ####
-USER_PAYMENT_DETAILS_AUTOPAY_MSG = 'You have turned auto pay on, normal hours will be automatically added and process for this employee in Payroll. Would you like to continue?'
+USER_PAYMENT_DETAILS_AUTOPAY_MSG = 'You have turned auto pay on, normal hours will be automatically added and processed for this employee in Payroll. Would you like to continue?'

@@ -136,7 +136,7 @@ end
 
 
 Then(/^I Should Be Displayed With Autopay Message$/i) do
-  Sleep_Until(VerifyAnElementExistByXPath(USER_PAYMENT_DETAILS_AUTOPAY_MODAL_ID,USER_PAYMENT_DETAILS_AUTOPAY_MSG))
+  Sleep_Until(VerifyAnElementExistByXPath(USER_PAYMENT_DETAILS_AUTOPAY_MODAL_ID, USER_PAYMENT_DETAILS_AUTOPAY_MSG))
 end
 
 
