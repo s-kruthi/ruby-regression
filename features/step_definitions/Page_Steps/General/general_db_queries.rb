@@ -161,6 +161,15 @@ module Database_env
       return @db[query].first
     end
 
+
+    def get_custom_user_field_details(num)
+      query = "select name, shortname
+               from epms_user_profile_field
+               where is_deleted= 0
+               ORDER BY rand() limit #{num}"
+      return @db[query]
+    end
+
   end
 
 end
