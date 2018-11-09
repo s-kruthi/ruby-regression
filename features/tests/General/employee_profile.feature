@@ -135,16 +135,7 @@ Feature:
     Then  I Should Not Be Able To See Notes Section
 
 
-  @general_low_risk @costcentre_split @user_profile_multiple_costcentres @me
-  Scenario: [General]HR Manager Can Assign Mutliple Cost Centres And Split % Of Pay
-    Given I Have Logged In As A HR Manager
-    And   I go to Admin Settings
-    And   I Go To Users under General section
-    And   I Search For A User Named company omar
-    #auto1 test1
-    And   I Can Set Multiple Cost Centres For The User
-    And   I Split The % Of Pay As 30 And 70
-    And   I Should Be Able To Save The Information Successfully
+
 
 
 
