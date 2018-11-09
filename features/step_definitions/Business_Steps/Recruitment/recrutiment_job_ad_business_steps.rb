@@ -1,9 +1,10 @@
 When(/^I Apply For The Job Ad Titled "(.*)"$/i) do | job_title |
-  jobad_xpath = "//a[text() = '#{job_title}']"
+  byebug
+  jobad_xpath = "//a[normalize-space()='#{job_title}']"
   
   #Try doing a database cleanup before applying
   #click on the job ad title
-  Sleep_Until(ClickElement('xpath', jobad_xpath))
+  Sleep_Until(ClickElement('xpath',jobad_xpath))
   
   #click on apply
   Sleep_Until(ClickElement('xpath', RECRUITMENT_JOBAD_APPLY_ID))
