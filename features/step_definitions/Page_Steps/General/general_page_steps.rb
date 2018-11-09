@@ -57,6 +57,8 @@ end
 
 def CreateUsers(loop, arg2, arg3, arg4, arg5, arg6)
   begin
+    Sleep_Until(SelectEmployeeNumber(NEW_USER_EMPLOYEE_NUMBER_ID, NEW_USER_DETAILS_MAP[:employee_number_value])) if SELECT_EMPLOYEE_NUMBER.to_i == 1
+
     Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, @@first_name))
 
     Sleep_Until(EnterUserDetails(NEW_USER_LAST_NAME_ID, @@last_name))
@@ -83,6 +85,12 @@ def CreateUsers(loop, arg2, arg3, arg4, arg5, arg6)
 
     puts COLOR_BLUE + "Created new user with firstname '" + @@first_name + "' and lastname as '" + @@last_name +"'"
   end
+end
+
+
+def SelectEmployeeNumber(arg1, arg2)
+  $driver.find_element(:xpath, arg1).clear()
+  WaitForAnElementByXpathAndInputValue(arg1, arg2)
 end
 
 

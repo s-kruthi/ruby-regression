@@ -28,6 +28,7 @@ USERS_NAV_LINK = "//a[contains(@href,'/admin/users')]"
 ADD_NEW_USER_BTN = "//a[contains(.,' Add New User')]"
 
 #### ADD USERS PAGE ####
+NEW_USER_EMPLOYEE_NUMBER_ID = "//input[contains(@id,'employeeNumber')]"
 NEW_USER_FIRST_NAME_ID = "//input[contains(@id,'firstName')]"
 NEW_USER_LAST_NAME_ID = "//input[@id='user_lastName']"
 NEW_USER_USERNAME_ID = "//input[@id='user_username']"

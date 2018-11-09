@@ -9,7 +9,7 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
-    Then  I Should Be Able To Add 4 New "Non-ELMO" Users In To The System With "auto" As First Name And "scriptonce" As Last Name And "manager1.scriptonce1" as Manager
+    Then  I Should Be Able To Add 1 New "Non-ELMO" Users In To The System With "auto" As First Name And "scriptonce" As Last Name And "manager1.scriptonce1" as Manager
     And   I Click On "Users" Breadcrumb Menu
     And   I Click On "Notify Users" Button
     And   I Click On "Notify All Users" Button
