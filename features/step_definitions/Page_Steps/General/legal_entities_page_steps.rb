@@ -99,6 +99,7 @@ def EditLegalEntity()
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
 
+
 def SearchToEdit(legal_entity)
   #search and click to edit
   Sleep_Until(WaitForAnElementByIdAndInputValue(SEARCH_FIELD_ID, legal_entity[:business_name]))
