@@ -257,7 +257,7 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
   #This step also sets the roletype to the specified value
   i = 1  #Change it if the starting suffix value needs to be from a different value
   total = i + arg1  #Total number of users to be created
-  for loop in i..total do
+  for loop in i..arg1 do
     begin
       @@first_name = arg3 + loop.to_s
       @@last_name = arg4 + loop.to_s if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path

@@ -1,3 +1,4 @@
+SELECT_EMPLOYEE_NUMBER = 1
 SELECT_MANAGER = 0
 SELECT_START_DATE = 1
 SELECT_EXPIRY_DATE = 0
@@ -8,6 +9,7 @@ USE_ACTIVE_INACTIVE_FILTER = 0
 
 
 NEW_USER_DETAILS_MAP = {
+    employee_number_value: "EMP" + Time.now.strftime("%Y%m%d%H%M%S").to_s,
     email_prefix_value: "@elmodev.com",
     timezone_value: "Sydney",
     start_date_value: (DateTime.now).prev_month.strftime("%d/%m/%Y"),
