@@ -1,5 +1,4 @@
 When(/^I Apply For The Job Ad Titled "(.*)"$/i) do | job_title |
-  byebug
   jobad_xpath = "//a[normalize-space()='#{job_title}']"
   
   #Try doing a database cleanup before applying
@@ -79,7 +78,9 @@ end
 
 
 When(/^I Submit Candidate For The Job Ad Titled "(.*)"$/i) do | job_title |
-  steps %{And I Apply For The Job Ad Titled "#{job_title}"}
+  steps %{
+    And I Apply For The Job Ad Titled "#{job_title}"
+  }
 end
 
 
@@ -93,9 +94,7 @@ end
 
 Given(/^I Am On The External Career Site (.*)$/i) do | external_portal |
   NavigateToCareerSite(external_portal)
-  puts $site_url
-  puts @external_portal
-  
+
   CreateExternalCandidateUsingJmeter()
 end
 
@@ -143,7 +142,9 @@ Given(/^I Have Already Applied As An Employee For The Job Ad titled "(.*)"$/i) d
     Then  I Should Be Able To Successfully Apply For The Job Ad
   }
   Sleep_Until(WaitForAnElementByXpathAndTouch(MENU_CAREERS_LINK))
-  steps %{ And   I Have Logged Out}
+  steps %{
+    And   I Have Logged Out
+  }
 end
 
 
