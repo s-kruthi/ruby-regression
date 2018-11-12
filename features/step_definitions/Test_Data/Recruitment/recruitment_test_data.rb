@@ -20,6 +20,8 @@ CANDIDATE[:COUNTRY] = "Australia"
 CANDIDATE[:STATE] = "NSW"
 CANDIDATE[:TIMEZONE] = "Sydney"
 CANDIDATE[:PASSWORD] = "Tester1!"
+
+
 #Recruitment create job ad test data #######
 SALARY_FROM_VALUE = "100000"
 SALARY_TO_VALUE = "200000"
@@ -29,3 +31,10 @@ JB_END_DATE_VALUE = "29/05/2019"
 REQUISITION_NOTE_SUCCESS_MSG = 'Requisition note has been successfully updated.'
 REQUISITION_NOTE_VALUE = "Automated Test Requisition Note"
 REQUISITION_NOTE_DEL_MSG = 'Requisition note has been successfully deleted.'
+
+
+PDF_FILE_NAME = "sample.pdf"
+
+#### REQUISITION MAIL TO CANDIDATE ####
+REQUISITION_EMAILCANDIDATE_SUBJ_VALUE = 'Automated Send Mail'
+REQUISITION_EMAILCANDIDATE_MSG_VALUE = '::CANDIDATEFIRSTNAME:: ::CANDIDATELASTNAME:: ::CANDIDATEUSERNAME:: ::JOB:: ::LOCATION:: ::LINK::'

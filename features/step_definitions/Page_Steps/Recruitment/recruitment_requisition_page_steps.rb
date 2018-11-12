@@ -372,3 +372,55 @@ def ViewRequisitionForApproval()
     Sleep_Until(WaitForAnElementByXpathAndTouch('//tr[contains(.,req_title)]//button[@ng-click="view(requisition)"]'))
   end
 end
+
+
+def ClickOnRequisitionTitle(requisition_search_result_title_id)
+  Sleep_Until(ClickElement('xpath', REQUISITION_SEARCH_RESULT_TITLE_ID))
+end
+
+
+def ComposeEmail()
+  #enter subject for the mail
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(REQUISITION_EMAILCANDIDATE_SUBJ_ID, REQUISITION_EMAILCANDIDATE_SUBJ_VALUE))
+
+  #enter message with default placeholders
+  Sleep_Until(UseCkeditorToEnterText(REQUISITION_EMAILCANDIDATE_MSG_VALUE, 0))
+
+  # add document
+  Sleep_Until(ClickElement('xpath', REQUISITION_EMAILCANDIDATE_ATCH_ID))
+  file_for_upload = File.join(File.absolute_path("../../Test_Data/", File.dirname(__FILE__)), PDF_FILE_NAME)
+  Sleep_Until(select_a_file(BROWSE_FILE_ID, file_for_upload))
+end
+
+
+def SendEmailToCandidate()
+  Sleep_Until(ClickElement('xpath', REQUISITION_EMAILCANDIDATE_SEND_ID))
+
+  #capturing the time when the email sent, subtracting 1 sec since capture is after clicking
+  @time_email_sent = Time.now.to_i - 1
+end
+
+
+def VerifyRecruitmentMailToCandidate()
+  #getting the time from the db
+  time = $daos.get_recruitment_msg_details(@user_id[:id])
+
+  #comparing the times to verify the db entry
+  expect(@time_email_sent).to eq(time)
+
+  puts COLOR_GREEN + "Found the db entry for the mail sent at " + @time_email_sent.to_s
+end
+
+
+def SelectCandidate(num_select)
+  if num_select == 'All The'
+    Sleep_Until(ClickElement('xpath', REQUISITION_CANDIDATE_SELECTALL_ID))
+  else
+    val = 2
+
+    while (val < (num_select.to_i+2) && !($driver.find_elements(:xpath, "//input[@type='checkbox']")[val].attribute('disabled') == 'true'))
+        Sleep_Until(ClickElement('xpath', "//input[@type='checkbox']", val))
+        val = val + 1
+    end
+  end
+end

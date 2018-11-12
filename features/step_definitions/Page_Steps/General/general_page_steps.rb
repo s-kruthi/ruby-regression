@@ -2,11 +2,25 @@
 def GoToSite()
   $site_alias = (ENV["URL"] || ENV["url"]) || 'tmsfull'
   $site_type = (ENV["TYPE"] || ENV["type"]) || 'staging'
-  $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/dashboard" if ($site_type.to_s.downcase == "prod")    #Change this URL which determines the production TLD
-  $site_url = "https://" + "#{$site_alias}" + ".elmodev.com/dashboard" if ($site_type.to_s.downcase == "staging")   #Change this URL which determines the staging TLD
-  $site_url = "https://" + "login.elmopayroll.com.au" if ($site_type.to_s.downcase == "payroll_prod")                         #Payroll site exception
-  $site_url = "https://" + "payrollelmoapp-ase-uat.azurewebsites.net" if ($site_type.to_s.downcase == "payroll_staging")   #Payroll site exception
-  $site_url = "https://" + "survey2.elmodev.com" if ($site_alias.to_s.downcase == "survey2")                             #Change this URL which determines the survey TLD
+
+  #checking if its an internal/external facing site
+  if !@external_portal.nil?
+    $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/careers/" + @external_portal + "/login/" if ($site_type.to_s.downcase == "prod")
+    $site_url = "https://" + "#{$site_alias}" + ".elmodev.com/careers/" + @external_portal + "/login/"  if ($site_type.to_s.downcase == "staging")
+
+  else
+    if @vendor_login == 1
+      $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/vendor/dashboard" if ($site_type.to_s.downcase == "prod")    #Change this URL which determines the production TLD
+      $site_url = "https://" + "#{$site_alias}" + ".elmodev.com/vendor/dashboard" if ($site_type.to_s.downcase == "staging")
+    else
+      $site_url = "https://" + "#{$site_alias}" + ".elmotalent.com.au/dashboard" if ($site_type.to_s.downcase == "prod")    #Change this URL which determines the production TLD
+      $site_url = "https://" + "#{$site_alias}" + ".elmodev.com/dashboard" if ($site_type.to_s.downcase == "staging")   #Change this URL which determines the staging TLD
+      $site_url = "https://" + "login.elmopayroll.com.au" if ($site_type.to_s.downcase == "payroll_prod")                         #Payroll site exception
+      $site_url = "https://" + "payrollelmoapp-ase-uat.azurewebsites.net" if ($site_type.to_s.downcase == "payroll_staging")   #Payroll site exception
+      $site_url = "https://" + "survey2.elmodev.com" if ($site_alias.to_s.downcase == "survey2")                             #Change this URL which determines the survey TLD
+    end
+  end
+
   puts "SERVER MODE = " + $site_type.to_s if (ENV["TYPE"] || ENV["type"]) != nil
   $driver.navigate.to($site_url)
 end
@@ -141,7 +155,12 @@ end
 
 
 def ClickOnATab(tab_name)
-  Sleep_Until($driver.find_element(:xpath, "//a[contains(.,'#{tab_name}')]").click)
+  case tab_name
+    when 'Requisitions'
+      Sleep_Until(ClickElement('xpath', REQUISITIONS_TAB))
+    else
+      Sleep_Until($driver.find_element(:xpath, "//a[contains(.,'#{tab_name}')]").click)
+  end
 end
 
 
@@ -199,4 +218,9 @@ def CreateAUser(user_type, firstname, lastname, manager_name, role)
 
     puts COLOR_BLUE + "Created new user with role '" + role_name.upcase + "'"
   end
+end
+
+
+def VerifyErrorAlertMessage(alert_id, alert_msg)
+  Sleep_Until(VerifyAnElementExistByXPath(alert_id, alert_msg))
 end

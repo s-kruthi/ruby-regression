@@ -113,6 +113,13 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
           username = AUTO_COMP_ADMIN_NAME
         end
 
+      else
+          begin
+            EnterUsername(USER_NAME, @username)
+            EnterPassword(PASS_WORD, @user_pwd)
+            username = @username
+          end
+
       end
 
       #getting the userid based on the username and saving for later
@@ -129,6 +136,10 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
 
   when "Out"
     begin
+      nav_menu = $daos.get_nav_menu_setting()
+      if nav_menu[:value] == '1'
+        USER_PROFILE_MENU_ICON_ID = USER_PROFILE_VERTICALMENU_ICON_ID
+      end
       LogOutFromTheDashboard(USER_PROFILE_MENU_ICON_ID, LOGOUT_BUTTON_ID)
     end
   end
@@ -595,3 +606,16 @@ end
 Then(/^I Should Be Able To Add A New "(Non-ELMO|ELMO)" User With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?(:? And "([^"]*)" As Role)?$/i) do |arg1, arg2, arg3, arg4, arg5|
   CreateAUser(arg1, arg2, arg3, arg4, arg5)
 end
+
+
+Given(/^I Have Logged In As (An Employee|Vendor) Using The Username "(.*)" And Password "(.*)"$/i) do |user_type, user_name, user_pwd|
+  @username = user_name
+  @user_pwd = user_pwd
+
+  if user_type == 'Vendor'
+    @vendor_login = 1
+  end
+
+  steps %{And I Have Logged In As A #{user_type}}
+end
+

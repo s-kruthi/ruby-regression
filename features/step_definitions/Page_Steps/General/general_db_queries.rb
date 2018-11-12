@@ -152,6 +152,14 @@ module Database_env
       return @db[query].first
     end
 
+
+    def get_nav_menu_setting()
+      query = "select value
+               from epms_config
+               where name = 'switchVerticalNavigationMenu'"
+      return @db[query].first
+    end
+
   end
 
 end
