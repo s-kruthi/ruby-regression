@@ -112,14 +112,20 @@ end
 
 
 And(/^I Edit The User's Employment Details Section$/i) do
-  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+  #ensuring that the searched user is clicked
+  element_id = '//tr[@data-url="/controlpanel/user-profile/'+@user_search[:user_id].to_s+'"]'
+  Sleep_Until(ClickElement('xpath', element_id))
+
   Sleep_Until(ClickOnASubTab(USER_PAYMENT_DETAILS_TAB_ID))
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_EDIT_BUTTON_ID))
 end
 
 
 Then(/^I Can View The Default Autopay Setting As (Yes|No)$/i) do |setting_value|
-  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+  #ensuring that the searched user is clicked
+  element_id = '//tr[@data-url="/controlpanel/user-profile/'+@user_search[:user_id].to_s+'"]'
+  Sleep_Until(ClickElement('xpath', element_id))
+
   Sleep_Until(ClickOnASubTab(USER_PAYMENT_DETAILS_TAB_ID))
   CheckAutopaySetting(setting_value)
 end

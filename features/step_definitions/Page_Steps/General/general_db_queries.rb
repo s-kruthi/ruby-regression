@@ -44,6 +44,7 @@ module Database_env
                and eu.is_active=1
                and is_onboarding=0
                and ehed.is_active=1
+               and annual_salary <> 0
                ORDER BY rand();"
       return @db[query].first
     end
@@ -58,8 +59,9 @@ module Database_env
                and eu.is_active=1
                and is_onboarding=0
                and ehed.is_active=1
-               and autopay = 0
-               or autopay is NULL
+               and (autopay = 0
+               or autopay is NULL)
+               and annual_salary <> 0
                ORDER BY rand();"
       return @db[query].first
     end
@@ -108,6 +110,7 @@ module Database_env
               and is_active = 1"
       return @db[query].first
     end
+
 
     def get_count_active_legal_entity()
       query = "select count(*) as count

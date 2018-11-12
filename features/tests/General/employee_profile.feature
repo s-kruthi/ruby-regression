@@ -64,7 +64,7 @@ Feature:
       | Any Manager      |
 
     
-  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_default_autopay @C16724 @me
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_default_autopay @C16724
   Scenario: [General] Company Admin Can View Autopay Default Setting As No
     Given I Have Logged In As A Payroll Admin
     And   I go to Admin Settings
@@ -73,7 +73,7 @@ Feature:
     Then  I Can View The Default Autopay Setting As No
 
 
-  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_message @C16725 @me
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_message @C16725
   Scenario: [General] Company Admin Can View Autopay Message
     Given I Have Logged In As A Payroll Admin
     And   I go to Admin Settings
@@ -84,7 +84,7 @@ Feature:
     Then  I Should Be Displayed With Autopay Message
 
 
-  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_edit @C16725 @me1
+  @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_edit @C16725
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
     Given I Have Logged In As A Payroll Admin
     And   I go to Admin Settings

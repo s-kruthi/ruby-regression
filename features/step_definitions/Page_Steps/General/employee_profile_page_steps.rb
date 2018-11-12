@@ -74,7 +74,7 @@ end
 
 
 def CheckAutopaySetting(setting_value)
-  sleep (4)
+  sleep (8)
 
   autopay_setting = GetTextAssociatedToElement("xpath", USER_PAYMENT_DETAILS_AUTOPAY_LABEL_ID)
 
@@ -105,24 +105,23 @@ end
 
 
 def SearchForUserWithEmpDetails()
-  user = $daos.get_employee_with_autopay_no()
+  @user_search = $daos.get_employee_with_autopay_no()
 
-  if !user.nil?
-    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user[:first_name]+ ' ' + user[:last_name])
+  if !@user_search.nil?
+    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
     puts COLOR_YELLOW + " no users available for this criteria".upcase
     skip_this_scenario
   end
-
 end
 
 
 def SearchForUserWithDefaultAutopaySetting()
-  user = $daos.get_employee_with_default_autopay()
+  @user_search = $daos.get_employee_with_default_autopay()
 
-  if !user.nil?
-    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user[:first_name]+ ' ' + user[:last_name])
+  if !@user_search.nil?
+    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
     puts COLOR_YELLOW + " no users available for this criteria".upcase
@@ -143,7 +142,9 @@ end
 
 def EditNote()
   Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_EDIT_BUTTON_ID))
-  steps %{ And I Enter Note}
+  steps %{
+    And I Enter Note
+  }
 end
 
 
@@ -162,7 +163,6 @@ end
 
 
 def SaveAutopayChanges()
-  byebug
   Sleep_Until(WaitForAnElementByCSSAndTouch(MODAL_YES_BUTTON_CSS))
 
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
