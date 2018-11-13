@@ -195,7 +195,7 @@ end
 
 And(/^I Set The Cost Centre From The Existing Cost Centres$/i) do
   sleep(2)
-  $driver.find_element(:xpath, USER_COST_CENTRE_SELECT2_ID).send_keys('%')
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(USER_COST_CENTRE_SELECT2_ID, '%'))
 
   #waiting as making call to Elmo Payroll
   sleep(5)
