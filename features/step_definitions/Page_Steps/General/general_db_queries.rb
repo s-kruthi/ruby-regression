@@ -66,9 +66,11 @@ module Database_env
       return @db[query].first
     end
 
+
     def get_epms_config_enabled(name)
       query = "select value from epms_config
-               where name = '#{name}'"
+               where name = '#{name}'
+               and module = 'config'"
       return @db[query].first
     end
 

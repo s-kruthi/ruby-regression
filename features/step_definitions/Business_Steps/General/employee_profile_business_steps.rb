@@ -178,7 +178,7 @@ end
 
 
 And(/^I View The User's Profile$/i) do
-  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID, "View Profile")
 end
 
 
@@ -189,7 +189,7 @@ end
 
 
 Then(/^I Should Not Be Able To See Notes Section$/i) do
-  VerifyAnElementNotExist('id', 'notes-section')
+  VerifyAnElementNotExist('id', NOTES_SECTION_ID)
 end
 
 
@@ -212,6 +212,14 @@ end
 
 
 And(/^I Set The Position From The Existing Positions$/i) do
+  #checking that the position field is enabled for setting
+  position_enabled = $daos.get_epms_config_enabled('positionEnable')
+
+  unless position_enabled[:value].to_i == 1
+    puts COLOR_YELLOW + "position field is not enabled and is a mandatory field for Payroll, enable it manually".upcase
+    skip_this_scenario
+  end
+
   sleep(2)
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_POSITION_SELECT2_ID))
   $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
@@ -221,7 +229,6 @@ And(/^I Set The Position From The Existing Positions$/i) do
 
   #get count of positions table
   positions_count = $daos.get_count_enabled_positions()
-
 
   if positions_count[:count] == 0
     if ($driver.find_elements(:class, 'select2-no-results')[1].text == " No matches found")
