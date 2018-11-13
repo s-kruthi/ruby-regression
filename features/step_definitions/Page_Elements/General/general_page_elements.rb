@@ -134,7 +134,7 @@ USER_LEGAL_ENTITY_FIELD_ID ='legalEntity-container'
 USER_LEGAL_ENTITY_SELECT2_ID = 's2id_user_legalEntity'
 
 USER_COST_CENTRE_FIELD_ID = 'costCentre-container'
-USER_COST_CENTRE_SELECT2_ID = 's2id_user_costCentre'
+USER_COST_CENTRE_SELECT2_ID = "//div[@id='costCentre-container']//div//input"
 
 USER_POSITION_FIELD_ID = 'position-container'
 USER_POSITION_SELECT2_ID = 's2id_user_position'

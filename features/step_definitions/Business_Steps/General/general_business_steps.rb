@@ -596,7 +596,7 @@ end
 And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres$/i) do
   sleep(2)
 
-  $driver.find_element(:xpath, "//div[@id='costCentre-container']//div//input").send_keys('%')
+  $driver.find_element(:xpath, USER_COST_CENTRE_SELECT2_ID).send_keys('%')
 
   #wait as making call to Elmo Payroll
   sleep(5)
