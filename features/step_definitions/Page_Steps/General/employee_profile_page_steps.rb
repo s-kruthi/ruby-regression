@@ -93,6 +93,8 @@ end
 
 
 def SetAutopay(setting_value)
+  #waiting till the employment details section is loaded
+  sleep (6)
   autopay_setting = GetAutopayToggleSetting()
 
   if (setting_value == "Yes" and autopay_setting != true) || (setting_value == "No" and autopay_setting != false)
