@@ -135,5 +135,25 @@ Feature:
     Then  I Should Not Be Able To See Notes Section
 
 
+  @general_low_risk @user_paymentdetails @user_paymentdetails_leavepolicy_placeholder
+  Scenario: [General] Company Admin Can View Autopay Is Set to Default No
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee With No Leave Policy
+    And   I Edit The User's Employment Details Section
+    Then  I Should See The Placeholder For No Leave Policy
+
+
+  @general_low_risk @user_paymentdetails @user_paymentdetails_leavepolicy_assign @me
+  Scenario: [General] Company Admin Can View Autopay Is Set to Default No
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee With Employment Details
+    And   I Edit The User's Employment Details Section
+    Then  I Should Be Able To Assign Leave Policy For The User
+
+
 
 

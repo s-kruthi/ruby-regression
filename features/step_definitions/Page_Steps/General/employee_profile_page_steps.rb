@@ -102,16 +102,15 @@ end
 
 
 def SearchForUserWithEmpDetails()
-  user = $daos.get_employee_with_autopay_no()
+  @user_searcher = $daos.get_employee_with_autopay_no()
 
-  if !user.nil?
-    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user[:first_name]+ ' ' + user[:last_name])
+  if !@user_search.nil?
+    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
     puts COLOR_YELLOW + " no users available for this criteria".upcase
     skip_this_scenario
   end
-
 end
 
 
@@ -168,4 +167,28 @@ def SaveAutopayChanges()
 
   #keeping history for tracking history
   Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
+end
+
+
+def SearchForEmpWithNoLeavePolicy()
+  @user_search = $daos.get_employee_with_no_leavepolicy()
+
+  if !@user_search.nil?
+    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
+    Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
+  else
+    puts COLOR_YELLOW + " no users available for this criteria".upcase
+    skip_this_scenario
+  end
+end
+
+
+def VerifyPlaceholder()
+  expect($driver.find_element(:xpath, "//span[@id='select2-chosen-8']").text).to eq('Select a Leave Policy')
+  puts COLOR_GREEN + "Placeholder for no leave policy selected is present".upcase
+end
+
+
+def SetLeavePolicy(leave_policy_title)
+  SingleSelectFromSelect2Dropdown('s2id_leavePolicy', 'select2-input', leave_policy_title, 'select2-results')
 end
