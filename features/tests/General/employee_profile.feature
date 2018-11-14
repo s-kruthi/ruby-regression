@@ -133,7 +133,7 @@ Feature:
 
 
   #currently can only be run on tmspayrolldev.dev
-  @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_placeholder
+  @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_placeholder @C19761
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
@@ -144,7 +144,7 @@ Feature:
 
 
   #currently can only be run on tmspayrolldev.dev
-  @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_assign
+  @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_assign @C19762
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
