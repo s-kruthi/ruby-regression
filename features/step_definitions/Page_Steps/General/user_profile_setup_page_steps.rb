@@ -1,11 +1,17 @@
 
 def ToggleEnableDisable(config_selection_value)
 
-  #example: //label[@id="User Details-expiryDate-enabled"]
-  userfield_toggle_id = '//label[@id="' + @config_section_name + '-' + @config_section_item + '-enabled"]'
+  if @auto_generate == 1
+    userfield_togglebutton_id = @config_section_name + '-' + @config_section_item + '-employeeNumberAutoGeneration'
+    userfield_toggle_id = '//label[@id="' + @config_section_name + '-' + @config_section_item + '-employeeNumberAutoGenerationLabel"]'
+  else
+    #example: //label[@id="User Details-expiryDate-enabled"]
+    userfield_toggle_id = '//label[@id="' + @config_section_name + '-' + @config_section_item + '-enabled"]'
+    userfield_togglebutton_id = @config_section_name + '-' + @config_section_item + '-toggleEnable'
+  end
 
  #check if enabled or disabled
- if $driver.find_element(:id, @config_section_name + '-' + @config_section_item + '-toggleEnable').attribute('checked')
+ if $driver.find_element(:id, userfield_togglebutton_id).attribute('checked')
    puts COLOR_BLUE + "Field is already Enabled"
    field_status = "Enabled"
  else

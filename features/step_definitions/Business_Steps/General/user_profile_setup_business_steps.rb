@@ -9,6 +9,10 @@ end
 
 
 Then(/^I Should Be Able To Save The (.*) Configuration$/i) do |config_section|
+  if config_section == 'Custom User Fields'
+    config_section = 'CUF'
+  end
+
   @config_section = config_section
 
   #using submit since element doesnt have visible/displayed property
@@ -49,9 +53,10 @@ end
 
 
 Then(/^I Can See That I Can Modify The ([\w\s\(\)]+) Settings$/i) do |field|
-  steps %{And I Click On "#{field}" item from left side bar under "Built-In Hierarchies" section
-          And I Click On "#{field}" item from left side bar under "Built-In Hierarchies" section
-         }
+  steps %{
+    And I Click On "#{field}" item from left side bar under "Built-In Hierarchies" section
+    And I Click On "#{field}" item from left side bar under "Built-In Hierarchies" section
+  }
 end
 
 
@@ -73,3 +78,16 @@ And(/^That ([\w\s]+) Field Is (Editable|Uneditable)$/i) do |field_name, field_ed
     @editable = false
   end
 end
+
+
+Then(/^I Select Auto Generate To (Enabled|Disabled)$/i) do |field_config_value|
+  @auto_generate = 1
+  ToggleEnableDisable(field_config_value)
+end
+
+
+And(/^I Can See That I Can Configure Employee Number$/i) do
+  VerifyAnElementNotExist('xpath', '//button[@id="User Details-employeeNumber-formatPopup"][@disabled="disabled"]')
+  VerifyAnElementExists('xpath', '//button[@id="User Details-employeeNumber-formatPopup"]')
+end
+

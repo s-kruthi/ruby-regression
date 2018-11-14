@@ -84,6 +84,11 @@ def EditLegalEntity()
   #get non-default legal entity to edit
   @legal_entity = $daos.get_legal_entity_details_for_edit()
 
+  unless @legal_entity
+    puts COLOR_YELLOW + "no non-default legal entities to edit".upcase
+    skip_this_scenario
+  end
+
   puts COLOR_BLUE + "Editing entity "+ @legal_entity[:business_name]
 
   SearchToEdit(@legal_entity)
@@ -93,6 +98,7 @@ def EditLegalEntity()
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_CONTACTNAME_ID, 'Automated Edit'))
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
+
 
 def SearchToEdit(legal_entity)
   #search and click to edit

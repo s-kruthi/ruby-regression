@@ -94,7 +94,6 @@ Feature:
     Then  I Can See That I Can Choose To Set The Company Legal Entity From The Existing Entities
 
 
-  #currently can be run only on payroll03
   @general_low_risk @user_details_cost_centre_edit @payroll_cost_centre @C16941
   Scenario: [General]Company Admin Can Set Cost Centre From Existing Values In Elmo Payroll
     Given That Cost Centre Field Is Editable

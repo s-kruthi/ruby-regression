@@ -71,7 +71,12 @@ end
 
 def CreateUsers(loop, arg2, arg3, arg4, arg5, arg6)
   begin
-    Sleep_Until(SelectEmployeeNumber(NEW_USER_EMPLOYEE_NUMBER_ID, NEW_USER_DETAILS_MAP[:employee_number_value])) if SELECT_EMPLOYEE_NUMBER.to_i == 1
+    #check if employee number and auto generation is enabled
+    set_empnum = $daos.get_epms_config_enabled('employeeNumberEnable')
+    empnum_autogen = $daos.get_epms_config_enabled('employeeNumberAutoGeneration')
+
+    #set employee number only if employee number is enabled and auto generation is disabled
+    Sleep_Until(SelectEmployeeNumber(NEW_USER_EMPLOYEE_NUMBER_ID, NEW_USER_DETAILS_MAP[:employee_number_value])) if (set_empnum[:value].to_i == 1 && empnum_autogen[:value].to_i == 0)
 
     Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, @@first_name))
 

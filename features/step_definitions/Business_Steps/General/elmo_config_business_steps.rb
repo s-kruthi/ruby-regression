@@ -89,3 +89,28 @@ Given(/^Contracts Is Disabled For New (:?OB )?Users$/i) do |user_type|
   }
   $driver.quit
 end
+
+
+And(/^I Edit (\d+) Custom User Field[s]? In User Profile Setup$/i) do | num_custom_fields |
+  @custom_user_fields = $daos.get_custom_user_field_details(num_custom_fields).all
+
+  @custom_user_fields.each do | details |
+    puts COLOR_BLUE + "Editing the custom user field: "+ details[:name].upcase
+  end
+end
+
+
+And(/^I Click On The (\w+) Item From Left Side Bar Under "Custom User Fields" section$/i) do | field_num |
+  case field_num
+    when 'First'
+      item_name = @custom_user_fields[0][:shortname]
+    when 'Second'
+      item_name = @custom_user_fields[1][:shortname]
+    when 'Third'
+      item_name = @custom_user_fields[2][:shortname]
+  end
+
+  steps %Q{
+    When  I Click On "#{item_name}" item from left side bar under "Custom User Fields" section
+  }
+end
