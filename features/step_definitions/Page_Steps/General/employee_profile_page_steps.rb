@@ -192,10 +192,20 @@ end
 
 def VerifyPlaceholder()
   expect($driver.find_element(:xpath, "//span[@id='select2-chosen-8']").text).to eq('Select a Leave Policy')
-  puts COLOR_GREEN + "Placeholder for no leave policy selected is present".upcase
+  puts COLOR_GREEN + "Placeholder when no leave policy selected is present".upcase
 end
 
 
 def SetLeavePolicy(leave_policy_title)
-  SingleSelectFromSelect2Dropdown('s2id_leavePolicy', 'select2-input', leave_policy_title, 'select2-results')
+  sleep (6)
+  Sleep_Until(SingleSelectFromSelect2Dropdown(USER_EMPLOYMENTDETAILS_LEAVEPOLICY_INPUT_ID, SELECT2_DROPDOWN_ID, leave_policy_title, SELECT2_DROPDOWN_RESULT_CLASS))
+end
+
+
+def SaveEmploymentChanges()
+  modal_title = GetTextAssociatedToElement("xpath",USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
+  modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
+
+  #keeping history for tracking history
+  Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
 end

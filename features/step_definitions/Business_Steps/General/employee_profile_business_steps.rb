@@ -113,7 +113,7 @@ end
 
 And(/^I Edit The User's Employment Details Section$/i) do
   #ensuring that the searched user is clicked
-  element_id = '//tr[@data-url="/controlpanel/user-profile/'+@user_search[:user_id].to_s+'"]'
+  element_id = '//tr[@data-url="/controlpanel/user-profile/' + @user_search[:user_id].to_s + '"]'
   Sleep_Until(ClickElement('xpath', element_id))
 
   Sleep_Until(ClickOnASubTab(USER_PAYMENT_DETAILS_TAB_ID))
@@ -247,5 +247,28 @@ end
 And(/^I Set The Date of Birth As (\d{1,2}\/\d{1,2}\/\d{4})$/i) do |date_of_birth|
   Sleep_Until(SelectDate(USER_DOB_FIELD_ID, date_of_birth))
 end
+
+
+
+
+Then(/^I Should See The Placeholder For No Leave Policy$/i) do
+  VerifyPlaceholder()
+end
+
+
+Then(/^I Should Be Able To Assign Leave Policy For The User$/i) do
+  @leave_policy = $daos.get_nondefault_leave_policy()
+
+  SetLeavePolicy(@leave_policy[:title])
+
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
+
+  SaveEmploymentChanges()
+
+  puts COLOR_GREEN + "Assigned the Leave policy:" + @leave_policy[:title] + " to user:" + @user_search[:first_name] + " " + @user_search[:last_name] +
+           " having user id: " + @user_search[:user_id].to_s
+end
+
+
 
 
