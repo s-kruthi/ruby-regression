@@ -174,7 +174,7 @@ module Database_env
                ORDER BY rand() limit #{num}"
       return @db[query]
     end
-    
+
 
     def get_employee_with_no_leavepolicy()
       query = "select first_name, last_name, id as user_id

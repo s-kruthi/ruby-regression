@@ -249,6 +249,9 @@ And(/^I Set The Date of Birth As (\d{1,2}\/\d{1,2}\/\d{4})$/i) do |date_of_birth
 end
 
 
+When(/^I Search For An Employee With No Leave Policy$/i) do
+  SearchForEmpWithNoLeavePolicy()
+end
 
 
 Then(/^I Should See The Placeholder For No Leave Policy$/i) do
