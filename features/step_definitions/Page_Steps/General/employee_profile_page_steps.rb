@@ -74,7 +74,10 @@ end
 
 
 def CheckAutopaySetting(setting_value)
+  sleep (8)
+
   autopay_setting = GetTextAssociatedToElement("xpath", USER_PAYMENT_DETAILS_AUTOPAY_LABEL_ID)
+
   if autopay_setting == setting_value
     puts COLOR_GREEN + "autopay setting value matches".upcase
   else
@@ -85,11 +88,13 @@ end
 
 
 def GetAutopayToggleSetting()
-  return Sleep_Until($driver.find_element(:id, USER_PAYMENT_DETAILS_AUTOPAY_ID).selected?)
+  return $driver.find_element(:id, USER_PAYMENT_DETAILS_AUTOPAY_ID).selected?
 end
 
 
 def SetAutopay(setting_value)
+  #waiting till the employment details section is loaded
+  sleep (6)
   autopay_setting = GetAutopayToggleSetting()
 
   if (setting_value == "Yes" and autopay_setting != true) || (setting_value == "No" and autopay_setting != false)
@@ -102,7 +107,7 @@ end
 
 
 def SearchForUserWithEmpDetails()
-  @user_searcher = $daos.get_employee_with_autopay_no()
+  @user_search = $daos.get_employee_with_autopay_no()
 
   if !@user_search.nil?
     $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
@@ -115,10 +120,10 @@ end
 
 
 def SearchForUserWithDefaultAutopaySetting()
-  user = $daos.get_employee_with_default_autopay()
+  @user_search = $daos.get_employee_with_default_autopay()
 
-  if !user.nil?
-    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user[:first_name]+ ' ' + user[:last_name])
+  if !@user_search.nil?
+    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
     puts COLOR_YELLOW + " no users available for this criteria".upcase
@@ -139,7 +144,9 @@ end
 
 def EditNote()
   Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_EDIT_BUTTON_ID))
-  steps %{ And I Enter Note}
+  steps %{
+    And I Enter Note
+  }
 end
 
 

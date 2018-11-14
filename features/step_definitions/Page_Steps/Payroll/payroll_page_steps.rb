@@ -14,7 +14,7 @@ def SetEmployeeEmploymentDetails()
   emp_number = 'AUTO' + Time.now.strftime("%Y%m%d%H%M%S")
   Sleep_Until(WaitForAnElementByIdAndInputValue(USER_EMPLOYMENTDETAILS_EMPNO_ID, emp_number))
 
-  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_EMPLOYMENTDETAILS_RATE_ID, 40))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_EMPLOYMENTDETAILS_RATE_ID, USER_EMPLOYMENTDETAILS_RATE_VALUE))
 
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_EMPLOYMENTDETAILS_STATEEMPLOYED_ID))
   #selecting the first option from the results
@@ -59,15 +59,15 @@ def SetContactDetails()
     Sleep_Until(WaitForAnElementByIdAndTouch(USER_CONTACT_DETAILS_EDIT_BUTTON_ID))
   end
 
-  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_MOBILE_ID, 1234567890))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_MOBILE_ID, USER_CONTACTDETAILS_MOBILE_VALUE))
 
-  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_ADDR1_ID, 'Collins St'))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_ADDR1_ID, USER_CONTACTDETAILS_ADDR1_VALUE))
 
-  Sleep_Until(SelectFromDropdown(USER_CONTACTDETAILS_COUNTRY_ID, 'Australia'))
+  Sleep_Until(SelectFromDropdown(USER_CONTACTDETAILS_COUNTRY_ID, USER_CONTACTDETAILS_COUNTRY_VALUE))
 
-  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_SUBURB_ID, 'West Melbourne'))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_SUBURB_ID, USER_CONTACTDETAILS_SUBURB_VALUE))
 
-  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_POSTCODE_ID, 3000))
+  Sleep_Until(WaitForAnElementByIdAndInputValue(USER_CONTACTDETAILS_POSTCODE_ID, USER_CONTACTDETAILS_POSTCODE_VALUE))
 
   ClickOnSaveButton(SAVE_BTN_ID)
 end

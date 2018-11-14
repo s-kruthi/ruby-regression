@@ -70,13 +70,21 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
           username = LEAVE_COMPANY_ADMIN_USER
         end
 
-      # User with security profiles Payroll Admin and HR manager
+      #User with security profiles Payroll Admin and role-Company Admin
       when "Payroll Admin"
           begin
             EnterUsername(USER_NAME, PAYROLL_ADMIN_USERNAME)
             EnterPassword(PASS_WORD, PAYROLL_ADMIN_PASSWORD)
             username = PAYROLL_ADMIN_USERNAME
           end
+
+      #User with security profile- HR Manager, User Administrator Page Permissions
+      when "HR Manager"
+        begin
+          EnterUsername(USER_NAME, HRMGR_ADMIN_USERNAME)
+          EnterPassword(PASS_WORD, HRMGR_ADMIN_PASSWORD)
+          username = HRMGR_ADMIN_USERNAME
+        end
 
       when "Company Manager"
         begin
@@ -548,7 +556,7 @@ end
 Given(/^I Have Created A New User$/i) do
   user_first_name = 'payroll_auto' + Time.now.strftime("%Y%m%d%H%M%S")
   steps %Q{
-        Given I Have Logged In as a Company Admin
+        Given I Have Logged In as a Payroll Admin
         And   I go to Admin Settings
         And   I Go To Users under General section
         When  I Click On "Add New User" Button
@@ -581,14 +589,14 @@ end
 
 
 Then(/^I Should See The Cost Centre Field$/i) do
-  Sleep_Until(VerifyAnElementExists('id',USER_COST_CENTRE_FIELD_ID))
+  Sleep_Until(VerifyAnElementExists('id', USER_COST_CENTRE_FIELD_ID))
 end
 
 
 And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres$/i) do
   sleep(2)
-  Sleep_Until(WaitForAnElementByIdAndTouch(USER_COST_CENTRE_SELECT2_ID))
-  $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
+
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(USER_COST_CENTRE_SELECT2_ID, '%'))
 
   #wait as making call to Elmo Payroll
   sleep(5)

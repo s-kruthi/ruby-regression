@@ -40,10 +40,11 @@ module Database_env
                inner join epms_user eu on eu.id = ehed.user_id
                where autopay is Null
                and eu.is_deleted = 0
-               and is_elmo=0
-               and eu.is_active=1
-               and is_onboarding=0
-               and ehed.is_active=1
+               and is_elmo = 0
+               and eu.is_active = 1
+               and is_onboarding = 0
+               and ehed.is_active = 1
+               and annual_salary <> 0
                ORDER BY rand();"
       return @db[query].first
     end
@@ -54,11 +55,13 @@ module Database_env
                from epms_hrcore_employment_detail ehed
                inner join epms_user eu on eu.id = ehed.user_id
                where eu.is_deleted = 0
-               and is_elmo=0
-               and eu.is_active=1
-               and is_onboarding=0
-               and ehed.is_active=1
-               and autopay = 0
+               and is_elmo = 0
+               and eu.is_active = 1
+               and is_onboarding = 0
+               and ehed.is_active = 1
+               and (autopay = 0
+               or autopay is NULL)
+               and annual_salary <> 0
                ORDER BY rand();"
       return @db[query].first
     end
@@ -66,7 +69,8 @@ module Database_env
 
     def get_epms_config_enabled(name)
       query = "select value from epms_config
-               where name = '#{name}'"
+               where name = '#{name}'
+               and module = 'config'"
       return @db[query].first
     end
 
@@ -109,6 +113,7 @@ module Database_env
       return @db[query].first
     end
 
+
     def get_count_active_legal_entity()
       query = "select count(*) as count
               from epms_legal_entity
@@ -146,10 +151,10 @@ module Database_env
       query = "select count(*) as count
                from epms_user
                where is_active = 1
-               and is_notified= 0
-               and is_deleted= 0
+               and is_notified = 0
+               and is_deleted = 0
                and confirmed = 0
-               and is_onboarding=#{onboarding}"
+               and is_onboarding = #{onboarding}"
       return @db[query].first
     end
 
@@ -162,26 +167,12 @@ module Database_env
     end
 
 
-    def get_employee_with_no_leavepolicy()
-      query = "select first_name, last_name, id as user_id
-               from epms_user
-               where is_active = 1
-               and is_deleted = 0
-               and is_onboarding = 0
-               and is_elmo = 0
-               and id not in (select user_id from epms_leave_policy_user)
-               ORDER BY rand()"
-      return @db[query].first
-    end
-
-
-    def get_nondefault_leave_policy()
-      query = "select title
-               from epms_leave_policy
-               where is_default = 0
-               and is_deleted = 0
-               ORDER BY rand()"
-      return @db[query].first
+    def get_custom_user_field_details(num)
+      query = "select name, shortname
+               from epms_user_profile_field
+               where is_deleted = 0
+               ORDER BY rand() limit #{num}"
+      return @db[query]
     end
 
   end

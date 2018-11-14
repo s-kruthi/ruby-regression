@@ -19,6 +19,8 @@ def ClickOnSideBarItem(config_section_item, config_section_name)
           config_section_item = 'expiryDate'
         when 'State/Region'
           config_section_item = 'state'
+        when 'Employee Number'
+          config_section_item = 'employeeNumber'
       end
 
     when "Built-In Hierarchies"
@@ -32,14 +34,7 @@ def ClickOnSideBarItem(config_section_item, config_section_name)
       end
 
     when "Custom User Fields"
-      case config_section_item
-        when "Gender"
-          config_section_item = config_section_item.downcase
-        when "Payroll Number"
-          config_section_item = "payrollnumber"
-        when "Date Joined"
-          config_section_item = "datejoined"
-      end
+      config_section_name = 'CUF'
   end
 
   @config_section_name = config_section_name

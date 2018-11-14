@@ -122,7 +122,10 @@ end
 
 
 Then(/^I Can View The Default Autopay Setting As (Yes|No)$/i) do |setting_value|
-  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+  #ensuring that the searched user is clicked
+  element_id = '//tr[@data-url="/controlpanel/user-profile/'+@user_search[:user_id].to_s+'"]'
+  Sleep_Until(ClickElement('xpath', element_id))
+
   Sleep_Until(ClickOnASubTab(USER_PAYMENT_DETAILS_TAB_ID))
   CheckAutopaySetting(setting_value)
 end
@@ -139,7 +142,7 @@ end
 
 
 Then(/^I Should Be Displayed With Autopay Message$/i) do
-  Sleep_Until(VerifyAnElementExistByXPath(USER_PAYMENT_DETAILS_AUTOPAY_MODAL_ID,USER_PAYMENT_DETAILS_AUTOPAY_MSG))
+  Sleep_Until(VerifyAnElementExistByXPath(USER_PAYMENT_DETAILS_AUTOPAY_MODAL_ID, USER_PAYMENT_DETAILS_AUTOPAY_MSG))
 end
 
 
@@ -175,7 +178,7 @@ end
 
 
 And(/^I View The User's Profile$/i) do
-  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID,"View Profile")
+  ClickMenuOfFirstItemFromTable(SEARCH_RESULTS_ACTIONS_ID, "View Profile")
 end
 
 
@@ -186,14 +189,13 @@ end
 
 
 Then(/^I Should Not Be Able To See Notes Section$/i) do
-  VerifyAnElementNotExist('id', 'notes-section')
+  VerifyAnElementNotExist('id', NOTES_SECTION_ID)
 end
 
 
 And(/^I Set The Cost Centre From The Existing Cost Centres$/i) do
   sleep(2)
-  Sleep_Until(WaitForAnElementByIdAndTouch(USER_COST_CENTRE_SELECT2_ID))
-  $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(USER_COST_CENTRE_SELECT2_ID, '%'))
 
   #waiting as making call to Elmo Payroll
   sleep(5)
@@ -209,6 +211,14 @@ end
 
 
 And(/^I Set The Position From The Existing Positions$/i) do
+  #checking that the position field is enabled for setting
+  position_enabled = $daos.get_epms_config_enabled('positionEnable')
+
+  unless position_enabled[:value].to_i == 1
+    puts COLOR_YELLOW + "position field is not enabled and is a mandatory field for Payroll, enable it manually".upcase
+    skip_this_scenario
+  end
+
   sleep(2)
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_POSITION_SELECT2_ID))
   $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%')
@@ -218,7 +228,6 @@ And(/^I Set The Position From The Existing Positions$/i) do
 
   #get count of positions table
   positions_count = $daos.get_count_enabled_positions()
-
 
   if positions_count[:count] == 0
     if ($driver.find_elements(:class, 'select2-no-results')[1].text == " No matches found")
@@ -238,25 +247,5 @@ end
 And(/^I Set The Date of Birth As (\d{1,2}\/\d{1,2}\/\d{4})$/i) do |date_of_birth|
   Sleep_Until(SelectDate(USER_DOB_FIELD_ID, date_of_birth))
 end
-
-
-When(/^I Search For An Employee With No Leave Policy$/i) do
-  SearchForEmpWithNoLeavePolicy()
-end
-
-
-Then(/^I Should See The Placeholder For No Leave Policy$/i) do
-  VerifyPlaceholder()
-end
-
-
-Then(/^I Should Be Able To Assign Leave Policy For The User$/i) do
-  @leave_policy = $daos.get_nondefault_leave_policy()
-
-  SetLeavePolicy(@leave_policy[:title])
-  Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
-end
-
-
 
 
