@@ -132,6 +132,7 @@ Feature:
     Then  I Should Not Be Able To See Notes Section
 
 
+  #currently can only be run on tmspayrolldev.dev
   @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_placeholder
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
     Given I Have Logged In As A Company Admin
@@ -141,7 +142,8 @@ Feature:
     And   I Edit The User's Employment Details Section
     Then  I Should See The Placeholder For No Leave Policy
 
-
+    
+  #currently can only be run on tmspayrolldev.dev
   @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_assign
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
     Given I Have Logged In As A Company Admin
