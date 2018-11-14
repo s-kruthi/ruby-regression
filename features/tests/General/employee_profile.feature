@@ -134,7 +134,7 @@ Feature:
 
   #currently can only be run on tmspayrolldev.dev
   @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_placeholder @C19761
-  Scenario: [General] Company Admin Can View Autopay Is Set to Default No
+  Scenario: [General] Company Admin Can View Placeholder When No Leave Policy Is Selected
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To Users under General section
@@ -145,7 +145,7 @@ Feature:
 
   #currently can only be run on tmspayrolldev.dev
   @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_assign @C19762
-  Scenario: [General] Company Admin Can View Autopay Is Set to Default No
+  Scenario: [General] Company Admin Can Assign Leave Policy In Employment Details Section
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To Users under General section
