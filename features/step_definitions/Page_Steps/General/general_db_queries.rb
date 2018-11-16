@@ -195,7 +195,7 @@ module Database_env
                where is_default = 0
                and is_deleted = 0
                ORDER BY rand()"
-      return @db[query].first
+      return @db[query].first[:title]
     end
 
   end

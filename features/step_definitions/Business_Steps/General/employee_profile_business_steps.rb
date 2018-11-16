@@ -262,14 +262,14 @@ end
 Then(/^I Should Be Able To Assign Leave Policy For The User$/i) do
   @leave_policy = $daos.get_nondefault_leave_policy()
 
-  SetLeavePolicy(@leave_policy[:title])
+  SetLeavePolicy(@leave_policy)
 
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
 
   SaveEmploymentChanges()
 
-  puts COLOR_GREEN + "Assigned the Leave policy:" + @leave_policy[:title] + " to user:" + @user_search[:first_name] + " " + @user_search[:last_name] +
-           " having user id: " + @user_search[:user_id].to_s
+  puts COLOR_GREEN + ("Assigned the Leave policy:" + @leave_policy + " to user:").upcase + @user_search[:first_name] + " " + @user_search[:last_name] +
+           (" having user id: ").upcase + @user_search[:user_id].to_s
 end
 
 

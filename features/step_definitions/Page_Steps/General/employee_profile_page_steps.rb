@@ -66,9 +66,9 @@ def CheckNoteAdded(action)
 
   if action == "Added"
     expect($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).to eq(@time_note_added)
-    puts COLOR_GREEN + "Note has been added to the user profile"
+    puts COLOR_GREEN + "note has been added to the user profile".upcase
   else
-    puts COLOR_GREEN + "Note has been edited"
+    puts COLOR_GREEN + "note has been edited".upcase
   end
 end
 
@@ -100,7 +100,7 @@ def SetAutopay(setting_value)
   if (setting_value == "Yes" and autopay_setting != true) || (setting_value == "No" and autopay_setting != false)
     Sleep_Until(JavascriptClick(USER_PAYMENT_DETAILS_AUTOPAY_ID))
   else
-    puts "Autopay is already set with the value " + setting_value
+    puts COLOR_BLUE + "Autopay is already set with the value " + setting_value
     Sleep_Until(WaitForAnElementByXpathAndTouch(USER_PAYMENT_DETAILS_CANCEL_BUTTON_ID))
   end
 end
@@ -113,7 +113,7 @@ def SearchForUserWithEmpDetails()
     $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
-    puts COLOR_YELLOW + " no users available for this criteria".upcase
+    puts COLOR_YELLOW + "no users available for this criteria".upcase
     skip_this_scenario
   end
 end
@@ -126,7 +126,7 @@ def SearchForUserWithDefaultAutopaySetting()
     $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
-    puts COLOR_YELLOW + " no users available for this criteria".upcase
+    puts COLOR_YELLOW + "no users available for this criteria".upcase
     skip_this_scenario
   end
 end
@@ -184,7 +184,7 @@ def SearchForEmpWithNoLeavePolicy()
     $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
-    puts COLOR_YELLOW + " no users available for this criteria".upcase
+    puts COLOR_YELLOW + "no users available for this criteria".upcase
     skip_this_scenario
   end
 end
@@ -192,7 +192,7 @@ end
 
 def VerifyPlaceholder()
   expect($driver.find_element(:xpath, "//span[@id='select2-chosen-8']").text).to eq('Select a Leave Policy')
-  puts COLOR_GREEN + "Placeholder when no leave policy selected is present".upcase
+  puts COLOR_GREEN + "placeholder when no leave policy selected is present".upcase
 end
 
 
@@ -203,8 +203,11 @@ end
 
 
 def SaveEmploymentChanges()
-  modal_title = GetTextAssociatedToElement("xpath",USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
-  modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
+  modal_title = GetTextAssociatedToElement("xpath", USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
+
+  if modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
+    puts COLOR_BLUE + "Modal title matches"
+  end
 
   #keeping history for tracking history
   Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
