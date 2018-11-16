@@ -16,6 +16,7 @@ NOTE_DEL_BUTTON_ID = '//button[@title="Delete Note"]'
 #### USERS PAGE ####
 USERS_SEARCH_BOX_ID = 'userSearch_name'
 USERS_SEARCH_BUTTON_ID = '//button[@title="Search"]'
+USERS_EDITPROFILE_ACTION_ID = '//a[@title="Edit User Profile"]'
 
 
 #### EMPLOYEE DETAILS SECTION ####

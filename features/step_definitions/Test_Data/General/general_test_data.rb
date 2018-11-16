@@ -48,3 +48,6 @@ INACTIVE_ATTRIBUTE_TEXT = "User is not active"
 USER_NOTIFY_SUCCESS_MSG_VALUE = "Successfully notify user."
 ROLE_CHANGE_SUCCESS_MSG_VALUE = "×  User role has been updated!"
 USER_ACTIVATE_SUCCESS_MSG_VALUE = "Successfully activate user"
+USER_PROFILE_UPDATE_ERR_MSG_VALUE = 'Failed to update user profile!'
+
+USER_COST_CENTRE_SPLITVAL_ERR_MSG_VALUE = 'Total cost centre split percentage must be 100%'
