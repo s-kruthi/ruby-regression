@@ -175,6 +175,29 @@ module Database_env
       return @db[query]
     end
 
+
+    def get_employee_with_no_leavepolicy()
+      query = "select first_name, last_name, id as user_id
+               from epms_user
+               where is_active = 1
+               and is_deleted = 0
+               and is_onboarding = 0
+               and is_elmo = 0
+               and id not in (select user_id from epms_leave_policy_user)
+               ORDER BY rand()"
+      return @db[query].first
+    end
+
+
+    def get_nondefault_leave_policy()
+      query = "select title
+               from epms_leave_policy
+               where is_default = 0
+               and is_deleted = 0
+               ORDER BY rand()"
+      return @db[query].first[:title]
+    end
+
   end
 
 end

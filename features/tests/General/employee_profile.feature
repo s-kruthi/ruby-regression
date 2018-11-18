@@ -132,6 +132,28 @@ Feature:
     Then  I Should Not Be Able To See Notes Section
 
 
+  #currently can only be run on tmspayrolldev.dev
+  @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_placeholder @C19761
+  Scenario: [General] Company Admin Can View Placeholder When No Leave Policy Is Selected
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee With No Leave Policy
+    And   I Edit The User's Employment Details Section
+    Then  I Should See The Placeholder For No Leave Policy
+
+
+  #currently can only be run on tmspayrolldev.dev
+  @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_assign @C19762
+  Scenario: [General] Company Admin Can Assign Leave Policy In Employment Details Section
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee With Employment Details
+    And   I Edit The User's Employment Details Section
+    Then  I Should Be Able To Assign Leave Policy For The User
+
+
 
 
 
