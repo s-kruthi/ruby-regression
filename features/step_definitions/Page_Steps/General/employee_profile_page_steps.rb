@@ -209,7 +209,7 @@ def SearchForEmpNoCostCentre()
     $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
-    puts COLOR_YELLOW + " no users available for this criteria".upcase
+    puts COLOR_YELLOW + "no users available for this criteria".upcase
     skip_this_scenario
   end
 end
@@ -244,6 +244,7 @@ def AssociateCostCentre(num_cost_centres)
         puts COLOR_YELLOW + "no cost centres exist in Elmo Payroll, hence cannot add cost centre for user".upcase
         skip_this_scenario
       end
+
     #if the number of cost centres specified in the test is greater than what exists, we skip the test
     elsif (num_cost_centres > $driver.find_elements(:xpath, USER_COST_CENTRE_RESULTS_ID).size)
       puts COLOR_YELLOW + "number of cost centres specified does not exist in Elmo Payroll, hence cannot continue with the test".upcase
@@ -252,7 +253,7 @@ def AssociateCostCentre(num_cost_centres)
 
     #selecting the first option from the results
     WaitForAnElementByXpathAndTouchTheIndex(USER_COST_CENTRE_RESULTS_ID, i)
-    i=i+1
+    i = i+1
   end
 end
 
@@ -266,7 +267,7 @@ def AssignCostCentreVal()
   while i < @num_split
     $driver.find_elements(:xpath, USER_COST_CENTRE_SPLITVAL_ID)[i].send_keys(split_percent_values[i])
     puts COLOR_BLUE + ("setting the cost centre split % value as: " + split_percent_values[i].to_s).upcase
-    i+= 1
+    i = i+1
   end
 end
 
@@ -278,7 +279,7 @@ def AssignSplitVal(split_val1, split_val2)
   while i < 2
     $driver.find_elements(:xpath, USER_COST_CENTRE_SPLITVAL_ID)[i].send_keys(split_values[i])
     puts COLOR_BLUE + ("setting the cost centre split % value as: " + split_values[i].to_s).upcase
-    i+= 1
+    i = i+1
   end
 end
 
