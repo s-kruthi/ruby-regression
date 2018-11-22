@@ -293,7 +293,7 @@ end
 And(/^I Should Be Able To Assign Split Percent Values For The Cost Centres$/i) do
   AssignCostCentreVal()
   ClickOnSaveButton(SAVE_BTN_ID)
-  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'User profile has been updated!'))
+  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_PROFILE_UPDATE_SUCCESS_MSG_VALUE))
 end
 
 
