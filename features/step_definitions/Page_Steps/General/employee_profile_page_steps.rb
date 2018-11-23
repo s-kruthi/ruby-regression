@@ -202,6 +202,121 @@ def SetLeavePolicy(leave_policy_title)
 end
 
 
+def SearchForEmpNoCostCentre()
+  @user_search = $daos.get_employee_without_multiple_costcentres()
+
+  if !@user_search.nil?
+    $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
+    Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
+  else
+    puts COLOR_YELLOW + "no users available for this criteria".upcase
+    skip_this_scenario
+  end
+end
+
+
+def EditUserProfile()
+  #ensuring that the searched user's edit user profile link is clicked
+  element_id = '//a[@href="/controlpanel/edit-user/'+ @user_search[:user_id].to_s + '"]/following-sibling::button'
+  Sleep_Until(ClickElement('xpath', element_id))
+
+  edit_id = '//a[@href="/controlpanel/edit-user-profile/'+ @user_search[:user_id].to_s + '"]'
+  ClickElement('xpath', edit_id)
+
+  puts COLOR_BLUE + ("editing the user with user id: " + @user_search[:user_id].to_s).upcase
+end
+
+
+def AssociateCostCentre(num_cost_centres)
+  @num_split = num_cost_centres
+  i = 0
+
+  while i < num_cost_centres
+    sleep(2)
+    Sleep_Until(WaitForAnElementByXpathAndInputValue(USER_COST_CENTRE_SELECT2_ID, '%'))
+
+    #waiting as making call to Elmo Payroll
+    sleep(6)
+
+    #checking if cost centres exists
+    if (!$driver.find_elements(:class, 'select2-no-results').empty?)
+      if ($driver.find_element(:class, 'select2-no-results').text == " No matches found")
+        puts COLOR_YELLOW + "no cost centres exist in Elmo Payroll, hence cannot add cost centre for user".upcase
+        skip_this_scenario
+      end
+
+    #if the number of cost centres specified in the test is greater than what exists, we skip the test
+    elsif (num_cost_centres > $driver.find_elements(:xpath, USER_COST_CENTRE_RESULTS_ID).size)
+      puts COLOR_YELLOW + "number of cost centres specified does not exist in Elmo Payroll, hence cannot continue with the test".upcase
+      skip_this_scenario
+    end
+
+    #selecting the first option from the results
+    WaitForAnElementByXpathAndTouchTheIndex(USER_COST_CENTRE_RESULTS_ID, i)
+    i = i+1
+  end
+end
+
+
+def AssignCostCentreVal()
+  #generating random split % values for cost centres
+  split_percent_values = split_percent(@num_split, 100)
+
+  i = 0
+
+  while i < @num_split
+    $driver.find_elements(:xpath, USER_COST_CENTRE_SPLITVAL_ID)[i].send_keys(split_percent_values[i])
+    puts COLOR_BLUE + ("setting the cost centre split % value as: " + split_percent_values[i].to_s).upcase
+    i = i+1
+  end
+end
+
+
+#method is different from above since we are specifying the split % values here
+def AssignSplitVal(split_val1, split_val2)
+  split_values = [split_val1, split_val2]
+  i = 0
+  while i < 2
+    $driver.find_elements(:xpath, USER_COST_CENTRE_SPLITVAL_ID)[i].send_keys(split_values[i])
+    puts COLOR_BLUE + ("setting the cost centre split % value as: " + split_values[i].to_s).upcase
+    i = i+1
+  end
+end
+
+
+def VerifyCostCentreSplitValErrMsg()
+  #using sleep since it takes a while for the error msg to load
+  sleep(4)
+
+  err_msg = GetTextAssociatedToElement("xpath", USER_COST_CENTRE_SPLITVAL_ERR_ID)
+  expect(err_msg).to eq(USER_COST_CENTRE_SPLITVAL_ERR_MSG_VALUE)
+  puts COLOR_GREEN + "error message is displayed".upcase
+end
+
+
+#splits max into num of splits such that splits sums to max
+def split_percent(num_of_split, max)
+  split_num = []
+  temp = 0
+  rand_num = 0
+
+  if (num_of_split > 1)
+    rand_num = (rand(0.00..max)).round(2)
+    temp = (max - rand_num).round(2)
+    split_num << temp
+  end
+
+  if ((num_of_split - 1) > 1)
+    generate = split_percent(num_of_split - 1, rand_num)
+    split_num += generate
+  else
+    split_num << rand_num
+  end
+
+  return split_num
+end
+
+
 def SaveEmploymentChanges()
   modal_title = GetTextAssociatedToElement("xpath", USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
 

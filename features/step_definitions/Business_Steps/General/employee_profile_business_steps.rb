@@ -201,7 +201,7 @@ And(/^I Set The Cost Centre From The Existing Cost Centres$/i) do
   sleep(5)
 
   if ($driver.find_elements(:class, 'select2-no-results')[1].text == " No matches found")
-    puts COLOR_YELLOW + "No Cost Centres exist in Elmo Payroll, hence cannot add cost centre for user".upcase
+    puts COLOR_YELLOW + "no cost centres exist in Elmo Payroll, hence cannot add cost centre for user".upcase
     skip_this_scenario
   end
 
@@ -252,6 +252,9 @@ end
 When(/^I Search For An Employee With No Leave Policy$/i) do
   SearchForEmpWithNoLeavePolicy()
 end
+When(/^I Search For An Employee Associated With Single\/No Cost Centre$/i) do
+  SearchForEmpNoCostCentre()
+end
 
 
 Then(/^I Should See The Placeholder For No Leave Policy$/i) do
@@ -272,6 +275,45 @@ Then(/^I Should Be Able To Assign Leave Policy For The User$/i) do
            (" having user id: ").upcase + @user_search[:user_id].to_s
 end
 
+
+
+
+
+
+And(/^I Edit The User's Profile$/i) do
+  EditUserProfile()
+end
+
+
+Then(/^I Should Be Able To Associate (\d+) Cost Centres To The User$/i) do | num_cost_centres |
+  AssociateCostCentre(num_cost_centres)
+end
+
+
+And(/^I Should Be Able To Assign Split Percent Values For The Cost Centres$/i) do
+  AssignCostCentreVal()
+  ClickOnSaveButton(SAVE_BTN_ID)
+  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, USER_PROFILE_UPDATE_SUCCESS_MSG_VALUE))
+end
+
+
+And(/^I Associate (\d+) Cost Centres To The User$/i) do | num_cost_centres |
+  steps %{
+        Then  I Should Be Able To Associate #{num_cost_centres} Cost Centres To The User
+  }
+end
+
+
+And(/^I Assign The Split Percent Values For The Cost Centres As (\d+) And (\d+)$/i) do | split_val1, split_val2 |
+  AssignSplitVal(split_val1, split_val2)
+end
+
+
+Then(/^I Should Be Able To See The Error Message When Split % Does Not Sum Upto 100$/i) do
+  ClickOnSaveButton(SAVE_BTN_ID)
+  VerifyErrorAlertMessage(VERIFY_ALERT_ID, USER_PROFILE_UPDATE_ERR_MSG_VALUE)
+  VerifyCostCentreSplitValErrMsg()
+end
 
 
 

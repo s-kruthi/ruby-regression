@@ -176,6 +176,21 @@ module Database_env
     end
 
 
+    #returns users who have single or no cost centres
+    def get_employee_without_multiple_costcentres()
+      query = "select eu.first_name, eu.last_name, eu.id as user_id
+               from epms_user eu
+               where eu.is_active = 1
+               and eu.is_onboarding = 0
+               and eu.is_deleted = 0
+               and eu.is_elmo = 0
+               and eu.id not in (select user_id from epms_user_cost_centre eucc where eucc.is_deleted = 0 group by user_id
+               having count(*) > 1)
+               ORDER BY rand()"
+      return @db[query].first
+    end
+
+
     def get_employee_with_no_leavepolicy()
       query = "select first_name, last_name, id as user_id
                from epms_user
