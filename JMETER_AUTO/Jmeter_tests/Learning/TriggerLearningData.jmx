@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.0 r1840935">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -51,7 +51,6 @@
           </elementProp>
         </collectionProp>
         <boolProp name="CookieManager.clearEachIteration">false</boolProp>
-        <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
       </CookieManager>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
@@ -61,7 +60,7 @@
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">6</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">12</stringProp>
         <longProp name="ThreadGroup.start_time">1468822077000</longProp>
         <longProp name="ThreadGroup.end_time">1468822077000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -81,16 +80,16 @@
           <boolProp name="ignoreFirstLine">false</boolProp>
         </CSVDataSet>
         <hashTree/>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments">
             <elementProp name="server" elementType="Argument">
               <stringProp name="Argument.name">server</stringProp>
-              <stringProp name="Argument.value">tmsfull.elmodev.com</stringProp>
+              <stringProp name="Argument.value">uat1.elmotalent.com.au</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="username" elementType="Argument">
               <stringProp name="Argument.name">username</stringProp>
-              <stringProp name="Argument.value">admin.shanku</stringProp>
+              <stringProp name="Argument.value">auto.comp.admin</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="password" elementType="Argument">
@@ -106,7 +105,7 @@
           </collectionProp>
         </Arguments>
         <hashTree/>
-        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
           <collectionProp name="Arguments.arguments">
             <elementProp name="server" elementType="Argument">
               <stringProp name="Argument.name">server</stringProp>
@@ -250,7 +249,7 @@
             <stringProp name="RegexExtractor.regex">class=&quot;form-control&quot; value=&quot;(.*?)&quot;</stringProp>
             <stringProp name="RegexExtractor.template">$1$</stringProp>
             <stringProp name="RegexExtractor.default"></stringProp>
-            <stringProp name="RegexExtractor.match_number">3</stringProp>
+            <stringProp name="RegexExtractor.match_number">2</stringProp>
           </RegexExtractor>
           <hashTree/>
         </hashTree>
@@ -443,7 +442,7 @@
               </elementProp>
               <elementProp name="elmo_learningbundle_course[category]" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.value">10000</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">elmo_learningbundle_course[category]</stringProp>
@@ -499,14 +498,14 @@
               </elementProp>
               <elementProp name="elmo_learningbundle_course[restricts][0][duration]" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">0</stringProp>
+                <stringProp name="Argument.value"></stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">elmo_learningbundle_course[restricts][0][duration]</stringProp>
               </elementProp>
               <elementProp name="elmo_learningbundle_course[restricts][0][durationUnit]" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">0</stringProp>
+                <stringProp name="Argument.value">-1</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">elmo_learningbundle_course[restricts][0][durationUnit]</stringProp>
@@ -534,7 +533,7 @@
               </elementProp>
               <elementProp name="elmo_learningbundle_course[restricts][0][retrainUnit]" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">0</stringProp>
+                <stringProp name="Argument.value">2</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">elmo_learningbundle_course[restricts][0][retrainUnit]</stringProp>
@@ -555,17 +554,10 @@
               </elementProp>
               <elementProp name="elmo_learningbundle_course[summary]" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value"></stringProp>
+                <stringProp name="Argument.value">&lt;p&gt;abcd&lt;/p&gt;</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">elmo_learningbundle_course[summary]</stringProp>
-              </elementProp>
-              <elementProp name="elmo_learningbundle_course[units]" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">0.00</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">elmo_learningbundle_course[units]</stringProp>
               </elementProp>
               <elementProp name="elmo_learningbundle_course[visible]" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
@@ -587,13 +579,6 @@
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
                 <stringProp name="Argument.name">review</stringProp>
-              </elementProp>
-              <elementProp name="elmo_learningbundle_course[save]" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value"></stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-                <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">elmo_learningbundle_course[save]</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -620,6 +605,15 @@
             <stringProp name="RegexExtractor.default"></stringProp>
             <stringProp name="RegexExtractor.match_number">0</stringProp>
           </RegexExtractor>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Access created  course " enabled="true">
@@ -3145,9 +3139,5 @@ f.close();
         <hashTree/>
       </hashTree>
     </hashTree>
-    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
-      <boolProp name="WorkBench.save">true</boolProp>
-    </WorkBench>
-    <hashTree/>
   </hashTree>
 </jmeterTestPlan>
