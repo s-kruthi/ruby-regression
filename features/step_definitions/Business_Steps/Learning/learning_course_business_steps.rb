@@ -16,16 +16,6 @@ And(/^I Add New Course Details$/i) do
   EnterCourseRetrainOpenValue(COURSE_RETRAIN_OPEN_INPUT_ID, COURSE_RETRAIN_OPEN_INPUT_VALUE) if COURSE_RETRAIN_OPEN.to_i == 1
   EnterCourseAvailability(COURSE_AVAILABILITY_INPUT_ID, SELECT2_DROPDOWN_ID, COURSE_AVAILABILITY_INPUT_VALUE, SELECT2_DROPDOWN_RESULT_CLASS)
 
-#    TODO: Redundant code after PMS-5534 has been deployed
-#   @course_cert_template_name = $daos.get_cert_temp_name_legacy
-#   if !@course_cert_template_name.nil?
-#     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, @course_cert_template_name, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
-#
-#   else
-#     puts COLOR_YELLOW + "Course Certificate Template not found. Please check the database manually".upcase
-#     skip_this_scenario
-#   end
-  
   @certificate_template_name = $daos.get_cert_temp_name
   if !@certificate_template_name.nil?
     EnterCourseCertificateTemplate(COURSE_CERTIFICATE_TEMPLATE_ID, SELECT2_DROPDOWN_ID, @certificate_template_name, SELECT2_DROPDOWN_RESULT_CLASS) if COURSE_CERTIFICATE.to_i == 1
