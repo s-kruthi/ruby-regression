@@ -2,11 +2,15 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
   case login_action
   when "In"
     startWebDriver
+
     GoToSite()
+
     login_details = get_login_details(login_name)
+
     @username = login_details[0]
     @user_pwd = login_details[1]
 
+    # TODO: Remove the commented out code after review
     # begin
     #   case login_name
     #
@@ -139,13 +143,10 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
         EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
         loginToSystem(LOGIN_BUTTON)
         GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-        EnterLoginDetails(@username, @user_pwd)
-        loginToSystem(LOGIN_BUTTON)
       end
-
-      EnterLoginDetails(@username, @user_pwd)
-      VerifyUserExists(@username)
-      LogInAndWaitForTheDashboard(LOGIN_BUTTON, ADMIN_PROFILE_DROPDOWN) if login_name != "ELMO Setup Admin"
+        EnterLoginDetails(@username, @user_pwd)
+        VerifyUserExists(@username) if login_name != "ELMO Setup Admin"
+        LogInAndWaitForTheDashboard(LOGIN_BUTTON, ADMIN_PROFILE_DROPDOWN)
 
   when "Out"
     begin
@@ -346,23 +347,6 @@ When(/^I Click On (.*) Icon$/i) do |click_edit_icon|
     end
   end
 end
-
-#TODO: Pending removal after code review, merged with existing step
-# And(/^I Click On Add (.*) Button$/i) do |add_contact_btn|
-#   begin
-#     case add_contact_btn
-#     when "Emergency Contact Details"
-#       begin
-#         Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
-#       end
-#
-#     when "Next Of Kin"
-#       begin
-#         Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
-#       end
-#     end
-#   end
-# end
 
 
 And(/^I Use Add (.*) Details$/i) do |add_contact_btn|

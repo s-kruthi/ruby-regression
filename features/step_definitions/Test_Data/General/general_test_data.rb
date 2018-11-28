@@ -30,12 +30,6 @@ EM_USER_ADDRESS_VALUE = "520 Oxford St, Bondi Junction, New South Wales, Austral
 EM_USER_MOBILE_VALUE = "0430000000"
 EM_USER_EMAIL_VALUE = "auto.test@elmodev.com"
 
-#TODO Remove after review since USERNAME_SEARCH_VALUE is not being used and USERNAME_SEARCH_RESULT_VALUE has been parameterised
-# USERNAME_SEARCH_VALUE = "auto1.test1"
-
-
-#USERNAME_SEARCH_RESULT_VALUE = "//td[contains(.,'auto1.test1@elmodev.com')]"
-
 
 ACTION_DROPDOWN_INDEX_VALUE = 4
 

@@ -33,27 +33,6 @@ def GoToSection(general_expand, users_list_path)
 end
 
 
-# TODO: Legacy admin menu icon at the top right. This code will stop working once the new site UI changes are deployed.
-# def GoToAdminSettings(admin_cog)
-#   WaitForAnElementByClass(admin_cog)
-#   TouchAdminMenu(admin_cog)
-# end
-
-
-# NOTE: This is a modified version of the legacy admin settings clicking to facilitate new UI deployed in tmsfull. The new menu system will be used when URL=tmsfull. Other sites will continue
-# Using Legacy Admin menu clicking system
-# def GoToAdminSettings(admin_cog)
-#   case $site_alias
-#     when "tmsfull"
-#       WaitForAnElementByXpathAndTouch(ADMIN_SETTINGS_ID)
-#
-#     else
-#       WaitForAnElementByClass(admin_cog)
-#       TouchAdminMenu(admin_cog)
-#   end
-# end
-
-
 def GoToASection(section_expand)
   Sleep_Until(WaitForAnElementByXpathAndTouch(section_expand))
 end
@@ -236,117 +215,73 @@ def get_login_details(login_name)
     case login_name
 
     when "ELMO Setup Admin"
-        username = ELMO_SETUP_ADMIN_USERNAME
-        password = ELMO_SETUP_ADMIN_PASSWORD
+      username = ELMO_SETUP_ADMIN_USERNAME
+      password = ELMO_SETUP_ADMIN_PASSWORD
 
     when "ELMO Super Admin"
-      begin
-        username = ELMO_SUPER_USERNAME
-        password = ELMO_SUPER_PASSWORD
-
-      end
+      username = ELMO_SUPER_USERNAME
+      password = ELMO_SUPER_PASSWORD
 
     when "ELMO Admin"
-      begin
-        username = ELMO_ADMIN_USERNAME
-        password = ELMO_ADMIN_PASSWORD
-
-      end
+      username = ELMO_ADMIN_USERNAME
+      password = ELMO_ADMIN_PASSWORD
 
     when "Company Admin"
-      begin
-        username = COMP_ADMIN_USERNAME
-        password = COMP_ADMIN_PASSWORD
-
-      end
+      username = COMP_ADMIN_USERNAME
+      password = COMP_ADMIN_PASSWORD
 
     when "Contract Admin"
-      begin
-        username = COMP_ADMIN_USERNAME
-        password = COMP_ADMIN_PASSWORD
-
-      end
+      username = COMP_ADMIN_USERNAME
+      password = COMP_ADMIN_PASSWORD
 
     when "Learning Admin"
-      begin
-        username = LEARNING_ADMIN_USERNAME
-        password = LEARNING_ADMIN_PASSWORD
-
-      end
+      username = LEARNING_ADMIN_USERNAME
+      password = LEARNING_ADMIN_PASSWORD
 
     when "Recruitment Admin"
-      begin
-        username = RECRUITMENT_ADMIN_USERNAME
-        password = RECRUITMENT_ADMIN_PASSWORD
-
-      end
+      username = RECRUITMENT_ADMIN_USERNAME
+      password = RECRUITMENT_ADMIN_PASSWORD
 
     when "Leave Admin"
-      begin
-        username = LEAVE_COMPANY_ADMIN_USER
-        password = LEAVE_COMPANY_ADMIN_PASS
+      username = LEAVE_COMPANY_ADMIN_USER
+      password = LEAVE_COMPANY_ADMIN_PASS
 
-      end
-
-      #User with security profiles Payroll Admin and role-Company Admin
+    #User with security profiles Payroll Admin and role-Company Admin
     when "Payroll Admin"
-      begin
-        username = PAYROLL_ADMIN_USERNAME
-        password = PAYROLL_ADMIN_PASSWORD
+      username = PAYROLL_ADMIN_USERNAME
+      password = PAYROLL_ADMIN_PASSWORD
 
-      end
-
-      #User with security profile- HR Manager, User Administrator Page Permissions
+    #User with security profile- HR Manager, User Administrator Page Permissions
     when "HR Manager"
-      begin
-        username = HRMGR_ADMIN_USERNAME
-        password = HRMGR_ADMIN_PASSWORD
-
-      end
+      username = HRMGR_ADMIN_USERNAME
+      password = HRMGR_ADMIN_PASSWORD
 
     when "Company Manager"
-      begin
-        username = COMPANY_MANAGER_USER
-        password = COMPANY_MANAGER_PASS
-
-      end
+      username = COMPANY_MANAGER_USER
+      password = COMPANY_MANAGER_PASS
 
     when "Company Employee"
-      begin
-        username = COMPANY_EMPLOYEE_1_USER
-        password = COMPANY_EMPLOYEE_1_PASS
-
-      end
+      username = COMPANY_EMPLOYEE_1_USER
+      password = COMPANY_EMPLOYEE_1_PASS
 
     when "Specific Automation User"
-      begin
-        username = DOC_USERNAME
-        password = DOC_PASSWORD
-
-      end
+      username = DOC_USERNAME
+      password = DOC_PASSWORD
 
     when "Specific Automation User Manager"
-      begin
-        username = DOC_MANAGER_NAME
-        password = DOC_MANAGER_PASSWORD
-
-      end
+      username = DOC_MANAGER_NAME
+      password = DOC_MANAGER_PASSWORD
 
     when "Automation Company Admin"
-      begin
-        username = AUTO_COMP_ADMIN_NAME
-        password = AUTO_COMP_ADMIN_PASSWORD
-
-      end
+      username = AUTO_COMP_ADMIN_NAME
+      password = AUTO_COMP_ADMIN_PASSWORD
 
     else
-      begin
-        username = @username
-        password = @user_pwd
-      end
-
+      username = @username
+      password = @user_pwd
     end
   end
+
   return username,password
 end
 
@@ -367,4 +302,50 @@ def VerifyUserExists(username)
     puts COLOR_YELLOW + "Unable to retrieve User ID. Please check the database manually".upcase
     skip_this_scenario
   end
+end
+
+
+def GoToThePage(login_page)
+  $driver.navigate.to(login_page)
+end
+
+
+def EnterUsername(username,value)
+  WaitForAnElementByIdAndInputValue(username, value)
+end
+
+
+def EnterPassword(password, value)
+  WaitForAnElementByIdAndInputValue(password, value)
+end
+
+
+def EnterEmail(email, value)
+  WaitForAnElementByIdAndInputValue(email, value)
+end
+
+
+def LogInAndWaitForTheDashboard(tag_name, admin_menu)
+  TouchLoginButton(tag_name)
+  puts COLOR_BLUE + "Title: " + $driver.title
+  puts COLOR_BLUE + "URL: " + $driver.current_url
+  sleep(3)
+end
+
+
+def LogOutFromTheDashboard(user_profile_icon, logout_button)
+  Sleep_Until(WaitForAnElementByIdAndTouch(user_profile_icon))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(logout_button))
+  sleep(1)
+  $driver.quit
+end
+
+
+def TouchLoginButton(tag_name)
+  WaitForAnElementByTagNameAndTouch(tag_name)
+end
+
+
+def TouchAdminMenu(admin_menu)
+  WaitForAnElementByClassAndTouch(admin_menu)
 end

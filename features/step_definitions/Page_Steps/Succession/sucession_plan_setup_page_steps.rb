@@ -1,57 +1,53 @@
-def GoToThePage(login_page)
-  $driver.navigate.to(login_page)
-  # %x(jmeter -n -t /Users/shankumahanty/Desktop/JMETER_AUTO/Jmeter_tests/GeneralUserSurpriseMe.jmx -Jserver="staging5.dev.elmodev.com" -Jidentifier_manager="14739" -Jrole="3")
-  # email_user = File.new('/Users/shankumahanty/.jenkins/workspace/User-Creation-SurpriseMe/GeneralUserSurpriseMe.xml', 'rb').read.scan(/testfancy([^\/.]*)/).last[0]
-  # new_email_user = email_user.chomp("@mail")
-  # $newme = "testfancy#{new_email_user}"
-end
-
-
-def EnterUsername(username,value)
-  WaitForAnElementByIdAndInputValue(username, value)
-end
-
-
-def EnterPassword(password, value)
-  WaitForAnElementByIdAndInputValue(password, value)
-end
-
-
-def EnterEmail(email, value)
-  WaitForAnElementByIdAndInputValue(email, value)
-end
-
-
-def LogInAndWaitForTheDashboard(tag_name,admin_menu)
-  TouchLoginButton(tag_name)
-  puts COLOR_BLUE + "Title: " + $driver.title
-  puts COLOR_BLUE + "URL: " + $driver.current_url
-  sleep(3)
-end
-
-
-def LogOutFromTheDashboard(user_profile_icon, logout_button)
-  Sleep_Until(WaitForAnElementByIdAndTouch(user_profile_icon))
-  Sleep_Until(WaitForAnElementByXpathAndTouch(logout_button))
-  sleep(1)
-  $driver.quit
-end
-
-
-def TouchLoginButton(tag_name)
-  WaitForAnElementByTagNameAndTouch(tag_name)
-end
-
-
+# TODO: Remove commented out code after review
+# def GoToThePage(login_page)
+#   $driver.navigate.to(login_page)
+#   # %x(jmeter -n -t /Users/shankumahanty/Desktop/JMETER_AUTO/Jmeter_tests/GeneralUserSurpriseMe.jmx -Jserver="staging5.dev.elmodev.com" -Jidentifier_manager="14739" -Jrole="3")
+#   # email_user = File.new('/Users/shankumahanty/.jenkins/workspace/User-Creation-SurpriseMe/GeneralUserSurpriseMe.xml', 'rb').read.scan(/testfancy([^\/.]*)/).last[0]
+#   # new_email_user = email_user.chomp("@mail")
+#   # $newme = "testfancy#{new_email_user}"
+# end
+#
+#
+# def EnterUsername(username,value)
+#   WaitForAnElementByIdAndInputValue(username, value)
+# end
+#
+#
+# def EnterPassword(password, value)
+#   WaitForAnElementByIdAndInputValue(password, value)
+# end
+#
+#
+# def EnterEmail(email, value)
+#   WaitForAnElementByIdAndInputValue(email, value)
+# end
+#
+#
+# def LogInAndWaitForTheDashboard(tag_name,admin_menu)
+#   TouchLoginButton(tag_name)
+#   puts COLOR_BLUE + "Title: " + $driver.title
+#   puts COLOR_BLUE + "URL: " + $driver.current_url
+#   sleep(3)
+# end
+#
+#
+# def LogOutFromTheDashboard(user_profile_icon, logout_button)
+#   Sleep_Until(WaitForAnElementByIdAndTouch(user_profile_icon))
+#   Sleep_Until(WaitForAnElementByXpathAndTouch(logout_button))
+#   sleep(1)
+#   $driver.quit
+# end
+#
+#
+# def TouchLoginButton(tag_name)
+#   WaitForAnElementByTagNameAndTouch(tag_name)
+# end
+#
+#
 def GoToTheSuccessionMenuPageAsAdmin(admin_cog,succession_expand)
   WaitForAnElementByClass(admin_cog)
   TouchAdminMenu(admin_cog)
   GoToSuccessionLandingPage(succession_expand)
-end
-
-
-def TouchAdminMenu(admin_menu)
-  WaitForAnElementByClassAndTouch(admin_menu)
 end
 
 

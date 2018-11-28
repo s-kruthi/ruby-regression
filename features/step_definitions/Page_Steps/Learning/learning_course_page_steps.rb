@@ -55,42 +55,6 @@ def EnterCourseDescription(form_temp_desc_txt, index_id)
 end
 
 
-# TODO: Redundant code after PMS-14710 has been released
-# def EnterCourseRetrain(course_retrain_input_id, course_retrain_input_value)
-#   SelectFromDropdown(course_retrain_input_id, course_retrain_input_value)
-# end
-#
-#
-# def EnterCourseRetrainOpen(course_retrain_open_input_id, course_retrain_open_input_value)
-#   SelectFromDropdown(course_retrain_open_input_id, course_retrain_open_input_value)
-# end
-#
-#
-# def EnterCourseComplete(course_complete_input_id, course_complete_input_value)
-#   SelectFromDropdown(course_complete_input_id, course_complete_input_value)
-# end
-#
-#
-# def EnterCourseAvailability(course_availability_input_id, course_availability_input_value)
-#   SelectFromDropdown(course_availability_input_id, course_availability_input_value)
-# end
-#
-#
-# def EnterCourseCertificateTemplate(course_certificate_template_id, course_certificate_template_value)
-#   SelectFromDropdown(course_certificate_template_id, course_certificate_template_value)
-# end
-#
-#
-# def EnterCourseSelfEnrol(course_self_enroll_input_id, course_self_enroll_input_value)
-#   SelectFromDropdown(course_self_enroll_input_id, course_self_enroll_input_value)
-# end
-#
-#
-# def EnterCourseSectionDescription(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
-#   SelectFromDropdown(course_show_sec_desc_input_id, course_show_sec_desc_input_value)
-# end
-
-
 def EnterCourseSectionDescription(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
   SingleSelectFromSelect2Dropdown(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
 end

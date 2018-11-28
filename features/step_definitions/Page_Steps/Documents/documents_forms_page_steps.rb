@@ -1,12 +1,3 @@
-#TODO: Review and Remove since there is no usage found
-# def goToTheDocumentsAsCompanyAdmin(admin_cog, documents_expand, documents_list_path)
-#   Sleep_Until(WaitForAnElementByClass(admin_cog))
-#   TouchAdminMenu(admin_cog)
-#   goToDocumentsSection(documents_expand)
-#   sleep(2)
-#   GoToItemLandingPage(documents_list_path)
-# end
-
 def goToDocumentsSection(documents_expand)
   WaitForAnElementByXpathAndTouch(documents_expand)
 end
