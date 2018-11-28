@@ -210,7 +210,7 @@ def VerifyErrorAlertMessage(alert_id, alert_msg)
 end
 
 
-def get_login_details(login_name)
+def GetLoginDetails(login_name)
   begin
     case login_name
 

@@ -5,7 +5,7 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
 
     GoToSite()
 
-    login_details = get_login_details(login_name)
+    login_details = GetLoginDetails(login_name)
 
     @username = login_details[0]
     @user_pwd = login_details[1]
