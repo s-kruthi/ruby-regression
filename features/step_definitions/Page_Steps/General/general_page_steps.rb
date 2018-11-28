@@ -229,3 +229,142 @@ end
 def VerifyErrorAlertMessage(alert_id, alert_msg)
   Sleep_Until(VerifyAnElementExistByXPath(alert_id, alert_msg))
 end
+
+
+def get_login_details(login_name)
+  begin
+    case login_name
+
+    when "ELMO Setup Admin"
+        username = ELMO_SETUP_ADMIN_USERNAME
+        password = ELMO_SETUP_ADMIN_PASSWORD
+
+    when "ELMO Super Admin"
+      begin
+        username = ELMO_SUPER_USERNAME
+        password = ELMO_SUPER_PASSWORD
+
+      end
+
+    when "ELMO Admin"
+      begin
+        username = ELMO_ADMIN_USERNAME
+        password = ELMO_ADMIN_PASSWORD
+
+      end
+
+    when "Company Admin"
+      begin
+        username = COMP_ADMIN_USERNAME
+        password = COMP_ADMIN_PASSWORD
+
+      end
+
+    when "Contract Admin"
+      begin
+        username = COMP_ADMIN_USERNAME
+        password = COMP_ADMIN_PASSWORD
+
+      end
+
+    when "Learning Admin"
+      begin
+        username = LEARNING_ADMIN_USERNAME
+        password = LEARNING_ADMIN_PASSWORD
+
+      end
+
+    when "Recruitment Admin"
+      begin
+        username = RECRUITMENT_ADMIN_USERNAME
+        password = RECRUITMENT_ADMIN_PASSWORD
+
+      end
+
+    when "Leave Admin"
+      begin
+        username = LEAVE_COMPANY_ADMIN_USER
+        password = LEAVE_COMPANY_ADMIN_PASS
+
+      end
+
+      #User with security profiles Payroll Admin and role-Company Admin
+    when "Payroll Admin"
+      begin
+        username = PAYROLL_ADMIN_USERNAME
+        password = PAYROLL_ADMIN_PASSWORD
+
+      end
+
+      #User with security profile- HR Manager, User Administrator Page Permissions
+    when "HR Manager"
+      begin
+        username = HRMGR_ADMIN_USERNAME
+        password = HRMGR_ADMIN_PASSWORD
+
+      end
+
+    when "Company Manager"
+      begin
+        username = COMPANY_MANAGER_USER
+        password = COMPANY_MANAGER_PASS
+
+      end
+
+    when "Company Employee"
+      begin
+        username = COMPANY_EMPLOYEE_1_USER
+        password = COMPANY_EMPLOYEE_1_PASS
+
+      end
+
+    when "Specific Automation User"
+      begin
+        username = DOC_USERNAME
+        password = DOC_PASSWORD
+
+      end
+
+    when "Specific Automation User Manager"
+      begin
+        username = DOC_MANAGER_NAME
+        password = DOC_MANAGER_PASSWORD
+
+      end
+
+    when "Automation Company Admin"
+      begin
+        username = AUTO_COMP_ADMIN_NAME
+        password = AUTO_COMP_ADMIN_PASSWORD
+
+      end
+
+    else
+      begin
+        username = @username
+        password = @user_pwd
+      end
+
+    end
+  end
+  return username,password
+end
+
+
+def EnterLoginDetails(username, pwd)
+  EnterUsername(USER_NAME, username)
+  EnterPassword(PASS_WORD, pwd)
+end
+
+
+def VerifyUserExists(username)
+  #getting the userid based on the username and saving for later
+  @user_id = $daos.get_userid(username)
+  if !@user_id.nil?
+    puts COLOR_BLUE + "Id: '#{@user_id[:id]}', Username: #{@user_id[:username]}, is_elmo: '#{@user_id[:is_elmo]}', is_notified: '#{@user_id[:is_notified]}', confirmed: '#{@user_id[:confirmed]}', is_deleted: '#{@user_id[:is_deleted]}'"
+
+  else
+    puts COLOR_YELLOW + "Unable to retrieve User ID. Please check the database manually".upcase
+    skip_this_scenario
+  end
+end
