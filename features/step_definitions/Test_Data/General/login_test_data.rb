@@ -97,7 +97,7 @@ MANAGER_PASSWORD = 'Tester1!'
 COMPANY_MANAGER_USER = "manager1.scriptonce1"
 COMPANY_MANAGER_PASS = "Admin1234567"
 
-COMPANY_EMPLOYEE_1_USER = "auto1.test1"
+COMPANY_EMPLOYEE_1_USER = "auto1.scriptonce1"
 COMPANY_EMPLOYEE_1_PASS = "Admin1234567"
 
 COMP_ADMIN_USERNAME = 'company.scriptonce'
@@ -111,14 +111,3 @@ ELMO_ADMIN_PASSWORD = 'Admin1234567'
 
 PAYROLL_ADMIN_USERNAME = 'payroll.scriptonce'
 PAYROLL_ADMIN_PASSWORD = 'Admin1234567'
-
-
-#TODO Remove after code review since payroll has its own repo
-####### Payroll user credentials ############
-# PAYROLL_PROD_ADMIN_USER = "va8.swathi@gmail.com"
-# PAYROLL_PROD_ADMIN_PWD = "Elmo@tiff2112"
-
-
-####### Payroll user credentials ############
-# PAYROLL_STAG_ADMIN_USER = "swathi.volety@elmolearning.com.au"
-# PAYROLL_STAG_ADMIN_PWD = "ea7682"

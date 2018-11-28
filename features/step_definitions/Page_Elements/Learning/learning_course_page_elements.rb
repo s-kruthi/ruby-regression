@@ -22,15 +22,6 @@ NEW_COURSE_CATEGORY_ID = ""
 NEW_COURSE_CODE_ID = "//input[contains(@id,'shortname')]"
 
 
-# TODO: Redundant code after PMS-14710 has been released
-# COURSE_SHOW_SEC_DESC_INPUT_ID = "//select[contains(@id,'settingsShowSectionDescription')]"
-# COURSE_COMPLETE_INPUT_ID = "//select[contains(@id,'duration')]"
-# COURSE_RETRAIN_INPUT_ID = "//select[contains(@id,'retrain')]"
-# COURSE_RETRAIN_OPEN_INPUT_ID = "//select[contains(@id,'retrainOpen')]"
-# COURSE_AVAILABILITY_INPUT_ID = "//select[contains(@id,'visible')]"
-# COURSE_CERTIFICATE_TEMPLATE_ID = "//select[contains(@name,'course[cTemplate]')]"
-# COURSE_SELF_ENROLL_INPUT_ID = "//select[contains(@id,'allowSelfUnenrol')]"
-
 COURSE_SHOW_SEC_DESC_INPUT_ID = "s2id_elmo_learningbundle_course_settingsShowSectionDescription"
 COURSE_COMPLETE_UNIT_INPUT_ID = "s2id_elmo_learningbundle_course_restricts_0_durationUnit"
 COURSE_COMPLETE_INPUT_ID = "//input[contains(@id,'elmo_learningbundle_course_restricts_0_duration')]"

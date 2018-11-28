@@ -29,7 +29,7 @@ Feature:
 
   @general_low_risk @elmo_config_general_configuration @branding_selection @C18930
   Scenario: [General]Can Set Legal Entity For Branding Selection Field
-    Given I Have Logged In As A ELMO Super Admin
+    Given I Have Logged In As A ELMO Admin
     And   I go to Admin Settings
     And   I Go To General Setup under General section
     And   I Click On "ELMO Configuration" Tab

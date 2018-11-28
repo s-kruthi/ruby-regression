@@ -33,27 +33,6 @@ def GoToSection(general_expand, users_list_path)
 end
 
 
-# TODO: Legacy admin menu icon at the top right. This code will stop working once the new site UI changes are deployed.
-# def GoToAdminSettings(admin_cog)
-#   WaitForAnElementByClass(admin_cog)
-#   TouchAdminMenu(admin_cog)
-# end
-
-
-# NOTE: This is a modified version of the legacy admin settings clicking to facilitate new UI deployed in tmsfull. The new menu system will be used when URL=tmsfull. Other sites will continue
-# Using Legacy Admin menu clicking system
-# def GoToAdminSettings(admin_cog)
-#   case $site_alias
-#     when "tmsfull"
-#       WaitForAnElementByXpathAndTouch(ADMIN_SETTINGS_ID)
-#
-#     else
-#       WaitForAnElementByClass(admin_cog)
-#       TouchAdminMenu(admin_cog)
-#   end
-# end
-
-
 def GoToASection(section_expand)
   Sleep_Until(WaitForAnElementByXpathAndTouch(section_expand))
 end
@@ -228,4 +207,145 @@ end
 
 def VerifyErrorAlertMessage(alert_id, alert_msg)
   Sleep_Until(VerifyAnElementExistByXPath(alert_id, alert_msg))
+end
+
+
+def GetLoginDetails(login_name)
+  begin
+    case login_name
+
+    when "ELMO Setup Admin"
+      username = ELMO_SETUP_ADMIN_USERNAME
+      password = ELMO_SETUP_ADMIN_PASSWORD
+
+    when "ELMO Super Admin"
+      username = ELMO_SUPER_USERNAME
+      password = ELMO_SUPER_PASSWORD
+
+    when "ELMO Admin"
+      username = ELMO_ADMIN_USERNAME
+      password = ELMO_ADMIN_PASSWORD
+
+    when "Company Admin"
+      username = COMP_ADMIN_USERNAME
+      password = COMP_ADMIN_PASSWORD
+
+    when "Contract Admin"
+      username = COMP_ADMIN_USERNAME
+      password = COMP_ADMIN_PASSWORD
+
+    when "Learning Admin"
+      username = LEARNING_ADMIN_USERNAME
+      password = LEARNING_ADMIN_PASSWORD
+
+    when "Recruitment Admin"
+      username = RECRUITMENT_ADMIN_USERNAME
+      password = RECRUITMENT_ADMIN_PASSWORD
+
+    when "Leave Admin"
+      username = LEAVE_COMPANY_ADMIN_USER
+      password = LEAVE_COMPANY_ADMIN_PASS
+
+    #User with security profiles Payroll Admin and role-Company Admin
+    when "Payroll Admin"
+      username = PAYROLL_ADMIN_USERNAME
+      password = PAYROLL_ADMIN_PASSWORD
+
+    #User with security profile- HR Manager, User Administrator Page Permissions
+    when "HR Manager"
+      username = HRMGR_ADMIN_USERNAME
+      password = HRMGR_ADMIN_PASSWORD
+
+    when "Company Manager"
+      username = COMPANY_MANAGER_USER
+      password = COMPANY_MANAGER_PASS
+
+    when "Company Employee"
+      username = COMPANY_EMPLOYEE_1_USER
+      password = COMPANY_EMPLOYEE_1_PASS
+
+    when "Specific Automation User"
+      username = DOC_USERNAME
+      password = DOC_PASSWORD
+
+    when "Specific Automation User Manager"
+      username = DOC_MANAGER_NAME
+      password = DOC_MANAGER_PASSWORD
+
+    when "Automation Company Admin"
+      username = AUTO_COMP_ADMIN_NAME
+      password = AUTO_COMP_ADMIN_PASSWORD
+
+    else
+      username = @username
+      password = @user_pwd
+    end
+  end
+
+  return username,password
+end
+
+
+def EnterLoginDetails(username, pwd)
+  EnterUsername(USER_NAME, username)
+  EnterPassword(PASS_WORD, pwd)
+end
+
+
+def VerifyUserExists(username)
+  #getting the userid based on the username and saving for later
+  @user_id = $daos.get_userid(username)
+  if !@user_id.nil?
+    puts COLOR_BLUE + "Id: '#{@user_id[:id]}', Username: #{@user_id[:username]}, is_elmo: '#{@user_id[:is_elmo]}', is_notified: '#{@user_id[:is_notified]}', confirmed: '#{@user_id[:confirmed]}', is_deleted: '#{@user_id[:is_deleted]}'"
+
+  else
+    puts COLOR_YELLOW + "Unable to retrieve User ID. Please check the database manually".upcase
+    skip_this_scenario
+  end
+end
+
+
+def GoToThePage(login_page)
+  $driver.navigate.to(login_page)
+end
+
+
+def EnterUsername(username,value)
+  WaitForAnElementByIdAndInputValue(username, value)
+end
+
+
+def EnterPassword(password, value)
+  WaitForAnElementByIdAndInputValue(password, value)
+end
+
+
+def EnterEmail(email, value)
+  WaitForAnElementByIdAndInputValue(email, value)
+end
+
+
+def LogInAndWaitForTheDashboard(tag_name, admin_menu)
+  TouchLoginButton(tag_name)
+  puts COLOR_BLUE + "Title: " + $driver.title
+  puts COLOR_BLUE + "URL: " + $driver.current_url
+  sleep(3)
+end
+
+
+def LogOutFromTheDashboard(user_profile_icon, logout_button)
+  Sleep_Until(WaitForAnElementByIdAndTouch(user_profile_icon))
+  Sleep_Until(WaitForAnElementByXpathAndTouch(logout_button))
+  sleep(1)
+  $driver.quit
+end
+
+
+def TouchLoginButton(tag_name)
+  WaitForAnElementByTagNameAndTouch(tag_name)
+end
+
+
+def TouchAdminMenu(admin_menu)
+  WaitForAnElementByClassAndTouch(admin_menu)
 end
