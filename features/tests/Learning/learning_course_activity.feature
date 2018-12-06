@@ -107,7 +107,7 @@
       Then  I Should Be Able To Edit A ELMO Module Activity Named Test ELMO Module Activity - Please DO NOT DELETE
 
 
-    @smoke_learning4 @learning_high_risk @course_activity_edit_validation @lock_course_enrolment
+    @learning_high_risk @course_activity_edit_validation @lock_course_enrolment
     Scenario: [Learning]Learning Admin Can Edit Only The Session Details In A Face-to-Face Activity
       Given The Lock Course With Enrolments Is Configured To Yes
       And   Courses Have User Enrolments
