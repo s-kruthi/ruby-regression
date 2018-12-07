@@ -213,6 +213,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByIdAndTouch(SELECT_FILE_ID))
         Sleep_Until(WaitForSelectFileButtonAndUploadFile(SCORM_FILE_NAME))
         Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
+        Sleep_Until(VerifyAnElementExistByCSS('.modal-body.text-center.ng-scope', 'module is being extracted'))
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         sleep(2)
       end
@@ -883,7 +884,7 @@ def HandleEnrolmentOfCourse(role_type, enrolled)
   case enrolled
   when "Enrolled"
     UnenrolAllOnCourseEnrolmentPage() unless ConditionAnElementNotExistByCSS("tr[data-id]")
-    EnrolUserWithRoleTypeOnCourseEnrolmentPage(role_type)
+    EnrolTheFirstUserInBulkEnrolUsers()
   when "NonEnrolled"
     UnenrolAllOnCourseEnrolmentPage() unless ConditionAnElementNotExistByCSS("tr[data-id]")
   end
@@ -894,6 +895,15 @@ def UnenrolAllOnCourseEnrolmentPage
   WaitForAnElementByIdAndTouch("select-all")
   Sleep_Until(WaitForAnElementByIdAndTouch("multiple_unenrolled"))
   Sleep_Until(PressConfirm())
+end
+
+
+def EnrolTheFirstUserInBulkEnrolUsers
+  WaitForAnElementByCSSAndTouch("[title='Bulk Enrol Users']")
+  WaitForAnElementByCSSAndTouch('#elmo-table .add-user')
+  WaitForAnElementByIdAndTouch("enrol-btn")
+  Sleep_Until(WaitForAnElementByCSSAndTouch(".process-action[data-action=run]"))
+  sleep(5)
 end
 
 
