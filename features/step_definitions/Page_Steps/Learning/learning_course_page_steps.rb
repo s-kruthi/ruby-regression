@@ -213,7 +213,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByIdAndTouch(SELECT_FILE_ID))
         Sleep_Until(WaitForSelectFileButtonAndUploadFile(SCORM_FILE_NAME))
         Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
-        Sleep_Until(VerifyAnElementExistByCSS('.modal-body.text-center.ng-scope', 'module is being extracted'))
+        Sleep_Until(VerifyAnElementExistByCSS(SCORM_EXTRACTION_MODAL_CSS, SCORM_EXTRACTION_MODAL_TEXT))
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         sleep(2)
       end
@@ -899,10 +899,10 @@ end
 
 
 def EnrolTheFirstUserInBulkEnrolUsers
-  WaitForAnElementByCSSAndTouch("[title='Bulk Enrol Users']")
-  WaitForAnElementByCSSAndTouch('#elmo-table .add-user')
-  WaitForAnElementByIdAndTouch("enrol-btn")
-  Sleep_Until(WaitForAnElementByCSSAndTouch(".process-action[data-action=run]"))
+  WaitForAnElementByCSSAndTouch(BULK_ENROL_BUTTON_CSS)
+  WaitForAnElementByCSSAndTouch(CHECK_USER_BULK_ENROL_CSS)
+  WaitForAnElementByIdAndTouch(ENROL_SELECTED_USER_BUTTON_CSS)
+  Sleep_Until(WaitForAnElementByCSSAndTouch(CONFIRM_ENROL_USERS_BUTTON_CSS))
   sleep(5)
 end
 
