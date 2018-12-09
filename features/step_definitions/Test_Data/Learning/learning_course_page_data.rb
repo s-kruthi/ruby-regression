@@ -101,6 +101,7 @@ QUIZ_ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved."
 SCORM_TITLE_VALUE = "Test SCORM package Activity - Please DO NOT DELETE " + Time.now.strftime("%Y%m%d%H%M%S").to_s
 SCORM_ACTIVITY_EDITOR_TXT = "This is a Test SCORM package Activity Editor Content - Please DO NOT DELETE"
 ACTIVITY_SAVE_SUCCESSFUL_VALUE = "Successfully saved."
+SCORM_EXTRACTION_MODAL_TEXT = 'module is being extracted'
 SCORM_FILE_NAME = 'scorm_3199.zip'
 EDITED_VALUE = 'The field is edited.'
 
