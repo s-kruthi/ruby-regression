@@ -922,7 +922,7 @@ def UnenrolAllOnCourseEnrolmentPage
 end
 
 
-def EnrolTheFirstUserInBulkEnrolUsers
+def EnrolTheFirstUserInBulkEnrolUsers()
   WaitForAnElementByCSSAndTouch(BULK_ENROL_BUTTON_CSS)
   WaitForAnElementByCSSAndTouch(CHECK_USER_BULK_ENROL_CSS)
   WaitForAnElementByIdAndTouch(ENROL_SELECTED_USER_BUTTON_CSS)

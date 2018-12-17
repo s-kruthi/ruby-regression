@@ -287,6 +287,7 @@
       And   I Search For Created Course In The Scenario
       And   I Change The Created Course Enrolment With Employee Being <user_enrolled>
       And   I Go To The Sections Of The Created Course
+#      The successful message when editing the activity doesn't appear when save the change of title or description
       Then  I Should Edit The Quiz activity
       And   Modifying Settings Of Quiz Activity Is <settings>
 
