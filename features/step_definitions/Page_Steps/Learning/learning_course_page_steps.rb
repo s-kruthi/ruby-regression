@@ -213,6 +213,7 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForAnElementByIdAndTouch(SELECT_FILE_ID))
         Sleep_Until(WaitForSelectFileButtonAndUploadFile(SCORM_FILE_NAME))
         Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
+        Sleep_Until(VerifyAnElementExistByCSS(SCORM_EXTRACTION_MODAL_CSS, SCORM_EXTRACTION_MODAL_TEXT))
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         sleep(2)
       end
@@ -405,14 +406,20 @@ end
 
 def CreateAllNotifications()
   begin
-    #This line is a workaround used to store the elmo-table contents which will be used to check whether a template has already been added or not
+    # This next line checks for elmo-table contents and stores the current notification template names to check whether a template has already been added or not
     $template_list = $driver.find_element(:id, "elmo-table").text.split("\nEdit\nToggle dropdown to edit appraisal") if $driver.find_elements(:id, "elmo-table").empty? == false
+    # Click on 'Add Notification' button to open the notification modal
     ClickAddNotificationButton()
+    # Click on the notification trigger dropdown so that it displays all currently available notification triggers
     Sleep_Until($driver.find_element(:id, "s2id_templateNotification_trigger").click)
+    # Total number of notification triggers found is total - 1, since the array count starts from 0
     limit = $driver.find_elements(:class, "select2-result-selectable").count - 1
     puts "Number of Notification Triggers Found: \"#{limit + 1}\"\n"
-    Sleep_Until($driver.find_elements(:class, "select2-drop").last.click)
+    # Click on the 'select2-drop-mask' first which is the only clickable item in the page as everything else is masked by 'select2-drop-mask' overlay
+    Sleep_Until($driver.find_element(:id, "select2-drop-mask").click)
+    # Click on the 'x' symbol to close of the modal
     Sleep_Until($driver.find_element(:xpath, "//button[contains(.,'×')]").click)
+    # Start adding the notifications by clicking on 'Add Notification' button
     AddNotificationTrigger(limit)
   end
 end
@@ -436,10 +443,27 @@ end
 
 
 def AddNotificationTemplate()
-  #Check for existing notification templates
+  # Click on the arrow key beside the notification template dropdown
   Sleep_Until($driver.find_element(:id, "s2id_templateNotification_template").click)
+  # First check if the 'select2-no-results' class is empty or not.
+  if (!$driver.find_elements(:class, 'select2-no-results').empty?)
+    # If the 'select2-no-results' class is empty, ensure that there's a text 'No matches found' which will mean there's no default notification template in the site
+    if ($driver.find_element(:class, 'select2-no-results').text == "No matches found")
+      puts COLOR_YELLOW + "Notification template not found"
+      # Click on the 'select2-drop-mask' first which is the only clickable item in the page as everything else is masked by 'select2-drop-mask' overlay
+      $driver.find_element(:id, "select2-drop-mask").click
+      # Click on the 'x' symbol in the modal to cancel it and return to the course's notification list page
+      Sleep_Until($driver.find_element(:xpath, "//button[contains(.,'×')]").click)
+      # Get out of this method so that the loop continues
+      return
+    end
+  end
+  
+else
+  # Continue with adding the notification template by selecting the last notification template from the dropdown list
   $current_template = $driver.find_elements(:class, "select2-result-selectable").last.text
-
+  
+  # Check the current notification template name against the previously stored notification template list in the $template_list. If it doesn't exist, add it
   if !($template_list.to_s.include? $current_template.to_s)
     begin
       puts "Added Template: " + $driver.find_elements(:class, "select2-result-selectable").last.text
@@ -449,7 +473,7 @@ def AddNotificationTemplate()
       CheckForTriggerDate()
       Sleep_Until(SaveNotificationTemplate())
     end
-
+  
   else
     puts COLOR_BLUE + "Notification already exists: " + $driver.find_elements(:class, "select2-result-selectable").last.text
     Sleep_Until($driver.find_elements(:class, "select2-drop-mask").last.click)
@@ -457,6 +481,7 @@ def AddNotificationTemplate()
     return
   end
 end
+
 
 
 #This checks if there's an id, "s2id_templateNotification_dueDatePosition" with any value or not. If there's no value then it selects the 1st available option
@@ -883,7 +908,7 @@ def HandleEnrolmentOfCourse(role_type, enrolled)
   case enrolled
   when "Enrolled"
     UnenrolAllOnCourseEnrolmentPage() unless ConditionAnElementNotExistByCSS("tr[data-id]")
-    EnrolUserWithRoleTypeOnCourseEnrolmentPage(role_type)
+    EnrolTheFirstUserInBulkEnrolUsers()
   when "NonEnrolled"
     UnenrolAllOnCourseEnrolmentPage() unless ConditionAnElementNotExistByCSS("tr[data-id]")
   end
@@ -894,6 +919,15 @@ def UnenrolAllOnCourseEnrolmentPage
   WaitForAnElementByIdAndTouch("select-all")
   Sleep_Until(WaitForAnElementByIdAndTouch("multiple_unenrolled"))
   Sleep_Until(PressConfirm())
+end
+
+
+def EnrolTheFirstUserInBulkEnrolUsers()
+  WaitForAnElementByCSSAndTouch(BULK_ENROL_BUTTON_CSS)
+  WaitForAnElementByCSSAndTouch(CHECK_USER_BULK_ENROL_CSS)
+  WaitForAnElementByIdAndTouch(ENROL_SELECTED_USER_BUTTON_CSS)
+  Sleep_Until(WaitForAnElementByCSSAndTouch(CONFIRM_ENROL_USERS_BUTTON_CSS))
+  sleep(5)
 end
 
 

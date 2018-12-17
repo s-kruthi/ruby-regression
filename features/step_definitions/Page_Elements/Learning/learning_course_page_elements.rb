@@ -108,6 +108,7 @@ SCORM_TITLE_ID = "//input[contains(@id,'name')]"
 SCORM_PASS_MARK_ID = "//input[contains(@id,'cke_1_contents')]"
 SELECT_FILE_ID = "addFile"
 EDIT_ACTIVITY_BUTTON_CSS = "a[href*='edit-activity']"
+SCORM_EXTRACTION_MODAL_CSS = '.modal-body.text-center.ng-scope'
 
 
 ###File activity elements
@@ -167,6 +168,11 @@ CRS_RQST_ID = 'elmo_learningbundle_courseenrolrequest_comment'
 CRS_REQUEST_SBMT = 'elmo_learningbundle_courseenrolrequest_submit'
 APPROVE_CRS_RQST_CSS = 'a[title="Approve this course request"]'
 COURSE_APPROVAL_REASON_FLD= "reason-field"
+BULK_ENROL_BUTTON_CSS = "[title='Bulk Enrol Users']"
+CHECK_USER_BULK_ENROL_CSS = '#elmo-table .add-user'
+ENROL_SELECTED_USER_BUTTON_CSS = 'enrol-btn'
+CONFIRM_ENROL_USERS_BUTTON_CSS = '.process-action[data-action=run]'
+
 
 #### Categories section elements ####
 CATEGORIES_BTN = "//a[@href='/admin/course/categories'][contains(text(),'Categories')]"
