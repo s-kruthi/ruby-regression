@@ -2,7 +2,7 @@ And(/^I go to the "Categories" tab$/i) do
   ClickTabNameCategories(CATEGORIES_BTN)
 end
 
-When(/^I click on “New Category” button$/i) do
+When(/^I click on New Category button$/i) do
   AddCourseCategory(NEW_CATEGORY_BTN)
 end
 
@@ -16,7 +16,7 @@ Then(/^I should be able to save course category$/i) do
   VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CATEGORY_SUCCESS_VALUE)
 end
 
-When(/^I click on "Edit" button for any of existing course category$/i) do
+When(/^I click on Edit button for any of existing course category$/i) do
   EditCategory(CATEGORY_EDIT_XPATH)
 end
 
