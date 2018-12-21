@@ -104,11 +104,13 @@ ADD_QUESTION_BTN_ID = "//a[@class='btn btn-primary add-question']"
 
 
 ###SCORM package elements
-SCORM_TITLE_ID = "//input[contains(@id,'name')]"
+# SCORM_TITLE_ID = "//input[contains(@id,'name')]"
+SCORM_TITLE_ID = "//input[contains(@name,'modScorm[name]')]"
 SCORM_PASS_MARK_ID = "//input[contains(@id,'cke_1_contents')]"
 SELECT_FILE_ID = "addFile"
 EDIT_ACTIVITY_BUTTON_CSS = "a[href*='edit-activity']"
 SCORM_EXTRACTION_MODAL_CSS = '.modal-body.text-center.ng-scope'
+SCORM_DELETE_CONFIRM_BTN_ID = "//button[contains(@ng-click,'showConfirmDialog(model)')]"
 
 
 ###File activity elements
