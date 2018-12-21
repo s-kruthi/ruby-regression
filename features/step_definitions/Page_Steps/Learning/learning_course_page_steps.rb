@@ -214,6 +214,8 @@ def CreateAnActivity(course_activity_name)
         Sleep_Until(WaitForSelectFileButtonAndUploadFile(SCORM_FILE_NAME))
         Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
         Sleep_Until(VerifyAnElementExistByCSS(SCORM_EXTRACTION_MODAL_CSS, SCORM_EXTRACTION_MODAL_TEXT))
+        # NOTE: Adding extended sleep to allow extraction of SCORM package
+        sleep (10)
         Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
         sleep(2)
       end
