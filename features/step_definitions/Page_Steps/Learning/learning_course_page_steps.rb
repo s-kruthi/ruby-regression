@@ -896,11 +896,29 @@ end
 
 def FillTitleAndDescriptionFieldAndSave(partial_id)
   WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS)
+  # Adding sleep to ensure SCORM acitivty edit page is displayed once edit button is clicked
+  sleep(1)
   title_id = "input[id*=#{partial_id.to_s}][name*=name]"
   WaitForAnElementByCSSAndInputValue(title_id, EDITED_VALUE)
   UseCkeditorToEnterText(EDITED_VALUE, 0)
+  # NOTE: Only go into ReUploadSCORM file if 'delete' button is displayed indicating there's already a SCORM file added to this activity
+  ReUploadSCORMFile() if $driver.find_elements(:xpath, SCORM_DELETE_CONFIRM_BTN_ID).last.displayed? == true
   ClickOnSaveButton(SAVE_BTN_ID)
+  Sleep_Until(VerifyAnElementExistByCSS(SCORM_EXTRACTION_MODAL_CSS, SCORM_EXTRACTION_MODAL_TEXT))
+  # NOTE: Adding extended sleep to allow extraction of SCORM package
+  sleep(10)
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  sleep(2)
+end
+
+
+def ReUploadSCORMFile()
+  WaitForAnElementByXpathAndTouch(SCORM_DELETE_CONFIRM_BTN_ID)
+  sleep(3)
+  PressEnterConfirm()
+  sleep(3)
+  Sleep_Until(WaitForAnElementByIdAndTouch(SELECT_FILE_ID))
+  Sleep_Until(WaitForSelectFileButtonAndUploadFile(SCORM_FILE_NAME))
 end
 
 

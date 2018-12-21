@@ -105,7 +105,6 @@ SCORM_EXTRACTION_MODAL_TEXT = 'module is being extracted'
 SCORM_FILE_NAME = 'scorm_3199.zip'
 EDITED_VALUE = 'The field is edited.'
 
-
 ###File activity test data
 FILE_TITLE_VALUE = "Test File Activity - Please DO NOT DELETE " + Time.now.strftime("%Y%m%d%H%M%S").to_s
 FILE_ACTIVITY_EDITOR_TXT = "This is a Test File Activity Editor Content - Please DO NOT DELETE"
