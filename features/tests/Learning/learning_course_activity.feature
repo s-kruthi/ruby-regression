@@ -363,7 +363,6 @@
       And   I Go To Courses Under Learning Section
       When  I Click On The New Course Button
       And   I Add New Course Details
-      And   I Select The Availability As All Users
       Then  I Should Be Able To Create A New Course
       Then  I Should Be Able To Add A Face-to-Face Activity
       And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
