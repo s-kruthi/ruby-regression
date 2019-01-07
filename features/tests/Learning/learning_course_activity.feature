@@ -211,7 +211,7 @@
       And   I Should Be Able to Sort The The Face-To-Face Activity Session List By Location
 
 
-    @smoke_learning6 @learning_low_risk @course_activity_add @add_edit_scorm_package @C1027 @loc_transform
+    @smoke_learning6 @learning_low_risk @course_activity_add @course_activity_scorm_add @add_edit_scorm_package @C1027 @loc_transform
     Scenario: As a company admin, i want to be able to add/edit a scorm package and make necessary changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
