@@ -132,7 +132,7 @@
       And   I Set Compulsory Settings To Enabled
 
 
-    @smoke_learning4 @learning_low_risk @course_activity_delete @course_activity_survey_delete @C15705
+    @smoke_learning4 @learning_low_risk @course_activity_survey_delete @C15705
     Scenario: [Learning]Learning Admin Can Delete An ELMO Survey Activity In A Course
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
@@ -211,7 +211,7 @@
       And   I Should Be Able to Sort The The Face-To-Face Activity Session List By Location
 
 
-    @smoke_learning6 @learning_low_risk @add_edit_scorm_package @C1027 @loc_transform
+    @smoke_learning6 @learning_low_risk @course_activity_add @course_activity_scorm_add @add_edit_scorm_package @C1027 @loc_transform
     Scenario: As a company admin, i want to be able to add/edit a scorm package and make necessary changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
@@ -356,14 +356,13 @@
       Then  I Should Bulk Mark Attendance All Users
 
 
-    @learning_low_risk @C6071 @C6070
+    @learning_low_risk @course_activity_f2f_session_signup @C6071 @C6070
     Scenario: As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Self Sign Up / Withdraw Myself From The Face-to-face Session
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To Courses Under Learning Section
       When  I Click On The New Course Button
       And   I Add New Course Details
-      And   I Select The Availability As All Users
       Then  I Should Be Able To Create A New Course
       Then  I Should Be Able To Add A Face-to-Face Activity
       And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
