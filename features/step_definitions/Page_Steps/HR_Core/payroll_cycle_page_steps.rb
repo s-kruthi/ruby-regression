@@ -51,21 +51,20 @@ def EnterPayrollCycleDetails(title = PAYROLL_CYCLE_TITLE + Time.now.strftime("%Y
     @title = title + Time.now.strftime("%Y%m%d%H%M%S").to_s
   end
 
-  $driver.find_element(:id, PAYROLL_CYCLE_TITLE_ID).clear()
+  ClearField('id',PAYROLL_CYCLE_TITLE_ID)
   WaitForAnElementByIdAndInputValue(PAYROLL_CYCLE_TITLE_ID, @title)
 
-  $driver.find_element(:id, PAYROLL_CYCLE_STARTDATE_ID).clear()
+  ClearField('id',PAYROLL_CYCLE_STARTDATE_ID)
   WaitForAnElementByIdAndInputValue(PAYROLL_CYCLE_STARTDATE_ID, (DateTime.now.strftime "%d/%m/%Y"))
 
-  SelectFromDropdown(PAYROLL_CYCLE_TYPE_ID, 'Monthly')
+  SelectFromDropdown(PAYROLL_CYCLE_TYPE_ID, PAYROLL_CYCLE_TYPE)
 
-  WaitForAnElementByIdAndTouch(PAYROLL_CYCLE_SAVE_ID)
+  ClearAndEnterWeeksperannum(PAYROLL_CYCLE_WEEKSPERANNUM)
 end
 
 
 def EditPayrollCycle()
   @payroll = $daos.get_payroll_cycle_details()
-
   WaitForAnElementByXpathAndTouch("//a[@href='/admin/hrcore/payroll-cycle/edit/#{@payroll[:id]}']")
 end
 
@@ -91,4 +90,21 @@ def VerifyPayrollCycleEdit()
   else
     puts COLOR_RED + "unable to edit payroll cycle successfully ".upcase
   end
+end
+
+
+def CheckDefaultValue()
+  expect($driver.find_element(:id, 'payroll_cycle_weeksPerAnnum').attribute('value')).to eq('52.00')
+  puts COLOR_GREEN + "weeks per annum field is set with the default value of 52.00 ".upcase
+end
+
+
+def SavePayrollCycle()
+  WaitForAnElementByIdAndTouch(PAYROLL_CYCLE_SAVE_ID)
+end
+
+
+def ClearAndEnterWeeksperannum(weeks_per_annum)
+  ClearField('id', PAYROLL_CYCLE_WEEKSPERANNUM_ID)
+  WaitForAnElementByIdAndInputValue(PAYROLL_CYCLE_WEEKSPERANNUM_ID, weeks_per_annum)
 end
