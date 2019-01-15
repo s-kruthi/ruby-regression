@@ -108,3 +108,8 @@ def ClearAndEnterWeeksperannum(weeks_per_annum)
   ClearField('id', PAYROLL_CYCLE_WEEKSPERANNUM_ID)
   WaitForAnElementByIdAndInputValue(PAYROLL_CYCLE_WEEKSPERANNUM_ID, weeks_per_annum)
 end
+
+
+def VerifyInfoMessage(verify_info_id, info_value)
+  Sleep_Until(VerifyAnElementExistByXPath(verify_info_id, info_value))
+end
