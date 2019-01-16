@@ -64,3 +64,12 @@ Feature:
     And   I Enter The Weeks Per Annum As 101.1523
     Then  I Should See The Error Message When The Weeks Per Annum Is Invalid
 
+
+  #currently can only be run on payroll04
+  @hr_core_low_risk @payroll_cycle_weeksperannum_infomsg @C20947
+  Scenario: [General]Verify That The Weeks per annum Information Message Is Displayed
+    Given I Have Logged In as a HR Manager
+    And   I go to Admin Settings
+    And   I Go To Payroll Cycle under HR Core section
+    When  I Click On Add Payroll Cycle Button
+    Then  I Should See That The Weeks per annum Field Information Message Is Displayed

@@ -63,3 +63,8 @@ Then(/^I Should See The Error Message When The Weeks Per Annum Is Invalid$/i) do
   SavePayrollCycle()
   VerifyErrorAlertMessage(VERIFY_ALERT_ID, WEEKSERANNUM_ALERT_VALUE)
 end
+
+
+Then(/^I Should See That The Weeks per annum Field Information Message Is Displayed$/i) do
+  VerifyInfoMessage(VERIFY_INFO_ID, WEEKSERANNUM_INFO_VALUE)
+end

@@ -11,3 +11,5 @@ PAYROLL_CYCLE_TYPE = "Monthly"
 PAYROLL_CYCLE_WEEKSPERANNUM = "52.14"
 
 WEEKSERANNUM_ALERT_VALUE = "This value should be less than or equal to 100."
+
+WEEKSERANNUM_INFO_VALUE = "Please Note Weeks Per Annum field will impact:\nSalary displayed on Employee Profile (ESS) and Payment Details\nLeave Balances/Calculations on Employees Entitlement and Forecasting"
