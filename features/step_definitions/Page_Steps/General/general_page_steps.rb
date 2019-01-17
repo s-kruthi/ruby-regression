@@ -159,8 +159,8 @@ end
 # TODO this new class "elmo-icon-admin needs to be added to classic view, till then please keep the navbar set to vertical menu for faster test execution"
 def GoToAdminSettings(admin_cog)
   begin
-    WaitForAnElementByClass("elmo-icon-admin")
-    TouchAdminMenu("elmo-icon-admin")
+    Sleep_Until(WaitForAnElementByClass("elmo-icon-admin"))
+    Sleep_Until(TouchAdminMenu("elmo-icon-admin"))
   rescue
     puts "slow execution : horizontal navbar mode on, please change it to vertical"
     WaitForAnElementByClass(admin_cog)

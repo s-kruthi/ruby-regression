@@ -345,7 +345,9 @@ end
 
 
 Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
-  GoToCourseEnrolmentsSection(COURSE_ENROLMENT_LTEXT)
+  steps %{
+    And   I go to Admin Settings
+    And   I Go To Enrolments under Learning section}
   SearchTheAssignedCourseInEnrollmentSection(course_name)
   VerifyTheStatusAsNotYetStarted()
 end
