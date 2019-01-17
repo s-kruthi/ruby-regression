@@ -38,9 +38,8 @@ And(/^I Should Copy The Created Certificate$/i) do
 end
 
 
-And(/^I should search for The Created Certificate and reset the search$/i) do
+And(/^I should search for The Created Certificate$/i) do
   Sleep_Until(SearchItemNoSelect2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID))
   # Expect to see 2 items as the certificate template has been copied
   VerifySearchResultElmoTable(2, @cert_temp_created)
-  VerifyResetSearch(CLEAR_SEARCH_BTN_CSS, CERT_TEMP_LIST_URL)
 end

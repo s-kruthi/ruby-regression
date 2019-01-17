@@ -39,6 +39,9 @@ end
 
 
 def GoToNavBarSection(link_to_click)
+  #adding extra sleep to allow the vertical left nav menu to load
+  sleep(2)
+
   Sleep_Until($driver.find_elements(:xpath, link_to_click).last.click)
 end
 

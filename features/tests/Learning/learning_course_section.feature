@@ -58,8 +58,7 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
     Scenario: [Learning] Just Refreshing Enrolments For Quiz Activity Resets The Status And Opens The Activity
     Given I Have Logged In as a Automation Company Admin
     And   I go to Admin Settings
-    And   I Go To Courses under Learning section
-    And   I Click On "Enrolments" Tab
+    And   I Go To Enrolments under Learning section
     And   I Create A Random Course For Automation With Quiz Activity
     And   I Search For The Randomly Created Course Under Enrolment
     And   I Choose To Mark An Enrolment As Complete
@@ -73,8 +72,7 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
   Scenario: [Learning] Just Refreshing Enrolments For Quiz Activity Resets The Status And Opens The Activity
     Given I Have Logged In as a Automation Company Admin
     And   I go to Admin Settings
-    And   I Go To Courses under Learning section
-    And   I Click On "Enrolments" Tab
+    And   I Go To Enrolments under Learning section
     And   I Create A Random Course For Automation With All Activity
     And   I Search For The Randomly Created Course Under Enrolment
     And   I Choose To Mark An Enrolment As Complete

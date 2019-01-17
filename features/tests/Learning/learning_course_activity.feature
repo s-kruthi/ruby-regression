@@ -186,7 +186,7 @@
       Given I Have Logged In as a Learning Admin
       And   I go to Admin Settings
       And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE With No Enrolments
+      When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Delete A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
 
 

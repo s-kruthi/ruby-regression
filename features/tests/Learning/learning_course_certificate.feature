@@ -5,7 +5,7 @@
 
 #  Currently the Certificate feature is not deployed to TMSFull yet
 Feature: Manage Certificates On The Certificate List Page
-  Background: Generate Data When Necessory
+  Background: Generate Data When Necessary
     Given Create Certificate Templates Once Less Than 15 Exist In The Database
 
   @smoke_learning6 @learning_low_risk @learning_manage_certificates @C16442 @C16440 @C16441 @C16551 @C16553 @C16554 @C16555 @C16736 @loc_transform
@@ -22,4 +22,4 @@ Feature: Manage Certificates On The Certificate List Page
     When  I Go To The Page Which Has The List Of Current Editing Item
     Then  I Should Copy The Created Certificate
     When  I Go To The Page Which Has The List Of Current Editing Item
-    Then  I Should Search For The Created Certificate And Reset The Search
+    Then  I Should Search For The Created Certificate

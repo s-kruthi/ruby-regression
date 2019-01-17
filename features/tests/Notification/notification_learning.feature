@@ -19,7 +19,7 @@ Feature:
     Then  The User Should Be Instantly Notified About The New Enrolment
 
 
-  @smoke_learning9 @course_assignments_approval  @learning_high_risk @NotificationsLearning  @C12257 @C12258
+  @smoke_learning9 @course_assignments_approval  @learning_high_risk @NotificationsLearning @C12257 @C12258
   Scenario: [Learning]User Enrols For A Particular Course Which triggers Notification to Both The User And His Manager(approval required)
     Given I Have Logged In as a Specific Automation User
     And   I Go To The Menu Learning Section
