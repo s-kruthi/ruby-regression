@@ -280,7 +280,12 @@ end
 
 Then(/^I Should Be Able To View The Face-To-Face Activity Session List$/i) do
   WaitForFaceToFaceSessionListAndVerify(F2F_SESSION_HEADING_ID, F2F_SESSION_HEADING_VALUE)
-  WaitForFaceToFaceSessionListAndVerify(F2F_SESSION_TITLE_ID, F2F_TITLE_VALUE)
+
+  #ensuring that there are sessions for the F2F activity before sorting
+  if (GetTextAssociatedToElement("xpath", PAGINATION_ID) == 'No Session(s) found')
+    puts COLOR_YELLOW + "no sessions found for this face to face activity".upcase
+    skip_this_scenario
+  end
 end
 
 
@@ -340,7 +345,9 @@ end
 
 
 Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
-  GoToCourseEnrolmentsSection(COURSE_ENROLMENT_LTEXT)
+  steps %{
+    And   I go to Admin Settings
+    And   I Go To Enrolments under Learning section}
   SearchTheAssignedCourseInEnrollmentSection(course_name)
   VerifyTheStatusAsNotYetStarted()
 end

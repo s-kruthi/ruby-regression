@@ -39,6 +39,9 @@ end
 
 
 def GoToNavBarSection(link_to_click)
+  #adding extra sleep to allow the vertical left nav menu to load
+  sleep(2)
+
   Sleep_Until($driver.find_elements(:xpath, link_to_click).last.click)
 end
 
@@ -156,8 +159,8 @@ end
 # TODO this new class "elmo-icon-admin needs to be added to classic view, till then please keep the navbar set to vertical menu for faster test execution"
 def GoToAdminSettings(admin_cog)
   begin
-    WaitForAnElementByClass("elmo-icon-admin")
-    TouchAdminMenu("elmo-icon-admin")
+    Sleep_Until(WaitForAnElementByClass("elmo-icon-admin"))
+    Sleep_Until(TouchAdminMenu("elmo-icon-admin"))
   rescue
     puts "slow execution : horizontal navbar mode on, please change it to vertical"
     WaitForAnElementByClass(admin_cog)
