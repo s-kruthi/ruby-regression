@@ -68,3 +68,19 @@ end
 Then(/^I Should See That The Weeks per annum Field Information Message Is Displayed$/i) do
   VerifyInfoMessage(VERIFY_INFO_ID, WEEKSERANNUM_INFO_VALUE)
 end
+
+
+Then(/^I Should See That The (.*) Type Is Available$/i) do |payrollcycle_type|
+  CheckPayrollCycleType(payrollcycle_type)
+end
+
+
+And(/^The Date of Month Field Is Set To 1st As Default$/i) do
+  CheckField()
+end
+
+
+And(/^I Select Type As (.*)$/i) do |payrollcycle_type|
+  SelectFromDropdown(PAYROLL_CYCLE_TYPE_ID, payrollcycle_type)
+end
+

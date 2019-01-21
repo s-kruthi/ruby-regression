@@ -73,3 +73,25 @@ Feature:
     And   I Go To Payroll Cycle under HR Core section
     When  I Click On Add Payroll Cycle Button
     Then  I Should See That The Weeks per annum Field Information Message Is Displayed
+
+
+  #currently can only be run on payroll04
+  @hr_core_low_risk @payroll_cycle_4weekly @C20957
+  Scenario: [General]Verify That The 4 Weekly Type Is Available For Payroll Cycle
+    Given I Have Logged In as a HR Manager
+    And   I go to Admin Settings
+    And   I Go To Payroll Cycle under HR Core section
+    When  I Click On Add Payroll Cycle Button
+    Then  I Should See That The 4 Weekly Type Is Available
+
+
+  #currently can only be run on payroll04
+  @hr_core_low_risk @payroll_cycle_quarterly @C20958
+  Scenario: [General]Verify That The Quarterly Type Is Available For Payroll Cycle
+    Given I Have Logged In as a HR Manager
+    And   I go to Admin Settings
+    And   I Go To Payroll Cycle under HR Core section
+    When  I Click On Add Payroll Cycle Button
+    Then  I Should See That The Quarterly Type Is Available
+    And   I Select Type As Quarterly
+    And   The Date of Month Field Is Set To 1st As Default
