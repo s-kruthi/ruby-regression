@@ -616,3 +616,14 @@ Given(/^I Have Logged In As (An Employee|Vendor) Using The Username "(.*)" And P
   steps %{And I Have Logged In As A #{user_type}}
 end
 
+
+When(/^I Edit (.*) Details$/i) do |contact_type|
+  Sleep_Until(ClickOnASubTab(USER_PERSONAL_DETAILS_TAB_ID))
+  EditContactDetails(contact_type)
+end
+
+
+Then(/^I Can See The Suburb\/Town\/City Field$/i) do
+  CheckFieldInPersonalDetails()
+end
+
