@@ -113,3 +113,33 @@ end
 def VerifyInfoMessage(verify_info_id, info_value)
   Sleep_Until(VerifyAnElementExistByXPath(verify_info_id, info_value))
 end
+
+
+def CheckPayrollCycleType(payrollcycle_type)
+  dropdown = $driver.find_element(:id, 'payroll_cycle_type')
+  flag = 0
+  select_options = Selenium::WebDriver::Support::Select.new(dropdown)
+  select_options.options.each do |item|
+     #compares all the options of the dropdown
+     if item.text == payrollcycle_type
+       flag = 1
+       break
+     end
+  end
+  if flag == 1
+    puts COLOR_GREEN + payrollcycle_type + " type present".upcase
+  else
+    puts COLOR_RED + payrollcycle_type + "type not present. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n".upcase
+    fail
+  end
+end
+
+
+def CheckField()
+  #gets the selected value from the dropdown
+  option_selected = GetSelectedValueFromDropdown(PAYROLL_CYCLE_DATEOFMON_ID)
+
+  expect(option_selected).to eq("1st")
+  puts COLOR_GREEN + "date of month field is present and is set to the default value of 1st".upcase
+end
+

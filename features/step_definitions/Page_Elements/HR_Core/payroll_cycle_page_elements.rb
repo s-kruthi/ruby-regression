@@ -11,3 +11,5 @@ PAYROLL_CYCLE_TYPE_ID = '//select[@id="payroll_cycle_type"]'
 PAYROLL_CYCLE_WEEKSPERANNUM_ID = 'payroll_cycle_weeksPerAnnum'
 
 PAYROLL_CYCLE_SAVE_ID = 'payroll_cycle_save'
+
+PAYROLL_CYCLE_DATEOFMON_ID = "//select[@id='payroll_cycle_dateOfMonth']"
