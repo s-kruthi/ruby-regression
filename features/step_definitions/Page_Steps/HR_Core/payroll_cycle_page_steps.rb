@@ -117,16 +117,16 @@ end
 
 def CheckPayrollCycleType(payrollcycle_type)
   dropdown = $driver.find_element(:id, 'payroll_cycle_type')
-  i=0
+  flag = 0
   select_options = Selenium::WebDriver::Support::Select.new(dropdown)
   select_options.options.each do |item|
      #compares all the options of the dropdown
      if item.text == payrollcycle_type
-       i= 1
+       flag = 1
        break
      end
   end
-  if i == 1
+  if flag == 1
     puts COLOR_GREEN + payrollcycle_type + " type present".upcase
   else
     puts COLOR_RED + payrollcycle_type + "type not present. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n".upcase
