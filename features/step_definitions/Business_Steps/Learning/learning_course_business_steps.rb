@@ -572,7 +572,8 @@ Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With N
     ClickOnASubTab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
     ClickAddNotificationButton()
     SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
-    SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
+    # Comment the step which is not intended step for the scenarios. The templates are wiped out every week now on TMS
+    # SingleSelectFromSelect2Dropdown(FACE_TO_FACE_NOTIFICATION_TEMPLATE_SELECT2_ID, SELECT2_DROPDOWN_ID, FACE_TO_FACE_NOTIFICATION_NAME, SELECT2_DROPDOWN_RESULT_CLASS)
     Sleep_Until(WaitForAnElementByIdAndTouch(AddNotificationNextButtonId))
     WaitForAnElementByIdAndInputValue(FACE_TO_FACE_NOTIFICATION_EMAIL_SUBJECT_ID, 'Face to Face Notification')
     Sleep_Until(SaveNotificationTemplate())
