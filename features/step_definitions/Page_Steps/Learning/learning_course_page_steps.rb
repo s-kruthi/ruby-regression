@@ -1215,7 +1215,8 @@ end
 def SelectIndexFromSelect2SearchResult(search_value, index)
   # Sleep_Until($driver.find_element(:id, "s2id_autogen1"))
   Sleep_Until($driver.find_element(:id, "s2id_autogen1").send_keys(search_value))
-  VerifyAnElementExistById('select2-results-1', search_value)
+# The select2search result could not be exact as per DB change and this is not desired expectation for this scenario
+# VerifyAnElementExistById('select2-results-1', search_value)
   $driver.find_elements(:class, "select2-result")[index].click
 end
 
