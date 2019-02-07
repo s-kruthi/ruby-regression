@@ -274,8 +274,8 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
   for loop in i..arg1 do
     begin
       @@first_name = arg3 + loop.to_s
-      @@last_name = arg4 + loop.to_s if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
-      @@last_name = arg4 + loop.to_s + ".ob" if $add_user_type == "OB"
+      @@last_name = arg4 + Time.now.strftime("%Y%m%d%H%M%S") if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
+      @@last_name = arg4 + Time.now.strftime("%Y%m%d%H%M%S") + ".ob" if $add_user_type == "OB"
       @@user_name = @@first_name + "." + @@last_name
       @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value] #Email = firstname.lastname@email_suffix
 

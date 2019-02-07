@@ -105,3 +105,10 @@ Feature:
     And   I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres
 
 
+  @general_user_emp_add @general_high_risk @onboarding_high_risk
+  Scenario: [General] [Onboarding] Company Admin Creating New User
+    Given I Have Logged In as a Company Admin
+    And   I go to Admin Settings
+    And   I Go To Users under General section
+    When  I Click On "Add New User" Button
+    Then  I Should Be Able To Add 2 New "Non-ELMO" Users In To The System With "auto" As First Name And "scriptonce" As Last Name
