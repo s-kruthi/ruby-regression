@@ -5,7 +5,7 @@ recipient_ids: /87/
    recipients: {"to":{"elmotestrecadmin@noreply.com":"ELMO Test Recruitment Admin"},"cc":null,"bcc":null}
 recipient_ids: /82/
 *************************** 3. row ***************************
-   recipients: {"to":{"elmotestfacetoface@noreply.com":"ELMO Test F2F Logic Gaps"},"cc":null,"bcc":null}
+   recipients: {"to":{"elmotestfacetoface@noreply.com":"ELMO Test Logic Gaps"},"cc":null,"bcc":null}
 recipient_ids: /80/
 *************************** 4. row ***************************
    recipients: {"to":{"elmotesthr@noreply.com":"ELMO Test HR Manager"},"cc":null,"bcc":null}
