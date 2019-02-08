@@ -1,7 +1,7 @@
 @general @positions
 
-
-Feature:
+  
+  Feature:
   As a Company Admin I want to manage Company Positions So That I can Add Employee Positions
   
   @general_positions_add
@@ -12,4 +12,3 @@ Feature:
     When  I Click On "Add Position" Button
     And   I Add New "Position" Details
     Then  I Should Be Able to Successfully Create a New "Position"
-  

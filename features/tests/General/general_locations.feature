@@ -9,5 +9,5 @@ Feature:
     And   I go to Admin Settings
     And   I Go To Locations under General section
     When  I Click On "Add a new location" Button
-    And   I Add New Location Details
-    Then  I Should Be Able to Successfully Create a New Location
+    And   I Add New "Location" Details
+    Then  I Should Be Able to Successfully Create a New "Location"
