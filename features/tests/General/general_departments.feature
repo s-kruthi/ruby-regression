@@ -1,7 +1,8 @@
 @general @departments
 
+
 Feature:
-  As a Company Admin I Want To Manage Company Departments So That I Can Specify Employee Departments
+  As a Company Admin I want to manage Company Positions So That I can Add Employee Positions
   
   @general_departments_add
   Scenario: [General] Company Admin Creating A New Department
