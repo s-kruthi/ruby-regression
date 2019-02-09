@@ -4,8 +4,8 @@
 Feature:
   As a Company Admin I Want To Manage Company Departments So That I Can Specify Employee Departments
   
-  @general_departments_add
-  Scenario: [General] Company Admin Creating A New Department
+  @general_department_add
+  Scenario: [General] Company Admin Creating A New Department Successfully
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To Departments under General section
