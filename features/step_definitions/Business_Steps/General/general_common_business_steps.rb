@@ -10,6 +10,7 @@ And(/^I Click On "([^"]*)" Button$/i) do |button_name|
       begin
         buttonxPath = "//button[contains(.,'#{button_name}')]"
         Sleep_Until($driver.find_elements(:xpath, buttonxPath).first.click)
+        sleep(3)
       end
     
     when "Add New User"
