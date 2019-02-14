@@ -438,53 +438,6 @@ And(/^I Should Be Able To Save The Information Successfully$/i) do
 end
 
 
-And(/^I Click On "([^"]*)" Button$/i) do |button_name|
-  case button_name
-  when "Create Filter"
-    begin
-      buttonxPath = "//button[contains(.,'#{button_name}')]"
-      Sleep_Until($driver.find_elements(:xpath, buttonxPath).first.click)
-    end
-
-  when "Add New User"
-    begin
-      case $add_user_type
-      when "EMP"
-        begin
-          GoToAddNewUsersPage(ADD_NEW_USER_BTN)
-        end
-
-      when "OB"
-        begin
-          GoToAddNewUsersPage(OB_ADD_NEW_USER_BTN)
-        end
-      end
-    end
-
-  when "Add Emergency Contact Details"
-    begin
-      Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
-    end
-
-  when "Add Next Of Kin"
-    begin
-      Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
-    end
-
-  when "Add New Note"
-    begin
-      Sleep_Until(WaitForAnElementByIdAndTouch(ADD_NOTE_USERPROFILE_ID))
-    end
-
-  else
-    begin
-      buttonxPath = "//a[contains(.,'#{button_name}')]"
-      Sleep_Until(WaitForAnElementByXpathAndTouch(buttonxPath))
-    end
-  end
-end
-
-
 Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onboarding Section$/i) do |access_type|
   if access_type == "Be Able"
     Sleep_Until(VerifyAnElementExists("xpath", ONBOARDING_USER_SETUP_ID))
