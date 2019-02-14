@@ -5,4 +5,4 @@ identifier: admin.shanku
 *************************** 1. row ***************************
 first_name: DontTouchAutomationUser
 *************************** 1. row ***************************
-course_id: 49
+course_id: 51
