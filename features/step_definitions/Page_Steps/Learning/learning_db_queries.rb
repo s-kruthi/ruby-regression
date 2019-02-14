@@ -210,6 +210,27 @@ module Database_env
       return @db[query].first
     end
 
+
+    #checks whether course has the module
+    def get_course_surveymodule(course_id, module_id, activity_name)
+      query = "select * from mdl_course_modules cm
+               inner join epms_course_survey cs on cm.course = cs.course
+               where module = #{module_id}
+               and cm.course = '#{course_id}'
+               and cs.NAME LIKE '%#{activity_name}%';"
+      return @db[query].first
+    end
+
+
+    def get_course_f2fmodule(course_id, module_id, activity_name)
+      query = "select * from mdl_course_modules cm
+               inner join epms_course_facetoface cf on cm.course = cf.course
+               where module = #{module_id}
+               and cm.course = '#{course_id}'
+               and cf.NAME LIKE '%#{activity_name}%';"
+      return @db[query].first
+    end
+
   end
 end
 

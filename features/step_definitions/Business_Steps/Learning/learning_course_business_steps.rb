@@ -125,6 +125,7 @@ end
 
 
 And(/^I Open A Specific Activity Named (.*)$/i) do |f2f_activity_name|
+  CheckActivityExists('facetoface',f2f_activity_name)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ClickOnFirstActivity(f2f_activity_name)
 end
@@ -174,36 +175,40 @@ end
 
 
 Then(/^I Should Be Able To (Create|Edit|Delete|Copy|Cancel) A Session In The Face-to-Face Activity$/i) do |modify_session_type|
+  if modify_session_type == 'Create'
+    ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
+    AddSessionDetails()
+    ClickOnSaveButton(SAVE_BTN_ID)
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+
+  else
+    CheckF2FSessionsExist()
+  end
+
   case modify_session_type
-    when 'Create'
-      ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
-      AddSessionDetails()
-      ClickOnSaveButton(SAVE_BTN_ID)
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  when 'Edit'
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
+    EditSessionDetails()
+    ClickOnSaveButton(SAVE_BTN_ID)
+    PressConfirm()
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+
+  when 'Delete'
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
+    PressConfirm()
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
     
-    when 'Edit'
-      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
-      EditSessionDetails()
-      ClickOnSaveButton(SAVE_BTN_ID)
-      PressConfirm()
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  when 'Copy'
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_COPY)
+    PressEnterConfirm()
+    ClickOnSaveButton(SAVE_BTN_ID)
+    Sleep_Until(PressConfirm())
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
     
-    when 'Delete'
-      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
-      PressConfirm()
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
-    
-    when 'Copy'
-      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_COPY)
-      PressEnterConfirm()
-      ClickOnSaveButton(SAVE_BTN_ID)
-      Sleep_Until(PressConfirm())
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
-    
-    when 'Cancel'
-      Sleep_Until(ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_CANCEL))
-      Sleep_Until(PressConfirm())
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
+  when 'Cancel'
+    Sleep_Until(ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_CANCEL))
+    Sleep_Until(PressConfirm())
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
   end
 end
 
@@ -282,10 +287,7 @@ Then(/^I Should Be Able To View The Face-To-Face Activity Session List$/i) do
   WaitForFaceToFaceSessionListAndVerify(F2F_SESSION_HEADING_ID, F2F_SESSION_HEADING_VALUE)
 
   #ensuring that there are sessions for the F2F activity before sorting
-  if (GetTextAssociatedToElement("xpath", PAGINATION_ID) == 'No Session(s) found')
-    puts COLOR_YELLOW + "no sessions found for this face to face activity".upcase
-    skip_this_scenario
-  end
+  CheckF2FSessionsExist()
 end
 
 
@@ -500,7 +502,8 @@ end
 Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (.*)$/i) do |activity_type, survey_activity_name|
   SURVEY_ACTIVITY_NAME = survey_activity_name
   SURVEY_ACTIVITY_TYPE = activity_type
-  ## TODO: Query DB for course activity. If found proceed with search else create activity
+
+  CheckActivityExists('elmo survey', survey_activity_name)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
 end

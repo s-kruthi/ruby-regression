@@ -1286,3 +1286,30 @@ def SelectUsersPage(amount)
     check_boxes[element_index].click
   end
 end
+
+
+def CheckF2FSessionsExist()
+  if (GetTextAssociatedToElement("xpath", PAGINATION_ID) == 'No Session(s) found')
+    puts COLOR_YELLOW + "no sessions found for this face to face activity".upcase
+    skip_this_scenario
+  end
+end
+
+
+def CheckActivityExists(module_type, f2f_activity_name)
+  course_id = $driver.current_url.split('/')[6]
+
+  case module_type
+  when 'facetoface'
+    module_id = 21
+    check_course_section = $daos.get_course_f2fmodule(course_id, module_id, f2f_activity_name)
+  when 'elmo survey'
+    module_id = 26
+    check_course_section = $daos.get_course_module(course_id, module_id, survey_activity_name)
+  end
+
+  if check_course_section.nil?
+    puts COLOR_YELLOW + "Course does not have the specified activity. Please create the activity for the course ".upcase
+    skip_this_scenario
+  end
+end
