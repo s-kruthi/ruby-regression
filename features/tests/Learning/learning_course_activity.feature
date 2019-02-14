@@ -1,4 +1,4 @@
-@learning @courses
+@learning @courses @course_activity
   #@learningTestRailTags
   #C1027 C1028
   #@learningTestRailTags
