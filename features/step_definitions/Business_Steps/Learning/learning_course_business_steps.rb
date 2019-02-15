@@ -378,7 +378,7 @@ end
 And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activity_action, f2f_activity_name|
   F2F_ACTIVITY_NAME = f2f_activity_name
   F2F_ACTIVITY_ACTION = activity_action
-  ## TODO: Query DB for course ection. If found proceed with search else create section
+  CheckActivityExists('facetoface',f2f_activity_name)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity(F2F_ACTIVITY_ACTION, F2F_ACTIVITY_NAME)
 end
@@ -732,6 +732,7 @@ And(/^I Create A Random Course For Automation With (.*) Activity$/i) do |activit
   Sleep_Until(CreateACourseWithActivityThroughServices(AUTO_COMP_ADMIN_NAME,AUTO_COMP_ADMIN_PASSWORD,"#{$data_hash['user_id:']}",activity_name))
 end
 
+
 And(/^I Go To The Enrolled User Section For That Course (.*)$/i) do |course_name|
   Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,course_name))
   puts $data_hash['course_id:']
@@ -751,6 +752,7 @@ And(/^I Go To The Enrolled User Section Of That Randomly Created Course$/i) do
   #Sleep_Until(ReEnrolTheCandidateForCourse('Donttouchautomationuser'))
 end
 
+
 Given(/^A Face To Face Session With Status ([\w\s]+) Is Created For A Course$/i) do |session_status|
   steps %Q{
       Given A Company Admin Creates A New Course With Unique Name
@@ -760,6 +762,7 @@ Given(/^A Face To Face Session With Status ([\w\s]+) Is Created For A Course$/i)
         }
 end
 
+
 Then(/^I Should Be Able To Create A Session With Status ([\w\s]+) In The Face-to-Face Activity$/i) do |session_status|
   ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
   AddSessionDetails(session_status)
@@ -767,14 +770,27 @@ Then(/^I Should Be Able To Create A Session With Status ([\w\s]+) In The Face-to
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
+
 Then(/^I should be able to manual signup (.*)$/i) do |first_last_name|
   ManualSignupFaceToFaceSession(first_last_name, 0)
 end
 
-Then("I Should Be Able To Mark Attendance {string} With Grade {int} And Mark As {toggle}") do |attendance, grade, toggle_yes_no|
+
+Then(/^I Should Be Able To Mark Attendance {string} With Grade {int} And Mark As {toggle}$/i) do |attendance, grade, toggle_yes_no|
   MarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
 end
 
-And(/^I Should Be Able To Mark Attendance As ([\w\s]+) With Grade (\d+)$/) do |no_show, grade|
+
+And(/^I Should Be Able To Mark Attendance As ([\w\s]+) With Grade (\d+)$/i) do |no_show, grade|
   MarkFaceToFaceSessionAttendanceNoShow(no_show, grade)
 end
+
+
+Then(/^I Should Be Able To Edit A ELMO Module Activity Named (.*)$/i) do |activity_name|
+  CheckActivityExists('elmo module', activity_name)
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+  ModifyACourseActivity('Edit', activity_name)
+end
+
+
+
