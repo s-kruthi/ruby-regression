@@ -529,7 +529,6 @@ end
 
 
 def ModifyACourseActivity(action_type, activity_edit_link_name)
-  byebug
   Sleep_Until($driver.find_elements(:xpath, "//a[contains(@title,'#{action_type} #{activity_edit_link_name}')]").last.click)
   if action_type == 'Delete'
     Sleep_Until(PressEnterConfirm())
