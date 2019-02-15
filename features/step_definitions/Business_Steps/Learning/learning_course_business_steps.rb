@@ -505,7 +505,7 @@ Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (
 
   CheckActivityExists('elmo survey', survey_activity_name)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
+  ModifyACourseActivity(SURVEY_ACTIVITY_TYPE, SURVEY_ACTIVITY_NAME)
 end
 
 
