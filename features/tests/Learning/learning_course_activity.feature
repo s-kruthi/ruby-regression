@@ -1,4 +1,4 @@
-@learning @courses
+@learning @courses @course_activity
   #@learningTestRailTags
   #C1027 C1028
   #@learningTestRailTags
@@ -87,14 +87,15 @@
       Then  I Should Be Able To Add A Post Activity
 
 
-  # Survey currently works on faraz1 only
-    @smoke_learning3 @learning_high_risk @course_activity_add @course_activity_survey2_add
-    Scenario: [Learning]Learning Admin creating New Activities In A Course
-      Given I Have Logged In as a Learning Admin
-      And   I go to Admin Settings
-      And   I Go To Courses under Learning section
-      When  I Edit A Specific Course Named DO NOT DELETE
-      Then  I Should Be Able To Add A ELMO Survey (new) Activity
+#  Commenting out since new Elmo Survey(surveytwo) is coming up as Elmo survey in TMS
+#  # Survey currently works on faraz1 only
+#    @smoke_learning3 @learning_high_risk @course_activity_add @course_activity_survey2_add
+#    Scenario: [Learning]Learning Admin creating New Activities In A Course
+#      Given I Have Logged In as a Learning Admin
+#      And   I go to Admin Settings
+#      And   I Go To Courses under Learning section
+#      When  I Edit A Specific Course Named DO NOT DELETE
+#      Then  I Should Be Able To Add A ELMO Survey (new) Activity
 
 
     @smoke_learning4 @learning_low_risk @course_activity_edit

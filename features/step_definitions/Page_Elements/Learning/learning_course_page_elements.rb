@@ -66,8 +66,11 @@ SURVEY2_CONTENT_DROPDOWN_INPUT_CLASS = "select2-input"
 SURVEY2_CONTACT_DROPDOWN_SEARCH_CLASS = "select2-result-selectable"
 
 
+#Commenting this out, as only new Elmo Survey(surveytwo) exists in tmsfull
 ###ELMO Survey activity elements
-SURVEY_CONFIG_COMPULSORY_ID = 'elmo_learningbundle_modelmosurvey_compulsory'
+# SURVEY_CONFIG_COMPULSORY_ID = 'elmo_learningbundle_modelmosurvey_compulsory'
+SURVEY_CONFIG_COMPULSORY_ID = 'elmo_learningbundle_ModSurveytwo_compulsory'
+
 
 ###Face-to-face activity elements
 F2F_SESSION_TITLE_ID = "//h3[contains(.,'')]"

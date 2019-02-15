@@ -125,6 +125,7 @@ end
 
 
 And(/^I Open A Specific Activity Named (.*)$/i) do |f2f_activity_name|
+  CheckActivityExists('facetoface',f2f_activity_name)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ClickOnFirstActivity(f2f_activity_name)
 end
@@ -174,36 +175,40 @@ end
 
 
 Then(/^I Should Be Able To (Create|Edit|Delete|Copy|Cancel) A Session In The Face-to-Face Activity$/i) do |modify_session_type|
+  if modify_session_type == 'Create'
+    ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
+    AddSessionDetails()
+    ClickOnSaveButton(SAVE_BTN_ID)
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+
+  else
+    CheckF2FSessionsExist()
+  end
+
   case modify_session_type
-    when 'Create'
-      ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
-      AddSessionDetails()
-      ClickOnSaveButton(SAVE_BTN_ID)
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  when 'Edit'
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
+    EditSessionDetails()
+    ClickOnSaveButton(SAVE_BTN_ID)
+    PressConfirm()
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+
+  when 'Delete'
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
+    PressConfirm()
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
     
-    when 'Edit'
-      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_EDIT)
-      EditSessionDetails()
-      ClickOnSaveButton(SAVE_BTN_ID)
-      PressConfirm()
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
+  when 'Copy'
+    ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_COPY)
+    PressEnterConfirm()
+    ClickOnSaveButton(SAVE_BTN_ID)
+    Sleep_Until(PressConfirm())
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
     
-    when 'Delete'
-      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_DELETE)
-      PressConfirm()
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
-    
-    when 'Copy'
-      ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_COPY)
-      PressEnterConfirm()
-      ClickOnSaveButton(SAVE_BTN_ID)
-      Sleep_Until(PressConfirm())
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
-    
-    when 'Cancel'
-      Sleep_Until(ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_CANCEL))
-      Sleep_Until(PressConfirm())
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
+  when 'Cancel'
+    Sleep_Until(ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, F2F_SESSION_LIST_ACTION_ITEM_CANCEL))
+    Sleep_Until(PressConfirm())
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, F2F_SESSION_SUCCESSFUL_DELETION_VALUE))
   end
 end
 
@@ -282,10 +287,7 @@ Then(/^I Should Be Able To View The Face-To-Face Activity Session List$/i) do
   WaitForFaceToFaceSessionListAndVerify(F2F_SESSION_HEADING_ID, F2F_SESSION_HEADING_VALUE)
 
   #ensuring that there are sessions for the F2F activity before sorting
-  if (GetTextAssociatedToElement("xpath", PAGINATION_ID) == 'No Session(s) found')
-    puts COLOR_YELLOW + "no sessions found for this face to face activity".upcase
-    skip_this_scenario
-  end
+  CheckF2FSessionsExist()
 end
 
 
@@ -376,7 +378,7 @@ end
 And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activity_action, f2f_activity_name|
   F2F_ACTIVITY_NAME = f2f_activity_name
   F2F_ACTIVITY_ACTION = activity_action
-  ## TODO: Query DB for course ection. If found proceed with search else create section
+  CheckActivityExists('facetoface',f2f_activity_name)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity(F2F_ACTIVITY_ACTION, F2F_ACTIVITY_NAME)
 end
@@ -500,9 +502,10 @@ end
 Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (.*)$/i) do |activity_type, survey_activity_name|
   SURVEY_ACTIVITY_NAME = survey_activity_name
   SURVEY_ACTIVITY_TYPE = activity_type
-  ## TODO: Query DB for course activity. If found proceed with search else create activity
+
+  CheckActivityExists('elmo survey', survey_activity_name)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  ModifyACourseActivity(SURVEY_ACTIVITY_NAME, SURVEY_ACTIVITY_TYPE)
+  ModifyACourseActivity(SURVEY_ACTIVITY_TYPE, SURVEY_ACTIVITY_NAME)
 end
 
 
@@ -729,6 +732,7 @@ And(/^I Create A Random Course For Automation With (.*) Activity$/i) do |activit
   Sleep_Until(CreateACourseWithActivityThroughServices(AUTO_COMP_ADMIN_NAME,AUTO_COMP_ADMIN_PASSWORD,"#{$data_hash['user_id:']}",activity_name))
 end
 
+
 And(/^I Go To The Enrolled User Section For That Course (.*)$/i) do |course_name|
   Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,course_name))
   puts $data_hash['course_id:']
@@ -748,6 +752,7 @@ And(/^I Go To The Enrolled User Section Of That Randomly Created Course$/i) do
   #Sleep_Until(ReEnrolTheCandidateForCourse('Donttouchautomationuser'))
 end
 
+
 Given(/^A Face To Face Session With Status ([\w\s]+) Is Created For A Course$/i) do |session_status|
   steps %Q{
       Given A Company Admin Creates A New Course With Unique Name
@@ -757,6 +762,7 @@ Given(/^A Face To Face Session With Status ([\w\s]+) Is Created For A Course$/i)
         }
 end
 
+
 Then(/^I Should Be Able To Create A Session With Status ([\w\s]+) In The Face-to-Face Activity$/i) do |session_status|
   ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
   AddSessionDetails(session_status)
@@ -764,14 +770,27 @@ Then(/^I Should Be Able To Create A Session With Status ([\w\s]+) In The Face-to
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
+
 Then(/^I should be able to manual signup (.*)$/i) do |first_last_name|
   ManualSignupFaceToFaceSession(first_last_name, 0)
 end
 
-Then("I Should Be Able To Mark Attendance {string} With Grade {int} And Mark As {toggle}") do |attendance, grade, toggle_yes_no|
+
+Then(/^I Should Be Able To Mark Attendance {string} With Grade {int} And Mark As {toggle}$/i) do |attendance, grade, toggle_yes_no|
   MarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
 end
 
-And(/^I Should Be Able To Mark Attendance As ([\w\s]+) With Grade (\d+)$/) do |no_show, grade|
+
+And(/^I Should Be Able To Mark Attendance As ([\w\s]+) With Grade (\d+)$/i) do |no_show, grade|
   MarkFaceToFaceSessionAttendanceNoShow(no_show, grade)
 end
+
+
+Then(/^I Should Be Able To Edit A ELMO Module Activity Named (.*)$/i) do |activity_name|
+  CheckActivityExists('elmo module', activity_name)
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+  ModifyACourseActivity('Edit', activity_name)
+end
+
+
+
