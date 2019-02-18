@@ -211,7 +211,7 @@ def EditLegalEntityLinkedToUser()
 end
 
 
-def SetClientCountry(country)
+def SetClientCountryElmoConfig(country)
   steps %{
     Given I Have Logged In As A ELMO Admin
     And   I go to Admin Settings

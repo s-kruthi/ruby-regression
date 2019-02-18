@@ -110,7 +110,7 @@ end
 
 
 Given(/^That The Client Country Is Set As ([\w\s]+)$/i) do | country |
-  SetClientCountry(country)
+  SetClientCountryElmoConfig(country)
 end
 
 
