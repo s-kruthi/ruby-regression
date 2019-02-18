@@ -69,12 +69,12 @@ end
 
 
 When(/^I Click On The Branding Selection Field$/i) do
-  $driver.find_element(:id, 'elmoConfiguration_brandingSelectionField').click
+  Sleep_Until(ClickElement('id', ELMO_CONFIG_BRANDING_ID))
 end
 
 
 Then(/^I Can Choose Legal Entity As The Branding Selection Field$/i) do
-  Sleep_Until(SelectFromDropdown("//select[@id='elmoConfiguration_brandingSelectionField']", 'Legal Entity'))
+  Sleep_Until(SelectFromDropdown(ELMO_CONFIG_BRANDING_SELECT_ID , 'Legal Entity'))
 end
 
 
@@ -113,4 +113,40 @@ And(/^I Click On The (\w+) Item From Left Side Bar Under "Custom User Fields" se
   steps %Q{
     When  I Click On "#{item_name}" item from left side bar under "Custom User Fields" section
   }
+end
+
+
+When(/^I Set The Client Country As ([\s\w]+)$/i) do | country |
+  case country
+    when 'Australia'
+      country_code = 'AU'
+    when 'New Zealand'
+      country_code = 'NZ'
+    else
+      country_code = 'AU,NZ'
+  end
+
+  client_country = $daos.get_epms_config_enabled('clientCountry')[:value]
+
+  if client_country != country_code
+    if client_country == 'AU,NZ' && (country_code == 'AU' || country_code == 'NZ')
+      puts "1"
+      Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_VISIBILITY_CLEAR_ID))
+      Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_VISIBILITY_CLEAR_ID))
+      Sleep_Until(SelectFromDropdown(ELMO_CONFIG_CLIENT_COUNTRY_ID, "#{country}"))
+    elsif (client_country == 'NZ' && country_code == 'AU') || (client_country == 'AU' && country_code == 'NZ')
+      Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_VISIBILITY_CLEAR_ID))
+      Sleep_Until(SelectFromDropdown(ELMO_CONFIG_CLIENT_COUNTRY_ID, "#{country}"))
+      puts "2"
+    else
+      Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_VISIBILITY_CLEAR_ID))
+      Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_VISIBILITY_CLEAR_ID))
+      Sleep_Until(SelectFromDropdown(ELMO_CONFIG_CLIENT_COUNTRY_ID, "Australia"))
+      Sleep_Until(SelectFromDropdown(ELMO_CONFIG_CLIENT_COUNTRY_ID, "New Zealand"))
+      puts "3"
+    end
+    puts COLOR_BLUE + ("client country is now set to " + country).upcase
+  else
+    puts COLOR_BLUE + ("client country is already set to " + country).upcase
+  end
 end

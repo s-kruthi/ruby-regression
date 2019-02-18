@@ -121,8 +121,8 @@ Feature:
     When  I Edit <contact_type> Details
     Then  I Can See The Suburb/Town/City Field
 
-  Examples:
-  | contact_type |
-  | Emergency Contact |
-  | Next of Kin       |
-  | Contact           |
+    Examples:
+    | contact_type |
+    | Emergency Contact |
+    | Next of Kin       |
+    | Contact           |

@@ -9,7 +9,7 @@ Then(/^I Should Be Able To See Legal Entities under General section$/i) do
 end
 
 
-And(/^I Can (Add|Edit) A Legal Entity$/i) do |action|
+And(/^I Can (Add|Edit) A Legal Entity$/i) do | action |
   if action == 'Add'
     AddLegalEntity()
   else
@@ -107,3 +107,20 @@ Then(/^I Should See That I Cannot Deactivate Legal Entity Linked To User$/i) do
   Sleep_Until(WaitForAnElementByXPath(LEGAL_ENTITY_ALERT_ID))
   expect($driver.find_element(:xpath, LEGAL_ENTITY_ALERT_TEXT_ID).text).to eq(LEGAL_ENTITY_LINKED_TO_USER_ERR_VALUE)
 end
+
+
+Given(/^That The Client Country Is Set As ([\w\s]+)$/i) do | country |
+  SetClientCountry(country)
+end
+
+
+Then(/^I Should See That The Jurisdiction Is Set To ([\w\s]+)$/i) do | country |
+  CheckJurisdiction(country)
+end
+
+
+And(/^I Should See That The Jurisdiction Field Is Read-only$/i) do
+  CheckJurisdictionField()
+end
+
+

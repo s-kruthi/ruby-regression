@@ -99,3 +99,19 @@ Feature:
     And   I Go To Legal Entities under General section
     And   I Edit The Legal Entity Linked To User To Deactivate
     Then  I Should See That I Cannot Deactivate Legal Entity Linked To User
+
+
+  @general_low_risk @legal_entities_jurisdiction @C21035
+  Scenario Outline: [General]Jurisdiction Field Is Read-only When Only One Client Country
+    Given That The Client Country Is Set As <country>
+    When  I go to Admin Settings
+    And   I Go To Legal Entities under General section
+    And   I Click On Add Legal Entity Button
+    Then  I Should See That The Jurisdiction Is Set To <country>
+    And   I Should See That The Jurisdiction Field Is Read-only
+
+
+    Examples:
+      | country     |
+      | Australia   |
+      | New Zealand |
