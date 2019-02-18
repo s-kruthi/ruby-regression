@@ -124,17 +124,8 @@ Feature:
     When  I Edit <contact_type> Details
     Then  I Can See The Suburb/Town/City Field
 
-<<<<<<< HEAD
     Examples:
-      | contact_type |
-      | Emergency Contact |
-      | Next of Kin       |
-#this will be changed as part of another ticket HC-1526
-#    | Contact           |
-=======
-  Examples:
-  | contact_type |
-  | Emergency Contact |
-  | Next of Kin       |
-  | Contact           |
->>>>>>> PR-1492 Updated the test to include Contact details 
+    | contact_type |
+    | Emergency Contact |
+    | Next of Kin       |
+    | Contact           |
