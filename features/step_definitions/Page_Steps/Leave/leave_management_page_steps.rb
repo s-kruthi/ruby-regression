@@ -1,7 +1,7 @@
-
 def GoToLeaveTypeUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
 end
+
 
 def CreateANewLeaveType(leave_type_path,add_new_leave_type)
   sleep(2)
@@ -10,6 +10,7 @@ def CreateANewLeaveType(leave_type_path,add_new_leave_type)
   WaitForAnElementByClassAndTouch(add_new_leave_type)
   sleep(3)
 end
+
 
 def FillTheLeaveTypeAndSave(leave_type_title_cs,leave_type_title_val,leave_type_entitl_cs)
   WaitForAnElementByCSSAndInputValue(leave_type_title_cs,leave_type_title_val)
@@ -23,6 +24,8 @@ def FillTheLeaveTypeAndSave(leave_type_title_cs,leave_type_title_val,leave_type_
   $driver.find_element(:css, 'button[ng-click="lt.postLeaveType()"]').click
   sleep(3)
 end
+
+
 def SearchTheCreatedLeaveTypeAndDeleteIt(search_leav_typ,leave_type_val)
   WaitForAnElementByCSSAndInputValue(search_leav_typ,leave_type_val)
   $driver.find_element(:css, 'button[ng-click="lt.getLeaveTypes()"]').click
@@ -34,9 +37,12 @@ def SearchTheCreatedLeaveTypeAndDeleteIt(search_leav_typ,leave_type_val)
   sleep(2)
   $driver.quit
 end
+
+
 def GoToLeavePolicyUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
 end
+
 
 def CreateANewLeavePolicy(leave_policy_path,add_new_leave_policy)
   WaitForAnElementByXpathAndTouch(leave_policy_path)
@@ -44,6 +50,7 @@ def CreateANewLeavePolicy(leave_policy_path,add_new_leave_policy)
   WaitForAnElementByClassAndTouch(add_new_leave_policy)
   sleep(3)
 end
+
 
 def FillTheLeavePolicyAndSave(leave_policy_title_cs,leave_policy_title_val)
   WaitForAnElementByCSSAndInputValue(leave_policy_title_cs,leave_policy_title_val)
@@ -64,6 +71,7 @@ def FillTheLeavePolicyAndSave(leave_policy_title_cs,leave_policy_title_val)
   sleep(3)
 end
 
+
 def SearchTheCreatedLeavePolicyAndDeleteIt(search_leav_pol,leave_pol_val)
   $driver.find_element(:link_text, 'Leave Policy').click
   sleep(3)
@@ -76,15 +84,19 @@ def SearchTheCreatedLeavePolicyAndDeleteIt(search_leav_pol,leave_pol_val)
   PressEnterConfirm()
 end
 
+
 def GoToHolidayMgntUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
 end
+
+
 def CreateANewCompanyHoliday(holiday_mgmt_path,add_new_company_hol)
   WaitForAnElementByXpathAndTouch(holiday_mgmt_path)
   sleep(3)
   WaitForAnElementByXpathAndTouch(add_new_company_hol)
   sleep(3)
 end
+
 
 def FillTheNewCompanyHolidayAndSave()
   sleep(1)
@@ -100,6 +112,7 @@ def FillTheNewCompanyHolidayAndSave()
   puts $current_hol_id
 end
 
+
 def FindTheCreatedHolidayAndDeleteIt()
   Sleep_Until($driver.find_element(:partial_link_text, 'Holiday Management').click)
   # sleep(5)
@@ -110,15 +123,19 @@ def FindTheCreatedHolidayAndDeleteIt()
   Sleep_Until($driver.find_element(:css, "[data-bb-handler='success']").click)
 end
 
+
 def GoToLeaveRequestUnderLeaveManagement(leave_management_sec_id,leave_requests_path)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
   WaitForAnElementByXpathAndTouch(leave_requests_path)
   sleep(2)
 end
+
+
 def GoToLeaveBalanceUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
   sleep(2)
 end
+
 
 def ApproveTheSubmittedLeaveRequest(approval_reason)
   sleep(2)
@@ -138,6 +155,7 @@ def ApproveTheSubmittedLeaveRequest(approval_reason)
   sleep(2)
   #$driver.find_element(:xpath, "//a[contains(.,'Approved Request')]").click
 end
+
 
 def ModifyLeaveHrAndProcessTheLeaveRequest()
   $driver.find_element(:xpath, "//a[contains(.,'Approved Request')]").click
@@ -174,6 +192,7 @@ def ModifyLeaveHrAndProcessTheLeaveRequest()
  DELETE FROM epms_leave_request WHERE id=#{RQST_PATH_ID} \\G;" )
 end
 
+
 def GoToLeaveBalanceAndSearchTheEmployee()
   sleep(2)
   $driver.find_element(:xpath, "//span[contains(.,'Leave Balance & Import')]").click
@@ -181,22 +200,12 @@ def GoToLeaveBalanceAndSearchTheEmployee()
   $driver.find_element(:xpath, "//input[@ng-model='lb.data.criteria.searchText']").send_keys("Donald trump", :return)
   sleep(1)
 end
+
+
 def CheckTheLeaveBucketReturnsTheExpectedAccruals()
   FetchTheLeaveBucketForThatEmployee()
   MatchTheExpectedLeaveBucketFromDatabase()
 end
-
-# module Leave
-#   def Leave.annual_leave()
-#     puts $driver.find_elements(:class, "ng-binding")[8].text
-#   end
-#   def Leave.personal_leave()
-#    puts $driver.find_elements(:class, "ng-binding")[11].text
-#   end
-#   def Leave.limit_leave()
-#   puts $driver.find_elements(:class, "ng-binding")[14].text
-#   end
-# end
 
 
 def FetchTheLeaveBucketForThatEmployee()
@@ -206,4 +215,24 @@ def FetchTheLeaveBucketForThatEmployee()
   puts "#{$personal_leave}"
   $limit_based = $driver.find_elements(:class, "ng-binding")[10].text
   puts "#{$limit_based}"
+end
+
+
+def CreateLeaveTypeThroughServices(leave_type, leavetype_name)
+  url = $site_url.split('//')[1].split('/')[0]
+  ent_type = GetEntitlementType(leave_type)
+
+  # if ENV['MYMAC']
+  #   %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/LeaveManagement/CreateLeaveType.jmx -Jurl=#{url} -Jenttype=#{ent_type} -Jusername=#{@username} -Jtitle=#{leavetype_name})
+  # else
+    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/LeaveManagement/CreateLeaveType.jmx -Jurl=#{url} -Jenttype=#{ent_type} -Jusername=#{@username} -Jtitle=#{leavetype_name})
+  # end
+end
+
+
+def GetEntitlementType(leave_type)
+  case leave_type
+  when 'Long Service Leave'
+    return 4
+  end
 end

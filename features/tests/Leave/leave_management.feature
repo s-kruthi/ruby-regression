@@ -15,11 +15,13 @@ Feature:
     When  I Try To Create A New Leave Type
     Then  I Should Be Able To Successfully Create A New Leave Type
 
+
   @create_leave_policy @leave_high_risk
   Scenario: [Leave]Create Leave policy
     Given I Have Logged In as a Company Admin To Setup Leave Management
     When  I Try To Create A New Leave Policy
     Then  I Should Be Able To Successfully Create A New Leave Policy
+
 
   @create_holiday_management @leave_high_risk
   Scenario: [Leave]Create Holiday Management
@@ -27,8 +29,18 @@ Feature:
     When  I Try To Create A New Company Holiday
     Then  I Should Be Able To Successfully Create A New Company Holiday
 
+
   @CheckleaveBalance_Accruals @leave_low_risk
   Scenario: [Leave]Check Leave balance of An Employee As A Company HR
     Given I Have Logged In As A Company Admin To Check Leave Balance Section
     When  I Search For Leave Balance Of A Particular Employee
     Then  I Should Be Able To Check The Correct Leave Balance
+
+
+  @leave_low_risk @leave_type_TIL
+  Scenario: [Leave]Create LSL Leave Type
+    Given I Have Logged In as a HR Manager
+   # When  I Create A Rostered Day Off/ Time in Lieu Leave Type
+    And   I Go to Admin Settings
+    And   I Go To Leave Types under Leave Management section
+    When  I Create A Leave Type Of Long Service Leave Entitlement Type Named LSL_Auto
