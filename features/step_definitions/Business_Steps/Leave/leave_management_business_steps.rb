@@ -99,3 +99,8 @@ end
 When(/^I Create A Leave Type Of ([\w\s]+) Entitlement Type Named (.*)$/i) do | leave_type, leavetype_name |
   CreateLeaveTypeThroughServices(leave_type, leavetype_name)
 end
+
+
+Then(/^I Should See That The Leave Type Is Created Successfully$/i) do
+  pending
+end

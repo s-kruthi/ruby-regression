@@ -233,6 +233,6 @@ end
 def GetEntitlementType(leave_type)
   case leave_type
   when 'Long Service Leave'
-    return 4
+    return 3
   end
 end
