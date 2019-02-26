@@ -112,11 +112,8 @@ Feature:
     And   I Go To Users under General section
     When  I Click On "Add New User" Button
     Then  I Should Be Able To Add 2 New "Non-ELMO" Users In To The System With "auto" As First Name And "scriptonce" As Last Name
-<<<<<<< HEAD
-=======
 
 
->>>>>>> PR-1492 Updated the test to include Contact details 
   @general_low_risk @hr_nz_personal_details @C21013
   Scenario Outline: [General]NZ Address Format In Personal Details Section
     Given I Have Logged In as a Company Admin

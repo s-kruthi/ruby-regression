@@ -579,4 +579,3 @@ end
 Then(/^I Can See The Suburb\/Town\/City Field$/i) do
   CheckFieldInPersonalDetails()
 end
-

@@ -356,7 +356,6 @@ end
 
 def EditContactDetails(contact_type)
   case contact_type
-<<<<<<< HEAD
   when 'Emergency Contact'
     Sleep_Until(ClickOnASubTab(EDIT_EM_CONTACT_BTN_ID))
     Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
@@ -375,26 +374,6 @@ def EditContactDetails(contact_type)
     if form_present == 0
       Sleep_Until(WaitForAnElementByIdAndTouch(USER_CONTACT_DETAILS_EDIT_BUTTON_ID))
     end
-=======
-    when 'Emergency Contact'
-      Sleep_Until(ClickOnASubTab(EDIT_EM_CONTACT_BTN_ID))
-      Sleep_Until(ClickOnASubTab(ADD_EM_CONTACT_BTN_ID))
-    when 'Next of Kin'
-      Sleep_Until(ClickOnASubTab(EDIT_NOK_CONTACT_BTN_ID))
-      Sleep_Until(ClickOnASubTab(ADD_NOK_CONTACT_BTN_ID))
-    else
-      Sleep_Until(WaitForAnElementByIdAndTouch(USER_CONTACT_DETAILS_EDIT_BUTTON_ID))
-      sleep (1)
-
-      #checking if the form is displayed, if not then click again on the edit button
-      if $driver.find_elements(:id, USER_CONTACTDETAILS_MOBILE_ID).size == 0
-        form_present = 0
-      end
-
-      if form_present == 0
-        Sleep_Until(WaitForAnElementByIdAndTouch(USER_CONTACT_DETAILS_EDIT_BUTTON_ID))
-      end
->>>>>>> PR-1492 Updated the test to include Contact details 
   end
 end
 
