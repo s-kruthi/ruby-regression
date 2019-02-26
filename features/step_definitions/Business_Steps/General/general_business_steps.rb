@@ -209,7 +209,8 @@ And(/^I Go To The (.*) Section$/i) do |menu_type|
 
     when "Menu Leave"
       begin
-        GoToNavBarSection(MENU_LEAVE_LINK)
+        Sleep_Until(GoToNavBarSection(MENU_LEAVE_LINK))
+        sleep (2)
       end
 
     when "Menu Payroll"
