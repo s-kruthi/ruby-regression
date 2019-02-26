@@ -208,3 +208,9 @@ def FetchTheLeaveBucketForThatEmployee()
   puts "#{$limit_based}"
 end
 
+
+def CreateLeaveTypeUsingJmeter()
+  puts $site_url
+  puts @username
+  puts @user_pwd
+end
