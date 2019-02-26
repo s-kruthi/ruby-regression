@@ -86,7 +86,6 @@ def SetClientCountry(country)
       Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_VISIBILITY_CLEAR_ID))
       Sleep_Until(SelectFromDropdown(ELMO_CONFIG_CLIENT_COUNTRY_ID, "Australia"))
       Sleep_Until(SelectFromDropdown(ELMO_CONFIG_CLIENT_COUNTRY_ID, "New Zealand"))
-      puts "3"
     end
     puts COLOR_BLUE + ("client country is now set to " + country).upcase
 
