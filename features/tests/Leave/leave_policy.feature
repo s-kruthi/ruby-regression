@@ -23,6 +23,8 @@ Feature:
     And   I Go To Leave Policy under Leave Management section
     When  I Click On New Leave Policy Button
     And   I Set The Show Long Service Leave Balance to employees toggle to Enabled
+    Then  I Should See That The Show LSL after x years Default Value is 1
+
 
 
 

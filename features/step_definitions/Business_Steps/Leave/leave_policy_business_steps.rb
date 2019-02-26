@@ -31,9 +31,12 @@ And(/^I Set The ([\w\s]+) toggle to ([\w]+)/i) do | toggle_name, toggle_setting 
   when 'Show Personal Leave Validation'
     toggle_id = LEAVE_POLICY_SHOWPERSONALVALIDATION_TOGGLE_ID
   end
-  byebug
-  $driver.execute_script("$(#{LEARNING_EXTTRAINING_TOGGLE_ID}).each(function() { var $this=$(this)\;{ $this.parent().trigger('click') } })")
-
-  $driver.execute_script("$(#{toggle_id}).each(function() { var $this=$(this)\;{ $this.parent().trigger('click') } })")
-  byebug
+  JavascriptClick(toggle_id)
 end
+
+
+Then(/^I Should See That The Show LSL after x years Default Value is 1/i) do
+  expect($driver.find_element(:id, "leave-policy-form-showLongServiceLeaveAfterYears").attribute('value')).to eq("1")
+  puts COLOR_GREEN + "show long service leave after x years is set to default 1".upcase
+end
+
