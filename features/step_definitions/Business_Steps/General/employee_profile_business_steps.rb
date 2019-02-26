@@ -252,6 +252,8 @@ end
 When(/^I Search For An Employee With No Leave Policy$/i) do
   SearchForEmpWithNoLeavePolicy()
 end
+
+
 When(/^I Search For An Employee Associated With Single\/No Cost Centre$/i) do
   SearchForEmpNoCostCentre()
 end
@@ -274,10 +276,6 @@ Then(/^I Should Be Able To Assign Leave Policy For The User$/i) do
   puts COLOR_GREEN + ("Assigned the Leave policy:" + @leave_policy + " to user:").upcase + @user_search[:first_name] + " " + @user_search[:last_name] +
            (" having user id: ").upcase + @user_search[:user_id].to_s
 end
-
-
-
-
 
 
 And(/^I Edit The User's Profile$/i) do
