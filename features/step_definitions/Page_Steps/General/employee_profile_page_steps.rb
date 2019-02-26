@@ -132,8 +132,9 @@ def SearchForUserWithDefaultAutopaySetting()
 end
 
 
+#the element_id here needs to be the id value Eg:id='isBanking', will not work with xpath
 def JavascriptClick(element_id)
-  $driver.execute_script("$(#{element_id}).each(function() { var $this=$(this)\;{ $this.parent().trigger('click') } })")
+  $driver.execute_script("$('#"+ element_id + "').each(function() { var $this=$(this)\; { $this.parent().trigger('click') } })")
 end
 
 

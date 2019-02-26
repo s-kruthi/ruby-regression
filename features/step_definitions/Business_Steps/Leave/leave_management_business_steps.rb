@@ -84,3 +84,10 @@ end
 Then(/^I Should Be Able To Check The Correct Leave Balance$/i) do
   CheckTheLeaveBucketReturnsTheExpectedAccruals()
 end
+
+
+Given(/^I Am Creating (LSL|RDO\/TIL) Leave Type$/i) do | leave_type |
+  puts @username
+  puts @user_pwd
+  CreateLeaveTypeUsingJmeter()
+end
