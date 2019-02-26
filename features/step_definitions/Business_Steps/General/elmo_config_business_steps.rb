@@ -73,8 +73,8 @@ When(/^I Click On The Branding Selection Field$/i) do
 end
 
 
-Then(/^I Can Choose Legal Entity As The Branding Selection Field$/i) do
-  Sleep_Until(SelectFromDropdown(ELMO_CONFIG_BRANDING_SELECT_ID , 'Legal Entity'))
+Then(/^I Can Choose ([\w\s]+) As The Branding Selection Field$/i) do | branding_selection_value |
+  Sleep_Until(SelectFromDropdown(ELMO_CONFIG_BRANDING_SELECT_ID , branding_selection_value))
 end
 
 
