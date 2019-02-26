@@ -217,22 +217,3 @@ def FetchTheLeaveBucketForThatEmployee()
   puts "#{$limit_based}"
 end
 
-
-def CreateLeaveTypeThroughServices(leave_type, leavetype_name)
-  url = $site_url.split('//')[1].split('/')[0]
-  ent_type = GetEntitlementType(leave_type)
-
-  # if ENV['MYMAC']
-  #   %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/LeaveManagement/CreateLeaveType.jmx -Jurl=#{url} -Jenttype=#{ent_type} -Jusername=#{@username} -Jtitle=#{leavetype_name})
-  # else
-    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/LeaveManagement/CreateLeaveType.jmx -Jurl=#{url} -Jenttype=#{ent_type} -Jusername=#{@username} -Jtitle=#{leavetype_name})
-  # end
-end
-
-
-def GetEntitlementType(leave_type)
-  case leave_type
-  when 'Long Service Leave'
-    return 3
-  end
-end
