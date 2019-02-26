@@ -210,3 +210,28 @@ def EditLegalEntityLinkedToUser()
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
 
+
+def SetClientCountryElmoConfig(country)
+  steps %{
+    Given I Have Logged In As A ELMO Admin
+    And   I go to Admin Settings
+    And   I Go To General Setup under General section
+    And   I Click On "ELMO Configuration" Tab
+    When  I Set The Client Country As #{country}
+    Then  I Should Be Able To Save Configuration Details
+  }
+end
+
+
+def CheckJurisdiction(country)
+  expect(GetSelectedValueFromDropdown(LEGAL_ENTITY_JURISDICTION_ID)).to eq(country)
+  puts COLOR_GREEN + ("jurisdiction is set to " + country).upcase
+end
+
+
+def CheckJurisdictionField()
+  expect($driver.find_element(:xpath, LEGAL_ENTITY_JURISDICTION_ID).attribute('disabled')).to eq('true')
+  puts COLOR_GREEN + "jurisdiction field is read only".upcase
+end
+
+

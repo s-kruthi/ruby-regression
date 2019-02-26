@@ -33,3 +33,5 @@ LEGAL_ENTITY_ABN_ALERT_ID = '//div[contains(@class,"alert-danger")]/input'
 LEGAL_ENTITY_ALERT_TEXT_ID ='//div[contains(@class,"alert-danger")]/ul/li'
 
 LEGAL_ENTITY_ALERT_ID = '//div[contains(@class,"alert-danger")]'
+
+LEGAL_ENTITY_JURISDICTION_ID = '//select[@id="legal_entity_jurisdiction"]'

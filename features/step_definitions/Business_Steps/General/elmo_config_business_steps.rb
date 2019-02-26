@@ -69,12 +69,12 @@ end
 
 
 When(/^I Click On The Branding Selection Field$/i) do
-  $driver.find_element(:id, 'elmoConfiguration_brandingSelectionField').click
+  Sleep_Until(ClickElement('id', ELMO_CONFIG_BRANDING_ID))
 end
 
 
-Then(/^I Can Choose Legal Entity As The Branding Selection Field$/i) do
-  Sleep_Until(SelectFromDropdown("//select[@id='elmoConfiguration_brandingSelectionField']", 'Legal Entity'))
+Then(/^I Can Choose ([\w\s]+) As The Branding Selection Field$/i) do | branding_selection_value |
+  Sleep_Until(SelectFromDropdown(ELMO_CONFIG_BRANDING_SELECT_ID , branding_selection_value))
 end
 
 
@@ -113,4 +113,9 @@ And(/^I Click On The (\w+) Item From Left Side Bar Under "Custom User Fields" se
   steps %Q{
     When  I Click On "#{item_name}" item from left side bar under "Custom User Fields" section
   }
+end
+
+
+When(/^I Set The Client Country As ([\s\w]+)$/i) do | country |
+  SetClientCountry(country)
 end
