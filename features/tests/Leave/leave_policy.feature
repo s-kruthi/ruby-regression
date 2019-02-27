@@ -16,7 +16,7 @@ Feature:
     And   I Should See The Show Long Service Leave Validation toggle set to Disabled
 
 
-  @leave_low_risk @leave_policy_time_validation_LSL @test
+  @leave_low_risk @leave_policy_time_validation_LSL_default
   Scenario: [Leave]Verify Time Validation For Showing LSL
     Given I Have Logged In as a HR Manager
     And   I Go to Admin Settings
@@ -24,6 +24,28 @@ Feature:
     When  I Click On New Leave Policy Button
     And   I Set The Show Long Service Leave Balance to employees toggle to Enabled
     Then  I Should See That The Show LSL after x years Default Value is 1
+
+
+  @leave_low_risk @leave_policy_time_validation_LSL
+  Scenario: [Leave]Verify Time Validation For Showing LSL
+    Given I Have Logged In as a HR Manager
+    And   I Go to Admin Settings
+    And   I Go To Leave Policy under Leave Management section
+    And   I Edit A Leave Policy
+    When  I Set The Show Long Service Leave Balance to employees toggle to Enabled
+    And   I Enter The Show LSL after x years To 36
+    And   I Click The Save Button To Save The Leave Policy
+    Then  I Should See A LSL Time Validation Error Message
+
+#
+#
+#    And   I Click On New Leave Policy Button
+#    And   I Enter The Leave Policy Title As Leave Policy Auto
+#    And   I Select Personal Leave As The Leave Type
+#    And   I Set The Show Long Service Leave Balance to employees toggle to Enabled
+#    And   I Enter Annual Entitlements
+#    And   I Select Monday to Friday (5 Days) As The Working days per week
+
 
 
 
