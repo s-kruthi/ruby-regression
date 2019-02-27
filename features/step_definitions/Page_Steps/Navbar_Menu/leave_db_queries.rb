@@ -11,7 +11,8 @@ module Database_env
                    where elpu.leave_policy_id = (select elp.id from epms_leave_policy elp
                      inner join epms_leave_policy_type elpt on elpt.policy_id = elp.id
                      inner join epms_leave_type elt on elt.id = elpt.type_id
-                     where elt.title = 'RDO/ Time in Lieu')
+                     where elt.title = 'RDO/ Time in Lieu'
+                     and elpt.is_deleted = 0)
                    and eu.is_active = 1
                    and eu.is_elmo = 0
                    and eu.is_deleted = 0
@@ -19,9 +20,9 @@ module Database_env
                    and ehed.is_active = 1
                    and ehed.is_deleted = 0
                    and exists (select user_id from epms_leave_bucket where leave_entitlement_type in (1,2,3,4))
-                   and eu.id = (select user_id from epms_leave_bucket
+                   and eu.id in (select user_id from epms_leave_bucket
                             where balance >= 8 and leave_entitlement_type = 4 and status = 1)
-                   ORDER BY rand();"
+                   ORDER BY rand() limit 1;"
 
         when "Long Service Leave"
           query = "select distinct eu.first_name, eu.last_name, eu.id as user_id from epms_user eu
@@ -31,7 +32,8 @@ module Database_env
                    where elpu.leave_policy_id = (select elp.id from epms_leave_policy elp
                      inner join epms_leave_policy_type elpt on elpt.policy_id = elp.id
                      inner join epms_leave_type elt on elt.id = elpt.type_id
-                     where elt.title = 'Long Service Leave')
+                     where elt.title = 'Long Service Leave'
+                     and elpt.is_deleted = 0)
                    and eu.is_active = 1
                    and eu.is_elmo = 0
                    and eu.is_deleted = 0
@@ -41,7 +43,7 @@ module Database_env
                    and exists (select user_id from epms_leave_bucket where leave_entitlement_type = 3)
                    and eu.id in (select user_id from epms_leave_bucket
                             where balance >= 8 and leave_entitlement_type = 3 and status = 1)
-                   ORDER BY rand();"
+                   ORDER BY rand() limit 1;"
 
         when "Personal Leave"
           query = "select distinct eu.first_name, eu.last_name, eu.id as user_id from epms_user eu
@@ -51,7 +53,8 @@ module Database_env
                    where elpu.leave_policy_id in (select elp.id from epms_leave_policy elp
                      inner join epms_leave_policy_type elpt on elpt.policy_id = elp.id
                      inner join epms_leave_type elt on elt.id = elpt.type_id
-                     where elt.title = 'Personal Leave')
+                     where elt.title = 'Personal Leave'
+                     and elpt.is_deleted = 0)
                    and eu.is_active = 1
                    and eu.is_elmo = 0
                    and eu.is_deleted = 0
@@ -61,7 +64,7 @@ module Database_env
                    and exists (select user_id from epms_leave_bucket where leave_entitlement_type = 2)
                    and eu.id in (select user_id from epms_leave_bucket
                             where balance >= 8 and leave_entitlement_type = 2 and status = 1)
-                   ORDER BY rand();"
+                   ORDER BY rand() limit 1;"
       end
       return @db[query].first
     end
