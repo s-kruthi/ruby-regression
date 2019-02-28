@@ -32,8 +32,3 @@ Feature:
     Given I Have Logged In As A Company Admin To Check Leave Balance Section
     When  I Search For Leave Balance Of A Particular Employee
     Then  I Should Be Able To Check The Correct Leave Balance
-
-  @leave_type_TIL @jmetertest
-  Scenario: [Recruitment]Can Create TIL Leave Type
-    Given I Have Logged In as a Company Admin
-    And  I Am Creating LSL Leave Type
