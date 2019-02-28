@@ -207,10 +207,3 @@ def FetchTheLeaveBucketForThatEmployee()
   $limit_based = $driver.find_elements(:class, "ng-binding")[10].text
   puts "#{$limit_based}"
 end
-
-
-def CreateLeaveTypeUsingJmeter()
-  puts $site_url
-  puts @username
-  puts @user_pwd
-end
