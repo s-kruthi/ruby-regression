@@ -16,7 +16,6 @@ And(/^I Can Select (.*) Leave Type$/i) do | leave_type |
   SelectLeaveDate(date_val)
 
   EnterLeaveHours(LEAVE_REQUEST_HOURS_VALUE)
-  byebug
 end
 
 
@@ -33,7 +32,6 @@ end
 
 Then(/^I Should Be Able To See That My Leave Request Was Successfully Submitted$/i) do
   ClickElement('xpath', LEAVE_REQUEST_SUBMIT_ID)
-  byebug
 
   clicked_at = (Time.now).strftime "%d/%m/%Y %I:%M:%S %p"
   puts COLOR_BLUE + ("submitted leave request at " + clicked_at).upcase
