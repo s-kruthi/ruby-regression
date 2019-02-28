@@ -36,32 +36,32 @@ end
 
 
 Then(/^I Should See That The Show LSL after x years Default Value is 1/i) do
-  expect($driver.find_element(:id, "leave-policy-form-showLongServiceLeaveAfterYears").attribute('value')).to eq("1")
-  puts COLOR_GREEN + "show long service leave after x years is set to default 1".upcase
+  CheckDefaultValueLSLAfterXyrs()
 end
 
 
 And(/^I Edit A Leave Policy/i) do
-  Sleep_Until($driver.find_element(:class, ACTION_DROPDOWN_CLASS_NAME).click)
+  Sleep_Until(ClickElement('class', ACTION_DROPDOWN_CLASS_NAME))
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch("Edit Leave Policy"))
 end
 
 
 And(/^I Click The Save Button To Save The Leave Policy/i) do
-  $driver.find_element(:id, "leave-policy-form-save").click
+  Sleep_Until(ClickElement('id', LEAVE_POLICY_SAVE_ID))
 end
 
 
 Then(/^I Should See A LSL Time Validation Error Message/i) do
   sleep (2)
+  #Error pop-up is displayed
   Sleep_Until(PressEnterOK())
-  VerifyErrorAlertMessage('//div[contains(@class,"alert-danger")]', "Show Long Service Leave after x years\nThis value should between 1 to 35.")
+  VerifyErrorAlertMessage(LEAVE_POLICY_ALERT_ID, LEAVE_POLICY_SHOWLSLXYRS_ALERT_MSG)
 end
 
 
-And(/^I Enter The Show LSL after x years To 36/i) do
-  $driver.find_element(:id, "leave-policy-form-showLongServiceLeaveAfterYears").clear
-  Sleep_Until(WaitForAnElementByIdAndInputValue("leave-policy-form-showLongServiceLeaveAfterYears", 36))
+And(/^I Enter The Show LSL after x years To (\d+)/i) do | input_value |
+  ClearField('id', LEAVE_POLICY_SHOWLSLXYRS_ID)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEAVE_POLICY_SHOWLSLXYRS_ID, input_value))
 end
 
 
