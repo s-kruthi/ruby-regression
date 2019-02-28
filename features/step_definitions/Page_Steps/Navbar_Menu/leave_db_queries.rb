@@ -79,7 +79,8 @@ module Database_env
                    where elpu.leave_policy_id = (select elp.id from epms_leave_policy elp
                      inner join epms_leave_policy_type elpt on elpt.policy_id = elp.id
                      inner join epms_leave_type elt on elt.id = elpt.type_id
-                     where elt.title = 'Long Service Leave')
+                     where elt.title = 'Long Service Leave'
+                     and elpt.is_deleted = 0)
                    and eu.is_active = 1
                    and eu.is_elmo = 0
                    and eu.is_deleted = 0

@@ -2,7 +2,7 @@ And(/^I Can Select (.*) Leave Type$/i) do | leave_type |
   sleep (4)
   SelectFromDropdown(LEAVE_REQUEST_LEAVETYPE_ID, leave_type)
 
-  if @bank_leave == true
+  if @bank_leave
     #saying you worked on a Saturday
     date_val = (DateTime.now + (rand * 7))
     date_val = date_val.beginning_of_week(:saturday).strftime "%d/%m/%Y"
