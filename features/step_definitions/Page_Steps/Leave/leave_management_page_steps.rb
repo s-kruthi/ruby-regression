@@ -207,4 +207,3 @@ def FetchTheLeaveBucketForThatEmployee()
   $limit_based = $driver.find_elements(:class, "ng-binding")[10].text
   puts "#{$limit_based}"
 end
-
