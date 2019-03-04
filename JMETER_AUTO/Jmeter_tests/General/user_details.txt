@@ -1,0 +1,9 @@
+User+Details,employeeNumber,1,0,0,0
+User+Details,firstName,1,0,0,0
+User+Details,lastName,1,0,0,0
+User+Details,username,1,0,0,0
+User+Details,email,1,0,0,0
+User+Details,manager,1,0,0,0
+User+Details,dateOfBirth,1,0,0,0
+User+Details,startDate,1,0,0,0
+User+Details,expiryDate,1,0,0,0
