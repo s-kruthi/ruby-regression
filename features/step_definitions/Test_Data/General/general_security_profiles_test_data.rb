@@ -1,0 +1,1 @@
+SECURITY_PROFILES__SAVE_SUCCESSMSG_VALUE = "Profile successfully saved."
