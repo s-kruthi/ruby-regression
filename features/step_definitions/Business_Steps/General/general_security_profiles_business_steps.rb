@@ -18,7 +18,7 @@ Then(/^I Should See That The Profile Is Successfully (Added|Saved|Deleted)$/i) d
     puts COLOR_GREEN + "deleted profile " + @profile[:name] + " having id " + @profile[:id].to_s
     PressEnterOK()
   else
-    ClickElement('id', 'securityProfile_save')
+    ClickElement('id', SECURITY_PROFILES_SAVE_ID)
     Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SECURITY_PROFILES_SAVE_SUCCESSMSG_VALUE))
   end
 end
