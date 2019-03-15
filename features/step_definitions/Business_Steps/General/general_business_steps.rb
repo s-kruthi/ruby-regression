@@ -10,143 +10,16 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
     @username = login_details[0]
     @user_pwd = login_details[1]
 
-    # TODO: Remove the commented out code after review
-    # begin
-    #   case login_name
-    #
-    #   when "ELMO Setup Admin"
-    #     begin
-    #       GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-    #       EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
-    #       EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
-    #
-    #       loginToSystem(LOGIN_BUTTON)
-    #
-    #       GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-    #       EnterUsername(USER_NAME, ELMO_SETUP_ADMIN_USERNAME)
-    #       EnterPassword(PASS_WORD, ELMO_SETUP_ADMIN_PASSWORD)
-    #       loginToSystem(LOGIN_BUTTON)
-    #     end
-    #
-    #   when "ELMO Super Admin"
-    #     begin
-    #       EnterUsername(USER_NAME, ELMO_SUPER_USERNAME)
-    #       EnterPassword(PASS_WORD, ELMO_SUPER_PASSWORD)
-    #       username = ELMO_SUPER_USERNAME
-    #     end
-    #
-    #   when "ELMO Admin"
-    #     begin
-    #       EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
-    #       EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
-    #       username = ELMO_ADMIN_USERNAME
-    #     end
-    #
-    #   when "Company Admin"
-    #     begin
-    #       EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
-    #       EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
-    #       username = COMP_ADMIN_USERNAME
-    #     end
-    #
-    #   when "Contract Admin"
-    #     begin
-    #       EnterUsername(USER_NAME, COMP_ADMIN_USERNAME)
-    #       EnterPassword(PASS_WORD, COMP_ADMIN_PASSWORD)
-    #       username = COMP_ADMIN_USERNAME
-    #     end
-    #
-    #   when "Learning Admin"
-    #     begin
-    #       EnterUsername(USER_NAME, LEARNING_ADMIN_USERNAME)
-    #       EnterPassword(PASS_WORD, LEARNING_ADMIN_PASSWORD)
-    #       username = LEARNING_ADMIN_USERNAME
-    #     end
-    #
-    #   when "Recruitment Admin"
-    #     begin
-    #       EnterUsername(USER_NAME, RECRUITMENT_ADMIN_USERNAME)
-    #       EnterPassword(PASS_WORD, RECRUITMENT_ADMIN_PASSWORD)
-    #       username = RECRUITMENT_ADMIN_USERNAME
-    #     end
-    #
-    #   when "Leave Admin"
-    #     begin
-    #       EnterUsername(USER_NAME, LEAVE_COMPANY_ADMIN_USER)
-    #       EnterPassword(PASS_WORD, LEAVE_COMPANY_ADMIN_PASS)
-    #       username = LEAVE_COMPANY_ADMIN_USER
-    #     end
-    #
-    #   #User with security profiles Payroll Admin and role-Company Admin
-    #   when "Payroll Admin"
-    #       begin
-    #         EnterUsername(USER_NAME, PAYROLL_ADMIN_USERNAME)
-    #         EnterPassword(PASS_WORD, PAYROLL_ADMIN_PASSWORD)
-    #         username = PAYROLL_ADMIN_USERNAME
-    #       end
-    #
-    #   #User with security profile- HR Manager, User Administrator Page Permissions
-    #   when "HR Manager"
-    #     begin
-    #       EnterUsername(USER_NAME, HRMGR_ADMIN_USERNAME)
-    #       EnterPassword(PASS_WORD, HRMGR_ADMIN_PASSWORD)
-    #       username = HRMGR_ADMIN_USERNAME
-    #     end
-    #
-    #   when "Company Manager"
-    #     begin
-    #       EnterUsername(USER_NAME, COMPANY_MANAGER_USER)
-    #       EnterPassword(PASS_WORD, COMPANY_MANAGER_PASS)
-    #       username = COMPANY_MANAGER_USER
-    #     end
-    #
-    #   when "Company Employee"
-    #     begin
-    #       EnterUsername(USER_NAME, COMPANY_EMPLOYEE_1_USER)
-    #       EnterPassword(PASS_WORD, COMPANY_EMPLOYEE_1_PASS)
-    #       username = COMPANY_EMPLOYEE_1_USER
-    #     end
-    #
-    #   when "Specific Automation User"
-    #     begin
-    #       EnterUsername(USER_NAME, DOC_USERNAME)
-    #       EnterPassword(PASS_WORD, DOC_PASSWORD)
-    #       username = DOC_USERNAME
-    #     end
-    #
-    #   when "Specific Automation User Manager"
-    #     begin
-    #       EnterUsername(USER_NAME, DOC_MANAGER_NAME)
-    #       EnterPassword(PASS_WORD, DOC_MANAGER_PASSWORD)
-    #       username = DOC_MANAGER_NAME
-    #     end
-    #
-    #   when "Automation Company Admin"
-    #     begin
-    #       EnterUsername(USER_NAME, AUTO_COMP_ADMIN_NAME)
-    #       EnterPassword(PASS_WORD, AUTO_COMP_ADMIN_PASSWORD)
-    #       username = AUTO_COMP_ADMIN_NAME
-    #     end
-    #
-    #   else
-    #       begin
-    #         EnterUsername(USER_NAME, @username)
-    #         EnterPassword(PASS_WORD, @user_pwd)
-    #         username = @username
-    #       end
-    #
-    #   end
-    #
-      if login_name == "ELMO Setup Admin"
-        GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-        EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
-        EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
-        loginToSystem(LOGIN_BUTTON)
-        GoToThePage(ADMIN_SETUP_LANDING_PAGE)
-      end
-        EnterLoginDetails(@username, @user_pwd)
-        VerifyUserExists(@username) if login_name != "ELMO Setup Admin"
-        LogInAndWaitForTheDashboard(LOGIN_BUTTON, ADMIN_PROFILE_DROPDOWN)
+    if login_name == "ELMO Setup Admin"
+      GoToThePage(ADMIN_SETUP_LANDING_PAGE)
+      EnterUsername(USER_NAME, ELMO_ADMIN_USERNAME)
+      EnterPassword(PASS_WORD, ELMO_ADMIN_PASSWORD)
+      loginToSystem(LOGIN_BUTTON)
+      GoToThePage(ADMIN_SETUP_LANDING_PAGE)
+    end
+    EnterLoginDetails(@username, @user_pwd)
+    VerifyUserExists(@username) if login_name != "ELMO Setup Admin"
+    LogInAndWaitForTheDashboard(LOGIN_BUTTON, ADMIN_PROFILE_DROPDOWN)
 
   when "Out"
     begin

@@ -44,7 +44,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Then  I Should Be Able To Delete The Specific Course
 
 
-  @smoke_learning1 @learning_low_risk @course_notifications_add
+  @learning_low_risk @course_notifications_add
   Scenario: [Learning]Learning Admin Adding Notification Templates in Course
     Given I Have Logged In as a Learning Admin
     And   I go to Admin Settings
