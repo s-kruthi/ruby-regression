@@ -5,26 +5,29 @@ end
 
 
 And(/^I Can Add A Profile Of Type ([\w\s]+) Named As ([\w\s-]+)$/i) do | profile_type, profile_name |
-  ClickElement('xpath', SECURITY_PROFILES_ADD_ID)
-  SelectFromDropdown('//select[@id="securityProfile_roleType"]', profile_type)
-  WaitForAnElementByIdAndInputValue('securityProfile_name', profile_name)
-  profile_desc = 'Profile having ' + profile_type
-  Sleep_Until(UseCkeditorToEnterText(profile_desc, 0))
+  @profile_type = profile_type
+  AddSecurityProfile(profile_type, profile_name)
 end
 
 
 Then(/^I Should See That The Profile Is Successfully (Added|Saved|Deleted)$/i) do | profile_action |
   case profile_action
-    when 'Deleted'
-      byebug
-    else
-      ClickElement('id', 'securityProfile_save')
-      Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SECURITY_PROFILES__SAVE_SUCCESSMSG_VALUE))
+  when 'Deleted'
+    #See success message in modal
+    Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, "Profile successfully deleted"))
+    PressEnterOK()
+  else
+    ClickElement('id', 'securityProfile_save')
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SECURITY_PROFILES__SAVE_SUCCESSMSG_VALUE))
   end
 end
 
 
-And(/^I Can Delete Named As ([\w\s-]+)$/i) do | profile_name |
-  SearchACourse(COURSE_LIST_SEARCH_BOX_ID, profile_name , COURSE_SEARCH_BTN_ID)
-  byebug
+And(/^I Can Delete Security Profile With No Users$/i) do
+  DeleteSecurityProfile()
+end
+
+
+And(/^I Can Edit Security Profile With No Users$/i) do
+  EditSecurityProfile()
 end

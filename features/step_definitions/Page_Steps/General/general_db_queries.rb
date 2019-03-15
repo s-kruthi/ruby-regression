@@ -213,6 +213,17 @@ module Database_env
       return @db[query].first[:title]
     end
 
+
+    def get_security_profiles_no_users()
+      query = "select distinct ecrt.name, ecrt.id
+               from epms_client_role_types ecrt
+               left join epms_users_client_role_types eucrt on eucrt.client_role_type_id = ecrt.id
+               where ecrt.is_deleted = 0
+               and eucrt.client_role_type_id IS NULL
+               order by rand()"
+      return @db[query].first
+    end
+
   end
 
 end
