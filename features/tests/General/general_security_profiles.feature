@@ -52,13 +52,15 @@ Feature:
     Then  I Should See That The Profile Is Successfully Deleted
 
 
-  @general_low_risk @security_profiles_edit @wip
+  @general_low_risk @security_profiles_add_user
   Scenario: [General]Company Admin Can Edit A Security Profile
     Given I Have Logged In as a Company Admin
     When  I go to Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Edit Security Profile With No Users
-    Then  I Should See That The Profile Is Successfully Saved
+    And   I Add company admin scriptonce User To The Security Profile
+    And   I Should See That User Is Added To The Profile Successfully
+
 
 
 

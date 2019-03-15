@@ -33,9 +33,34 @@ def EditSecurityProfile()
     #search for the profile
     SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @profile[:name], COURSE_SEARCH_BTN_ID)
     Sleep_Until(ClickElement('xpath', '//a[@href="/admin/security-profile/edit/details/'+ @profile[:id].to_s + '"]'))
-    pending
   else
     puts COLOR_YELLOW + "security profile with no assigned users does not exist".upcase
     skip_this_scenario
   end
+end
+
+
+# def VerifyTabs()
+#   case @profile_type
+#     when 'Learning Administrator Page Permissions'
+#       #users, reports,sections,assignment rules, courses, filter,summary
+#       Sleep_Until(VerifyAnElementExists('xpath','//a[contains(@href,"/admin/security-profile/edit/user/")]'))
+#       Sleep_Until(VerifyAnElementExists('xpath','//a[contains(@href,"type=report")]'))
+#       Sleep_Until(VerifyAnElementExists('xpath','//a[contains(@href,"type=configuration")]'))
+#       Sleep_Until(VerifyAnElementExists('xpath','//a[contains(@href,"type=learningClass")]'))
+#       Sleep_Until(VerifyAnElementExists('xpath','//a[contains(@href,"type=course")]'))
+#       Sleep_Until(VerifyAnElementExists('xpath','//a[contains(@href,"type=filter")]'))
+#       Sleep_Until(VerifyAnElementExists('xpath','//a[contains(@href,"/admin/security-profile/edit/confirmation/")]'))
+#   end
+# end
+
+
+def AddUserSecurityProfile(user_name)
+  Sleep_Until(ClickElement('xpath', SECURITY_PROFILES_USERSTAB_ID))
+  Sleep_Until(ClickElement('xpath', SECURITY_PROFILES_USERSEARCH_ID))
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(SECURITY_PROFILES_USERINPUT_ID, user_name))
+  Sleep_Until(ClickElement('xpath', "//span[@class='select2-match']"))
+  Sleep_Until(ClickElement('id', SECURITY_PROFILES_USERSAVE_ID ))
+  Sleep_Until(VerifySuccessAlertMessage(SECURITY_PROFILES_USERSSUCCESSMSG_ID, SECURITY_PROFILES_USERS_SUCCESSMSG_VALUE))
+  Sleep_Until(ClickElement('xpath',SECURITY_PROFILES_SUMMARYTAB_ID))
 end
