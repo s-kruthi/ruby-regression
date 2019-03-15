@@ -14,11 +14,11 @@ Then(/^I Should See That The Profile Is Successfully (Added|Saved|Deleted)$/i) d
   case profile_action
   when 'Deleted'
     #See success message in modal
-    Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, "Profile successfully deleted"))
+    Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, SECURITY_PROFILES_DEL_SUCCESSMSG_VALUE))
     PressEnterOK()
   else
     ClickElement('id', 'securityProfile_save')
-    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SECURITY_PROFILES__SAVE_SUCCESSMSG_VALUE))
+    Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SECURITY_PROFILES_SAVE_SUCCESSMSG_VALUE))
   end
 end
 
