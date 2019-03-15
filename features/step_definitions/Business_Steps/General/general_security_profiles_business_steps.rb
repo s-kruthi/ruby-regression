@@ -15,6 +15,7 @@ Then(/^I Should See That The Profile Is Successfully (Added|Saved|Deleted)$/i) d
   when 'Deleted'
     #See success message in modal
     Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, SECURITY_PROFILES_DEL_SUCCESSMSG_VALUE))
+    puts COLOR_GREEN + "deleted profile " + @profile[:name] + " having id " + @profile[:id].to_s
     PressEnterOK()
   else
     ClickElement('id', 'securityProfile_save')
