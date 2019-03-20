@@ -302,7 +302,8 @@ And(/^I Associate (\d+) Cost Centres To The User$/i) do | num_cost_centres |
 end
 
 
-And(/^I Assign The Split Percent Values For The Cost Centres As (\d+) And (\d+)$/i) do | split_val1, split_val2 |
+And(/^I Assign The Split Percent Values For The Cost Centres As ([0-9]*.[0-9]+) And ([0-9]*.[0-9]+)$/i) do | split_val1, split_val2 |
+  byebug
   AssignSplitVal(split_val1, split_val2)
 end
 
@@ -310,8 +311,16 @@ end
 Then(/^I Should Be Able To See The Error Message When Split % Does Not Sum Upto 100$/i) do
   ClickOnSaveButton(SAVE_BTN_ID)
   VerifyErrorAlertMessage(VERIFY_ALERT_ID, USER_PROFILE_UPDATE_ERR_MSG_VALUE)
-  VerifyCostCentreSplitValErrMsg()
+  VerifyCostCentreSplitValErrMsg('sum_err')
 end
+
+
+Then(/^I Should Be Able To See The Error Message When Split % Are Decimal Values$/i) do
+  ClickOnSaveButton(SAVE_BTN_ID)
+  VerifyErrorAlertMessage(VERIFY_ALERT_ID, USER_PROFILE_UPDATE_ERR_MSG_VALUE)
+  VerifyCostCentreSplitValErrMsg('decimal_err')
+end
+
 
 
 

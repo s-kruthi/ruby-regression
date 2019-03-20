@@ -285,12 +285,20 @@ def AssignSplitVal(split_val1, split_val2)
 end
 
 
-def VerifyCostCentreSplitValErrMsg()
+def VerifyCostCentreSplitValErrMsg(err_type)
   #using sleep since it takes a while for the error msg to load
   sleep(4)
 
   err_msg = GetTextAssociatedToElement("xpath", USER_COST_CENTRE_SPLITVAL_ERR_ID)
-  expect(err_msg).to eq(USER_COST_CENTRE_SPLITVAL_ERR_MSG_VALUE)
+
+  #get appropriate error message
+  if err_type == 'sum_err'
+    err_msg_value = USER_COST_CENTRE_SPLITVALSUM_ERR_MSG_VALUE
+  else
+    err_msg_value = USER_COST_CENTRE_SPLITVALDECI_ERR_MSG_VALUE
+  end
+
+  expect(err_msg).to eq(err_msg_value)
   puts COLOR_GREEN + "error message is displayed".upcase
 end
 

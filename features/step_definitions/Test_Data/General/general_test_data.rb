@@ -44,4 +44,5 @@ ROLE_CHANGE_SUCCESS_MSG_VALUE = "×  User role has been updated!"
 USER_ACTIVATE_SUCCESS_MSG_VALUE = "Successfully activate user"
 USER_PROFILE_UPDATE_ERR_MSG_VALUE = 'Failed to update user profile!'
 
-USER_COST_CENTRE_SPLITVAL_ERR_MSG_VALUE = 'Total cost centre split percentage must be 100%'
+USER_COST_CENTRE_SPLITVALSUM_ERR_MSG_VALUE = 'Total cost centre split percentage must be 100%'
+USER_COST_CENTRE_SPLITVALDECI_ERR_MSG_VALUE = 'No decimal values are allowed'

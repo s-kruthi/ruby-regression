@@ -179,6 +179,19 @@ Feature:
     Then  I Should Be Able To See The Error Message When Split % Does Not Sum Upto 100
 
 
+  #  NOTE: currently can only be run on tmspayrolldev.dev
+  @general_low_risk @user_details_costcentre @user_details_mulitple_costcentre_nodecimal
+  Scenario: [General] Company Admin Can View Error Message When Split % Are Decimal Values
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To Users under General section
+    When  I Search For An Employee Associated With Single/No Cost Centre
+    And   I Edit The User's Profile
+    And   I Associate 2 Cost Centres To The User
+    And   I Assign The Split Percent Values For The Cost Centres As 59.23 And 60.77
+    Then  I Should Be Able To See The Error Message When Split % Are Decimal Values
+
+
 
 
 
