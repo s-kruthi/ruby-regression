@@ -37,14 +37,6 @@ Feature:
     And   I Click The Save Button To Save The Leave Policy
     Then  I Should See A LSL Time Validation Error Message
 
-#
-#
-#    And   I Click On New Leave Policy Button
-#    And   I Enter The Leave Policy Title As Leave Policy Auto
-#    And   I Select Personal Leave As The Leave Type
-#    And   I Set The Show Long Service Leave Balance to employees toggle to Enabled
-#    And   I Enter Annual Entitlements
-#    And   I Select Monday to Friday (5 Days) As The Working days per week
 
 
 
