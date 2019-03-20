@@ -302,8 +302,8 @@ def split_percent(num_of_split, max)
   rand_num = 0
 
   if (num_of_split > 1)
-    rand_num = (rand(0.00..max)).round(2)
-    temp = (max - rand_num).round(2)
+    rand_num = (rand(0..max))
+    temp = (max - rand_num)
     split_num << temp
   end
 
