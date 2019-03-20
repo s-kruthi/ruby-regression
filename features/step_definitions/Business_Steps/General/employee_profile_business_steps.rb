@@ -303,7 +303,6 @@ end
 
 
 And(/^I Assign The Split Percent Values For The Cost Centres As ([0-9]*.[0-9]+) And ([0-9]*.[0-9]+)$/i) do | split_val1, split_val2 |
-  byebug
   AssignSplitVal(split_val1, split_val2)
 end
 
