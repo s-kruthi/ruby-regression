@@ -1,3 +1,26 @@
+# If the installation failes then create a shell script and put the following content in there and execute it:
+#/bin/bash
+gem install bundler
+gem install selenium-webdriver
+gem install capybara
+gem install nokogiri
+gem install rspec
+gem install cucumber
+gem install rake
+gem install mysql2
+gem install sequel
+gem install colorize
+gem install waitutil
+gem install touch_action
+gem install pry
+gem install byebug
+gem install rest-client
+gem install JiraClient
+gem install jira
+gem install ruby-jmeter
+gem install net-ssh-gateway
+gem install watir
+
 
 Required Gems:
 -------------------------
