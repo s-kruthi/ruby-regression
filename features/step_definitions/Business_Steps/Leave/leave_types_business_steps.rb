@@ -1,5 +1,5 @@
 When(/^I Create A Leave Type Of ([\w\s\/\\w]+) Entitlement Type Named (.*)$/i) do | leave_type, leavetype_name |
-  CreateLeaveTypeThroughServices(leave_type, leavetype_name)
+  CreateLeaveTypeThroughJmeter(leave_type, leavetype_name)
 end
 
 
