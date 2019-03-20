@@ -4,6 +4,7 @@ Feature:
   As a HR Manager I want to manage leave policies
 
 
+  #  NOTE: currently can only be run on tmspayrolldev.dev
   @leave_low_risk @leave_policy_toggle_default
   Scenario: [Leave]Verify Leave Policy Toggles Default Settings
     Given I Have Logged In as a HR Manager
@@ -16,6 +17,7 @@ Feature:
     And   I Should See The Show Long Service Leave Validation toggle set to Disabled
 
 
+  #  NOTE: currently can only be run on tmspayrolldev.dev
   @leave_low_risk @leave_policy_time_validation_LSL_default
   Scenario: [Leave]Verify Time Validation For Showing LSL
     Given I Have Logged In as a HR Manager
@@ -26,6 +28,7 @@ Feature:
     Then  I Should See That The Show LSL after x years Default Value is 1
 
 
+  #  NOTE: currently can only be run on tmspayrolldev.dev
   @leave_low_risk @leave_policy_time_validation_LSL
   Scenario: [Leave]Verify Time Validation For Showing LSL
     Given I Have Logged In as a HR Manager
