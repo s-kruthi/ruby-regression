@@ -1,7 +1,6 @@
 def SetEmployeeProfileDetails()
   steps %Q{
         And I Click On The Profile Tab Of The User
-        And I Should See That The Default Entity Is Set For the User's Company Field
         And I Set The Position From The Existing Positions
         And I Set The Date of Birth As 19/01/1980
   }
