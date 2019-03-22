@@ -57,3 +57,32 @@ And(/^I Can (Edit|Delete) (.*) Security Profile$/i) do | profile_action, profile
   end
 end
 
+
+And(/^I Go To The Sections Tab Of The Profile$/i) do
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+end
+
+
+And(/^I Select Sections For Users Assgined To Profile$/i) do | table |
+  data = table.hashes
+  data.each do |row|
+    row.each do |key, value|
+      case value
+        when 'Course Certificate Templates'
+        checkbox_id = '//input[@value="courseCertificateTemplate_enabled"]'
+      end
+      ClickElement('xpath', checkbox_id)
+      Sleep_Until(ClickElement('xpath', SAVE_BTN_ID))
+    end
+  end
+end
+
+
+Then(/^I Should See That The Profile With Filter Details Is Successfully Saved$/i) do
+  Sleep_Until(ClickElement('xpath',SECURITY_PROFILES_SUMMARYTAB_ID))
+  Sleep_Until(ClickElement('id', SECURITY_PROFILES_SUMMARYCONFIRM_ID))
+  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SECURITY_PROFILES_ADDUSER_SUCCESSMSG_VALUE))
+end
+
+
+
