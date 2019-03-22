@@ -171,6 +171,8 @@ And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
     menu_section = "RewardsAdmin"
   elsif menu_section == "HR Core"
     menu_section = "HRCore"
+  elsif menu_section == "Leave Management"
+    menu_section = "LeaveAdmin"
   end
 
   begin

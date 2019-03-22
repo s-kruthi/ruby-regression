@@ -75,6 +75,7 @@ And(/^I Should Not Be Able To Cancel The Request$/) do
   ConnectToDatabaseAndDeleteTheProcessedLeaveRequest()
 end
 
+
 Given(/^I Have Logged In As A Company Admin To Check Leave Balance Section$/i) do
   startWebDriver
   GoToThePage(ADMIN_LANDING_PAGE)
