@@ -15,7 +15,6 @@ Then(/^I Should See That The Profile Is Successfully (Added|Saved|Deleted)$/i) d
   when 'Deleted'
     #See success message in modal
     Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, SECURITY_PROFILES_DEL_SUCCESSMSG_VALUE))
-    puts COLOR_GREEN + ("deleted profile " + @profile[:name] + " having id " + @profile[:id].to_s).upcase
     PressEnterOK()
   else
     ClickElement('id', SECURITY_PROFILES_SAVE_ID)
@@ -26,11 +25,13 @@ end
 
 
 And(/^I Can Delete Security Profile With No Users$/i) do
+  @no_users = true
   DeleteSecurityProfile()
 end
 
 
 And(/^I Can Edit Security Profile With No Users$/i) do
+  @no_users = true
   EditSecurityProfile()
 end
 
@@ -45,4 +46,14 @@ And(/^I Should See That User Is Added To The Profile Successfully$/i) do
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SECURITY_PROFILES_ADDUSER_SUCCESSMSG_VALUE))
 end
 
+
+And(/^I Can (Edit|Delete) (.*) Security Profile$/i) do | profile_action, profile_name |
+  @profile_name = profile_name
+
+  if profile_action == 'Edit'
+    EditSecurityProfile()
+  else
+    DeleteSecurityProfile()
+  end
+end
 

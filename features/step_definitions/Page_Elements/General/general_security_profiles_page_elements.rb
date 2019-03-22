@@ -21,3 +21,7 @@ SECURITY_PROFILES_USERSAVE_ID = 'role-type-save-user'
 SECURITY_PROFILES_USERSSUCCESSMSG_ID = "//div[@id='role-type-message-container']"
 
 SECURITY_PROFILES_SUMMARYTAB_ID = '//a[contains(@href,"/admin/security-profile/edit/confirmation/")]'
+
+SECURITY_PROFILES_EDIT = "//a[@title='Edit']"
+
+SECURITY_PROFILES_DEL = "//a[@title='Delete']"

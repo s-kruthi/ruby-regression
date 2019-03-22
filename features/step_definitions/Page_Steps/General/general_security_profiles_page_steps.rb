@@ -1,16 +1,26 @@
 def DeleteSecurityProfile()
-  #get security profile with no users assigned
-  @profile = $daos.get_security_profiles_no_users()
+  if @no_users
+    #get security profile with no users assigned
+    @profile = $daos.get_security_profiles_no_users()
 
-  if !@profile.nil?
-    #search for the profile
-    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @profile[:name], COURSE_SEARCH_BTN_ID)
-    Sleep_Until(ClickElement('xpath', '//a[@href="/admin/security-profile/delete/'+ @profile[:id].to_s + '"]'))
-    Sleep_Until(PressEnterConfirm())
+    if !@profile.nil?
+      #search for the profile
+      SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @profile[:name], COURSE_SEARCH_BTN_ID)
+      Sleep_Until(ClickElement('xpath', '//a[@href="/admin/security-profile/delete/'+ @profile[:id].to_s + '"]'))
+      @profile_name = @profile[:name]
+    else
+      puts COLOR_YELLOW + "security profile with no assigned users does not exist".upcase
+      skip_this_scenario
+    end
+
   else
-    puts COLOR_YELLOW + "security profile with no assigned users does not exist".upcase
-    skip_this_scenario
+    #search for the specified profile
+    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @profile_name, COURSE_SEARCH_BTN_ID)
+    Sleep_Until(ClickElement('xpath', SECURITY_PROFILES_DEL))
   end
+
+  Sleep_Until(PressEnterConfirm())
+  puts COLOR_BLUE + ("deleting security profile " + @profile_name).upcase
 end
 
 
@@ -26,17 +36,27 @@ end
 
 
 def EditSecurityProfile()
-  #get security profile with no users assigned
-  @profile = $daos.get_security_profiles_no_users()
+  if @no_users
+    #get security profile with no users assigned
+    @profile = $daos.get_security_profiles_no_users()
 
-  if !@profile.nil?
-    #search for the profile
-    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @profile[:name], COURSE_SEARCH_BTN_ID)
-    Sleep_Until(ClickElement('xpath', '//a[@href="/admin/security-profile/edit/details/'+ @profile[:id].to_s + '"]'))
+    if !@profile.nil?
+      #search for the profile
+      SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @profile[:name], COURSE_SEARCH_BTN_ID)
+      Sleep_Until(ClickElement('xpath', '//a[@href="/admin/security-profile/edit/details/'+ @profile[:id].to_s + '"]'))
+      puts COLOR_BLUE + ("editing security profile " + @profile[:name]).upcase
+    else
+      puts COLOR_YELLOW + "security profile with no assigned users does not exist".upcase
+      skip_this_scenario
+    end
+
   else
-    puts COLOR_YELLOW + "security profile with no assigned users does not exist".upcase
-    skip_this_scenario
+    #search for the specified profile
+    SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @profile_name, COURSE_SEARCH_BTN_ID)
+    Sleep_Until(ClickElement('xpath', SECURITY_PROFILES_EDIT))
+    puts COLOR_BLUE + ("editing security profile " + @profile_name).upcase
   end
+
 end
 
 
@@ -57,10 +77,14 @@ end
 
 def AddUserSecurityProfile(user_name)
   Sleep_Until(ClickElement('xpath', SECURITY_PROFILES_USERSTAB_ID))
+
+  #search for user and then add
   Sleep_Until(ClickElement('xpath', SECURITY_PROFILES_USERSEARCH_ID))
   Sleep_Until(WaitForAnElementByXpathAndInputValue(SECURITY_PROFILES_USERINPUT_ID, user_name))
   Sleep_Until(ClickElement('xpath', "//span[@class='select2-match']"))
   Sleep_Until(ClickElement('id', SECURITY_PROFILES_USERSAVE_ID ))
+  puts COLOR_BLUE + ("adding user with username " + user_name).upcase
+
   Sleep_Until(VerifySuccessAlertMessage(SECURITY_PROFILES_USERSSUCCESSMSG_ID, SECURITY_PROFILES_USERS_SUCCESSMSG_VALUE))
   Sleep_Until(ClickElement('xpath',SECURITY_PROFILES_SUMMARYTAB_ID))
 end

@@ -52,7 +52,7 @@ Feature:
     Then  I Should See That The Profile Is Successfully Deleted
 
 
-  @general_low_risk @security_profiles_add_user
+  @general_low_risk @security_profiles_add_user @security_profiles_edit
   Scenario: [General]Company Admin Can Edit A Security Profile
     Given I Have Logged In as a Company Admin
     When  I go to Admin Settings
@@ -62,6 +62,23 @@ Feature:
     And   I Should See That User Is Added To The Profile Successfully
 
 
+  @general_low_risk @security_profiles_add_user
+  Scenario: [General]Company Admin Can Add A User To Specified Security Profile
+    Given I Have Logged In as a Company Admin
+    When  I go to Admin Settings
+    And   I Go To Security Profiles under General section
+    And   I Can Edit Learning Admin Scriptonce Security Profile
+    And   I Add company admin scriptonce User To The Security Profile
+    And   I Should See That User Is Added To The Profile Successfully
+
+
+  @general_low_risk @security_profiles_delete
+  Scenario: [General]Company Admin Can Delete Specified Security Profile
+    Given I Have Logged In as a Company Admin
+    When  I go to Admin Settings
+    And   I Go To Security Profiles under General section
+    And   I Can Delete Learning Admin Scriptonce Security Profile
+    Then  I Should See That The Profile Is Successfully Deleted
 
 
 
