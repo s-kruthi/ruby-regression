@@ -58,12 +58,16 @@ And(/^I Can (Edit|Delete) (.*) Security Profile$/i) do | profile_action, profile
 end
 
 
-And(/^I Go To The Sections Tab Of The Profile$/i) do
-  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+And(/^I Go To The (.*) Tab Of The Profile$/i) do | tab_name |
+  if tab_name == 'Reports'
+    ClickOnASubTab('//a[contains(@href,"type=report")]')
+  else
+    ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+  end
 end
 
 
-And(/^I Select Sections For Users Assgined To Profile$/i) do | table |
+And(/^I Select Sections For Users Assigned To Profile$/i) do | table |
   data = table.hashes
   data.each do |row|
     row.each do |key, value|
