@@ -91,7 +91,7 @@ Feature:
     And   I Select Sections For The Users Assigned To Profile
     | section_name                 |
     | Course Certificate Templates |
-    Then  I Should See That The Profile With Filter Details Is Successfully Saved
+    Then  I Should See That The Profile With Details Is Successfully Saved
 
 
   @general_low_risk @security_profiles_add_reports @test
@@ -101,12 +101,23 @@ Feature:
     And   I Go To Security Profiles under General section
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Go To The Reports Tab Of the Profile
-    And   I Select Reports For The Users Assigned To Profile
+    And   I Select Reports For The Users Assigned To Learning Security Profile
     | report_name     |
-    | None            |
-    Then  I Should See That The Profile Is Successfully Saved
+    | Misconceptions Report            |
+    Then  I Should See That The Profile With Details Is Successfully Saved
 
-
+  @general_low_risk @security_profiles_add_reports @hc
+  Scenario: [General]Company Admin Can Add Reports To Specified Security Profile
+    Given I Have Logged In as a Company Admin
+    When  I go to Admin Settings
+    And   I Go To Security Profiles under General section
+    And   I Can Edit HR Manager - HC-1740 - Omar Security Profile
+    And   I Go To The Reports Tab Of the Profile
+    And   I Select Reports For The Users Assigned To HR Manager Security Profile
+      | section_name | report_name     |
+      | HR Core      | HR Audit Report |
+      | Leave        | Leave Balances and Accrual Report |
+    Then  I Should See That The Profile With Details Is Successfully Saved
 
 
 

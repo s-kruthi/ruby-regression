@@ -82,40 +82,74 @@ And(/^I Select Sections For The Users Assigned To Profile$/i) do | table |
 end
 
 
-Then(/^I Should See That The Profile With Filter Details Is Successfully Saved$/i) do
+Then(/^I Should See That The Profile With Details Is Successfully Saved$/i) do
   Sleep_Until(ClickElement('xpath',SECURITY_PROFILES_SUMMARYTAB_ID))
   Sleep_Until(ClickElement('id', SECURITY_PROFILES_SUMMARYCONFIRM_ID))
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SECURITY_PROFILES_ADDUSER_SUCCESSMSG_VALUE))
 end
 
 
-And(/^I Select Reports For The Users Assigned To Profile$/i) do | table |
-  #all -> //div[@id='filter_form_lmsReport-select-type']//div[1]
-  # none -> //div[@id='filter_form_lmsReport-select-type']//div[2]
-  # selected ->//div[@id='filter_form_lmsReport-select-type']//div[3]
-  # report 1 checkbox -> //label[@for='filter_form_lmsReport_0']
-  # learning_reports  = { "Learning Cost Report" => "//label[@for='filter_form_lmsReport_0']",
-  #              "Learner Report" => "//label[@for='filter_form_lmsReport_1']",
-  #              "Survey Report" => "//label[@for='filter_form_lmsReport_2']",
-  #              "Training Matrix Report" => "//label[@for='filter_form_lmsReport_3']",
-  #              "Face-to-Face Session Report" => "//label[@for='filter_form_lmsReport_4']",
-  #              "Course Status Report" => "//label[@for='filter_form_lmsReport_5']",
-  #              "Continuing Professional Development Report" => "//label[@for='filter_form_lmsReport_6']",
-  #              "Question Details Report" => "//label[@for='filter_form_lmsReport_7']",
-  #              "Misconceptions Report" =>  "//label[@for='filter_form_lmsReport_8']"}
+And(/^I Select Reports For The Users Assigned To (.*) Security Profile$/i) do | profile_type, table |
+  learning_reports  = { "Learning Cost Report" => "//label[@for='filter_form_lmsReport_0']",
+                "Learner Report" => "//label[@for='filter_form_lmsReport_1']",
+                "Survey Report" => "//label[@for='filter_form_lmsReport_2']",
+                "Training Matrix Report" => "//label[@for='filter_form_lmsReport_3']",
+                "Face-to-Face Session Report" => "//label[@for='filter_form_lmsReport_4']",
+                "Course Status Report" => "//label[@for='filter_form_lmsReport_5']",
+                "Continuing Professional Development Report" => "//label[@for='filter_form_lmsReport_6']",
+                "Question Details Report" => "//label[@for='filter_form_lmsReport_7']",
+               "Misconceptions Report" =>  "//label[@for='filter_form_lmsReport_8']"}
+  hrcore_reports = {"HR Audit Report" => "//label[@for='filter_form_hrAuditReport_0']"}
+  leave_reports = {"Leave Balances and Accrual Report " => "//label[@for='filter_form_leaveReport_0']"}#"//label[@for='filter_form_hrAuditReport_0']"}
   # learning_reports["Learning Cost Report"]
+  #
+  if profile_type == 'Learning'
+    reports_id = learning_reports
+    report = "filter_form_lmsReport-select-type"
+  end
+
   data = table.hashes
   data.each do |row|
     row.each do |key, value|
       case value
-      when 'Course Certificate Templates'
-        checkbox_id = '//input[@value="courseCertificateTemplate_enabled"]'
+        when 'None'
+          checkbox_id = report + "_1"
+          ClickElement('id', checkbox_id)
+        when 'All'
+          checkbox_id = report + "_0"
+          ClickElement('id', checkbox_id)
+        else
+          checkbox_id = report + "_2"
+          ClickElement('id', checkbox_id)
+          ClickElement('xpath', reports_id[value])
       end
-      ClickElement('xpath', checkbox_id)
+      # else
+      #   if key == 'HR Core'
+      #     reports_id = hrcore_reports
+      #     report = "filter_form_hrAuditReport-select-type"
+      #   else
+      #     reports_id = leave_reports
+      #     report = "filter_form_leaveReport-select-type"
+      #   end
+      #   case value
+      #     when 'None'
+      #       checkbox_id = report + "_1"
+      #       ClickElement('id', checkbox_id)
+      #     when 'All'
+      #       checkbox_id = report + "_0"
+      #       ClickElement('id', checkbox_id)
+      #     else
+      #       checkbox_id = report + "_2"
+      #       ClickElement('id', checkbox_id)
+      #       byebug
+      #       ClickElement('xpath', reports_id[value])
+      #   end
+      end
       Sleep_Until(ClickElement('xpath', SAVE_BTN_ID))
     end
-  end
 end
+
+
 
 
 
