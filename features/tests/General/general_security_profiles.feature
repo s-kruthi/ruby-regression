@@ -81,14 +81,14 @@ Feature:
     Then  I Should See That The Profile Is Successfully Deleted
 
 
-  @general_low_risk @security_profiles_add_reports @test
+  @general_low_risk @security_profiles_add_reports
   Scenario: [General]Company Admin Can Add Sections To Specified Security Profile
     Given I Have Logged In as a Company Admin
     When  I go to Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Go To The Sections Tab Of The Profile
-    And   I Select Sections For Users Assigned To Profile
+    And   I Select Sections For The Users Assigned To Profile
     | section_name                 |
     | Course Certificate Templates |
     Then  I Should See That The Profile With Filter Details Is Successfully Saved
@@ -102,7 +102,7 @@ Feature:
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Go To The Reports Tab Of the Profile
     And   I Select Reports For The Users Assigned To Profile
-    | report_name |
+    | report_name     |
     | None            |
     Then  I Should See That The Profile Is Successfully Saved
 

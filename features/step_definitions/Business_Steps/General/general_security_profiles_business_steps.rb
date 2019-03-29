@@ -67,7 +67,7 @@ And(/^I Go To The (.*) Tab Of The Profile$/i) do | tab_name |
 end
 
 
-And(/^I Select Sections For Users Assigned To Profile$/i) do | table |
+And(/^I Select Sections For The Users Assigned To Profile$/i) do | table |
   data = table.hashes
   data.each do |row|
     row.each do |key, value|
@@ -87,6 +87,37 @@ Then(/^I Should See That The Profile With Filter Details Is Successfully Saved$/
   Sleep_Until(ClickElement('id', SECURITY_PROFILES_SUMMARYCONFIRM_ID))
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SECURITY_PROFILES_ADDUSER_SUCCESSMSG_VALUE))
 end
+
+
+And(/^I Select Reports For The Users Assigned To Profile$/i) do | table |
+  #all -> //div[@id='filter_form_lmsReport-select-type']//div[1]
+  # none -> //div[@id='filter_form_lmsReport-select-type']//div[2]
+  # selected ->//div[@id='filter_form_lmsReport-select-type']//div[3]
+  # report 1 checkbox -> //label[@for='filter_form_lmsReport_0']
+  # learning_reports  = { "Learning Cost Report" => "//label[@for='filter_form_lmsReport_0']",
+  #              "Learner Report" => "//label[@for='filter_form_lmsReport_1']",
+  #              "Survey Report" => "//label[@for='filter_form_lmsReport_2']",
+  #              "Training Matrix Report" => "//label[@for='filter_form_lmsReport_3']",
+  #              "Face-to-Face Session Report" => "//label[@for='filter_form_lmsReport_4']",
+  #              "Course Status Report" => "//label[@for='filter_form_lmsReport_5']",
+  #              "Continuing Professional Development Report" => "//label[@for='filter_form_lmsReport_6']",
+  #              "Question Details Report" => "//label[@for='filter_form_lmsReport_7']",
+  #              "Misconceptions Report" =>  "//label[@for='filter_form_lmsReport_8']"}
+  # learning_reports["Learning Cost Report"]
+  data = table.hashes
+  data.each do |row|
+    row.each do |key, value|
+      case value
+      when 'Course Certificate Templates'
+        checkbox_id = '//input[@value="courseCertificateTemplate_enabled"]'
+      end
+      ClickElement('xpath', checkbox_id)
+      Sleep_Until(ClickElement('xpath', SAVE_BTN_ID))
+    end
+  end
+end
+
+
 
 
 
