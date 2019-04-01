@@ -41,3 +41,9 @@ HRCORE_REPORTS = {"HR Audit Report" => "//label[@for='filter_form_hrAuditReport_
 LEAVE_REPORTS = {"Leave Balances and Accrual Report" => "//label[@for='filter_form_leaveReport_0']",
                  "Excessive Leave Compliance Report " => "//label[@for='filter_form_leaveReport_1']",
                  "Leave Taken Report " => "//label[@for='filter_form_leaveReport_2']"}
+
+
+LEARNING_SECTIONS  = {"Course Certificate Templates" => "//input[@value='courseCertificateTemplate_enabled']",
+                      "ELMO Course Builder" => "//input[@value='lcms_enabled']",
+                      "Continuing Professional Development" => "//input[@value='cpd_enabled']",
+                      "External Training" => "//input[@value='externalTraining_enabled']"}

@@ -71,11 +71,15 @@ And(/^I Select Sections For The Users Assigned To Profile$/i) do | table |
   data = table.hashes
   data.each do |row|
     row.each do |key, value|
-      case value
-        when 'Course Certificate Templates'
-        checkbox_id = '//input[@value="courseCertificateTemplate_enabled"]'
+      checkbox_id = LEARNING_SECTIONS[value]
+
+      #check if section is already selected
+      if(!$driver.find_element(:xpath, checkbox_id).selected?)
+        ClickElement('xpath', checkbox_id)
+      else
+        puts COLOR_BLUE + (value + " is already selected").upcase
       end
-      ClickElement('xpath', checkbox_id)
+
       Sleep_Until(ClickElement('xpath', SAVE_BTN_ID))
     end
   end
