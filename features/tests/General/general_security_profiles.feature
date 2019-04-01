@@ -81,7 +81,7 @@ Feature:
     Then  I Should See That The Profile Is Successfully Deleted
 
 
-  @general_low_risk @security_profiles_reports_add
+  @general_low_risk @security_profiles_sections_add
   Scenario: [General]Company Admin Can Add Sections To Specified Security Profile
     Given I Have Logged In as a Company Admin
     When  I go to Admin Settings
