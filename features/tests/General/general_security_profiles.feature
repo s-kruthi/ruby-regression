@@ -81,7 +81,7 @@ Feature:
     Then  I Should See That The Profile Is Successfully Deleted
 
 
-  @general_low_risk @security_profiles_add_reports
+  @general_low_risk @security_profiles_reports_add
   Scenario: [General]Company Admin Can Add Sections To Specified Security Profile
     Given I Have Logged In as a Company Admin
     When  I go to Admin Settings
@@ -94,7 +94,7 @@ Feature:
     Then  I Should See That The Profile With Details Is Successfully Saved
 
 
-  @general_low_risk @security_profiles_add_reports @test
+  @general_low_risk @security_profiles_learningreports_add
   Scenario: [General]Company Admin Can Add Reports To Specified Security Profile
     Given I Have Logged In as a Company Admin
     When  I go to Admin Settings
@@ -102,11 +102,13 @@ Feature:
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Go To The Reports Tab Of the Profile
     And   I Select Reports For The Users Assigned To Learning Security Profile
-    | report_name     |
-    | Misconceptions Report            |
+    | report_name           |
+    | Misconceptions Report |
     Then  I Should See That The Profile With Details Is Successfully Saved
 
-  @general_low_risk @security_profiles_add_reports @hc
+
+  #NOTE: Currently only works on hcsp.dev
+  @general_low_risk @security_profiles_hrreports_add
   Scenario: [General]Company Admin Can Add Reports To Specified Security Profile
     Given I Have Logged In as a Company Admin
     When  I go to Admin Settings

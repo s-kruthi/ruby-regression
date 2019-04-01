@@ -88,3 +88,57 @@ def AddUserSecurityProfile(user_name)
   Sleep_Until(VerifySuccessAlertMessage(SECURITY_PROFILES_USERSSUCCESSMSG_ID, SECURITY_PROFILES_USERS_SUCCESSMSG_VALUE))
   Sleep_Until(ClickElement('xpath',SECURITY_PROFILES_SUMMARYTAB_ID))
 end
+
+
+def SelectReport(profile_type, table)
+
+  #check profile type
+  if profile_type == 'Learning'
+    reports_id = LEARNING_REPORTS
+    report = "filter_form_lmsReport-select-type"
+  end
+
+  data = table.hashes
+  data.each do |row|
+    case row["section_name"]
+    when "HR Core"
+      reports_id = HRCORE_REPORTS
+      report = "filter_form_hrAuditReport-select-type"
+    when "Leave"
+      reports_id = LEAVE_REPORTS
+      report = "filter_form_leaveReport-select-type"
+    end
+
+    case row["report_name"]
+    when 'None'
+      checkbox_id = report + "_1"
+      CheckAndSelect(checkbox_id, row["report_name"])
+    when 'All'
+      checkbox_id = report + "_0"
+      CheckAndSelect(checkbox_id, row["report_name"])
+    else
+      checkbox_id = report + "_2"
+
+      #check if selected reports is already selected
+      CheckAndSelect(checkbox_id, row["report_name"])
+
+      #check if report is already selected
+      if(!$driver.find_element(:id, reports_id[row["report_name"]].split("'")[1]).selected?)
+        ClickElement('xpath', reports_id[row["report_name"]])
+      else
+        puts COLOR_BLUE + (row["report_name"] + " is already chosen").upcase
+      end
+    end
+  end
+  Sleep_Until(ClickElement('xpath', SAVE_BTN_ID))
+end
+
+def CheckAndSelect(checkbox_id, report_type)
+  if checkbox_id.include? '_2' then report_type = "selected" end
+
+  if(!$driver.find_element(:id, checkbox_id).selected?)
+    ClickElement('id', checkbox_id)
+  else
+    puts COLOR_BLUE + (report_type + " already chosen").upcase
+  end
+end
