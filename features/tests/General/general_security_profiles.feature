@@ -23,24 +23,24 @@ Feature:
     | profile_type                               | profile_name                             |
     | Learning Administrator Page Permissions    | Learning Admin Scriptonce                |
     | Reports User Page Permissions              | Reports Users Scriptonce                 |
-    | Performance Administrator Page Permissions | Performance Admin Scriptonce             |
-    | User Administrator Page Permissions        | User Admin Scriptonce                    |
-    | Performance Library Administrator          | Performance Library Admin Scriptonce     |
-    | Recruitment Administrator Page Permissions | Recruitment Admin Scriptonce             |
-    | Requisition Permission                     | Requisition Permission Scriptonce        |
-    | Open Requisition Manager                   | Open Requisition Manager Scriptonce      |
-    | Recruitment Administrator Page Permissions | Recruitment Admin Scriptonce             |
-    | Create a Requisition                       | Create a Requisition Scriptonce          |
-    | Onboarding Administrator Page Permissions  | Onboarding Admin Scriptonce              |
-    | SBR AusKey Holder                          | SBR AusKey Holder Scriptonce             |
-    | Succession Planning Overview               | Succession Planning Overview Scriptonce  |
-    | HR Manager                                 | HR Manager Scriptonce                    |
-    | Document Administrator Permissions         | Document Admin Scriptonce                |
-    | Contract Manager                           | Contract Manager Scriptonce              |
-    | Leave Calendar Viewer                      | Leave Calendar Viewer Scriptonce         |
-    | Payroll Admin                              | Payroll Admin Scriptonce                 |
-    | Survey Approver                            | Survey Approver Scriptonce               |
-    | Survey Creator                             | Survey Creator Scriptonce                |
+#    | Performance Administrator Page Permissions | Performance Admin Scriptonce             |
+#    | User Administrator Page Permissions        | User Admin Scriptonce                    |
+#    | Performance Library Administrator          | Performance Library Admin Scriptonce     |
+#    | Recruitment Administrator Page Permissions | Recruitment Admin Scriptonce             |
+#    | Requisition Permission                     | Requisition Permission Scriptonce        |
+#    | Open Requisition Manager                   | Open Requisition Manager Scriptonce      |
+#    | Recruitment Administrator Page Permissions | Recruitment Admin Scriptonce             |
+#    | Create a Requisition                       | Create a Requisition Scriptonce          |
+#    | Onboarding Administrator Page Permissions  | Onboarding Admin Scriptonce              |
+#    | SBR AusKey Holder                          | SBR AusKey Holder Scriptonce             |
+#    | Succession Planning Overview               | Succession Planning Overview Scriptonce  |
+#    | HR Manager                                 | HR Manager Scriptonce                    |
+#    | Document Administrator Permissions         | Document Admin Scriptonce                |
+#    | Contract Manager                           | Contract Manager Scriptonce              |
+#    | Leave Calendar Viewer                      | Leave Calendar Viewer Scriptonce         |
+#    | Payroll Admin                              | Payroll Admin Scriptonce                 |
+#    | Survey Approver                            | Survey Approver Scriptonce               |
+#    | Survey Creator                             | Survey Creator Scriptonce                |
 
 
   @general_low_risk @security_profiles_delete
