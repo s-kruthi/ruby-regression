@@ -21,8 +21,9 @@ Feature:
 
     Examples:
     | profile_type                               | profile_name                             |
+    | HR Manager                                 | HR Manager Scriptonce                    |
     | Learning Administrator Page Permissions    | Learning Admin Scriptonce                |
-    | Reports User Page Permissions              | Reports Users Scriptonce                 |
+#    | Reports User Page Permissions              | Reports Users Scriptonce                 |
 #    | Performance Administrator Page Permissions | Performance Admin Scriptonce             |
 #    | User Administrator Page Permissions        | User Admin Scriptonce                    |
 #    | Performance Library Administrator          | Performance Library Admin Scriptonce     |
@@ -34,7 +35,6 @@ Feature:
 #    | Onboarding Administrator Page Permissions  | Onboarding Admin Scriptonce              |
 #    | SBR AusKey Holder                          | SBR AusKey Holder Scriptonce             |
 #    | Succession Planning Overview               | Succession Planning Overview Scriptonce  |
-#    | HR Manager                                 | HR Manager Scriptonce                    |
 #    | Document Administrator Permissions         | Document Admin Scriptonce                |
 #    | Contract Manager                           | Contract Manager Scriptonce              |
 #    | Leave Calendar Viewer                      | Leave Calendar Viewer Scriptonce         |
