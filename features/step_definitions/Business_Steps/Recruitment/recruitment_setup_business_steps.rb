@@ -60,7 +60,7 @@ end
 
 
 And(/^I Click on The Save Button$/i) do
-  ClickOnSaveButton(SAVE_NEW_CANDIDATE_BTN)
+  ClickSaveButton(SAVE_NEW_CANDIDATE_BTN)
  # sleep(2)
 end
 

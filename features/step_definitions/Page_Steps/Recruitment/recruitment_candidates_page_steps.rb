@@ -79,3 +79,9 @@ def ValidateCandidate()
     puts "match found"
   end
 end
+
+
+def ClickSaveButton(btn_id)
+  Sleep_Until(WaitForAnElementByIdAndTouch(btn_id))
+  sleep (1)
+end
