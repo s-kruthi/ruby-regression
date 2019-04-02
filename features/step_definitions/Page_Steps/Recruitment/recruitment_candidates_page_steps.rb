@@ -4,23 +4,28 @@ def GoToTheRecruitmentMenuPageAsAdmin(admin_cog,recruitment_expand)
   GoToCandidatesListingPage(recruitment_expand)
 end
 
+
 def GoToRecruitmentCandidatesListingPage(recruitment_expand)
   sleep(2)
   WaitForAnElementByPartialLinkTextAndTouch(recruitment_expand)
 end
+
 
 def GoToCandidatesListingPage(recruitment_expand)
   sleep(2)
   WaitForAnElementByXpathAndTouch(recruitment_expand)
 end
 
+
 def SearchAndVerifyCandidatesBtnExists(candidate_btn_xpath,candidate_btn_label)
   VerifyAnElementExistByXPath(candidate_btn_xpath,candidate_btn_label)
 end
 
+
 def ClickOnNewCandidateButton(new_candidadate_xpath)
   WaitForAnElementByXpathAndTouch(new_candidadate_xpath)
 end
+
 
 def EnterNewCandidateDetails()
   WaitForAnElementByIdAndInputValue(FIRSTNAME_INPUT_ID,CANDIDATE[:FIRST])
@@ -40,6 +45,7 @@ def EnterNewCandidateDetails()
   WaitForAnElementByIdAndInputValue(PASSWORD_CONFIRM_INPUT_ID,CANDIDATE[:PASSWORD])
 end
 
+
 def CreateARandomEmailAddress()
   email_addrress = CANDIDATE[:EMAIL].to_s + ((Time.now).to_i).to_s + "@elmotalent.com.au"
   WaitForAnElementByIdAndInputValue(EMAIL_INPUT_ID,email_addrress)
@@ -55,4 +61,27 @@ def VerifyANewCandidateHasBeenCreated(candidate_name_class,first_name)
   WaitForAnElementByIdAndTouch("submit-filter-candidate")
   sleep(2)
   VerifyAnElementExistByClass(candidate_name_class,first_name)
+end
+
+
+# Search for the new candidate
+def SearchbyNewCandidate(keyword_name)
+  WaitForAnElementByIdAndInputValue(CANDIDATE_SEARCH_ID,keyword_name)
+  WaitForAnElementByIdAndTouch(CANDIDATE_SUBMIT_BTN)
+end
+
+
+# Verify candidate is found successfully
+def ValidateCandidate()
+  if ($driver.find_element(:tag_name => "body").text.include?("No result has been found")) == true
+    raise VerificationException.new(COLOR_RED + "Text not matching. Check screenshot under features->Screenshots->#{ENV['CHANNEL']})\n")
+  else
+    puts "match found"
+  end
+end
+
+
+def ClickSaveButton(btn_id)
+  Sleep_Until(WaitForAnElementByIdAndTouch(btn_id))
+  sleep (1)
 end

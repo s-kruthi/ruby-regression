@@ -28,6 +28,9 @@ PASSWORD_INPUT_ID = "candidateProfileForm_password_first"
 PASSWORD_CONFIRM_INPUT_ID = "candidateProfileForm_password_second"
 SAVE_NEW_CANDIDATE_BTN = "candidateProfileForm_save"
 CANDIDATE_NAME_CLASS = "user-profile-brief"
+CANDIDATE_SEARCH_ID = "keywordsSearchItemEnable"
+CANDIDATE_SUBMIT_BTN = "submit-filter-candidate"
+
 
 ##### Requisition job ad creation ######
 MY_REQ_LINK = 'Automation-testing'

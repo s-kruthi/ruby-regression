@@ -60,8 +60,8 @@ end
 
 
 And(/^I Click on The Save Button$/i) do
-  ClickOnSaveButton(SAVE_NEW_CANDIDATE_BTN)
-  sleep(2)
+  ClickSaveButton(SAVE_NEW_CANDIDATE_BTN)
+ # sleep(2)
 end
 
 
@@ -71,6 +71,7 @@ Then(/^I Should Be Able To Create A New Candidate$/i) do
   VerifyANewCandidateHasBeenCreated(CANDIDATE_NAME_CLASS,TRANS1)
   sleep(2)
   $driver.quit
+
 end
 
 
