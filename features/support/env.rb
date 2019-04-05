@@ -12,6 +12,7 @@ require 'sequel'
 require 'watir'
 require 'colorize'
 require 'csv'
+require 'byebug'
 
 require './features/lib/device_method_factory.rb'
 
