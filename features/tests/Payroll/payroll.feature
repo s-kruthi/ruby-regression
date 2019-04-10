@@ -2,11 +2,10 @@
 
 Feature: As A Payroll Admin I Can Send Data To Payroll
 
-  Background:
-    Given Non-default Legal Entity Exists
   @smoke_payroll @send_company_data
   Scenario: [Payroll]As A Payroll Admin I Can Send Company Data To Elmo Payroll
-    Given I Have Logged In As A Company Admin
+    Given Non-default Legal Entity Exists
+    And   I Have Logged In As A Company Admin
     When  I Make Changes To Legal Entity
     And   I Have Logged In As A Payroll Admin
     And   I Send Company Data To Elmo Payroll

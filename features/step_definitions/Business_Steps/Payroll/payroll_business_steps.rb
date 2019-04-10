@@ -67,7 +67,7 @@ Given(/^Non-default Legal Entity Exists$/i) do
   steps %Q{
       Given I Have Logged In as a Company Admin
   }
-  #check non-default legal eentity exists
+  #check non-default legal entity exists
   @legal_entity = $daos.get_legal_entity_details_for_edit()
 
   unless @legal_entity
