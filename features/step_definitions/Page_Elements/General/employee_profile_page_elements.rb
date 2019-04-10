@@ -18,6 +18,7 @@ USERS_SEARCH_BOX_ID = 'userSearch_name'
 USERS_SEARCH_BUTTON_ID = '//button[@title="Search"]'
 USERS_EDITPROFILE_ACTION_ID = '//a[@title="Edit User Profile"]'
 USER_LOGINAS_ACTION_ID = '//a[@title="Log in as this user"]'
+USER_SEARCHRESULT_ROW_ID = '//tr[contains(@data-url,"/controlpanel/user-profile")]'
 
 
 #### EMPLOYEE DETAILS SECTION ####

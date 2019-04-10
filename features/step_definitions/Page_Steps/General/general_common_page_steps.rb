@@ -23,7 +23,6 @@ def EnterNewTypeDetails(arg1)
     when "Location"
       Sleep_Until(SingleSelectFromSelect2Dropdown(LOCATION_PARENT_DROPDOWN_ID, SELECT2_DROPDOWN_ID, LOCATION_PARENT_DROPDOWN_VALUE, SELECT2_DROPDOWN_RESULT_CLASS))
       EnterInputFieldText(LOCATION_TITLE_ID, LOCATION_TITLE_VALUE)
-      byebug
       EnterInputFieldText(LOCATIONID_ID, LOCATIONID_VALUE)
       EnterInputFieldText(LOCATION_ADDRESS_ID, LOCATION_ADDRESS_VALUE)
       EnterDescriptionText(LOCATION_DESCRIPTION_VALUE, 0)

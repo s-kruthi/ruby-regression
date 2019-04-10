@@ -110,6 +110,9 @@ def SearchForUserWithEmpDetails()
   @user_search = $daos.get_employee_with_autopay_no()
 
   if !@user_search.nil?
+    puts COLOR_BLUE + "user being searched for".upcase
+    puts @user_search
+
     $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(@user_search[:first_name]+ ' ' + @user_search[:last_name])
     Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   else
@@ -169,12 +172,7 @@ def SaveAutopayChanges()
   Sleep_Until(WaitForAnElementByCSSAndTouch(MODAL_YES_BUTTON_CSS))
 
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
-
-  modal_title = GetTextAssociatedToElement("xpath",USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)
-  modal_title == USER_DETAILS_CONFIRMATION_MODAL_TITLE
-
-  #keeping history for tracking history
-  Sleep_Until(WaitForAnElementByXpathAndTouch(KEEP_HISTORY_BUTTON_ID))
+  # SaveEmploymentChanges()
 end
 
 

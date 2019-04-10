@@ -396,8 +396,8 @@ Then(/^I Can See That I Can Choose To Set The Company Legal Entity From the Exis
   # get count from legal entity table
   legal_entity = $daos.get_count_active_legal_entity()
 
-  Sleep_Until(WaitForAnElementByIdAndTouch(USER_LEGAL_ENTITY_SELECT2_ID))
-  $driver.find_elements(:class,SELECT2_DROPDOWN_ID)[5].send_keys('%%')
+  Sleep_Until(WaitForAnElementByIdAndTouch(USER_LEGAL_ENTITY_FIELD_ID))
+  Sleep_Until(WaitForAnElementByXpathAndInputValue(USER_LEGAL_ENTITY_SELECT2_ID, '%'))
 
   sleep(4)
 
@@ -454,4 +454,9 @@ end
 
 Then(/^I Can See The Suburb\/Town\/City Field$/i) do
   CheckFieldInPersonalDetails()
+end
+
+
+And(/^The Necessary User Fields Are Setup$/i) do
+  UserProfileSetupThroughJmeter()
 end

@@ -95,7 +95,9 @@ def EditLegalEntity()
 
   #edit contact name and save
   ClearField('id', LEGAL_ENTITY_CONTACTNAME_ID)
-  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_CONTACTNAME_ID, 'Automated Edit'))
+  edit_contact_name = 'Automated Edit' + Time.now.strftime("%Y%m%d%H%M%S").to_s
+  Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_CONTACTNAME_ID, edit_contact_name))
+
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
 
