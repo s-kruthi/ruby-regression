@@ -48,6 +48,7 @@ OB_USER_NAV_LINK = "//a[contains(.,'Onboarding Users')]"
 SELECT_START_DATE_ID = "//input[contains(@id,'user_startDate')]"
 SELECT_EXPIRY_DATE_ID = "//input[contains(@id,'expiryDate')]"
 
+
 SELECT_ISELMO_DROPDOWN_ID = "//select[contains(@id,'user_isElmo')]"
 
 USER_CREATE_SAVE_BTN_ID = "//button[@id='user_save']"
@@ -132,7 +133,7 @@ CLASSIC_DROPDOWN_ELEMENT_ID_MAP = {
 USER_PROFILE_TAB_ID = '//a[contains(@href, "edit-user-profile")]'
 
 USER_LEGAL_ENTITY_FIELD_ID ='legalEntity-container'
-USER_LEGAL_ENTITY_SELECT2_ID = 's2id_user_legalEntity'
+USER_LEGAL_ENTITY_SELECT2_ID = "//div[@class='select2-search']/label[text()='Company (Legal Entity)']/following-sibling::input"
 
 USER_COST_CENTRE_FIELD_ID = 'costCentre-container'
 USER_COST_CENTRE_SELECT2_ID = "//div[@id='costCentre-container']//div//input"
@@ -141,9 +142,10 @@ USER_COST_CENTRE_SPLITVAL_ID = '//input[@class="form-control"]'
 USER_COST_CENTRE_SPLITVAL_ERR_ID = '//ul[@class="help-block"]/li'
 
 USER_POSITION_FIELD_ID = 'position-container'
-USER_POSITION_SELECT2_ID = 's2id_user_position'
+USER_POSITION_SELECT2_ID = "//div[@class='select2-search']/label[text()='Position']/following-sibling::input"
 
-USER_DOB_FIELD_ID = "//input[contains(@id, 'user_personalInfo_dob')]"
+USER_DOB_FIELD_ID = "//input[contains(@id,'user_dateOfBirth')]"
+
 
 
 #### Background process confirmation ####

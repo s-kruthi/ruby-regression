@@ -7,3 +7,8 @@ User+Details,manager,1,0,0,0
 User+Details,dateOfBirth,1,0,0,0
 User+Details,startDate,1,0,0,0
 User+Details,expiryDate,1,0,0,0
+Built-In+Hierarchies,costCentre,1,0,0,0
+Built-In+Hierarchies,legalEntity,1,0,0,0
+Built-In+Hierarchies,location,1,0,0,0
+Built-In+Hierarchies,position,1,0,0,0
+Built-In+Hierarchies,department,1,0,0,0

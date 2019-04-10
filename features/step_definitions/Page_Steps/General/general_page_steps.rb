@@ -382,3 +382,15 @@ def CheckFieldInPersonalDetails()
   Sleep_Until(VerifyAnElementExists('xpath','//label[text()="Suburb/Town/City"]'))
   puts COLOR_GREEN + "field exists with name suburb/town/city".upcase
 end
+
+
+def UserProfileSetupThroughJmeter()
+  url = $site_url.split('//')[1].split('/')[0]
+
+  if ENV['MYMAC']
+    %x(jmeter -n -t ./JMETER_AUTO/Jmeter_tests/General/UserProfileSetup.jmx -Jurl=#{url} -Jusername=#{@username})
+  else
+    %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/General/UserProfileSetup.jmx -Jurl=#{url} -Jusername=#{@username})
+  end
+  puts COLOR_GREEN + "user profile setup completed".upcase
+end
