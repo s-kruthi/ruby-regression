@@ -357,7 +357,7 @@
       Then  I Should Bulk Mark Attendance All Users
 
 
-    @learning_low_risk @course_activity_f2f_session_signup @C6071 @C6070 @test
+    @learning_low_risk @course_activity_f2f_session_signup @C6071 @C6070
     Scenario: As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Self Sign Up / Withdraw Myself From The Face-to-face Session
       Given That Session Is Created For A Face 2 Face Activity
       And   I Have Logged In As A Company Employee
