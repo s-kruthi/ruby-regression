@@ -357,18 +357,9 @@
       Then  I Should Bulk Mark Attendance All Users
 
 
-    @learning_low_risk @course_activity_f2f_session_signup @C6071 @C6070
+    @learning_low_risk @course_activity_f2f_session_signup @C6071 @C6070 @test
     Scenario: As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Self Sign Up / Withdraw Myself From The Face-to-face Session
-      Given I Have Logged In As A Company Admin
-      And   I Go To Admin Settings
-      And   I Go To Courses Under Learning Section
-      When  I Click On The New Course Button
-      And   I Add New Course Details
-      Then  I Should Be Able To Create A New Course
-      Then  I Should Be Able To Add A Face-to-Face Activity
-      And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
-      Then  I Should Be Able To Create A Session In The Face-to-Face Activity
-      And   I Have Logged Out
+      Given That Session Is Created For A Face 2 Face Activity
       And   I Have Logged In As A Company Employee
       And   I Go To The Menu Learning Section
       And   I Click On "Course Catalogue" Tab
@@ -378,7 +369,7 @@
       And   I Search For A Specific Course Named DO NOT DELETE
       And   I Can View The Learning Course Named DO NOT DELETE
       When  I Can View The Face-to-Face Session Named Test Face-to-Face
-      Then  I Should Be Able To "Sign Up" For That Session
+      And   I Should Be Able To "Sign Up" For That Session
       And   I Should Be Able To "Withdraw" For That Session
       Then  I Should Receive A Notification With Trigger Named Learning.CourseNewEnrolmentTrigger For Recipient auto1.test1
 

@@ -138,3 +138,18 @@ end
 Then(/^I Should Bulk Mark Attendance All Users$/i) do
   BulkMarkFaceToFaceSessionAttendance('Fully Attended', 90, 'yes')
 end
+
+Given(/^That Session Is Created For A Face 2 Face Activity$/i) do
+  steps %Q{
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To Courses Under Learning Section
+    When  I Click On The New Course Button
+    And   I Add New Course Details
+    Then  I Should Be Able To Create A New Course
+    Then  I Should Be Able To Add A Face-to-Face Activity
+    And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
+    Then  I Should Be Able To Create A Session In The Face-to-Face Activity
+    And   I Have Logged Out
+  }
+end
