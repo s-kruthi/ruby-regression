@@ -224,6 +224,16 @@ module Database_env
       return @db[query].first
     end
 
+
+    def check_notification_exists(trigger_name)
+      query = "select count(*) as count
+               from epms_notifier_template_notification
+               where trigger_id like '%#{trigger_name}%'
+               and is_active = 1
+               and is_deleted = 0"
+      return @db[query].first[:count]
+    end
+
   end
 
 end

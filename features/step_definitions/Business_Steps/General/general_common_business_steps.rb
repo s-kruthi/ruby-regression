@@ -62,3 +62,34 @@ end
 Then(/^I Should Be Able To Successfully Create a New "([^"]*)"$/i) do |verify_new_type_creation|
   VerifyNewTypeCreated(verify_new_type_creation)
 end
+
+
+And(/^I Select The "([^"]*)" Notification Trigger$/i) do | trigger_name |
+  trigger_id = trigger_name.gsub(' ','')
+
+  #check trigger already exists
+  notification_exists = $daos.check_notification_exists(trigger_id)
+
+  if notification_exists == 0
+    # Click on the notification trigger dropdown so that it displays all currently available notification triggers
+    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_triggerId").click)
+    Sleep_Until(WaitForAnElementByXpathAndInputValue(SECURITY_PROFILES_USERINPUT_ID, trigger_name))
+    Sleep_Until(ClickElement('xpath', "//span[@class='select2-match']"))
+  else
+    puts COLOR_YELLOW + "notification found, skipping adding same notification".upcase
+    skip_this_scenario
+  end  #  Recruitment.RecruitmentRequisitionWithdrawnTrigger
+end
+
+
+And(/^I Enter The Necessary Details For The Notification$/i) do
+  Sleep_Until($driver.find_element(:id, "templateNotification_channels_0_subject").send_keys("Automation Notification"))
+  UseCkeditorToEnterText("Automation Notification", 0)
+  ClickOnSaveButton(SAVE_BTN_ID)
+end
+
+
+Then(/^I Should See That The Notification Was Created Successfully$/i) do
+  expect($driver.current_url).to include ('/edit')
+end
+
