@@ -72,7 +72,7 @@ And(/^I Select The "([^"]*)" Notification Trigger$/i) do | trigger_name |
 
   if notification_exists == 0
     # Click on the notification trigger dropdown so that it displays all currently available notification triggers
-    Sleep_Until($driver.find_element(:id, "s2id_templateNotification_triggerId").click)
+    Sleep_Until(ClickElement("id", "s2id_templateNotification_triggerId"))
     Sleep_Until(WaitForAnElementByXpathAndInputValue(SECURITY_PROFILES_USERINPUT_ID, trigger_name))
     Sleep_Until(ClickElement('xpath', "//span[@class='select2-match']"))
   else
@@ -83,13 +83,79 @@ end
 
 
 And(/^I Enter The Necessary Details For The Notification$/i) do
-  Sleep_Until($driver.find_element(:id, "templateNotification_channels_0_subject").send_keys("Automation Notification"))
-  UseCkeditorToEnterText("Automation Notification", 0)
+  Sleep_Until(WaitForAnElementByIdAndInputValue(NOTIFICATION_DESC_ID, NOTIFICATION_DESC_VALUE))
+  UseCkeditorToEnterText(NOTIFICATION_DESC_VALUE, 0)
   ClickOnSaveButton(SAVE_BTN_ID)
 end
 
 
-Then(/^I Should See That The Notification Was Created Successfully$/i) do
-  expect($driver.current_url).to include ('/edit')
+Then(/^I Should See That The Notification Was "([\w]+)" Successfully$/i) do | action |
+  case action
+    when 'Created'
+      expect($driver.current_url).to include ('/edit')
+    when 'Edited'
+      expect($daos.get_notification_details(@edited_title)).not_to be_nil
+    when 'Copied'
+      url_regex_pattern = /(\/list)$/
+      expect($driver.current_url).to match url_regex_pattern
+    when 'Deactivated', 'Activated'
+      expect(GetTextAssociatedToElement('xpath', MODAL_ID)).to eq(NOTIFICATION_ACTDEACT_SUCCESS_MSG_VALUE)
+      Sleep_Until(PressEnterOK())
+    when 'Deleted'
+      expect(GetTextAssociatedToElement('xpath', MODAL_ID)).to eq(NOTIFICATION_DEL_SUCCESS_MSG_VALUE)
+      Sleep_Until(PressEnterOK())
+  end
 end
+
+
+When(/^I Search For "([^"]*)" Notification$/i) do | notification_name |
+  @notification_copy = $daos.get_notification_details(notification_name)
+
+  if !@notification_copy.nil?
+    Sleep_Until(ClickElement("id", "s2id_notifier-triggers"))
+    Sleep_Until(WaitForAnElementByXpathAndInputValue(SECURITY_PROFILES_USERINPUT_ID, 'Requisition Withdrawn'))
+    Sleep_Until(ClickElement('xpath', "//span[@class='select2-match']"))
+
+    #click arrow button of edit dropdown
+    Sleep_Until(ClickElement('xpath', "//a[contains(@href, '#{@notification_copy[:id]}')]/following-sibling::button"))
+  else
+    puts COLOR_YELLOW + "notification not found, check manually".upcase
+    skip_this_scenario
+  end
+end
+
+
+And(/^I Create A Copy Of The Notification$/i) do
+  Sleep_Until(ClickElement('xpath', "//a[contains(@href, '/copy/#{@notification_copy[:id]}')]"))
+end
+
+
+And(/^I Edit The Title To Be "([^"]*)"$/i) do | edit_title |
+  @edited_title = edit_title
+  Sleep_Until(ClickElement("xpath", "//a[contains(@href, '/edit/#{@notification_copy[:id]}')]"))
+  ClearField('id', NOTIFICATION_TITLE_ID )
+  WaitForAnElementByIdAndInputValue(NOTIFICATION_TITLE_ID , edit_title)
+  ClickOnSaveButton(SAVE_BTN_ID)
+end
+
+
+And(/^I "(Deactivate|Activate|Delete)" The Notification$/i) do | action |
+
+  if action == "Activate"
+    identifier = "//a[contains(@href, '/activation/#{@notification_copy[:id]}/1')]"
+    match_text = MODAL_ACTIVATE_MSG_VALUE
+  elsif action == "Deactivate"
+    identifier = "//a[contains(@href, '/activation/#{@notification_copy[:id]}/0')]"
+    match_text = MODAL_DEACTIVATE_MSG_VALUE
+  else
+    identifier = "//a[contains(@href, '/delete/#{@notification_copy[:id]}')]"
+    match_text = MODAL_DELETE_MSG_VALUE
+  end
+
+  Sleep_Until($driver.find_element(:xpath, identifier).click)
+  expect(GetTextAssociatedToElement('xpath', MODAL_ID)).to eq(match_text)
+  Sleep_Until(PressEnterConfirm())
+end
+
+
 

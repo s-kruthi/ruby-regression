@@ -10,6 +10,8 @@ BROWSE_FILE_ID = "//input[contains(@type,'file')]"
 SELECT2_DROPDOWN_ID = "select2-input"
 SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
 
+MODAL_ID = '//div[@class="bootbox-body"]'
+
 MENU_PROFILE_LINK = "//a[contains(@href,'/controlpanel/my-profile')]"
 MENU_MY_TEAM_LINK = "//a[contains(.,'My Team')]" #"//a[@href='/controlpanel/team-members')]"
 MENU_LEARNING_LINK = "//a[contains(@href,'/learning/my')]"
@@ -150,3 +152,8 @@ USER_DOB_FIELD_ID = "//input[contains(@id,'user_dateOfBirth')]"
 
 #### Background process confirmation ####
 BACKGRNDPROCESS_CONFIRM_ID = '//button[@data-action="run"]'
+
+
+#### Notifications Page/Tab ####
+NOTIFICATION_TITLE_ID = "templateNotification_title"
+NOTIFICATION_DESC_ID = "templateNotification_channels_0_subject"

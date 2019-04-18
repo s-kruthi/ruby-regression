@@ -46,3 +46,11 @@ USER_PROFILE_UPDATE_ERR_MSG_VALUE = 'Failed to update user profile!'
 
 USER_COST_CENTRE_SPLITVALSUM_ERR_MSG_VALUE = 'Total cost centre split percentage must be 100%'
 USER_COST_CENTRE_SPLITVALDECI_ERR_MSG_VALUE = 'No decimal values are allowed'
+
+MODAL_DELETE_MSG_VALUE = 'Do you really want to delete this item?'
+MODAL_DEACTIVATE_MSG_VALUE = 'Do you really want to deactivate this item?'
+MODAL_ACTIVATE_MSG_VALUE = 'Do you really want to activate this item?'
+
+NOTIFICATION_DEL_SUCCESS_MSG_VALUE = 'Item has been deleted successfully'
+NOTIFICATION_ACTDEACT_SUCCESS_MSG_VALUE = 'Item has been toggled successfully'
+NOTIFICATION_DESC_VALUE = "Automation Notification"

@@ -234,6 +234,15 @@ module Database_env
       return @db[query].first[:count]
     end
 
+
+    def get_notification_details(name)
+      query = "select *
+               from epms_notifier_template_notification
+               where title = '#{name}'
+               and is_deleted = 0"
+      return @db[query].first
+    end
+
   end
 
 end
