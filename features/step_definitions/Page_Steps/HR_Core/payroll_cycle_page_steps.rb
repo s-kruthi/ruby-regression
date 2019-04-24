@@ -126,6 +126,7 @@ def CheckPayrollCycleType(payrollcycle_type)
        break
      end
   end
+
   if flag == 1
     puts COLOR_GREEN + payrollcycle_type + " type present".upcase
   else

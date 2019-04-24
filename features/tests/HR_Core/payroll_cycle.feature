@@ -22,7 +22,6 @@ Feature:
     Then  I Should Be Able To Delete The Payroll Cycle
 
 
-  #currently can only be run on payroll04
   @hr_core_low_risk @payroll_cycle_add @C82 @C20940
   Scenario: [General]HR Manager Can Add Payroll Cycle
     Given I Have Logged In as a HR Manager
@@ -33,7 +32,6 @@ Feature:
     Then  I Should Be Able To Create The Payroll Cycle Successfully
 
 
-  #currently can only be run on payroll04
   @hr_core_low_risk @payroll_cycle_edit @C16628
   Scenario: [General]HR Manager Can Edit Payroll Cycle
     Given I Have Logged In as a HR Manager
@@ -44,7 +42,6 @@ Feature:
     And   I Should Be Able To Edit The Payroll Cycle Successfully
 
 
-  #currently can only be run on payroll04
   @hr_core_low_risk @payroll_cycle_weeksperannum_default @C20940
   Scenario: [General]Verify That The Weeks per annum Has The Default Value As 52
     Given I Have Logged In as a HR Manager
@@ -54,7 +51,6 @@ Feature:
     Then  I Should See That The Weeks per annum Field Is Set With The Default Value
 
 
-  #currently can only be run on payroll04
   @hr_core_low_risk @payroll_cycle_add @C82 @C20943
   Scenario: [General]Can View The Validation Message For Weeks Per Annum Field
     Given I Have Logged In as a HR Manager
@@ -65,7 +61,6 @@ Feature:
     Then  I Should See The Error Message When The Weeks Per Annum Is Invalid
 
 
-  #currently can only be run on payroll04
   @hr_core_low_risk @payroll_cycle_weeksperannum_infomsg @C20947
   Scenario: [General]Verify That The Weeks per annum Information Message Is Displayed
     Given I Have Logged In as a HR Manager
@@ -75,7 +70,6 @@ Feature:
     Then  I Should See That The Weeks per annum Field Information Message Is Displayed
 
 
-  #currently can only be run on payroll04
   @hr_core_low_risk @payroll_cycle_4weekly @C20957
   Scenario: [General]Verify That The 4 Weekly Type Is Available For Payroll Cycle
     Given I Have Logged In as a HR Manager
@@ -85,7 +79,6 @@ Feature:
     Then  I Should See That The 4 Weekly Type Is Available
 
 
-  #currently can only be run on payroll04
   @hr_core_low_risk @payroll_cycle_quarterly @C20958
   Scenario: [General]Verify That The Quarterly Type Is Available For Payroll Cycle
     Given I Have Logged In as a HR Manager
@@ -95,3 +88,14 @@ Feature:
     Then  I Should See That The Quarterly Type Is Available
     And   I Select Type As Quarterly
     And   The Date of Month Field Is Set To 1st As Default
+
+
+  #currently can only be run on tmspayrolldev
+  @hr_core_low_risk @payroll_cycle_bi-monthly
+  Scenario: [General]Verify That The Bi-Monthly Type Is Available For Payroll Cycle
+    Given I Have Logged In as a HR Manager
+    And   I go to Admin Settings
+    And   I Go To Payroll Cycle under HR Core section
+    When  I Click On Add Payroll Cycle Button
+    Then  I Should See That The Bi-monthly Type Is Available
+
