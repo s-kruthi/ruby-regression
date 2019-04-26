@@ -399,6 +399,7 @@ def ClickOnFilterSaveButton(btn_id,filter_name_id,filter_name_value)
   sleep (1)
 end
 
+
 def DeleteASection(section_name)
   Sleep_Until($driver.find_elements(:class, section_name).last.click)
   Sleep_Until(PressEnterConfirm())
@@ -410,6 +411,7 @@ def CreateAllNotifications()
   begin
     # This next line checks for elmo-table contents and stores the current notification template names to check whether a template has already been added or not
     $template_list = $driver.find_element(:id, "elmo-table").text.split("\nEdit\nToggle dropdown to edit appraisal") if $driver.find_elements(:id, "elmo-table").empty? == false
+
     # Click on 'Add Notification' button to open the notification modal
     ClickAddNotificationButton()
     # Click on the notification trigger dropdown so that it displays all currently available notification triggers
@@ -421,6 +423,7 @@ def CreateAllNotifications()
     $driver.find_element(:class, "select2-result").click
     # Click on the 'x' symbol to close of the modal
     Sleep_Until($driver.find_element(:xpath, "//button[contains(.,'×')]").click)
+
     # Start adding the notifications by clicking on 'Add Notification' button
     AddNotificationTrigger(limit)
   end
@@ -464,18 +467,18 @@ def AddNotificationTemplate()
 
       # Click on the 'select2-drop-mask' class first which is the only clickable item in the page as everything else is masked by 'select2-drop-mask'
       # overlay
-      #
-      $driver.find_element(:class, "select2-drop-mask").click if $driver.find_element(:class, "select2-drop-mask").displayed?
-      
+      $driver.find_element(:class, "select2-drop-mask").click #if $driver.find_element(:class, "select2-drop-mask").displayed?
+
       # Try to close the 'Add Notification' modal by sending an escape key
       Sleep_Until($driver.find_element(:class, "close").send_keys(:escape))
+
+      sleep(1)
 
       # Get out of this if condition but continue to check for other notification triggers
       return
     end
   
   else
-    
     # Continue with adding the notification template by selecting the last notification template from the dropdown list
     $current_template = $driver.find_elements(:class, "select2-result-selectable").last.text
     
@@ -499,6 +502,7 @@ def AddNotificationTemplate()
       #Get out of this else condition so the remaining of the notifications can be added
       return
     end
+
   end
 end
 
