@@ -236,7 +236,7 @@ module Database_env
 
 
     def get_notification_details(name)
-      query = "select *
+      query = "select id
                from epms_notifier_template_notification
                where title = '#{name}'
                and is_deleted = 0"
