@@ -39,8 +39,9 @@ def SearchForNotification(notification_name)
   @notification_copy = $daos.get_notification_details(notification_name)
 
   if !@notification_copy.nil?
-    Sleep_Until(ClickElement("id", NOTIFICATION_TYPE_DROPDOWN_ID ))
-    Sleep_Until(WaitForAnElementByXpathAndInputValue(SECURITY_PROFILES_USERINPUT_ID, notification_name))
+    Sleep_Until(ClickElement("id", NOTIFICATION_TYPE_DROPDOWN_ID))
+    #filter for the notification type
+    Sleep_Until(WaitForAnElementByXpathAndInputValue(SECURITY_PROFILES_USERINPUT_ID, 'Requisition Withdrawn'))
     Sleep_Until(ClickElement('xpath', SELECT2_MATCHED_RESULT_ID))
 
     #click arrow button of edit dropdown
