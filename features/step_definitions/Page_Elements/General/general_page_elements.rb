@@ -157,3 +157,6 @@ BACKGRNDPROCESS_CONFIRM_ID = '//button[@data-action="run"]'
 #### Notifications Page/Tab ####
 NOTIFICATION_TITLE_ID = "templateNotification_title"
 NOTIFICATION_DESC_ID = "templateNotification_channels_0_subject"
+NOTIFICATION_TRIGGER_DROPDOWN_ID = "s2id_templateNotification_triggerId"
+SELECT2_MATCHED_RESULT_ID = "//span[@class='select2-match']"
+NOTIFICATION_TYPE_DROPDOWN_ID = "s2id_notifier-triggers"
