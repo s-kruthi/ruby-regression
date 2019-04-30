@@ -222,6 +222,17 @@ module Database_env
       return @db[query].first
     end
 
+
+    def get_vendor_details(vendor_name)
+      query = "select id, name
+               from epms_vendor
+               where is_deleted = 0
+               and is_active = 1
+               and name = '#{vendor_name}'
+               order by rand()"
+      return @db[query].first
+    end
+
   end
 
 end
