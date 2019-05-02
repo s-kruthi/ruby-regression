@@ -62,3 +62,43 @@ end
 Then(/^I Should Be Able To Successfully Create a New "([^"]*)"$/i) do |verify_new_type_creation|
   VerifyNewTypeCreated(verify_new_type_creation)
 end
+
+
+And(/^I Select The "([^"]*)" Notification Trigger$/i) do | trigger_name |
+  SelectNotificationTrigger(trigger_name)
+end
+
+
+And(/^I Enter The Necessary Details For The Notification$/i) do
+  Sleep_Until(WaitForAnElementByIdAndInputValue(NOTIFICATION_DESC_ID, NOTIFICATION_DESC_VALUE))
+  UseCkeditorToEnterText(NOTIFICATION_DESC_VALUE, 0)
+  ClickOnSaveButton(SAVE_BTN_ID)
+end
+
+
+Then(/^I Should See That The Notification Was "([\w]+)" Successfully$/i) do | action |
+  VerifyNotificationAction(action)
+end
+
+
+When(/^I Search For "([^"]*)" Notification$/i) do | notification_name |
+ SearchForNotification(notification_name)
+end
+
+
+And(/^I Create A Copy Of The Notification$/i) do
+  Sleep_Until(ClickElement('xpath', "//a[contains(@href, '/copy/#{@notification_copy[:id]}')]"))
+end
+
+
+And(/^I Edit The Title To Be "([^"]*)"$/i) do | edit_title |
+  EditNotificationTitle(edit_title)
+end
+
+
+And(/^I "(Deactivate|Activate|Delete)" The Notification$/i) do | action |
+  PerformNotificationAction(action)
+end
+
+
+
