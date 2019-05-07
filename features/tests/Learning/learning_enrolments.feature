@@ -22,7 +22,7 @@ Then  I Should Be Able To See The Retrain Disabled For The Enrolment
 
 
 @smoke_learning1 @learning_low_risk @course_enable_retrain_enrolment
-Scenario: [Learning]Learning Admin Can Disable Retrain For Enrolments
+Scenario: [Learning]Learning Admin Can Enable Retrain For Enrolments
 Given I Have Logged In as a Learning Admin
 And   I go to Admin Settings
 When  I Go To Enrolments under Learning section
