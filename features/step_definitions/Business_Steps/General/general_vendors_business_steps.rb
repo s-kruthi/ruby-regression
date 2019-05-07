@@ -28,7 +28,7 @@ And(/^I Edit The Name To Be "([\w\s]+)"$/i) do | edit_name |
   @edited_name = edit_name
   Sleep_Until(ClickElement("xpath", "//a[contains(@href, '/edit/#{@vendor_details[:id]}')]"))
   ClearField('id', 'vendor_name' )
-  WaitForAnElementByIdAndInputValue('vendor_name', 'testing_vendors')
+  WaitForAnElementByIdAndInputValue('vendor_name', edit_name)
   ClickOnSaveButton(SAVE_BTN_ID)
 end
 
