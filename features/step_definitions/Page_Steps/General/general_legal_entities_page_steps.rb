@@ -261,11 +261,13 @@ def random_ird()
   return tmp_ird.to_i
 end
 
+
 def check_digit_matches(input_array)
   ird_array = convert_to_integer_array(input_array)
   provided_check_digit = ird_array.pop
   calculate_check_digit(ird_array) == provided_check_digit
 end
+
 
 def convert_to_integer_array(input)
   ird_array = input.split(//)
@@ -275,6 +277,7 @@ def convert_to_integer_array(input)
   end
   ird_array
 end
+
 
 def calculate_check_digit(input_array, weighting_array=$first_weighting)
   remainder = calculate_remainder(input_array, weighting_array)
