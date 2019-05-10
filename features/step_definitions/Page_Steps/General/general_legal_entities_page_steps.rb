@@ -251,7 +251,7 @@ def random_ird()
   $second_weighting = [7,4,3,2,5,2,7,6]
 
   nl = 10000000
-  nh = 14999990
+  nh = 14999999
   matching = false
 
   while(!matching)
