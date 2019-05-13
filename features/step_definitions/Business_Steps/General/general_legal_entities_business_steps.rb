@@ -9,9 +9,9 @@ Then(/^I Should Be Able To See Legal Entities under General section$/i) do
 end
 
 
-And(/^I Can (Add|Edit) A Legal Entity$/i) do | action |
+And(/^I Can (Add|Edit) A Legal Entity( For "([\w\s]+)"?)?$/i) do | action, jurisdiction |
   if action == 'Add'
-    AddLegalEntity()
+    AddLegalEntity(jurisdiction)
   else
     EditLegalEntity()
   end

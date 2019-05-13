@@ -46,14 +46,23 @@ def random_abn()
 end
 
 
-def AddLegalEntity()
+def AddLegalEntity(jurisdiction)
   Sleep_Until(WaitForAnElementByXpathAndTouch(LEGAL_ENTITY_ADD_ID))
 
-  #check db for abn is not in use
-  begin
-    @abn_num = random_abn()
-    exists = $daos.check_legal_entity_exists(@abn_num)
-  end until exists[:presence] == 0
+  if jurisdiction == 'Australia'
+    #check db for abn is not in use
+    begin
+      @abn_num = random_abn()
+      exists = $daos.check_legal_entity_exists(@abn_num)
+    end until exists[:presence] == 0
+  else
+    #check db for ird is not in use
+    begin
+      ird_num = random_ird()
+      exists = $daos.check_legal_entity_exists(ird_num)
+    end until exists[:presence] == 0
+    @abn_num = ird_num
+  end
 
   #Entering mandatory details
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEGAL_ENTITY_ABN_ID, @abn_num))
@@ -237,3 +246,53 @@ def CheckJurisdictionField()
 end
 
 
+def random_ird()
+  $first_weighting = [3,2,7,6,5,4,3,2]
+  $second_weighting = [7,4,3,2,5,2,7,6]
+
+  nl = 10000000
+  nh = 14999999
+  matching = false
+
+  while(!matching)
+    tmp_ird = (rand(nh-nl+1)+nl).to_s
+    matching = check_digit_matches(tmp_ird)
+  end
+  return tmp_ird.to_i
+end
+
+
+def check_digit_matches(input_array)
+  ird_array = convert_to_integer_array(input_array)
+  provided_check_digit = ird_array.pop
+  calculate_check_digit(ird_array) == provided_check_digit
+end
+
+
+def convert_to_integer_array(input)
+  ird_array = input.split(//)
+  ird_array.map!{ |x| x.to_i }
+  if ird_array.size == 8
+    ird_array.unshift(0)
+  end
+  ird_array
+end
+
+
+def calculate_check_digit(input_array, weighting_array=$first_weighting)
+  remainder = calculate_remainder(input_array, weighting_array)
+  return remainder if remainder == 0
+
+  check_digit = 11 - remainder
+  if check_digit == 10 && weighting_array == $first_weighting
+    check_digit = calculate_check_digit input_array, $second_weighting
+  end
+  check_digit
+end
+
+
+def calculate_remainder(input_array, weighting_array)
+  weighted_array = input_array.each_with_index.map { |x,i| x.to_i * weighting_array.at(i) }
+  sum_of_weighted_array = weighted_array.inject{ |x,y| x+y }
+  return sum_of_weighted_array.remainder(11)
+end

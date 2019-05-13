@@ -115,3 +115,12 @@ Feature:
       | country     |
       | Australia   |
       | New Zealand |
+
+
+  @general_low_risk @legal_entities_add @nz_legal_entity_add
+  Scenario: [General]Company Admin Can Create A Legal Entity Having NZ Jurisdiction
+    Given That The Client Country Is Set As New Zealand
+    When  I go to Admin Settings
+    And   I Go To Legal Entities under General section
+    And   I Can Add A Legal Entity For "New Zealand"
+    Then  I Should See That Legal Entity Is Successfully Added
