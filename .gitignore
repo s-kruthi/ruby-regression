@@ -58,4 +58,4 @@ Gemfile.lock
 /features/[Ss]creenshots/safari/[Ss]creenshot*.*
 
 #Folders ignored by the public repository
-/features/lib/*
+features/lib/*
