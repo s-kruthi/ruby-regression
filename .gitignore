@@ -6,7 +6,7 @@
 *.o
 *.so
 .idea*/*
-/features/.idea/*
+features/.idea/*
 
 # Packages #
 ############
@@ -43,7 +43,7 @@ Thumbs.db
 Gemfile.lock
 
 #ignore randomly generated db json files
-/features/step_definitions/MySQL_Scripts/sql_dependencies/json_data_storage/*.json
+features/step_definitions/MySQL_Scripts/sql_dependencies/json_data_storage/*.json
 
 #Screenshot Folders
 #/features/screenshots/chrome/screenshot*.*
@@ -52,10 +52,10 @@ Gemfile.lock
 #/features/screenshots/safari/screenshot*.*
 
 #Screenshot folders (ignore casing)
-/features/[Ss]creenshots/chrome/[Ss]creenshot*.*
-/features/[Ss]creenshots/firefox/[Ss]creenshot*.*
-/features/[Ss]creenshots/headless/[Ss]creenshot*.*
-/features/[Ss]creenshots/safari/[Ss]creenshot*.*
+features/[Ss]creenshots/chrome/[Ss]creenshot*.*
+features/[Ss]creenshots/firefox/[Ss]creenshot*.*
+features/[Ss]creenshots/headless/[Ss]creenshot*.*
+features/[Ss]creenshots/safari/[Ss]creenshot*.*
 
 #Folders ignored by the public repository
 features/lib/*
