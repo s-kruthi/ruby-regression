@@ -32,8 +32,8 @@ Feature:
   Scenario: [General]View Employee Profile to Verify Sub Tabs
     Given I Have Logged In As A Company Manager
     And   I Go To The Menu My Team Section
-    And   I Search An Employee Named auto1.test1
-#    Then  I Should Be Able To View The Employee Profile for auto1.test1 And Verify Email Address auto1.test1@elmodev.com
+    And   I Search An Employee Named auto1.scriptonce1
+#    Then  I Should Be Able To View The Employee Profile for auto1.scriptonce1 And Verify Email Address auto1.scriptonce1@elmodev.com
 #    And   I Should Be Able To Click Activity Sub-Tab
     And   I Should Be Able To Click Resume Sub-Tab
     And   I Should Be Able To Click My Career Sub-Tab
