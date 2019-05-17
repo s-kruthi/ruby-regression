@@ -61,7 +61,7 @@ And(/^I Enter Assignment Rules Recommended Course Name As (.*)$/i) do |assign_ru
 end
 
 
-Then(/^I Should Be Able To Save an Assignment Rule Successfully$/i) do
+Then(/^I Should Be Able To Save An Assignment Rule Successfully$/i) do
   Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
   Sleep_Until(ClickOnAButtonByLastIndex(ASSIGN_RULE_SAVE_BUTTON_ID))
   Sleep_Until(VerifyAnElementExistByXPath(ASSIGN_RULE_UNLOCK_BUTTON_ID, ASSIGN_RULE_UNLOCK_BUTTON_VALUE))

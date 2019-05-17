@@ -93,7 +93,7 @@ Feature:
     And   I Set The Autopay Setting As Yes
     And   I Save The Payment Details Changes For Autopay
     Then  I Should Be Able To See The Autopay Setting Changed To Yes
-s
+
 
   @general_low_risk @user_profile_note @user_profile_editnote @C16877
   Scenario: [General]Can Edit Note To A User Profile
