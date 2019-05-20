@@ -10,8 +10,8 @@ Feature: As A Learning Admin I Would Like To Manage Assignment Rules For Users
     When  I Click On "New Rule" Button
     And   I Enter Assignment Rules Details
     And   I Enter Assignment Rules Condition For Manager As manager1.scriptonce1
-    And   I Enter Assignment Rules Required Course Name As Competition and Consumer
-    And   I Enter Assignment Rules Recommended Course Name As Sexual Harassment
+    And   I Enter Assignment Rules Required Course Name As ELMO Test - Face to Face Logic
+    And   I Enter Assignment Rules Recommended Course Name As ELMO Module
     Then  I Should Be Able To Save An Assignment Rule Successfully
 
 
