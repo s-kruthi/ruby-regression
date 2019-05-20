@@ -6,9 +6,9 @@ Feature:
   
   @general_location_add
   Scenario: [General] Company Admin Creating A New Location Successfully
-    Given I Have Logged In as a Company Admin
-    And   I go to Admin Settings
-    And   I Go To Locations under General section
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To Locations Under General Section
     When  I Click On "Add a new location" Button
     And   I Add New "Location" Details
-    Then  I Should Be Able to Successfully Create a New "Location"
+    Then  I Should Be Able To Successfully Create A New "Location"

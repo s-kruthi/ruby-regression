@@ -84,6 +84,7 @@ Feature:
     And   I Go To Users Under General Section
     When  I Choose To Edit An Existing User's Profile
     Then  I Can See That I Can Choose To Set The Company Legal Entity From The Existing Entities
+    
 
 
   @general_low_risk @user_details_cost_centre_edit @payroll_cost_centre @C16941
