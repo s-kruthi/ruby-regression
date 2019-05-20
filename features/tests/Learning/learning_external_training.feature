@@ -8,7 +8,7 @@ Feature: As An Admin I Would Like to Manage External Training
   @learning_low_risk @external_training_edit @C1789
   Scenario: [Learning]Learning Admin Can Edit External Training Settings
     Given I Have Logged In as a Learning Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     When  I Go To External Training under Learning section
     And   I Enable The External Training For Users
     And   I Enable The Description Field
@@ -20,7 +20,7 @@ Feature: As An Admin I Would Like to Manage External Training
   @learning_low_risk @external_training_disable @C1787 @C1789
   Scenario: [Learning]Learning Admin Can Disable External Training
     Given I Have Logged In as a Learning Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     When  I Go To External Training under Learning section
     And   I Disable The External Training For Users
     Then  I Should Be Able To Save The Configuration Successfully
@@ -31,7 +31,7 @@ Feature: As An Admin I Would Like to Manage External Training
   @learning_low_risk @external_training_enable @C1789
   Scenario: [Learning]Learning Admin Can Enable External Training
     Given I Have Logged In as a Learning Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     When  I Go To External Training under Learning section
     And   I Enable The External Training For Users
     And   I Should Be Able To Save The Configuration Successfully
@@ -78,7 +78,7 @@ Feature: As An Admin I Would Like to Manage External Training
   @learning_low_risk @external_training_course_template_add
   Scenario: [Learning]Learning Admin Can Edit External Training Course Template
     Given I Have Logged In as a Learning Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     When  I Go To External Training under Learning section
     And   I Click On The Library Sub-Tab
     And   I Add An External Course Template
@@ -88,7 +88,7 @@ Feature: As An Admin I Would Like to Manage External Training
   @learning_low_risk @external_training_course_template_edit @C1801
   Scenario: [Learning]Learning Admin Can Edit External Training Course Template
     Given I Have Logged In as a Learning Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     When  I Go To External Training under Learning section
     And   I Click On The Library Sub-Tab
     And   I Edit An External Course Template

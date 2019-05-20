@@ -37,7 +37,10 @@ NEW_USER_FIRST_NAME_ID = "//input[contains(@id,'firstName')]"
 NEW_USER_LAST_NAME_ID = "//input[@id='user_lastName']"
 NEW_USER_USERNAME_ID = "//input[@id='user_username']"
 NEW_USER_EMAIL_ID = "//input[@id='user_email']"
-
+NEW_USER_COUNTRY_ID = "s2id_user_country"
+NEW_USER_STATE_ID = "s2id_user_state"
+NEW_USER_TIMEZONE_ID = "s2id_user_timezone"
+SELECT_DATEOFBIRTH_ID = "//input[contains(@id,'user_dateOfBirth')]"
 MANAGER_SELECT_DROPDOWN_ID = "s2id_user_manager"
 MANAGER_SELECT_INPUT_ID = "select2-input"
 MANAGER_SELECT_RESULT_ID = "select2-result-selectable"
@@ -48,15 +51,15 @@ OB_ADD_NEW_USER_BTN = "//a[contains(.,' New Onboarding User')]"
 OB_USER_NAV_LINK = "//a[contains(.,'Onboarding Users')]"
 
 SELECT_START_DATE_ID = "//input[contains(@id,'user_startDate')]"
-SELECT_EXPIRY_DATE_ID = "//input[contains(@id,'expiryDate')]"
-
+SELECT_EXPIRY_DATE_ID = "//input[contains(@id,'user_expiryDate')]"
+SELECT_END_DATE_ID = "//input[contains(@id,'user_endDate')]"
 
 SELECT_ISELMO_DROPDOWN_ID = "//select[contains(@id,'user_isElmo')]"
 
 USER_CREATE_SAVE_BTN_ID = "//button[@id='user_save']"
 
 SELECT_TIMEZONE_ID = "//select[contains(@id,'user_timezone')]"
-
+NEW_USER_MOBILE_ID = "//input[contains(@id,'user_mobile')]"
 USER_PASSWORD_ID = "//input[contains(@id,'user_password_first')]"
 USER_PASSWORD_RECONFIRM_ID = "//input[contains(@id,'user_password_second')]"
 

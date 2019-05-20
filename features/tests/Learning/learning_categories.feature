@@ -6,8 +6,8 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
 
   @smoke_learning5 @course_new_category @learning_high_risk
   Scenario: [Learning]Create a new category
-    Given I Have Logged In as a Company Admin
-    And   I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
     And   I Go To Categories under Learning section
     When  I Click On New Category Button
     And   I Enter New Category Details
@@ -15,8 +15,8 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
 
   @smoke_learning5 @course_edit_category @learning_high_risk
   Scenario: [Learning]Edit an existing category
-    Given I Have Logged In as a Company Admin
-    And   I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
     And   I Go To Categories under Learning section
     When  I Click On Edit Button For Any Of Existing Course Category
     Then  I Should Be Able To Edit Existing Category Details
@@ -25,8 +25,8 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
 
   @smoke_learning5 @manage_visibility @learning_low_risk
   Scenario: [Learning]Manage visibility of course category
-    Given I Have Logged In as a Company Admin
-    And   I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
     And   I Go To Categories under Learning section
     When  I Click On Visible Button Next To A Category I Want To Hide/unhide
     Then  The Visibility Of That Particular Category Should Be Changed

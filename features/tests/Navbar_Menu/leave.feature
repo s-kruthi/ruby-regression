@@ -19,7 +19,7 @@ Feature:
   @submit_leave_request @time_in_lieu_request @leave_request_take @leave_low_risk
   Scenario: [Leave]Admin Can Submit A TIL/RDO Leave Request For An Employee
     Given I Have Logged In As A Company Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Users under General section
     And   I Search For The User With RDO/ Time in Lieu Balance
     And   I Use The Log in as this user Option To Login
@@ -34,7 +34,7 @@ Feature:
   @submit_leave_request @long_service_leave_request @leave_low_risk
   Scenario: [Leave]Admin Can Submit A LSL Leave Request For An Employee
     Given I Have Logged In As A Company Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Users under General section
     And   I Search For The User With Long Service Leave Balance
     And   I Use The Log in as this user Option To Login
@@ -48,7 +48,7 @@ Feature:
   @submit_leave_request @long_service_leave_request @leave_low_risk @leave_balance_error
   Scenario: [Leave]Leave Balance Insufficient Error Message Is Displayed
     Given I Have Logged In As A Company Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Users under General section
     And   I Search For The User Having Insufficient Long Service Leave Balance
     And   I Use The Log in as this user Option To Login

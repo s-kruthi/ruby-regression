@@ -12,7 +12,7 @@ Feature:
   @smoke_learning9 @course_assignments  @learning_high_risk @NotificationsLearning @C12706
   Scenario: [Learning]User Enrols For A Particular Course Which triggers Notification to Both The User And His Manager(auto approval)
     Given I Have Logged In as a Automation Company Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Courses under Learning section
     When  I Search For A Specific Course Named course_section_automation_QuizActivity_shanku
     And   I Re Enrol The Candidate For The Activity
@@ -34,7 +34,7 @@ Feature:
   @smoke_learning9 @course_assignments_via_rules @learning_high_risk @NotificationsLearning @C1010
   Scenario: [Learning] Verify that user who is assigned a course via assignment rule receives "New Enrolment" notification
     Given I Have Logged In as a Automation Company Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Assignment Rules under General section
     And   I Search For A Specific Assignment Rule Named notification_course_assignment
     When  I Reset The Assignment Rule
@@ -44,7 +44,7 @@ Feature:
   @smoke_learning9 @course_notification_verify @learning_high_risk
   Scenario: [Learning] Verify That User Receives Notification When Enrolling Into A Course
     Given I Have Logged In as a Learning Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To The Menu Learning Section
     And   I Click On "Course Catalogue" Tab
     When  I Search For A Specific Course With Enrolments Named DO NOT DELETE
@@ -55,7 +55,7 @@ Feature:
   @smoke_learning9 @course_bulk_enrolment_notification  @learning_high_risk @C1640
   Scenario: [Learning] Bulk Enrol Users Into A Particular Course
     Given I Have Logged In as a Automation Company Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Courses under Learning section
     And   I Create A Random Course For Automation
     When  I Search For The Randomly Created Course

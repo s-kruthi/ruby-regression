@@ -11,21 +11,21 @@ Feature:
 
   @create_leave_type @leave_high_risk
   Scenario: [Leave]Create Leave types
-    Given I Have Logged In as a Company Admin To Setup Leave Management
+    Given I Have Logged In As A Company Admin To Setup Leave Management
     When  I Try To Create A New Leave Type
     Then  I Should Be Able To Successfully Create A New Leave Type
 
 
   @create_leave_policy @leave_high_risk
   Scenario: [Leave]Create Leave policy
-    Given I Have Logged In as a Company Admin To Setup Leave Management
+    Given I Have Logged In As A Company Admin To Setup Leave Management
     When  I Try To Create A New Leave Policy
     Then  I Should Be Able To Successfully Create A New Leave Policy
 
 
   @create_holiday_management @leave_high_risk
   Scenario: [Leave]Create Holiday Management
-    Given I Have Logged In as a Company Admin To Setup Leave Management
+    Given I Have Logged In As A Company Admin To Setup Leave Management
     When  I Try To Create A New Company Holiday
     Then  I Should Be Able To Successfully Create A New Company Holiday
 

@@ -1,4 +1,4 @@
-Given(/^I Have Logged In as a Company Admin To Setup Leave Management$/i) do
+Given(/^I Have Logged In As A Company Admin To Setup Leave Management$/i) do
   startWebDriver
   GoToThePage(ADMIN_LANDING_PAGE)
   EnterUsername(USER_NAME,LEAVE_COMPANY_ADMIN_USER)

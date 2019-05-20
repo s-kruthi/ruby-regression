@@ -9,7 +9,7 @@ Feature: Manage cost category for learning
   @smoke_learning5 @create_new_learning_cost @C1802 @learning_high_risk @loc_transform
   Scenario: [Learning]Create A New Cost Category
     Given I Have Logged In as a Learning Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Cost Categories Under Learning Section
     #   Find the local_transforms.rb for the undefined Gherkin step
     When  I Create A Cost Category With A Unique Name

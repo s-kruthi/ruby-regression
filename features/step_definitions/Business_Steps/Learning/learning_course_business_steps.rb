@@ -348,7 +348,7 @@ end
 
 Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
   steps %{
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Enrolments under Learning section}
   SearchTheAssignedCourseInEnrollmentSection(course_name)
   VerifyTheStatusAsNotYetStarted()
@@ -448,7 +448,7 @@ end
 Given(/^The Lock course with enrolments Is Configured To (Yes|No)$/i) do |elmo_config_option|
   steps %Q{
     Given I Have Logged In As A ELMO Admin
-    And I go to Admin Settings
+    And I Go To Admin Settings
     And I Go To General Setup under General section
     And I Click On "ELMO Configuration" Tab
     When I Change "Lock course with enrolments" ELMO Configuration To "#{elmo_config_option}"

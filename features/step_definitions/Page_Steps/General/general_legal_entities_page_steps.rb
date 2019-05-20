@@ -225,7 +225,7 @@ end
 def SetClientCountryElmoConfig(country)
   steps %{
     Given I Have Logged In As A ELMO Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To General Setup under General section
     And   I Click On "ELMO Configuration" Tab
     When  I Set The Client Country As #{country}

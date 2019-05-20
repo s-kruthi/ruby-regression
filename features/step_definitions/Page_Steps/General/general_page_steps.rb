@@ -68,13 +68,24 @@ def CreateUsers(loop, arg2, arg3, arg4, arg5, arg6)
 
     Sleep_Until(EnterUserDetails(NEW_USER_EMAIL_ID, @@email_address))
 
-    Sleep_Until(SelectTimeZone(SELECT_TIMEZONE_ID, NEW_USER_DETAILS_MAP[:timezone_value])) if SELECT_TIMEZONE.to_i == 1
+    Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_COUNTRY_ID,SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:country_value], SELECT2_DROPDOWN_RESULT_CLASS)) if $daos.get_epms_config_enabled('countryEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_country')[:value].to_i == 1
+
+    # Adding explicit sleep time since for some reason, State field takes a while to get populated after a country is selected
+    Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_STATE_ID,SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:state_value], SELECT2_DROPDOWN_RESULT_CLASS)) if $daos.get_epms_config_enabled('countryEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_country')[:value].to_i == 1
+
+    Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_TIMEZONE_ID,SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:timezone_value], SELECT2_DROPDOWN_RESULT_CLASS)) if $daos.get_epms_config_enabled('timezoneEnable')[:value].to_i == 1
+
+    Sleep_Until(EnterUserDetails(NEW_USER_MOBILE_ID, EM_USER_MOBILE_VALUE)) if $daos.get_epms_config_enabled('mobileEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_mobile')[:value].to_i == 1
 
     Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID)) if arg5
 
-    Sleep_Until(SelectDate(SELECT_START_DATE_ID, arg6)) if SELECT_START_DATE.to_i == 1
+    Sleep_Until(SelectDate(SELECT_DATEOFBIRTH_ID, NEW_USER_DETAILS_MAP[:dateofbirth_value])) if $daos.get_epms_config_enabled('dateOfBirthEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_dateOfBirth')[:value].to_i == 1
 
-    Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, NEW_USER_DETAILS_MAP[:expiry_date_value])) if SELECT_EXPIRY_DATE.to_i == 1
+    Sleep_Until(SelectDate(SELECT_START_DATE_ID, arg6)) if $daos.get_epms_config_enabled('startDateEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_startDate')[:value].to_i == 1
+
+    Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, NEW_USER_DETAILS_MAP[:expiry_date_value])) if $daos.get_epms_config_enabled('userExpiryDateEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_expiryDate')[:value].to_i == 1
+
+    Sleep_Until(SelectDate(SELECT_END_DATE_ID, NEW_USER_DETAILS_MAP[:end_date_value])) if $daos.get_epms_config_enabled('endDateEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_endDate')[:value].to_i == 1
 
     Sleep_Until(SelectFromDropdown(SELECT_ISELMO_DROPDOWN_ID, "Yes")) if arg2 == "ELMO"
 
