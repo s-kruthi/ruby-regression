@@ -11,7 +11,7 @@ Feature:
   Scenario: [Contracts]Create a New Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Contract Library Under General Section
+    And   I Go To "Contract Library" Under "General" Section
     When I click on New Contract Button
     And I Enter New Employee Contract Details
     Then I Should Be Able To Create A New Contract
@@ -20,14 +20,14 @@ Feature:
   Scenario: [Contracts]Search an Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Contract Library under General section
+    And   I Go To "Contract Library" Under "General" Section
     Then I Should Be Able To Search For An Employee Contract
 
   @employee_contract_edit @contracts_high_risk
   Scenario: [Contracts]Edit an Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Contract Library under General section
+    And   I Go To "Contract Library" Under "General" Section
     When I Search For An Employee Contract
     Then I Should Be Able To Edit An Employee Contract
 
@@ -35,7 +35,7 @@ Feature:
   Scenario: [Contracts]Copy an Existing Contract
     Given I Have Logged In as a ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To Contract Library under General section
+    And   I Go To "Contract Library" Under "General" Section
     When I Search For An Employee Contract
     Then I Should Be Able To Copy An Employee Contract
 
@@ -43,7 +43,7 @@ Feature:
   Scenario: [Contracts]Hide/Unhide an Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Contract Library under General section
+    And   I Go To "Contract Library" Under "General" Section
     When I Search For An Employee Contract
 #    Then I Should Be Able To Hide/Unhide An Employee Contract
 
@@ -51,6 +51,6 @@ Feature:
   Scenario: [Contracts]Delete an Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Contract Library under General section
+    And   I Go To "Contract Library" Under "General" Section
     When I Search For An Employee Contract
 #    Then I Should Be Able To Delete An Employee Contract

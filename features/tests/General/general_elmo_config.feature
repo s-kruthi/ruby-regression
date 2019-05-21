@@ -7,7 +7,7 @@ Feature:
   Scenario: [General]As an ELMO Admin, I want to be able to modify ELMO configuration under General Setup and change various settings
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To General Setup under General section
+    And   I Go To "General Setup" Under "General" Section
     And   I Click On "ELMO Configuration" Tab
     When  I Change "Lock Course With Enrolments" Elmo Configuration To "No"
     And   I Change "New User Contract" Elmo Configuration To "Disabled"
@@ -18,7 +18,7 @@ Feature:
 #    ## Nested step to setup system configuration and the nested steps are as commented
 #    Given I Have Logged In As A ELMO Admin
 #    And   I Go To Admin Settings
-#    And   I Go To General Setup under General section
+#    And   I Go To "General Setup" Under "General" Section
 #    And   I Click On "ELMO Configuration" Tab
 #    When  I Change "Lock course with enrolments" ELMO Configuration To "Disabled"
 #    Then  I Should Be Able To Save Configuration Details
@@ -30,7 +30,7 @@ Feature:
   Scenario: [General]Can Set Legal Entity For Branding Selection Field
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To General Setup Under General Section
+    And   I Go To "General Setup" Under "General" Section
     And   I Click On "ELMO Configuration" Tab
     When  I Click On The Branding Selection Field
     Then  I Can Choose Legal Entity As The Branding Selection Field

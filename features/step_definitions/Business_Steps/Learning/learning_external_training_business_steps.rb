@@ -45,7 +45,7 @@ Given(/^That External Training Is Enabled For Users$/i) do
   steps %{
          Given I Have Logged In as a Learning Admin
          And   I Go To Admin Settings
-         When  I Go To External Training under Learning section
+         When  I Go To "External Training" Under "Learning" Section
          And   I Enable The External Training For Users
          And   I Should Be Able To Save The Configuration Successfully
          Then  I Have Logged Out
@@ -85,7 +85,7 @@ Given(/^That ([\w\s]+) Is (Disabled|Enabled) For External Training$/i) do |field
   steps %{
     Given I Have Logged In as a Learning Admin
     And   I Go To Admin Settings
-    When  I Go To External Training under Learning section
+    When  I Go To "External Training" Under "Learning" Section
     And   I Enable The External Training For Users
     And   I #{action} The #{field_name} Field
     And   I Should Be Able To Save The Configuration Successfully

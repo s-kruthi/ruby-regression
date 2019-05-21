@@ -349,7 +349,7 @@ end
 Then(/^I Should See The Course (.*) Status Reset To Not Yet Started$/i) do |course_name|
   steps %{
     And   I Go To Admin Settings
-    And   I Go To Enrolments under Learning section}
+    And   I Go To "Enrolments" Under "Learning" Section}
   SearchTheAssignedCourseInEnrollmentSection(course_name)
   VerifyTheStatusAsNotYetStarted()
 end
@@ -449,7 +449,7 @@ Given(/^The Lock course with enrolments Is Configured To (Yes|No)$/i) do |elmo_c
   steps %Q{
     Given I Have Logged In As A ELMO Admin
     And I Go To Admin Settings
-    And I Go To General Setup under General section
+    And I Go To "General Setup" Under "General" Section
     And I Click On "ELMO Configuration" Tab
     When I Change "Lock course with enrolments" ELMO Configuration To "#{elmo_config_option}"
     Then  I Should Be Able To Save Configuration Details
@@ -513,7 +513,7 @@ Given(/^A Company Admin Creates A New Course With Unique Name$/i) do
   steps %Q{
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Courses Under Learning Section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Create A New Course With A Unique Name
       }
 end

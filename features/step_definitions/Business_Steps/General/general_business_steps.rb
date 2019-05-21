@@ -38,7 +38,7 @@ And(/^I Go To Admin Settings$/i) do
 end
 
 
-And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
+And(/^I Go To "(.*)" Under "(.*)" Section$/i) do |menu_type, menu_section|
 
   if menu_section == "Rewards"
     menu_section = "RewardsAdmin"
@@ -58,7 +58,7 @@ And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
 end
 
 
-And(/^I Go To The (.*) Section$/i) do |menu_type|
+And(/^I Go To The "(.*)" Section$/i) do |menu_type|
   begin
     case menu_type
 
@@ -150,7 +150,7 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
   for loop in i..arg1 do
     begin
       @@first_name = arg3 + loop.to_s
-      @@last_name = arg4 + Time.now.strftime("%Y%m%d%H%M%S") if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
+      @@last_name = arg4 + Time.now.strftime("%Y%m%d%H%M%S") if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To "(.*)" Under "(.*)" Section' since Users and Onboarding users take different path
       @@last_name = arg4 + Time.now.strftime("%Y%m%d%H%M%S") + ".ob" if $add_user_type == "OB"
       @@user_name = @@first_name + "." + @@last_name
       @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value] #Email = firstname.lastname@email_suffix
@@ -318,7 +318,7 @@ Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onb
   if access_type == "Be Able"
     Sleep_Until(VerifyAnElementExists("xpath", ONBOARDING_USER_SETUP_ID))
     steps %Q{
-    And I Go To Onboarding User Setup Under Onboarding Section
+    And I Go To "Onboarding User Setup" Under "Onboarding" Section
     }
     Sleep_Until(VerifyAnElementExists("xpath", ACTIVITY_RESUME_TAB_ID))
     Sleep_Until(VerifyAnElementExists("xpath", ONBOARDING_SETUP_TAB_ID))
@@ -376,7 +376,7 @@ Given(/^I Have Created A New User$/i) do
   steps %Q{
         Given I Have Logged In as a Payroll Admin
         And   I Go To Admin Settings
-        And   I Go To Users Under General Section
+        And   I Go To "Users" Under "General" Section
         When  I Click On "Add New User" Button
         Then  I Should Be Able To Add A New "Non-ELMO" User With "#{user_first_name}" As First Name And "test" As Last Name}
 end

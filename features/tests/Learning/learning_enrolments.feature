@@ -7,7 +7,7 @@ Feature: As An Admin I Would Like to Manage Enrolments
 Scenario: [Learning]Learning Admin Can View Course Enrolments
 Given I Have Logged In as a Learning Admin
 And   I Go To Admin Settings
-When  I Go To Enrolments under Learning section
+When  I Go To "Enrolments" Under "Learning" Section
 Then  I Should Be Able To View All The Course Enrolments
 
 
@@ -15,7 +15,7 @@ Then  I Should Be Able To View All The Course Enrolments
 Scenario: [Learning]Learning Admin Can Disable Retrain For Enrolments
 Given I Have Logged In as a Learning Admin
 And   I Go To Admin Settings
-When  I Go To Enrolments under Learning section
+When  I Go To "Enrolments" Under "Learning" Section
 And   I Filter For Enrolments With Status Of Recompletion Required
 And   I Choose To Disable Retrain For The Enrolment
 Then  I Should Be Able To See The Retrain Disabled For The Enrolment
@@ -25,7 +25,7 @@ Then  I Should Be Able To See The Retrain Disabled For The Enrolment
 Scenario: [Learning]Learning Admin Can Enable Retrain For Enrolments
 Given I Have Logged In as a Learning Admin
 And   I Go To Admin Settings
-When  I Go To Enrolments under Learning section
+When  I Go To "Enrolments" Under "Learning" Section
 And   I Filter For Enrolments With Status Of Completed
 And   I Choose To Enable Retrain For The Enrolment
 Then  I Should Be Able To See The Retrain Enabled For The Enrolment
@@ -35,7 +35,7 @@ Then  I Should Be Able To See The Retrain Enabled For The Enrolment
 Scenario: [Learning]Learning Admin Can Edit Enrolments With Due Date
 Given I Have Logged In as a Learning Admin
 And   I Go To Admin Settings
-When  I Go To Enrolments under Learning section
+When  I Go To "Enrolments" Under "Learning" Section
    # And   I Filter For Enrolments With Status Of Not Yet Started
 And   I Filter For Enrolments With Status Of In Progress
 And   I Choose To Edit An Enrolment
@@ -49,7 +49,7 @@ Then  I Should See That The Changes Were Successfully Saved To The Enrolment
 Scenario: [Learning]Learning Admin Can Edit Enrolments Without Due Date
 Given I Have Logged In as a Learning Admin
 And   I Go To Admin Settings
-When  I Go To Enrolments under Learning section
+When  I Go To "Enrolments" Under "Learning" Section
     #And   I Filter For Enrolments With Status Of Not Yet Started
 And   I Filter For Enrolments With Status Of In Progress
 And   I Choose To Edit An Enrolment
@@ -63,7 +63,7 @@ Then  I Should See That The Changes Were Successfully Saved To The Enrolment
 Scenario: [Learning]Learning Admin Can Delete Enrolment
 Given I Have Logged In as a Learning Admin
 And   I Go To Admin Settings
-When  I Go To Enrolments under Learning section
+When  I Go To "Enrolments" Under "Learning" Section
 And   I Filter For Enrolments With Status Of Completed
 And   I Filter For Enrolments With Enrolment Method Of Manual
     #And   I Should Be Able To Only Refresh/Delete Enrolment
@@ -75,7 +75,7 @@ Then  I Should See That The Enrolment Was Successfully Deleted
 Scenario: [Learning]Learning Admin Can Delete Enrolment In Bulk
 Given I Have Logged In as a Learning Admin
 And   I Go To Admin Settings
-When  I Go To Enrolments under Learning section
+When  I Go To "Enrolments" Under "Learning" Section
 And   I Filter For Enrolments With Status Of Completed
 And   I Select 3 Enrolments For Bulk Action
 And   I Choose To Delete Enrolment From The Actions Menu
@@ -86,7 +86,7 @@ Then  I Should See That The Enrolment Was Successfully Deleted
 Scenario: [Learning]Learning Admin Can Mark Enrolment As Complete
 Given I Have Logged In as a Learning Admin
 And   I Go To Admin Settings
-When  I Go To Enrolments under Learning section
+When  I Go To "Enrolments" Under "Learning" Section
 And   I Filter For Enrolments With Status Of In Progress
 And   I Choose To Mark An Enrolment As Complete
 Then  I Should See That The Enrolment Was Successfully Marked As Complete
@@ -96,7 +96,7 @@ Then  I Should See That The Enrolment Was Successfully Marked As Complete
 Scenario: [Learning]Learning Admin Can Mark Enrolments In Bulk As Complete
 Given I Have Logged In as a Learning Admin
 And   I Go To Admin Settings
-When  I Go To Enrolments under Learning section
+When  I Go To "Enrolments" Under "Learning" Section
 And   I Filter For Enrolments With Status Of In Progress
 And   I Select 1 Enrolment For Bulk Action
 And   I Choose To Mark Enrolments As Complete From The Actions Menu

@@ -15,7 +15,7 @@ Feature:
   Scenario Outline: [General]Company Admin Can Create A Security Profile
     Given I Have Logged In As A Company Admin
     When  I Go To Admin Settings
-    And   I Go To Security Profiles Under General Section
+    And   I Go To "Security Profiles" Under "General" Section
     And   I Can Add A Profile Of Type <profile_type> Named As <profile_name>
     Then  I Should See That The Profile Is Successfully Added
 
@@ -47,7 +47,7 @@ Feature:
   Scenario: [General]Company Admin Can Delete A Security Profile
     Given I Have Logged In As A Company Admin
     When  I Go To Admin Settings
-    And   I Go To Security Profiles Under General Section
+    And   I Go To "Security Profiles" Under "General" Section
     And   I Can Delete Security Profile With No Users
     Then  I Should See That The Profile Is Successfully Deleted
 
@@ -56,7 +56,7 @@ Feature:
   Scenario: [General]Company Admin Can Edit A Security Profile
     Given I Have Logged In As A Company Admin
     When  I Go To Admin Settings
-    And   I Go To Security Profiles Under General Section
+    And   I Go To "Security Profiles" Under "General" Section
     And   I Can Edit Security Profile With No Users
     And   I Add company admin scriptonce User To The Security Profile
     And   I Should See That User Is Added To The Profile Successfully
@@ -66,7 +66,7 @@ Feature:
   Scenario: [General]Company Admin Can Add A User To Specified Security Profile
     Given I Have Logged In As A Company Admin
     When  I Go To Admin Settings
-    And   I Go To Security Profiles Under General Section
+    And   I Go To "Security Profiles" Under "General" Section
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Add company admin scriptonce User To The Security Profile
     And   I Should See That User Is Added To The Profile Successfully
@@ -76,7 +76,7 @@ Feature:
   Scenario: [General]Company Admin Can Delete Specified Security Profile
     Given I Have Logged In As A Company Admin
     When  I Go To Admin Settings
-    And   I Go To Security Profiles Under General Section
+    And   I Go To "Security Profiles" Under "General" Section
     And   I Can Delete Learning Admin Scriptonce Security Profile
     Then  I Should See That The Profile Is Successfully Deleted
 
@@ -85,7 +85,7 @@ Feature:
   Scenario: [General]Company Admin Can Add Sections To Specified Security Profile
     Given I Have Logged In As A Company Admin
     When  I Go To Admin Settings
-    And   I Go To Security Profiles Under General Section
+    And   I Go To "Security Profiles" Under "General" Section
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Go To The Sections Tab Of The Profile
     And   I Select Sections For The Users Assigned To Profile
@@ -98,7 +98,7 @@ Feature:
   Scenario: [General]Company Admin Can Add Reports To Specified Security Profile
     Given I Have Logged In As A Company Admin
     When  I Go To Admin Settings
-    And   I Go To Security Profiles Under General Section
+    And   I Go To "Security Profiles" Under "General" Section
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Go To The Reports Tab Of The Profile
     And   I Select Reports For The Users Assigned To Learning Security Profile
@@ -112,7 +112,7 @@ Feature:
   Scenario: [General]Company Admin Can Add Reports To Specified Security Profile
     Given I Have Logged In As A Company Admin
     When  I Go To Admin Settings
-    And   I Go To Security Profiles Under General Section
+    And   I Go To "Security Profiles" Under "General" Section
     And   I Can Edit HR Manager - HC-1740 - Omar Security Profile
     And   I Go To The Reports Tab Of The Profile
     And   I Select Reports For The Users Assigned To HR Manager Security Profile

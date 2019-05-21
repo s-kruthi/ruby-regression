@@ -9,7 +9,7 @@ Feature:
   Scenario: [Leave]Verify Leave Policy Toggles Default Settings
     Given I Have Logged In as a HR Manager
     And   I Go To Admin Settings
-    And   I Go To Leave Policy under Leave Management section
+    And   I Go To "Leave Policy" Under "Leave Management" Section
     When  I Click On New Leave Policy Button
     Then  I Should See The Set as default policy toggle set to Disabled
     And   I Should See The Show Personal Leave Balance to employees toggle set to Disabled
@@ -22,7 +22,7 @@ Feature:
   Scenario: [Leave]Verify Time Validation For Showing LSL
     Given I Have Logged In as a HR Manager
     And   I Go To Admin Settings
-    And   I Go To Leave Policy under Leave Management section
+    And   I Go To "Leave Policy" Under "Leave Management" Section
     When  I Click On New Leave Policy Button
     And   I Set The Show Long Service Leave Balance to employees toggle to Enabled
     Then  I Should See That The Show LSL after x years Default Value is 1
@@ -33,7 +33,7 @@ Feature:
   Scenario: [Leave]Verify Time Validation For Showing LSL
     Given I Have Logged In as a HR Manager
     And   I Go To Admin Settings
-    And   I Go To Leave Policy under Leave Management section
+    And   I Go To "Leave Policy" Under "Leave Management" Section
     And   I Edit A Leave Policy
     When  I Set The Show Long Service Leave Balance to employees toggle to Enabled
     And   I Enter The Show LSL after x years To 36

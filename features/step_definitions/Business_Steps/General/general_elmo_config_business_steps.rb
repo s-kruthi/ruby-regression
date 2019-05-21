@@ -59,7 +59,7 @@ Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/i) do |admin
   steps %Q{
     Given I Have Logged In As A #{admin_type}
     And I Go To Admin Settings
-    And I Go To General Setup under General section
+    And I Go To "General Setup" Under "General" Section
     And I Click On "ELMO Configuration" Tab
     When I Change "#{configure_name}" ELMO Configuration To "#{configured_value}"
     Then I Should Be Able To Save Configuration Details
@@ -82,7 +82,7 @@ Given(/^Contracts Is Disabled For New (:?OB )?Users$/i) do |user_type|
   steps %Q{
     Given I Have Logged In As A ELMO Admin
     And I Go To Admin Settings
-    And I Go To General Setup under General section
+    And I Go To "General Setup" Under "General" Section
     And I Click On "ELMO Configuration" Tab
     When I Change "New #{user_type}User Contract" ELMO Configuration To "Disabled"
     Then I Should Be Able To Save Configuration Details

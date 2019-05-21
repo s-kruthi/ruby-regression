@@ -7,7 +7,7 @@ Feature:
   @recruitment_internal_jobad
   Scenario: [Recruitment]Employee can apply for an Internal Job Ad
     Given I Have Logged In As An Employee Using The Username "auto1.scriptonce1" And Password "Admin1234567"
-    And   I Go To The Menu Careers Section
+    And   I Go To The "Menu Careers" Section
     And   I Search For The Job Ad Titled "Quality Assurance Tester - Automation - Internal"
     When  I Apply For The Job Ad Titled "Quality Assurance Tester - Automation - Internal"
     And   I Upload My Resume

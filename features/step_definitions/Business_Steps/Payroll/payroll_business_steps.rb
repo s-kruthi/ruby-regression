@@ -1,7 +1,7 @@
 When(/^I Make Changes To Legal Entity$/i) do
   steps %{
     And   I Go To Admin Settings
-    And   I Go To Legal Entities under General section
+    And   I Go To "Legal Entities" Under "General" Section
     And   I Can Edit A Legal Entity
     Then  I Should See That Legal Entity Is Updated Successfully
     And   I Have Logged Out as a Company Admin
@@ -74,7 +74,7 @@ Given(/^Non-default Legal Entity Exists$/i) do
     puts COLOR_YELLOW + "no non-default legal entities to edit".upcase
     steps %Q{
       When  I Go To Admin Settings
-      And   I Go To Legal Entities under General section
+      And   I Go To "Legal Entities" Under "General" Section
       And   I Can Add A Legal Entity
       Then  I Should See That Legal Entity Is Successfully Added
     }

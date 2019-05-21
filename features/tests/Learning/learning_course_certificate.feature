@@ -12,7 +12,7 @@ Feature: Manage Certificates On The Certificate List Page
   Scenario: As A Learning Admin, I Can Manage A Specific Certificate Template On The Template List Page
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    When  I Go To Course Certificate Templates Under Learning Section
+    When  I Go To "Course Certificate Templates" Under "Learning" Section
 #   Check templates are listed with required column whose values are defined in test data. Create templates(>10) when necessary.
     Then  I Should See The Certificates Listed In Descending Order
 #   Find the local_transforms.rb for the undefined Gherkin step

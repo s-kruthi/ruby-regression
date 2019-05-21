@@ -10,7 +10,7 @@
     Scenario: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A Acknowledgement Activity
 
@@ -19,7 +19,7 @@
     Scenario: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A ELMO Module Activity
 
@@ -28,7 +28,7 @@
     Scenario: [Learning]Learning Admin creating New ELMO Survey Activity In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A ELMO Survey Activity
 
@@ -37,7 +37,7 @@
     Scenario: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A Face-to-Face Activity
 
@@ -46,7 +46,7 @@
     Scenario: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A Quiz Activity
 
@@ -55,7 +55,7 @@
     Scenario: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A File Activity
 
@@ -64,7 +64,7 @@
     Scenario: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A Label Activity
 
@@ -73,7 +73,7 @@
     Scenario: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A Page Activity
 
@@ -82,7 +82,7 @@
     Scenario: [Learning]Learning Admin creating New Activities In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Add A Post Activity
 
@@ -93,7 +93,7 @@
 #    Scenario: [Learning]Learning Admin creating New Activities In A Course
 #      Given I Have Logged In as a Learning Admin
 #      And   I Go To Admin Settings
-#      And   I Go To Courses under Learning section
+#      And   I Go To "Courses" Under "Learning" Section
 #      When  I Edit A Specific Course Named DO NOT DELETE
 #      Then  I Should Be Able To Add A ELMO Survey (new) Activity
 
@@ -103,7 +103,7 @@
       Given The Lock Course With Enrolments Is Configured To No
       And   I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Edit A ELMO Module Activity Named Test ELMO Module Activity - Please DO NOT DELETE
 
@@ -114,7 +114,7 @@
       And   Courses Have User Enrolments
       And   I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Search For A Course With Active User Enrolments
       And   I Edit The Course
       Then  I Should Not Be Able To Delete Any Course Related Activities
@@ -127,7 +127,7 @@
     Scenario: [Learning]Learning Admin Can Edit An ELMO Survey Activity In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Edit A Specific ELMO Survey Activity Named Test ELMO Survey Activity - Please DO NOT DELETE
       And   I Set Compulsory Settings To Enabled
@@ -137,7 +137,7 @@
     Scenario: [Learning]Learning Admin Can Delete An ELMO Survey Activity In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE With No Enrolments
       Then  I Should Be Able To Delete A Specific ELMO Survey Activity Named Test ELMO Survey Activity - Please DO NOT DELETE
 
@@ -146,7 +146,7 @@
     Scenario: [Learning]Learning Admin Deleting A Section In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Should Be Able To Delete A Specific Section
 
@@ -156,7 +156,7 @@
       Given The Lock course with enrolments Is Configured To Yes
       And   I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       And   I Open A Specific Activity Named Test Face-to-Face
       Then  I Should Be Able To Create A Session In The Face-to-Face Activity
@@ -166,7 +166,7 @@
     Scenario: [Learning]Learning Admin Can Edit A Session In A Face-to-Face Activity
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       And   I Open A Specific Activity Named Test Face-to-Face
       Then  I Should Be Able To Edit A Session In The Face-to-Face Activity
@@ -176,7 +176,7 @@
     Scenario: [Learning]Learning Admin Can Delete A Session In A Face-to-Face Activity
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       And   I Open A Specific Activity Named Test Face-to-Face
       Then  I Should Be Able To Delete A Session In The Face-to-Face Activity
@@ -186,7 +186,7 @@
     Scenario: [Learning]Learning Admin Deleting A Section In A Course
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       Then  I Delete A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
 
@@ -195,7 +195,7 @@
     Scenario: [Learning]Learning Admin Adding Notification Templates in Face-to-Face Activity
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       And   I Open A Specific Activity Named Test Face-to-Face
       Then  I Should Be Able To Add All Notifications
@@ -205,7 +205,7 @@
     Scenario: [Learning]When viewing face-to-face session list, can sort by ascending/descending for all field headers
       Given I Have Logged In as a Learning Admin
       And   I Go To Admin Settings
-      And   I Go To Courses under Learning section
+      And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named DO NOT DELETE
       And   I Open A Specific Activity Named Test Face-to-Face
       Then  I Should Be Able To View The Face-To-Face Activity Session List
@@ -216,7 +216,7 @@
     Scenario: As a company admin, i want to be able to add/edit a scorm package and make necessary changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
-      And   I Go To Courses Under Learning Section
+      And   I Go To "Courses" Under "Learning" Section
       #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A SCORM Package Activity
@@ -227,14 +227,14 @@
     Scenario Outline: User can edit the scorm activity regardless of course lock config or user enrolled in the course
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
-      And   I Go To Courses Under Learning Section
+      And   I Go To "Courses" Under "Learning" Section
       #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A SCORM Package Activity
       Given The "ELMO Admin" Configure The "Lock course with enrolments" To <course_lock>
       But   I Have Logged In As A Company Admin
       When  I Go To Admin Settings
-      And   I Go To Courses Under Learning Section
+      And   I Go To "Courses" Under "Learning" Section
       And   I Search For Created Course In The Scenario
       And   I Change The Created Course Enrolment With Employee Being <user_enrolled>
       And   I Go To The Sections Of The Created Course
@@ -252,7 +252,7 @@
     Scenario: As A Company Admin, I Want To Be Able To Add/edit A Quiz And Make Necessary Changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
-      And   I Go To Courses Under Learning Section
+      And   I Go To "Courses" Under "Learning" Section
       #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       And  I Should Be Able To Add A Quiz Activity
@@ -265,7 +265,7 @@
     Default settings for Settings is "Completion Terminology: Pass/Fail", "Show Feedback: Yes", "Marker: Manager"
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
-      And   I Go To Courses Under Learning Section
+      And   I Go To "Courses" Under "Learning" Section
       #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       And   I Should Be Able To Add A Quiz Activity
@@ -277,14 +277,14 @@
     Scenario Outline: Ability To Edit Quiz Activity As Per Enrolment And System Configuration
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
-      And   I Go To Courses Under Learning Section
+      And   I Go To "Courses" Under "Learning" Section
       #   Find the local_transforms.rb for the undefined Gherkin step
       When  I Create A New Course With A Unique Name
       Then  I Should Be Able To Add A Quiz Activity
       Given The "ELMO Admin" Configure The "Lock course with enrolments" To <course_lock>
       But   I Have Logged In As A Company Admin
       When  I Go To Admin Settings
-      And   I Go To Courses Under Learning Section
+      And   I Go To "Courses" Under "Learning" Section
       And   I Search For Created Course In The Scenario
       And   I Change The Created Course Enrolment With Employee Being <user_enrolled>
       And   I Go To The Sections Of The Created Course
@@ -361,7 +361,7 @@
     Scenario: As A User, I Want To Signup / Withdraw For A Face 2 Face Activity Session So That I Should Be Able To Self Sign Up / Withdraw Myself From The Face-to-face Session
       Given That Session Is Created For A Face 2 Face Activity
       And   I Have Logged In As A Company Employee
-      And   I Go To The Menu Learning Section
+      And   I Go To The "Menu Learning" Section
       And   I Click On "Course Catalogue" Tab
       And   I Search For A Specific Course With No Enrolments Named DO NOT DELETE
       And   I Click On The Enrol Button For A Course
@@ -378,7 +378,7 @@
     Scenario: As a company Administrator, I want to manage Continuing Professional Development (CPD) Categories
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
-      And   I Go To Continuing Professional Development Under Learning Section
+      And   I Go To "Continuing Professional Development" Under "Learning" Section
       And   I Click On "Categories" Tab
       When  I Click On "New Category" Button
       And   I Enter CPD "New Category" Details
@@ -389,7 +389,7 @@
     Scenario: As A Company Administrator, I Want To Manage Continuing Professional Development (CPD) Points
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
-      And   I Go To Continuing Professional Development Under Learning Section
+      And   I Go To "Continuing Professional Development" Under "Learning" Section
       When  I Click On "New Plan" Button
       And   I Enter CPD "New Plan" Details
       And   I Select CPD "Category" Named "DO NOT DELETE"

@@ -89,7 +89,7 @@ end
 And(/^I Go To The Face To Face Session Of The Course$/i) do
   steps %{
     And   I Go To Admin Settings
-    And   I Go To Courses under Learning section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Search For The Randomly Created Course
   }
   ClickLinkButtonWithName('Edit')
@@ -143,7 +143,7 @@ Given(/^That Session Is Created For A Face 2 Face Activity$/i) do
   steps %Q{
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Courses Under Learning Section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Click On The New Course Button
     And   I Add New Course Details
     Then  I Should Be Able To Create A New Course

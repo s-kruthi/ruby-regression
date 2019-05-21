@@ -7,7 +7,7 @@ Feature:
   Scenario: [General]Company Admin Modifying User Details Section In User Profile Setup
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To User Profile Setup Under General Section
+    And   I Go To "User Profile Setup" Under "General" Section
     And   I Click On "User Profile Setup" Tab
     When  I Click On "Expiry Date" Item From Left Side Bar Under "User Details" Section
     And   I Select Enabled Toggle To "Enabled"
@@ -24,7 +24,7 @@ Feature:
   Scenario: [General]Company Admin Modifying Built-in Hierarchies Section In User Profile Setup
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To User Profile Setup Under General Section
+    And   I Go To "User Profile Setup" Under "General" Section
     And   I Click On "User Profile Setup" Tab
     When  I Click On "Position" Item From Left Side Bar Under "Built-In Hierarchies" Section
     And   I Select Enabled Toggle To "Disabled"
@@ -42,7 +42,7 @@ Feature:
   Scenario: [General]Company Admin Modifying Custom User Fields Section In User Profile Setup
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To User Profile Setup Under General Section
+    And   I Go To "User Profile Setup" Under "General" Section
     And   I Click On "User Profile Setup" Tab
     And   I Edit 3 Custom User Fields In User Profile Setup
     And   I Click On The First Item From Left Side Bar Under "Custom User Fields" section
@@ -64,7 +64,7 @@ Feature:
     Given That Cost Centre and Company(Legal Entity) Fields Are Enabled
     And   I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To User Profile Setup Under General Section
+    And   I Go To "User Profile Setup" Under "General" Section
     When  I Click On "User Profile Setup" Tab
     Then  I Can See That I Can Modify The Cost Centre Settings
     And   I Can See That I Can Modify The Company(Legal Entity) Settings
@@ -81,7 +81,7 @@ Feature:
   Scenario: [General]Company Admin Modifying Employee Number In User Profile Setup
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To User Profile Setup Under General Section
+    And   I Go To "User Profile Setup" Under "General" Section
     And   I Click On "User Profile Setup" Tab
     When  I Click On "Employee Number" Item From Left Side Bar Under "User Details" Section
     Then  I Select Auto Generate To Enabled
@@ -92,7 +92,7 @@ Feature:
   Scenario: [General]Company Admin Modifying Date Of Birth In User Profile Setup
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To User Profile Setup Under General Section
+    And   I Go To "User Profile Setup" Under "General" Section
     And   I Click On "User Profile Setup" Tab
     When  I Click On "Date of Birth" Item From Left Side Bar Under "User Details" Section
     And   I Select Enabled Toggle To "Enabled"

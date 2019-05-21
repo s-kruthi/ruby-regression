@@ -190,7 +190,7 @@ def CreateAUser(user_type, firstname, lastname, manager_name, role)
   end
 
   @@first_name = firstname
-  @@last_name = lastname if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
+  @@last_name = lastname if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To "(.*)" Under "(.*)" Section' since Users and Onboarding users take different path
   @@last_name = lastname + ".ob" if $add_user_type == "OB"
   @@user_name = @@first_name + "." + @@last_name
   @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value] #Email = firstname.lastname@email_suffix

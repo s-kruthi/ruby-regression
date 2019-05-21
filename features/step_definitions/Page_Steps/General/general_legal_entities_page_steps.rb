@@ -226,7 +226,7 @@ def SetClientCountryElmoConfig(country)
   steps %{
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To General Setup under General section
+    And   I Go To "General Setup" Under "General" Section
     And   I Click On "ELMO Configuration" Tab
     When  I Set The Client Country As #{country}
     Then  I Should Be Able To Save Configuration Details

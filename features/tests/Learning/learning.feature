@@ -11,7 +11,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
   Scenario: [Learning]Learning Admin Creating New Course
     Given I Have Logged In as a Learning Admin
     And   I Go To Admin Settings
-    And   I Go To Courses under Learning section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Click On The New Course Button
     And   I Add New Course Details
     Then  I Should Be Able To Create A New Course
@@ -21,7 +21,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
   Scenario: [Learning]Learning Admin Searching New Course
     Given I Have Logged In as a Learning Admin
     And   I Go To Admin Settings
-    And   I Go To Courses under Learning section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Search For A Specific Course Named DO NOT DELETE
     Then  I Should Be Able To Edit The Specific Course
 
@@ -30,7 +30,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
   Scenario: [Learning]Learning Admin Deleting New Course
     Given I Have Logged In as a Learning Admin
     And   I Go To Admin Settings
-    And   I Go To Courses under Learning section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Search For A Specific Course Named DO NOT DELETE
     Then  I Should Be Able To Copy The Specific Course
 
@@ -39,7 +39,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
   Scenario: [Learning]Learning Admin Deleting New Course
     Given I Have Logged In as a Learning Admin
     And   I Go To Admin Settings
-    And   I Go To Courses under Learning section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Search For A Specific Course With No Enrolments Named DO NOT DELETE
     Then  I Should Be Able To Delete The Specific Course
 
@@ -48,6 +48,6 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
   Scenario: [Learning]Learning Admin Adding Notification Templates in Course
     Given I Have Logged In as a Learning Admin
     And   I Go To Admin Settings
-    And   I Go To Courses under Learning section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Edit A Specific Course Named DO NOT DELETE
     Then  I Should Be Able To Add All Notifications

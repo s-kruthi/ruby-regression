@@ -9,7 +9,7 @@ Feature:
   Scenario: [Documents]Create a Document Category
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Document Categories under Documents section
+    And   I Go To "Document Categories" Under "Documents" Section
     When I click on Add Category Button
     And  I Enter New Document Category Details
     Then I Should Be Able To Create A Document Category
@@ -19,7 +19,7 @@ Feature:
   Scenario: [Documents]Hide a Document Category
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Document Categories under Documents section
+    And   I Go To "Document Categories" Under "Documents" Section
     Then I Should Be Able To Hide A Document Category
 
 
@@ -27,7 +27,7 @@ Feature:
    Scenario: [Documents]Create a Form Template
      Given I Have Logged In As A Company Admin
      And   I Go To Admin Settings
-     And  I Go To Form Templates Under Documents Section
+     And  I Go To "Form Templates" Under "Documents" Section
      When I click on Create Form Template Button
      And  I Enter New Form Template Details
      Then I Should Be Able To Create A Form Template
@@ -37,7 +37,7 @@ Feature:
     Scenario: [Documents]Hide a Form Template
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And  I Go To Form Templates Under Documents Section
+    And  I Go To "Form Templates" Under "Documents" Section
     When  I Search For A Specific Form Template
     Then  I Should Be Able To Hide A Specific Form Template
 

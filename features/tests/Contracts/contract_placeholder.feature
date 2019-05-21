@@ -10,7 +10,7 @@
     Scenario Outline: [Contracts]Company Admin can create new contract placeholders
       Given I Have Logged In as a Contract Admin
       And   I Go To Admin Settings
-      And   I Go To Contract Placeholder Library Under General Section
+      And   I Go To "Contract Placeholder Library" Under "General" Section
       When  I Click on "New Placeholder" Button
       And   I Enter The Contract Placeholder Title
       And   I Choose The Type as "<contract_placeholder_type>"
@@ -30,7 +30,7 @@
     Scenario: [Contracts]Default value for Text area placeholders have CK editor and size limitation
       Given I Have Logged In as a Contract Admin
       And   I Go To Admin Settings
-      And   I Go To Contract Placeholder Library Under General Section
+      And   I Go To "Contract Placeholder Library" Under "General" Section
       When  I Click on "New Placeholder" Button
       And   I Enter The Contract Placeholder Title
       And   I Choose The Type as "Text Area"
@@ -44,7 +44,7 @@
     Scenario: Search for Existing Contract Placeholders
       Given I Have Logged In as a Contract Admin
       And   I Go To Admin Settings
-      And   I Go To Contract Placeholder Library Under General Section
+      And   I Go To "Contract Placeholder Library" Under "General" Section
       When  I Search For Contract Placeholders Starting With "Auto"
       Then  I Should Be Able To See The Contract Placeholders
 
