@@ -97,7 +97,7 @@ Feature:
     Then  I Should See The Cost Centre Field
     And   I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres
 
-
+    
   @general_low_risk @hr_nz_personal_details @C21013
   Scenario Outline: [General]NZ Address Format In Personal Details Section
     Given I Have Logged In As A Company Admin

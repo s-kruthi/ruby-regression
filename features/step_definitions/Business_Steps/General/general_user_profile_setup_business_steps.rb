@@ -60,7 +60,7 @@ Then(/^I Can See That I Can Modify The ([\w\s\(\)]+) Settings$/i) do |field|
 end
 
 
-Then(/^I Should Not Be Able To Access Cost Centres under HR Core section$/i) do
+Then(/^I Should Not Be Able To Access Cost Centres Under HR Core Section$/i) do
   GoToASection("//a[@href='#collapseHRCore']")
   sleep(2)
   Sleep_Until(VerifyAnElementNotExist('xpath','//a[@href="/admin/costCentre/"]'))

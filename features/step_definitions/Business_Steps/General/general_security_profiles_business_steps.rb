@@ -1,4 +1,4 @@
-Then(/^I Should Be Able To See Security Profiles under General section$/i) do
+Then(/^I Should Be Able To See Security Profiles Under General Section$/i) do
   GoToASection(GENERAL_EXPAND)
   Sleep_Until(VerifyAnElementExists('xpath', SECURITY_PROFILES_ID))
 end
