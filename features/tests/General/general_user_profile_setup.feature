@@ -9,7 +9,7 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To User Profile Setup Under General Section
     And   I Click On "User Profile Setup" Tab
-    When  I Click On "Expiry Date" Item From Left Side Bar Under "User Details" section
+    When  I Click On "Expiry Date" Item From Left Side Bar Under "User Details" Section
     And   I Select Enabled Toggle To "Enabled"
     And   I Select "Required" Dropdown To "Required"
     And   I Select "Self Registration" Dropdown To "Yes"
@@ -26,9 +26,9 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To User Profile Setup Under General Section
     And   I Click On "User Profile Setup" Tab
-    When  I Click On "Position" Item From Left Side Bar Under "Built-In Hierarchies" section
-    And   I Select Enabled Toggle to "Disabled"
-    And   I Click On "Department" Item From Left Side Bar Under "Built-In Hierarchies" section
+    When  I Click On "Position" Item From Left Side Bar Under "Built-In Hierarchies" Section
+    And   I Select Enabled Toggle To "Disabled"
+    And   I Click On "Department" Item From Left Side Bar Under "Built-In Hierarchies" Section
     And   I Select Enabled Toggle To "Enabled"
     And   I Select "Self Registration" Dropdown To "Yes"
     And   I Select "Visible" Dropdown To "Manager and Company Admin"
@@ -64,7 +64,7 @@ Feature:
     Given That Cost Centre and Company(Legal Entity) Fields Are Enabled
     And   I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To User Profile Setup Under General section
+    And   I Go To User Profile Setup Under General Section
     When  I Click On "User Profile Setup" Tab
     Then  I Can See That I Can Modify The Cost Centre Settings
     And   I Can See That I Can Modify The Company(Legal Entity) Settings
@@ -81,9 +81,9 @@ Feature:
   Scenario: [General]Company Admin Modifying Employee Number In User Profile Setup
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To User Profile Setup Under General section
+    And   I Go To User Profile Setup Under General Section
     And   I Click On "User Profile Setup" Tab
-    When  I Click On "Employee Number" Item From Left Side Bar Under "User Details" section
+    When  I Click On "Employee Number" Item From Left Side Bar Under "User Details" Section
     Then  I Select Auto Generate To Enabled
     And   I Can See That I Can Configure Employee Number
 
@@ -92,9 +92,9 @@ Feature:
   Scenario: [General]Company Admin Modifying Date Of Birth In User Profile Setup
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To User Profile Setup Under General section
+    And   I Go To User Profile Setup Under General Section
     And   I Click On "User Profile Setup" Tab
-    When  I Click On "Date of Birth" Item From Left Side Bar Under "User Details" section
+    When  I Click On "Date of Birth" Item From Left Side Bar Under "User Details" Section
     And   I Select Enabled Toggle To "Enabled"
     And   I Select "Required" Dropdown To "Required"
     And   I Select "Self Registration" Dropdown To "Yes"
@@ -103,6 +103,3 @@ Feature:
     And   I Select "Profile" Dropdown To "Company Admin Only"
     Then  I Should Be Able To Save The User Details Configuration
     And   I Verify That The Configuration Status Is Saved
-
-
-

@@ -8,7 +8,7 @@ Feature:
   @leave_low_risk @leave_policy_toggle_default
   Scenario: [Leave]Verify Leave Policy Toggles Default Settings
     Given I Have Logged In as a HR Manager
-    And   I Go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Leave Policy under Leave Management section
     When  I Click On New Leave Policy Button
     Then  I Should See The Set as default policy toggle set to Disabled
@@ -21,7 +21,7 @@ Feature:
   @leave_low_risk @leave_policy_time_validation_LSL_default
   Scenario: [Leave]Verify Time Validation For Showing LSL
     Given I Have Logged In as a HR Manager
-    And   I Go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Leave Policy under Leave Management section
     When  I Click On New Leave Policy Button
     And   I Set The Show Long Service Leave Balance to employees toggle to Enabled
@@ -32,7 +32,7 @@ Feature:
   @leave_low_risk @leave_policy_time_validation_LSL
   Scenario: [Leave]Verify Time Validation For Showing LSL
     Given I Have Logged In as a HR Manager
-    And   I Go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Leave Policy under Leave Management section
     And   I Edit A Leave Policy
     When  I Set The Show Long Service Leave Balance to employees toggle to Enabled

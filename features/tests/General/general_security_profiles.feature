@@ -6,15 +6,15 @@ Feature:
 
   @general_low_risk @security_profile_access
   Scenario: [General]Company Admin Can Access Security Profiles Page
-    Given I Have Logged In as a Company Admin
-    When  I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     Then  I Should Be Able To See Security Profiles under General section
 
 
   @general_low_risk @security_profiles_add
   Scenario Outline: [General]Company Admin Can Create A Security Profile
-    Given I Have Logged In as a Company Admin
-    When  I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Add A Profile Of Type <profile_type> Named As <profile_name>
     Then  I Should See That The Profile Is Successfully Added
@@ -45,8 +45,8 @@ Feature:
 
   @general_low_risk @security_profiles_delete
   Scenario: [General]Company Admin Can Delete A Security Profile
-    Given I Have Logged In as a Company Admin
-    When  I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Delete Security Profile With No Users
     Then  I Should See That The Profile Is Successfully Deleted
@@ -54,8 +54,8 @@ Feature:
 
   @general_low_risk @security_profiles_add_user @security_profiles_edit
   Scenario: [General]Company Admin Can Edit A Security Profile
-    Given I Have Logged In as a Company Admin
-    When  I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Edit Security Profile With No Users
     And   I Add company admin scriptonce User To The Security Profile
@@ -64,8 +64,8 @@ Feature:
 
   @general_low_risk @security_profiles_add_user
   Scenario: [General]Company Admin Can Add A User To Specified Security Profile
-    Given I Have Logged In as a Company Admin
-    When  I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Add company admin scriptonce User To The Security Profile
@@ -74,8 +74,8 @@ Feature:
 
   @general_low_risk @security_profiles_delete
   Scenario: [General]Company Admin Can Delete Specified Security Profile
-    Given I Have Logged In as a Company Admin
-    When  I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Delete Learning Admin Scriptonce Security Profile
     Then  I Should See That The Profile Is Successfully Deleted
@@ -83,8 +83,8 @@ Feature:
 
   @general_low_risk @security_profiles_sections_add
   Scenario: [General]Company Admin Can Add Sections To Specified Security Profile
-    Given I Have Logged In as a Company Admin
-    When  I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Go To The Sections Tab Of The Profile
@@ -96,8 +96,8 @@ Feature:
 
   @general_low_risk @security_profiles_learningreports_add
   Scenario: [General]Company Admin Can Add Reports To Specified Security Profile
-    Given I Have Logged In as a Company Admin
-    When  I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Edit Learning Admin Scriptonce Security Profile
     And   I Go To The Reports Tab Of the Profile
@@ -110,8 +110,8 @@ Feature:
   #NOTE: Currently only works on hcsp.dev
   @general_low_risk @security_profiles_hrreports_add
   Scenario: [General]Company Admin Can Add Reports To Specified Security Profile
-    Given I Have Logged In as a Company Admin
-    When  I go to Admin Settings
+    Given I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     And   I Go To Security Profiles under General section
     And   I Can Edit HR Manager - HC-1740 - Omar Security Profile
     And   I Go To The Reports Tab Of the Profile

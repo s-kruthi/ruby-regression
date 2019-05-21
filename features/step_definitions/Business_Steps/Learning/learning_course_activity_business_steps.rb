@@ -88,7 +88,7 @@ end
 
 And(/^I Go To The Face To Face Session Of The Course$/i) do
   steps %{
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Courses under Learning section
     When  I Search For The Randomly Created Course
   }

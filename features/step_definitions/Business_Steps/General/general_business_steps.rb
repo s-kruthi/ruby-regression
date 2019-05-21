@@ -33,7 +33,7 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
 end
 
 
-And(/^I go to Admin Settings$/i) do
+And(/^I Go To Admin Settings$/i) do
   Sleep_Until(GoToAdminSettings(ADMIN_COG))
 end
 
@@ -271,7 +271,7 @@ And(/^I Search For A Specific User Named (.*)$/i) do |username_search_value|
 end
 
 
-Then(/^I Should Be Able To use (.*) Action on The Specific User$/i) do |specified_action|
+Then(/^I Should Be Able To Use (.*) Action On The Specific User$/i) do |specified_action|
   begin
     case specified_action
 
@@ -375,7 +375,7 @@ Given(/^I Have Created A New User$/i) do
   user_first_name = 'payroll_auto' + Time.now.strftime("%Y%m%d%H%M%S")
   steps %Q{
         Given I Have Logged In as a Payroll Admin
-        And   I go to Admin Settings
+        And   I Go To Admin Settings
         And   I Go To Users under General section
         When  I Click On "Add New User" Button
         Then  I Should Be Able To Add A New "Non-ELMO" User With "#{user_first_name}" As First Name And "test" As Last Name}
@@ -392,7 +392,7 @@ When(/^I Choose To Edit An Existing User's Profile$/i) do
 end
 
 
-Then(/^I Can See That I Can Choose To Set The Company Legal Entity From the Existing Entities$/i) do
+Then(/^I Can See That I Can Choose To Set The Company Legal Entity From The Existing Entities$/i) do
   # get count from legal entity table
   legal_entity = $daos.get_count_active_legal_entity()
 

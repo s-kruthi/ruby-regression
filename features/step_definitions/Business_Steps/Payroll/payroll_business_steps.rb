@@ -1,6 +1,6 @@
 When(/^I Make Changes To Legal Entity$/i) do
   steps %{
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Legal Entities under General section
     And   I Can Edit A Legal Entity
     Then  I Should See That Legal Entity Is Updated Successfully
@@ -65,7 +65,7 @@ end
 
 Given(/^Non-default Legal Entity Exists$/i) do
   steps %Q{
-      Given I Have Logged In as a Company Admin
+      Given I Have Logged In As A Company Admin
   }
   #check non-default legal entity exists
   @legal_entity = $daos.get_legal_entity_details_for_edit()
@@ -73,7 +73,7 @@ Given(/^Non-default Legal Entity Exists$/i) do
   unless @legal_entity
     puts COLOR_YELLOW + "no non-default legal entities to edit".upcase
     steps %Q{
-      When  I go to Admin Settings
+      When  I Go To Admin Settings
       And   I Go To Legal Entities under General section
       And   I Can Add A Legal Entity
       Then  I Should See That Legal Entity Is Successfully Added

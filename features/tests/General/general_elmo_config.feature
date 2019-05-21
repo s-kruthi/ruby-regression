@@ -6,7 +6,7 @@ Feature:
   @elmo_config_general_configuration @general_low_risk
   Scenario: [General]As an ELMO Admin, I want to be able to modify ELMO configuration under General Setup and change various settings
     Given I Have Logged In As A ELMO Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To General Setup under General section
     And   I Click On "ELMO Configuration" Tab
     When  I Change "Lock course with enrolments" ELMO Configuration To "No"
@@ -18,7 +18,7 @@ Feature:
   @elmo_config_setup @general_low_risk
 #    ## Nested step to setup system configuration and the nested steps are as commented
 #    Given I Have Logged In As A ELMO Admin
-#    And   I go to Admin Settings
+#    And   I Go To Admin Settings
 #    And   I Go To General Setup under General section
 #    And   I Click On "ELMO Configuration" Tab
 #    When  I Change "Lock course with enrolments" ELMO Configuration To "Disabled"
@@ -30,7 +30,7 @@ Feature:
   @general_low_risk @elmo_config_general_configuration @branding_selection @C18930
   Scenario: [General]Can Set Legal Entity For Branding Selection Field
     Given I Have Logged In As A ELMO Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To General Setup under General section
     And   I Click On "ELMO Configuration" Tab
     When  I Click On The Branding Selection Field

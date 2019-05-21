@@ -66,7 +66,7 @@ Feature:
   @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_default_autopay @C16724
   Scenario: [General] Company Admin Can View Autopay Default Setting As No
     Given I Have Logged In As A Payroll Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Users Under General Section
     When  I Search For An Employee With Default Autopay Setting
     Then  I Can View The Default Autopay Setting As No
@@ -75,7 +75,7 @@ Feature:
   @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_message @C16725
   Scenario: [General] Company Admin Can View Autopay Message
     Given I Have Logged In As A Payroll Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Users Under General Section
     When  I Search For An Employee With Employment Details
     And   I Edit The User's Employment Details Section
@@ -86,7 +86,7 @@ Feature:
   @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_edit @C16725
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
     Given I Have Logged In As A Payroll Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Users Under General Section
     When  I Search For An Employee With Employment Details
     And   I Edit The User's Employment Details Section
@@ -117,7 +117,7 @@ Feature:
   @general_low_risk @user_profile_note @user_profile_managenote @C16456
   Scenario: [General]Company Admin Can Manage Notes
     Given I Have Logged In As A Company Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Users Under General Section
     And   I Search For A User named auto1 scriptonce
     When  I View The User's Profile
@@ -135,7 +135,7 @@ Feature:
   @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_placeholder @C19761
   Scenario: [General] Company Admin Can View Placeholder When No Leave Policy Is Selected
     Given I Have Logged In As A Company Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Users Under General Section
     When  I Search For An Employee With No Leave Policy
     And   I Edit The User's Employment Details Section
@@ -146,7 +146,7 @@ Feature:
   @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_assign @C19762
   Scenario: [General] Company Admin Can Assign Leave Policy In Employment Details Section
     Given I Have Logged In As A Company Admin
-    And   I go to Admin Settings
+    And   I Go To Admin Settings
     And   I Go To Users Under General Section
     When  I Search For An Employee With Employment Details
     And   I Edit The User's Employment Details Section

@@ -59,7 +59,7 @@ end
 
 
 # NOTE: This method currently verifies the 'Success' alert flush message displayed for 'Position', 'Department' and 'Locations' section. Things like 'Course', 'Skills', 'Goals' sections can also be added
-Then(/^I Should Be Able To Successfully Create a New "([^"]*)"$/i) do |verify_new_type_creation|
+Then(/^I Should Be Able To Successfully Create A New "([^"]*)"$/i) do |verify_new_type_creation|
   VerifyNewTypeCreated(verify_new_type_creation)
 end
 

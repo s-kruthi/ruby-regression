@@ -58,7 +58,7 @@ end
 Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/i) do |admin_type, configure_name, configured_value|
   steps %Q{
     Given I Have Logged In As A #{admin_type}
-    And I go to Admin Settings
+    And I Go To Admin Settings
     And I Go To General Setup under General section
     And I Click On "ELMO Configuration" Tab
     When I Change "#{configure_name}" ELMO Configuration To "#{configured_value}"
@@ -81,7 +81,7 @@ end
 Given(/^Contracts Is Disabled For New (:?OB )?Users$/i) do |user_type|
   steps %Q{
     Given I Have Logged In As A ELMO Admin
-    And I go to Admin Settings
+    And I Go To Admin Settings
     And I Go To General Setup under General section
     And I Click On "ELMO Configuration" Tab
     When I Change "New #{user_type}User Contract" ELMO Configuration To "Disabled"

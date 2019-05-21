@@ -20,8 +20,7 @@ end
 
 And(/^I Enter Assignment Rules Condition For (.*) As (.*)$/i) do |assignment_rule_condition_type, assignment_rule_condition_value|
   Sleep_Until(ClickOnAButtonByLastIndex(ASSIGN_RULE_ADD_COND_ID))
-  Sleep_Until(EnterCourseRetrainOpen(ASSIGN_RULE_FIELDTYPE_ID, assignment_rule_condition_type))
-
+  Sleep_Until(SelectFromDropdown(ASSIGN_RULE_FIELDTYPE_ID, assignment_rule_condition_type))
 #Select the correct element ID based on the selected condition type. Only 3 types are supported at present (i.e. Manager, Location, Department)
   begin
     ASSIGN_RULE_FIELDINPUT_ID_MAP.each do |key, value|
