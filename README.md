@@ -1,7 +1,8 @@
 # Basic Installation
 If the installation failes then create a shell script and put the following content in there and execute it:
 
-#!/bin/snstall bundler 
+#!/bin/sh
+gem install bundler 
 gem install selenium-webdriver 
 gem install capybara 
 gem install nokogiri 
