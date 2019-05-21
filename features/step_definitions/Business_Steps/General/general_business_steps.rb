@@ -376,7 +376,7 @@ Given(/^I Have Created A New User$/i) do
   steps %Q{
         Given I Have Logged In as a Payroll Admin
         And   I Go To Admin Settings
-        And   I Go To Users under General section
+        And   I Go To Users Under General Section
         When  I Click On "Add New User" Button
         Then  I Should Be Able To Add A New "Non-ELMO" User With "#{user_first_name}" As First Name And "test" As Last Name}
 end
@@ -388,7 +388,7 @@ end
 
 
 When(/^I Choose To Edit An Existing User's Profile$/i) do
-  steps %{Then I Should Be Able To use Edit User Profile Action On The Specific User}
+  steps %{Then I Should Be Able To Use Edit User Profile Action On The Specific User}
 end
 
 

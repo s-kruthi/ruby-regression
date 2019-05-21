@@ -9,11 +9,10 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To General Setup under General section
     And   I Click On "ELMO Configuration" Tab
-    When  I Change "Lock course with enrolments" ELMO Configuration To "No"
-    And   I Change "New User Contract" ELMO Configuration to "Disabled"
-    And   I Change "New OB User Contract" ELMO Configuration to "Disabled"
+    When  I Change "Lock Course With Enrolments" Elmo Configuration To "No"
+    And   I Change "New User Contract" Elmo Configuration To "Disabled"
+    And   I Change "New OB User Contract" Elmo Configuration To "Disabled"
     Then  I Should Be Able To Save Configuration Details
-
 
   @elmo_config_setup @general_low_risk
 #    ## Nested step to setup system configuration and the nested steps are as commented
@@ -31,7 +30,7 @@ Feature:
   Scenario: [General]Can Set Legal Entity For Branding Selection Field
     Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
-    And   I Go To General Setup under General section
+    And   I Go To General Setup Under General Section
     And   I Click On "ELMO Configuration" Tab
     When  I Click On The Branding Selection Field
     Then  I Can Choose Legal Entity As The Branding Selection Field

@@ -2,7 +2,7 @@ def SetEmployeeProfileDetails()
   steps %Q{
         And I Click On The Profile Tab Of The User
         And I Set The Position From The Existing Positions
-        And I Can See That I Can Choose To Set The Company Legal Entity From the Existing Entities
+        And I Can See That I Can Choose To Set The Company Legal Entity From The Existing Entities
   }
   #selecting the first legal entity from the results
   Sleep_Until(WaitForAnElementByClassAndTouch(SELECT2_DROPDOWN_RESULT_CLASS))
