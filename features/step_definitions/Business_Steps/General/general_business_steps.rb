@@ -139,7 +139,7 @@ And(/^I Go To The "(.*)" Section$/i) do |menu_type|
   end
 end
 
-Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The System With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?$/i) do |arg1, arg2, arg3, arg4, arg5|
+Then(/^I Should Be Able To Add "(\d+)" New "(Non-ELMO|ELMO)" Users With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?$/i) do |arg1, arg2, arg3, arg4, arg5|
   #This step also sets the roletype to the specified value
   i = 1  #Change it if the starting suffix value needs to be from a different value
   total = i + arg1  #Total number of users to be created
@@ -420,7 +420,7 @@ Given(/^I Have Logged In As (An Employee|Vendor) Using The Username "(.*)" And P
   steps %{And I Have Logged In As A #{user_type}}
 end
 
-When(/^I Edit (.*) Details$/i) do |contact_type|
+When(/^I Edit "(.*)" Details$/i) do |contact_type|
   Sleep_Until(ClickOnASubTab(USER_PERSONAL_DETAILS_TAB_ID))
   EditContactDetails(contact_type)
 end

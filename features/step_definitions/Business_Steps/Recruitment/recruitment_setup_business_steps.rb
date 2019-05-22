@@ -181,7 +181,7 @@ And(/^I Should See The Last Updated Details$/i) do
   VerifyNoteDetails()
 end
 
-Then(/^I Should (See|Not See) The (Edit|Delete|Add Note) button For The Note$/i) do |presence, button_name|
+Then(/^I Should "(See|Not See)" The "(Edit|Delete|Add Note)" Button For The Note$/i) do |presence, button_name|
   VerifyButtons(presence, button_name)
 end
 
@@ -189,7 +189,7 @@ And(/^I Should Be Able To Edit The Requisition Note$/i) do
   EnterRequisitionNote()
 end
 
-And(/^I Confirm The Deletion of the Requisition Note$/i) do
+And(/^I Confirm The Deletion Of The Requisition Note$/i) do
   ConfirmDeletion()
 end
 
@@ -233,7 +233,7 @@ And(/^I Choose To ([\w\s]+) For The Requisition$/i) do |action|
   Sleep_Until(ClickMenuOfFirstItemFromTable(REQUISITION_ACTION_DROPDOWN_ID, action))
 end
 
-Then(/^I Should Be Able To View The Requisition Note In the (Modal|Page)$/i) do |location|
+Then(/^I Should Be Able To View The Requisition Note In The "(Modal|Page)"$/i) do |location|
   VerifyNoteDetails()
 end
 

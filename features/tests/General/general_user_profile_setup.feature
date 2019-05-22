@@ -42,7 +42,7 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To "User Profile Setup" Under "General" Section
     And   I Click On "User Profile Setup" Tab
-    And   I Edit 3 Custom User Fields In User Profile Setup
+    And   I Edit "3" Custom User Fields In User Profile Setup
     And   I Click On The First Item From Left Side Bar Under "Custom User Fields" section
     And   I Select Enabled Toggle To "Disabled"
     And   I Click On The Second Item From Left Side Bar Under "Custom User Fields" section

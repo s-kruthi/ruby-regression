@@ -31,7 +31,7 @@ Then(/^I Should Be Able To Create A New Course$/i) do
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, COURSE_VERIFY_SAVE_SUCCESSFUL_VALUE))
 end
 
-When(/^I Search For A Specific Course(?: With (Enrolments|No Enrolments))? Named (.*)$/i) do |*enrolment_choice, course_search_name|
+When(/^I Search For A Specific Course(?: With "(Enrolments|No Enrolments)")? Named "(.*)"$/i) do |*enrolment_choice, course_search_name|
   case enrolment_choice
     
     when "Enrolments"
@@ -102,7 +102,7 @@ Then(/^I Should Be Able To (Edit|Copy|Delete) The Specific Course$/i) do |course
   end
 end
 
-When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
+When(/^I Edit A Specific Course Named "(.*)"$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name_with_no_enrolments(course_search_name)
   if !course_list_result.nil?
     puts COLOR_BLUE + "Using Course '#{course_list_result[:fullname]}' with ID #{course_list_result[:id]}"
@@ -115,13 +115,13 @@ When(/^I Edit A Specific Course Named (.*)$/i) do |course_search_name|
   end
 end
 
-And(/^I Open A Specific Activity Named (.*)$/i) do |f2f_activity_name|
+And(/^I Open A Specific Activity Named "(.*)"$/i) do |f2f_activity_name|
   CheckActivityExists('facetoface',f2f_activity_name)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ClickOnFirstActivity(f2f_activity_name)
 end
 
-Then(/^I Should Be Able To Add A (.*) Activity$/i) do |course_activity_name|
+Then(/^I Should Be Able To Add A "(.*)" Activity$/i) do |course_activity_name|
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   AddANewSection(COURSE_ADD_A_SECTION_BTN_ID)
   
@@ -163,7 +163,7 @@ end
 #   # end
 # end
 
-Then(/^I Should Be Able To (Create|Edit|Delete|Copy|Cancel) A Session In The Face-to-Face Activity$/i) do |modify_session_type|
+Then(/^I Should Be Able To "(Create|Edit|Delete|Copy|Cancel)" A Session In The Face-to-Face Activity$/i) do |modify_session_type|
   if modify_session_type == 'Create'
     ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
     AddSessionDetails()
@@ -211,7 +211,7 @@ Then(/^I Should Be Able To Add All Notifications$/i) do
   CreateAllNotifications()
 end
 
-And(/^I Click On The Menu Of A Specific Course Named (.*)$/i) do |course_search_name|
+And(/^I Click On The Menu Of A Specific Course Named "(.*)"$/i) do |course_search_name|
   course_list_result = $daos.get_visible_course_list_by_name(course_search_name)
   if !course_list_result.nil?
     SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_list_result, COURSE_SEARCH_BTN_ID)
@@ -272,7 +272,7 @@ Then(/^I Should Be Able To View The Face-To-Face Activity Session List$/i) do
   CheckF2FSessionsExist()
 end
 
-And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By (.*)$/i) do |sorting_order_type|
+And(/^I Should Be Able to Sort The The Face-To-Face Activity Session List By "(.*)"$/i) do |sorting_order_type|
   FindFaceToFaceSessionSortingColumnByClass(F2F_SESSION_SORTING_CLASS_ID, sorting_order_type)
   SortFaceToFaceSessionListByType(sorting_order_type)
   VerifyFaceToFaceSessionSortingOrderByClass(F2F_SESSION_SORTING_ORDER_ID)
@@ -405,7 +405,7 @@ And(/^Modifying Settings Of Quiz Activity Is (\w+)$/) do |setting_ability|
   CheckAbilityToModifyQuizSettings(setting_ability)
 end
 
-Given(/^The Lock course with enrolments Is Configured To (Yes|No)$/i) do |elmo_config_option|
+Given(/^The "Lock course with enrolments" Is Configured To "(Yes|No)"$/i) do |elmo_config_option|
   steps %Q{
     Given I Have Logged In As A ELMO Admin
     And I Go To Admin Settings
@@ -451,7 +451,7 @@ And(/^I Edit The Course$/i) do
   #call the step - I Edit A Specific Course Named DO NOT DELETE
 end
 
-Then(/^I Should Be Able To (Edit|Delete) A Specific ELMO Survey Activity Named (.*)$/i) do |activity_type, survey_activity_name|
+Then(/^I Should Be Able To "(Edit|Delete)" A Specific ELMO Survey Activity Named "(.*)"$/i) do |activity_type, survey_activity_name|
   SURVEY_ACTIVITY_NAME = survey_activity_name
   SURVEY_ACTIVITY_TYPE = activity_type
 
@@ -629,7 +629,7 @@ Then(/^I Should See That The Enrolments Was Successfully Marked As Complete$/i) 
   CheckEnrolmentTooltip(date_value)
 end
 
-And(/^I Select (\d+) ([\w\s]+) For Bulk Action$/i) do |selection_number, selection_type|
+And(/^I Select "(\d+)" "([\w\s]+)" For Bulk Action$/i) do |selection_number, selection_type|
   i = 0
   while (i != selection_number)
     case selection_type
@@ -681,13 +681,13 @@ end
 Given(/^A Face To Face Session With Status ([\w\s]+) Is Created For A Course$/i) do |session_status|
   steps %Q{
       Given A Company Admin Creates A New Course With Unique Name
-      Then  I Should Be Able To Add A Face-to-Face Activity
+      Then  I Should Be Able To Add A "Face-to-Face" Activity
       And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
       Then  I Should Be Able To Create A Session With Status #{session_status} In The Face-to-Face Activity
         }
 end
 
-Then(/^I Should Be Able To Create A Session With Status ([\w\s]+) In The Face-to-Face Activity$/i) do |session_status|
+Then(/^I Should Be Able To Create A Session With Status "([\w\s]+)" In The Face-to-Face Activity$/i) do |session_status|
   ClickOnAButtonByXPath(F2F_SESSION_ADD_SESSION_BTN)
   AddSessionDetails(session_status)
   ClickOnSaveButton(SAVE_BTN_ID)
@@ -698,7 +698,7 @@ Then(/^I should be able to manual signup (.*)$/i) do |first_last_name|
   ManualSignupFaceToFaceSession(first_last_name, 0)
 end
 
-Then(/^I Should Be Able To Mark Attendance {string} With Grade {int} And Mark As {toggle}$/i) do |attendance, grade, toggle_yes_no|
+Then(/^I Should Be Able To Mark Attendance "{string}" With Grade "{int}" And Mark As "{toggle}"$/i) do |attendance, grade, toggle_yes_no|
   MarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
 end
 

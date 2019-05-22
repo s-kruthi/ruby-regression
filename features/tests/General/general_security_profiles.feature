@@ -14,7 +14,7 @@ Feature:
     Given I Have Logged In As A Company Admin
     When  I Go To Admin Settings
     And   I Go To "Security Profiles" Under "General" Section
-    And   I Can Add A Profile Of Type <profile_type> Named As <profile_name>
+    And   I Can Add A Profile Of Type "<profile_type>" Named As "<profile_name>"
     Then  I Should See That The Profile Is Successfully Added
 
     Examples:

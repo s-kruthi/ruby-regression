@@ -11,7 +11,7 @@ def VerifyEnrolmentToCourse()
   $driver.find_element(:xpath,"//a[contains(@href, #{@course_id})]").text == "Enrolled"
 end
 
-def VerifyUnenrollmentToCourse()
+def VerifyUnenrolmentToCourse()
   enrolment = $daos.get_enrolment_status(@course[:course_id], @user_id[:id])
 
   if enrolment == 0

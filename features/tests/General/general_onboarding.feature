@@ -9,7 +9,7 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To "Users" Under "General" Section
     When  I Click On "Add New User" Button
-    Then  I Should Be Able To Add 1 New "Non-ELMO" Users In To The System With "auto" As First Name And "scriptonce" As Last Name And "manager1.scriptonce1" As Manager
+    Then  I Should Be Able To Add "1" New "Non-ELMO" Users With "auto" As First Name And "scriptonce" As Last Name And "manager1.scriptonce1" As Manager
     And   I Click On "Users" Breadcrumb Menu
     And   I Click On "Notify Users" Button
     And   I Click On "Notify All Users" Button
@@ -21,7 +21,7 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To "Onboarding Users" Under "Onboarding" Section
     When  I Click On "New Onboarding User" Button
-    Then  I Should Be Able To Add 5 New "Non-ELMO" Users In To The System With "auto" As First Name And "scriptonce" As Last Name And "manager1.scriptonce1" As Manager
+    Then  I Should Be Able To Add "5" New "Non-ELMO" Users With "auto" As First Name And "scriptonce" As Last Name And "manager1.scriptonce1" As Manager
 
   @hr_add_contact_emergency @general_high_risk @onboarding_high_risk
   Scenario: [General][Onboarding]General User Editing Profile Page - Emergency Contact Details
@@ -93,7 +93,7 @@ Feature:
   Scenario Outline: [General]NZ Address Format In Personal Details Section
     Given I Have Logged In As A Company Admin
     And   I Go To The "Menu Profile" Section
-    When  I Edit <contact_type> Details
+    When  I Edit "<contact_type>" Details
     Then  I Can See The Suburb/Town/City Field
 
     Examples:

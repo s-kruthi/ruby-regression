@@ -38,7 +38,7 @@ Feature:
     When  I Search For A Specific Form Template
     Then  I Should Be Able To Hide A Specific Form Template
 
-  @bug-PMS-8579 @document_high_risk
+  @PMS-8579 @document_high_risk
     # url : https://tmsfull.dev.elmodev.com
     # security profile : document prms-shanku
     # role type : shanku-automation-role-type

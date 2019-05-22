@@ -5,7 +5,7 @@
 
 Feature: As a company administrator I want to create course sections so that I can plan course activities in each section of a course
 
-  @smoke_learning8 @course_section_interaction  @learning_high_risk @240 @loc_transform
+  @smoke_learning8 @course_section_interaction  @learning_high_risk @C240 @loc_transform
   Scenario: [Learning]Create A New Section For Course
     Given I Have Logged In As A Company Admin
     And  I Go To Admin Settings
