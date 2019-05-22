@@ -10,13 +10,11 @@ module Database_env
       return @db[query].first[:fullname]
     end
 
-
     def get_userid(username)
       query = "SELECT id, username, is_elmo, is_active, is_notified, confirmed, is_deleted, is_onboarding FROM epms_user
                  WHERE username = '#{username}';"
       return @db[query].first
     end
-
 
     def get_notification_by_trigger_id_and_recipient_name(notification_trigger_id, recipient_name)
       query = "SELECT eplm.id, eplm.source_id, epnns.template_id, epntn.trigger_id, epntn.due_date, eplm.subject, eplm.body,
@@ -33,7 +31,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_employee_with_default_autopay()
       query = "select distinct user_id, first_name,last_name
                from epms_hrcore_employment_detail ehed
@@ -48,7 +45,6 @@ module Database_env
                ORDER BY rand();"
       return @db[query].first
     end
-
 
     def get_employee_with_autopay_no()
       query = "select distinct user_id, first_name,last_name
@@ -66,14 +62,12 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_epms_config_enabled(name)
       query = "select value from epms_config
                where name = '#{name}'
                and module = 'config'"
       return @db[query].first
     end
-
 
     def check_legal_entity_exists(abn_num)
       query = "select exists
@@ -82,7 +76,6 @@ module Database_env
               as presence"
       return @db[query].first
     end
-
 
     #only editing non-default entities
     def get_legal_entity_details_for_edit()
@@ -94,7 +87,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_legal_entity_details()
       query = "select id, abn, business_name, is_default, is_active
               from epms_legal_entity
@@ -102,7 +94,6 @@ module Database_env
               ORDER BY rand();"
       return @db[query].first
     end
-
 
     def get_default_entity_details()
       query = "select id, business_name
@@ -113,7 +104,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_count_active_legal_entity()
       query = "select count(*) as count
               from epms_legal_entity
@@ -121,7 +111,6 @@ module Database_env
               and is_active = 1"
       return @db[query].first
     end
-
 
     def get_legal_entity_details_linked_to_user()
       query = "select distinct ele.id, business_name
@@ -137,14 +126,12 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_count_enabled_positions()
       query = "select count(*) as count
               from epms_position
               where is_deleted = 0"
       return @db[query].first
     end
-
 
     #gets the count of users to be activated/notified
     def get_count_userstobeactivated(onboarding)
@@ -158,14 +145,12 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_nav_menu_setting()
       query = "select value
                from epms_config
                where name = 'switchVerticalNavigationMenu'"
       return @db[query].first
     end
-
 
     def get_custom_user_field_details(num)
       query = "select name, shortname
@@ -174,7 +159,6 @@ module Database_env
                ORDER BY rand() limit #{num}"
       return @db[query]
     end
-
 
     #returns users who have single or no cost centres
     def get_employee_without_multiple_costcentres()
@@ -190,7 +174,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_employee_with_no_leavepolicy()
       query = "select first_name, last_name, id as user_id
                from epms_user
@@ -203,7 +186,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_nondefault_leave_policy()
       query = "select title
                from epms_leave_policy
@@ -212,7 +194,6 @@ module Database_env
                ORDER BY rand()"
       return @db[query].first[:title]
     end
-
 
     def get_security_profiles_no_users()
       query = "select distinct ecrt.name, ecrt.id
@@ -224,7 +205,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def check_notification_exists(trigger_name)
       query = "select count(*) as count
                from epms_notifier_template_notification
@@ -233,7 +213,6 @@ module Database_env
                and is_deleted = 0"
       return @db[query].first[:count]
     end
-
 
     def get_notification_details(name)
       query = "select id

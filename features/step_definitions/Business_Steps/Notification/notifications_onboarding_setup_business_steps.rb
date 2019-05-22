@@ -31,4 +31,3 @@ end
 Then(/^I Should Be Instantly Notified With The Reset Forgot Password Email$/i) do
   ConnectToDatabaseAndValidateTheForgotPasswordTriggeredNotifications()
 end
-

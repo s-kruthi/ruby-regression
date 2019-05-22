@@ -25,18 +25,15 @@ def GoToSite()
   $driver.navigate.to($site_url)
 end
 
-
 def GoToSection(general_expand, users_list_path)
   GoToASection(general_expand)
   sleep(2)
   GoToItemLandingPage(users_list_path)
 end
 
-
 def GoToASection(section_expand)
   Sleep_Until(WaitForAnElementByXpathAndTouch(section_expand))
 end
-
 
 def GoToNavBarSection(link_to_click)
   #adding extra sleep to allow the vertical left nav menu to load
@@ -45,11 +42,9 @@ def GoToNavBarSection(link_to_click)
   Sleep_Until($driver.find_elements(:xpath, link_to_click).last.click)
 end
 
-
 def GoToAddNewUsersPage(add_new_user_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(add_new_user_btn))
 end
-
 
 def CreateUsers(loop, arg2, arg3, arg4, arg5, arg6)
   begin
@@ -99,18 +94,15 @@ def CreateUsers(loop, arg2, arg3, arg4, arg5, arg6)
   end
 end
 
-
 def SelectEmployeeNumber(arg1, arg2)
   $driver.find_element(:xpath, arg1).clear()
   WaitForAnElementByXpathAndInputValue(arg1, arg2)
 end
 
-
 def EnterUserDetails(input_id, input_value)
   $driver.find_element(:xpath, input_id).clear()
   WaitForAnElementByXpathAndInputValue(input_id, input_value)
 end
-
 
 def SelectAManager(recipient_field_id, recipient_input_id, recipient1_input_value, recipient1_result_id)
   $driver.find_element(:id, recipient_field_id).click
@@ -118,24 +110,20 @@ def SelectAManager(recipient_field_id, recipient_input_id, recipient1_input_valu
   Sleep_Until($driver.find_elements(:class, recipient1_result_id).first.click)
 end
 
-
 def SelectDate(select_date_id, select_date_value)
   Sleep_Until($driver.find_element(:xpath, select_date_id).clear())
   Sleep_Until(WaitForAnElementByXpathAndInputValue(select_date_id, select_date_value))
   $driver.find_element(:xpath, select_date_id).send_keys(:return)
 end
 
-
 def SelectTimeZone(select_timezone_id, select_timezone_value)
   Sleep_Until(SelectFromDropdown(select_timezone_id, select_timezone_value))
 end
-
 
 def ClickUserListActions(action_dropdown_class_name, action_dropdown_class_index_value, action_dropdown_name_value)
   Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(action_dropdown_class_name, action_dropdown_class_index_value))
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(action_dropdown_name_value))
 end
-
 
 def UseActiveInactiveFilter()
   if $driver.find_elements(:id, "create_filter_btn")[0].displayed?
@@ -146,11 +134,9 @@ def UseActiveInactiveFilter()
   end
 end
 
-
 def VerifyDeletedUser(inactive_class_id, inactive_attribute_id, inactive_attribute_text)
   puts COLOR_GREEN + "MATCHED: #{inactive_attribute_text}" if $driver.find_element(:class, inactive_class_id).attribute(inactive_attribute_id) == inactive_attribute_text
 end
-
 
 def ClickOnATab(tab_name)
   case tab_name
@@ -161,11 +147,9 @@ def ClickOnATab(tab_name)
   end
 end
 
-
 def ClickOnASubTab(sub_tab_name_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(sub_tab_name_id))
 end
-
 
 # TODO this new class "elmo-icon-admin needs to be added to classic view, till then please keep the navbar set to vertical menu for faster test execution"
 def GoToAdminSettings(admin_cog)
@@ -179,7 +163,6 @@ def GoToAdminSettings(admin_cog)
   end
 end
 
-
 def CreateAUser(user_type, firstname, lastname, manager_name, role)
 
   if role.nil?
@@ -190,7 +173,7 @@ def CreateAUser(user_type, firstname, lastname, manager_name, role)
   end
 
   @@first_name = firstname
-  @@last_name = lastname if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
+  @@last_name = lastname if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To "(.*)" Under "(.*)" Section' since Users and Onboarding users take different path
   @@last_name = lastname + ".ob" if $add_user_type == "OB"
   @@user_name = @@first_name + "." + @@last_name
   @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value] #Email = firstname.lastname@email_suffix
@@ -218,11 +201,9 @@ def CreateAUser(user_type, firstname, lastname, manager_name, role)
   end
 end
 
-
 def VerifyErrorAlertMessage(alert_id, alert_msg)
   Sleep_Until(VerifyAnElementExistByXPath(alert_id, alert_msg))
 end
-
 
 def GetLoginDetails(login_name)
   begin
@@ -299,12 +280,10 @@ def GetLoginDetails(login_name)
   return username,password
 end
 
-
 def EnterLoginDetails(username, pwd)
   EnterUsername(USER_NAME, username)
   EnterPassword(PASS_WORD, pwd)
 end
-
 
 def VerifyUserExists(username)
   #getting the userid based on the username and saving for later
@@ -318,26 +297,21 @@ def VerifyUserExists(username)
   end
 end
 
-
 def GoToThePage(login_page)
   $driver.navigate.to(login_page)
 end
-
 
 def EnterUsername(username,value)
   WaitForAnElementByIdAndInputValue(username, value)
 end
 
-
 def EnterPassword(password, value)
   WaitForAnElementByIdAndInputValue(password, value)
 end
 
-
 def EnterEmail(email, value)
   WaitForAnElementByIdAndInputValue(email, value)
 end
-
 
 def LogInAndWaitForTheDashboard(tag_name, admin_menu)
   TouchLoginButton(tag_name)
@@ -346,7 +320,6 @@ def LogInAndWaitForTheDashboard(tag_name, admin_menu)
   sleep(3)
 end
 
-
 def LogOutFromTheDashboard(user_profile_icon, logout_button)
   Sleep_Until(WaitForAnElementByIdAndTouch(user_profile_icon))
   Sleep_Until(WaitForAnElementByXpathAndTouch(logout_button))
@@ -354,16 +327,13 @@ def LogOutFromTheDashboard(user_profile_icon, logout_button)
   $driver.quit
 end
 
-
 def TouchLoginButton(tag_name)
   WaitForAnElementByTagNameAndTouch(tag_name)
 end
 
-
 def TouchAdminMenu(admin_menu)
   WaitForAnElementByClassAndTouch(admin_menu)
 end
-
 
 def EditContactDetails(contact_type)
   case contact_type
@@ -388,12 +358,10 @@ def EditContactDetails(contact_type)
   end
 end
 
-
 def CheckFieldInPersonalDetails()
   Sleep_Until(VerifyAnElementExists('xpath','//label[text()="Suburb/Town/City"]'))
   puts COLOR_GREEN + "field exists with name suburb/town/city".upcase
 end
-
 
 def UserProfileSetupThroughJmeter()
   url = $site_url.split('//')[1].split('/')[0]

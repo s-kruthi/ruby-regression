@@ -15,7 +15,6 @@ def SelectNotificationTrigger(trigger_name)
   end
 end
 
-
 def VerifyNotificationAction(action)
   case action
   when 'Created'
@@ -34,7 +33,6 @@ def VerifyNotificationAction(action)
   end
 end
 
-
 def SearchForNotification(notification_name)
   @notification_copy = $daos.get_notification_details(notification_name)
 
@@ -52,7 +50,6 @@ def SearchForNotification(notification_name)
   end
 end
 
-
 def EditNotificationTitle(edit_title)
   @edited_title = edit_title
   Sleep_Until(ClickElement("xpath", "//a[contains(@href, '/edit/#{@notification_copy[:id]}')]"))
@@ -60,7 +57,6 @@ def EditNotificationTitle(edit_title)
   WaitForAnElementByIdAndInputValue(NOTIFICATION_TITLE_ID , edit_title)
   ClickOnSaveButton(SAVE_BTN_ID)
 end
-
 
 def PerformNotificationAction(action)
   if action == "Activate"
@@ -78,6 +74,3 @@ def PerformNotificationAction(action)
   expect(GetTextAssociatedToElement('xpath', MODAL_ID)).to eq(match_text)
   Sleep_Until(PressEnterConfirm())
 end
-
-
-

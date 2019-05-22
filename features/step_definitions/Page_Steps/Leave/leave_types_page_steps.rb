@@ -10,7 +10,6 @@ def CreateLeaveTypeThroughJmeter(leave_type, leavetype_name)
   end
 end
 
-
 def GetEntitlementType(leave_type)
   case leave_type
   when 'Long Service Leave'
@@ -19,7 +18,6 @@ def GetEntitlementType(leave_type)
     return 4
   end
 end
-
 
 def CheckLeaveTypeExists(leavetype_title)
   #checking the DB for the leave type created through Jmeter

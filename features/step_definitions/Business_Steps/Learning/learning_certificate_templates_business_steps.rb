@@ -8,7 +8,6 @@ When(/^I should see the (\w\S+) listed in (\w+) order$/i) do |items, sort|
   VerifyTableSortedByColumn(TABLE_BODY_CSS, 4, sort, 'datetime')
 end
 
-
 And("I Should Create A Certificate With {runtime name}") do |cert_temp_name|
   @cert_temp_created = cert_temp_name
   WaitForAnElementByCSSAndTouch(CREATE_CERTIFICATE_CSS)
@@ -16,7 +15,6 @@ And("I Should Create A Certificate With {runtime name}") do |cert_temp_name|
   WaitForAnElementByCSSAndTouch(SAVE_CERTIFICATE_CSS)
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CERT_TEMP_SAVE_SUCCESSFUL_VALUE))
 end
-
 
 And(/^I Should Edit The Created Certificate$/i) do
   SearchItemNoSelect2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID)
@@ -27,7 +25,6 @@ And(/^I Should Edit The Created Certificate$/i) do
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CERT_TEMP_SAVE_SUCCESSFUL_VALUE))
 end
 
-
 And(/^I Should Copy The Created Certificate$/i) do
   SearchItemNoSelect2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID)
   ClickMenuOfFirstItemFromTable(LIST_DROPDOWN, 'Copy')
@@ -36,7 +33,6 @@ And(/^I Should Copy The Created Certificate$/i) do
   Sleep_Until(WaitForAnElementByCSSAndTouch(SAVE_CERTIFICATE_CSS))
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, CERT_TEMP_SAVE_SUCCESSFUL_VALUE))
 end
-
 
 And(/^I should search for The Created Certificate$/i) do
   Sleep_Until(SearchItemNoSelect2(CERTIFICATE_TEMP_SEARCH_CSS, @cert_temp_created, CERTIFICATE_TEMP_SEARCH_BTN_ID))

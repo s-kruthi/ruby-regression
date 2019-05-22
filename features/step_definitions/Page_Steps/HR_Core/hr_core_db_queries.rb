@@ -23,7 +23,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_payroll_cycle_details()
       query = "select id, title, created_date, type
                from `epms_hrcore_payroll_cycle` ehpc
@@ -33,7 +32,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_payroll_cycle_by_title(title)
       query = "select id
                from `epms_hrcore_payroll_cycle` ehpc
@@ -41,7 +39,6 @@ module Database_env
                and title = '#{title}'"
       return @db[query].first
     end
-
 
     def get_payroll_cycle_by_id(id)
       query = "select title
@@ -54,4 +51,3 @@ module Database_env
   end
 
 end
-

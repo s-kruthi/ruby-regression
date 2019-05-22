@@ -10,7 +10,7 @@ Feature:
    Scenario: [Documents]Create a New File
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Files under Documents section
+    And   I Go To "Files" Under "Documents" Section
     When I click on Add File Button
     And  I Enter File Details
     And  I Select A File
@@ -21,12 +21,12 @@ Feature:
   Scenario: [Documents]Delete an Existing File
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Files under Documents section
+    And   I Go To "Files" Under "Documents" Section
     Then  I Should Be Able To Search For A Specific File
 
   @file_delete @document_high_risk
     Scenario: [Documents]Delete an Existing File
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Files under Documents section
+    And   I Go To "Files" Under "Documents" Section
     Then  I Should Be Able To Delete A Specific File

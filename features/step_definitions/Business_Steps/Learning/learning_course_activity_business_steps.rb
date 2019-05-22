@@ -30,7 +30,6 @@ Then(/^I Should Be Able To "(Sign Up|Withdraw)" For That Session$/i) do |self_se
   end
 end
 
-
 And(/^I Enter CPD "([^"]*)" Details$/) do |arg|
   case arg
     when "New Category"
@@ -45,7 +44,6 @@ And(/^I Enter CPD "([^"]*)" Details$/) do |arg|
       EnterInputFieldText(CPD_PLAN_POINTS_REQ_ID, CPD_PLAN_POINTS_REQ_VALUE)
   end
 end
-
 
 And(/^I Select CPD "(Category|Plan)" Named "([^"]*)"$/) do |arg1, arg2|
   case arg1
@@ -73,7 +71,6 @@ And(/^I Select CPD "(Category|Plan)" Named "([^"]*)"$/) do |arg1, arg2|
   end
 end
 
-
 Then(/^I Should Be Able To Add CPD "([^"]*)" Successfully$/i) do |arg|
   case arg
     when "New Category"
@@ -89,14 +86,13 @@ end
 And(/^I Go To The Face To Face Session Of The Course$/i) do
   steps %{
     And   I Go To Admin Settings
-    And   I Go To Courses under Learning section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Search For The Randomly Created Course
   }
   ClickLinkButtonWithName('Edit')
   ClickOnATab('Sections')
   WaitForAnElementByPartialLinkTextAndTouch(SERVICE_FACE_TO_FACE_SESSION_NAME)
 end
-
 
 When(/^I Go To The Attendance Of The Session$/i) do
   ClickLinkButtonWithName('Attendance')
@@ -117,7 +113,6 @@ Then(/^I Should Bulk Sign Up Users On Page$/i) do
   VerifyCheckboxSelectedByCSS('.add-user', @selected_user_amount, 'user signup')
 end
 
-
 Then(/^I Should Bulk Sign Up All Users$/i) do
   before_enrol_num = GetNumberFromPagination()
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch('Bulk Sign Up'))
@@ -134,7 +129,6 @@ Then(/^I Should Bulk Sign Up All Users$/i) do
   VerifyNumberChange(before_enrol_num, after_enrol_num, 'increase')
 end
 
-
 Then(/^I Should Bulk Mark Attendance All Users$/i) do
   BulkMarkFaceToFaceSessionAttendance('Fully Attended', 90, 'yes')
 end
@@ -143,7 +137,7 @@ Given(/^That Session Is Created For A Face 2 Face Activity$/i) do
   steps %Q{
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Courses Under Learning Section
+    And   I Go To "Courses" Under "Learning" Section
     When  I Click On The New Course Button
     And   I Add New Course Details
     Then  I Should Be Able To Create A New Course

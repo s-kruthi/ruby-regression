@@ -8,22 +8,18 @@ Given(/^I Am On The Recruitment Requisition Listing Page$/i) do
   sleep(3)
 end
 
-
 When(/^I Click on New Requisition Button$/i) do
   GoToRecruitmentRequisitionAddPage(NEW_REQUISITION_BTN)
 end
-
 
 And(/^I Enter New Requisition Details$/i) do
   EnterNewRecruitmentRequisitionDetails(REQUISITION_POS_INDEX_ARROW,0,REQUISITION_POS_INDEX_CLASS,0,REQUISITION_LOC_INDEX_ARROW,1,REQUISITION_LOC_INDEX_CLASS,0,REQUISITION_NUMBER_OF_POSITION,NUMBER_OF_POSITION_INPUT,REQUISITION_CALENDER_DUEDATE,REQUISITION_DUEDATE,REQUISITION_CALENDER_DONE_BTN)
 end
 
-
 Then(/^I Should Be Able To Create A New Requisition Request$/i) do
   CreateANewRecruitmentRequisition(REQUISITION_SUBMIT_BTN)
   $driver.quit
 end
-
 
 Given(/^I Am On The Recruitment Menu Section$/i) do
   startWebDriver
@@ -35,35 +31,29 @@ Given(/^I Am On The Recruitment Menu Section$/i) do
   sleep(2)
 end
 
-
 And(/^I Click on The Candidates Button$/i) do
   GoToCandidatesListingPage(CANDIDATES_LIST_PATH)
 end
-
 
 And(/^I am on Candidates Listing Page$/i) do
   SearchAndVerifyCandidatesBtnExists(NEW_CANDIDATE_BTN_XPATH,NEW_CANDIDATE_BTN_LABEL)
   sleep(2)
 end
 
-
 When(/^I Click on New Candidate Button$/i) do
   ClickOnNewCandidateButton(NEW_CANDIDATE_BTN_XPATH)
   sleep(2)
 end
-
 
 And(/^I Enter New Candidate Details$/i) do
   EnterNewCandidateDetails()
   sleep(2)
 end
 
-
 And(/^I Click on The Save Button$/i) do
   ClickSaveButton(SAVE_NEW_CANDIDATE_BTN)
  # sleep(2)
 end
-
 
 Then(/^I Should Be Able To Create A New Candidate$/i) do
   GoToThePage(RECRUITMENT_CANDIDATE_LANDING_PAGE)
@@ -73,7 +63,6 @@ Then(/^I Should Be Able To Create A New Candidate$/i) do
   $driver.quit
 
 end
-
 
 Given(/^I Am Under A Recruitment Requisition$/i) do
   startWebDriver
@@ -87,39 +76,31 @@ Given(/^I Am Under A Recruitment Requisition$/i) do
   sleep(1)
 end
 
-
 And(/^I Try To Create A New Job Ad$/i) do
   GoToNewJobPostTabUnderARequisition(MY_REQ_LINK,JOB_AD_LINK,NEW_JOB_POST_LINK)
 end
-
 
 When(/^I Fill The Details Of A New Job Ad$/i) do
   AddTheJobDetailsAndSubmitIt(SALARY_FROM,SALARY_FROM_VALUE,SALARY_TO,SALARY_TO_VALUE,JB_START_DATE_BTN,JB_START_DATE,JB_END_DATE,JB_END_DATE_VALUE,INT_CAR_BTN,EXT_CAR_BTN)
 end
 
-
 Then(/^I Should be Able To Post The New Job$/i) do
   SaveTheJobAdAndGoToTheLandingPage(SAVE_JOB)
 end
-
 
 And(/^I Have A New candidate Applied for A Position$/i) do
   SignupAndApplyAsACandidate()
 
 end
 
-
-
 When(/^I Move The Candidate From New To Notsuitable Category$/i) do
   CheckTheCandidateAppearsUnderNewStatus(NEW_STATUS)
   MoveTheCandidateFromNewToNotSuitable(ADD_TO_NOTSUITABLE)
 end
 
-
 Then(/^I Should Be Able To View The Candidate Under Unsuccessful Category$/i) do
   VerifyThecandidateAppearsUnderNotSuitableCategory()
 end
-
 
 And(/^I Search For A Specific Requisition Having Vendor Added Candidates$/i) do
   #get requisition from DB
@@ -134,31 +115,25 @@ And(/^I Search For A Specific Requisition Having Vendor Added Candidates$/i) do
   SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
 end
 
-
 And(/^I Click On The Specific Requisition$/i) do
   ClickRequisition(REQUISITION_SEARCH_RESULT_TITLE_ID)
 end
-
 
 When(/^I Search For The Vendor Submitted Candidate$/i) do
   SearchCandidate()
 end
 
-
 And(/^I Can See The Vendor EmailId In The CC Field By Default$/i) do
   CheckForVendorEmail()
 end
-
 
 And(/^I Choose To ([\w\s]+) To The Candidate$/i) do |action|
   SelectActionToCandidate(action)
 end
 
-
 And(/^I Search For A Requisition Having ([\w]+) Status$/i) do |status|
   SelectRequisitionStatus(status)
 end
-
 
 And(/^I Search For A Requisition Having(\s+?|\sNo\s)Notes$/i) do |notes_available|
   if notes_available == " No "
@@ -177,7 +152,6 @@ And(/^I Search For A Requisition Having(\s+?|\sNo\s)Notes$/i) do |notes_availabl
   SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, @requisition[:requisition_title_display], REQUISITION_SEARCH_BTN_ID)
 end
 
-
 When(/^I Click On ([\w\s]+) Requisition Note Button$/i) do |button_type|
   case button_type
     when "Add New"
@@ -191,46 +165,37 @@ When(/^I Click On ([\w\s]+) Requisition Note Button$/i) do |button_type|
   Sleep_Until(WaitForAnElementByXpathAndTouch(identifier))
  end
 
-
 And(/^I Enter The Requisition Note$/i) do
   EnterRequisitionNote()
 end
-
 
 Then(/^I Should See The Note In The Requisition$/i) do
   CheckNoteInRequisition()
 end
 
-
 And(/^I Go To The Requisition ([\w\s]+) Page$/i) do |section_name|
   GoToRequisitionSection(section_name)
 end
-
 
 And(/^I Should See The Last Updated Details$/i) do
   VerifyNoteDetails()
 end
 
-
 Then(/^I Should (See|Not See) The (Edit|Delete|Add Note) button For The Note$/i) do |presence, button_name|
   VerifyButtons(presence, button_name)
 end
-
 
 And(/^I Should Be Able To Edit The Requisition Note$/i) do
   EnterRequisitionNote()
 end
 
-
 And(/^I Confirm The Deletion of the Requisition Note$/i) do
   ConfirmDeletion()
 end
 
-
 Then(/^I Should See The Deletion Success Message$/i) do
   VerifyDeletion()
 end
-
 
 And(/^I Search For A (Finalised|Withdrawn|Pending) Requisition Having Notes$/i) do |requisition_type|
  if requisition_type == "Finalised"
@@ -255,7 +220,6 @@ And(/^I Search For A (Finalised|Withdrawn|Pending) Requisition Having Notes$/i) 
  end
 end
 
-
 Then(/^I Should Be Able To Only View The Requisition Note$/i) do
   steps %{
     And   I Should Not See The Edit Button For The Note
@@ -265,21 +229,17 @@ Then(/^I Should Be Able To Only View The Requisition Note$/i) do
   }
 end
 
-
 And(/^I Choose To ([\w\s]+) For The Requisition$/i) do |action|
   Sleep_Until(ClickMenuOfFirstItemFromTable(REQUISITION_ACTION_DROPDOWN_ID, action))
 end
-
 
 Then(/^I Should Be Able To View The Requisition Note In the (Modal|Page)$/i) do |location|
   VerifyNoteDetails()
 end
 
-
 And(/^I View The Requisition For Approval$/i) do
   ViewRequisitionForApproval()
 end
-
 
 And(/^I Search For The Requisition Titled ([\w\s]+)$/i) do | req_title |
   SearchARequisition(REQUISITION_LIST_SEARCH_BOX_ID, req_title, REQUISITION_SEARCH_BTN_ID)
@@ -287,7 +247,6 @@ And(/^I Search For The Requisition Titled ([\w\s]+)$/i) do | req_title |
   #click first requistion in the list
   ClickOnRequisitionTitle(REQUISITION_SEARCH_RESULT_TITLE_ID)
 end
-
 
 When(/^I Click The ([\w\s]+) Sub Tab$/i) do | sub_tab_name |
   case sub_tab_name
@@ -312,33 +271,22 @@ When(/^I Click The ([\w\s]+) Sub Tab$/i) do | sub_tab_name |
   Sleep_Until(ClickOnASubTab(SUB_TAB_ID))
 end
 
-
 And(/^I Choose To ([\w\s]+) From The Bulk Actions$/i) do | bulk_action_name |
   ClickMenuOfFirstItemFromTable(REQUISITION_PAGE_DROPDOWN_ID, bulk_action_name)
 end
-
 
 When(/^I Select (All The|[\d]+) Candidate[s]?$/i) do | num_select |
   SelectCandidate(num_select)
 end
 
-
 And(/^I Compose The Email$/i) do
   ComposeEmail()
 end
-
 
 And(/^I Send The Composed Email$/i) do
   SendEmailToCandidate()
 end
 
-
 Then(/^I Should Be Able To Verify That The Emails Have Been Sent$/i) do
   VerifyRecruitmentMailToCandidate()
 end
-
-
-
-
-
-

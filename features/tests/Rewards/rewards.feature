@@ -7,7 +7,7 @@ Feature:
   Scenario: [Rewards]Company Admin Creating A New Badge Available To All Users
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
-    And   I Go To Badge Management under Rewards section
+    And   I Go To "Badge Management" Under "Rewards" Section
     When  I Click On "Add Badge" Button
     And   I Enter The Badge Title
     And   I Upload The Badge Image

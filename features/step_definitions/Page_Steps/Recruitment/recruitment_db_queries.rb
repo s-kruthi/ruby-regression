@@ -153,7 +153,6 @@ module Database_env
       end
     end
 
-
     def get_count_candidates()
       query = "select count(*) AS count
                from epms_recruitment_candidate
@@ -161,7 +160,6 @@ module Database_env
                and is_deleted = 0"
       return @db[query].first[:count]
     end
-
 
     def get_recruitment_msg_details(user_id)
       query = "select send_date

@@ -3,11 +3,10 @@
 Feature:
   As a candidate I should be able to apply for Job Ads
 
-
   @recruitment_internal_jobad
   Scenario: [Recruitment]Employee can apply for an Internal Job Ad
     Given I Have Logged In As An Employee Using The Username "auto1.scriptonce1" And Password "Admin1234567"
-    And   I Go To The Menu Careers Section
+    And   I Go To The "Menu Careers" Section
     And   I Search For The Job Ad Titled "Quality Assurance Tester - Automation - Internal"
     When  I Apply For The Job Ad Titled "Quality Assurance Tester - Automation - Internal"
     And   I Upload My Resume
@@ -17,7 +16,6 @@ Feature:
     Then  I Should Be Able To Successfully Apply For The Job Ad
     And   I Should Be Able To Successfully "Verify" The "Internal" Job Ad Named "Quality Assurance%Internal" for Username "auto1.scriptonce1" From Database
     And   I Should Be Able To Successfully "Remove" The "Internal" Job Ad Named "Quality Assurance%Internal" for Username "auto1.scriptonce1" From Database
-
 
   @recruitment_external_jobad
   Scenario: [Recruitment]External candidate with profile can apply for an External Job Ad
@@ -32,7 +30,6 @@ Feature:
     Then  I Should Be Able To Successfully Apply For The Job Ad
     And   I Should Be Able To Successfully "Verify" The "External" Job Ad Named "Quality Assurance%External" for Username "candidate1.scriptonce1@elmodev.com" From Database
     And   I Should Be Able To Successfully "Remove" The "External" Job Ad Named "Quality Assurance%External" for Username "candidate1.scriptonce1@elmodev.com" From Database
-
 
   @recruitment_vendor_jobad
   Scenario: [Recruitment]Vendor can submit candidate for a Job Ad
@@ -49,13 +46,11 @@ Feature:
     And   I Should Be Able To Successfully "Verify" The "Vendor" Job Ad Named "Quality Assurance%Vendor" for Username "candidate1.scriptonce1@elmodev.com" From Database
     And   I Should Be Able To Successfully "Remove" The "Vendor" Job Ad Named "Quality Assurance%Vendor" for Username "candidate1.scriptonce1@elmodev.com" From Database
 
-
   @recruitment_externalcandidate_createprofile
   Scenario: [Recruitment]External candidate can create a profile
     Given  I Am On The External Career Site test
     When   I Provide Details To Create Profile
     Then   I Should Be Able To Successfully Create A Profile
-
 
   @recruitment_externalcandidate_createprofile_bulk
   Scenario: [Recruitment]Can Create External Candidate Profiles
@@ -67,7 +62,6 @@ Feature:
   Scenario: [Recruitment]Can Create External Candidate Profiles
     Given  I Am Creating Candidates On The External Career Site test
 
-
   @recruitment_appliedjob_internal_errormsg
   Scenario: [Recruitment]Cannot Apply For Job Ads Already Applied For
     Given  I Have Already Applied As An Employee For The Job Ad titled "Quality Assurance Tester - Automation - Internal"
@@ -75,7 +69,6 @@ Feature:
     And    I Try To Apply For The Job Ad Titled "Quality Assurance Tester - Automation - Internal" As An Employee
     Then   I Should Be Able To See A Message Alerting The User That The Job Has Already Been Applied To
     And    I Should Be Able To Successfully "Remove" The "Internal" Job Ad Named "Quality Assurance%Internal" for Username "auto1.scriptonce1" From Database
-
 
   @recruitment_appliedjob_external_errormsg
   Scenario: [Recruitment]Cannot Apply For Job Ads Already Applied For

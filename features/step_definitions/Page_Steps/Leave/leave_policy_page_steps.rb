@@ -7,7 +7,6 @@ def CheckToggleSetting(toggle_id, toggle_setting)
   end
 end
 
-
 def CheckAndSetToggle(toggle_id, toggle_setting)
   case toggle_setting
   when 'Enabled'
@@ -24,7 +23,6 @@ def CheckAndSetToggle(toggle_id, toggle_setting)
     JavascriptClick(toggle_id)
   end
 end
-
 
 def CheckDefaultValueLSLAfterXyrs()
   expect($driver.find_element(:id, LEAVE_POLICY_SHOWLSLXYRS_ID).attribute('value')).to eq("1")

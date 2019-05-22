@@ -80,4 +80,3 @@ Then(/^The User Should Be Instantly Notified About The Document Being Rejected$/
    Then  I Need To Delete The Assigned Documents As A TearDown Approach
   }
 end
-

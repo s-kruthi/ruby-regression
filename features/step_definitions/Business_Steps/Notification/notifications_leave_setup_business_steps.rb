@@ -64,7 +64,6 @@ Then(/^My Employee Should Be Instantly Notified About The Leave Request cancella
   ConnectToDatabaseAndValidateTheLeaveRequestCancelledByApproverNotifications()
 end
 
-
 And(/^I Reject The Leave That My Employee has Requested For$/i) do
   GoToApprovalRequestPage()
   ViewTheLeaveRequestAndRejectIt(LEAVE_REQUEST_DROPDOWN,2,LEAVE_REJECT_COMMENT)

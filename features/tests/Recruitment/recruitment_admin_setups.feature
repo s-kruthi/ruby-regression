@@ -5,7 +5,6 @@
 Feature:
   I want to be able to setup recruitment related flows as an Admin
 
-
   @interviewguideSetup @recruitment_high_risk
   Scenario: [Recruitment]SetUp A New Interview guide With Question Weightage And Publish It
   Given I Am Under A Recruitment Interview Guide Section

@@ -12,7 +12,6 @@ def DeletePayrollCycleAssociatedToUser()
   Sleep_Until(PressEnterConfirm())
 end
 
-
 def CheckDeletionPayrollCycle(ability)
   identifier = "button[href*='/admin/hrcore/payroll-cycle/delete/#{@payroll[:id]}']"
 
@@ -24,7 +23,6 @@ def CheckDeletionPayrollCycle(ability)
     puts COLOR_GREEN + "was able to successfully delete payroll cycle named ".upcase + @payroll[:title].upcase.colorize(:yellow)
   end
 end
-
 
 def DeletePayrollCycle()
   #get the payroll id thats unassociated to user
@@ -41,7 +39,6 @@ def DeletePayrollCycle()
   Sleep_Until(VerifyAnElementExistByXPath(PAYROLL_CYCLE_MODAL_ID, PAYROLL_CYCLE_DEL_SUCCESS_MSG))
   Sleep_Until(PressEnterOK())
 end
-
 
 def EnterPayrollCycleDetails(title = PAYROLL_CYCLE_TITLE + Time.now.strftime("%Y%m%d%H%M%S").to_s)
 
@@ -62,12 +59,10 @@ def EnterPayrollCycleDetails(title = PAYROLL_CYCLE_TITLE + Time.now.strftime("%Y
   ClearAndEnterWeeksperannum(PAYROLL_CYCLE_WEEKSPERANNUM)
 end
 
-
 def EditPayrollCycle()
   @payroll = $daos.get_payroll_cycle_details()
   WaitForAnElementByXpathAndTouch("//a[@href='/admin/hrcore/payroll-cycle/edit/#{@payroll[:id]}']")
 end
-
 
 def VerifyPayrollCycleCreation()
   #no success message is displayed for creation hence validating against DB
@@ -80,7 +75,6 @@ def VerifyPayrollCycleCreation()
   end
 end
 
-
 def VerifyPayrollCycleEdit()
   #no success message is displayed for editing hence validating against DB
   title = $daos.get_payroll_cycle_by_id(@payroll[:id])
@@ -92,28 +86,23 @@ def VerifyPayrollCycleEdit()
   end
 end
 
-
 def CheckDefaultValue()
   expect($driver.find_element(:id, 'payroll_cycle_weeksPerAnnum').attribute('value')).to eq('52.00')
   puts COLOR_GREEN + "weeks per annum field is set with the default value of 52.00 ".upcase
 end
 
-
 def SavePayrollCycle()
   WaitForAnElementByIdAndTouch(PAYROLL_CYCLE_SAVE_ID)
 end
-
 
 def ClearAndEnterWeeksperannum(weeks_per_annum)
   ClearField('id', PAYROLL_CYCLE_WEEKSPERANNUM_ID)
   WaitForAnElementByIdAndInputValue(PAYROLL_CYCLE_WEEKSPERANNUM_ID, weeks_per_annum)
 end
 
-
 def VerifyInfoMessage(verify_info_id, info_value)
   Sleep_Until(VerifyAnElementExistByXPath(verify_info_id, info_value))
 end
-
 
 def CheckPayrollCycleType(payrollcycle_type)
   dropdown = $driver.find_element(:id, 'payroll_cycle_type')
@@ -135,7 +124,6 @@ def CheckPayrollCycleType(payrollcycle_type)
   end
 end
 
-
 def CheckField()
   #gets the selected value from the dropdown
   option_selected = GetSelectedValueFromDropdown(PAYROLL_CYCLE_DATEOFMON_ID)
@@ -143,4 +131,3 @@ def CheckField()
   expect(option_selected).to eq("1st")
   puts COLOR_GREEN + "date of month field is present and is set to the default value of 1st".upcase
 end
-

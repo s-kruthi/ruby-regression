@@ -1,12 +1,14 @@
-# If the installation failes then create a shell script and put the following content in there and execute it:
-#/bin/bash
-gem install bundler
-gem install selenium-webdriver
-gem install capybara
-gem install nokogiri
-gem install rspec
-gem install cucumber
-gem install rake
+# Basic Installation
+If the installation failes then create a shell script and put the following content in there and execute it:
+
+#!/bin/sh
+gem install bundler 
+gem install selenium-webdriver 
+gem install capybara 
+gem install nokogiri 
+gem install rspec 
+gem install cucumber 
+gem install rake 
 gem install mysql2
 gem install sequel
 gem install colorize
@@ -15,37 +17,48 @@ gem install touch_action
 gem install pry
 gem install byebug
 gem install rest-client
+gem install jira-ruby
 gem install JiraClient
 gem install jira
 gem install ruby-jmeter
+gem install ed25519
+gem install bcrypt_pbkdf
+gem install net-ssh
 gem install net-ssh-gateway
 gem install watir
+gem install rubocop
 
 
-Required Gems:
+# Requirements
+In general, these are the primary gems currently used by the scriptonce automation framework
 -------------------------
-require 'rubygems'
-require 'active_record'
-require 'touch_action/selenium-webdriver'
+require 'rubyems'   
+require 'touch_action'
 require 'securerandom'
-require 'waitutil'
+require 'waitutil'   
 require 'selenium-webdriver'
-require 'pry'
+require 'pry'        
 require 'rest-client'
 require 'ruby-jmeter'
+require 'net/ssh/gate'
+require 'active_record'
 require 'sequel'
-require 'net/ssh/gateway'
 require 'watir'
-require 'pp'
-require 'jira-ruby'
+require 'colorize'
+require 'csv'
+require 'byebug'
+require 'fileutils'
+
 
 Setup:
 --------------------------
 brew install bundler
-brew install chromedriver
-brew install geckodriver
+brew install cask
+brew install cask chromedriver
+brew install cask geckodriver
 brew install mysql
-cd [Go to your scriptonce_automation] folder
+cd [CRIPTONCE FOLDER]
+bundle install 
 bundle update
 
 
@@ -56,23 +69,25 @@ FAQ:
 
 - Just download the 'scriptonce_automation' folder
 - Save it in your local( e.g documents / desktop)
-- Now open RubyMine and load this project by giving path to your 'features' folder( that's a neat ruby IDE, you can chose any other)
+- Now open RubyMine and load this project( that's a neat ruby IDE, you can chose any other)
 
 * How To Run The test?
 
 - Open a terminal
 - Go To the 'scriptonce_automation' Folder Path (e.g cd */sampleWeb/sample_rubymine/sample_cucumber/scriptonce_automation)
-
 - Type "$export CHANNEL=firefox; cucumber -csigxt @create_new_issue" if you're using Windows with Cygwin or gitbash sort of emulator
 - Type "CHANNEL=chrome cucumber -csigxt @create_new_issue" if you're using MacOS/Linux
 
-*NOTE:*
-You can also pass parameters to change the default site information as well as point at whether it's staging or production site, as staging points to sub-domain.dev.elmodev.com
- and production points to sub-domain.elmotalent.com.au
+Parameters:
+----------------------------
+- Some of the common parameters which can be passed on to cucumber command are following:
+- TYPE/type = prod/staging (Helps you run the tests against staging/production. By default, tests point to staging sites
+- URL/url = site.dev (This allows running the tests against specific staging site. Unless specified, tests normally point to tmsfull.elmodev.com
+- CHANNEL = <browser name> (Available browser names are chrome, firefox, headless)
 
-An example is provided below:
-
-~/automation/scriptonce_automation <auto/TDC-57> ✗ CHANNEL=firefox cucumber -csigxt @retrain_discrepancy_fix url=shayan01 type=staging
+Example:
+-----------------------------
+~/automation/scriptonce_automation <auto/TDC-57> ✗ CHANNEL=firefox cucumber -csigxt @retrain_discrepancy_fix url=shayan01.dev type=staging
 @learning @courses
 Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
 
@@ -83,7 +98,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
       Title: Shayan01 - Dashboard
       URL: https://shayan01.dev.elmodev.com/dashboard
     And I go to Admin Settings
-    And I Go To Retrain Discrepancies under Learning section
+    And I Go To "Retrain Discrepancies" Under "Learning" Section
     When I Search For A Specific Course Named Fraud & Corruption
     Then I Should Be Able To Fix Retrain Of The Specific Course
       MATCHED: Retrain for the selected user(s) have been successfully fixed - [ PASSED ]
@@ -104,7 +119,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
       Title: ELMO Talent Management System - Dashboard
       URL: https://survey.uat.elmotalent.com.au/dashboard
     And I go to Admin Settings                                              # features/step_definitions/business_layer/general_business_steps.rb:114
-    And I Go To Courses under Learning section                              # features/step_definitions/business_layer/general_business_steps.rb:119
+    And I Go To "Courses" Under "Learning" Section                              # features/step_definitions/business_layer/general_business_steps.rb:119
     When I Edit A Specific Course Named DO NOT DELETE                       # features/step_definitions/business_layer/learning_course_business_steps.rb:56
     Then I Should Be Able To Add A New ELMO Survey (new) Activity           # features/step_definitions/business_layer/learning_course_business_steps.rb:62
       Adding activity: ELMO Survey (new)

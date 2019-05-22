@@ -9,12 +9,10 @@ def EachRowIncludeValue(rows, search_value)
   return result
 end
 
-
 def SearchItemNoSelect2(search_box_css, search_value, search_btn_css)
   Sleep_Until(WaitForAnElementByCSSAndInputValue(search_box_css, search_value))
   Sleep_Until(WaitForAnElementByCSSAndTouch(search_btn_css))
 end
-
 
 def FillFieldsCreateCertTemp(cert_temp_name, edit='')
   WaitForAnElementByCSSAndInputValue(CERT_TEMP_TITLE_FIELD_CSS, cert_temp_name + edit)
@@ -24,7 +22,6 @@ def FillFieldsCreateCertTemp(cert_temp_name, edit='')
   Sleep_Until(WaitForSelectFileButtonAndUploadFile(PNG_FILE_NAME))
   WaitForAnElementByCSSAndInputValue(CERT_TEMP_BACKGROUND_COLOUR_CSS, '#9bcbe5')
 end
-
 
 def FillFieldsEditCertTemp(cert_temp_name, edit='')
   WaitForAnElementByCSSAndInputValue(CERT_TEMP_TITLE_FIELD_CSS, cert_temp_name + edit)
@@ -37,12 +34,10 @@ def FillFieldsEditCertTemp(cert_temp_name, edit='')
   WaitForAnElementByCSSAndInputValue(CERT_TEMP_BACKGROUND_COLOUR_CSS, '#9bcbe5')
 end
 
-
 def CheckItemsInListAndSorted(table_title_array, sort)
   CheckTableHeader(expected_header_array,header_css)
   CheckArraySorted(sort)
 end
-
 
 def GetValuesByColumnFromTableByCSS(table_body_css, column_number)
   wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -56,7 +51,6 @@ def GetValuesByColumnFromTableByCSS(table_body_css, column_number)
   return column_value_array
 end
 
-
 def SortArray(arr, sort, datatype)
   if datatype.downcase.include?('time')
     arr = arr.map{|value| DateTime.strptime(value, '%d/%m/%Y %I:%M:%S %P')}
@@ -68,7 +62,6 @@ def SortArray(arr, sort, datatype)
   end
   arr.map!{|value| value.strftime('%d/%m/%Y %I:%M:%S %P')}
 end
-
 
 def CreateCertTemplateWhenLess(item_to_create, number)
   templatenumber =  $daos.count_certificate_template
@@ -83,7 +76,6 @@ def CreateCertTemplateWhenLess(item_to_create, number)
   end
 end
 
-
 def CheckTableHeader(expected_header_array,table_header_css)
   page_list_title = GetValidHeaderTitlesFromTableByCSS(table_header_css)
   if page_list_title.eql? expected_header_array
@@ -92,7 +84,6 @@ def CheckTableHeader(expected_header_array,table_header_css)
     puts COLOR_RED + "Table header not as expected"
   end
 end
-
 
 def GetValidHeaderTitlesFromTableByCSS(table_header_css)
   wait = Selenium::WebDriver::Wait.new(:timeout => 10)

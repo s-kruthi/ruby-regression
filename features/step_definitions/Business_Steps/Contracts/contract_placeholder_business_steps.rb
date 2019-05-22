@@ -39,4 +39,3 @@ end
 Then(/^I Should Be Able To See The Contract Placeholders/i) do
   Sleep_Until(VerifyContractPlaceholderSearch(CONTRACT_PLACEHOLDER_SEARCH_RESULTS_ID, CONTRACT_PLACEHOLDER_NAME))
 end
-

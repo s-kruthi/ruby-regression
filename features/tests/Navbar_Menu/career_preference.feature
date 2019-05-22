@@ -49,7 +49,6 @@ Feature:
     And I Verify The Career Preference Tab Is Disabled
     Then I Reset The User Profile Back To Initial
 
-
 # This Scenario requires a tear down as consecutive test run will add the same question again an again, and Deleting a Question is not mentioned
   # in the requirement sheet
   @career_low_risk
@@ -63,4 +62,3 @@ Feature:
     Given I Have Logged In As a Admin
     When I Navigate To Career Preference Tab Within User Profile Setup Tab
     Then I Should Be Able to Add A New Question
-

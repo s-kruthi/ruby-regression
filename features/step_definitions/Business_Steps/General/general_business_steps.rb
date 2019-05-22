@@ -32,13 +32,11 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
   end
 end
 
-
 And(/^I Go To Admin Settings$/i) do
   Sleep_Until(GoToAdminSettings(ADMIN_COG))
 end
 
-
-And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
+And(/^I Go To "(.*)" Under "(.*)" Section$/i) do |menu_type, menu_section|
 
   if menu_section == "Rewards"
     menu_section = "RewardsAdmin"
@@ -57,8 +55,7 @@ And(/^I Go To (.*) Under (.*) Section$/i) do |menu_type, menu_section|
   end
 end
 
-
-And(/^I Go To The (.*) Section$/i) do |menu_type|
+And(/^I Go To The "(.*)" Section$/i) do |menu_type|
   begin
     case menu_type
 
@@ -142,7 +139,6 @@ And(/^I Go To The (.*) Section$/i) do |menu_type|
   end
 end
 
-
 Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The System With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?$/i) do |arg1, arg2, arg3, arg4, arg5|
   #This step also sets the roletype to the specified value
   i = 1  #Change it if the starting suffix value needs to be from a different value
@@ -150,7 +146,7 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
   for loop in i..arg1 do
     begin
       @@first_name = arg3 + loop.to_s
-      @@last_name = arg4 + Time.now.strftime("%Y%m%d%H%M%S") if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To (.*) Under (.*) Section' since Users and Onboarding users take different path
+      @@last_name = arg4 + Time.now.strftime("%Y%m%d%H%M%S") if $add_user_type == "EMP" #Value of $add_user_type derived from Step 'I Go To "(.*)" Under "(.*)" Section' since Users and Onboarding users take different path
       @@last_name = arg4 + Time.now.strftime("%Y%m%d%H%M%S") + ".ob" if $add_user_type == "OB"
       @@user_name = @@first_name + "." + @@last_name
       @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value] #Email = firstname.lastname@email_suffix
@@ -190,7 +186,6 @@ Then(/^I Should Be Able To Add (\d+) New "(Non-ELMO|ELMO)" Users In To The Syste
   skip_this_scenario if $user_found == 1 #Skip the rest of the scenario since it's no longer valid
 end
 
-
 And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
   begin
     case sub_tab_name       #Since these are derived using href, case is used to differentiate between specific ones
@@ -207,7 +202,6 @@ And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
   end
 end
 
-
 When(/^I Click On (.*) Icon$/i) do |click_edit_icon|
   begin
     case click_edit_icon
@@ -223,7 +217,6 @@ When(/^I Click On (.*) Icon$/i) do |click_edit_icon|
     end
   end
 end
-
 
 And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
   begin
@@ -252,13 +245,11 @@ And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
   end
 end
 
-
 Then(/^I Should Be Able To Add (.*) Details$/i) do |contact_details|
   Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
   Sleep_Until(WaitForAnElementByXpathAndTouch(DONE_BTN_ID))
   sleep (1)
 end
-
 
 And(/^I Search For A Specific User Named (.*)$/i) do |username_search_value|
   $username_search_value = username_search_value
@@ -269,7 +260,6 @@ And(/^I Search For A Specific User Named (.*)$/i) do |username_search_value|
 
   search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, $username_search_value, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
 end
-
 
 Then(/^I Should Be Able To Use (.*) Action On The Specific User$/i) do |specified_action|
   begin
@@ -289,11 +279,9 @@ Then(/^I Should Be Able To Use (.*) Action On The Specific User$/i) do |specifie
   end
 end
 
-
 And(/^I Should Be Able To Go To (.*) tab$/i) do |profile_tab_name|
   ClickOnATab(profile_tab_name)
 end
-
 
 And(/^I Should Be Able To Fill In All Profile Related Information$/i) do
   pending
@@ -308,17 +296,15 @@ And(/^I Should Be Able To Fill In All Profile Related Information$/i) do
   # select_employe()
 end
 
-
 And(/^I Should Be Able To Save The Information Successfully$/i) do
   ClickOnSaveButton(SAVE_BTN_ID)
 end
-
 
 Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onboarding Section$/i) do |access_type|
   if access_type == "Be Able"
     Sleep_Until(VerifyAnElementExists("xpath", ONBOARDING_USER_SETUP_ID))
     steps %Q{
-    And I Go To Onboarding User Setup Under Onboarding Section
+    And I Go To "Onboarding User Setup" Under "Onboarding" Section
     }
     Sleep_Until(VerifyAnElementExists("xpath", ACTIVITY_RESUME_TAB_ID))
     Sleep_Until(VerifyAnElementExists("xpath", ONBOARDING_SETUP_TAB_ID))
@@ -327,12 +313,10 @@ Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onb
   end
 end
 
-
 And(/^I Click On "([^"]*)" Breadcrumb Menu$/i) do |arg|
   breadcrumb_xpath = "//a[contains(.,'#{arg}')]"
   Sleep_Until(WaitForAnElementByXpathAndTouch(breadcrumb_xpath))
 end
-
 
 Then(/^I Should Be Able to (Notify|Activate) All Users$/i) do |action|
   Sleep_Until(PressConfirm())
@@ -357,7 +341,6 @@ Then(/^I Should Be Able to (Notify|Activate) All Users$/i) do |action|
   end
 end
 
-
 Then(/^I Should See That The Default Entity Is Set For the User's Company Field$/i) do
   default_legal_entity = $daos.get_default_entity_details()
 
@@ -370,27 +353,23 @@ Then(/^I Should See That The Default Entity Is Set For the User's Company Field$
   puts COLOR_GREEN + "User is set with the default legal entity for company field".upcase
 end
 
-
 Given(/^I Have Created A New User$/i) do
   user_first_name = 'payroll_auto' + Time.now.strftime("%Y%m%d%H%M%S")
   steps %Q{
         Given I Have Logged In as a Payroll Admin
         And   I Go To Admin Settings
-        And   I Go To Users Under General Section
+        And   I Go To "Users" Under "General" Section
         When  I Click On "Add New User" Button
         Then  I Should Be Able To Add A New "Non-ELMO" User With "#{user_first_name}" As First Name And "test" As Last Name}
 end
-
 
 And(/^I Click On The Profile Tab Of The([^\"]*) User$/i) do |user_type|
   Sleep_Until(WaitForAnElementByXpathAndTouch(USER_PROFILE_TAB_ID))
 end
 
-
 When(/^I Choose To Edit An Existing User's Profile$/i) do
   steps %{Then I Should Be Able To Use Edit User Profile Action On The Specific User}
 end
-
 
 Then(/^I Can See That I Can Choose To Set The Company Legal Entity From The Existing Entities$/i) do
   # get count from legal entity table
@@ -405,11 +384,9 @@ Then(/^I Can See That I Can Choose To Set The Company Legal Entity From The Exis
   expect($driver.find_elements(:class,SELECT2_DROPDOWN_RESULT_CLASS).size).to eq(legal_entity[:count])
 end
 
-
 Then(/^I Should See The Cost Centre Field$/i) do
   Sleep_Until(VerifyAnElementExists('id', USER_COST_CENTRE_FIELD_ID))
 end
-
 
 And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Centres$/i) do
   sleep(2)
@@ -428,11 +405,9 @@ And(/^I Can See That I Choose To Set The Cost Centre From The Existing Cost Cent
   end
 end
 
-
 Then(/^I Should Be Able To Add A New "(Non-ELMO|ELMO)" User With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?(:? And "([^"]*)" As Role)?$/i) do |arg1, arg2, arg3, arg4, arg5|
   CreateAUser(arg1, arg2, arg3, arg4, arg5)
 end
-
 
 Given(/^I Have Logged In As (An Employee|Vendor) Using The Username "(.*)" And Password "(.*)"$/i) do |user_type, user_name, user_pwd|
   @username = user_name
@@ -445,17 +420,14 @@ Given(/^I Have Logged In As (An Employee|Vendor) Using The Username "(.*)" And P
   steps %{And I Have Logged In As A #{user_type}}
 end
 
-
 When(/^I Edit (.*) Details$/i) do |contact_type|
   Sleep_Until(ClickOnASubTab(USER_PERSONAL_DETAILS_TAB_ID))
   EditContactDetails(contact_type)
 end
 
-
 Then(/^I Can See The Suburb\/Town\/City Field$/i) do
   CheckFieldInPersonalDetails()
 end
-
 
 And(/^The Necessary User Fields Are Setup$/i) do
   UserProfileSetupThroughJmeter()

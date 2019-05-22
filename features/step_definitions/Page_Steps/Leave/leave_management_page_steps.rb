@@ -2,7 +2,6 @@ def GoToLeaveTypeUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
 end
 
-
 def CreateANewLeaveType(leave_type_path,add_new_leave_type)
   sleep(2)
   WaitForAnElementByXpathAndTouch(leave_type_path)
@@ -10,7 +9,6 @@ def CreateANewLeaveType(leave_type_path,add_new_leave_type)
   WaitForAnElementByClassAndTouch(add_new_leave_type)
   sleep(3)
 end
-
 
 def FillTheLeaveTypeAndSave(leave_type_title_cs,leave_type_title_val,leave_type_entitl_cs)
   WaitForAnElementByCSSAndInputValue(leave_type_title_cs,leave_type_title_val)
@@ -25,7 +23,6 @@ def FillTheLeaveTypeAndSave(leave_type_title_cs,leave_type_title_val,leave_type_
   sleep(3)
 end
 
-
 def SearchTheCreatedLeaveTypeAndDeleteIt(search_leav_typ,leave_type_val)
   WaitForAnElementByCSSAndInputValue(search_leav_typ,leave_type_val)
   $driver.find_element(:css, 'button[ng-click="lt.getLeaveTypes()"]').click
@@ -38,11 +35,9 @@ def SearchTheCreatedLeaveTypeAndDeleteIt(search_leav_typ,leave_type_val)
   $driver.quit
 end
 
-
 def GoToLeavePolicyUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
 end
-
 
 def CreateANewLeavePolicy(leave_policy_path,add_new_leave_policy)
   WaitForAnElementByXpathAndTouch(leave_policy_path)
@@ -50,7 +45,6 @@ def CreateANewLeavePolicy(leave_policy_path,add_new_leave_policy)
   WaitForAnElementByClassAndTouch(add_new_leave_policy)
   sleep(3)
 end
-
 
 def FillTheLeavePolicyAndSave(leave_policy_title_cs,leave_policy_title_val)
   WaitForAnElementByCSSAndInputValue(leave_policy_title_cs,leave_policy_title_val)
@@ -71,7 +65,6 @@ def FillTheLeavePolicyAndSave(leave_policy_title_cs,leave_policy_title_val)
   sleep(3)
 end
 
-
 def SearchTheCreatedLeavePolicyAndDeleteIt(search_leav_pol,leave_pol_val)
   $driver.find_element(:link_text, 'Leave Policy').click
   sleep(3)
@@ -84,11 +77,9 @@ def SearchTheCreatedLeavePolicyAndDeleteIt(search_leav_pol,leave_pol_val)
   PressEnterConfirm()
 end
 
-
 def GoToHolidayMgntUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
 end
-
 
 def CreateANewCompanyHoliday(holiday_mgmt_path,add_new_company_hol)
   WaitForAnElementByXpathAndTouch(holiday_mgmt_path)
@@ -96,7 +87,6 @@ def CreateANewCompanyHoliday(holiday_mgmt_path,add_new_company_hol)
   WaitForAnElementByXpathAndTouch(add_new_company_hol)
   sleep(3)
 end
-
 
 def FillTheNewCompanyHolidayAndSave()
   sleep(1)
@@ -112,7 +102,6 @@ def FillTheNewCompanyHolidayAndSave()
   puts $current_hol_id
 end
 
-
 def FindTheCreatedHolidayAndDeleteIt()
   Sleep_Until($driver.find_element(:partial_link_text, 'Holiday Management').click)
   # sleep(5)
@@ -123,19 +112,16 @@ def FindTheCreatedHolidayAndDeleteIt()
   Sleep_Until($driver.find_element(:css, "[data-bb-handler='success']").click)
 end
 
-
 def GoToLeaveRequestUnderLeaveManagement(leave_management_sec_id,leave_requests_path)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
   WaitForAnElementByXpathAndTouch(leave_requests_path)
   sleep(2)
 end
 
-
 def GoToLeaveBalanceUnderLeaveManagement(leave_management_sec_id)
   WaitForAnElementByIdAndTouch(leave_management_sec_id)
   sleep(2)
 end
-
 
 def ApproveTheSubmittedLeaveRequest(approval_reason)
   sleep(2)
@@ -155,7 +141,6 @@ def ApproveTheSubmittedLeaveRequest(approval_reason)
   sleep(2)
   #$driver.find_element(:xpath, "//a[contains(.,'Approved Request')]").click
 end
-
 
 def ModifyLeaveHrAndProcessTheLeaveRequest()
   $driver.find_element(:xpath, "//a[contains(.,'Approved Request')]").click
@@ -192,7 +177,6 @@ def ModifyLeaveHrAndProcessTheLeaveRequest()
  DELETE FROM epms_leave_request WHERE id=#{RQST_PATH_ID} \\G;" )
 end
 
-
 def GoToLeaveBalanceAndSearchTheEmployee()
   sleep(2)
   $driver.find_element(:xpath, "//span[contains(.,'Leave Balance & Import')]").click
@@ -201,12 +185,10 @@ def GoToLeaveBalanceAndSearchTheEmployee()
   sleep(1)
 end
 
-
 def CheckTheLeaveBucketReturnsTheExpectedAccruals()
   FetchTheLeaveBucketForThatEmployee()
   MatchTheExpectedLeaveBucketFromDatabase()
 end
-
 
 def FetchTheLeaveBucketForThatEmployee()
   $annual_leave = $driver.find_elements(:class, "ng-binding")[4].text
@@ -216,4 +198,3 @@ def FetchTheLeaveBucketForThatEmployee()
   $limit_based = $driver.find_elements(:class, "ng-binding")[10].text
   puts "#{$limit_based}"
 end
-

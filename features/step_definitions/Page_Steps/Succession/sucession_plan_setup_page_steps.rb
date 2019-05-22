@@ -50,17 +50,14 @@ def GoToTheSuccessionMenuPageAsAdmin(admin_cog,succession_expand)
   GoToSuccessionLandingPage(succession_expand)
 end
 
-
 def GoToSuccessionLandingPage(succession_expand)
   sleep(4)
   WaitForAnElementByPartialLinkTextAndTouch(succession_expand)
 end
 
-
 def GoToTheSuccessionSetupPageAsAdmin(succession_review_setup_path)
   WaitForAnElementByXpathAndTouch(succession_review_setup_path)
 end
-
 
 def CreateANewSuccessionPlan(new_plan_btn,title_id,title_value,save_btn,succession_review_link)
   sleep(3)
@@ -72,11 +69,9 @@ def CreateANewSuccessionPlan(new_plan_btn,title_id,title_value,save_btn,successi
   WaitForAnElementByLinkAndTouch(succession_review_link)
 end
 
-
 def SearchTheNewlyCreatedSuccessionPlan(search_path,search_value)
   WaitForAnElementByXpathAndInputValue(search_path,search_value)
 end
-
 
 def DeleteTheFirstSuccessionPlanFromTheTable(dropdown,index_value)
   sleep(1)
@@ -89,7 +84,6 @@ def DeleteTheFirstSuccessionPlanFromTheTable(dropdown,index_value)
   PressEnterOK()
 end
 
-
 def DeleteTheFirstAssignedSuccessionPlanFromTheTable(dropdown,index_value)
   sleep(2)
   WaitForDropdownByClassAndTouchTheIndex(dropdown,index_value)
@@ -98,7 +92,6 @@ def DeleteTheFirstAssignedSuccessionPlanFromTheTable(dropdown,index_value)
   sleep(1)
   PressEnterConfirm()
 end
-
 
 def HideTheFirstSuccessionPlanFromTheTable(dropdown,index_value,hide_path)
   sleep(1)
@@ -109,7 +102,6 @@ def HideTheFirstSuccessionPlanFromTheTable(dropdown,index_value,hide_path)
   PressEnterConfirm()
   sleep(2)
 end
-
 
 def GoToTheShowHiddenScreenAndMakeThePlanVisible(show_hidden_btn,visible_btn,show_visible_btn)
   WaitForAnElementByXpathAndTouch(show_hidden_btn)
@@ -122,7 +114,6 @@ def GoToTheShowHiddenScreenAndMakeThePlanVisible(show_hidden_btn,visible_btn,sho
   sleep(1)
 end
 
-
 def SearchAndVerifyTheSuccessionReturnsSuccessfully(search_field,search_value,search_btn,search_result)
   sleep(1)
   WaitForAnElementByXpathAndInputValue(search_field,search_value)
@@ -130,7 +121,6 @@ def SearchAndVerifyTheSuccessionReturnsSuccessfully(search_field,search_value,se
   WaitForAnElementByClassAndTouch(search_btn)
   VerifyAnElementExistByClass(search_result,search_value)
 end
-
 
 def VerifyTheMessageCannotBeDeletedExist(message_class,message_body )
   sleep(1)

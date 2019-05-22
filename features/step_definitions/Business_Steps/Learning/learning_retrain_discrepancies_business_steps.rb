@@ -9,7 +9,6 @@ When(/^I See a List of Discrepancy Courses for Users$/i) do
   end
 end
 
-
 Then(/^I Should Be Able To (.*) Of A Specific Course$/i) do |retrain_action|
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, retrain_action)
 
@@ -30,18 +29,15 @@ Then(/^I Should Be Able To (.*) Of A Specific Course$/i) do |retrain_action|
   end
 end
 
-
 And(/^I See a Filtered List of Retrain Discrepancy Course Results for Learner$/i) do
   VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{@user[:name]}")
 end
-
 
 And(/^I Choose To (Fix Retrain|Disable Retrain) From The Actions Menu$/i) do | retrain_action |
   ClickMenuOfFirstItemFromTable(COURSE_PAGE_DROPDOWN, retrain_action)
   PressEnterConfirm()
   sleep (2)
 end
-
 
 Then(/^I Should Be Able To See The Success Message For (Fix|Disable) Retrain For Users$/i) do | retrain_action |
   case retrain_action
@@ -51,7 +47,6 @@ Then(/^I Should Be Able To See The Success Message For (Fix|Disable) Retrain For
       Sleep_Until(VerifySuccessAlertMessage(COURSE_DISCREPANCY_SUCCESSFUL_ID, COURSE_DISCREPANCY_DISABLE_SUCCESSFUL_VALUE))
   end
 end
-
 
 When(/^I Filter For An Employee With Discrepancies$/i) do
   @user = $daos.get_user_with_course_discrepancy()

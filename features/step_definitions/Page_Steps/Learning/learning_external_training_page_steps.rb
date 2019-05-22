@@ -18,7 +18,6 @@ def CheckConfigFields(field_ability)
   end
 end
 
-
 def CheckExtTrainingSetting()
   #if true then enabled else disabled
   check_toggle = $driver.find_element(:id, LEARNING_EXTTRAINING_TOGGLE_ID).selected?
@@ -30,7 +29,6 @@ def CheckExtTrainingSetting()
     return "Disable"
   end
 end
-
 
 def CheckAndEnable(field_name,setting)
 
@@ -56,7 +54,6 @@ def CheckAndEnable(field_name,setting)
     puts COLOR_GREEN + field_name + " has now been set to " + setting + "d"
   end
 end
-
 
 def CheckAndSet(field_name, field_need)
 
@@ -85,7 +82,6 @@ def CheckAndSet(field_name, field_need)
   end
 end
 
-
 def SetTrainingSetting(action)
   toggle_setting = CheckExtTrainingSetting()
 
@@ -96,7 +92,6 @@ def SetTrainingSetting(action)
     puts "External Training is already set to "+ action + "d"
   end
 end
-
 
 def CheckFieldDisplayed(field_name, ability)
   if field_name == 'Attachments'
@@ -117,7 +112,6 @@ def CheckFieldDisplayed(field_name, ability)
   end
 end
 
-
 def AddCourseTemplateDetails()
   ClearField('id', LEARNING_EXTTRAINING_COURSE_TEMPLATE_NAME_ID)
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEARNING_EXTTRAINING_COURSE_TEMPLATE_NAME_ID, LEARNING_EXTTRAINING_COURSE_TEMP_NAME))
@@ -127,7 +121,6 @@ def AddCourseTemplateDetails()
   ClearField('id', LEARNING_EXTTRAINING_COURSE_TEMPLATE_CPD_ID)
   Sleep_Until(WaitForAnElementByIdAndInputValue(LEARNING_EXTTRAINING_COURSE_TEMPLATE_CPD_ID, LEARNING_EXTTRAINING_COURSE_TEMP_CPD))
 end
-
 
 def SaveTemplate()
   Sleep_Until(WaitForAnElementByIdAndTouch(LEARNING_EXTTRAINING_COURSE_TEMPLATE_SAVE_ID))
@@ -139,9 +132,7 @@ def SaveTemplate()
   end
 end
 
-
 #Clears input fields
 def ClearField(type, identifier)
   $driver.find_element(:"#{type}", identifier).clear()
 end
-
