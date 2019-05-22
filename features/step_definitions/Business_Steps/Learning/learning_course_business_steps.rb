@@ -346,13 +346,14 @@ And(/^I Re Enrol The Candidate For The Activity$/) do
   ReEnrolTheCandidateForCourse('Donttouchautomationuser')
 end
 
-And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named "(.*)"$/i) do |activity_action, f2f_activity_name|
-  F2F_ACTIVITY_NAME = f2f_activity_name
-  F2F_ACTIVITY_ACTION = activity_action
-  CheckActivityExists('facetoface',f2f_activity_name)
-  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
-  ModifyACourseActivity(F2F_ACTIVITY_ACTION, F2F_ACTIVITY_NAME)
-end
+# TODO: Safe to delete if no usage is found (So far no usage can be found)
+# And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named "(.*)"$/i) do |activity_action, f2f_activity_name|
+#   F2F_ACTIVITY_NAME = f2f_activity_name
+#   F2F_ACTIVITY_ACTION = activity_action
+#   CheckActivityExists('facetoface',f2f_activity_name)
+#   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+#   ModifyACourseActivity(F2F_ACTIVITY_ACTION, F2F_ACTIVITY_NAME)
+# end
 
 Then(/^I Should Be Able To "(Edit|Delete)" A Specific Face-to-Face Activity Named "(.*)"$/i) do |activity_action, f2f_activity_name|
   F2F_ACTIVITY_NAME = f2f_activity_name
@@ -384,7 +385,7 @@ And(/^I Search For Created Course In The Scenario$/i) do
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @unique_course_name, COURSE_SEARCH_BTN_ID)
 end
 
-And(/^I Change The Created Course Enrolment With (\w+) Being (\w+)$/i) do |role_type, enrolled|
+And(/^I Change The Created Course Enrolment With "(\w+)" Being "(\w+)"$/i) do |role_type, enrolled|
   HandleEnrolmentOfCourse(role_type, enrolled)
 end
 
@@ -409,7 +410,7 @@ And(/^I Should Change Quiz Settings$/) do
   ChangeQuizSettings()
 end
 
-And(/^Modifying Settings Of Quiz Activity Is (\w+)$/) do |setting_ability|
+And(/^Modifying Settings Of Quiz Activity Is "(\w+)"$/) do |setting_ability|
   CheckAbilityToModifyQuizSettings(setting_ability)
 end
 
@@ -521,7 +522,7 @@ Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$
   end
 end
 
-Then(/^I Should Be Able To (Create|Edit|Delete) Face To Face Notification With Name ([-\w\s]+)$/i) do |action, face_to_face_notification|
+Then(/^I Should Be Able To "(Create|Edit|Delete)" Face To Face Notification With Name "([-\w\s]+)"$/i) do |action, face_to_face_notification|
   case action
   when 'Create'
     ClickOnASubTab(SUB_TAB_APPROVAL_NOTIFICATION_NAME_ID)
@@ -702,19 +703,19 @@ Then(/^I Should Be Able To Create A Session With Status "([\w\s]+)" In The Face-
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, COURSE_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
-Then(/^I should be able to manual signup (.*)$/i) do |first_last_name|
+Then(/^I Should Be Able To Manually Signup "(.*)"$/i) do |first_last_name|
   ManualSignupFaceToFaceSession(first_last_name, 0)
 end
 
-Then(/^I Should Be Able To Mark Attendance "{string}" With Grade "{int}" And Mark As "{toggle}"$/i) do |attendance, grade, toggle_yes_no|
+Then("I Should Be Able To Mark Attendance {string} With Grade {int} And Mark As {toggle}") do |attendance, grade, toggle_yes_no|
   MarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
 end
 
-And(/^I Should Be Able To Mark Attendance As ([\w\s]+) With Grade (\d+)$/i) do |no_show, grade|
+And(/^I Should Be Able To Mark Attendance As "([\w\s]+)" With Grade "(\d+)"$/i) do |no_show, grade|
   MarkFaceToFaceSessionAttendanceNoShow(no_show, grade)
 end
 
-Then(/^I Should Be Able To Edit A ELMO Module Activity Named (.*)$/i) do |activity_name|
+Then(/^I Should Be Able To Edit A ELMO Module Activity Named "(.*)"$/i) do |activity_name|
   CheckActivityExists('elmo module', activity_name)
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity('Edit', activity_name)

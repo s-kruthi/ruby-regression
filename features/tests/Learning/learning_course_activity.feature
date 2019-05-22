@@ -94,7 +94,7 @@
       And   I Go To Admin Settings
       And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named "DO NOT DELETE"
-      Then  I Should Be Able To Edit A ELMO Module Activity Named Test ELMO Module Activity - Please DO NOT DELETE
+      Then  I Should Be Able To Edit A ELMO Module Activity Named "Test ELMO Module Activity - Please DO NOT DELETE"
 
     @learning_high_risk @course_activity_edit_validation @lock_course_enrolment
     Scenario: [Learning]Learning Admin Can Edit Only The Session Details In A Face-to-Face Activity
@@ -260,11 +260,11 @@
       When  I Go To Admin Settings
       And   I Go To "Courses" Under "Learning" Section
       And   I Search For Created Course In The Scenario
-      And   I Change The Created Course Enrolment With Employee Being <user_enrolled>
+      And   I Change The Created Course Enrolment With "Employee" Being "<user_enrolled>"
       And   I Go To The Sections Of The Created Course
 #      The successful message when editing the activity doesn't appear when save the change of title or description
       Then  I Should Edit The Quiz activity
-      And   Modifying Settings Of Quiz Activity Is <settings>
+      And   Modifying Settings Of Quiz Activity Is "<settings>"
 
       Examples:
         | course_lock | user_enrolled | settings |
@@ -298,21 +298,21 @@
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A "Face-to-Face" Activity
       When  I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
-      Then  I Should Be Able To Create Face To Face Notification With Name Course Face-to-Face Confirmation
-      And   I Should Be Able To Edit Face To Face Notification With Name Course Face-to-Face Confirmation
-      And   I Should Be Able To Delete Face To Face Notification With Name Course Face-to-Face Confirmation
+      Then  I Should Be Able To "Create" Face To Face Notification With Name "Course Face-to-Face Confirmation"
+      And   I Should Be Able To "Edit" Face To Face Notification With Name "Course Face-to-Face Confirmation"
+      And   I Should Be Able To "Delete" Face To Face Notification With Name "Course Face-to-Face Confirmation"
 
-    @learning_low_risk @signup_attendance_manually_mark_attendance @C1830 @loc_transform
+    "@learning_low_risk @signup_attendance_manually_mark_attendance @C1830 @loc_transform
     Scenario: Signup Attendance To Face To Face Session And Mark User Attendance
       Given A Face To Face Session With Status Over Is Created For A Course
       And   I Go To The Page Which Has The List Of Current Editing Item
       When  I Click On "Attendance" Button
-      Then  I Should Be Able To Manual Signup ELMO Compàny Admin
+      Then  I Should Be Able To Manually Signup "ELMO Company Admin"
       #   Find the local_transforms.rb for the undefined Gherkin step
-      Then  I Should Be Able To Mark Attendance "Fully Attended" With Grade "90" And Mark As "Attendance Complete"
-      And   I Should Be Able To Mark Attendance "Partially Attended" With Grade "90" And Mark As "Attendance Complete"
+      Then  I Should Be Able To Mark Attendance "Fully Attended" With Grade 90 And Mark As Attendance Complete
+      And   I Should Be Able To Mark Attendance "Partially Attended" With Grade 90 And Mark As Attendance Complete
       And   I Should Be Able To Mark Attendance As "No Show" With Grade "90"
-      And   I Should Be Able To Mark Attendance "Cancelled" With Grade "90" And Mark As "Attendance Complete"
+      And   I Should Be Able To Mark Attendance "Cancelled" With Grade 90 And Mark As Attendance Complete
 
     @smoke_learning @learning_low_risk @signup_attendance_bulk_mark_attendance @C1831 @C1832
     Scenario: Signup Attendance To Face To Face Session And Mark User Attendance
