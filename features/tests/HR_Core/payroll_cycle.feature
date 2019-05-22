@@ -64,12 +64,12 @@ Feature:
     Then  I Should See That The Weeks Per Annum Field Information Message Is Displayed
 
   @hr_core_low_risk @payroll_cycle_4weekly @C20957
-  Scenario: [General]Verify That The "4" Weekly Type Is Available For Payroll Cycle
+  Scenario: [General]Verify That The "4 Weekly" Type Is Available For Payroll Cycle
     Given I Have Logged In As A HR Manager
     And   I Go To Admin Settings
     And   I Go To "Payroll Cycle" Under "HR Core" Section
     When  I Click On Add Payroll Cycle Button
-    Then  I Should See That The "4" Weekly Type Is Available
+    Then  I Should See That The "4 Weekly" Type Is Available
 
   @hr_core_low_risk @payroll_cycle_quarterly @C20958
   Scenario: [General]Verify That The Quarterly Type Is Available For Payroll Cycle

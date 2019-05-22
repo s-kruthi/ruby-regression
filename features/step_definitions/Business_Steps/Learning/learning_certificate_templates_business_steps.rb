@@ -1,4 +1,4 @@
-When(/^([\w\s]+) Once Less Than "(\d+)" Exist In The Database$/i) do |to_create, number|
+When(/^"([\w\s]+)" Once Less Than "(\d+)" Exist In The Database$/i) do |to_create, number|
   # ToDo make the method scalable (to_create, desired_number, create_number)
   CreateCertTemplateWhenLess(to_create, number)
 end

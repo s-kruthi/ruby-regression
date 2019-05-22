@@ -116,7 +116,7 @@
       And   I Go To Admin Settings
       And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named "DO NOT DELETE"
-      Then  I Should Be Able to "Edit" A Specific ELMO Survey Activity Named "Test ELMO Survey Activity - Please DO NOT DELETE"
+      Then  I Should Be Able To "Edit" A Specific ELMO Survey Activity Named "Test ELMO Survey Activity - Please DO NOT DELETE"
       And   I Set Compulsory Settings To Enabled
 
     @smoke_learning4 @learning_low_risk @course_activity_survey_delete @C15705
@@ -124,8 +124,8 @@
       Given I Have Logged In As A Learning Admin
       And   I Go To Admin Settings
       And   I Go To "Courses" Under "Learning" Section
-      When  I Edit A Specific Course Named "DO NOT DELETE" With No Enrolments
-      Then  I Should Be Able to "Delete" A Specific ELMO Survey Activity Named "Test ELMO Survey Activity - Please DO NOT DELETE"
+      When  I Edit A Specific Course Named "DO NOT DELETE" With "No Enrolments"
+      Then  I Should Be Able To "Delete" A Specific ELMO Survey Activity Named "Test ELMO Survey Activity - Please DO NOT DELETE"
 
     @smoke_learning4 @learning_low_risk @course_activity_section_delete
     Scenario: [Learning]Learning Admin Deleting A Section In A Course
@@ -169,7 +169,7 @@
       And   I Go To Admin Settings
       And   I Go To "Courses" Under "Learning" Section
       When  I Edit A Specific Course Named "DO NOT DELETE"
-      Then  I Delete A Specific Face-to-Face Activity Named Test Face-to-Face Activity - Please DO NOT DELETE
+      Then  I Should Be Able To "Delete" A Specific Face-to-Face Activity Named "Delete"
 
     @learning_low_risk @course_activity_f2f_session_notifications_add
     Scenario: [Learning]Learning Admin Adding Notification Templates in Face-to-Face Activity
@@ -181,7 +181,7 @@
       Then  I Should Be Able To Add All Notifications
 
     @smoke_learning5 @learning_low_risk @course_activity_f2f_session_list_sort @C6082
-    Scenario: [Learning]When viewing face-to-face session list, can sort by ascending/descending for all field headers
+    Scenario: [Learning]When Viewing Face To Face Session List, Can Sort By Ascending/Descending For All Field Headers
       Given I Have Logged In As A Learning Admin
       And   I Go To Admin Settings
       And   I Go To "Courses" Under "Learning" Section
@@ -191,7 +191,7 @@
       And   I Should Be Able to Sort The The Face-To-Face Activity Session List By "Location"
 
     @smoke_learning6 @learning_low_risk @course_activity_add @course_activity_scorm_add @add_edit_scorm_package @C1027 @loc_transform
-    Scenario: As a company admin, i want to be able to add/edit a scorm package and make necessary changes
+    Scenario: As A Company Admin, I Want To Be Able To Add/Edit A Scorm Package And Make Necessary Changes
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To "Courses" Under "Learning" Section
@@ -201,7 +201,7 @@
       Then  I Should Edit The Scorm Section Name And Description
 
     @learning_low_risk @course_enrolment_lock_course_enrolment_edit_scorm @C1028 @loc_transform
-    Scenario Outline: User can edit the scorm activity regardless of course lock config or user enrolled in the course
+    Scenario Outline: User Can Edit The Scorm Activity Regardless Of Course Lock Config Or User Enrolled In The Course
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To "Courses" Under "Learning" Section
@@ -327,7 +327,7 @@
       Then  I Should Bulk Mark Attendance All Users
 
     @learning_low_risk @course_activity_f2f_session_signup @C6071 @C6070
-    Scenario: As A User, I Want To Signup / Withdraw For A Face "2" Face Activity Session So That I Should Be Able To Self Sign Up / Withdraw Myself From The Face-to-face Session
+    Scenario: As A User, I Want To Signup / Withdraw For A Face-to-face Activity Session So That I Should Be Able To Self Sign Up / Withdraw Myself From The Face-to-face Session
       Given That Session Is Created For A Face-to-Face Activity
       And   I Have Logged In As A Company Employee
       And   I Go To The "Menu Learning" Section
@@ -343,7 +343,7 @@
       Then  I Should Receive A Notification With Trigger Named "Learning.CourseNewEnrolmentTrigger" For Recipient "auto1.scriptonce1"
 
     @learning_low_risk @course_cpd_category_add @C1772
-    Scenario: As a company Administrator, I want to manage Continuing Professional Development (CPD) Categories
+    Scenario: As A Company Administrator, I Want To Manage Continuing Professional Development (Cpd) Categories
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To "Continuing Professional Development" Under "Learning" Section

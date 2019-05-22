@@ -346,7 +346,15 @@ And(/^I Re Enrol The Candidate For The Activity$/) do
   ReEnrolTheCandidateForCourse('Donttouchautomationuser')
 end
 
-And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named (.*)$/i) do |activity_action, f2f_activity_name|
+And(/^I (Edit|Delete) A Specific Face-to-Face Activity Named "(.*)"$/i) do |activity_action, f2f_activity_name|
+  F2F_ACTIVITY_NAME = f2f_activity_name
+  F2F_ACTIVITY_ACTION = activity_action
+  CheckActivityExists('facetoface',f2f_activity_name)
+  ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
+  ModifyACourseActivity(F2F_ACTIVITY_ACTION, F2F_ACTIVITY_NAME)
+end
+
+Then(/^I Should Be Able To "(Edit|Delete)" A Specific Face-to-Face Activity Named "(.*)"$/i) do |activity_action, f2f_activity_name|
   F2F_ACTIVITY_NAME = f2f_activity_name
   F2F_ACTIVITY_ACTION = activity_action
   CheckActivityExists('facetoface',f2f_activity_name)
