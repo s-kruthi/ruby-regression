@@ -25,7 +25,3 @@ Feature:
       When  I Go To The "Career Positions" Section
       And   I Try To Search A Position Based On Interested Positions
       Then  The Search Should Return The Interested Position Based On My Previous Selections
-
-
-
-

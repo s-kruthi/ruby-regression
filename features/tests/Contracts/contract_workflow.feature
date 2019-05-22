@@ -3,7 +3,6 @@
   #C9670 C9689
   #@ContractTestRailTags
 
-
   Feature: As a Company Admin I want to manage the Contract Workflow for users
 
   @differentiate_users_assign_contract @contracts_high_risk

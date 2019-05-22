@@ -11,7 +11,6 @@ Given(/^I Want To Create A User Data For (.*)$/i) do |module_name|
   GenerateLearningDataUsingJmeterRubyService()
 end
 
-
 Then(/^The User Should Be Instantly Notified About The New Enrolment$/) do
   ReturnDetailsOfAParticularUser(TMSFULL_DATABASE,DOC_USERNAME)
   ConnectToDatabaseAndValidateTheCourseEnrolmentNotification()

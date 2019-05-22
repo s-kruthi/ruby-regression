@@ -3,7 +3,6 @@ NOTE: This file contains all the methods used in business steps in the general_c
 Any re-usable method should be added/moved in here
 =end
 
-
 # NOTE: This following method fills out details of 'Position', 'Department' and 'Location'
 def EnterNewTypeDetails(arg1)
   case arg1
@@ -29,7 +28,6 @@ def EnterNewTypeDetails(arg1)
   end
 end
 
-
 # NOTE: This following method verifies the creation of 'Position', 'Department' and 'Location' by checking the success message
 def VerifyNewTypeCreated(arg1)
   ClickOnSaveButton(SAVE_BTN_ID)
@@ -45,4 +43,3 @@ def VerifyNewTypeCreated(arg1)
       VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, LOCATION_SAVE_SUCCESS_MESSAGE_VALUE)
   end
 end
-

@@ -19,7 +19,6 @@ Feature:
     Then  I Should Be Able To Save The User Details Configuration
     And   I Verify That The Configuration Status Is Saved
 
-
   @general_low_risk @built-in_hierarchies_config @C779
   Scenario: [General]Company Admin Modifying Built-in Hierarchies Section In User Profile Setup
     Given I Have Logged In As A ELMO Admin
@@ -36,7 +35,6 @@ Feature:
     And   I Select "Profile" Dropdown To "Company Admin Only"
     Then  I Should Be Able To Save The Built-In Hierarchies Configuration
     And   I Verify That The Configuration Status Is Saved
-
 
   @general_low_risk @custom_user_fields_config @C778
   Scenario: [General]Company Admin Modifying Custom User Fields Section In User Profile Setup
@@ -58,7 +56,6 @@ Feature:
     Then  I Should Be Able To Save The Custom User Fields Configuration
     And   I Verify That The Configuration Status Is Saved
 
-
   @general_low_risk @cost_centre_user_field @legal_entity_user_field @payroll_cost_centre @C16890 @C16920
   Scenario: [General]Company Admin Can Modify Payroll Related Fields In User Profile Setup
     Given That Cost Centre and Company(Legal Entity) Fields Are Enabled
@@ -69,13 +66,11 @@ Feature:
     Then  I Can See That I Can Modify The Cost Centre Settings
     And   I Can See That I Can Modify The Company(Legal Entity) Settings
 
-
   @general_low_risk @cost_centre_enabled @payroll_cost_centre @C16888
   Scenario: [General]Cost Centres Section Is Not Accessible When Cost Centre Is Enabled
     Given I Have Logged In As A ELMO Admin
     When  I Go To Admin Settings
     Then  I Should Not Be Able To Access Cost Centres Under HR Core Section
-
 
   @general_low_risk @employee_number
   Scenario: [General]Company Admin Modifying Employee Number In User Profile Setup
@@ -86,7 +81,6 @@ Feature:
     When  I Click On "Employee Number" Item From Left Side Bar Under "User Details" Section
     Then  I Select Auto Generate To Enabled
     And   I Can See That I Can Configure Employee Number
-
 
   @general_low_risk @date_of_birth
   Scenario: [General]Company Admin Modifying Date Of Birth In User Profile Setup

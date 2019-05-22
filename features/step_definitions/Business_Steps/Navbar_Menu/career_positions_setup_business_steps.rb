@@ -6,7 +6,6 @@ Given(/^I Have Logged In As A Regular User$/i) do
   LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN)
 end
 
-
 When(/^I Go To The Career Positions Section$/i) do
   GoToPositionsUnderCareersTab(CAREERS_TAB, 1, POSITIONS_LINK)
 end
@@ -14,7 +13,6 @@ end
 Then(/^The Default Positions Should Be Returned In An Alphabetical Order$/i) do
   WaitForThePositionsListingAndVerifyTheAlphabeticalSorting()
 end
-
 
 Then(/^The I Should Be Able To Search A Position By Typing The Keywords$/i) do
   SearchForAPositionAndVerifyTheResult(POS_SEARCH_FIELD,POS_SEARCH_VALUE,POS_SEARCH_BTN,POS_SEARCH_RESULT)

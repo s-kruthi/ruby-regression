@@ -25,7 +25,6 @@ Then(/^I Should Be Able To Search The Succession From The List$/i) do
   SearchAndVerifyTheSuccessionReturnsSuccessfully(SEARCH_FIELD,SEARCH_FIELD_VALUE,SEARCH_BTN,SEARCH_RESULT)
 end
 
-
 And(/^I Should Be Able To Delete The Searched Plan From the Table$/i) do
   DeleteTheFirstSuccessionPlanFromTheTable(DROPDOWN,2)
   # $driver.quit
@@ -39,4 +38,3 @@ Then(/^I Am Returned With Cannot Be Deleted Message$/i) do
   VerifyTheMessageCannotBeDeletedExist(MESSAGE_CLASS,MESSAGE_BODY)
   # $driver.quit
 end
-

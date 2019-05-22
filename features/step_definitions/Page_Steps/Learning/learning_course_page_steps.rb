@@ -2,7 +2,6 @@ def AddACoursesAndGoToCourseSection(course_btn_path)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_btn_path))
 end
 
-
 def FillTheCourseFormAndSaveIt(course_name_id, course_name_val, course_code_id, course_code_val, save_course_id)
   Sleep_Until(WaitForAnElementByIdAndInputValue(course_name_id, course_name_val))
   Sleep_Until(WaitForAnElementByIdAndInputValue(course_code_id, course_code_val))
@@ -10,11 +9,9 @@ def FillTheCourseFormAndSaveIt(course_name_id, course_name_val, course_code_id, 
   Sleep_Until(WaitForAnElementByIdAndTouch(save_course_id))
 end
 
-
 def MakeItVisibleToAllUsers()
   SelectFromDropdown(COURSE_AVAILABILITY_ID, 'Available to all users')
 end
-
 
 def SearchForTheCourseAndDeleteIt(course_name)
   GoToThePage(ADMIN_COURSE_PAGE)
@@ -29,7 +26,6 @@ def SearchForTheCourseAndDeleteIt(course_name)
   $driver.find_element(:xpath, "//button[@type='submit']").click
 end
 
-
 def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_list_path)
   WaitForAnElementByClass(admin_cog)
   TouchAdminMenu(admin_cog)
@@ -39,103 +35,84 @@ def go_to_the_learning_as_company_admin(admin_cog, documents_expand, documents_l
   GoToItemLandingPage(documents_list_path)
 end
 
-
 def EnterCourseTitle(new_course_title_id, new_course_title_value)
   WaitForAnElementByXpathAndInputValue(new_course_title_id, new_course_title_value)
 end
-
 
 def EnterCourseCode(new_course_code_id, new_course_code_value)
   WaitForAnElementByXpathAndInputValue(new_course_code_id, new_course_code_value)
 end
 
-
 def EnterCourseDescription(form_temp_desc_txt, index_id)
   UseCkeditorToEnterText(form_temp_desc_txt, index_id)
 end
-
 
 def EnterCourseSectionDescription(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
   SingleSelectFromSelect2Dropdown(course_show_sec_desc_input_id, select2_input_id, course_show_sec_desc_input_value, select2_dropdown_class)
 end
 
-
 def EnterCourseCompleteUnit(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
     SingleSelectFromSelect2Dropdown(course_complete_input_unit_id, select2_dropdown_id, course_complete_input_unit_value, select2_dropdown_class)
 end
-
 
 def EnterCourseCompleteValue(course_complete_input_id, course_complete_input_value)
   WaitForAnElementByXpathAndInputValue(course_complete_input_id, course_complete_input_value)
 end
 
-
 def EnterCourseRetrainUnit(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
     SingleSelectFromSelect2Dropdown(course_retrain_input_unit_id, select2_dropdown_id, course_retrain_input_unit_value, select2_dropdown_class)
 end
-
 
 def EnterCourseRetrainValue(course_retrain_input_id, course_retrain_input_value)
   $driver.find_element(:xpath, course_retrain_input_id).clear
   WaitForAnElementByXpathAndInputValue(course_retrain_input_id,course_retrain_input_value)
 end
 
-
 def EnterCourseRetrainOpenUnit(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
     SingleSelectFromSelect2Dropdown(course_retrain_open_input_unit_id, select2_input_id, course_retrain_open_input_unit_value, select2_dropdown_class)
 end
-
 
 def EnterCourseRetrainOpenValue(course_retrain_open_input_id, course_retrain_open_input_value)
   $driver.find_element(:xpath, course_retrain_open_input_id).clear
   WaitForAnElementByXpathAndInputValue(course_retrain_open_input_id, course_retrain_open_input_value)
 end
 
-
 def EnterCourseAvailability(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
     SingleSelectFromSelect2Dropdown(course_availability_input_id, select2_input_id, course_availability_input_value, select2_dropdown_class)
 end
-
 
 def EnterCourseCertificateTemplate(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
     SingleSelectFromSelect2Dropdown(course_certificate_template_id, select2_input_id, course_certificate_template_value, select2_dropdown_class)
 end
 
-
 def EnterCourseSelfEnrol(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
     SingleSelectFromSelect2Dropdown(course_self_enroll_input_id, select2_input_id, course_self_enroll_input_value, select2_dropdown_class)
 end
 
-
 def ClickOnAButtonByXPath(form_template_save_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(form_template_save_btn))
 end
-
 
 def SearchACourse(course_list_search_box_id, course_list_title_value, course_search_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndInputValue(course_list_search_box_id, course_list_title_value))
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_search_btn_id))
 end
 
-
 def ClickMenuOfFirstItemFromTable(xpath_name, partial_link_text)
   Sleep_Until($driver.find_elements(:xpath, xpath_name).last.click)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(partial_link_text))
 end
-
 
 def CourseActionConfirm(course_action_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_action_id))
   sleep (3)
 end
 
-
 def AddANewSection(course_add_a_section_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(course_add_a_section_btn_id))
   #Adding sleep intentionally,if course has too many activities, it takes time to scroll down the page
   sleep (1)
 end
-
 
 def SelectAnActivity(select_activity_name)
   # Sleep_Until(WaitForAnElementByIdAndTouch(COURSE_SECTION_DROPDOWN_ID))
@@ -145,7 +122,6 @@ def SelectAnActivity(select_activity_name)
   puts COLOR_BLUE + "Adding activity: " + $driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.text
   Sleep_Until($driver.find_elements(:class, COURSE_SECTION_DROPDOWN_RESULT_INDEX_ID).last.click)
 end
-
 
 def CreateAnActivity(course_activity_name)
   Sleep_Until($driver.find_elements(:xpath, COURSE_ADD_ACTIVITY_BTN_ID).last.click)
@@ -267,7 +243,6 @@ def CreateAnActivity(course_activity_name)
   end
 end
 
-
 def EditACourseActivity(course_activity_type)
   begin
 
@@ -372,7 +347,6 @@ def EditACourseActivity(course_activity_type)
         Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, POST_ACTIVITY_SAVE_SUCCESSFUL_VALUE))
       end
 
-
       begin
         Sleep_Until(WaitForAnElementByXpathAndClearValue(COURSE_ACTIVITY_TITLE_ID))
         Sleep_Until(WaitForAnElementByXpathAndInputValue(COURSE_ACTIVITY_TITLE_ID, SURVEY2_TITLE_VALUE + " edit"))
@@ -386,12 +360,10 @@ def EditACourseActivity(course_activity_type)
   end
 end
 
-
 def ClickOnSaveButton(btn_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(btn_id))
   sleep (1)
 end
-
 
 def ClickOnFilterSaveButton(btn_id,filter_name_id,filter_name_value)
   Sleep_Until(WaitForAnElementByIdAndTouch(btn_id))
@@ -399,13 +371,11 @@ def ClickOnFilterSaveButton(btn_id,filter_name_id,filter_name_value)
   sleep (1)
 end
 
-
 def DeleteASection(section_name)
   Sleep_Until($driver.find_elements(:class, section_name).last.click)
   Sleep_Until(PressEnterConfirm())
   sleep(3)
 end
-
 
 def CreateAllNotifications()
   begin
@@ -429,7 +399,6 @@ def CreateAllNotifications()
   end
 end
 
-
 def AddNotificationTrigger(limit)
   i = 0
   for loop in i..limit do
@@ -441,11 +410,9 @@ def AddNotificationTrigger(limit)
   end
 end
 
-
 def ClickAddNotificationButton()
   Sleep_Until($driver.find_elements(:xpath, ADD_NOTIFICATION_BUTTON_ID).first.click)
 end
-
 
 # This method clicks on the 'Notification template' dropdown and does the following
 # Checks the notification template existence. If it doesn't exit, move on to next one
@@ -506,8 +473,6 @@ def AddNotificationTemplate()
   end
 end
 
-
-
 #This checks if there's an id, "s2id_templateNotification_dueDatePosition" with any value or not.
 # If there's no value then it selects the 1st available option
 
@@ -527,14 +492,12 @@ def CheckForTriggerDate()
   end
 end
 
-
 def SaveNotificationTemplate()
   begin
     Sleep_Until($driver.find_elements(:xpath, ADD_NOTIFICATION_TEMP_SAVE_BUTTON_ID).last.click)
     sleep (1)
   end
 end
-
 
 def AddAdminNotificationTemplates()
   begin
@@ -546,11 +509,9 @@ def AddAdminNotificationTemplates()
   end
 end
 
-
 def ClickOnFirstActivity(f2f_link_text)
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(f2f_link_text))
 end
-
 
 def ModifyACourseActivity(action_type, activity_edit_link_name)
   Sleep_Until($driver.find_elements(:xpath, "//a[contains(@title,'#{action_type} #{activity_edit_link_name}')]").last.click)
@@ -559,27 +520,22 @@ def ModifyACourseActivity(action_type, activity_edit_link_name)
   end
 end
 
-
 def click_add_f2f_session_btn(f2f_session_add_session_btn)
   Sleep_Until(WaitForAnElementByXpathAndTouch(f2f_session_add_session_btn))
 end
-
 
 def add_f2f_session()
   Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_FILE_ID))
   Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
 end
 
-
 def VerifyFilterResult(verify_result_table_id, input_value)
   Sleep_Until(VerifyAnElementExistById(verify_result_table_id, input_value))
 end
 
-
 def WaitForFaceToFaceSessionListAndVerify(verify_element__id_xpath, verify_element_id_value)
   VerifyAnElementExistByXPath(verify_element__id_xpath, verify_element_id_value)
 end
-
 
 def FindFaceToFaceSessionSortingColumnByClass(sorting_class_id, sorting_class_value)
   begin
@@ -590,13 +546,11 @@ def FindFaceToFaceSessionSortingColumnByClass(sorting_class_id, sorting_class_va
   puts COLOR_GREEN + "MATCHED: sortable column found: \"" + sorting_class_value + "\""
 end
 
-
 def SortFaceToFaceSessionListByType(sorting_class_value)
   sorting_xpath = "//a[contains(@title,'#{sorting_class_value}')]"
   Sleep_Until($driver.find_elements(:xpath, sorting_xpath).first.click)
   sleep (2)
 end
-
 
 def VerifyFaceToFaceSessionSortingOrderByClass(sorting_order_id)
 
@@ -619,13 +573,11 @@ def VerifyFaceToFaceSessionSortingOrderByClass(sorting_order_id)
   end
 end
 
-
 def GoToTheEnrolledUserSectionOfThatParticularCourse(dropdown_key, dropdown_index, enrolled_user_text, manual_enroll_user_text)
   WaitForAnElementByCssAndTouchTheIndex(dropdown_key, dropdown_index)
   WaitForAnElementByPartialLinkTextAndTouch(enrolled_user_text)
   Sleep_Until(WaitForAnElementByPartialLinkText(manual_enroll_user_text))
 end
-
 
 def ClickAndRefreshEnrollmentsForAParticularCourse(dropdown_key, dropdown_index, refresh_enrollments_text, refresh_id)
   WaitForAnElementByCssAndTouchTheIndex(dropdown_key, dropdown_index)
@@ -633,21 +585,17 @@ def ClickAndRefreshEnrollmentsForAParticularCourse(dropdown_key, dropdown_index,
   Sleep_Until(WaitForAnElementById(refresh_id))
 end
 
-
 def SearchTheAssignedCourse(course_name)
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_name, COURSE_SEARCH_BTN_ID)
 end
-
 
 def GoToCourseCatalogueSection(course_catalogue_LText)
   ClickOnATab(course_catalogue_LText)
 end
 
-
 def GoToCourseRequestSection(course_request_LText)
   WaitForAnElementByPartialLinkTextAndTouch(course_request_LText)
 end
-
 
 def SignUpForASession(enrolled_button, activity_class, sign_up_button)
   WaitForAnElementByPartialLinkTextAndTouch(enrolled_button)
@@ -656,7 +604,6 @@ def SignUpForASession(enrolled_button, activity_class, sign_up_button)
   Sleep_Until(WaitForAnElementByPartialLinkText(sign_up_button))
   WaitForAnElementByPartialLinkTextAndTouch(sign_up_button)
 end
-
 
 def FillUpQuizSection(enrolled_button, activity_class, submit_quiz, quiz_answer)
   WaitForAnElementByPartialLinkTextAndTouch(enrolled_button)
@@ -667,12 +614,10 @@ def FillUpQuizSection(enrolled_button, activity_class, submit_quiz, quiz_answer)
   WaitForAnElementByIdAndTouch(submit_quiz)
 end
 
-
 def GoToCourseEnrolmentsSection(course_Enrolments_LText)
   Sleep_Until(WaitForAnElementByPartialLinkText(course_Enrolments_LText))
   WaitForAnElementByPartialLinkTextAndTouch(course_Enrolments_LText)
 end
-
 
 def SearchTheAssignedCourseInEnrollmentSection(course_name)
   $driver.find_element(:id, "s2id_autogen1").send_keys "#{course_name}"
@@ -681,16 +626,13 @@ def SearchTheAssignedCourseInEnrollmentSection(course_name)
   sleep(3)
 end
 
-
 def VerifyTheStatusAsNotYetStarted()
   VerifyAnElementExistByClass("course-status-0", "Not Yet Started")
 end
 
-
 def VerifyTheStatusAsInProgress()
   VerifyAnElementExistByClass("activity-type-1", "In Progress")
 end
-
 
 def WithdrawTheCandidateFromF2FSession()
   $driver.navigate.to("https://tmsfull.dev.elmodev.com/learning/facetoface/376/164/manage-attendance")
@@ -701,7 +643,6 @@ def WithdrawTheCandidateFromF2FSession()
   sleep(3)
   PressConfirm()
 end
-
 
 def GoToSpecificCourseEnrolmentSection(course_id)
   $driver.navigate.to($site_url)
@@ -717,7 +658,6 @@ def DeleteTheExistingCourseEnrolment()
   PressConfirm()
   sleep(3)
 end
-
 
 def ReEnrolTheCandidateForCourse(candidate_name)
   WaitForAnElementByPartialLinkTextAndTouch("Manual Enrol Users")
@@ -735,33 +675,27 @@ def ReEnrolTheCandidateForCourse(candidate_name)
   sleep(2)
 end
 
-
 def EditCourseCreatedLastScenario(course_created)
   SearchACourse(COURSE_LIST_SEARCH_BOX_ID, course_created, COURSE_SEARCH_BTN_ID)
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, COURSE_LIST_ACTION_ITEM_EDIT)
 end
 
-
 def VerifySectionName(section_name_css, new_section_name)
   VerifyAnElementExistByCSS(section_name_css, new_section_name)
 end
-
 
 def ClickSectionButton(button_name)
   section_button_css = (button_name.upcase + "_SECTION_CSS").constantize
   WaitForAnElementByCSSAndTouch(section_button_css)
 end
 
-
 def EditSectionNameValue(section_name_edit, section_edit_value)
   WaitForAnElementByCSSAndInputValue(section_name_edit, section_edit_value)
 end
 
-
 def VerifyCourseSectionNotExist(course_section_css)
   VerifyAnElementNotExist("css", course_section_css)
 end
-
 
 def ConditionAnElementNotExistByCSS(css)
   wait = Selenium::WebDriver::Wait.new(:timeout => 5)
@@ -770,7 +704,6 @@ def ConditionAnElementNotExistByCSS(css)
   }
   elements.empty?
 end
-
 
 def CheckActivitySettings(label_name, label_value)
   case label_name
@@ -805,7 +738,6 @@ def CheckActivitySettings(label_name, label_value)
   end
 end
 
-
 def EditActivitySettings(label_name, label_disabled, label_value)
   case label_name
   when "Location"
@@ -835,7 +767,6 @@ def EditActivitySettings(label_name, label_disabled, label_value)
   end
 end
 
-
 def VerifyFaceToFaceActivitySettings()
   location_disabled = $driver.execute_script("return $(#{F2F_SESSION_CONFIG_LOCATION_ID}).is(':checked')")
   puts COLOR_BLUE + "Location is now Disabled after value change" if location_disabled == false
@@ -845,7 +776,6 @@ def VerifyFaceToFaceActivitySettings()
   puts COLOR_BLUE + "Facilitator is now Disabled after value change" if facilitator_disabled == false
   puts COLOR_BLUE + "Facilitator is now Enabled after value change" if facilitator_disabled == true
 end
-
 
 def AddSessionDetails(session_status = '')
   #get the face to face session id from the url
@@ -883,12 +813,10 @@ def AddSessionDetails(session_status = '')
   SelectFromDropdown(F2F_SESSION_AVAILABILITY_INPUT_ID, F2F_SESSION_AVAILABILITY_INPUT_VALUE)
 end
 
-
 def AddFile()
   Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_FILE_ID))
   Sleep_Until(select_a_file(BROWSE_FILE_ID, FILE_NAME))
 end
-
 
 def AddSessionTimings(session_status = '')
   session_status_downcase = session_status.downcase
@@ -917,7 +845,6 @@ def AddSessionTimings(session_status = '')
   FACE_TO_FACE_SESSION_VALUES['Finish Time'.downcase] = end_time.strftime('%d %B %Y %I:%M %p')
 end
 
-
 def FillTitleAndDescriptionFieldAndSave(partial_id)
   WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS)
   # Adding sleep to ensure SCORM acitivty edit page is displayed once edit button is clicked
@@ -935,7 +862,6 @@ def FillTitleAndDescriptionFieldAndSave(partial_id)
   sleep(2)
 end
 
-
 def ReUploadSCORMFile()
   WaitForAnElementByXpathAndTouch(SCORM_DELETE_CONFIRM_BTN_ID)
   sleep(3)
@@ -944,7 +870,6 @@ def ReUploadSCORMFile()
   Sleep_Until(WaitForAnElementByIdAndTouch(SELECT_FILE_ID))
   Sleep_Until(WaitForSelectFileButtonAndUploadFile(SCORM_FILE_NAME))
 end
-
 
 def HandleEnrolmentOfCourse(role_type, enrolled)
   WaitForAnElementByCSSAndTouch("a[title='Edit Course'] + .btn")
@@ -958,13 +883,11 @@ def HandleEnrolmentOfCourse(role_type, enrolled)
   end
 end
 
-
 def UnenrolAllOnCourseEnrolmentPage
   WaitForAnElementByIdAndTouch("select-all")
   Sleep_Until(WaitForAnElementByIdAndTouch("multiple_unenrolled"))
   Sleep_Until(PressConfirm())
 end
-
 
 def EnrolTheFirstUserInBulkEnrolUsers()
   WaitForAnElementByCSSAndTouch(BULK_ENROL_BUTTON_CSS)
@@ -973,7 +896,6 @@ def EnrolTheFirstUserInBulkEnrolUsers()
   Sleep_Until(WaitForAnElementByCSSAndTouch(CONFIRM_ENROL_USERS_BUTTON_CSS))
   sleep(5)
 end
-
 
 def EnrolUserWithRoleTypeOnCourseEnrolmentPage(user)
   WaitForAnElementByCSSAndTouch("[title='Bulk Enrol Users']")
@@ -986,7 +908,6 @@ def EnrolUserWithRoleTypeOnCourseEnrolmentPage(user)
   sleep(5)
 end
 
-
 # Section for quiz Martinma123
 def ModifyQuizTitleDescription
   WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS)
@@ -997,11 +918,9 @@ def ModifyQuizTitleDescription
   Sleep_Until(VerifySuccessAlertMessage(COURSE_VERIFY_SAVE_SUCCESSFUL_ID, ACTIVITY_SAVE_SUCCESSFUL_VALUE))
 end
 
-
 def ClickQuizSaveButton
   WaitForAnElementByIdAndTouch(QUIZ_SAVE_ID)
 end
-
 
 def ChooseFromSelect2DropdownByIndex(container_id, item_div_class, index)
   begin
@@ -1019,13 +938,11 @@ def ChooseFromSelect2DropdownByIndex(container_id, item_div_class, index)
   end
 end
 
-
 def VerifySettingsOfQuizActivity()
   VerifyAnElementExistById(COMPLETION_ID, COMPLETION_VALUE)
   VerifyAnElementExistById(FEEDBACK_ID, FEEDBACK_VALUE)
   VerifyAnElementExistById(MARKER_ID, MARKER_VALUE)
 end
-
 
 def ChangeQuizSettings()
   ChooseFromSelect2DropdownByIndex(COMPLETION_ID, QUIZ_SETTING_CLASS, 1)
@@ -1033,7 +950,6 @@ def ChangeQuizSettings()
   ChooseFromSelect2DropdownByIndex(MARKER_ID, QUIZ_SETTING_CLASS, 1)
   ClickQuizSaveButton()
 end
-
 
 def CheckAbilityToModifyQuizSettings(setting_ability)
   VerifyElementAbilityByCSS(PASS_MARK_CSS, setting_ability)
@@ -1043,11 +959,9 @@ def CheckAbilityToModifyQuizSettings(setting_ability)
   VerifyElementAbilityByCSS(COMPLETION_NOTIFICATION_CSS, setting_ability)
 end
 
-
 def ConfirmChanges(f2f_session_save_changes_id)
   Sleep_Until(WaitForAnElementByXpathAndTouch(f2f_session_save_changes_id))
 end
-
 
 def EditSessionDetails()
   #get the face to face session id from the url
@@ -1090,18 +1004,15 @@ def EditF2FNotificationTitleDescription
   WaitForAnElementByIdAndInputValue(F2F_SESSION_NOTIFICATION_DESCRIPTION_ID, "Edit Notification")
 end
 
-
 def VerifyF2FNotificationTitleDescription()
   WaitForAnElementByCSSAndTouch(NOTIFICATION_ID)
   VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_TITLE_XPATH, 'Edit Notification')
   VerifyAnElementExistByXPath(NOTIFICATION_PREVIEW_DESCRIPTION_XPATH, 'Edit Notification')
 end
 
-
 def CheckRetrainSetting()
   $retrain_setting = $driver.find_elements(:xpath, RETRAIN_TOGGLE_ID)[0].attribute("value")
 end
-
 
 def ModifyRetrainSetting(retrain_action)
   if retrain_action == "Disable"
@@ -1125,17 +1036,14 @@ def ModifyRetrainSetting(retrain_action)
   end
 end
 
-
 def CheckEnrolmentTooltip(date_value)
   #checks that the tooltip for first enrolment has the enrolment completion date as today
   $driver.find_elements(:xpath, ENROLMENT_TOOLTIP_ID).last.attribute("data-original-title").include? date_value
 end
 
-
 def EnterScore(score_value)
   WaitForAnElementByIdAndInputValue(COURSE_SCORE_ID, score_value)
 end
-
 
 def CheckEnrolmentDueDate(ability_value)
   if ability_value == "disabled"
@@ -1146,7 +1054,6 @@ def CheckEnrolmentDueDate(ability_value)
     $driver.find_element(:id, ENROLMENT_DUE_DATE_ID).attribute("checked") == "true"
   end
 end
-
 
 def FilterEnrolments(filter_by, filter_value)
   if filter_by == "Enrolment Method"
@@ -1207,7 +1114,6 @@ def CreateACourseThroughServices(creator_username, creator_password, enrolled_us
   $random_course_id = csv[0][1]
 end
 
-
 def CreateACourseWithActivityThroughServices(creator_username, creator_password, enrolled_user_id, activity_name)
   if ENV['url'] == nil
     ENV['url'] = 'tmsfull'
@@ -1235,7 +1141,6 @@ def ManualSignupFaceToFaceSession(name, index)
   PressConfirm()
 end
 
-
 def SelectIndexFromSelect2SearchResult(search_value, index)
   # Sleep_Until($driver.find_element(:id, "s2id_autogen1"))
   Sleep_Until($driver.find_element(:id, "s2id_autogen1").send_keys(search_value))
@@ -1243,7 +1148,6 @@ def SelectIndexFromSelect2SearchResult(search_value, index)
 # VerifyAnElementExistById('select2-results-1', search_value)
   $driver.find_elements(:class, "select2-result")[index].click
 end
-
 
 def MarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
   WaitForToggleDropDownItemAndTouch(ACTION_TOGGLE_XPATH, MARK_ATTENDANCE_BUTTON_XPATH)
@@ -1255,7 +1159,6 @@ def MarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
   VerifyTableByRowColumnCSS(1, (attendance.gsub(' ', '_').upcase+'_COLUMN_VALUE').constantize)
 end
 
-
 def MarkFaceToFaceSessionAttendanceNoShow(no_show, grade)
   WaitForToggleDropDownItemAndTouch(ACTION_TOGGLE_XPATH, MARK_ATTENDANCE_BUTTON_XPATH)
   SelectFromDropdown(ATTENDANCE_DROPDOWN_XPATH, no_show)
@@ -1265,7 +1168,6 @@ def MarkFaceToFaceSessionAttendanceNoShow(no_show, grade)
   Sleep_Until(WaitForAnElementByIdAndTouch(MARK_ATTENDANCE_CONFIRM_BUTTON_ID))
   VerifyTableByRowColumnCSS(1, NO_SHOW_COLUMN_VALUE)
 end
-
 
 def ToggleTo(yes_no)
   if yes_no.downcase.eql?('yes')
@@ -1278,7 +1180,6 @@ def ToggleTo(yes_no)
     end
   end
 end
-
 
 def BulkMarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
   SelectUsersPage(5)
@@ -1293,14 +1194,12 @@ def BulkMarkFaceToFaceSessionAttendance(attendance, grade, toggle_yes_no)
   VerifyTableByRowColumnCSS(1, (attendance.gsub(' ', '_').upcase+'_COLUMN_VALUE').constantize)
 end
 
-
 def GetNumberFromPagination
   wait = Selenium::WebDriver::Wait.new(:timeout => 10)
   pag_text = wait.until {pag_text = $driver.find_element(:css, PAGINATION_CSS).text}
   pattern = /^.* of (\d+) .*$/
   pag_text[pattern, 1]
 end
-
 
 def SelectUsersPage(amount)
   wait = Selenium::WebDriver::Wait.new(:timeout => 10)
@@ -1311,14 +1210,12 @@ def SelectUsersPage(amount)
   end
 end
 
-
 def CheckF2FSessionsExist()
   if (GetTextAssociatedToElement("xpath", PAGINATION_ID) == 'No Session(s) found')
     puts COLOR_YELLOW + "no sessions found for this face to face activity".upcase
     skip_this_scenario
   end
 end
-
 
 def CheckActivityExists(module_type, activity_name)
   course_id = $driver.current_url.split('/')[6]

@@ -2,11 +2,9 @@ And(/^I Select Enabled Toggle To "([^"]*)"$/i) do |config_selection_value|
   ToggleEnableDisable(config_selection_value)
 end
 
-
 And(/^I Select "([^"]*)" Dropdown To "([^"]*)"$/i) do |option_name, option_value|
   SetUserfieldConfig(option_name, option_value)
 end
-
 
 Then(/^I Should Be Able To Save The (.*) Configuration$/i) do |config_section|
   if config_section == 'Custom User Fields'
@@ -19,7 +17,6 @@ Then(/^I Should Be Able To Save The (.*) Configuration$/i) do |config_section|
   Sleep_Until($driver.find_element(:id, "#{config_section}-save").submit)
 end
 
-
 And(/^I Verify That The Configuration Status Is (Saved|Unsaved)$/i) do |save_status|
   if @save_status == "Changed"
     #check for element to have saved text
@@ -30,14 +27,12 @@ And(/^I Verify That The Configuration Status Is (Saved|Unsaved)$/i) do |save_sta
   end
 end
 
-
 Given(/^That Cost Centre and Company\(Legal Entity\) Fields Are Enabled$/i) do
   steps %{
           Given That Cost Centre Field Is Visible
           And That Legal Entity Is Enabled
           }
 end
-
 
 Given(/^That ([\w\s]+) Field Is (Visible|Hidden)$/i) do |field_name, field_visibility|
   visible = CheckFieldVisibility(field_name)
@@ -51,7 +46,6 @@ Given(/^That ([\w\s]+) Field Is (Visible|Hidden)$/i) do |field_name, field_visib
   end
 end
 
-
 Then(/^I Can See That I Can Modify The ([\w\s\(\)]+) Settings$/i) do |field|
   steps %{
     And I Click On "#{field}" item from left side bar under "Built-In Hierarchies" section
@@ -59,13 +53,11 @@ Then(/^I Can See That I Can Modify The ([\w\s\(\)]+) Settings$/i) do |field|
   }
 end
 
-
 Then(/^I Should Not Be Able To Access Cost Centres Under HR Core Section$/i) do
   GoToASection("//a[@href='#collapseHRCore']")
   sleep(2)
   Sleep_Until(VerifyAnElementNotExist('xpath','//a[@href="/admin/costCentre/"]'))
 end
-
 
 And(/^That ([\w\s]+) Field Is (Editable|Uneditable)$/i) do |field_name, field_editability|
   editable = CheckFieldEditability(field_name)
@@ -79,15 +71,12 @@ And(/^That ([\w\s]+) Field Is (Editable|Uneditable)$/i) do |field_name, field_ed
   end
 end
 
-
 Then(/^I Select Auto Generate To (Enabled|Disabled)$/i) do |field_config_value|
   @auto_generate = 1
   ToggleEnableDisable(field_config_value)
 end
 
-
 And(/^I Can See That I Can Configure Employee Number$/i) do
   VerifyAnElementNotExist('xpath', '//button[@id="User Details-employeeNumber-formatPopup"][@disabled="disabled"]')
   VerifyAnElementExists('xpath', '//button[@id="User Details-employeeNumber-formatPopup"]')
 end
-

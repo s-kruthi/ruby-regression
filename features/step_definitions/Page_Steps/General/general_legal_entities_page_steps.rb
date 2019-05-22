@@ -45,7 +45,6 @@ def random_abn()
     return final_numbers.join.to_i
 end
 
-
 def AddLegalEntity(jurisdiction)
   Sleep_Until(WaitForAnElementByXpathAndTouch(LEGAL_ENTITY_ADD_ID))
 
@@ -88,7 +87,6 @@ def AddLegalEntity(jurisdiction)
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
 
-
 def EditLegalEntity()
   #get non-default legal entity to edit
   @legal_entity = $daos.get_legal_entity_details_for_edit()
@@ -110,14 +108,12 @@ def EditLegalEntity()
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
 
-
 def SearchToEdit(legal_entity)
   #search and click to edit
   Sleep_Until(WaitForAnElementByIdAndInputValue(SEARCH_FIELD_ID, legal_entity[:business_name]))
   Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
   $driver.find_element(:xpath, '//a[@href="/admin/legal-entity/edit/'+legal_entity[:id].to_s+'"]').click
 end
-
 
 def CheckAndSetDefault(identifier)
   default = $driver.find_element(:id, identifier).selected?
@@ -129,7 +125,6 @@ def CheckAndSetDefault(identifier)
     puts COLOR_BLUE + "Entity has now been set to Default".upcase
   end
 end
-
 
 def CheckPageDisplay()
   @legal_entity = $daos.get_legal_entity_details()
@@ -172,13 +167,11 @@ def CheckPageDisplay()
   end
 end
 
-
 def VerifyABNLookup()
   sleep(4)
   field_value = $driver.find_element(:id, 'legal_entity_businessName').attribute('value')
   expect(field_value).to eq('SCIENTIFIC INSTRUMENT MANUFACTURING & REPAIR CO')
 end
-
 
 def EnterExisitingEntityDetails()
   @legal_entity = $daos.get_legal_entity_details()
@@ -209,7 +202,6 @@ def EnterExisitingEntityDetails()
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
 
-
 def EditLegalEntityLinkedToUser()
   @legal_entity = $daos.get_legal_entity_details_linked_to_user()
 
@@ -220,7 +212,6 @@ def EditLegalEntityLinkedToUser()
 
   Sleep_Until(WaitForAnElementByIdAndTouch(LEGAL_ENTITY_SAVE_ID))
 end
-
 
 def SetClientCountryElmoConfig(country)
   steps %{
@@ -233,18 +224,15 @@ def SetClientCountryElmoConfig(country)
   }
 end
 
-
 def CheckJurisdiction(country)
   expect(GetSelectedValueFromDropdown(LEGAL_ENTITY_JURISDICTION_ID)).to eq(country)
   puts COLOR_GREEN + ("jurisdiction is set to " + country).upcase
 end
 
-
 def CheckJurisdictionField()
   expect($driver.find_element(:xpath, LEGAL_ENTITY_JURISDICTION_ID).attribute('disabled')).to eq('true')
   puts COLOR_GREEN + "jurisdiction field is read only".upcase
 end
-
 
 def random_ird()
   $first_weighting = [3,2,7,6,5,4,3,2]
@@ -261,13 +249,11 @@ def random_ird()
   return tmp_ird.to_i
 end
 
-
 def check_digit_matches(input_array)
   ird_array = convert_to_integer_array(input_array)
   provided_check_digit = ird_array.pop
   calculate_check_digit(ird_array) == provided_check_digit
 end
-
 
 def convert_to_integer_array(input)
   ird_array = input.split(//)
@@ -277,7 +263,6 @@ def convert_to_integer_array(input)
   end
   ird_array
 end
-
 
 def calculate_check_digit(input_array, weighting_array=$first_weighting)
   remainder = calculate_remainder(input_array, weighting_array)
@@ -289,7 +274,6 @@ def calculate_check_digit(input_array, weighting_array=$first_weighting)
   end
   check_digit
 end
-
 
 def calculate_remainder(input_array, weighting_array)
   weighted_array = input_array.each_with_index.map { |x,i| x.to_i * weighting_array.at(i) }

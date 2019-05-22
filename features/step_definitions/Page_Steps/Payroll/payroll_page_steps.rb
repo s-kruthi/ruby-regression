@@ -14,7 +14,6 @@ def SetEmployeeProfileDetails()
   Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
 end
 
-
 def SetEmployeeEmploymentDetails()
 #   emp_number = 'AUTO' + Time.now.strftime("%Y%m%d%H%M%S")
 #   Sleep_Until(WaitForAnElementByIdAndInputValue(USER_EMPLOYMENTDETAILS_EMPNO_ID, emp_number))
@@ -27,7 +26,6 @@ def SetEmployeeEmploymentDetails()
 
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
 end
-
 
 def SetSuperDetails()
   membership_num = Time.now.strftime("%Y%m%d%H%M%S")
@@ -47,7 +45,6 @@ def SetSuperDetails()
 
   ClickOnSaveButton(SAVE_BTN_ID)
 end
-
 
 def SetContactDetails()
   Sleep_Until(ClickOnASubTab(USER_PERSONAL_DETAILS_TAB_ID))
@@ -76,5 +73,3 @@ def SetContactDetails()
 
   ClickOnSaveButton(SAVE_BTN_ID)
 end
-
-

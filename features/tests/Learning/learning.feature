@@ -6,7 +6,6 @@
 
 Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To Create Recordable And Non Recordable Activities
 
-
   @smoke_learning1 @learning_high_risk @course_add @C238
   Scenario: [Learning]Learning Admin Creating New Course
     Given I Have Logged In as a Learning Admin
@@ -16,7 +15,6 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     And   I Add New Course Details
     Then  I Should Be Able To Create A New Course
 
-
   @smoke_learning1 @learning_low_risk @course_search @C792
   Scenario: [Learning]Learning Admin Searching New Course
     Given I Have Logged In as a Learning Admin
@@ -24,7 +22,6 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     And   I Go To "Courses" Under "Learning" Section
     When  I Search For A Specific Course Named DO NOT DELETE
     Then  I Should Be Able To Edit The Specific Course
-
 
   @smoke_learning1 @learning_low_risk @course_copy
   Scenario: [Learning]Learning Admin Deleting New Course
@@ -34,7 +31,6 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     When  I Search For A Specific Course Named DO NOT DELETE
     Then  I Should Be Able To Copy The Specific Course
 
-
   @smoke_learning1 @learning_low_risk @course_delete @C6091
   Scenario: [Learning]Learning Admin Deleting New Course
     Given I Have Logged In as a Learning Admin
@@ -42,7 +38,6 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     And   I Go To "Courses" Under "Learning" Section
     When  I Search For A Specific Course With No Enrolments Named DO NOT DELETE
     Then  I Should Be Able To Delete The Specific Course
-
 
   @learning_low_risk @course_notifications_add
   Scenario: [Learning]Learning Admin Adding Notification Templates in Course

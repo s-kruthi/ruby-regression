@@ -1,6 +1,5 @@
 @general @departments
 
-
 Feature:
   As a Company Admin I Want To Manage Company Departments So That I Can Specify Employee Departments
   

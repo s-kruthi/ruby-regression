@@ -2,7 +2,6 @@ def goToTab(link, index)
   WaitForAnElementByXpathAndTouchTheIndex(link, index)
 end
 
-
 def goToAddScheduledReportsPage(schd_reports_btn)
   WaitForAnElementByXpathAndTouch(schd_reports_btn)
 end

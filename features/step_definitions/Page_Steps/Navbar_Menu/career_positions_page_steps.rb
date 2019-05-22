@@ -28,7 +28,6 @@ def WaitForThePositionsListingAndVerifyTheAlphabeticalSorting()
   end
 end
 
-
 def SearchForAPositionAndVerifyTheResult(search_field,search_value,search_btn,search_result)
   sleep(1)
   WaitForAnElementByIdAndInputValue(search_field,search_value)
@@ -43,7 +42,6 @@ def SelectAndSearchInterestedPositionsFromTheDropdown(positions_dropdown_ID,drop
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(dropdown_result_class, index_value)
 end
-
 
 def SelectAndSearchSuggestedPositionsFromTheDropdown(positions_dropdown_ID,dropdown_result_class, index_value)
   sleep(1)
@@ -60,4 +58,3 @@ def ValidateTheSearchReturnsNextTwoSuggestedPositions(suggested_pos_path1,sugges
   VerifyAnElementExistByXPath(suggested_pos_path1, suggested_pos_value1)
   VerifyAnElementExistByXPath(suggested_pos_path2, suggested_pos_value2)
 end
-

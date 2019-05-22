@@ -2,7 +2,6 @@ When(/^I Create A Leave Type Of ([\w\s\/\\w]+) Entitlement Type Named (.*)$/i) d
   CreateLeaveTypeThroughJmeter(leave_type, leavetype_name)
 end
 
-
 Then(/^I Should See That The Leave Type Is Created Successfully$/i) do
   CheckLeaveTypeExists(@leavetype_title)
 end

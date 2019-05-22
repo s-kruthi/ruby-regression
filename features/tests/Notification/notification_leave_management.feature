@@ -60,4 +60,3 @@ Feature:
     When  I Am On The Managers Leave Management Page
     And   I Put The Leave Request On Hold That My Employee has Requested For
 #    Then  My Employee Should Be Instantly Notified About The Leave Request Rejection
-

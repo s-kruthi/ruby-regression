@@ -31,7 +31,6 @@ def ToggleEnableDisable(config_selection_value)
  end
 end
 
-
 def SetUserfieldConfig(option_name, option_value)
   #if selected option is same as option value then keep @save_status=unchanged else @save_status=changed
   case option_name
@@ -56,7 +55,6 @@ def SetUserfieldConfig(option_name, option_value)
   end
 end
 
-
 def GetSelectedValueFromDropdown(dropdown_identifier)
     begin
       dropdown_list = $driver.find_element(:xpath, dropdown_identifier)
@@ -64,7 +62,6 @@ def GetSelectedValueFromDropdown(dropdown_identifier)
       return select_list.first_selected_option.text
     end
 end
-
 
 def CheckFieldVisibility(field_name)
   case field_name
@@ -94,7 +91,6 @@ def CheckFieldVisibility(field_name)
   end
 
 end
-
 
 def CheckFieldEditability(field_name)
   case field_name

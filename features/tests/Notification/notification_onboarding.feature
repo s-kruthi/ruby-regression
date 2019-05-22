@@ -13,4 +13,3 @@ Feature:
     Given I Am On The Forgot Password Reset Section Of A Specific User
     When  I Successfully Trigger The Reset Password Email
     Then  I Should Be Instantly Notified With The Reset Forgot Password Email
-

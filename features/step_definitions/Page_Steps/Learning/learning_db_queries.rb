@@ -10,7 +10,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_visible_course_list_by_name_with_enrolments(partial_course_name)
       query = "SELECT c.id, c.fullname FROM mdl_course c
               INNER JOIN epms_lms_course_enrolment e ON c.id = e.course_id
@@ -25,7 +24,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_visible_course_list_by_name_with_no_enrolments(partial_course_name)
       query = "SELECT c.id, c.fullname FROM mdl_course c
       INNER JOIN mdl_course_categories cc ON cc.id = c.category AND cc.visible = 1
@@ -33,7 +31,6 @@ module Database_env
       WHERE e.id IS NULL AND c.visible = 1 AND c.fullname LIKE '%#{partial_course_name}%' ORDER BY c.id DESC LIMIT 1;"
       return @db[query].first
     end
-
 
     def get_course_discrepancy_list()
       query = "SELECT c.fullname courseName
@@ -51,7 +48,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_f2f_location_facilitator_settings(f2f_id)
       query = "SELECT location, facilitator
               FROM epms_course_facetoface_session_template
@@ -59,11 +55,9 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_course_activity(course_id)
       pending
     end
-
 
     def get_count_course_enrolments()
       query = "SELECT count(*) AS enrolmentcount
@@ -92,7 +86,6 @@ module Database_env
       return @db[query].first
     end
 
-
     #check whether enrolment record has been deleted after self unenrol(count =0)
     def get_enrolment_status(course_id,user_id)
       query = "SELECT count(*) AS count
@@ -101,7 +94,6 @@ module Database_env
                AND course_id = #{course_id}"
       return @db[query].first[:count]
     end
-
 
     def get_enrolment_method(course_id, user_id)
       query = "SELECT enrolMethod
@@ -112,7 +104,6 @@ module Database_env
       return @db[query].first[:fullname]
     end
 
-
     def get_enroled_courses(user_id)
       query = "SELECT count(*) AS count
                FROM epms_lms_course_enrolment
@@ -120,7 +111,6 @@ module Database_env
                AND isActive = 1"
       return @db[query].first[:count]
     end
-
 
     #TODO Query needs to be corrected
     # def get_count_course_enrolments_by_enrolmethod(enrolmethod)
@@ -150,13 +140,11 @@ module Database_env
     #   return enrolments[:enrolmentcount]
     # end
 
-
     def count_certificate_template
       query = "SELECT count(*) AS certtemplatecount FROM epms_course_certificate_template;"
       templates = @db[query].first
       return templates[:certtemplatecount]
     end
-
 
     def get_cert_temp_name_legacy()
       query = "SELECT value FROM epms_config WHERE module = 'lms' AND NAME LIKE '%template%name%'
@@ -179,18 +167,15 @@ module Database_env
       return cert_temp_fields_value = @db[query].first
     end
 
-
     def get_visible_cpd_plan_by_name(arg)
       query = "SELECT * FROM epms_cpd_plan WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1;"
       return @db[query].first
     end
 
-
     def get_visible_cpd_category_by_name(arg)
       query = "SELECT * FROM epms_cpd_category WHERE NAME LIKE '%#{arg}%' AND visible = 1 ORDER BY ID DESC LIMIT 1;"
       return @db[query].first
     end
-
 
     def get_user_with_course_discrepancy()
       query = "SELECT distinct concat (u.`first_name`,' ',u.`last_name`) as name
@@ -210,7 +195,6 @@ module Database_env
       return @db[query].first
     end
 
-
     #checks whether course has the module
     def get_course_surveymodule(course_id, activity_name)
       query = "select distinct cm.id from mdl_course_modules cm
@@ -222,7 +206,6 @@ module Database_env
       return @db[query].first
     end
 
-
     def get_course_f2fmodule(course_id, activity_name)
       query = "select distinct cm.id from mdl_course_modules cm
                inner join epms_course_facetoface cf on cm.course = cf.course
@@ -232,7 +215,6 @@ module Database_env
                and cf.NAME LIKE '%#{activity_name}%';"
       return @db[query].first
     end
-
 
     def get_course_elmomodule(course_id, activity_name)
       query = "select distinct cm.id from mdl_course_modules cm
@@ -246,4 +228,3 @@ module Database_env
 
   end
 end
-

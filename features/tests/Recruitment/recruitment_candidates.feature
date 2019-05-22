@@ -10,7 +10,6 @@ Feature: Create and Manage Candidates
     And   I Click on The Save Button
     Then  I Should See That The Candidate is Created Successfully
 
-
   @recruitment_search_candidate @recruitment_low_risk
     Scenario: Verfiy the candidate Search
       Given I Have Logged In As A Company Admin

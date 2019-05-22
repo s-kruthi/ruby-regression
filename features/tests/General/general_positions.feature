@@ -1,5 +1,4 @@
 @general @positions
-
   
   Feature:
   As a Company Admin I want to manage Company Positions So That I can Add Employee Positions

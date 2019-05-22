@@ -6,18 +6,15 @@ Given(/^I Have Logged In As A Company Admin To Setup Leave Management$/i) do
   Sleep_Until(LogInAndWaitForTheDashboard(LOGIN_BUTTON,ADMIN_PROFILE_DROPDOWN))
 end
 
-
 When(/^I Try To Create A New Leave Type$/i) do
   GoToLeaveTypeUnderLeaveManagement(LEAVE_MGMT_ID)
   CreateANewLeaveType(LEAVE_TYPE_PATH,ADD_NEW_LEAV_TYP)
   FillTheLeaveTypeAndSave(NEW_LEAV_RQST_TITL,LEAVE_RQST_TITLE_VAL,ENTITLEMENT_TYPE_CS)
 end
 
-
 Then(/^I Should Be Able To Successfully Create A New Leave Type$/i) do
   SearchTheCreatedLeaveTypeAndDeleteIt(LEAVE_TYPE_SEARCH_CS,LEAVE_RQST_TITLE_VAL)
 end
-
 
 When(/^I Try To Create A New Leave Policy$/i) do
   GoToLeavePolicyUnderLeaveManagement(LEAVE_MGMT_ID)
@@ -25,11 +22,9 @@ When(/^I Try To Create A New Leave Policy$/i) do
   FillTheLeavePolicyAndSave(NEW_POLICY_RQST_TTL,LEAVE_RQST_TITLE_VAL)
 end
 
-
 Then(/^I Should Be Able To Successfully Create A New Leave Policy$/i) do
   SearchTheCreatedLeavePolicyAndDeleteIt(LEAVE_POLICY_SEARCH_CS,LEAVE_RQST_TITLE_VAL)
 end
-
 
 When(/^I Try To Create A New Company Holiday$/i) do
   Sleep_Until(GoToHolidayMgntUnderLeaveManagement(LEAVE_MGMT_ID))
@@ -37,11 +32,9 @@ When(/^I Try To Create A New Company Holiday$/i) do
   Sleep_Until(FillTheNewCompanyHolidayAndSave())
 end
 
-
 Then(/^I Should Be Able To Successfully Create A New Company Holiday$/i) do
   Sleep_Until(FindTheCreatedHolidayAndDeleteIt())
 end
-
 
 When(/^I Log In As A Company Admin To Process A Leave Request$/i) do
   startWebDriver
@@ -52,13 +45,11 @@ When(/^I Log In As A Company Admin To Process A Leave Request$/i) do
   Sleep_Until(GoToLeaveRequestUnderLeaveManagement(LEAVE_MGMT_ID,LEAVE_REQUESTS_PATH))
 end
 
-
 And(/^I Approved The Submitted Request To Modify It Further$/i) do
   Sleep_Until(ApproveTheSubmittedLeaveRequest(LEAVE_APROVAL_COMMENT))
   sleep(2)
   ConnectToDatabaseAndValidateTheApprovedRequestSubmissionNotification()
 end
-
 
 Then(/^I Should Be Able To Successfully Process A Modified Leave Request$/i) do
   startWebDriver
@@ -70,11 +61,9 @@ Then(/^I Should Be Able To Successfully Process A Modified Leave Request$/i) do
   ModifyLeaveHrAndProcessTheLeaveRequest()
 end
 
-
 And(/^I Should Not Be Able To Cancel The Request$/) do
   ConnectToDatabaseAndDeleteTheProcessedLeaveRequest()
 end
-
 
 Given(/^I Have Logged In As A Company Admin To Check Leave Balance Section$/i) do
   startWebDriver
@@ -85,11 +74,9 @@ Given(/^I Have Logged In As A Company Admin To Check Leave Balance Section$/i) d
   GoToLeaveBalanceUnderLeaveManagement(LEAVE_MGMT_ID)
 end
 
-
 When(/^I Search For Leave Balance Of A Particular Employee$/i) do
   GoToLeaveBalanceAndSearchTheEmployee()
 end
-
 
 Then(/^I Should Be Able To Check The Correct Leave Balance$/i) do
   CheckTheLeaveBucketReturnsTheExpectedAccruals()

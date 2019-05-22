@@ -1,28 +1,23 @@
 $VERBOSE = nil
 
-
 def ReturnDetailsOfAParticularUser(database,emp_username)
   SearchDatabaseForASpecificData(database, Find_UserDetails(emp_username))
 end
 
-
 def Find_UserDetails(emp_username)
   "select id as user_id,manager_id,identifier from epms_user where username='#{emp_username}' ORDER BY id desc LIMIT 1"
 end
-
 
 # Get all the variables under one method and use it during the course of each test scenario
 def ReturnMultipleUserDetails(database,emp_username, course_name)
   SearchDatabaseForASpecificData(database, Find_MultipleUserDetails(emp_username, course_name))
 end
 
-
 # # you can club multiple and unrelated sql queries into one method , between 2 sql queries put \\G; \n
 def Find_MultipleUserDetails(emp_username, course_name)
   "select first_name from epms_user where username='#{emp_username}' ORDER BY id desc LIMIT 1 \\G; \n
     select id as course_id from mdl_course where fullname='#{course_name}' ORDER BY id desc"
 end
-
 
 def ConnectToDatabaseAndValidateTheCourseEnrolmentNotification()
   StartTunnelIfRequired()
@@ -54,7 +49,6 @@ def ConnectToDatabaseAndValidateTheCourseEnrolmentNotification()
     ResetTheEnvironment(TMSFULL_DATABASE)
   end
 end
-
 
 def ConnectToDatabaseAndValidateTheCourseEnrolmentRequestNotification()
   StartTunnelIfRequired()
@@ -88,7 +82,6 @@ def ConnectToDatabaseAndValidateTheCourseEnrolmentRequestNotification()
     ResetTheEnvironment(TMSFULL_DATABASE)
   end
 end
-
 
 def ConnectToDatabaseAndValidateTheCourseEnrolmentRequestApprovedNotification()
   StartTunnelIfRequired()
@@ -127,7 +120,6 @@ def ConnectToDatabaseAndValidateTheCourseEnrolmentRequestApprovedNotification()
   end
 end
 
-
 def ConnectToDatabaseAndValidateTheNewCourseEnrolmentNotification()
   StartTunnelIfRequired()
   SecurePasswordConnectToDatabase()
@@ -158,7 +150,6 @@ def ConnectToDatabaseAndValidateTheNewCourseEnrolmentNotification()
     ResetTheEnvironment(TMSFULL_DATABASE)
   end
 end
-
 
 def ConnectToDatabaseAndValidateBulkNewCourseEnrolmentNotifications()
   SearchDatabaseForNotificationTriggers(TMSFULL_DATABASE,

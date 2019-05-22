@@ -14,7 +14,6 @@ Feature: As A Learning Admin I Would Like To Manage Assignment Rules For Users
     And   I Enter Assignment Rules Recommended Course Name As ELMO Module
     Then  I Should Be Able To Save An Assignment Rule Successfully
 
-
   @general_high_risk @general_assignment_rules_deactivate
   Scenario: [Learning]Learning Admin Can Deactivate Assignment Rules With Conditions, Required And Recommended Courses For Users
     Given I Have Logged In As A Learning Admin

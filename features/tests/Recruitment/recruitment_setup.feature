@@ -37,7 +37,6 @@ Feature:
    When I Move The Candidate From New To Notsuitable Category
    Then I Should Be Able To View The Candidate Under Unsuccessful Category
 
-
   #Currently can be run only on ningning01
   @recruitment_low_risk @candidate_email_vendor_cc @C16610
   Scenario: [Recruitment]Vendor Emailid In CCfield Of Email To Candidate
@@ -49,7 +48,6 @@ Feature:
    When I Search For The Vendor Submitted Candidate
    And I Choose To Send Email To The Candidate
    Then I Can See The Vendor EmailId In The CC Field By Default
-
 
   #Currently can be run only on ningning01
   @recruitment_low_risk @candidate_offer_vendor_cc @C16612
@@ -63,7 +61,6 @@ Feature:
     And   I Choose To Make an Offer To The Candidate
     And   I Can See The Vendor EmailId In The CC Field By Default
 
-
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_add_note
   Scenario: [Recruitment]Ability To Add Notes To A Requisition
@@ -76,7 +73,6 @@ Feature:
     When  I Click On Add New Requisition Note Button
     And   I Enter The Requisition Note
     Then  I Should See The Note In The Requisition
-
 
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note
@@ -92,7 +88,6 @@ Feature:
     And   I Should Not See The Add Note Button For The Note
     And   I Should See The Last Updated Details
 
-
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_edit
   Scenario: [Recruitment]Ability To Edit Notes Added To A Requisition
@@ -105,7 +100,6 @@ Feature:
     And   I Click On Edit Requisition Note Button
     And   I Should Be Able To Edit The Requisition Note
     Then  I Should See The Last Updated Details
-
 
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_delete
@@ -120,7 +114,6 @@ Feature:
     And   I Confirm The Deletion Of The Requisition Note
     Then  I Should See The Deletion Success Message
 
-
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_view_only
   Scenario: [Recruitment]Ability To Only View Notes Added To A Finalised/Withdrawn Requisition
@@ -132,7 +125,6 @@ Feature:
     When  I Go To The Requisition Overview Page
     Then  I Should Be Able To Only View The Requisition Note
 
-
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_view
   Scenario: [Recruitment]Ability To View Notes Added To A Requisition
@@ -143,7 +135,6 @@ Feature:
     When  I Choose To View Requisition Details For The Requisition
     Then  I Should Be Able To View The Requisition Note In the Modal
 
-
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_view
   Scenario: [Recruitment]Ability To View Notes Added To A Requisition
@@ -153,7 +144,6 @@ Feature:
     When  I Search For A Pending Requisition Having Notes
     And   I View The Requisition For Approval
     Then  I Should Be Able To View The Requisition Note In The Page
-
 
   @recruitment_low_risk @bulk_email_allcandidates
   Scenario: [Recruitment]Ability To Send Email In Bulk For All Candidates
@@ -166,8 +156,3 @@ Feature:
     And   I Compose The Email
     And   I Send The Composed Email
     Then  I Should Be Able To Verify That The Emails Have Been Sent
-
-
-
-
-

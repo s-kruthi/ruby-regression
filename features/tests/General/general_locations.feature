@@ -1,6 +1,5 @@
 @general @locations
 
-
 Feature:
   As a Company Admin I want to manage Company Locations So That I Can Specify Employee Locations
   

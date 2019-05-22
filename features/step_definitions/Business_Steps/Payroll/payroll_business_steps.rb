@@ -8,7 +8,6 @@ When(/^I Make Changes To Legal Entity$/i) do
   }
 end
 
-
 And(/^I Send (Company|Employee) Data To Elmo Payroll$/i) do |data_type|
   steps %{
     And   I Go To The Menu Payroll Section
@@ -21,7 +20,6 @@ And(/^I Send (Company|Employee) Data To Elmo Payroll$/i) do |data_type|
   end
 end
 
-
 Then(/^The (Company|Employee) Data Should Be Sent Successfully$/i) do |data_type|
   #Click the Send Data button to send data to Elmo Payroll
   Sleep_Until(WaitForAnElementByXpathAndTouch("//button[@ng-click='listVm.executeJob()']"))
@@ -33,7 +31,6 @@ Then(/^The (Company|Employee) Data Should Be Sent Successfully$/i) do |data_type
 
   puts COLOR_BLUE + "Check Record/Log file manually for the Exported Date: " + export_date
 end
-
 
 And(/^All The Necessary Details Of The Employee Required For Payroll Are Added$/i) do
   SetEmployeeProfileDetails()
@@ -62,7 +59,6 @@ And(/^All The Necessary Details Of The Employee Required For Payroll Are Added$/
   }
 end
 
-
 Given(/^Non-default Legal Entity Exists$/i) do
   steps %Q{
       Given I Have Logged In As A Company Admin
@@ -85,6 +81,3 @@ Given(/^Non-default Legal Entity Exists$/i) do
           And   I Have Logged Out as a Company Admin
   }
 end
-
-
-

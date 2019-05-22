@@ -4,28 +4,23 @@ def GoToTheRecruitmentMenuPageAsAdmin(admin_cog,recruitment_expand)
   GoToCandidatesListingPage(recruitment_expand)
 end
 
-
 def GoToRecruitmentCandidatesListingPage(recruitment_expand)
   sleep(2)
   WaitForAnElementByPartialLinkTextAndTouch(recruitment_expand)
 end
-
 
 def GoToCandidatesListingPage(recruitment_expand)
   sleep(2)
   WaitForAnElementByXpathAndTouch(recruitment_expand)
 end
 
-
 def SearchAndVerifyCandidatesBtnExists(candidate_btn_xpath,candidate_btn_label)
   VerifyAnElementExistByXPath(candidate_btn_xpath,candidate_btn_label)
 end
 
-
 def ClickOnNewCandidateButton(new_candidadate_xpath)
   WaitForAnElementByXpathAndTouch(new_candidadate_xpath)
 end
-
 
 def EnterNewCandidateDetails()
   WaitForAnElementByIdAndInputValue(FIRSTNAME_INPUT_ID,CANDIDATE[:FIRST])
@@ -45,7 +40,6 @@ def EnterNewCandidateDetails()
   WaitForAnElementByIdAndInputValue(PASSWORD_CONFIRM_INPUT_ID,CANDIDATE[:PASSWORD])
 end
 
-
 def CreateARandomEmailAddress()
   email_addrress = CANDIDATE[:EMAIL].to_s + ((Time.now).to_i).to_s + "@elmotalent.com.au"
   WaitForAnElementByIdAndInputValue(EMAIL_INPUT_ID,email_addrress)
@@ -55,7 +49,6 @@ def CreateARandomEmailAddress()
   puts TRANS1
 end
 
-
 def VerifyANewCandidateHasBeenCreated(candidate_name_class,first_name)
   WaitForAnElementByIdAndInputValue("keywordsSearchItemEnable",TRANS1)
   WaitForAnElementByIdAndTouch("submit-filter-candidate")
@@ -63,13 +56,11 @@ def VerifyANewCandidateHasBeenCreated(candidate_name_class,first_name)
   VerifyAnElementExistByClass(candidate_name_class,first_name)
 end
 
-
 # Search for the new candidate
 def SearchbyNewCandidate(keyword_name)
   WaitForAnElementByIdAndInputValue(CANDIDATE_SEARCH_ID,keyword_name)
   WaitForAnElementByIdAndTouch(CANDIDATE_SUBMIT_BTN)
 end
-
 
 # Verify candidate is found successfully
 def ValidateCandidate()
@@ -79,7 +70,6 @@ def ValidateCandidate()
     puts "match found"
   end
 end
-
 
 def ClickSaveButton(btn_id)
   Sleep_Until(WaitForAnElementByIdAndTouch(btn_id))

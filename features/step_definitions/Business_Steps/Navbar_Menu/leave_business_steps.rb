@@ -18,7 +18,6 @@ And(/^I Can Select (.*) Leave Type$/i) do | leave_type |
   EnterLeaveHours(LEAVE_REQUEST_HOURS_VALUE)
 end
 
-
 And(/^I Choose To (Bank|Take) The Request$/i) do | leave_action |
   if leave_action == 'Bank'
     JavascriptClick(LEAVE_REQUEST_TOGGLE_ID)
@@ -28,7 +27,6 @@ And(/^I Choose To (Bank|Take) The Request$/i) do | leave_action |
     @bank_leave = false
   end
 end
-
 
 Then(/^I Should Be Able To See That My Leave Request Was Successfully Submitted$/i) do
   ClickElement('xpath', LEAVE_REQUEST_SUBMIT_ID)
@@ -44,7 +42,6 @@ Then(/^I Should Be Able To See That My Leave Request Was Successfully Submitted$
   expect(submitted).to eq("Pending Approval")
 end
 
-
 And(/^I Search For The User With (.*) Balance$/i) do | leave_type_bucket_balance |
   @user_search = $daos.get_user_with_leave_balance(leave_type_bucket_balance)
 
@@ -57,7 +54,6 @@ And(/^I Search For The User With (.*) Balance$/i) do | leave_type_bucket_balance
   end
 end
 
-
 And(/^I Use The Log in as this user Option To Login$/i) do
   #ensuring that the searched user's actions dropdown is clicked
   element_id = '//a[@href="/controlpanel/edit-user/'+ @user_search[:user_id].to_s + '"]/following-sibling::button'
@@ -67,7 +63,6 @@ And(/^I Use The Log in as this user Option To Login$/i) do
 
   puts COLOR_BLUE + ("logging in as the user with user id: " + @user_search[:user_id].to_s).upcase
 end
-
 
 And(/^I Search For The User Having Insufficient (.*) Leave Balance$/i) do | leave_type_bucket_balance |
   @user_search = $daos.get_user_with_insufficient_leave_balance(leave_type_bucket_balance)
@@ -81,7 +76,6 @@ And(/^I Search For The User Having Insufficient (.*) Leave Balance$/i) do | leav
   end
 end
 
-
 Then(/^I Should Be Able To See That My Leave Request Cannot Be Submitted$/i) do
 
   ClickElement('xpath', LEAVE_REQUEST_SUBMIT_ID)
@@ -93,4 +87,3 @@ Then(/^I Should Be Able To See That My Leave Request Cannot Be Submitted$/i) do
   expect(err_msg_text).to eq('Leave request hours cannot exceed the leave balance.')
   puts COLOR_GREEN + "insufficient leave balance error is displayed".upcase
 end
-

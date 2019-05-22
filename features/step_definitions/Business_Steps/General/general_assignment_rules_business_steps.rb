@@ -5,18 +5,15 @@ And(/^I Search For A Specific Assignment Rule Named (.*)$/i) do |rule_name|
   SearchTheAssignmentRule(ENROLMENT_RULE_ID, rule_name, SEARCH_ENTER_CSS)
 end
 
-
 When(/^I Reset The Assignment Rule$/) do
   DeactivateTheSearchedAssignment()
   ReActivateTheSearchedAssignment()
 end
 
-
 And(/^I Enter Assignment Rules Details$/i) do
   Sleep_Until(EnterCourseTitle(ASSIGN_RULE_TITLE_ID, ASSIGN_RULE_TITLE_VALUE))
   Sleep_Until(EnterCourseTitle(ASSIGN_RULE_DESC_ID, ASSIGN_RULE_DESC_VALUE))
 end
-
 
 And(/^I Enter Assignment Rules Condition For (.*) As (.*)$/i) do |assignment_rule_condition_type, assignment_rule_condition_value|
   Sleep_Until(ClickOnAButtonByLastIndex(ASSIGN_RULE_ADD_COND_ID))
@@ -35,7 +32,6 @@ And(/^I Enter Assignment Rules Condition For (.*) As (.*)$/i) do |assignment_rul
   end
 end
 
-
 And(/^I Enter Assignment Rules Required Course Name As (.*)/i) do |assign_rule_req_course_name|
   course_list_result = $daos.get_assignment_rules_course_list_by_name(assign_rule_req_course_name)
   if !course_list_result.nil?
@@ -46,7 +42,6 @@ And(/^I Enter Assignment Rules Required Course Name As (.*)/i) do |assign_rule_r
     skip_this_scenario
   end
 end
-
 
 And(/^I Enter Assignment Rules Recommended Course Name As (.*)$/i) do |assign_rule_rec_course_name|
   course_list_result = $daos.get_assignment_rules_course_list_by_name(assign_rule_rec_course_name)
@@ -59,13 +54,11 @@ And(/^I Enter Assignment Rules Recommended Course Name As (.*)$/i) do |assign_ru
   end
 end
 
-
 Then(/^I Should Be Able To Save An Assignment Rule Successfully$/i) do
   Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
   Sleep_Until(ClickOnAButtonByLastIndex(ASSIGN_RULE_SAVE_BUTTON_ID))
   Sleep_Until(VerifyAnElementExistByXPath(ASSIGN_RULE_UNLOCK_BUTTON_ID, ASSIGN_RULE_UNLOCK_BUTTON_VALUE))
 end
-
 
 Then(/^I Should Be Able To (Deactivate) A Specific Assignment Rule Successfully$/i) do |assign_rule_action|
 

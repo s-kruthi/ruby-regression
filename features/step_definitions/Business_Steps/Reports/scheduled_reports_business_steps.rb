@@ -29,7 +29,6 @@ And(/^I Enter Scheduled Report Details$/i) do
   sleep (1)
 end
 
-
 Then(/^I Should Be Able To Create A Scheduled Report$/i) do
   enterSaveBtn(REPORTS_SAVE_BTN_ID)
   sleep (2)
@@ -37,7 +36,6 @@ Then(/^I Should Be Able To Create A Scheduled Report$/i) do
   sleep(1)
   $driver.quit
 end
-
 
 Then(/^I Should Be Able To Search For A Specific Scheduled Report$/i) do
   searchForAScheduledReportAndVerify(SCHD_REPORT_SEARCH_ID, SCHD_REPORTS_NAME_VALUE, SCHD_REPORT_SEARCH_BTN_ID, SCHD_REPORT_SEARCH_RESULT_VALUE)

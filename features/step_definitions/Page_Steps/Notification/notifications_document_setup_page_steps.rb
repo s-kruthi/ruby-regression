@@ -1,6 +1,5 @@
 $VERBOSE = nil
 
-
 def SearchTheTemplateToBeAssigned(search_field_id, value)
   WaitForAnElementByIdAndInputValue(search_field_id, value)
   sleep(1)
@@ -51,7 +50,6 @@ def DeleteTheExistingAssignedDocumentsForUser(dropdown,index_value)
  end
 end
 
-
 def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
   StartTunnelIfRequired()
   SecurePasswordConnectToDatabase()
@@ -85,13 +83,11 @@ def ConnectToDatabaseAndValidateTheDocumentAssignedNotifications()
   end
 end
 
-
 def GoToTheParticularAssignedDocument()
   sleep(2)
   WaitForAnElementByXpathAndTouch("//a[@href='/documents/view#{$current_doc_path_id}']")
   sleep(2)
 end
-
 
 def FillAndSubmitTheAssignedTemplate(firstname_id,firstname_value,lastname_id,lastname_value,date_picker,street_no_id,street_no_value,street_id,street_value,suburb_id,suburb_value,state_id,state_value,postcode_id,postcode_value,submit_approval)
   WaitForAnElementByIdAndInputValue(firstname_id,firstname_value)
@@ -139,7 +135,6 @@ def ConnectToDatabaseAndValidateTheDocumentAwaitingNotifications()
     ResetTheEnvironment(XERXES_DATABASE)
   end
 end
-
 
 def VerifyTheSubmittedFormIsInLockedState()
   sleep(3)

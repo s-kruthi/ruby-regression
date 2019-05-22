@@ -8,7 +8,6 @@ def ClearInputFields(num_textfields)
   end
 end
 
-
 def EnterJobAdContactDetails()
   Sleep_Until(WaitForAnElementByXpathAndInputValue(RECRUITMENT_JOBAD_HOMEPH_ID, RECRUITMENT_JOB_AD_PHONE_VALUE))
   
@@ -24,7 +23,6 @@ def EnterJobAdContactDetails()
   
   Sleep_Until(SelectFromDropdown(RECRUITMENT_JOBAD_COUNTRY_ID, RECRUITMENT_JOB_AD_COUNTRY_VALUE))
 end
-
 
 def LoginToExtPortal(external_portal, user_name, user_pwd)
   startWebDriver
@@ -43,12 +41,10 @@ def LoginToExtPortal(external_portal, user_name, user_pwd)
   expect($driver.current_url).to include('/view-profile')
 end
 
-
 def SearchJobAd(jobad_title)
   Sleep_Until(WaitForAnElementByXpathAndInputValue(SEARCH_JOBAD_ID, jobad_title))
   Sleep_Until(WaitForAnElementByXpathAndTouch(SEARCH_BUTTON_ID))
 end
-
 
 def EnterCandidateDetails()
   Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_JOBAPPLN_CANDIDATE_EMAIL_ID, RECRUITMENT_JOBAPPLN_CANDIDATE_EMAIL_VALUE))
@@ -56,14 +52,12 @@ def EnterCandidateDetails()
   Sleep_Until(WaitForAnElementByIdAndInputValue(RECRUITMENT_JOBAPPLN_CANDIDATE_LNAME_ID, RECRUITMENT_JOBAPPLN_CANDIDATE_LNAME_VALUE))
 end
 
-
 def NavigateToCareerSite(external_portal)
   startWebDriver
   
   @external_portal = external_portal
   GoToSite()
 end
-
 
 def EnterProfileDetails()
   suffix = Time.now.strftime("%Y%m%d%H%M%S").to_s
@@ -80,7 +74,6 @@ def EnterProfileDetails()
   puts COLOR_BLUE + 'Creating new candidate with firstname "auto_ext", lastname "'+ lastname + '" having email "'+ ext_candiate_email +'"'
 end
 
-
 def CreateExternalCandidateProfiles(num_candidates)
   #getting the num of existing candidates to compare after creation
   @num_existing_candidates = $daos.get_count_candidates()
@@ -95,11 +88,9 @@ def CreateExternalCandidateProfiles(num_candidates)
   end
 end
 
-
 def LogoutExtPortal()
   Sleep_Until(ClickElement('xpath', RECRUITMENT_EXTPORTAL_SIGNOUT_ID, 1))
 end
-
 
 def VerifyCreationExtCandidates(num_candidates)
   #getting the count of candidates to verify creation
@@ -112,7 +103,6 @@ def VerifyCreationExtCandidates(num_candidates)
   
   puts COLOR_GREEN + 'Successfully created '+ num_candidates.to_s + ' external candidates'
 end
-
 
 def CreateExternalCandidateUsingJmeter()
   $create_against = $site_url.gsub("https://","").split("/",2)[0]
@@ -130,7 +120,6 @@ def CreateExternalCandidateUsingJmeter()
   # $created_username = puts "username:" + csv[0][3]
 end
 
-
 #verifies that the alert message is displayed when a user applies to an already applied job ad
 def VerifyAlertMessageForCandidate()
   VerifyErrorAlertMessage(VERIFY_ALERT_ID, RECRUITMENT_JOBAPPLN_ALERT_VALUE)
@@ -143,7 +132,6 @@ def VerifyAlertMessageForCandidate()
   VerifyAnElementExistByXPath(VERIFY_ALERT_ID, applied_date)
 end
 
-
 def VerifyJobApplnDB(recruitment_job_ad_type, recruitment_job_title, candidate_email)
   job_ad_result = $daos.verify_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
 
@@ -154,7 +142,6 @@ def VerifyJobApplnDB(recruitment_job_ad_type, recruitment_job_title, candidate_e
     puts COLOR_RED + "Insuccessful application, check manually"
   end
 end
-
 
 def RemoveJobApplnDB(recruitment_job_ad_type, recruitment_job_title, candidate_email)
   #deleting the applied job

@@ -10,7 +10,6 @@ module Database_env
       @db[query].first
     end
 
-
     def get_onboarding_user_detail_with_no_contract()
       query = "select id, first_name, last_name, email
                from epms_user
@@ -20,7 +19,6 @@ module Database_env
       @db[query].first
     end
 
-
     def get_user_contract_workflow_id(user_id, status)
       query = "select id
                from epms_contract_workflow
@@ -28,7 +26,6 @@ module Database_env
                and status = #{status};"
       @db[query]
     end
-
 
     def get_contract_placeholders_containing_string(contract_placeholder_string)
       query = "select count(*) as contract_placeholdersnum
@@ -38,8 +35,6 @@ module Database_env
       return contract_placeholders_count[:contract_placeholdersnum]
     end
 
-
   end
-
 
 end

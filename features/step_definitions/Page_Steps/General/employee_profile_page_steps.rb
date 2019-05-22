@@ -3,7 +3,6 @@ def GoToPaymentDetailsSectionOfAParticularEmployee(employment_details_section)
   WaitForAnElementByIdAndTouch(employment_details_section)
 end
 
-
 def UnmaskAndViewRateAndSalaryDetailsForTheEmployee()
   sleep(2)
   $driver.find_element(:xpath, "//button[@ng-mousedown='section.showRate = 1']").touch_action(:press,  hold: 300000)
@@ -12,11 +11,9 @@ def UnmaskAndViewRateAndSalaryDetailsForTheEmployee()
   $driver.quit
 end
 
-
 def GoToTaxFileNumberSectionOfAParticularEmployee(tfn_details_section)
   WaitForAnElementByIdAndTouch(tfn_details_section)
 end
-
 
 def UnmaskAndViewTaxFileNumberDetailsForTheEmployee()
   sleep(2)
@@ -26,24 +23,20 @@ def UnmaskAndViewTaxFileNumberDetailsForTheEmployee()
   $driver.quit
 end
 
-
 def search_for_input(search_input_id, search_input_value, search_btn_id)
   Sleep_Until(WaitForAnElementByXpathAndClearValue(search_input_id))
   Sleep_Until(WaitForAnElementByXpathAndInputValue(search_input_id, search_input_value))
   Sleep_Until(WaitForAnElementByXpathAndTouch(search_btn_id))
 end
 
-
 def click_on_search_result(search_employee_class)
   Sleep_Until(WaitForAnElementByXpathAndTouchTheIndex(search_employee_class, 0))
 end
-
 
 def verify_employee_profile(employee_name, employee_email)
     VerifyAnElementExistByClassAndIndex(USER_PROFILE_EMAIL_CLASS_NAME, employee_email, 1) #This is the email address
     VerifyAnElementExistByClassAndIndex(USER_PROFILE_BODY_CLASS_NAME, employee_name, 0) #This is the employee profile view
 end
-
 
 def SetNoteVisibility(visibility_value)
   if visibility_value != "default"
@@ -56,7 +49,6 @@ def SetNoteVisibility(visibility_value)
     Sleep_Until(SelectFromDropdown('//select[@id="NoteForm_acl_key"]', "#{visibility_value}"))
   end
 end
-
 
 def CheckNoteAdded(action)
   expect($driver.find_elements(:xpath, NOTE_POSTED_BY_ID)[0].text).to eq("Manager1 Scriptonce1")
@@ -72,7 +64,6 @@ def CheckNoteAdded(action)
   end
 end
 
-
 def CheckAutopaySetting(setting_value)
   sleep (8)
 
@@ -86,11 +77,9 @@ def CheckAutopaySetting(setting_value)
   end
 end
 
-
 def GetAutopayToggleSetting()
   return $driver.find_element(:id, USER_PAYMENT_DETAILS_AUTOPAY_ID).selected?
 end
-
 
 def SetAutopay(setting_value)
   #waiting till the employment details section is loaded
@@ -104,7 +93,6 @@ def SetAutopay(setting_value)
     Sleep_Until(WaitForAnElementByXpathAndTouch(USER_PAYMENT_DETAILS_CANCEL_BUTTON_ID))
   end
 end
-
 
 def SearchForUserWithEmpDetails()
   @user_search = $daos.get_employee_with_autopay_no()
@@ -121,7 +109,6 @@ def SearchForUserWithEmpDetails()
   end
 end
 
-
 def SearchForUserWithDefaultAutopaySetting()
   @user_search = $daos.get_employee_with_default_autopay()
 
@@ -134,17 +121,14 @@ def SearchForUserWithDefaultAutopaySetting()
   end
 end
 
-
 #the element_id here needs to be the id value Eg:id='isBanking', will not work with xpath
 def JavascriptClick(element_id)
   $driver.execute_script("$('#"+ element_id + "').each(function() { var $this=$(this)\; { $this.parent().trigger('click') } })")
 end
 
-
 def GetTextAssociatedToElement(type,identifier)
   return $driver.find_element(:"#{type}", identifier).text
 end
-
 
 def EditNote()
   Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_EDIT_BUTTON_ID))
@@ -153,7 +137,6 @@ def EditNote()
   }
 end
 
-
 def DeleteNote()
   @posted_time = $driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text
   Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_DEL_BUTTON_ID))
@@ -161,12 +144,10 @@ def DeleteNote()
   Sleep_Until(PressEnterOK())
 end
 
-
 def VerifyDeletionOfNote()
   #checks for the absence of the post by checking the posted time
   expect($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).not_to eq(@posted_time)
 end
-
 
 def SaveAutopayChanges()
   Sleep_Until(WaitForAnElementByCSSAndTouch(MODAL_YES_BUTTON_CSS))
@@ -174,7 +155,6 @@ def SaveAutopayChanges()
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_PAYMENT_DETAILS_SAVE_ID))
   # SaveEmploymentChanges()
 end
-
 
 def SearchForEmpWithNoLeavePolicy()
   @user_search = $daos.get_employee_with_no_leavepolicy()
@@ -188,18 +168,15 @@ def SearchForEmpWithNoLeavePolicy()
   end
 end
 
-
 def VerifyPlaceholder()
   expect($driver.find_element(:xpath, "//span[@id='select2-chosen-8']").text).to eq('Select a Leave Policy')
   puts COLOR_GREEN + "placeholder when no leave policy selected is present".upcase
 end
 
-
 def SetLeavePolicy(leave_policy_title)
   sleep (6)
   Sleep_Until(SingleSelectFromSelect2Dropdown(USER_EMPLOYMENTDETAILS_LEAVEPOLICY_INPUT_ID, SELECT2_DROPDOWN_ID, leave_policy_title, SELECT2_DROPDOWN_RESULT_CLASS))
 end
-
 
 def SearchForEmpNoCostCentre()
   @user_search = $daos.get_employee_without_multiple_costcentres()
@@ -213,7 +190,6 @@ def SearchForEmpNoCostCentre()
   end
 end
 
-
 def EditUserProfile()
   #ensuring that the searched user's edit user profile link is clicked
   element_id = '//a[@href="/controlpanel/edit-user/'+ @user_search[:user_id].to_s + '"]/following-sibling::button'
@@ -224,7 +200,6 @@ def EditUserProfile()
 
   puts COLOR_BLUE + ("editing the user with user id: " + @user_search[:user_id].to_s).upcase
 end
-
 
 def AssociateCostCentre(num_cost_centres)
   @num_split = num_cost_centres
@@ -256,7 +231,6 @@ def AssociateCostCentre(num_cost_centres)
   end
 end
 
-
 def AssignCostCentreVal()
   #generating random split % values for cost centres
   split_percent_values = split_percent(@num_split, 100)
@@ -270,7 +244,6 @@ def AssignCostCentreVal()
   end
 end
 
-
 #method is different from above since we are specifying the split % values here
 def AssignSplitVal(split_val1, split_val2)
   split_values = [split_val1, split_val2]
@@ -281,7 +254,6 @@ def AssignSplitVal(split_val1, split_val2)
     i = i+1
   end
 end
-
 
 def VerifyCostCentreSplitValErrMsg(err_type)
   #using sleep since it takes a while for the error msg to load
@@ -299,7 +271,6 @@ def VerifyCostCentreSplitValErrMsg(err_type)
   expect(err_msg).to eq(err_msg_value)
   puts COLOR_GREEN + "error message is displayed".upcase
 end
-
 
 #splits max into num of splits such that splits sums to max
 def split_percent(num_of_split, max)
@@ -322,7 +293,6 @@ def split_percent(num_of_split, max)
 
   return split_num
 end
-
 
 def SaveEmploymentChanges()
   modal_title = GetTextAssociatedToElement("xpath", USER_DETAILS_CONFIRMATION_MODAL_TITLE_ID)

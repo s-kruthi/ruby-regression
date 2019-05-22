@@ -9,13 +9,11 @@ Feature:
     When  I Try To View The Payment Details Of An Employee For A Particular Employment Type
     Then  I Should Be Able To Unmask The Rate And Salary Details By Tapping The Show Button
 
-
   @ViewTfnDetails @general_high_risk
   Scenario: [General]Add Payment Details ( TFN Details )
     Given I Am On The Employee's Payment Details Section
     When  I Try To View The TFN Details Of An Employee
     Then  I Should Be Able To Unmask The TFN Number By Tapping The Show Button
-
 
   @ViewOwnEmployeeDetails @general_low_risk
   Scenario: [General]View Employee Profile to Verify Sub Tabs
@@ -26,7 +24,6 @@ Feature:
     And   I Should Be Able To Click Personal Details Sub-Tab
     And   I Should Be Able To Click Payment Details Sub-Tab
     And   I Should Be Able To Click Recognition Sub-Tab
-
 
   @ViewAnotherEmployeeDetails @general_low_risk
   Scenario: [General]View Employee Profile to Verify Sub Tabs
@@ -40,7 +37,6 @@ Feature:
     And   I Should Be Able To Click Personal Details Sub-Tab
     And   I Should Be Able To Click Payment Details Sub-Tab
     And   I Should Be Able To Click Recognition Sub-Tab
-
 
   @general_low_risk @user_profile_note @user_profile_addnote @C16458
   Scenario Outline: [General]Can Add Note To A User Profile With Different Visibility Settings
@@ -71,7 +67,6 @@ Feature:
     When  I Search For An Employee With Default Autopay Setting
     Then  I Can View The Default Autopay Setting As No
 
-
   @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_message @C16725
   Scenario: [General] Company Admin Can View Autopay Message
     Given I Have Logged In As A Payroll Admin
@@ -81,7 +76,6 @@ Feature:
     And   I Edit The User's Employment Details Section
     And   I Set The Autopay Setting As Yes
     Then  I Should Be Displayed With Autopay Message
-
 
   @general_low_risk @user_paymentdetails_autopay @user_paymentdetails_autopay_edit @C16725
   Scenario: [General] Company Admin Can View Autopay Is Set to Default No
@@ -94,7 +88,6 @@ Feature:
     And   I Save The Payment Details Changes For Autopay
     Then  I Should Be Able To See The Autopay Setting Changed To Yes
 
-
   @general_low_risk @user_profile_note @user_profile_editnote @C16877
   Scenario: [General]Can Edit Note To A User Profile
     Given I Have Logged In As A Company Manager
@@ -104,7 +97,6 @@ Feature:
     And   I Click On Save Note Button
     Then  I Should See That The Note Has Been Edited Successfully
 
-
   @general_low_risk @user_profile_note @user_profile_deletenote @C16877
   Scenario: [General]Can Delete Note To A User Profile
     Given I Have Logged In As A Company Manager
@@ -112,7 +104,6 @@ Feature:
     And   I Search An Employee Named auto1.scriptonce1
     When  I Delete Note Added By Me
     Then  I Should See That The Note Has Been Deleted Successfully
-
 
   @general_low_risk @user_profile_note @user_profile_managenote @C16456
   Scenario: [General]Company Admin Can Manage Notes
@@ -123,13 +114,11 @@ Feature:
     When  I View The User's Profile
     Then  I Should See That I Can Manage The Notes Added To The User
 
-
   @general_low_risk @user_profile_note @C7585
   Scenario: [General]User Cannot View Notes Section On Own Profile
     Given I Have Logged In As A Company Employee
     When  I Go To The "Menu Profile" Section
     Then  I Should Not Be Able To See Notes Section
-
 
 #  NOTE: currently can only be run on tmspayrolldev.dev
   @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_placeholder @C19761
@@ -140,7 +129,6 @@ Feature:
     When  I Search For An Employee With No Leave Policy
     And   I Edit The User's Employment Details Section
     Then  I Should See The Placeholder For No Leave Policy
-
 
 #  NOTE: currently can only be run on tmspayrolldev.dev
   @general_low_risk @user_paymentdetails @user_empdetails_leavepolicy_assign @C19762
@@ -189,12 +177,3 @@ Feature:
 #    And   I Associate 2 Cost Centres To The User
 #    And   I Assign The Split Percent Values For The Cost Centres As 59.23 And 60.77
 #    Then  I Should Be Able To See The Error Message When Split % Are Decimal Values
-
-
-
-
-
-
-
-
-

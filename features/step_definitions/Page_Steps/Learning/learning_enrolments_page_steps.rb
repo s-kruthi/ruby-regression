@@ -6,12 +6,10 @@ def EnrolToCourse()
   Sleep_Until(WaitForAnElementByXpathAndTouchTheIndex(ENROL_BUTTON_ID, 0))
 end
 
-
 def VerifyEnrolmentToCourse()
   #Verify that the user has been enrolled to the course id
   $driver.find_element(:xpath,"//a[contains(@href, #{@course_id})]").text == "Enrolled"
 end
-
 
 def VerifyUnenrollmentToCourse()
   enrolment = $daos.get_enrolment_status(@course[:course_id], @user_id[:id])
@@ -26,7 +24,6 @@ def VerifyUnenrollmentToCourse()
     end
   end
 end
-
 
 def CheckUserEnrolledCourse(self_unenroll_allowed)
   if self_unenroll_allowed == "Yes"
@@ -46,13 +43,11 @@ def CheckUserEnrolledCourse(self_unenroll_allowed)
   puts COLOR_BLUE + "User is enrolled to course " + @course[:fullname] + " which has self unenrol set"
 end
 
-
 def GoToCourseViewPageToUnenrol()
   Sleep_Until(WaitForAnElementByXpathAndTouch(ENROLLED_BUTTON_ID))
   #get course id
   @course_id = $driver.current_url.split('/').pop
 end
-
 
 def UnenrolFromCourse()
   Sleep_Until(WaitForAnElementByXpathAndTouch(UNENROL_BUTTON_ID))
@@ -61,11 +56,9 @@ def UnenrolFromCourse()
   Sleep_Until(PressConfirm())
 end
 
-
 def CheckNoUnenrolButton()
   Sleep_Until(VerifyAnElementNotExist("xpath", UNENROL_BUTTON_ID))
 end
-
 
 def CheckCoursesEnroled()
   #check enroled courses match the count on My Learning page
@@ -76,7 +69,6 @@ def CheckCoursesEnroled()
     puts COLOR_GREEN + "Enroled Course Count matches"
   end
 end
-
 
 def CheckCourseDetail(field_name)
   case field_name
@@ -91,13 +83,11 @@ def CheckCourseDetail(field_name)
   end
 end
 
-
 def GoToEnrolledUserPage()
   Sleep_Until($driver.navigate.to($site_url))
   enrol_user_url = $driver.current_url.chomp('/dashboard')
   $driver.navigate.to("#{enrol_user_url}/admin/course/#{$random_course_id}/enrolments")
 end
-
 
 def BulkEnrolUsersToThatCourse()
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch("Bulk Enrol Users"))
@@ -106,7 +96,6 @@ def BulkEnrolUsersToThatCourse()
   Sleep_Until(WaitForAnElementByCSSAndTouch('button[data-action="run"]'))
   sleep(7)
 end
-
 
 def VerifyAllSelectedUsersGotBulkEnrolledToTheCourse(course_id)
   SearchDatabaseForASpecificData(TMSFULL_DATABASE,FetchBulkEnrolCount(course_id))
@@ -118,11 +107,9 @@ def VerifyAllSelectedUsersGotBulkEnrolledToTheCourse(course_id)
   end
 end
 
-
 def FetchBulkEnrolCount(course_id)
   "select COUNT(*) from epms_lms_course_enrolment where course_id ='#{course_id}' order by id DESC LIMIT 10"
 end
-
 
 def SearchForTheCourseUnderEnrolmentTab(course_name)
   Sleep_Until($driver.find_element(:id, "s2id_autogen1"))

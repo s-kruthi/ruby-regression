@@ -23,7 +23,6 @@ def DeleteSecurityProfile()
   puts COLOR_BLUE + ("deleting security profile " + @profile_name).upcase
 end
 
-
 def AddSecurityProfile(profile_type, profile_name)
   Sleep_Until(ClickElement('xpath', SECURITY_PROFILES_ADD_ID))
 
@@ -33,7 +32,6 @@ def AddSecurityProfile(profile_type, profile_name)
   profile_desc = 'Profile having ' + profile_type
   Sleep_Until(UseCkeditorToEnterText(profile_desc, 0))
 end
-
 
 def EditSecurityProfile()
   if @no_users
@@ -59,7 +57,6 @@ def EditSecurityProfile()
 
 end
 
-
 # def VerifyTabs()
 #   case @profile_type
 #     when 'Learning Administrator Page Permissions'
@@ -74,7 +71,6 @@ end
 #   end
 # end
 
-
 def AddUserSecurityProfile(user_name)
   Sleep_Until(ClickElement('xpath', SECURITY_PROFILES_USERSTAB_ID))
 
@@ -88,7 +84,6 @@ def AddUserSecurityProfile(user_name)
   Sleep_Until(VerifySuccessAlertMessage(SECURITY_PROFILES_USERSSUCCESSMSG_ID, SECURITY_PROFILES_USERS_SUCCESSMSG_VALUE))
   Sleep_Until(ClickElement('xpath',SECURITY_PROFILES_SUMMARYTAB_ID))
 end
-
 
 def SelectReport(profile_type, table)
 

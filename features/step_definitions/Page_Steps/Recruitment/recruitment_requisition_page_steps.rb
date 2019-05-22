@@ -12,7 +12,6 @@ def GoToRecruitmentRequisitionAddPage(new_requisition_btn)
   WaitForAnElementByXpathAndTouch(new_requisition_btn)
 end
 
-
 def EnterNewRecruitmentRequisitionDetails(pos_index_arrow,pos_index_arrow_id,pos_index_class,pos_index_class_id,loc_index_arrow,loc_index_arrow_id,loc_index_class,loc_index_class_id,num_of_position,num_position_input,calender_duedate,requisition_duedate,calender_done_btn)
   sleep(1)
   WaitForDropdownByClassAndTouchTheIndex(pos_index_arrow,pos_index_arrow_id)
@@ -33,12 +32,10 @@ def EnterNewRecruitmentRequisitionDetails(pos_index_arrow,pos_index_arrow_id,pos
   sleep(1)
 end
 
-
 def CreateANewRecruitmentRequisition(save_btn)
   WaitForAnElementByXpathAndTouch(save_btn)
   sleep(3)
 end
-
 
 def GoToNewJobPostTabUnderARequisition(my_requisition,job_ad_link,new_job_post_link)
   WaitForAnElementByLinkTextAndTouch(my_requisition)
@@ -48,7 +45,6 @@ def GoToNewJobPostTabUnderARequisition(my_requisition,job_ad_link,new_job_post_l
   WaitForAnElementByLinkTextAndTouch(new_job_post_link)
   sleep(2)
 end
-
 
 def AddTheJobDetailsAndSubmitIt(salary_from,salary_from_value,salary_to,salary_to_value,jb_start_date_btn,jb_start_date,jb_end_date,jb_end_date_value,internal_carrer_btn,external_carrer_btn)
   $driver.find_element(:css, 'input[ng-model="jobAd.salaryFrom"]').clear
@@ -70,11 +66,9 @@ def AddTheJobDetailsAndSubmitIt(salary_from,salary_from_value,salary_to,salary_t
   sleep(1)
 end
 
-
 def SaveTheJobAdAndGoToTheLandingPage(save_job)
   WaitForAnElementByCSSAndTouch(save_job)
 end
-
 
 def SignupAndApplyAsACandidate()
   sleep(1)
@@ -86,7 +80,6 @@ def SignupAndApplyAsACandidate()
     cookies policy: 'compatibility', clear_each_iteration: true
     threads count: 1,loops: 1 do
       visit name: 'Home page', url: "#{test_site}/careers/portal/login/"
-
 
       visit name: 'signup a new user', url: "#{test_site}/careers/portal/register",
             method: 'POST',fill_in: {
@@ -156,7 +149,6 @@ def SignupAndApplyAsACandidate()
 
 end
 
-
 def CheckTheCandidateAppearsUnderNewStatus(new_status)
   GoToThePage('https://staging5.dev.elmodev.com/controlpanel/recruitment/requisition/job-app/43')
   sleep(3)
@@ -166,7 +158,6 @@ def CheckTheCandidateAppearsUnderNewStatus(new_status)
   $driver.find_elements(:class, "dropdown-toggle")[9].click
 
 end
-
 
 def MoveTheCandidateFromNewToNotSuitable(add_to_notsuitable)
   WaitForAnElementByCSSAndTouch(add_to_notsuitable)
@@ -181,7 +172,6 @@ def MoveTheCandidateFromNewToNotSuitable(add_to_notsuitable)
 
 end
 
-
 def VerifyThecandidateAppearsUnderNotSuitableCategory()
   if
   $driver.find_elements(:class, "recruitment-candidate-name")[0].text.include? "#{@new_candidate}"
@@ -191,12 +181,10 @@ def VerifyThecandidateAppearsUnderNotSuitableCategory()
   end
 end
 
-
 def SearchARequisition(requisition_list_search_box_id, requisition_name, requisition_search_btn_id)
   Sleep_Until($driver.find_element(:xpath, requisition_list_search_box_id).send_keys(requisition_name))
   Sleep_Until($driver.find_element(:xpath, requisition_search_btn_id).click)
 end
-
 
 def SelectRequisitionStatus(requisition_status)
   #Since we dont have the Closed status in the dropdown and the select from select2 makes use of index
@@ -217,19 +205,16 @@ def SelectRequisitionStatus(requisition_status)
   SelectFromSelect2Dropdown(REQUISITION_STATUS_INDEX_ID, 0, REQUISITION_STATUS_RESULT_ID, requisition_status)
 end
 
-
 def SelectActionToCandidate(action)
   @action = action
   Sleep_Until(ClickMenuOfFirstItemFromTable(CANDIDATE_ACTION_DROPDOWN_ID, action))
 end
-
 
 def SearchCandidate()
   @requisition_candidate = @requisition[:candidate_fn] + ' ' + @requisition[:candidate_ln]
   Sleep_Until(WaitForAnElementByIdAndInputValue(CANDIDATE_SEARCH_BOX_ID, @requisition_candidate))
   Sleep_Until(WaitForAnElementByXpathAndTouch(CANDIDATE_SEARCH_BUTTON_ID))
 end
-
 
 def CheckForVendorEmail()
   #concatenating the retrieved vendor's name and email
@@ -243,7 +228,6 @@ def CheckForVendorEmail()
   #not using adding the identifier to page elements since passing vendor parameter
   Sleep_Until(VerifyAnElementExists('xpath', '//li[@class="select2-search-choice"]/div[contains(.,vendor)]'))
 end
-
 
 def ClickRequisition(requisition_search_result_title_id)
   req_title = @requisition[:requisition_title_display] + ' (' + (@requisition[:req_id].to_s) +')'
@@ -267,7 +251,6 @@ def ClickRequisition(requisition_search_result_title_id)
   end
 end
 
-
 def EnterRequisitionNote()
   #clear the contents if any
   Sleep_Until($driver.find_element(:id, REQUISITION_NOTE_ID).clear)
@@ -289,13 +272,11 @@ def EnterRequisitionNote()
   PressEnterOK()
 end
 
-
 def CheckNoteInRequisition()
   $driver.find_element(:xpath, REQUISITION_NOTE_ADDEDBY_ID).text.include? "Company Admin omar"
   $driver.find_element(:xpath, REQUISITION_NOTE_ADDEDBY_ID).text.include? @time_req_note_added
   puts COLOR_GREEN + "Note has been added to the Requisition"
 end
-
 
 def GoToRequisitionSection(section_name)
   case section_name
@@ -305,11 +286,9 @@ def GoToRequisitionSection(section_name)
   Sleep_Until(WaitForAnElementByXpathAndTouch(identifier))
 end
 
-
 def ConfirmDeletion()
   Sleep_Until(WaitForAnElementByIdAndTouch('deleteRequisitionNoteBtn'))
 end
-
 
 def VerifyDeletion()
   Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, REQUISITION_NOTE_DEL_MSG))
@@ -320,7 +299,6 @@ def VerifyDeletion()
     And   I Should See The Add Note Button For The Note
         }
 end
-
 
 def VerifyButtons(presence, button_name)
   if button_name == "Edit"
@@ -339,14 +317,12 @@ def VerifyButtons(presence, button_name)
   end
 end
 
-
 def VerifyNoteDetails()
   req_updated_by = @requisition[:first_name] + ' '+ @requisition[:last_name]
   time_updated = Time.at(@requisition[:requisition_note_updated_at]).strftime("%d/%m/%Y %H:%M")
 
   $driver.find_element(:xpath , REQUISITION_NOTE_ADDEDBY_ID).text.eql? ("Last updated by "+ req_updated_by +" | "+time_updated)
 end
-
 
 def ViewRequisitionForApproval()
   req_title = @requisition[:requisition_title_display] + ' (' + (@requisition[:req_id].to_s) +')'
@@ -373,11 +349,9 @@ def ViewRequisitionForApproval()
   end
 end
 
-
 def ClickOnRequisitionTitle(requisition_search_result_title_id)
   Sleep_Until(ClickElement('xpath', REQUISITION_SEARCH_RESULT_TITLE_ID))
 end
-
 
 def ComposeEmail()
   #enter subject for the mail
@@ -392,14 +366,12 @@ def ComposeEmail()
   Sleep_Until(select_a_file(BROWSE_FILE_ID, file_for_upload))
 end
 
-
 def SendEmailToCandidate()
   Sleep_Until(ClickElement('xpath', REQUISITION_EMAILCANDIDATE_SEND_ID))
 
   #capturing the time when the email sent, subtracting 1 sec since capture is after clicking
   @time_email_sent = Time.now.to_i - 1
 end
-
 
 def VerifyRecruitmentMailToCandidate()
   #getting the time from the db
@@ -410,7 +382,6 @@ def VerifyRecruitmentMailToCandidate()
 
   puts COLOR_GREEN + "Found the db entry for the mail sent at " + @time_email_sent.to_s
 end
-
 
 def SelectCandidate(num_select)
   if num_select == 'All The'
