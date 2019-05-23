@@ -29,7 +29,7 @@ end
 #   ##This requires logic change to determine the landing page as that one does not have a hyperlink
 # end
 
-And(/^I Should Be Able To Click (.*) Sub-Tab$/i) do |sub_tab_name|
+And(/^I Should Be Able To Click "(.*)" Sub-Tab$/i) do |sub_tab_name|
 
   case sub_tab_name
 
@@ -65,7 +65,7 @@ And(/^I Should Be Able To Click (.*) Sub-Tab$/i) do |sub_tab_name|
   end
 end
 
-And(/^I Search An Employee Named (.*)$/i) do |employee_name|
+And(/^I Search An Employee Named "(.*)"$/i) do |employee_name|
   search_for_input(SEARCH_EMPLOYEE_INPUT_ID, employee_name, SEARCH_EMPLOYEE_BTN_ID)
   click_on_search_result(SEARCH_EMPLOYEE_LIST_CLASS)
 end
@@ -155,7 +155,7 @@ Then(/^I Should See That The Note Has Been Deleted Successfully$/i) do
   VerifyDeletionOfNote()
 end
 
-And(/^I Search For A User named ([\w\s]+)$/i) do |user_name|
+And(/^I Search For A User Named "([\w\s]+)"$/i) do |user_name|
   $driver.find_element(:id, USERS_SEARCH_BOX_ID).send_keys(user_name)
   Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_SEARCH_BUTTON_ID))
 end

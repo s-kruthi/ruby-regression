@@ -2,8 +2,8 @@ When(/^I Click On The Enrol Button For A Course$/i) do
   EnrolToCourse()
 end
 
-Then(/^I Should See The Success Message For The (Enrolment|Unenrollment)$/i) do | enrolment_unerollment |
-  if enrolment_unerollment == "Enrolment"
+Then(/^I Should See The Success Message For The "(Enrolment|Unenrolment)"$/i) do | enrolment_unerolment |
+  if enrolment_unerolment == "Enrolment"
     SUCCESS_MSG_VALUE = ENROL_SUCCESS_MSG_VALUE
   else
     SUCCESS_MSG_VALUE = UNENROLL_SUCCESS_MSG_VALUE
@@ -11,11 +11,11 @@ Then(/^I Should See The Success Message For The (Enrolment|Unenrollment)$/i) do 
   Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, SUCCESS_MSG_VALUE))
 end
 
-And(/^I Should See That I Am (Enrolled|Unenrolled) To The Course$/i) do | enrolment_unenrollment |
-  if enrolment_unenrollment == "Enrolled"
+And(/^I Should See That I Am (Enrolled|Unenrolled) To The Course$/i) do | enrolment_unenrolment |
+  if enrolment_unenrolment == "Enrolled"
     VerifyEnrolmentToCourse()
   else
-    VerifyUnenrollmentToCourse()
+    VerifyUnenrolmentToCourse()
   end
 end
 

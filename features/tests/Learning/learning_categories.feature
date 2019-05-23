@@ -9,7 +9,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Categories" Under "Learning" Section
-    When  I Click On New Category Button
+    When  I Click On "New Category" Button
     And   I Enter New Category Details
     Then  I Should Be Able To Save Course Category
 
@@ -28,5 +28,5 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Categories" Under "Learning" Section
-    When  I Click On Visible Button Next To A Category I Want To Hide/unhide
+    When  I Click On Visible Button Next To A Category I Want To Hide/Unhide
     Then  The Visibility Of That Particular Category Should Be Changed

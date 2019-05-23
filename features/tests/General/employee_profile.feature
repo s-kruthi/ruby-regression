@@ -19,30 +19,30 @@ Feature:
   Scenario: [General]View Employee Profile to Verify Sub Tabs
     Given I Have Logged In As A Company Admin
     And   I Go To The "Menu Profile" Section
-    And   I Should Be Able To Click Resume Sub-Tab
-    And   I Should Be Able To Click My Career Sub-Tab
-    And   I Should Be Able To Click Personal Details Sub-Tab
-    And   I Should Be Able To Click Payment Details Sub-Tab
-    And   I Should Be Able To Click Recognition Sub-Tab
+    And   I Should Be Able To Click "Resume" Sub-Tab
+    And   I Should Be Able To Click "My Career" Sub-Tab
+    And   I Should Be Able To Click "Personal Details" Sub-Tab
+    And   I Should Be Able To Click "Payment Details" Sub-Tab
+    And   I Should Be Able To Click "Recognition" Sub-Tab
 
   @ViewAnotherEmployeeDetails @general_low_risk
   Scenario: [General]View Employee Profile to Verify Sub Tabs
     Given I Have Logged In As A Company Manager
     And   I Go To The "Menu My Team" Section
-    And   I Search An Employee Named auto1.scriptonce1
+    And   I Search An Employee Named "auto1.scriptonce1"
 #    Then  I Should Be Able To View The Employee Profile for auto1.scriptonce1 And Verify Email Address auto1.scriptonce1@elmodev.com
-#    And   I Should Be Able To Click Activity Sub-Tab
-    And   I Should Be Able To Click Resume Sub-Tab
-    And   I Should Be Able To Click My Career Sub-Tab
-    And   I Should Be Able To Click Personal Details Sub-Tab
-    And   I Should Be Able To Click Payment Details Sub-Tab
-    And   I Should Be Able To Click Recognition Sub-Tab
+#    And   I Should Be Able To Click "Activity" Sub-Tab
+    And   I Should Be Able To Click "Resume" Sub-Tab
+    And   I Should Be Able To Click "My Career" Sub-Tab
+    And   I Should Be Able To Click "Personal Details" Sub-Tab
+    And   I Should Be Able To Click "Payment Details" Sub-Tab
+    And   I Should Be Able To Click "Recognition" Sub-Tab
 
   @general_low_risk @user_profile_note @user_profile_addnote @C16458
   Scenario Outline: [General]Can Add Note To A User Profile With Different Visibility Settings
     Given I Have Logged In As A Company Manager
     And   I Go To The "Menu My Team" Section
-    And   I Search An Employee Named auto1.scriptonce1
+    And   I Search An Employee Named "auto1.scriptonce1"
     When  I Click On "Add New Note" Button
     And   I Enter Note
     And   I Add An Attachment To The Note
@@ -92,7 +92,7 @@ Feature:
   Scenario: [General]Can Edit Note To A User Profile
     Given I Have Logged In As A Company Manager
     And   I Go To The "Menu My Team" Section
-    And   I Search An Employee Named auto1.scriptonce1
+    And   I Search An Employee Named "auto1.scriptonce1"
     When  I Edit Note Added By Me
     And   I Click On Save Note Button
     Then  I Should See That The Note Has Been Edited Successfully
@@ -101,7 +101,7 @@ Feature:
   Scenario: [General]Can Delete Note To A User Profile
     Given I Have Logged In As A Company Manager
     And   I Go To The "Menu My Team" Section
-    And   I Search An Employee Named auto1.scriptonce1
+    And   I Search An Employee Named "auto1.scriptonce1"
     When  I Delete Note Added By Me
     Then  I Should See That The Note Has Been Deleted Successfully
 
@@ -110,7 +110,7 @@ Feature:
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Users" Under "General" Section
-    And   I Search For A User named auto1 scriptonce
+    And   I Search For A User Named "auto1 scriptonce1"
     When  I View The User's Profile
     Then  I Should See That I Can Manage The Notes Added To The User
 
@@ -149,21 +149,21 @@ Feature:
 #    And   I Go To "Users" Under "General" Section
 #    When  I Search For An Employee Associated With Single/No Cost Centre
 #    And   I Edit The User's Profile
-#    Then  I Should Be Able To Associate 3 Cost Centres To The User
+#    Then  I Should Be Able To Associate "3" Cost Centres To The User
 #    And   I Should Be Able To Assign Split Percent Values For The Cost Centres
 #
 #
 ##  NOTE: currently can only be run on tmspayrolldev.dev
 #  @general_low_risk @user_details_costcentre @user_details_mulitple_costcentre_err @C19744
-#  Scenario: [General] Company Admin Can View Error Message When Split % Does Not Sum Upto 100
+#  Scenario: [General] Company Admin Can View Error Message When Split % Does Not Sum Upto "100"
 #    Given I Have Logged In As A Company Admin
 #    And   I Go To Admin Settings
 #    And   I Go To "Users" Under "General" Section
 #    When  I Search For An Employee Associated With Single/No Cost Centre
 #    And   I Edit The User's Profile
-#    And   I Associate 2 Cost Centres To The User
-#    And   I Assign The Split Percent Values For The Cost Centres As 59 And 61
-#    Then  I Should Be Able To See The Error Message When Split % Does Not Sum Upto 100
+#    And   I Associate "2" Cost Centres To The User
+#    And   I Assign The Split Percent Values For The Cost Centres As "59" And "61"
+#    Then  I Should Be Able To See The Error Message When Split % Does Not Sum Upto "100"
 #
 #
 #  #  NOTE: currently can only be run on tmspayrolldev.dev
@@ -174,6 +174,6 @@ Feature:
 #    And   I Go To "Users" Under "General" Section
 #    When  I Search For An Employee Associated With Single/No Cost Centre
 #    And   I Edit The User's Profile
-#    And   I Associate 2 Cost Centres To The User
-#    And   I Assign The Split Percent Values For The Cost Centres As 59.23 And 60.77
+#    And   I Associate "2" Cost Centres To The User
+#    And   I Assign The Split Percent Values For The Cost Centres As "59.23" And "60.77"
 #    Then  I Should Be Able To See The Error Message When Split % Are Decimal Values

@@ -4,7 +4,7 @@ Feature:
 
   @recruitment_create_notification
   Scenario: [Recruitment]Can Create Recruitment Related Notification
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To Admin Settings
     And   I Go To "Notifications" Under "General" Section
     When  I Click On "Add Notification" Button
@@ -14,7 +14,7 @@ Feature:
 
   @recruitment_copy_notification
   Scenario: [Recruitment]Can Create A Copy Of Recruitment Related Notification
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To Admin Settings
     And   I Go To "Notifications" Under "General" Section
     When  I Search For "Requisition Withdrawn" Notification
@@ -23,7 +23,7 @@ Feature:
 
   @recruitment_edit_notification
   Scenario: [Recruitment]Can Edit Recruitment Related Notification
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To Admin Settings
     And   I Go To "Notifications" Under "General" Section
     When  I Search For "Requisition Withdrawn-copy" Notification
@@ -32,7 +32,7 @@ Feature:
 
   @recruitment_deactivate_notification
   Scenario: [Recruitment]Can Deactivate Recruitment Related Notification
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To Admin Settings
     And   I Go To "Notifications" Under "General" Section
     When  I Search For "Requisition Withdrawn-copy1" Notification
@@ -41,7 +41,7 @@ Feature:
 
   @recruitment_activate_notification
   Scenario: [Recruitment]Can Activate Recruitment Related Notification
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To Admin Settings
     And   I Go To "Notifications" Under "General" Section
     When  I Search For "Requisition Withdrawn-copy1" Notification
@@ -50,7 +50,7 @@ Feature:
 
   @recruitment_delete_notification
   Scenario: [Recruitment]Can Activate Recruitment Related Notification
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To Admin Settings
     And   I Go To "Notifications" Under "General" Section
     When  I Search For "Requisition Withdrawn-copy1" Notification

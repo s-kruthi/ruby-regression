@@ -8,7 +8,7 @@ Feature:
 
   @add_requisition @recruitment_high_risk
   Scenario: [Recruitment]Create a Requisition
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And I Go To The "Menu Recruitment" Section
     When  I Click on New Requisition Button
     And   I Enter New Requisition Details
@@ -16,7 +16,7 @@ Feature:
 
   @add_candidate @recruitment_high_risk
   Scenario: [Recruitment]Create a New Candidate for Recruitment
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And I Go To The "Recruitment Candidates" Section
     When I Click on New Candidate Button
     And I Enter New Candidate Details
@@ -40,7 +40,7 @@ Feature:
   #Currently can be run only on ningning01
   @recruitment_low_risk @candidate_email_vendor_cc @C16610
   Scenario: [Recruitment]Vendor Emailid In CCfield Of Email To Candidate
-   Given I Have Logged In as a Recruitment Admin
+   Given I Have Logged In As A Recruitment Admin
    And I Go To The "Menu Recruitment" Section
    And I Click On "Open Requisitions" Tab
    And I Search For A Specific Requisition Having Vendor Added Candidates
@@ -52,7 +52,7 @@ Feature:
   #Currently can be run only on ningning01
   @recruitment_low_risk @candidate_offer_vendor_cc @C16612
   Scenario: [Recruitment]Vendor Emailid In CCfield Of Offer To Candidate
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
     And   I Click On "Open Requisitions" Tab
     And   I Search For A Specific Requisition Having Vendor Added Candidates
@@ -64,7 +64,7 @@ Feature:
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_add_note
   Scenario: [Recruitment]Ability To Add Notes To A Requisition
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
     And   I Click On "Open Requisitions" Tab
     And   I Search For A Requisition Having No Notes
@@ -77,21 +77,21 @@ Feature:
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note
   Scenario: [Recruitment]Ability To Add Notes To A Requisition
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
     And   I Click On "Open Requisitions" Tab
     And   I Search For A Requisition Having Notes
     And   I Click On The Specific Requisition
     When   I Go To The Requisition Overview Page
-    Then  I Should See The Edit Button For The Note
-    And   I Should See The Delete Button For The Note
-    And   I Should Not See The Add Note Button For The Note
+    Then  I Should "See" The "Edit" Button For The Note
+    And   I Should "See" The "Delete" Button For The Note
+    And   I Should "Not See" The "Add Note" Button For The Note
     And   I Should See The Last Updated Details
 
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_edit
   Scenario: [Recruitment]Ability To Edit Notes Added To A Requisition
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
     And   I Click On "Open Requisitions" Tab
     And   I Search For A Requisition Having Notes
@@ -104,7 +104,7 @@ Feature:
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_delete
   Scenario: [Recruitment]Ability To Delete Notes Added To A Requisition
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
     And   I Click On "Open Requisitions" Tab
     And   I Search For A Requisition Having Notes
@@ -117,7 +117,7 @@ Feature:
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_view_only
   Scenario: [Recruitment]Ability To Only View Notes Added To A Finalised/Withdrawn Requisition
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
     And   I Click On "Open Requisitions" Tab
     And   I Search For A Finalised Requisition Having Notes
@@ -128,26 +128,26 @@ Feature:
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_view
   Scenario: [Recruitment]Ability To View Notes Added To A Requisition
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
     And   I Click On "Open Requisitions" Tab
     And   I Search For A Finalised Requisition Having Notes
     When  I Choose To View Requisition Details For The Requisition
-    Then  I Should Be Able To View The Requisition Note In the Modal
+    Then  I Should Be Able To View The Requisition Note In The "Modal"
 
   #Currently can be run only on ningning01
   @recruitment_low_risk @requisition_note_view
   Scenario: [Recruitment]Ability To View Notes Added To A Requisition
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
     And   I Click On "Approval" Tab
     When  I Search For A Pending Requisition Having Notes
     And   I View The Requisition For Approval
-    Then  I Should Be Able To View The Requisition Note In The Page
+    Then  I Should Be Able To View The Requisition Note In The "Page"
 
   @recruitment_low_risk @bulk_email_allcandidates
   Scenario: [Recruitment]Ability To Send Email In Bulk For All Candidates
-    Given I Have Logged In as a Recruitment Admin
+    Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
     And   I Click On "Requisitions" Tab
     And   I Search For The Requisition Titled Front End developer

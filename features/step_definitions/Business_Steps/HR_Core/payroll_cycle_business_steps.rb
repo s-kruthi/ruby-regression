@@ -41,11 +41,11 @@ Then(/^I Edit The Payroll Cycle Details$/i) do
   SavePayrollCycle()
 end
 
-Then(/^I Should See That The Weeks per annum Field Is Set With The Default Value$/i) do
+Then(/^I Should See That The Weeks Per Annum Field Is Set With The Default Value$/i) do
   CheckDefaultValue()
 end
 
-And(/^I Enter The Weeks Per Annum As ([^\"]*)$/i) do | weeks_per_annum |
+And(/^I Enter The Weeks Per Annum As "([^\"]*)"$/i) do | weeks_per_annum |
   EnterPayrollCycleDetails()
   ClearAndEnterWeeksperannum(weeks_per_annum)
 end
@@ -55,7 +55,7 @@ Then(/^I Should See The Error Message When The Weeks Per Annum Is Invalid$/i) do
   VerifyErrorAlertMessage(VERIFY_ALERT_ID, WEEKSERANNUM_ALERT_VALUE)
 end
 
-Then(/^I Should See That The Weeks per annum Field Information Message Is Displayed$/i) do
+Then(/^I Should See That The Weeks Per Annum Field Information Message Is Displayed$/i) do
   VerifyInfoMessage(VERIFY_INFO_ID, WEEKSERANNUM_INFO_VALUE)
 end
 

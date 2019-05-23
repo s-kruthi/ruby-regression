@@ -8,7 +8,7 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
 
   @smoke_learning1 @learning_high_risk @course_add @C238
   Scenario: [Learning]Learning Admin Creating New Course
-    Given I Have Logged In as a Learning Admin
+    Given I Have Logged In As A Learning Admin
     And   I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
     When  I Click On The New Course Button
@@ -17,32 +17,32 @@ Feature: As An Admin I Would Like to Manage Courses Which can Further Be Used To
 
   @smoke_learning1 @learning_low_risk @course_search @C792
   Scenario: [Learning]Learning Admin Searching New Course
-    Given I Have Logged In as a Learning Admin
+    Given I Have Logged In As A Learning Admin
     And   I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
-    When  I Search For A Specific Course Named DO NOT DELETE
+    When  I Search For A Specific Course Named "DO NOT DELETE"
     Then  I Should Be Able To Edit The Specific Course
 
   @smoke_learning1 @learning_low_risk @course_copy
   Scenario: [Learning]Learning Admin Deleting New Course
-    Given I Have Logged In as a Learning Admin
+    Given I Have Logged In As A Learning Admin
     And   I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
-    When  I Search For A Specific Course Named DO NOT DELETE
+    When  I Search For A Specific Course Named "DO NOT DELETE"
     Then  I Should Be Able To Copy The Specific Course
 
   @smoke_learning1 @learning_low_risk @course_delete @C6091
   Scenario: [Learning]Learning Admin Deleting New Course
-    Given I Have Logged In as a Learning Admin
+    Given I Have Logged In As A Learning Admin
     And   I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
-    When  I Search For A Specific Course With No Enrolments Named DO NOT DELETE
+    When  I Search For A Specific Course With "No Enrolments" Named "DO NOT DELETE"
     Then  I Should Be Able To Delete The Specific Course
 
   @learning_low_risk @course_notifications_add
   Scenario: [Learning]Learning Admin Adding Notification Templates in Course
-    Given I Have Logged In as a Learning Admin
+    Given I Have Logged In As A Learning Admin
     And   I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
-    When  I Edit A Specific Course Named DO NOT DELETE
+    When  I Edit A Specific Course Named "DO NOT DELETE"
     Then  I Should Be Able To Add All Notifications

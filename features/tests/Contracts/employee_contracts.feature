@@ -33,7 +33,7 @@ Feature:
 
   @employee_contract_copy @contracts_low_risk
   Scenario: [Contracts]Copy an Existing Contract
-    Given I Have Logged In as a ELMO Admin
+    Given I Have Logged In As A ELMO Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
     When I Search For An Employee Contract

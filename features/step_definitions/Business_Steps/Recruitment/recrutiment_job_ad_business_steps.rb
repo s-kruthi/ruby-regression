@@ -44,7 +44,7 @@ Then(/^I Should Be Able To Successfully Apply For The Job Ad$/i) do
   VerifySuccessAlertMessage(JOBAD_APPLY_SUCCESSFUL_ID, JOBAD_APPLY_SUCCESSFUL_VALUE)
 end
 
-Given(/^I Have Logged In To The External Career Portal (.*) Using The Username "(.*)" And Password "(.*)"$/i) do | ext_portal, user_name, user_pwd|
+Given(/^I Have Logged In To The External Career Portal "(.*)" Using The Username "(.*)" And Password "(.*)"$/i) do | ext_portal, user_name, user_pwd|
   LoginToExtPortal(ext_portal, user_name, user_pwd)
 end
 
@@ -56,7 +56,7 @@ And(/^I Search For The Job Ad Titled "(.*)"$/i) do | jobad_title |
   SearchJobAd(jobad_title)
 end
 
-And(/^I Should Be Able To Successfully "(Verify|Remove)" The "(Internal|External|Vendor)" Job Ad Named "(.*)" for Username "(.*)" From Database$/i) do |recruitment_action, recruitment_job_ad_type, recruitment_job_title, candidate_email|
+And(/^I Should Be Able To Successfully "(Verify|Remove)" The "(Internal|External|Vendor)" Job Ad Named "(.*)" For Username "(.*)" From Database$/i) do |recruitment_action, recruitment_job_ad_type, recruitment_job_title, candidate_email|
   case recruitment_action
     when "Verify"
       job_ad_result = $daos.verify_job_application_from_database(recruitment_job_ad_type, recruitment_job_title, candidate_email)
@@ -81,7 +81,7 @@ And(/^I Enter Candidate Details$/i) do
   Sleep_Until(WaitForAnElementByIdAndTouch(RECRUITMENT_JOBAD_NEXT_ID))
 end
 
-Given(/^I Am On The External Career Site (.*)$/i) do | external_portal |
+Given(/^I Am On The External Career Site "(.*)"$/i) do | external_portal |
   NavigateToCareerSite(external_portal)
 
   CreateExternalCandidateUsingJmeter()
@@ -99,15 +99,15 @@ Then(/^I Should Be Able To Successfully Create A Profile$/i) do
   expect($driver.current_url).to include('/view-profile')
 end
 
-When(/^I Want To Create (\d+) External Candidate Profiles*$/i) do | num_candidates |
+When(/^I Want To Create "(\d+)" External Candidate Profiles*$/i) do | num_candidates |
   CreateExternalCandidateProfiles(num_candidates)
 end
 
-Then(/^I Should Be Able To Create (\d+) External Candidate Profiles* Successfully$/i) do | num_candidates |
+Then(/^I Should Be Able To Create "(\d+)" External Candidate Profiles Successfully$/i) do | num_candidates |
   VerifyCreationExtCandidates(num_candidates)
 end
 
-Given(/^I Am Creating Candidates On The External Career Site (.*)$/i) do | external_portal |
+Given(/^I Am Creating Candidates On The External Career Site "(.*)"$/i) do | external_portal |
   NavigateToCareerSite(external_portal)
   CreateExternalCandidateUsingJmeter()
 end
@@ -130,7 +130,7 @@ Given(/^I Have Already Applied As An Employee For The Job Ad titled "(.*)"$/i) d
   }
 end
 
-And(/^I Try To Apply For The Job Ad Titled "(.*)" As An (Employee|External Candidate)$/i) do | job_ad, candidate_type |
+And(/^I Try To Apply For The Job Ad Titled "(.*)" As An "(Employee|External Candidate)"$/i) do | job_ad, candidate_type |
   @job_title = job_ad
   
   case candidate_type
@@ -151,7 +151,7 @@ Then(/^I Should Be Able To See A Message Alerting The User That The Job Has Alre
   VerifyAlertMessageForCandidate()
 end
 
-Given(/^I Have Already Applied As An External Candidate For The Job Ad titled "(.*)" On The External Career Portal (.*)$/i) do | job_ad, ext_career_portal |
+Given(/^I Have Already Applied As An External Candidate For The Job Ad titled "(.*)" On The External Career Portal "(.*)"$/i) do | job_ad, ext_career_portal |
   steps %{
     Given I Have Logged In To The External Career Portal #{ext_career_portal} Using The Username "auto_ext1.scriptonce1@elmodev.com" And Password "Admin1234567"
     And   I Go To The Browse Jobs Page

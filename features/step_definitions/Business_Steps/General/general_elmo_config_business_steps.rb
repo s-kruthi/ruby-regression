@@ -50,7 +50,7 @@ And(/^Verify That "Configuration Status" Is Displayed As "([^"]*)"$/i) do |confi
   pending
 end
 
-Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To ([\s\w]+)$/i) do |admin_type, configure_name, configured_value|
+Given(/^The "([a-zA-Z\s]+)" Configure The "([\s\w]+)" To "([\s\w]+)"$/i) do |admin_type, configure_name, configured_value|
   steps %Q{
     Given I Have Logged In As A #{admin_type}
     And I Go To Admin Settings
@@ -66,7 +66,7 @@ When(/^I Click On The Branding Selection Field$/i) do
   Sleep_Until(ClickElement('id', ELMO_CONFIG_BRANDING_ID))
 end
 
-Then(/^I Can Choose ([\w\s]+) As The Branding Selection Field$/i) do | branding_selection_value |
+Then(/^I Can Choose "([\w\s]+)" As The Branding Selection Field$/i) do | branding_selection_value |
   Sleep_Until(SelectFromDropdown(ELMO_CONFIG_BRANDING_SELECT_ID , branding_selection_value))
 end
 
@@ -82,7 +82,7 @@ Given(/^Contracts Is Disabled For New (:?OB )?Users$/i) do |user_type|
   $driver.quit
 end
 
-And(/^I Edit (\d+) Custom User Field[s]? In User Profile Setup$/i) do | num_custom_fields |
+And(/^I Edit "(\d+)" Custom User Field[s]? In User Profile Setup$/i) do | num_custom_fields |
   @custom_user_fields = $daos.get_custom_user_field_details(num_custom_fields).all
 
   @custom_user_fields.each do | details |

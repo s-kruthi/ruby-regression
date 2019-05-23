@@ -6,7 +6,7 @@ Feature:
   #  NOTE: currently can only be run on tmspayrolldev.dev
   @leave_low_risk @leave_policy_toggle_default
   Scenario: [Leave]Verify Leave Policy Toggles Default Settings
-    Given I Have Logged In as a HR Manager
+    Given I Have Logged In As A HR Manager
     And   I Go To Admin Settings
     And   I Go To "Leave Policy" Under "Leave Management" Section
     When  I Click On New Leave Policy Button
@@ -18,21 +18,21 @@ Feature:
   #  NOTE: currently can only be run on tmspayrolldev.dev
   @leave_low_risk @leave_policy_time_validation_LSL_default
   Scenario: [Leave]Verify Time Validation For Showing LSL
-    Given I Have Logged In as a HR Manager
+    Given I Have Logged In As A HR Manager
     And   I Go To Admin Settings
     And   I Go To "Leave Policy" Under "Leave Management" Section
     When  I Click On New Leave Policy Button
     And   I Set The Show Long Service Leave Balance to employees toggle to Enabled
-    Then  I Should See That The Show LSL after x years Default Value is 1
+    Then  I Should See That The Show LSL after x years Default Value is "1"
 
   #  NOTE: currently can only be run on tmspayrolldev.dev
   @leave_low_risk @leave_policy_time_validation_LSL
   Scenario: [Leave]Verify Time Validation For Showing LSL
-    Given I Have Logged In as a HR Manager
+    Given I Have Logged In As A HR Manager
     And   I Go To Admin Settings
     And   I Go To "Leave Policy" Under "Leave Management" Section
     And   I Edit A Leave Policy
     When  I Set The Show Long Service Leave Balance to employees toggle to Enabled
-    And   I Enter The Show LSL after x years To 36
+    And   I Enter The Show LSL after x years To "36"
     And   I Click The Save Button To Save The Leave Policy
     Then  I Should See A LSL Time Validation Error Message

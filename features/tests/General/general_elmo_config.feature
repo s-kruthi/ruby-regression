@@ -23,7 +23,7 @@ Feature:
 #    When  I Change "Lock course with enrolments" ELMO Configuration To "Disabled"
 #    Then  I Should Be Able To Save Configuration Details
   Scenario: [Genera]As an ELMO Admin, I want to be able to modify ELMO configuration under General Setup and change various settings
-    * The "ELMO Admin" Configure The "Lock course with enrolments" To No
+    * The "ELMO Admin" Configure The "Lock course with enrolments" To "No"
 
   @general_low_risk @elmo_config_general_configuration @branding_selection @C18930
   Scenario: [General]Can Set Legal Entity For Branding Selection Field
@@ -32,5 +32,5 @@ Feature:
     And   I Go To "General Setup" Under "General" Section
     And   I Click On "ELMO Configuration" Tab
     When  I Click On The Branding Selection Field
-    Then  I Can Choose Legal Entity As The Branding Selection Field
+    Then  I Can Choose "Legal Entity" As The Branding Selection Field
     And   I Should Be Able To Save Configuration Details

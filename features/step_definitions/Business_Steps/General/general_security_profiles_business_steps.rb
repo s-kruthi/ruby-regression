@@ -3,7 +3,7 @@ Then(/^I Should Be Able To See Security Profiles Under General Section$/i) do
   Sleep_Until(VerifyAnElementExists('xpath', SECURITY_PROFILES_ID))
 end
 
-And(/^I Can Add A Profile Of Type ([\w\s]+) Named As ([\w\s-]+)$/i) do | profile_type, profile_name |
+And(/^I Can Add A Profile Of Type "([\w\s]+)" Named As "([\w\s-]+)"$/i) do | profile_type, profile_name |
   @profile_type = profile_type
   AddSecurityProfile(profile_type, profile_name)
 end

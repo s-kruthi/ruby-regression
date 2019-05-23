@@ -15,7 +15,7 @@ And(/^I Enter Assignment Rules Details$/i) do
   Sleep_Until(EnterCourseTitle(ASSIGN_RULE_DESC_ID, ASSIGN_RULE_DESC_VALUE))
 end
 
-And(/^I Enter Assignment Rules Condition For (.*) As (.*)$/i) do |assignment_rule_condition_type, assignment_rule_condition_value|
+And(/^I Enter Assignment Rules Condition For "(.*)" As "(.*)"$/i) do |assignment_rule_condition_type, assignment_rule_condition_value|
   Sleep_Until(ClickOnAButtonByLastIndex(ASSIGN_RULE_ADD_COND_ID))
   Sleep_Until(SelectFromDropdown(ASSIGN_RULE_FIELDTYPE_ID, assignment_rule_condition_type))
 #Select the correct element ID based on the selected condition type. Only 3 types are supported at present (i.e. Manager, Location, Department)
@@ -32,7 +32,7 @@ And(/^I Enter Assignment Rules Condition For (.*) As (.*)$/i) do |assignment_rul
   end
 end
 
-And(/^I Enter Assignment Rules Required Course Name As (.*)/i) do |assign_rule_req_course_name|
+And(/^I Enter Assignment Rules Required Course Named As "(.*)"/i) do |assign_rule_req_course_name|
   course_list_result = $daos.get_assignment_rules_course_list_by_name(assign_rule_req_course_name)
   if !course_list_result.nil?
     ClickOnSelect2MultiSelectDropDownAndInputValue(ASSIGN_RULE_REQ_COURSE_CLASS_ID, course_list_result)
@@ -43,7 +43,7 @@ And(/^I Enter Assignment Rules Required Course Name As (.*)/i) do |assign_rule_r
   end
 end
 
-And(/^I Enter Assignment Rules Recommended Course Name As (.*)$/i) do |assign_rule_rec_course_name|
+And(/^I Enter Assignment Rules Recommended Course Named As "(.*)"$/i) do |assign_rule_rec_course_name|
   course_list_result = $daos.get_assignment_rules_course_list_by_name(assign_rule_rec_course_name)
   if !course_list_result.nil?
     ClickOnSelect2MultiSelectDropDownAndInputValue(ASSIGN_RULE_RECMD_COURSE_CLASS_ID, course_list_result)
