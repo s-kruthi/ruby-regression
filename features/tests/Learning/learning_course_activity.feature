@@ -336,14 +336,14 @@
       And   I Click On The Enrol Button For A Course
       And   I Click On "My Learning" Tab
       And   I Search For A Specific Course Named "DO NOT DELETE"
-      And   I Can View The Learning Course Named DO NOT DELETE
-      When  I Can View The Face-to-Face Session Named Test Face-to-Face
+      And   I Can View The "Learning Course" Named "DO NOT DELETE"
+      When  I Can View The "Face-to-Face Session" Named "Test Face-to-Face"
       And   I Should Be Able To "Sign Up" For That Session
       And   I Should Be Able To "Withdraw" For That Session
       Then  I Should Receive A Notification With Trigger Named "Learning.CourseNewEnrolmentTrigger" For Recipient "auto1.scriptonce1"
 
     @learning_low_risk @course_cpd_category_add @C1772
-    Scenario: As A Company Administrator, I Want To Manage Continuing Professional Development (Cpd) Categories
+    Scenario: As A Company Administrator, I Want To Manage Continuing Professional Development (CPD) Categories
       Given I Have Logged In As A Company Admin
       And   I Go To Admin Settings
       And   I Go To "Continuing Professional Development" Under "Learning" Section

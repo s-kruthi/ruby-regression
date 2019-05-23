@@ -1,4 +1,4 @@
-And(/^I Can View The (.*) Named (.*)$/i) do | link_type, link_name |
+And(/^I Can View The "(.*)" Named "(.*)"$/i) do | link_type, link_name |
   case link_type
     when "Learning Course"
       begin
