@@ -274,11 +274,11 @@
         |    No       | Enrolled      | Enabled  |
 
     @smoke_learning @learning_low_risk @course_face_to_face_session_management @C1829 @loc_transform
-    Scenario: As An Administrator I Want To Manage Face "2" Face Course Activity Sessions Such As Create Copy Edit Cancel Delete
+    Scenario: As An Administrator I Want To Manage Face-to-Face Course Activity Sessions Such As Create Copy Edit Cancel Delete
       #   Find the local_transforms.rb for the undefined Gherkin step
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A "Face-to-Face" Activity
-      And   I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
+      And   I Open The Activity Named "Test Face-to-Face" On Sections List Page After Editing
 #   COMMENT in the following step the function 'AddSessionTimings()' of saves session time to test data for validation
       Then  I Should Be Able To Create A Session With Status "Open" In The Face-to-Face Activity
       When  I Go To The Page Which Has The List Of Current Editing Item
@@ -293,18 +293,18 @@
       And   I Should Be Able To "Delete" A Session In The Face-to-Face Activity
 
     @smoke_learning @learning_low_risk @face_to_face_session_notifications @C745 @loc_transform
-      Scenario: As An Administrator I Want To Manage Face "2" Face Activity Session Notifications Such As Create Edit Delete
+      Scenario: As An Administrator I Want To Manage Face-to-Face Activity Session Notifications Such As Create Edit Delete
       #   Find the local_transforms.rb for the undefined Gherkin step
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A "Face-to-Face" Activity
-      When  I Open The Activity Named Test Face-to-Face On Sections List Page After Editing
+      When  I Open The Activity Named "Test Face-to-Face" On Sections List Page After Editing
       Then  I Should Be Able To "Create" Face To Face Notification With Name "Course Face-to-Face Confirmation"
       And   I Should Be Able To "Edit" Face To Face Notification With Name "Course Face-to-Face Confirmation"
       And   I Should Be Able To "Delete" Face To Face Notification With Name "Course Face-to-Face Confirmation"
 
     "@learning_low_risk @signup_attendance_manually_mark_attendance @C1830 @loc_transform
     Scenario: Signup Attendance To Face To Face Session And Mark User Attendance
-      Given A Face To Face Session With Status Over Is Created For A Course
+      Given A Face To Face Session With Status "Over" Is Created For A Course
       And   I Go To The Page Which Has The List Of Current Editing Item
       When  I Click On "Attendance" Button
       Then  I Should Be Able To Manually Signup "ELMO Company Admin"
@@ -316,7 +316,7 @@
 
     @smoke_learning @learning_low_risk @signup_attendance_bulk_mark_attendance @C1831 @C1832
     Scenario: Signup Attendance To Face To Face Session And Mark User Attendance
-      Given I Create A Random Course For Automation With Face-To-Face Activity
+      Given I Create A Random Course For Automation With "Face-To-Face" Activity
       And   I Have Logged In As A Company Admin
       And   I Go To The Face To Face Session Of The Course
       When  I Go To The Attendance Of The Session

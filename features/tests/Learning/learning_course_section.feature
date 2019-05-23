@@ -59,7 +59,7 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
     Given I Have Logged In As A Automation Company Admin
     And   I Go To Admin Settings
     And   I Go To "Enrolments" Under "Learning" Section
-    And   I Create A Random Course For Automation With Quiz Activity
+    And   I Create A Random Course For Automation With "Quiz" Activity
     And   I Search For The Randomly Created Course Under Enrolment
     And   I Choose To Mark An Enrolment As Complete
     Then  I Should See That The Enrolment Was Successfully Marked As Complete
@@ -73,7 +73,7 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
     Given I Have Logged In As A Automation Company Admin
     And   I Go To Admin Settings
     And   I Go To "Enrolments" Under "Learning" Section
-    And   I Create A Random Course For Automation With All Activity
+    And   I Create A Random Course For Automation With "All" Activity
     And   I Search For The Randomly Created Course Under Enrolment
     And   I Choose To Mark An Enrolment As Complete
     Then  I Should See That The Enrolment Was Successfully Marked As Complete

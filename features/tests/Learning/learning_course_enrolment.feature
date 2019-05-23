@@ -74,7 +74,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     When  I Click On "Create Filter" Button
     And   I Select "Employee Name" Select2 Dropdown As "DontTouchAutomationUser"
     Then  I Should Be Able to Create a Filter
-    And   I See A Filtered List Of Course Enrolment Returning User DontTouchAutomationUser AARON
+    And   I See A Filtered List Of Course Enrolment Returning User "DontTouchAutomationUser AARON"
 
   @smoke_learning8 @learning_high_risk @enrolment_filter_create @C797 @C798
   Scenario: [Learning]Learning Admin Can Create Save And Reuse A User Filter And Fetch User For Course Enrolment
@@ -87,4 +87,4 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     When  I Click On "Create Filter" Button
     And   I Select "Employee Name" Select2 Dropdown As "DontTouchAutomationUser"
     Then  I Should Be Able to Save a Filter
-    And   I See A Filtered List Of Course Enrolment Returning User DontTouchAutomationUser AARON
+    And   I See A Filtered List Of Course Enrolment Returning User "DontTouchAutomationUser AARON"

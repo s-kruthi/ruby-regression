@@ -478,7 +478,7 @@ Given(/^A Company Admin Creates A New Course With Unique Name$/i) do
       }
 end
 
-And(/^I Open The Activity Named (.*) On Sections List Page After Editing$/i) do |f2f_activity_name|
+And(/^I Open The Activity Named "(.*)" On Sections List Page After Editing$/i) do |f2f_activity_name|
   step 'I Go To The Page Which Has The List Of Current Editing Item'
   ClickOnFirstActivity(f2f_activity_name)
 end
@@ -510,13 +510,13 @@ Then(/^I Should Be Able To View All The Course Enrolments$/i) do
   end
 end
 
-And(/^I Choose To (Enable|Disable) Retrain For The Enrolment$/i) do |retrain_action|
+And(/^I Choose To "(Enable|Disable)" Retrain For The Enrolment$/i) do |retrain_action|
   #checks the first enrolment's retrain setting and then changes the setting if needed
   CheckRetrainSetting()
   ModifyRetrainSetting(retrain_action)
 end
 
-Then(/^I Should Be Able To See The Retrain (Enabled|Disabled) For The Enrolment$/i) do |retrain_setting|
+Then(/^I Should Be Able To See The Retrain "(Enabled|Disabled)" For The Enrolment$/i) do |retrain_setting|
   if $retrain_setting != 0 then
     PressModalClose()
   end
@@ -547,16 +547,16 @@ Then(/^I Should Be Able To "(Create|Edit|Delete)" Face To Face Notification With
   end
 end
 
-And(/^I Filter For Enrolments With (.*) Of (.*)$/i) do |filter_by, filter_value|
+And(/^I Filter For Enrolments With "(.*)" Of "(.*)"$/i) do |filter_by, filter_value|
   FilterEnrolments(filter_by, filter_value)
 end
 
-And(/^I Choose To (Edit|Delete) An Enrolment$/i) do |enrolment_action|
+And(/^I Choose To "(Edit|Delete)" An Enrolment$/i) do |enrolment_action|
   enrolment_action += " Enrolment"
   ClickMenuOfFirstItemFromTable(COURSE_LIST_DROPDOWN, enrolment_action)
 end
 
-And(/^I Edit The Enrolment (Start|Due) Date To Be "(.*)"$/i) do |date_type, date_value|
+And(/^I Edit The Enrolment "(Start|Due)" Date To Be "(.*)"$/i) do |date_type, date_value|
   pending "Blocked by PMS-14875"
   if date_value == "Today's Date"
     date_value = DateTime.now.strftime("%d/%m/%Y")
@@ -662,7 +662,7 @@ And(/^I Create A Random Course For Automation$/i) do
   puts $data_hash['course_id:']
 end
 
-And(/^I Create A Random Course For Automation With (.*) Activity$/i) do |activity_name|
+And(/^I Create A Random Course For Automation With "(.*)" Activity$/i) do |activity_name|
   #do DB query and pass the username to find userid and pass on to the next step
   Sleep_Until(ReturnDetailsOfAParticularUser(TMSFULL_DATABASE,DOC_USERNAME))
   puts $data_hash['first_name:']
@@ -670,13 +670,13 @@ And(/^I Create A Random Course For Automation With (.*) Activity$/i) do |activit
   Sleep_Until(CreateACourseWithActivityThroughServices(AUTO_COMP_ADMIN_NAME,AUTO_COMP_ADMIN_PASSWORD,"#{$data_hash['user_id:']}",activity_name))
 end
 
-And(/^I Go To The Enrolled User Section For That Course (.*)$/i) do |course_name|
+And(/^I Go To The Enrolled User Section For That Course "(.*)"$/i) do |course_name|
   Sleep_Until(ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,course_name))
   puts $data_hash['course_id:']
   GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
 end
 
-And(/^I See A Filtered List Of Course Enrolment Returning User (.*)$/i) do |learner_name|
+And(/^I See A Filtered List Of Course Enrolment Returning User "(.*)"$/i) do |learner_name|
   VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
 end
 
@@ -687,7 +687,7 @@ And(/^I Go To The Enrolled User Section Of That Randomly Created Course$/i) do
   #Sleep_Until(ReEnrolTheCandidateForCourse('Donttouchautomationuser'))
 end
 
-Given(/^A Face To Face Session With Status ([\w\s]+) Is Created For A Course$/i) do |session_status|
+Given(/^A Face To Face Session With Status "([\w\s]+)" Is Created For A Course$/i) do |session_status|
   steps %Q{
       Given A Company Admin Creates A New Course With Unique Name
       Then  I Should Be Able To Add A "Face-to-Face" Activity
