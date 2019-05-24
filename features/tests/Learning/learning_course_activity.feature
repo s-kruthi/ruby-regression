@@ -302,7 +302,7 @@
       And   I Should Be Able To "Edit" Face To Face Notification With Name "Course Face-to-Face Confirmation"
       And   I Should Be Able To "Delete" Face To Face Notification With Name "Course Face-to-Face Confirmation"
 
-    "@learning_low_risk @signup_attendance_manually_mark_attendance @C1830 @loc_transform
+    @learning_low_risk @signup_attendance_manually_mark_attendance @C1830 @loc_transform
     Scenario: Signup Attendance To Face To Face Session And Mark User Attendance
       Given A Face To Face Session With Status "Over" Is Created For A Course
       And   I Go To The Page Which Has The List Of Current Editing Item
