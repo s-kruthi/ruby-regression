@@ -30,31 +30,31 @@ Feature:
     When I Fill The Details Of A New Job Ad
     Then I Should be Able To Post The New Job
 
- @movecandidate @recruitment_high_risk
+  @movecandidate @recruitment_high_risk
   Scenario: [Recruitment]Move Candidate To Not Suitable category
     Given I Am Under A Recruitment Requisition
     And I Have A New candidate Applied for A Position
-   When I Move The Candidate From New To Notsuitable Category
-   Then I Should Be Able To View The Candidate Under Unsuccessful Category
+    When I Move The Candidate From New To Notsuitable Category
+    Then I Should Be Able To View The Candidate Under Unsuccessful Category
 
   #Currently can be run only on ningning01
   @recruitment_low_risk @candidate_email_vendor_cc @C16610
   Scenario: [Recruitment]Vendor Emailid In CCfield Of Email To Candidate
-   Given I Have Logged In As A Recruitment Admin
-   And I Go To The "Menu Recruitment" Section
-   And I Click On "Open Requisitions" Tab
-   And I Search For A Specific Requisition Having Vendor Added Candidates
-   And I Click On The Specific Requisition
-   When I Search For The Vendor Submitted Candidate
-   And I Choose To Send Email To The Candidate
-   Then I Can See The Vendor EmailId In The CC Field By Default
+    Given I Have Logged In As A Recruitment Admin
+    And I Go To The "Menu Recruitment" Section
+    And I Click On "Requisitions" Tab
+    And I Search For A Specific Requisition Having Vendor Added Candidates
+    And I Click On The Specific Requisition
+    When I Search For The Vendor Submitted Candidate
+    And I Choose To Send Email To The Candidate
+    Then I Can See The Vendor EmailId In The CC Field By Default
 
   #Currently can be run only on ningning01
   @recruitment_low_risk @candidate_offer_vendor_cc @C16612
   Scenario: [Recruitment]Vendor Emailid In CCfield Of Offer To Candidate
     Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
-    And   I Click On "Open Requisitions" Tab
+    And   I Click On "Requisitions" Tab
     And   I Search For A Specific Requisition Having Vendor Added Candidates
     And   I Click On The Specific Requisition
     When  I Search For The Vendor Submitted Candidate
@@ -66,7 +66,7 @@ Feature:
   Scenario: [Recruitment]Ability To Add Notes To A Requisition
     Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
-    And   I Click On "Open Requisitions" Tab
+    And   I Click On "Requisitions" Tab
     And   I Search For A Requisition Having No Notes
     And   I Click On The Specific Requisition
     And   I Go To The Requisition Overview Page
@@ -79,7 +79,7 @@ Feature:
   Scenario: [Recruitment]Ability To Add Notes To A Requisition
     Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
-    And   I Click On "Open Requisitions" Tab
+    And   I Click On "Requisitions" Tab
     And   I Search For A Requisition Having Notes
     And   I Click On The Specific Requisition
     When   I Go To The Requisition Overview Page
@@ -93,7 +93,7 @@ Feature:
   Scenario: [Recruitment]Ability To Edit Notes Added To A Requisition
     Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
-    And   I Click On "Open Requisitions" Tab
+    And   I Click On "Requisitions" Tab
     And   I Search For A Requisition Having Notes
     And   I Click On The Specific Requisition
     When  I Go To The Requisition Overview Page
@@ -106,7 +106,7 @@ Feature:
   Scenario: [Recruitment]Ability To Delete Notes Added To A Requisition
     Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
-    And   I Click On "Open Requisitions" Tab
+    And   I Click On "Requisitions" Tab
     And   I Search For A Requisition Having Notes
     And   I Click On The Specific Requisition
     When  I Go To The Requisition Overview Page
@@ -119,7 +119,7 @@ Feature:
   Scenario: [Recruitment]Ability To Only View Notes Added To A Finalised/Withdrawn Requisition
     Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
-    And   I Click On "Open Requisitions" Tab
+    And   I Click On "Requisitions" Tab
     And   I Search For A Finalised Requisition Having Notes
     And   I Click On The Specific Requisition
     When  I Go To The Requisition Overview Page
@@ -130,7 +130,7 @@ Feature:
   Scenario: [Recruitment]Ability To View Notes Added To A Requisition
     Given I Have Logged In As A Recruitment Admin
     And   I Go To The "Menu Recruitment" Section
-    And   I Click On "Open Requisitions" Tab
+    And   I Click On "Requisitions" Tab
     And   I Search For A Finalised Requisition Having Notes
     When  I Choose To View Requisition Details For The Requisition
     Then  I Should Be Able To View The Requisition Note In The "Modal"
