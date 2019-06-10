@@ -37,8 +37,10 @@ When(/^I Click On "([^"]*)" Item From Left Side Bar Under "([^"]*)" Section$/i) 
 end
 
 And(/^I Click On "([^"]*)" Tab$/i) do |tab_name_id|
-  ClickOnATab(tab_name_id)
-  sleep (3)
+  Sleep_Until(ClickOnATab(tab_name_id))
+
+  #Adding explicit sleep as some pages take a while to load up
+  sleep (2)
 end
 
 Then(/^I Should Be Able To Save Configuration Details$/i) do
