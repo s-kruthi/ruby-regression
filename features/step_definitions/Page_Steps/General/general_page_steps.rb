@@ -48,49 +48,55 @@ end
 
 def CreateUsers(loop, arg2, arg3, arg4, arg5, arg6)
   begin
-    #check if employee number and auto generation is enabled
-    set_empnum = $daos.get_epms_config_enabled('employeeNumberEnable')
-    empnum_autogen = $daos.get_epms_config_enabled('employeeNumberAutoGeneration')
-
+    #retrieve database values from epms_config table to determine which values should be filled out
+    config = {
+        employeeNumberEnable: $daos.get_epms_config_enabled('employeeNumberEnable'),
+        employeeNumberAutoGeneration: $daos.get_epms_config_enabled('employeeNumberAutoGeneration'),
+        countryEnable: $daos.get_epms_config_enabled('countryEnable'),
+        userfFieldsLocked_country: $daos.get_epms_config_enabled('userFieldsLocked_country')[:value].to_i,
+        stateEnable: $daos.get_epms_config_enabled('stateEnable'),
+        userFieldsLocked_state: $daos.get_epms_config_enabled('userFieldsLocked_state')[:value].to_i,
+        timezoneEnable: $daos.get_epms_config_enabled('timezoneEnable'),
+        mobileEnable: $daos.get_epms_config_enabled('mobileEnable'),
+        userFieldsLocked_mobile: $daos.get_epms_config_enabled('userFieldsLocked_mobile')[:value].to_i,
+        selectManager: $daos.get_epms_config_enabled('selectManager'),
+        userFieldsLocked_manager: $daos.get_epms_config_enabled('userFieldsLocked_manager')[:value].to_i,
+        dateOfBirthEnable: $daos.get_epms_config_enabled('dateOfBirthEnable'),
+        userFieldsLocked_dateOfBirth: $daos.get_epms_config_enabled('userFieldsLocked_dateOfBirth')[:value].to_i,
+        startDateEnable: $daos.get_epms_config_enabled('startDateEnable'),
+        userFieldsLocked_startDate: $daos.get_epms_config_enabled('userFieldsLocked_startDate')[:value].to_i,
+        userExpiryDateEnable: $daos.get_epms_config_enabled('userExpiryDateEnable'),
+        userFieldsLocked_expiryDate: $daos.get_epms_config_enabled('userFieldsLocked_expiryDate')[:value].to_i,
+        endDateEnable: $daos.get_epms_config_enabled('endDateEnable'),
+        userFieldsLocked_endDate: $daos.get_epms_config_enabled('userFieldsLocked_endDate')[:value].to_i,
+        employeeUserTypeEnable: $daos.get_epms_config_enabled('employeeUserTypeEnable'),
+        userFieldsLocked_employeeUserType: $daos.get_epms_config_enabled('userFieldsLocked_employeeUserType')[:value].to_i
+    }
+    
     #set employee number only if employee number is enabled and auto generation is disabled
-    Sleep_Until(SelectEmployeeNumber(NEW_USER_EMPLOYEE_NUMBER_ID, NEW_USER_DETAILS_MAP[:employee_number_value])) if (set_empnum[:value].to_i == 1 && empnum_autogen[:value].to_i == 0)
-
+    Sleep_Until(SelectEmployeeNumber(NEW_USER_EMPLOYEE_NUMBER_ID, NEW_USER_DETAILS_MAP[:employee_number_value])) if (!config[:employeeNumberEnable].nil? && config[:employeeNumberAutoGeneration][:value].to_i == 1 && config[:employeeNumberAutoGeneration][:value].to_i == 0)
     Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, @@first_name))
-
     Sleep_Until(EnterUserDetails(NEW_USER_LAST_NAME_ID, @@last_name))
-
     Sleep_Until(EnterUserDetails(NEW_USER_USERNAME_ID, @@user_name)) if $add_user_type == "EMP"
-
     Sleep_Until(EnterUserDetails(NEW_USER_EMAIL_ID, @@email_address))
-
-    Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_COUNTRY_ID,SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:country_value], SELECT2_DROPDOWN_RESULT_CLASS)) if $daos.get_epms_config_enabled('countryEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_country')[:value].to_i == 1
-
-    # Adding explicit sleep time since for some reason, State field takes a while to get populated after a country is selected
-    Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_STATE_ID,SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:state_value], SELECT2_DROPDOWN_RESULT_CLASS)) if $daos.get_epms_config_enabled('countryEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_country')[:value].to_i == 1
-
-    Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_TIMEZONE_ID,SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:timezone_value], SELECT2_DROPDOWN_RESULT_CLASS)) if $daos.get_epms_config_enabled('timezoneEnable')[:value].to_i == 1
-
-    Sleep_Until(EnterUserDetails(NEW_USER_MOBILE_ID, EM_USER_MOBILE_VALUE)) if $daos.get_epms_config_enabled('mobileEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_mobile')[:value].to_i == 1
-
-    Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID)) if arg5
-
-    Sleep_Until(SelectDate(SELECT_DATEOFBIRTH_ID, NEW_USER_DETAILS_MAP[:dateofbirth_value])) if $daos.get_epms_config_enabled('dateOfBirthEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_dateOfBirth')[:value].to_i == 1
-
-    Sleep_Until(SelectDate(SELECT_START_DATE_ID, arg6)) if $daos.get_epms_config_enabled('startDateEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_startDate')[:value].to_i == 1
-
-    Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, NEW_USER_DETAILS_MAP[:expiry_date_value])) if $daos.get_epms_config_enabled('userExpiryDateEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_expiryDate')[:value].to_i == 1
-
-    Sleep_Until(SelectDate(SELECT_END_DATE_ID, NEW_USER_DETAILS_MAP[:end_date_value])) if $daos.get_epms_config_enabled('endDateEnable')[:value].to_i == 1 && $daos.get_epms_config_enabled('profileFieldsRequired_endDate')[:value].to_i == 1
-
+    
+    #fill out the rest of the user details only if the option is enabled in 'User Profile Setup' and the editable value is not set to 'Nobody'
+    Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_COUNTRY_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:country_value], SELECT2_DROPDOWN_RESULT_CLASS)) if (!config[:countryEnable].nil? && config[:countryEnable][:value].to_i == 1 && config[:userfFieldsLocked_country] != 1)
+    Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_STATE_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:state_value], SELECT2_DROPDOWN_RESULT_CLASS)) if (!config[:stateEnable].nil? && config[:stateEnable][:value].to_i == 1 && config[:userFieldsLocked_state] != 1)
+    Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_TIMEZONE_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:timezone_value], SELECT2_DROPDOWN_RESULT_CLASS)) if (config[:timezoneEnable][:value].to_i == 1)
+    Sleep_Until(EnterUserDetails(NEW_USER_MOBILE_ID, EM_USER_MOBILE_VALUE)) if (!config[:mobileEnable].nil? && config[:mobileEnable][:value].to_i == 1 && config[:userFieldsLocked_mobile] != 1)
+    Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID)) if arg5 && (!config[:selectManager].nil? && config[:selectManager][:value].to_i == 1 && config[:userFieldsLocked_manager] != 1)
+    Sleep_Until(SelectDate(SELECT_DATEOFBIRTH_ID, NEW_USER_DETAILS_MAP[:dateofbirth_value])) if (!config[:dateOfBirthEnable].nil? && config[:dateOfBirthEnable][:value].to_i == 1 && config[:userFieldsLocked_dateOfBirth] != 1)
+    Sleep_Until(SelectDate(SELECT_START_DATE_ID, arg6)) if (!config[:startDateEnable].nil? && config[:startDateEnable][:value].to_i == 1 && config[:userFieldsLocked_startDate] != 1)
+    WaitForAnElementByXpathAndTouch(SELECT_ENABLE_EXPIRY_DATE_ID) if (!config[:userExpiryDateEnable].nil? && config[:userExpiryDateEnable][:value].to_i == 1 && config[:userFieldsLocked_expiryDate] != 1)
+    Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, NEW_USER_DETAILS_MAP[:expiry_date_value])) if (!config[:userExpiryDateEnable].nil? && config[:userExpiryDateEnable][:value].to_i == 1 && config[:userFieldsLocked_expiryDate] != 1)
+    Sleep_Until(SelectDate(SELECT_END_DATE_ID, NEW_USER_DETAILS_MAP[:end_date_value])) if (!config[:endDateEnable].nil? && config[:endDateEnable][:value].to_i == 1 && config[:userFieldsLocked_endDate] != 1)
+    Sleep_Until(SingleSelectFromSelect2Dropdown(SELECT_USER_TYPE_DROPDOWN_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:employee_user_type], SELECT2_DROPDOWN_RESULT_CLASS)) if (!config[:employeeUserTypeEnable].nil? && config[:employeeUserTypeEnable][:value].to_i == 1 && config[:userFieldsLocked_employeeUserType] != 1)
     Sleep_Until(SelectFromDropdown(SELECT_ISELMO_DROPDOWN_ID, "Yes")) if arg2 == "ELMO"
-
     Sleep_Until(EnterUserDetails(USER_PASSWORD_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
-
     Sleep_Until(EnterUserDetails(USER_PASSWORD_RECONFIRM_ID, NEW_USER_DETAILS_MAP[:user_password_value]))
-
     Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
-
-    puts COLOR_BLUE + "Created new user with firstname '" + @@first_name + "' and lastname as '" + @@last_name +"'"
+    puts COLOR_BLUE + "Created new user with firstname '" + @@first_name + "' and lastname as '" + @@last_name + "'"
   end
 end
 
