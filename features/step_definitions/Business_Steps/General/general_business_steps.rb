@@ -140,18 +140,17 @@ And(/^I Go To The "(.*)" Section$/i) do |menu_type|
 end
 
 Then(/^I Should Be Able To Add "(\d+)" New "(Non-ELMO|ELMO)" Users With "(.*)" As First Name And "(.*)" As Last Name(:? And "([^"]*)" As Manager)?$/i) do |arg1, arg2, arg3, arg4, arg5|
-  for loop in 1..arg1 do
+  i = 1
+  while i <= arg1 do
     begin
-      @@first_name = arg3
       
-      #Value of $add_user_type derived from Step 'I Go To "(.*)" Under "(.*)" Section' since Users and Onboarding users take different path
+      #Value of $add_user_type derived from Step 'I Go To "(.*)" Under "(.*)" Section' since Users and Onboarding users take different path. Email = firstname.lastname@email_suffix
+      @@first_name = arg3
       @@last_name = arg4 + Time.now.strftime("%Y%m%d%H%M%S") if $add_user_type == "EMP"
       @@last_name = arg4 + ".ob." + Time.now.strftime("%Y%m%d%H%M%S") if $add_user_type == "OB"
       @@user_name = @@first_name + "." + @@last_name
-      
-      # Email = firstname.lastname@email_suffix
-      @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_prefix_value]
-      
+      @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_suffix_value]
+    
       #Check if user already exists in the database or not. If exists, skip the current creation and continue with the loop. Else, create the user
       user_list_result = $daos.get_userid(@@user_name)
       if !user_list_result.nil?
@@ -161,23 +160,25 @@ Then(/^I Should Be Able To Add "(\d+)" New "(Non-ELMO|ELMO)" Users With "(.*)" A
       else
         $user_found = 0
         begin
-          CreateUsers(loop, arg2, @@first_name, @@last_name, arg5, NEW_USER_DETAILS_MAP[:start_date_value])
+          CreateUsers(arg2, @@first_name, @@last_name, arg5, NEW_USER_DETAILS_MAP[:start_date_value])
+      
           #The following steps help set the role type as well immediately after creating the user within the loop. Change the value to 'Manager' for manager Roletype or others
           steps %Q{
                   And   I Click On "Role" Tab
                   And   I Select "Role" Classic Dropdown As "Employee"
                   }
-          
+        
           #Case used to click on different buttons since Users click on 'Add New User' and Onboarding users click on 'New Onboarding User' button
           case $add_user_type
             when "EMP"
-              Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless loop >= arg1
-              Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_NEW_USER_BTN)) unless loop >= arg1
+              Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless i >= arg1
+              Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_NEW_USER_BTN)) unless i >= arg1
             when "OB"
-              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_USER_NAV_LINK)) unless loop >= arg1
-              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_ADD_NEW_USER_BTN)) unless loop >= arg1
+              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_USER_NAV_LINK)) unless i >= arg1
+              Sleep_Until(WaitForAnElementByXpathAndTouch(OB_ADD_NEW_USER_BTN)) unless i >= arg1
           end
         end
+        i = i + 1
       end
     end
   end

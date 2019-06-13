@@ -242,7 +242,7 @@ And(/^I Select "(.*)" Classic Dropdown As "(.*)"$/i) do |dropdown_name, dropdown
   begin
     CLASSIC_DROPDOWN_ELEMENT_ID_MAP.each do |key, value|
       if key.to_s.eql? dropdown_name
-        Sleep_Until(SelectFromDropdown("#{value}", dropdown_value))
+        SelectFromDropdown("#{value}", dropdown_value)
         Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
         @element_found = 1
       
