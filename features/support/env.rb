@@ -13,6 +13,8 @@ require 'watir'
 require 'colorize'
 require 'csv'
 require 'byebug'
+require 'simplecov'
+SimpleCov.start
 
 require './features/lib/device_method_factory.rb'
 

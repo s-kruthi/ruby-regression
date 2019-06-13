@@ -18,6 +18,7 @@ NEW_USER_DETAILS_MAP = {
     start_date_value: (DateTime.now).prev_month.strftime("%d/%m/%Y"),
     expiry_date_value: (DateTime.now).next_year.strftime("%d/%m/%Y"),
     end_date_value: (DateTime.now).next_year.strftime("%d/%m/%Y"),
+    employee_user_type: "General Employee",
     user_password_value: "Admin1234567",
 }
 

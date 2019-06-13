@@ -51,8 +51,10 @@ OB_ADD_NEW_USER_BTN = "//a[contains(.,' New Onboarding User')]"
 OB_USER_NAV_LINK = "//a[contains(.,'Onboarding Users')]"
 
 SELECT_START_DATE_ID = "//input[contains(@id,'user_startDate')]"
+SELECT_ENABLE_EXPIRY_DATE_ID = "//input[contains(@id,'enable-expiry')]"
 SELECT_EXPIRY_DATE_ID = "//input[contains(@id,'user_expiryDate')]"
 SELECT_END_DATE_ID = "//input[contains(@id,'user_endDate')]"
+SELECT_USER_TYPE_DROPDOWN_ID = "s2id_user_employeeUserType"
 
 SELECT_ISELMO_DROPDOWN_ID = "//select[contains(@id,'user_isElmo')]"
 

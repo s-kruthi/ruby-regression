@@ -1,18 +1,18 @@
 {
-  "name": "shan_automation",
+  "name": "scriptonce_automation",
   "version": "1.0.0",
-  "description": "this is package",
+  "description": "ELMO automation framework",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/shanku_elmo/scriptonce_automation.git"
+    "url": "git@bitbucket.org:elmodevelopment/scriptonce_automation.git"
   },
-  "author": "",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/shanku_elmo/scriptonce_automation#readme",
+  "author": "ELMO QA Team",
+  "license": "ELMO Software Ltd",
+  "homepage": "https://bitbucket.org/elmodevelopment/scriptonce_automation/src/master/README.md",
   "devDependencies": {
     "cucumber-html-reporter": "^2.0.0"
   }
