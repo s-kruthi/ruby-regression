@@ -65,7 +65,16 @@ NEW_USER_MOBILE_ID = "//input[contains(@id,'user_mobile')]"
 USER_PASSWORD_ID = "//input[contains(@id,'user_password_first')]"
 USER_PASSWORD_RECONFIRM_ID = "//input[contains(@id,'user_password_second')]"
 
+USER_PROFILE_DETAILS_ID_MAP = {
+    legal_entity: "s2id_user_legalEntity",
+    cost_centre: "s2id_user_costCentre",
+    position: "s2id_user_position",
+    department: "s2id_user_department",
+    location: "s2id_user_location"
+}
+
 ADD_USER_SAVE_SUCCESS_ID = "//div[contains(@class,'alert alert-success')]"
+EDIT_USER_PROFILE_SAVE_SUCCESS_ID = "User profile has been updated!"
 
 
 #### My Profile elements ####

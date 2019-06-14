@@ -314,20 +314,12 @@ And(/^I Should Be Able To Go To (.*) tab$/i) do |profile_tab_name|
 end
 
 And(/^I Should Be Able To Fill In All Profile Related Information$/i) do
-  pending
-  # select_gender()
-  # enter_preferred_name()
-  # select_date_joined()
-  # select_terminate_date()
-  # select_employement_status()
-  # select_date_of_birth()
-  # enter_elders_id()
-  # select_hay_grade()
-  # select_employe()
+  puts COLOR_BLUE + "This is WIP in QTA-116"
 end
 
 And(/^I Should Be Able To Save The Information Successfully$/i) do
   ClickOnSaveButton(SAVE_BTN_ID)
+  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, EDIT_USER_PROFILE_SAVE_SUCCESS_VALUE))
 end
 
 Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onboarding Section$/i) do |access_type|
