@@ -239,7 +239,7 @@ module Database_env
                where is_active = 1
                and is_deleted = 0
                and vendor_id = #{vendor_id}"
-      return @db[query].first
+      return @db[query].first[:count]
     end
 
   end

@@ -29,8 +29,12 @@ Then(/^I Should See That The Vendor Is "([\w]+)" Successfully$/i) do | action |
     when 'Edited'
       VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'Vendor has been successfully updated.')
     when 'Added'
-    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'Vendor has been successfully added.')
-    expect(GetTextAssociatedToElement("xpath","//ol[@class='breadcrumb']/child::li[@class='active']")).to eq('testing_vendors')
+      VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'Vendor has been successfully added.')
+      expect(GetTextAssociatedToElement("xpath","//ol[@class='breadcrumb']/child::li[@class='active']")).to eq('testing_vendors')
+    else
+      #See success message in modal
+      Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, 'Vendor has been successfully deactivated.'))
+      PressEnterOK()
   end
 end
 
@@ -44,7 +48,7 @@ And(/^I Choose To "([\w\s]+)"(:? For The Vendor)?$/i) do | action, text |
     when "View Vendor Users"
       identifier = "//a[@href='/admin/vendor/users/" + @vendor_details[:id].to_s + "']"
     when "Deactivate Vendor"
-      byebug
+      identifier = "//a[@href='/admin/vendor/activate-toggle/" + @vendor_details[:id].to_s + "']"
   end
   $driver.find_element(:xpath, identifier).click
 end

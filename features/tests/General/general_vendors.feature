@@ -48,4 +48,4 @@ Feature:
     And   I Go To "Vendors" under "General" section
     When  I Search For "Testing Vendors" Vendor
     And   I Choose To "Deactivate Vendor"
-    Then  I Should See The Vendor Users Listed In The Page
+    Then  I Should See That The Vendor Is "Deactivated" Successfully
