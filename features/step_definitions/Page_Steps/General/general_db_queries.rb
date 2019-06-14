@@ -233,6 +233,15 @@ module Database_env
       return @db[query].first
     end
 
+    def get_vendor_usercount(vendor_id)
+      query = "select count(*) as count
+               from epms_user
+               where is_active = 1
+               and is_deleted = 0
+               and vendor_id = #{vendor_id}"
+      return @db[query].first
+    end
+
   end
 
 end

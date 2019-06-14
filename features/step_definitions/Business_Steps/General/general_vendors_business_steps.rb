@@ -5,16 +5,11 @@ And(/^I Can Add A Vendor$/i) do
   Sleep_Until(ClickElement('id','vendor_save'))
 end
 
-Then(/^I Should See That Vendor Is Added Successfully$/i) do
-  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'Vendor has been successfully added.')
-  expect(GetTextAssociatedToElement("xpath","//ol[@class='breadcrumb']/child::li[@class='active']")).to eq('testing_vendors')
-end
-
 When(/^I Search For "([\w\s]+)" Vendor$/i) do | vendor_name |
   @vendor_details = $daos.get_vendor_details(vendor_name)
 
   if !@vendor_details.nil?
-    SearchACourse('//input[@id="vendorUserSearch_name"]', @vendor_details[:name], COURSE_SEARCH_BTN_ID)
+    Sleep_Until(SearchACourse('//input[@id="vendorUserSearch_name"]', @vendor_details[:name], COURSE_SEARCH_BTN_ID))
   else
     puts COLOR_YELLOW + "vendor not found, check manually".upcase
     skip_this_scenario
@@ -29,17 +24,27 @@ And(/^I Edit The Name To Be "([\w\s]+)"$/i) do | edit_name |
   ClickOnSaveButton(SAVE_BTN_ID)
 end
 
-Then(/^I Should See That The Vendor Was "([\w]+)" Successfully$/i) do | action |
-  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'Vendor has been successfully updated.')
+Then(/^I Should See That The Vendor Is "([\w]+)" Successfully$/i) do | action |
+  case action
+    when 'Edited'
+      VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'Vendor has been successfully updated.')
+    when 'Added'
+    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'Vendor has been successfully added.')
+    expect(GetTextAssociatedToElement("xpath","//ol[@class='breadcrumb']/child::li[@class='active']")).to eq('testing_vendors')
+  end
 end
 
-And(/^I Choose To "([\w\s]+)" For The Vendor$/i) do | action |
+And(/^I Choose To "([\w\s]+)"(:? For The Vendor)?$/i) do | action, text |
   # click on the action dropdown
   $driver.find_element(:xpath, "//button[contains(@class, 'dropdown-toggle')]").click
 
   case action
     when "Add Vendor User"
       identifier = "//a[@href='/admin/vendor/" + @vendor_details[:id].to_s + "/user/new/']"
+    when "View Vendor Users"
+      identifier = "//a[@href='/admin/vendor/users/" + @vendor_details[:id].to_s + "']"
+    when "Deactivate Vendor"
+      byebug
   end
   $driver.find_element(:xpath, identifier).click
 end
@@ -58,6 +63,28 @@ end
 Then(/^I Should See That The Vendor User Is Added Successfully$/i) do
   VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'User has been successfully added.')
 end
+
+And(/^I Activate The Newly Created Vendor User$/i) do
+  steps %{
+    And   I Click On "Notify Users" Button
+    And   I Click On "Activate All Users" Button
+    Then  I Should Be Able to Activate All Users
+  }
+end
+
+Then(/^I Should See The Vendor Users Listed In The Page$/i) do
+  count = $daos.get_vendor_usercount(@vendor_details[:id])
+  if count == 0
+    VerifyAnElementNotExist("xpath", PAGINATION_ID)
+    puts COLOR_BLUE + "No users found"
+  else
+    results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
+    if results_count.eql? count then
+      puts COLOR_BLUE + "Results match"
+    end
+  end
+end
+
 
 
 
