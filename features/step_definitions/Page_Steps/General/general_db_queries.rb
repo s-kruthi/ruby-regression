@@ -242,6 +242,17 @@ module Database_env
       return @db[query].first[:count]
     end
 
+    def get_vendor_user(vendor_id)
+      query = "select id, first_name, last_name
+               from epms_user
+               where is_active = 1
+               and is_deleted = 0
+               and is_notified = 1
+               and vendor_id = #{vendor_id}
+               order by rand()"
+      return @db[query].first
+    end
+
   end
 
 end

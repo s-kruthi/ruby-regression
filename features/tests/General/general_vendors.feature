@@ -29,7 +29,7 @@ Feature:
     When  I Search For "Testing Vendors" Vendor
     And   I Choose To "Add Vendor User" For The Vendor
     And   I Enter The Vendor User Details
-    Then  I Should See That The Vendor User Is Added Successfully
+    Then  I Should See That The Vendor User Is "Added" Successfully
     And   I Activate The Newly Created Vendor User
 
   @general_low_risk @vendor_view_users
@@ -40,6 +40,26 @@ Feature:
     When  I Search For "Testing Vendors" Vendor
     And   I Choose To "View Vendor Users" For The Vendor
     Then  I Should See The Vendor Users Listed In The Page
+
+  @general_low_risk @vendor_user_edit
+  Scenario: [Recruitment]Can Edit A Vendor User
+    Given I Have Logged In as a Company Admin
+    And   I go to Admin Settings
+    And   I Go To "Vendors" under "General" section
+    When  I Search For "Testing Vendors" Vendor
+    And   I Choose To "View Vendor Users" For The Vendor
+    And   I "Edit" Vendor User
+    Then  I Should See That The Vendor User Is "Edited" Successfully
+
+  @general_low_risk @vendor_user_deactivate
+  Scenario: [Recruitment]Can Deactivate A Vendor User
+    Given I Have Logged In as a Company Admin
+    And   I go to Admin Settings
+    And   I Go To "Vendors" under "General" section
+    When  I Search For "Testing Vendors" Vendor
+    And   I Choose To "View Vendor Users" For The Vendor
+    And   I "Deactivate" Vendor User
+    Then  I Should See That The Vendor User Is "Deactivated" Successfully
 
   @general_low_risk @vendor_deactivate
   Scenario: [Recruitment]Can Deactivate Vendor
