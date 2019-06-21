@@ -1,77 +1,46 @@
 And(/^I Can Add A Vendor$/i) do
-  Sleep_Until(ClickElement('id', 'add-vendor'))
-  WaitForAnElementByIdAndInputValue('vendor_name', 'testing_vendors')
-  WaitForAnElementByIdAndInputValue('vendor_description', 'Testing Vendors')
-  Sleep_Until(ClickElement('id','vendor_save'))
+  AddVendor()
 end
 
 When(/^I Search For "([\w\s]+)" Vendor$/i) do | vendor_name |
-  @vendor_details = $daos.get_vendor_details(vendor_name)
-
-  if !@vendor_details.nil?
-    Sleep_Until(SearchACourse('//input[@id="vendorUserSearch_name"]', @vendor_details[:name], COURSE_SEARCH_BTN_ID))
-  else
-    puts COLOR_YELLOW + "vendor not found, check manually".upcase
-    skip_this_scenario
-  end
+  SearchForVendor(vendor_name)
 end
 
 And(/^I Edit The Name To Be "([\w\s]+)"$/i) do | edit_name |
-  @edited_name = edit_name
-  Sleep_Until(ClickElement("xpath", "//a[contains(@href, '/edit/#{@vendor_details[:id]}')]"))
-  ClearField('id', 'vendor_name' )
-  WaitForAnElementByIdAndInputValue('vendor_name', edit_name)
-  ClickOnSaveButton(SAVE_BTN_ID)
+  EditNameVendor(edit_name)
 end
 
 Then(/^I Should See That The Vendor Is "([\w]+)" Successfully$/i) do | action |
   case action
-    when 'Edited'
-      VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'Vendor has been successfully updated.')
     when 'Added'
-      VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'Vendor has been successfully added.')
-      expect(GetTextAssociatedToElement("xpath","//ol[@class='breadcrumb']/child::li[@class='active']")).to eq('testing_vendors')
+      VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VENDOR_ADD_SUCCESS_MSG_VAL)
+      expect(GetTextAssociatedToElement("xpath", VENDOR_BREADCRUMB_ID)).to eq(VENDOR_NAME_VAL)
+    when 'Edited'
+      VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VENDOR_UPDATE_SUCCESS_MSG_VAL)
     else
       #See success message in modal
-      Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, 'Vendor has been successfully deactivated.'))
+      Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, VENDOR_DEACTIVATE_SUCCESS_MSG_VAL))
       PressEnterOK()
   end
 end
 
 And(/^I Choose To "([\w\s]+)"(:? For The Vendor)?$/i) do | action, text |
-  # click on the action dropdown
-  $driver.find_element(:xpath, "//button[contains(@class, 'dropdown-toggle')]").click
-
-  case action
-    when "Add Vendor User"
-      identifier = "//a[@href='/admin/vendor/" + @vendor_details[:id].to_s + "/user/new/']"
-    when "View Vendor Users"
-      identifier = "//a[@href='/admin/vendor/users/" + @vendor_details[:id].to_s + "']"
-    when "Deactivate Vendor"
-      identifier = "//a[@href='/admin/vendor/activate-toggle/" + @vendor_details[:id].to_s + "']"
-  end
-  Sleep_Until($driver.find_element(:xpath, identifier).click)
+  ClickActionsDropdown()
+  PerformActionVendor(action)
 end
 
 And(/^I Enter The Vendor User Details$/i) do
-  WaitForAnElementByIdAndInputValue('vendoruser_firstName', 'testing_vendors')
-  WaitForAnElementByIdAndInputValue('vendoruser_lastName', 'testing_vendors')
-
-  suffix = Time.now.strftime("%Y%m%d%H%M%S").to_s
-  vendor_user_email = 'test'+ suffix +'@elmodev.com'
-  WaitForAnElementByIdAndInputValue('vendoruser_email', vendor_user_email)
-  
-  WaitForAnElementByIdAndTouch('vendoruser_save')
+  EnterVendorUserDetails()
 end
 
 Then(/^I Should See That The Vendor User Is "(Added|Edited|Deactivated)" Successfully$/i) do | action_type |
   if action_type == 'Added'
-    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'User has been successfully added.')
+    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VENDOR_USER_ADD_SUCCESS_MSG_VAL)
   elsif action_type == 'Edited'
-    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, 'User has been successfully updated.')
+    VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VENDOR_USER_UPDATE_SUCCESS_MSG_VAL)
   else
     #See success message in modal
-    Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, 'User is deactivated successfully.'))
+    Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, VENDOR_USER_DEACTIVATE_SUCCESS_MSG_VAL))
     PressEnterOK()
   end
 end
@@ -85,35 +54,13 @@ And(/^I Activate The Newly Created Vendor User$/i) do
 end
 
 Then(/^I Should See The Vendor Users Listed In The Page$/i) do
-  count = $daos.get_vendor_usercount(@vendor_details[:id])
-  if count == 0
-    VerifyAnElementNotExist("xpath", PAGINATION_ID)
-    puts COLOR_BLUE + "No users found"
-  else
-    results_count = $driver.find_element(:xpath, PAGINATION_ID).text.split(" ")[4].to_i
-    if results_count.eql? count then
-      puts COLOR_BLUE + "Results match"
-    end
-  end
+  ViewVendorUsers()
 end
 
 And(/^I "(Edit|Deactivate)" Vendor User$/i) do | action |
-  vendor_user = $daos.get_vendor_user(@vendor_details[:id])
-
-  # click on the action dropdown
-  Sleep_Until($driver.find_element(:xpath, "//button[contains(@class, 'dropdown-toggle')]").click)
-
-  case action
-  when "Edit"
-    identifier = "//a[@href='/admin/vendor/" + @vendor_details[:id].to_s + "/user/edit/" + vendor_user[:id].to_s + "']"
-    $driver.find_element(:xpath, identifier).click
-    ClearField('id', 'vendoruser_firstName')
-    WaitForAnElementByIdAndInputValue('vendoruser_firstName', 'testing_vendor')
-    WaitForAnElementByIdAndTouch('vendoruser_save')
-  when "Deactivate"
-    identifier = "//a[@href='/admin/user-active-toggle/" + vendor_user[:id].to_s + "']"
-    $driver.find_element(:xpath, identifier).click
-  end
+  SearchForVendorUser()
+  ClickActionsDropdown()
+  PerformActionVendorUser(action)
 end
 
 

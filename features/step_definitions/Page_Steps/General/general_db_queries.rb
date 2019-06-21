@@ -243,7 +243,7 @@ module Database_env
     end
 
     def get_vendor_user(vendor_id)
-      query = "select id, first_name, last_name
+      query = "select id, concat (first_name,' ',last_name) as name
                from epms_user
                where is_active = 1
                and is_deleted = 0
