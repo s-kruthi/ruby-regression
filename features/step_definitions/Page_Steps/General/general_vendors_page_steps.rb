@@ -18,7 +18,6 @@ def SearchForVendor(vendor_name)
 end
 
 def EditNameVendor(edit_name)
-  @edited_name = edit_name
   Sleep_Until(ClickElement("xpath", "//a[contains(@href, '/edit/#{@vendor_details[:id]}')]"))
   ClearField('id', VENDOR_NAME_ID )
   WaitForAnElementByIdAndInputValue(VENDOR_NAME_ID, edit_name)
@@ -30,7 +29,7 @@ def EnterVendorUserDetails()
   WaitForAnElementByIdAndInputValue(VENDOR_USER_LASTNAME_ID, VENDOR_NAME_VAL)
 
   suffix = Time.now.strftime("%Y%m%d%H%M%S").to_s
-  vendor_user_email = 'test'+ suffix +'@elmodev.com'
+  vendor_user_email = 'vendorscriptonce_'+ suffix +'@elmodev.com'
   WaitForAnElementByIdAndInputValue(VENDOR_USER_EMAIL_ID, vendor_user_email)
 
   WaitForAnElementByIdAndTouch(VENDOR_USER_SAVE_BTN_ID)
@@ -85,9 +84,9 @@ def PerformActionVendorUser(action)
     when "Edit"
       identifier = "//a[@href='/admin/vendor/" + @vendor_details[:id].to_s + "/user/edit/" + @vendor_user[:id].to_s + "']"
       Sleep_Until(ClickElement("xpath", identifier))
-      ClearField('id', VENDOR_USER_FIRSTNAME_ID )
-      WaitForAnElementByIdAndInputValue(VENDOR_USER_FIRSTNAME_ID , VENDOR_USER_NAME_EDIT_VAL)
-      WaitForAnElementByIdAndTouch(VENDOR_USER_SAVE_BTN_ID )
+      ClearField('id', VENDOR_USER_FIRSTNAME_ID)
+      WaitForAnElementByIdAndInputValue(VENDOR_USER_FIRSTNAME_ID, VENDOR_USER_NAME_EDIT_VAL)
+      WaitForAnElementByIdAndTouch(VENDOR_USER_SAVE_BTN_ID)
     when "Deactivate"
       identifier = "//a[@href='/admin/user-active-toggle/" + @vendor_user[:id].to_s + "']"
       Sleep_Until(ClickElement("xpath", identifier))

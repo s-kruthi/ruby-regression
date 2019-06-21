@@ -16,8 +16,8 @@ Feature:
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To "Vendors" under "General" section
-    When  I Search For "testing_vendors" Vendor
-    And   I Edit The Name To Be "Testing Vendors"
+    When  I Search For "Vendor Scriptonce" Vendor
+    And   I Edit The Name To Be "Vendor Scriptonce Edit"
     Then  I Should See That The Vendor Is "Edited" Successfully
 
   @general_low_risk @general_vendor_user_add
@@ -25,7 +25,7 @@ Feature:
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To "Vendors" under "General" section
-    When  I Search For "Testing Vendors" Vendor
+    When  I Search For "Vendor Scriptonce Edit" Vendor
     And   I Choose To "Add Vendor User" For The Vendor
     And   I Enter The Vendor User Details
     Then  I Should See That The Vendor User Is "Added" Successfully
@@ -36,7 +36,7 @@ Feature:
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To "Vendors" under "General" section
-    When  I Search For "Testing Vendors" Vendor
+    When  I Search For "Vendor Scriptonce Edit" Vendor
     And   I Choose To "View Vendor Users" For The Vendor
     Then  I Should See The Vendor Users Listed In The Page
 
@@ -45,7 +45,7 @@ Feature:
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To "Vendors" under "General" section
-    When  I Search For "Testing Vendors" Vendor
+    When  I Search For "Vendor Scriptonce Edit" Vendor
     And   I Choose To "View Vendor Users" For The Vendor
     And   I "Edit" Vendor User
     Then  I Should See That The Vendor User Is "Edited" Successfully
@@ -55,7 +55,7 @@ Feature:
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To "Vendors" under "General" section
-    When  I Search For "Testing Vendors" Vendor
+    When  I Search For "Vendor Scriptonce Edit" Vendor
     And   I Choose To "View Vendor Users" For The Vendor
     And   I "Deactivate" Vendor User
     Then  I Should See That The Vendor User Is "Deactivated" Successfully
@@ -65,6 +65,6 @@ Feature:
     Given I Have Logged In as a Company Admin
     And   I go to Admin Settings
     And   I Go To "Vendors" under "General" section
-    When  I Search For "Testing Vendors" Vendor
+    When  I Search For "Vendor Scriptonce Edit" Vendor
     And   I Choose To "Deactivate Vendor"
     Then  I Should See That The Vendor Is "Deactivated" Successfully
