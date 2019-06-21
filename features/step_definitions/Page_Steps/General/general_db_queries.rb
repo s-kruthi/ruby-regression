@@ -222,6 +222,37 @@ module Database_env
       return @db[query].first
     end
 
+
+    def get_vendor_details(vendor_name)
+      query = "select id, name
+               from epms_vendor
+               where is_deleted = 0
+               and is_active = 1
+               and name = '#{vendor_name}'
+               order by rand()"
+      return @db[query].first
+    end
+
+    def get_vendor_usercount(vendor_id)
+      query = "select count(*) as count
+               from epms_user
+               where is_active = 1
+               and is_deleted = 0
+               and vendor_id = #{vendor_id}"
+      return @db[query].first[:count]
+    end
+
+    def get_vendor_user(vendor_id)
+      query = "select id, concat (first_name,' ',last_name) as name
+               from epms_user
+               where is_active = 1
+               and is_deleted = 0
+               and is_notified = 1
+               and vendor_id = #{vendor_id}
+               order by rand()"
+      return @db[query].first
+    end
+
   end
 
 end
