@@ -395,3 +395,7 @@ def UserProfileSetupThroughJmeter()
   end
   puts COLOR_GREEN + "user profile setup completed".upcase
 end
+
+def EnterUserProfileDetails(arg1, arg2)
+  SingleSelectFromSelect2Dropdown(arg1, SELECT2_DROPDOWN_ID, arg2, SELECT2_DROPDOWN_RESULT_CLASS)
+end
