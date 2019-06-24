@@ -1,7 +1,11 @@
-=begin
-NOTE: This file contains all the methods used in business steps in the general_common_business_steps.rb file
-Any re-usable method should be added/moved in here
-=end
+# NOTE: This file contains all the methods used in business steps in the common_general_business_steps.rb file
+# Any re-usable method should be added/moved in here
+
+# verifies the successful flash message which disappears after 3 seconds.
+# syntax: VerifySuccessAlertMessage("//div[contains(@class,'alert alert-success')]", "Course has been saved!")
+def VerifySuccessAlertMessage(success_alert_id, success_alert_value)
+  Sleep_Until(VerifyAnElementExistByXPath(success_alert_id,success_alert_value))
+end
 
 # NOTE: This following method fills out details of 'Position', 'Department' and 'Location'
 def EnterNewTypeDetails(arg1)

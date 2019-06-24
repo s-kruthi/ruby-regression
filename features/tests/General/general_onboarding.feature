@@ -49,7 +49,7 @@ Feature:
     And   I Search For A Specific User Named auto1.scriptonce1
     Then  I Should Be Able To Use De-activate User Action On The Specific User
 
-  @general_user_edit_profile @general_low_risk @onboarding_user_edit_profile @onboarding_low_risk @wip
+  @general_user_profile_edit @general_low_risk @onboarding_user_profile_edit @onboarding_low_risk @wip
   Scenario: [General][Onboarding]Onboarding or General User List page - Edit Profile Information
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
