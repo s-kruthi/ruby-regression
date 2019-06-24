@@ -57,16 +57,6 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:employee_number_value] + " Employee Number Entered"
     end
     
-    #check employee number configuration
-    employeeNumberEnable = $daos.get_epms_config_enabled('employeeNumberEnable')[:value].to_i unless $daos.get_epms_config_enabled('employeeNumberEnable').nil?
-    employeeNumberAutoGeneration = $daos.get_epms_config_enabled('employeeNumberAutoGeneration')[:value].to_i unless $daos.get_epms_config_enabled('employeeNumberAutoGeneration').nil?
-    userFieldsLocked_employeeNumber = $daos.get_epms_config_enabled('userFieldsLocked_employeeNumber')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_employeeNumber').nil?
-    if [!nil, 1].include? employeeNumberEnable && employeeNumberAutoGeneration == 0 && ![nil, 1].include?
-      userFieldsLocked_employeeNumber
-      Sleep_Until(SelectEmployeeNumber(NEW_USER_EMPLOYEE_NUMBER_ID, NEW_USER_DETAILS_MAP[:employee_number_value]))
-      puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:employee_number_value] + " Employee Number Entered"
-    end
-    
     Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, arg3))
     Sleep_Until(EnterUserDetails(NEW_USER_LAST_NAME_ID, arg4))
     Sleep_Until(EnterUserDetails(NEW_USER_USERNAME_ID, @@user_name)) if $add_user_type == "EMP"
