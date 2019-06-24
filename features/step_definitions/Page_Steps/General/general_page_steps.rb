@@ -57,6 +57,16 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:employee_number_value] + " Employee Number Entered"
     end
     
+    #check employee number configuration
+    employeeNumberEnable = $daos.get_epms_config_enabled('employeeNumberEnable')[:value].to_i unless $daos.get_epms_config_enabled('employeeNumberEnable').nil?
+    employeeNumberAutoGeneration = $daos.get_epms_config_enabled('employeeNumberAutoGeneration')[:value].to_i unless $daos.get_epms_config_enabled('employeeNumberAutoGeneration').nil?
+    userFieldsLocked_employeeNumber = $daos.get_epms_config_enabled('userFieldsLocked_employeeNumber')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_employeeNumber').nil?
+    if [!nil, 1].include? employeeNumberEnable && employeeNumberAutoGeneration == 0 && ![nil, 1].include?
+      userFieldsLocked_employeeNumber
+      Sleep_Until(SelectEmployeeNumber(NEW_USER_EMPLOYEE_NUMBER_ID, NEW_USER_DETAILS_MAP[:employee_number_value]))
+      puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:employee_number_value] + " Employee Number Entered"
+    end
+    
     Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, arg3))
     Sleep_Until(EnterUserDetails(NEW_USER_LAST_NAME_ID, arg4))
     Sleep_Until(EnterUserDetails(NEW_USER_USERNAME_ID, @@user_name)) if $add_user_type == "EMP"
@@ -65,7 +75,7 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check country configuration
     countryEnable = $daos.get_epms_config_enabled('countryEnable')[:value].to_i unless $daos.get_epms_config_enabled('countryEnable').nil?
     userfFieldsLocked_country = $daos.get_epms_config_enabled('userFieldsLocked_country')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_country').nil?
-    if ([!nil, 1].include? countryEnable) && ([!nil, !1].include?userfFieldsLocked_country)
+    if ([!nil, 1].include? countryEnable) && ([!nil, !1].include? userfFieldsLocked_country)
       Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_COUNTRY_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:country_value], SELECT2_DROPDOWN_RESULT_CLASS))
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:country_value] + " Country Selected"
     end
@@ -73,14 +83,14 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check state configuration
     stateEnable = $daos.get_epms_config_enabled('stateEnable')[:value].to_i unless $daos.get_epms_config_enabled('stateEnable').nil?
     userFieldsLocked_state = $daos.get_epms_config_enabled('userFieldsLocked_state')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_state').nil?
-    if ([!nil, 1].include? stateEnable) && (![nil, 1].include?userFieldsLocked_state)
+    if ([!nil, 1].include? stateEnable) && (![nil, 1].include? userFieldsLocked_state)
       Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_STATE_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:state_value], SELECT2_DROPDOWN_RESULT_CLASS))
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:state_value] + " State Selected"
     end
     
     # check timezone configuration
     timezoneEnable = $daos.get_epms_config_enabled('timezoneEnable')[:value].to_i unless $daos.get_epms_config_enabled('timezoneEnable').nil?
-    if [!nil, 1].include?timezoneEnable
+    if [!nil, 1].include? timezoneEnable
       Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_TIMEZONE_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:timezone_value], SELECT2_DROPDOWN_RESULT_CLASS))
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:timezone_value] + " Timezone Selected"
     end
@@ -88,7 +98,7 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check mobile configuration
     mobileEnable = $daos.get_epms_config_enabled('mobileEnable')[:value].to_i unless $daos.get_epms_config_enabled('mobileEnable').nil?
     userFieldsLocked_mobile = $daos.get_epms_config_enabled('userFieldsLocked_mobile')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_mobile').nil?
-    if ([!nil, 1].include? mobileEnable) && (![nil, 1].include?userFieldsLocked_mobile)
+    if ([!nil, 1].include? mobileEnable) && (![nil, 1].include? userFieldsLocked_mobile)
       Sleep_Until(EnterUserDetails(NEW_USER_MOBILE_ID, NEW_USER_DETAILS_MAP[:mobile_number]))
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:mobile_number] + " MobileNumber Entered"
     end
@@ -96,7 +106,7 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check manager configuration
     selectManager = $daos.get_epms_config_enabled('selectManager')[:value].to_i unless $daos.get_epms_config_enabled('selectManager').nil?
     userFieldsLocked_manager = $daos.get_epms_config_enabled('userFieldsLocked_manager')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_manager').nil?
-    if ([!nil, 1].include? selectManager) && arg5 && (![nil, 1].include?userFieldsLocked_manager)
+    if ([!nil, 1].include? selectManager) && arg5 && (![nil, 1].include? userFieldsLocked_manager)
       Sleep_Until(SelectAManager(MANAGER_SELECT_DROPDOWN_ID, MANAGER_SELECT_INPUT_ID, arg5, MANAGER_SELECT_RESULT_ID))
       puts COLOR_BLUE + arg5 + " Manager Selected"
     end
@@ -104,7 +114,7 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check date of birth configuration
     dateOfBirthEnable = $daos.get_epms_config_enabled('dateOfBirthEnable')[:value].to_i unless $daos.get_epms_config_enabled('dateOfBirthEnable').nil?
     userFieldsLocked_dateOfBirth = $daos.get_epms_config_enabled('userFieldsLocked_dateOfBirth')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_dateOfBirth').nil?
-    if ([!nil, 1].include? dateOfBirthEnable) && (![nil, 1].include?userFieldsLocked_dateOfBirth)
+    if ([!nil, 1].include? dateOfBirthEnable) && (![nil, 1].include? userFieldsLocked_dateOfBirth)
       Sleep_Until(SelectDate(SELECT_DATEOFBIRTH_ID, NEW_USER_DETAILS_MAP[:dateofbirth_value]))
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:dateofbirth_value] + " DateOfBirth Selected"
     end
@@ -112,7 +122,7 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check start date configuration
     startDateEnable = $daos.get_epms_config_enabled('startDateEnable')[:value].to_i unless $daos.get_epms_config_enabled('startDateEnable').nil?
     userFieldsLocked_startDate = $daos.get_epms_config_enabled('userFieldsLocked_startDate')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_startDate').nil?
-    if ([!nil, 1].include? startDateEnable) && (![nil, 1].include?userFieldsLocked_startDate)
+    if ([!nil, 1].include? startDateEnable) && (![nil, 1].include? userFieldsLocked_startDate)
       Sleep_Until(SelectDate(SELECT_START_DATE_ID, arg6))
       puts COLOR_BLUE + arg6 + " StartDate Selected"
     end
@@ -120,7 +130,7 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check expiry date configuration
     userExpiryDateEnable = $daos.get_epms_config_enabled('userExpiryDateEnable')[:value].to_i unless $daos.get_epms_config_enabled('userExpiryDateEnable').nil?
     userFieldsLocked_expiryDate = $daos.get_epms_config_enabled('userFieldsLocked_expiryDate')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_expiryDate').nil?
-    if ([!nil, 1].include? userExpiryDateEnable) && (![nil, 1].include?userExpiryDateEnable)
+    if ([!nil, 1].include? userExpiryDateEnable) && (![nil, 1].include? userExpiryDateEnable)
       WaitForAnElementByXpathAndTouch(SELECT_ENABLE_EXPIRY_DATE_ID)
       Sleep_Until(SelectDate(SELECT_EXPIRY_DATE_ID, NEW_USER_DETAILS_MAP[:expiry_date_value]))
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:expiry_date_value] + " ExpiryDate Selected"
@@ -129,7 +139,7 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check end date configuration
     endDateEnable = $daos.get_epms_config_enabled('endDateEnable')[:value].to_i unless $daos.get_epms_config_enabled('endDateEnable').nil?
     userFieldsLocked_endDate = $daos.get_epms_config_enabled('userFieldsLocked_endDate')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_endDate').nil?
-    if ([!nil, 1].include? endDateEnable) && (![nil, 1].include?userFieldsLocked_endDate)
+    if ([!nil, 1].include? endDateEnable) && (![nil, 1].include? userFieldsLocked_endDate)
       Sleep_Until(SelectDate(SELECT_END_DATE_ID, NEW_USER_DETAILS_MAP[:end_date_value]))
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:end_date_value] + " EndDate Selected"
     end
@@ -137,7 +147,7 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check employee user type configuration (This field is enabled when RTA module is enabled)
     employeeUserTypeEnable = $daos.get_epms_config_enabled('employeeUserTypeEnable')[:value].to_i unless $daos.get_epms_config_enabled('employeeUserTypeEnable').nil?
     userFieldsLocked_employeeUserType = $daos.get_epms_config_enabled('userFieldsLocked_employeeUserType')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_employeeUserType').nil?
-    if ([!nil, 1].include? employeeUserTypeEnable) && (![nil, 1].include?userFieldsLocked_employeeUserType)
+    if ([!nil, 1].include? employeeUserTypeEnable) && (![nil, 1].include? userFieldsLocked_employeeUserType)
       Sleep_Until(SingleSelectFromSelect2Dropdown(SELECT_USER_TYPE_DROPDOWN_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:employee_user_type], SELECT2_DROPDOWN_RESULT_CLASS))
       puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:employee_user_type] + " Employee User Type Selected"
     end
@@ -432,7 +442,7 @@ def EnterUserProfileDetails
   # check legalEntity configuration
   legalEntityEnable = $daos.get_epms_config_enabled('legalEntityEnable')[:value].to_i unless $daos.get_epms_config_enabled('legalEntityEnable').nil?
   userFieldsLocked_legalEntity = $daos.get_epms_config_enabled('userFieldsLocked_legalEntity')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_legalEntity').nil?
-  if ([!nil, 1].include?legalEntityEnable) && (![nil, 1].include?userFieldsLocked_legalEntity)
+  if ([!nil, 1].include? legalEntityEnable) && (![nil, 1].include? userFieldsLocked_legalEntity)
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:legal_entity], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:legal_entity], SELECT2_DROPDOWN_RESULT_CLASS))
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:legal_entity] + " Legal Entity Selected"
   end
@@ -440,7 +450,7 @@ def EnterUserProfileDetails
   # check cost_centre configuration
   costCentreEnable = $daos.get_epms_config_enabled('costCentreEnable')[:value].to_i unless $daos.get_epms_config_enabled('costCentreEnable').nil?
   userFieldsLocked_costCentre = $daos.get_epms_config_enabled('userFieldsLocked_costCentre')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_costCentre').nil?
-  if ([!nil, 1].include? costCentreEnable) && (![nil, 1].include?userFieldsLocked_costCentre)
+  if ([!nil, 1].include? costCentreEnable) && (![nil, 1].include? userFieldsLocked_costCentre)
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:cost_centre], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:cost_centre], SELECT2_DROPDOWN_RESULT_CLASS))
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:cost_centre] + " Cost Centre Selected"
   end
@@ -448,7 +458,7 @@ def EnterUserProfileDetails
   # check position configuration
   positionEnable = $daos.get_epms_config_enabled('positionEnable')[:value].to_i unless $daos.get_epms_config_enabled('positionEnable').nil?
   userFieldsLocked_position = $daos.get_epms_config_enabled('userFieldsLocked_position')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_position').nil?
-  if ([!nil, 1].include? positionEnable) && (![nil, 1].include?userFieldsLocked_position)
+  if ([!nil, 1].include? positionEnable) && (![nil, 1].include? userFieldsLocked_position)
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:position], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:position], SELECT2_DROPDOWN_RESULT_CLASS))
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:position] + " Position Selected"
   end
@@ -456,7 +466,7 @@ def EnterUserProfileDetails
   # check department configuration
   departmentEnable = $daos.get_epms_config_enabled('departmentEnable')[:value].to_i unless $daos.get_epms_config_enabled('departmentEnable').nil?
   userFieldsLocked_department = $daos.get_epms_config_enabled('userFieldsLocked_department')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_department').nil?
-  if ([!nil, 1].include? departmentEnable) && (![nil, 1].include?userFieldsLocked_department)
+  if ([!nil, 1].include? departmentEnable) && (![nil, 1].include? userFieldsLocked_department)
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:department], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:department], SELECT2_DROPDOWN_RESULT_CLASS))
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:department] + " Department Selected"
   end
@@ -464,7 +474,7 @@ def EnterUserProfileDetails
   # check location configuration
   locationEnable = $daos.get_epms_config_enabled('locationEnable')[:value].to_i unless $daos.get_epms_config_enabled('locationEnable').nil?
   userFieldsLocked_location = $daos.get_epms_config_enabled('userFieldsLocked_location')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_location').nil?
-  if ([!nil, 1].include? legalEntityEnable) && (![nil, 1].include?userFieldsLocked_legalEntity)
+  if ([!nil, 1].include? legalEntityEnable) && (![nil, 1].include? userFieldsLocked_legalEntity)
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:location], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:location], SELECT2_DROPDOWN_RESULT_CLASS))
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:location] + " Location Selected"
   end

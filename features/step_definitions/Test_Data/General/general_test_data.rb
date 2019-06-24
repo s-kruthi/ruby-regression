@@ -12,6 +12,7 @@ NEW_USER_DETAILS_MAP = {
     timezone_value: "Sydney",
     country_value: "Australia",
     state_value: "New South Wales",
+    mobile_number: "0420330011",
     dateofbirth_value: (DateTime.now).prev_year.strftime("%d/%m/%Y"),
     start_date_value: (DateTime.now).prev_month.strftime("%d/%m/%Y"),
     expiry_date_value: (DateTime.now).next_year.strftime("%d/%m/%Y"),
@@ -21,9 +22,9 @@ NEW_USER_DETAILS_MAP = {
 }
 
 USER_PROFILE_DETAILS_VALUE_MAP = {
-    legal_entity: "TESTING",
-    cost_centre: "",
-    position: "Quality Assurance Tester - Automation",
+    legal_entity: "AU COMPANY",
+    cost_centre: "Test",
+    position: "Quality Assurance Tester - Lead",
     department: "Research and Development",
     location: "Sydney"
 }

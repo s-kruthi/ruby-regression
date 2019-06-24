@@ -299,7 +299,7 @@ Then(/^I Should Be Able To Use (.*) Action On The Specific User$/i) do |specifie
       
       when "Edit User Profile"
         begin
-          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_EDIT_VALUE)
+          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, 1, ACTION_DROPDOWN_EDIT_VALUE)
         end
     end
   end
