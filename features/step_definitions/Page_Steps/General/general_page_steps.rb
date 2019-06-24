@@ -440,7 +440,7 @@ def EnterUserProfileDetails
   # check cost_centre configuration
   costCentreEnable = $daos.get_epms_config_enabled('costCentreEnable')[:value].to_i unless $daos.get_epms_config_enabled('costCentreEnable').nil?
   userFieldsLocked_costCentre = $daos.get_epms_config_enabled('userFieldsLocked_costCentre')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_costCentre').nil?
-  if ([!nil, 1].include? costCentreEnable) && (![nil, 1].include? userFieldsLocked_costCentre)
+  if ([!nil, 1].include? costCentreEnable) && (![nil, 1].include?userFieldsLocked_costCentre)
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:cost_centre], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:cost_centre], SELECT2_DROPDOWN_RESULT_CLASS))
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:cost_centre] + " Cost Centre Selected"
   end
@@ -448,7 +448,7 @@ def EnterUserProfileDetails
   # check position configuration
   positionEnable = $daos.get_epms_config_enabled('positionEnable')[:value].to_i unless $daos.get_epms_config_enabled('positionEnable').nil?
   userFieldsLocked_position = $daos.get_epms_config_enabled('userFieldsLocked_position')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_position').nil?
-  if ([!nil, 1].include? positionEnable) && (![nil, 1].include? userFieldsLocked_position)
+  if ([!nil, 1].include? positionEnable) && (![nil, 1].include?userFieldsLocked_position)
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:position], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:position], SELECT2_DROPDOWN_RESULT_CLASS))
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:position] + " Position Selected"
   end
@@ -456,7 +456,7 @@ def EnterUserProfileDetails
   # check department configuration
   departmentEnable = $daos.get_epms_config_enabled('departmentEnable')[:value].to_i unless $daos.get_epms_config_enabled('departmentEnable').nil?
   userFieldsLocked_department = $daos.get_epms_config_enabled('userFieldsLocked_department')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_department').nil?
-  if ([!nil, 1].include? departmentEnable) && (![nil, 1].include? userFieldsLocked_department)
+  if ([!nil, 1].include? departmentEnable) && (![nil, 1].include?userFieldsLocked_department)
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:department], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:department], SELECT2_DROPDOWN_RESULT_CLASS))
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:department] + " Department Selected"
   end
@@ -464,7 +464,7 @@ def EnterUserProfileDetails
   # check location configuration
   locationEnable = $daos.get_epms_config_enabled('locationEnable')[:value].to_i unless $daos.get_epms_config_enabled('locationEnable').nil?
   userFieldsLocked_location = $daos.get_epms_config_enabled('userFieldsLocked_location')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_location').nil?
-  if ([!nil, 1].include? legalEntityEnable) && (![nil, 1].include? userFieldsLocked_legalEntity)
+  if ([!nil, 1].include? legalEntityEnable) && (![nil, 1].include?userFieldsLocked_legalEntity)
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:location], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:location], SELECT2_DROPDOWN_RESULT_CLASS))
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:location] + " Location Selected"
   end
