@@ -20,7 +20,7 @@ Feature:
     And   I Edit The Name To Be "Vendor Scriptonce Edit"
     Then  I Should See That The Vendor Is "Edited" Successfully
 
-  @general_low_risk @general_vendor_user_add @C20998 @C20999 @C21000 @C21001 @C21007
+  @general_low_risk @general_vendor_user_add @C20998 @C20999 @C21000 @C21001 @C21007 @C21003 @C21004
   Scenario: [General]Can Add A Vendor User
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
@@ -49,6 +49,27 @@ Feature:
     And   I Choose To "View Vendor Users" For The Vendor
     And   I "Edit" Vendor User
     Then  I Should See That The Vendor User Is "Edited" Successfully
+
+  @general_low_risk @general_vendor_user_expiry_date @C21005 @C21006
+  Scenario: [General]Can Enable And Set Expiry Date For Vendor User
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To "Vendors" Under "General" Section
+    When  I Search For "Vendor Scriptonce Edit" Vendor
+    And   I Choose To "View Vendor Users" For The Vendor
+    And   I Edit Vendor User To Enable Expiry Date
+    And   I Set The Expiry Date
+    Then  I Should See That The Vendor User Is "Edited" Successfully
+
+  @general_low_risk @general_vendor_user_changepassword @C21009
+  Scenario: [General]Can Change Password For A Vendor User
+    Given I Have Logged In As A Company Admin
+    And   I Go To Admin Settings
+    And   I Go To "Vendors" Under "General" Section
+    When  I Search For "Vendor Scriptonce Edit" Vendor
+    And   I Choose To "View Vendor Users" For The Vendor
+    And   I Change The Password For The Vendor User
+    Then  I Should See That The Password Has Been Updated Successfully
 
   @general_low_risk @general_vendor_user_deactivate
   Scenario: [General]Can Deactivate A Vendor User

@@ -2,7 +2,7 @@ And(/^I Can Add A Vendor$/i) do
   AddVendor()
 end
 
-When(/^I Search For "([\w\s]+)" Vendor$/i) do | vendor_name |
+When(/^I Search For "(.*)" Vendor$/i) do | vendor_name |
   SearchForVendor(vendor_name)
 end
 
@@ -62,6 +62,34 @@ And(/^I "(Edit|Deactivate)" Vendor User$/i) do | action |
   ClickActionsDropdown()
   PerformActionVendorUser(action)
 end
+
+And(/^I Change The Password For The Vendor User$/i) do
+  SearchForVendorUser()
+  ClickActionsDropdown()
+  ChangePassword()
+end
+
+Then(/^I Should See That The Password Has Been Updated Successfully$/i) do
+  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VENDOR_USER_UPDATE_SUCCESS_MSG_VAL)
+end
+
+And(/^I Edit Vendor User To Enable Expiry Date$/i) do
+  SearchForVendorUser()
+  ClickActionsDropdown()
+
+  # first need to navigate to the edit vendor user profile page
+  identifier = "//a[@href='/admin/vendor/" + @vendor_details[:id].to_s + "/user/edit/" + @vendor_user[:id].to_s + "']"
+  Sleep_Until(ClickElement("xpath", identifier))
+
+  byebug
+end
+
+And(/^I Set The Expiry Date$/i) do
+  byebug
+end
+
+
+
 
 
 
