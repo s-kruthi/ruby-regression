@@ -3,7 +3,7 @@
 Feature:
   As a Company Admin I want to manage Users Successfully
 
-  @general_user_add @general_high_risk @onboarding_high_risk
+  @general_user_add @general_high_risk @onboarding_high_risk @C21297
   Scenario: [General] Company Admin Creating New User
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
@@ -49,7 +49,7 @@ Feature:
     And   I Search For A Specific User Named auto1.scriptonce1
     Then  I Should Be Able To Use De-activate User Action On The Specific User
 
-  @general_user_profile_edit @general_low_risk @onboarding_user_profile_edit @onboarding_low_risk @wip
+  @general_user_profile_edit @general_low_risk @onboarding_user_profile_edit @onboarding_low_risk @C21298
   Scenario: [General][Onboarding]Onboarding or General User List page - Edit Profile Information
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
