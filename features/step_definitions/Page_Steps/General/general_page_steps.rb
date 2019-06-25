@@ -54,7 +54,8 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     userFieldsLocked_employeeNumber = $daos.get_epms_config_enabled('userFieldsLocked_employeeNumber')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_employeeNumber').nil?
     if ([!nil, 1].include? employeeNumberEnable) && employeeNumberAutoGeneration == 0 && (![nil, 1].include? userFieldsLocked_employeeNumber)
       Sleep_Until(SelectEmployeeNumber(NEW_USER_EMPLOYEE_NUMBER_ID, NEW_USER_DETAILS_MAP[:employee_number_value]))
-      puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:employee_number_value] + " Employee Number Entered"
+      # puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:employee_number_value] + " Employee Number Entered"
+      PrintInfo(NEW_USER_DETAILS_MAP[:employee_number_value])
     end
     
     Sleep_Until(EnterUserDetails(NEW_USER_FIRST_NAME_ID, arg3))
@@ -65,17 +66,19 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     # check country configuration
     countryEnable = $daos.get_epms_config_enabled('countryEnable')[:value].to_i unless $daos.get_epms_config_enabled('countryEnable').nil?
     userfFieldsLocked_country = $daos.get_epms_config_enabled('userFieldsLocked_country')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_country').nil?
-    if ([!nil, 1].include? countryEnable) && ([!nil, !1].include? userfFieldsLocked_country)
+    if ([!nil, 1].include? countryEnable) && (![nil, 1].include? userfFieldsLocked_country)
       Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_COUNTRY_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:country_value], SELECT2_DROPDOWN_RESULT_CLASS))
-      puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:country_value] + " Country Selected"
+      # puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:country_value] + " Country Selected"
+      PrintInfo(NEW_USER_DETAILS_MAP[:country_value])
     end
     
     # check state configuration
     stateEnable = $daos.get_epms_config_enabled('stateEnable')[:value].to_i unless $daos.get_epms_config_enabled('stateEnable').nil?
     userFieldsLocked_state = $daos.get_epms_config_enabled('userFieldsLocked_state')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_state').nil?
-    if ([!nil, 1].include? stateEnable) && (![nil, 1].include? userFieldsLocked_state)
+    if countryEnable && ([!nil, 1].include? stateEnable) && (![nil, 1].include? userFieldsLocked_state)
       Sleep_Until(SingleSelectFromSelect2Dropdown(NEW_USER_STATE_ID, SELECT2_DROPDOWN_ID, NEW_USER_DETAILS_MAP[:state_value], SELECT2_DROPDOWN_RESULT_CLASS))
-      puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:state_value] + " State Selected"
+      # puts COLOR_BLUE + NEW_USER_DETAILS_MAP[:state_value] + " State Selected"
+      PrintInfo(NEW_USER_DETAILS_MAP[:state_value])
     end
     
     # check timezone configuration
@@ -148,6 +151,10 @@ def CreateUsers(arg2, arg3, arg4, arg5, arg6)
     Sleep_Until(ClickOnSaveButton(SAVE_BTN_ID))
     puts COLOR_BLUE + "Created new user with firstname '" + @@first_name + "' and lastname as '" + @@last_name + "'"
   end
+end
+
+def PrintInfo(arg1)
+  puts COLOR_BLUE + arg1 + " Selected"
 end
 
 def CreateAUser(user_type, firstname, lastname, manager_name, role)
