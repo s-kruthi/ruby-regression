@@ -278,17 +278,13 @@ end
 Then(/^I Should Be Able To Add (.*) Details$/i) do |contact_details|
   Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
   Sleep_Until(WaitForAnElementByXpathAndTouch(DONE_BTN_ID))
-  sleep (1)
+  sleep(1)
 end
 
 And(/^I Search For A Specific User Named (.*)$/i) do |username_search_value|
-  $username_search_value = username_search_value
-  
   UseActiveInactiveFilter() if USE_ACTIVE_INACTIVE_FILTER.to_i == 1
-  
-  USERNAME_SEARCH_RESULT_VALUE = "//td[contains(.,'#{$username_search_value}@elmodev.com')]"
-  
-  search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, $username_search_value, USERNAME_SEARCH_BTN, USERNAME_SEARCH_RESULT_VALUE)
+  @username_search_result_value = "//td[contains(.,'#{username_search_value}@elmodev.com')]"
+  search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, username_search_value, USERNAME_SEARCH_BTN, @username_search_result_value)
 end
 
 Then(/^I Should Be Able To Use (.*) Action On The Specific User$/i) do |specified_action|
@@ -303,7 +299,7 @@ Then(/^I Should Be Able To Use (.*) Action On The Specific User$/i) do |specifie
       
       when "Edit User Profile"
         begin
-          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_EDIT_VALUE)
+          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, 1, ACTION_DROPDOWN_EDIT_VALUE)
         end
     end
   end
@@ -314,20 +310,12 @@ And(/^I Should Be Able To Go To (.*) tab$/i) do |profile_tab_name|
 end
 
 And(/^I Should Be Able To Fill In All Profile Related Information$/i) do
-  pending
-  # select_gender()
-  # enter_preferred_name()
-  # select_date_joined()
-  # select_terminate_date()
-  # select_employement_status()
-  # select_date_of_birth()
-  # enter_elders_id()
-  # select_hay_grade()
-  # select_employe()
+  EnterUserProfileDetails()
 end
 
 And(/^I Should Be Able To Save The Information Successfully$/i) do
   ClickOnSaveButton(SAVE_BTN_ID)
+  Sleep_Until(VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, EDIT_USER_PROFILE_SAVE_SUCCESS_VALUE))
 end
 
 Then(/^I Should (Be Able|Not Be Able) To Access The Onboarding User Setup In Onboarding Section$/i) do |access_type|
@@ -351,7 +339,7 @@ end
 Then(/^I Should Be Able to (Notify|Activate) All Users$/i) do |action|
   Sleep_Until(PressConfirm())
   
-  if $add_user_type == 'EMP' then
+  if $add_user_type == 'EMP'
     onboarding = 0
   else
     onboarding = 1
@@ -377,9 +365,7 @@ end
 
 Then(/^I Should See That The Default Entity Is Set For the User's Company Field$/i) do
   default_legal_entity = $daos.get_default_entity_details()
-  
-  sleep (2)
-  
+  sleep(2)
   field_value = $driver.find_element(:id, USER_LEGAL_ENTITY_FIELD_ID).text
   
   #comparing the value from the db with the page
@@ -401,7 +387,6 @@ Then(/^I Can See That I Can Choose To Set The Company Legal Entity From The Exis
   
   Sleep_Until(WaitForAnElementByIdAndTouch(USER_LEGAL_ENTITY_FIELD_ID))
   Sleep_Until(WaitForAnElementByXpathAndInputValue(USER_LEGAL_ENTITY_SELECT2_ID, '%'))
-  
   sleep(4)
   
   # search results should be equal to count

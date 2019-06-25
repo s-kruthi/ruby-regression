@@ -99,10 +99,6 @@ def SearchForAClientContractAndVerify(search_field, search_value, search_btn, se
   VerifyAnElementExistByXPath(search_result,search_value)
  end
 
-def VerifySuccessAlertMessage(success_alert_id, success_alert_value)
-  Sleep_Until(VerifyAnElementExistByXPath(success_alert_id,success_alert_value))
-end
-
 def EditAClientContract(class_name, index_value, partial_link_text)
   WaitForDropdownByClassAndTouchTheIndex(class_name, index_value)
   sleep(1)
