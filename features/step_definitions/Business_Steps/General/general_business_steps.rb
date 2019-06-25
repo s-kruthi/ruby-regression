@@ -299,7 +299,7 @@ Then(/^I Should Be Able To Use (.*) Action On The Specific User$/i) do |specifie
       
       when "Edit User Profile"
         begin
-          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_EDIT_VALUE)
+          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, 1, ACTION_DROPDOWN_EDIT_VALUE)
         end
     end
   end
@@ -310,11 +310,7 @@ And(/^I Should Be Able To Go To (.*) tab$/i) do |profile_tab_name|
 end
 
 And(/^I Should Be Able To Fill In All Profile Related Information$/i) do
-  Sleep_Until(EnterUserProfileDetails(USER_PROFILE_DETAILS_ID_MAP[:legal_entity], USER_PROFILE_DETAILS_VALUE_MAP[:leagal_entity]))
-  Sleep_Until(EnterUserProfileDetails(USER_PROFILE_DETAILS_ID_MAP[:cost_centre], USER_PROFILE_DETAILS_VALUE_MAP[:cost_centre]))
-  Sleep_Until(EnterUserProfileDetails(USER_PROFILE_DETAILS_ID_MAP[:position], USER_PROFILE_DETAILS_VALUE_MAP[:position]))
-  Sleep_Until(EnterUserProfileDetails(USER_PROFILE_DETAILS_ID_MAP[:department], USER_PROFILE_DETAILS_VALUE_MAP[:department]))
-  Sleep_Until(EnterUserProfileDetails(USER_PROFILE_DETAILS_ID_MAP[:location], USER_PROFILE_DETAILS_VALUE_MAP[:location]))
+  EnterUserProfileDetails()
 end
 
 And(/^I Should Be Able To Save The Information Successfully$/i) do
