@@ -437,14 +437,14 @@ def EnterUserProfileDetails
     puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:legal_entity] + " Legal Entity Selected"
   end
   
-  # check cost_centre configuration
-  costCentreEnable = $daos.get_epms_config_enabled('costCentreEnable')[:value].to_i unless $daos.get_epms_config_enabled('costCentreEnable').nil?
-  userFieldsLocked_costCentre = $daos.get_epms_config_enabled('userFieldsLocked_costCentre')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_costCentre').nil?
-  if ([!nil, 1].include? costCentreEnable) && (![nil, 1].include?userFieldsLocked_costCentre)
-    Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:cost_centre], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:cost_centre], SELECT2_DROPDOWN_RESULT_CLASS))
-    puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:cost_centre] + " Cost Centre Selected"
-  end
-  
+  # check cost_centre configuration (requires cost centre to be active and payroll be disabled in sitesetup)
+  # costCentreEnable = $daos.get_epms_config_enabled('costCentreEnable')[:value].to_i unless $daos.get_epms_config_enabled('costCentreEnable').nil?
+  # userFieldsLocked_costCentre = $daos.get_epms_config_enabled('userFieldsLocked_costCentre')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_costCentre').nil?
+  # if ([!nil, 1].include? costCentreEnable) && (![nil, 1].include?userFieldsLocked_costCentre)
+  #   Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:cost_centre], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:cost_centre], SELECT2_DROPDOWN_RESULT_CLASS))
+  #   puts COLOR_BLUE + USER_PROFILE_DETAILS_VALUE_MAP[:cost_centre] + " Cost Centre Selected"
+  # end
+
   # check position configuration
   positionEnable = $daos.get_epms_config_enabled('positionEnable')[:value].to_i unless $daos.get_epms_config_enabled('positionEnable').nil?
   userFieldsLocked_position = $daos.get_epms_config_enabled('userFieldsLocked_position')[:value].to_i unless $daos.get_epms_config_enabled('userFieldsLocked_position').nil?

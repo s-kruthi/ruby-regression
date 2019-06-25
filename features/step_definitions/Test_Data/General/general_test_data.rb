@@ -22,7 +22,7 @@ NEW_USER_DETAILS_MAP = {
 }
 
 USER_PROFILE_DETAILS_VALUE_MAP = {
-    legal_entity: "TESTING",
+    legal_entity: "AU Company",
     cost_centre: "",
     position: "Quality Assurance Tester - Automation",
     department: "Research and Development",
