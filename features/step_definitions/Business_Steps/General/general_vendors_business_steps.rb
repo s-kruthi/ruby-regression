@@ -39,6 +39,7 @@ Then(/^I Should See That The Vendor User Is "(Added|Edited|Deactivated)" Success
   elsif action_type == 'Edited'
     VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VENDOR_USER_UPDATE_SUCCESS_MSG_VAL)
   else
+    WaitForAnElementByXPath(REQUISITION_MODAL_ID)
     #See success message in modal
     Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, VENDOR_USER_DEACTIVATE_SUCCESS_MSG_VAL))
     PressEnterOK()
