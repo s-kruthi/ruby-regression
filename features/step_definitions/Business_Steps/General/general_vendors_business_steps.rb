@@ -74,18 +74,13 @@ Then(/^I Should See That The Password Has Been Updated Successfully$/i) do
 end
 
 And(/^I Edit Vendor User To Enable Expiry Date$/i) do
-  SearchForVendorUser()
+  SearchForVendorUserWithNoExpiryDate()
   ClickActionsDropdown()
-
-  # first need to navigate to the edit vendor user profile page
-  identifier = "//a[@href='/admin/vendor/" + @vendor_details[:id].to_s + "/user/edit/" + @vendor_user[:id].to_s + "']"
-  Sleep_Until(ClickElement("xpath", identifier))
-
-  byebug
+  EnableExpiryDate()
 end
 
 And(/^I Set The Expiry Date$/i) do
-  byebug
+  SetExpiryDate()
 end
 
 

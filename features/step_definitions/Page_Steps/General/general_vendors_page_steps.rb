@@ -32,8 +32,8 @@ def EnterVendorUserDetails()
   vendor_user_email = 'vendorscriptonce_'+ suffix +'@elmodev.com'
   WaitForAnElementByIdAndInputValue(VENDOR_USER_EMAIL_ID, vendor_user_email)
 
-  WaitForAnElementByIdAndInputValue("vendoruser_phoneWork", NEW_USER_DETAILS_MAP[:mobile_number])
-  WaitForAnElementByIdAndInputValue("vendoruser_mobile", NEW_USER_DETAILS_MAP[:mobile_number])
+  WaitForAnElementByIdAndInputValue(VENDOR_USER_WORKPH_ID, NEW_USER_DETAILS_MAP[:mobile_number])
+  WaitForAnElementByIdAndInputValue(VENDOR_USER_MOBILE_ID, NEW_USER_DETAILS_MAP[:mobile_number])
 
   WaitForAnElementByIdAndTouch(VENDOR_USER_SAVE_BTN_ID)
 end
@@ -106,7 +106,35 @@ def ChangePassword()
   Sleep_Until(ClickElement("xpath", change_pwd))
 
   # change password
-  WaitForAnElementByIdAndInputValue("vendoruser_password_first", NEW_USER_DETAILS_MAP[:user_password_value])
-  WaitForAnElementByIdAndInputValue("vendoruser_password_second", NEW_USER_DETAILS_MAP[:user_password_value])
+  WaitForAnElementByIdAndInputValue(VENDOR_USER_PWD_ID, NEW_USER_DETAILS_MAP[:user_password_value])
+  WaitForAnElementByIdAndInputValue(VENDOR_USER_REPEATPWD_ID, NEW_USER_DETAILS_MAP[:user_password_value])
+  WaitForAnElementByIdAndTouch(VENDOR_USER_SAVE_BTN_ID)
+end
+
+def SearchForVendorUserWithNoExpiryDate()
+  # query for vendor user with no expiry date
+  @vendor_user = $daos.get_vendor_user_noexpiry(@vendor_details[:id])
+
+  if !@vendor_user.nil?
+    Sleep_Until(SearchACourse(VENDOR_SEARCH_ID, @vendor_user[:name], COURSE_SEARCH_BTN_ID))
+  else
+    puts COLOR_YELLOW + "vendor user not found with expiry date not set, check manually".upcase
+    skip_this_scenario
+  end
+end
+
+def EnableExpiryDate()
+  # first need to navigate to the edit vendor user profile page
+  identifier = "//a[@href='/admin/vendor/" + @vendor_details[:id].to_s + "/user/edit/" + @vendor_user[:id].to_s + "']"
+  Sleep_Until(ClickElement("xpath", identifier))
+
+  expect($driver.find_element(:id, VENDOR_USER_EXPIRYDATE_TOGGLE_ID).selected?).to eq(false)
+  JavascriptClick(VENDOR_USER_EXPIRYDATE_TOGGLE_ID)
+end
+
+def SetExpiryDate()
+  expiry_date = (DateTime.now).next_year.strftime("%d/%m/%Y")
+  ClearField('id', VENDOR_USER_EXPIRYDATE_ID)
+  WaitForAnElementByIdAndInputValue(VENDOR_USER_EXPIRYDATE_ID, expiry_date)
   WaitForAnElementByIdAndTouch(VENDOR_USER_SAVE_BTN_ID)
 end

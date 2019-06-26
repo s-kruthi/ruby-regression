@@ -253,6 +253,18 @@ module Database_env
       return @db[query].first
     end
 
+    def get_vendor_user_noexpiry(vendor_id)
+      query = "select id, concat (first_name,' ',last_name) as name
+               from epms_user
+               where is_active = 1
+               and is_deleted = 0
+               and is_notified = 1
+               and expiry_date = 0
+               and vendor_id = #{vendor_id}
+               order by rand()"
+      return @db[query].first
+    end
+
   end
 
 end
