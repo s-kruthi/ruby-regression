@@ -3,7 +3,7 @@
 Feature:
   As A HR Manager, I Can To Be Able To Setup HRCore for Payroll
 
-  @hr_core_low_risk @hr_core_payroll_setup @wip_omar
+  @hr_core_low_risk @hr_core_payroll_setup
   Scenario: [General]As A HR Manager, I want To Be Able To Setup Payroll Integration Information
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
