@@ -360,11 +360,6 @@ def EditACourseActivity(course_activity_type)
   end
 end
 
-def ClickOnSaveButton(btn_id)
-  Sleep_Until(WaitForAnElementByXpathAndTouch(btn_id))
-  sleep (1)
-end
-
 def ClickOnFilterSaveButton(btn_id,filter_name_id,filter_name_value)
   Sleep_Until(WaitForAnElementByIdAndTouch(btn_id))
   Sleep_Until(WaitForAnElementByIdAndInputValue(filter_name_id,filter_name_value))

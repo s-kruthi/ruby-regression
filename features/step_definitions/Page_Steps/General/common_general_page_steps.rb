@@ -47,3 +47,16 @@ def VerifyNewTypeCreated(arg1)
       VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, LOCATION_SAVE_SUCCESS_MESSAGE_VALUE)
   end
 end
+
+# clicks on Save button based on xpath
+# Syntax: enterSaveBtn(SAVE_BTN_ID)
+def enterSaveBtn(save_btn_id)
+  WaitForAnElementByXpathAndTouch(save_btn_id)
+end
+
+# clicks on Save button based on xpath. the explicit sleep is to ensure the page is given adequate time to reload
+# Syntax: ClickOnSaveButton(SAVE_BTN_ID)
+def ClickOnSaveButton(btn_id)
+  Sleep_Until(WaitForAnElementByXpathAndTouch(btn_id))
+  sleep (1)
+end
