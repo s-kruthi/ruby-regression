@@ -5,7 +5,7 @@ Feature:
 
   @hr_core_low_risk @hr_core_payroll_setup @wip_omar
   Scenario: [General]As A HR Manager, I want To Be Able To Setup Payroll Integration Information
-    Given I Have Logged In As A HR Manager
+    Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "HRCore Setup" Under "HR Core" Section
     When  I Click On "Payroll" Tab
