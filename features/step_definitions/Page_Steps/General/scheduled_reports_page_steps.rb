@@ -56,10 +56,6 @@ def selectShowAllDataOption(show_all_data_id, show_all_data_value)
   SelectFromDropdown(show_all_data_id, show_all_data_value)
 end
 
-def enterSaveBtn(save_btn_id)
-  WaitForAnElementByXpathAndTouch(save_btn_id)
-end
-
 def searchForAScheduledReportAndVerify(schd_report_search_id, schd_reports_name_value, schd_report_search_btn_id, schd_report_search_result_value)
   sleep (3)
   WaitForAnElementByXpathAndInputValue(schd_report_search_id,schd_reports_name_value)
