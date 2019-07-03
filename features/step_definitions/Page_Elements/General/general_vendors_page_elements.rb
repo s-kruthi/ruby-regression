@@ -19,4 +19,16 @@ VENDOR_USER_LASTNAME_ID = 'vendoruser_lastName'
 
 VENDOR_USER_EMAIL_ID = 'vendoruser_email'
 
+VENDOR_USER_WORKPH_ID = 'vendoruser_phoneWork'
+
+VENDOR_USER_MOBILE_ID = 'vendoruser_mobile'
+
+VENDOR_USER_EXPIRYDATE_TOGGLE_ID = 'vendoruser_expiryEnable'
+
+VENDOR_USER_EXPIRYDATE_ID = 'vendoruser_expiryDate'
+
+VENDOR_USER_PWD_ID = 'vendoruser_password_first'
+
+VENDOR_USER_REPEATPWD_ID = 'vendoruser_password_second'
+
 VENDOR_USER_SAVE_BTN_ID = 'vendoruser_save'
