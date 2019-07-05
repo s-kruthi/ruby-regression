@@ -1,7 +1,7 @@
 # # ######### Employee Contracts page data #############################
 
 EMP_CONTRACT_DESC_VALUE = "This is a TEST. Please do not delete this - Omar - " + rand(10..100).to_s
-EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_VALUE = "Contract is saved successfully"
+EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_VALUE = "The contract has been saved successfully"
 
 EMP_CONTRACT_SEARCH_VALUE = "This is a TEST. Please do not delete this - Omar"
 
