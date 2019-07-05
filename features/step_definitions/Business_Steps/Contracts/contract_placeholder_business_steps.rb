@@ -23,7 +23,7 @@ Then(/^I Should See The Default Value field Has a CK Editor/i) do
   Sleep_Until(WaitForAnElementByXPath(CONTRACT_PLACEHOLDER_CKEDITOR_ID))
 end
 
-And(/^I Should See That The Field Is Limited to (\d+) characters/i) do | max_value |
+And(/^I Should See That The Field Is Limited to "(\d+)" characters/i) do | max_value |
   Sleep_Until(VerifyMaxLength(CONTRACT_TEXTAREA_DEFAULT_VALUE_ID,max_value))
 end
 
