@@ -22,7 +22,7 @@ MENU_PERFORMANCE_LINK = "//a[contains(@href,'/dashboard/my-performance')]"
 MENU_RECRUITMENT_LINK = "//a[contains(@href,'/controlpanel/recruitment/requisition/requisition')]"
 MENU_CAREERS_LINK = "//a[contains(@href,'/controlpanel/recruitment/careers/browse-jobs/')]"
 MENU_CALENDER_LINK = "//a[contains(@href,'/controlpanel/calendar/')]"
-MENU_CONTRACTS_LINK = "//a[contains(@href,'/contract/')]"
+MENU_CONTRACTS_LINK = "//a[contains(@href,'/contract/workflow-management/list')]"
 MENU_SUCCESSION_LINK = "//a[contains(@href,'/succession/calibration/')]"
 MENU_REPORTS_LINK = "//a[contains(@href,'/report')]"
 

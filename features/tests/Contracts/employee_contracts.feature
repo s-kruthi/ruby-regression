@@ -12,24 +12,24 @@ Feature:
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
-    When I click on New Contract Button
-    And I Enter New Employee Contract Details
-    Then I Should Be Able To Create A New Contract
+    When  I Click on New Contract Button
+    And   I Enter New Employee Contract Details
+    Then  I Should Be Able To Create A New Contract
 
   @employee_contract_search @contracts_high_risk
   Scenario: [Contracts]Search an Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
-    Then I Should Be Able To Search For An Employee Contract
+    Then  I Should Be Able To Search For An Employee Contract
 
   @employee_contract_edit @contracts_high_risk
   Scenario: [Contracts]Edit an Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
-    When I Search For An Employee Contract
-    Then I Should Be Able To Edit An Employee Contract
+    When  I Search For An Employee Contract
+    Then  I Should Be Able To Edit An Employee Contract
 
   @employee_contract_copy @contracts_low_risk
   Scenario: [Contracts]Copy an Existing Contract
