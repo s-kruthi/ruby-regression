@@ -41,6 +41,8 @@ DOCUMENTS_LIST_PATH = "//span[contains(.,'Form Templates')]"
 
 CREATE_FORM_TEMPLATE_BTN="//a[contains(.,'Create Form Template')]"
 
+CREATE_FORM_BTN = "//a[contains(., 'Create Form')]"
+
 FORM_TEMP_TITLE = "//input[contains(@id,'title')]"
 FORM_TEMPLATE_SAVE_BTN="//button[contains(.,'Save')]"
 
@@ -56,6 +58,11 @@ CAT_POS_INDEX_CLASS = "select2-result"
 FORM_TEMP_SEARCH_BOX = "//input[contains(@id,'searchText')]"
 SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 FILE_DROPDOWN = "dropdown-toggle"
+
+PREFAB_FORM_ID = "prefab_picker_prefab_form_id"
+PREFAB_FORM_DROPDOWN_SEARCH_CLASS = "form-control"
+PREFAB_FORM_DROPDOWN_RESULT_CLASS = "form-control"
+
 
 ######### Document - Document Categories elements #############################
 

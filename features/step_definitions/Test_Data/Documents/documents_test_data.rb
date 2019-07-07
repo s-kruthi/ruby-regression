@@ -25,7 +25,7 @@ FORM_ACTION_ITEM = "Hide"
 
 ######### Document - Document Categories page data #############################
 
-DOCUMENT_CATEGORY_TITLE_TEXT = "Test Document Category - DO NOT DELETE"
+DOCUMENT_CATEGORY_TITLE_TEXT = "Employee Forms"
 DOCUMENT_CATEGORY_DESC_TXT = "Test Document Category Description - DO NOT DELETE"
 
 DOCUMENT_CAT_SAVE_SUCCESS_VALUE = "Successfully added new category"
