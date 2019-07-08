@@ -77,7 +77,7 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To "Payroll Cycle" Under "HR Core" Section
     When  I Click On Add Payroll Cycle Button
-    Then  I Should See That The Quarterly Type Is Available
+    Then  I Should See That The "Quarterly" Type Is Available
     And   I Select Type As Quarterly
     And   The Date of Month Field Is Set To 1st As Default
 
@@ -87,4 +87,4 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To "Payroll Cycle" Under "HR Core" Section
     When  I Click On Add Payroll Cycle Button
-    Then  I Should See That The Bi-monthly Type Is Available
+    Then  I Should See That The "Bi-monthly" Type Is Available
