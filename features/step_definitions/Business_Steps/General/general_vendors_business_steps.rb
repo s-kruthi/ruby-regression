@@ -2,7 +2,7 @@ And(/^I Can Add A Vendor$/i) do
   AddVendor()
 end
 
-When(/^I Search For "(.*)" Vendor$/i) do | vendor_name |
+When(/^I Search For "([\w\s]+)" Vendor$/i) do | vendor_name |
   SearchForVendor(vendor_name)
 end
 
@@ -39,7 +39,7 @@ Then(/^I Should See That The Vendor User Is "(Added|Edited|Deactivated)" Success
   elsif action_type == 'Edited'
     VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VENDOR_USER_UPDATE_SUCCESS_MSG_VAL)
   else
-    WaitForAnElementByXPath(REQUISITION_MODAL_ID)
+    Sleep_Until(WaitForAnElementByXPath(REQUISITION_MODAL_ID))
     #See success message in modal
     Sleep_Until(VerifyAnElementExistByXPath(REQUISITION_MODAL_ID, VENDOR_USER_DEACTIVATE_SUCCESS_MSG_VAL))
     PressEnterOK()
@@ -63,29 +63,6 @@ And(/^I "(Edit|Deactivate)" Vendor User$/i) do | action |
   ClickActionsDropdown()
   PerformActionVendorUser(action)
 end
-
-And(/^I Change The Password For The Vendor User$/i) do
-  SearchForVendorUser()
-  ClickActionsDropdown()
-  ChangePassword()
-end
-
-Then(/^I Should See That The Password Has Been Updated Successfully$/i) do
-  VerifySuccessAlertMessage(VERIFY_SAVE_SUCCESSFUL_ID, VENDOR_USER_UPDATE_SUCCESS_MSG_VAL)
-end
-
-And(/^I Edit Vendor User To Enable Expiry Date$/i) do
-  SearchForVendorUserWithNoExpiryDate()
-  ClickActionsDropdown()
-  EnableExpiryDate()
-end
-
-And(/^I Set The Expiry Date$/i) do
-  SetExpiryDate()
-end
-
-
-
 
 
 
