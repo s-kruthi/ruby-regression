@@ -280,3 +280,13 @@ Then(/^I Should Be Able To See The Error Message When Split % Are Decimal Values
   VerifyErrorAlertMessage(VERIFY_ALERT_ID, USER_PROFILE_UPDATE_ERR_MSG_VALUE)
   VerifyCostCentreSplitValErrMsg('decimal_err')
 end
+
+And(/^I Should Be Able To Click "([\w\s]+)" Sub-Tab Of Employee$/i) do | sub_tab_name |
+  if sub_tab_name == 'Recognition'
+    Sleep_Until(WaitForAnElementByXpathAndTouch((EMP_RECOGNITION_SUB_TAB_ID)))
+  else
+    if sub_tab_name.count(" ") > 0 then sub_tab_name = sub_tab_name.gsub(/\s/,'-') end
+    identifier = sub_tab_name.downcase + "-tab"
+    Sleep_Until(WaitForAnElementByIdAndTouch((identifier)))
+  end
+end
