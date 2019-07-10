@@ -30,6 +30,7 @@ GENERAL_EXPAND = "//a[@href='#collapseGeneral']"
 USERS_LIST_PATH = "//span[contains(.,'Users')]"
 USERS_NAV_LINK = "//a[contains(@href,'/admin/users')]"
 ADD_NEW_USER_BTN = "//a[contains(.,' Add New User')]"
+USERS_NOT_FOUND = '//td[contains(.,"There are no Users to display")]'
 
 #### ADD USERS PAGE ####
 NEW_USER_EMPLOYEE_NUMBER_ID = "//input[contains(@id,'employeeNumber')]"
