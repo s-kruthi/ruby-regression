@@ -77,15 +77,14 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To "Payroll Cycle" Under "HR Core" Section
     When  I Click On Add Payroll Cycle Button
-    Then  I Should See That The Quarterly Type Is Available
+    Then  I Should See That The "Quarterly" Type Is Available
     And   I Select Type As Quarterly
     And   The Date of Month Field Is Set To 1st As Default
 
-  #currently can only be run on tmspayrolldev
   @hr_core_low_risk @payroll_cycle_bi-monthly
   Scenario: [General]Verify That The Bi-Monthly Type Is Available For Payroll Cycle
     Given I Have Logged In As A HR Manager
     And   I Go To Admin Settings
     And   I Go To "Payroll Cycle" Under "HR Core" Section
     When  I Click On Add Payroll Cycle Button
-    Then  I Should See That The Bi-monthly Type Is Available
+    Then  I Should See That The "Bi-monthly" Type Is Available

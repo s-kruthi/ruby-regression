@@ -59,7 +59,7 @@ Then(/^I Should See That The Weeks Per Annum Field Information Message Is Displa
   VerifyInfoMessage(VERIFY_INFO_ID, WEEKSERANNUM_INFO_VALUE)
 end
 
-Then(/^I Should See That The (.*) Type Is Available$/i) do |payrollcycle_type|
+Then(/^I Should See That The "(.*)" Type Is Available$/i) do |payrollcycle_type|
   CheckPayrollCycleType(payrollcycle_type)
 end
 
