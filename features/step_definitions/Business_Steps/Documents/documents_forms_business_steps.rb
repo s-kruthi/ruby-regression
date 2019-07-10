@@ -1,11 +1,36 @@
-When(/^I click on Create Form Template Button$/i) do
-  goToNewFormTemplateAddPage(CREATE_FORM_TEMPLATE_BTN)
-end
+# When(/^I click on Create Form Template Button$/i) do
+#   goToNewFormTemplateAddPage(CREATE_FORM_TEMPLATE_BTN)
+# end
 
-And(/^I Enter New Form Template Details$/i) do
-  Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
-  Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT , DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
-  Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
+And(/^I Enter New "(.*)" Form Template Details$/i) do |prefab_form_title|
+  case prefab_form_title
+    when "default"
+      begin
+        Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
+        Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
+        Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
+        Sleep_Until(SingleSelectFromSelect2Dropdown(PREFAB_FORM_ID, PREFAB_FORM_DROPDOWN_SEARCH_CLASS, prefab_form_title, PREFAB_FORM_DROPDOWN_RESULT_CLASS))
+      end
+
+    when "TFN"
+      begin
+        Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
+        Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
+        Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
+        Sleep_Until(SingleSelectFromSelect2Dropdown(PREFAB_FORM_ID, PREFAB_FORM_DROPDOWN_SEARCH_CLASS, prefab_form_title, PREFAB_FORM_DROPDOWN_RESULT_CLASS))
+        Sleep_Until(PressModalOk())
+      end
+
+    when "Employee Qualification"
+      begin
+        Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
+        Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
+        Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
+        Sleep_Until(SingleSelectFromSelect2Dropdown(PREFAB_FORM_ID, PREFAB_FORM_DROPDOWN_SEARCH_CLASS, prefab_form_title, PREFAB_FORM_DROPDOWN_RESULT_CLASS))
+        Sleep_Until(PressModalOk())
+      end
+  end
+
 end
 
 Then(/^I Should Be Able To Create A Form Template$/i) do
@@ -66,4 +91,23 @@ Then(/^I Shouldn't Be Able To View Reports Tab$/i) do
   CheckReportsTabisUnavailable()
 #'roleType[capabilities][report][223]'=>'223',
   GrantBackDocumentViewAccessByUsingJmeterRubyService()
+end
+
+When(/^I Click On The "(.*)" Button$/i) do |create_btn|
+  case create_btn
+    when "Create Form Template"
+      identifier = CREATE_FORM_TEMPLATE_BTN
+    when "Create Form"
+      identifier = CREATE_FORM_BTN
+  end
+
+  Sleep_Until(WaitForAnElementByXpathAndTouch(identifier))
+end
+
+When(/^I Enter New Form Details$/i) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I Should Be Able To Create A Form$/i) do
+  pending # Write code here that turns the phrase above into concrete actions
 end
