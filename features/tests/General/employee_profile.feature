@@ -32,11 +32,10 @@ Feature:
     And   I Search An Employee Named "auto1.scriptonce1"
 #    Then  I Should Be Able To View The Employee Profile for auto1.scriptonce1 And Verify Email Address auto1.scriptonce1@elmodev.com
 #    And   I Should Be Able To Click "Activity" Sub-Tab
-    And   I Should Be Able To Click "Resume" Sub-Tab
-    And   I Should Be Able To Click "My Career" Sub-Tab
-    And   I Should Be Able To Click "Personal Details" Sub-Tab
-    And   I Should Be Able To Click "Payment Details" Sub-Tab
-    And   I Should Be Able To Click "Recognition" Sub-Tab
+    And   I Should Be Able To Click "Resume" Sub-Tab Of Employee
+    And   I Should Be Able To Click "My Career" Sub-Tab Of Employee
+    And   I Should Be Able To Click "Personal Details" Sub-Tab Of Employee
+    And   I Should Be Able To Click "Recognition" Sub-Tab Of Employee
 
   @general_low_risk @user_profile_note @user_profile_addnote @C16458
   Scenario Outline: [General]Can Add Note To A User Profile With Different Visibility Settings

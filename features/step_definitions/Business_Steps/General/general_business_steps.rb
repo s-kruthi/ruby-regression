@@ -214,9 +214,8 @@ Given(/^I Have Created A New User$/i) do
         Then  I Should Be Able To Add A New "Non-ELMO" User With "#{user_first_name}" As First Name And "test" As Last Name}
 end
 
-And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
+And(/^I Click On "(.*)" Sub Tab$/i) do |sub_tab_name|
   begin
-
     #Since these are derived using href, case is used to differentiate between specific ones
     case sub_tab_name
       when "Personal Details"
@@ -232,7 +231,7 @@ And(/^I Click On (.*) Sub Tab$/i) do |sub_tab_name|
   end
 end
 
-When(/^I Click On (.*) Icon$/i) do |click_edit_icon|
+When(/^I Click On "(.*)" Icon$/i) do |click_edit_icon|
   begin
     case click_edit_icon
       when "Edit Emergency Contact Details"
@@ -248,7 +247,7 @@ When(/^I Click On (.*) Icon$/i) do |click_edit_icon|
   end
 end
 
-And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
+And(/^I Use Add "(.*)" Details$/i) do |add_contact_btn|
   begin
     case add_contact_btn
       when "Emergency Contact"
@@ -275,31 +274,37 @@ And(/^I Use Add (.*) Details$/i) do |add_contact_btn|
   end
 end
 
-Then(/^I Should Be Able To Add (.*) Details$/i) do |contact_details|
-  Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
+Then(/^I Should Be Able To Add "(.*)" Details$/i) do |contact_details|
+#  Sleep_Until(WaitForAnElementByXpathAndTouch(SAVE_BTN_ID))
   Sleep_Until(WaitForAnElementByXpathAndTouch(DONE_BTN_ID))
   sleep(1)
 end
 
 And(/^I Search For A Specific User Named (.*)$/i) do |username_search_value|
+  @username_search_value = username_search_value
   UseActiveInactiveFilter() if USE_ACTIVE_INACTIVE_FILTER.to_i == 1
   @username_search_result_value = "//td[contains(.,'#{username_search_value}@elmodev.com')]"
   search_for_an_employee_contract_and_verify(USERNAME_SEARCH_ID, username_search_value, USERNAME_SEARCH_BTN, @username_search_result_value)
 end
 
-Then(/^I Should Be Able To Use (.*) Action On The Specific User$/i) do |specified_action|
+Then(/^I Should Be Able To Use "(.*)" Action On The Specific User$/i) do |specified_action|
   begin
     case specified_action
       
-      when "De-activate user"
+    when "De-activate User"
+      #need to check epms_config for enableTerminateUser to be 0
         begin
-          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_DEACTIVATE_VALUE)
-          VerifyDeletedUser(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
+          Sleep_Until(ClickUserListActions(SEARCH_RESULTS_ACTIONS_ID, ACTION_DROPDOWN_INDEX_VALUE, ACTION_DROPDOWN_DEACTIVATE_VALUE))
+          VerifyUserDeactivated()
+
+          # set user back to active
+          SetUserActive(@username_search_value)
+          # VerifyDeletedUser(INACTIVE_CLASS_ID, INACTIVE_ATTRIBUTE_ID, INACTIVE_ATTRIBUTE_TEXT)
         end
       
-      when "Edit User Profile"
+    when "Edit User Profile"
         begin
-          ClickUserListActions(ACTION_DROPDOWN_CLASS_NAME, 1, ACTION_DROPDOWN_EDIT_VALUE)
+          ClickUserListActions(SEARCH_RESULTS_ACTIONS_ID, 0, ACTION_DROPDOWN_EDIT_VALUE)
         end
     end
   end
@@ -378,7 +383,7 @@ And(/^I Click On The Profile Tab Of The([^\"]*) User$/i) do |user_type|
 end
 
 When(/^I Choose To Edit An Existing User's Profile$/i) do
-  steps %{Then I Should Be Able To Use Edit User Profile Action On The Specific User}
+  steps %{Then I Should Be Able To Use "Edit User Profile" Action On The Specific User}
 end
 
 Then(/^I Can See That I Can Choose To Set The Company Legal Entity From The Existing Entities$/i) do

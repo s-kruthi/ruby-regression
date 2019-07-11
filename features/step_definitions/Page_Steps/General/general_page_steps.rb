@@ -46,6 +46,7 @@ def GoToAddNewUsersPage(add_new_user_btn)
 end
 
 def CreateUsers(arg2, arg3, arg4, arg5, arg6)
+  # TODO: Check for config incase of onboarding users
   begin
   
     #check employee number configuration
@@ -212,7 +213,7 @@ def SelectTimeZone(select_timezone_id, select_timezone_value)
 end
 
 def ClickUserListActions(action_dropdown_class_name, action_dropdown_class_index_value, action_dropdown_name_value)
-  Sleep_Until(WaitForDropdownByClassAndTouchTheIndex(action_dropdown_class_name, action_dropdown_class_index_value))
+  Sleep_Until(WaitForAnElementByXpathAndTouchTheIndex(action_dropdown_class_name, action_dropdown_class_index_value))
   Sleep_Until(WaitForAnElementByPartialLinkTextAndTouch(action_dropdown_name_value))
 end
 
@@ -468,4 +469,15 @@ def EnterUserProfileDetails
     Sleep_Until(SingleSelectFromSelect2Dropdown(USER_PROFILE_DETAILS_ID_MAP[:location], SELECT2_DROPDOWN_ID, USER_PROFILE_DETAILS_VALUE_MAP[:location], SELECT2_DROPDOWN_RESULT_CLASS))
     STDOUT.puts COLOR_BLUE + "Location Selected: " + USER_PROFILE_DETAILS_VALUE_MAP[:location]
   end
+end
+
+def VerifyUserDeactivated()
+  Sleep_Until(VerifyAnElementExists('xpath', USERS_NOT_FOUND))
+  puts COLOR_GREEN + "user has been deactivated".upcase
+end
+
+def SetUserActive(username)
+  user_activated = $daos.set_user_active(username)
+  expect(user_activated[:affected]).to eq(1)
+  puts COLOR_BLUE + "user has been reactivated again".upcase
 end

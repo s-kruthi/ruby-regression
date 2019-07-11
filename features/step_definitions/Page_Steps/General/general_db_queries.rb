@@ -265,6 +265,21 @@ module Database_env
       return @db[query].first
     end
 
+    def set_user_active(username)
+      query1 = "update epms_user
+                set is_active = 1,
+                is_deleted = 0
+                where username = '#{username}'"
+
+      query2 = "select row_count() as affected;"
+
+      #Executing the update query to reactivate user
+      @db.execute(query1)
+
+      #returning the number of rows affected
+      return @db[query2].first
+    end
+
   end
 
 end

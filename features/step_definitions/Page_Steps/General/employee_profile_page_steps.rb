@@ -140,7 +140,7 @@ end
 def DeleteNote()
   @posted_time = $driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text
   Sleep_Until(WaitForAnElementByXpathAndTouch(NOTE_DEL_BUTTON_ID))
-  Sleep_Until(PressEnterConfirm())
+  Sleep_Until(WaitForAnElementByCssAndTouchTheIndex(CONFIRM_ACTION_CSS,1))
   Sleep_Until(PressEnterOK())
 end
 

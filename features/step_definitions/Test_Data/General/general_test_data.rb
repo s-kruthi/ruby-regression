@@ -34,7 +34,7 @@ MANAGER_SELECT_INPUT_VALUE = "manager1.scriptonce1"
 ADD_USER_SAVE_SUCCESS_VALUE = "User details have been updated!"
 EDIT_USER_PROFILE_SAVE_SUCCESS_VALUE = "User profile has been updated!"
 
-EM_USER__NAME_VALUE = "Automation Test User"
+EM_USER__NAME_VALUE = "Automation Test User" + Time.now.strftime("%Y%m%d%H%M%S").to_s
 EM_USER_RELATIONSHIP_VALUE = "Tester"
 EM_USER_ADDRESS_VALUE = "520 Oxford St, Bondi Junction, New South Wales, Australia"
 EM_USER_MOBILE_VALUE = "0430000000"
