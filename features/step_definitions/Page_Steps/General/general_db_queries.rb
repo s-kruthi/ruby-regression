@@ -266,7 +266,6 @@ module Database_env
     end
 
     def set_user_active(username)
-      byebug
       query1 = "update epms_user
                 set is_active = 1,
                 is_deleted = 0
