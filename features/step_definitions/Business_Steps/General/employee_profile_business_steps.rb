@@ -80,8 +80,8 @@ end
 
 And(/^I Click On (Add|Save) Note Button$/i) do |action|
   Sleep_Until(WaitForAnElementByIdAndTouch(NOTE_SUBMIT_ID))
-  @time_note_added = DateTime.now.strftime('%s').to_i
-  #@time_note_added = Time.at(time_note_added).strftime "%d/%m/%Y %-l:%M%p"
+  time_note_added = DateTime.now.strftime('%s').to_i
+  @time_note_added = Time.at(time_note_added).strftime "%d/%m/%Y %-l:%M%p"
 end
 
 Then(/^I Should See That The Note Has Been (Added|Edited) Successfully$/i) do |action|
