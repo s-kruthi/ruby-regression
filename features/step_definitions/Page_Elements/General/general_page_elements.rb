@@ -11,6 +11,7 @@ SELECT2_DROPDOWN_ID = "select2-input"
 SELECT2_DROPDOWN_RESULT_CLASS = "select2-result-selectable"
 
 MODAL_ID = '//div[@class="bootbox-body"]'
+CONFIRM_ACTION_CSS = "[data-bb-handler='confirm']"
 
 MENU_PROFILE_LINK = "//a[contains(@href,'/controlpanel/my-profile')]"
 MENU_MY_TEAM_LINK = "//a[contains(.,'My Team')]" #"//a[@href='/controlpanel/team-members')]"
