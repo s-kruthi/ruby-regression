@@ -57,7 +57,11 @@ def CheckNoteAdded(action)
   VerifyAnElementExists('xpath', NOTE_DEL_BUTTON_ID)
 
   if action == "Added"
-    expect($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).to eq(@time_note_added)
+    #expect($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).to eq(@time_note_added)
+    posted = Time.parse($driver.find_elements(:xpath, NOTE_POSTED_TIME_ID)[0].text).to_i
+
+    # verifying that the posted time is within 120 seconds of clicking Add button
+    expect(posted).to be_within(120).of(@time_note_added)
     puts COLOR_GREEN + "note has been added to the user profile".upcase
   else
     puts COLOR_GREEN + "note has been edited".upcase
