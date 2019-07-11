@@ -273,7 +273,7 @@ module Database_env
 
       query2 = "select row_count() as affected;"
 
-      #Executing the select query to verify job appln
+      #Executing the update query to reactivate user
       @db.execute(query1)
 
       #returning the number of rows affected
