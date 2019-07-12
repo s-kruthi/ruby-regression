@@ -42,7 +42,7 @@ Feature:
     Then  I Should Be Able To Add "Next Of Kin" Details
 
   @general_user_deactivate @general_low_risk
-  Scenario: [General][Onboarding]Onboarding or General User List page - De-Activate user
+  Scenario: [General]General User List page - De-Activate user
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Users" Under "General" Section
@@ -50,7 +50,7 @@ Feature:
     Then  I Should Be Able To Use "De-activate User" Action On The Specific User
 
   @general_user_profile_edit @general_low_risk @C21298
-  Scenario: [General][Onboarding]Onboarding or General User List page - Edit Profile Information
+  Scenario: [General]General User List page - Edit Profile Information
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Users" Under "General" Section
