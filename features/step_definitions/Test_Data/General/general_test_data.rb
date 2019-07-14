@@ -22,7 +22,7 @@ NEW_USER_DETAILS_MAP = {
 }
 
 USER_PROFILE_DETAILS_VALUE_MAP = {
-    legal_entity: "AU Company",
+    legal_entity: $daos.get_legal_entity_details()[:business_name],#"AU Company",
     cost_centre: "",
     position: "Quality Assurance Tester - Automation",
     department: "Research and Development",
