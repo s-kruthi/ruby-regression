@@ -23,12 +23,6 @@ And(/^I Should Be Able To Unmask The TFN Number By Tapping The Show Button$/i) d
   UnmaskAndViewTaxFileNumberDetailsForTheEmployee()
 end
 
-# # TODO: Save to delete on next revision/commit
-# Then(/^I Should Be Able To View Activity Sub-Tab$/i) do
-#   pending
-#   ##This requires logic change to determine the landing page as that one does not have a hyperlink
-# end
-
 And(/^I Should Be Able To Click "(.*)" Sub-Tab$/i) do |sub_tab_name|
 
   case sub_tab_name

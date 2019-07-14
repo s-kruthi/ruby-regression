@@ -20,7 +20,7 @@ def GoToSite()
     end
   end
   
-  puts "SERVER MODE = " + $site_type.to_s if (ENV["TYPE"] || ENV["type"]) != nil
+  STDOUT.puts "SERVER MODE = " + $site_type.to_s if (ENV["TYPE"] || ENV["type"]) != nil
   $driver.navigate.to($site_url)
 end
 
@@ -83,7 +83,7 @@ def CreateAUser(user_type, firstname, lastname, manager_name, role)
   #Check if user already exists in the database or not. If exists, skip the current creation else, create the user
   user_list_result = $daos.get_userid(@@user_name)
   if !user_list_result.nil?
-    puts COLOR_YELLOW + "User #{user_list_result} already exists in the database.".upcase
+    STDOUT.puts COLOR_YELLOW + "User #{user_list_result} already exists in the database.".upcase
     skip_this_scenario
   else
     
@@ -164,7 +164,7 @@ def GoToAdminSettings(admin_cog)
     Sleep_Until(WaitForAnElementByClass("elmo-icon-admin"))
     Sleep_Until(TouchAdminMenu("elmo-icon-admin"))
   rescue
-    puts "slow execution : horizontal navbar mode on, please change it to vertical"
+    STDOUT.puts "slow execution : horizontal navbar mode on, please change it to vertical"
     WaitForAnElementByClass(admin_cog)
     TouchAdminMenu(admin_cog)
   end
@@ -258,10 +258,10 @@ def VerifyUserExists(username)
   #getting the userid based on the username and saving for later
   @user_id = $daos.get_userid(username)
   if !@user_id.nil?
-    puts COLOR_BLUE + "Id: '#{@user_id[:id]}', Username: #{@user_id[:username]}, is_elmo: '#{@user_id[:is_elmo]}', is_notified: '#{@user_id[:is_notified]}', confirmed: '#{@user_id[:confirmed]}', is_deleted: '#{@user_id[:is_deleted]}'"
+    STDOUT.puts COLOR_BLUE + "Id: '#{@user_id[:id]}', Username: #{@user_id[:username]}, is_elmo: '#{@user_id[:is_elmo]}', is_notified: '#{@user_id[:is_notified]}', confirmed: '#{@user_id[:confirmed]}', is_deleted: '#{@user_id[:is_deleted]}'"
   
   else
-    puts COLOR_YELLOW + "Unable to retrieve User ID. Please check the database manually".upcase
+    STDOUT.puts COLOR_YELLOW + "Unable to retrieve User ID. Please check the database manually".upcase
     skip_this_scenario
   end
 end
@@ -284,8 +284,8 @@ end
 
 def LogInAndWaitForTheDashboard(tag_name, admin_menu)
   TouchLoginButton(tag_name)
-  puts COLOR_BLUE + "Title: " + $driver.title
-  puts COLOR_BLUE + "URL: " + $driver.current_url
+  STDOUT.puts COLOR_BLUE + "Title: " + $driver.title
+  STDOUT.puts COLOR_BLUE + "URL: " + $driver.current_url
   sleep(3)
 end
 
@@ -329,7 +329,7 @@ end
 
 def CheckFieldInPersonalDetails()
   Sleep_Until(VerifyAnElementExists('xpath', '//label[text()="Suburb/Town/City"]'))
-  puts COLOR_GREEN + "field exists with name suburb/town/city".upcase
+  STDOUT.puts COLOR_GREEN + "field exists with name suburb/town/city".upcase
 end
 
 def UserProfileSetupThroughJmeter()
@@ -340,7 +340,7 @@ def UserProfileSetupThroughJmeter()
   else
     %x(/var/lib/apache-jmeter/bin/./jmeter -n -t ./JMETER_AUTO/Jmeter_tests/General/UserProfileSetup.jmx -Jurl=#{url} -Jusername=#{@username})
   end
-  puts COLOR_GREEN + "user profile setup completed".upcase
+  STDOUT.puts COLOR_GREEN + "user profile setup completed".upcase
 end
 
 def EnterUserProfileDetails
