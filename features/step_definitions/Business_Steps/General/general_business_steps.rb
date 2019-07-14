@@ -161,16 +161,15 @@ Then(/^I Should Be Able To Add "(\d+)" New "(Non-ELMO|ELMO)" Users With "(.*)" A
         $user_found = 0
         begin
           CreateUsers(arg2, @@first_name, @@last_name, arg5, NEW_USER_DETAILS_MAP[:start_date_value])
-      
-          #The following steps help set the role type as well immediately after creating the user within the loop. Change the value to 'Manager' for manager Roletype or others
-          steps %Q{
-                  And   I Click On "Role" Tab
-                  And   I Select "Role" Classic Dropdown As "Employee"
-                  }
         
           #Case used to click on different buttons since Users click on 'Add New User' and Onboarding users click on 'New Onboarding User' button
           case $add_user_type
             when "EMP"
+              #The following steps help set the role type as well immediately after creating the user within the loop. Change the value to 'Manager' for manager Roletype or others
+              steps %Q{
+                  And   I Click On "Role" Tab
+                  And   I Select "Role" Classic Dropdown As "Employee"
+                  }
               Sleep_Until(WaitForAnElementByXpathAndTouch(USERS_NAV_LINK)) unless i >= arg1
               Sleep_Until(WaitForAnElementByXpathAndTouch(ADD_NEW_USER_BTN)) unless i >= arg1
             when "OB"

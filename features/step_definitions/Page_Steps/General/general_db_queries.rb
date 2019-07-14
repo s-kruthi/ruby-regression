@@ -280,6 +280,14 @@ module Database_env
       return @db[query2].first
     end
 
+    #returns onboarding user field settings
+    def get_obuser_field_enabled(name)
+      query = "select value from epms_config
+               where name = '#{name}'
+               and module = 'onboardingUser'"
+      return @db[query].first
+    end
+
   end
 
 end
