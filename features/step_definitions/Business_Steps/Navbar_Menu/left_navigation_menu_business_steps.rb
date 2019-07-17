@@ -1,4 +1,4 @@
-When(/^I Am Viewing Dashboard$/i) do
+When(/^I Am Viewing The Dashboard$/i) do
 Sleep_Until(VerifyAnElementExists('xpath', DASHBOARD_ID[:title]))
 end
 
