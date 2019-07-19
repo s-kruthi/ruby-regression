@@ -20,5 +20,5 @@ As An Authenticated User, I Want To Be Able to Successfully Navigate The New Lef
     |Performance                |
     |Recruitment                |
     |Careers                    |
-    |Calender                   |
+    |Calendar                   |
     |Reports                    |
