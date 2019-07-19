@@ -3,7 +3,7 @@ Sleep_Until(VerifyAnElementExists('xpath', DASHBOARD_ID[:title]))
 end
 
 Then(/^I Should Be Able To Click "([^"]*)" From Left Navigation Menu/i) do |arg|
-  identifier = "//span[@class='link-title'][contains(.,'#{arg}')]"
+  identifier = "//span[@class='menuitem-link__label'][contains(.,'#{arg}')]"
   Sleep_Until(WaitForAnElementByXpathAndTouch(identifier))
   #Using explicit sleep as the page is taking longer than expected to load up
   sleep 3
