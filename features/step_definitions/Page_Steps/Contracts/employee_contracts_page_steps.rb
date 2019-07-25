@@ -24,13 +24,34 @@ def search_for_an_employee_contract_and_verify(search_field, search_value, searc
   Wait_For(2)
   WaitForAnElementByXpathAndTouch(search_btn)
   sleep (1)
-  VerifyAnElementExistByXPath(search_result,search_value)
+  search_result_id = "//td[contains(.,'" + search_result + "')]"
+  VerifyAnElementExistByXPath(search_result_id,search_value)
 end
 
-def edit_a_client_contract(test_variable)
-  pending
+def EditEmpContract(contract_id)
+  edit_contract_id = '//a[contains(@href, "/edit/'+ contract_id.to_s+'")]'
+  WaitForAnElementByXpathAndTouch(edit_contract_id)
+  WaitForAnElementByXpathAndClearValue(EMP_CONTRACT_DESC_TEXT_ID)
+  EnterEmployeeContractDescriptionText(EMP_CONTRACT_DESC_TEXT_ID, EMP_CONTRACT_DESC_VALUE)
+  CreateAnEmployeeContract(EMP_CONTRACT_SAVE_BTN)
+  VerifySuccessAlertMessage(EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_ID, EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_VALUE)
 end
 
-def copy_a_client_contract()
-  pending
+def CopyEmpContract(contract_id)
+  WaitForAnElementByXpathAndTouch(SEARCH_RESULTS_ACTIONS_ID)
+  copy_contract_id = '//a[contains(@href, "/copy/'+ contract_id.to_s+'")]'
+  Sleep_Until(WaitForAnElementByXpathAndTouch(copy_contract_id))
+  Sleep_Until(VerifyAnElementExistByXPath(MODAL_ID, EMP_CONTRACT_VERIFY_COPY_SUCCESSFUL_VALUE))
+  Sleep_Until(PressEnterOK())
+end
+
+def HideUnhideEmpContract(contract_id, action)
+  WaitForAnElementByXpathAndTouch(SEARCH_RESULTS_ACTIONS_ID)
+  if action == "Hide"
+    contract_id = '//a[contains(@href, "/hide/'+ contract_id.to_s+'")]'
+  else
+    contract_id = '//a[contains(@href, "/unhide/'+ contract_id.to_s+'")]'
+  end
+    Sleep_Until(WaitForAnElementByXpathAndTouch(contract_id))
+  VerifySuccessAlertMessage(EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_ID, EMP_CONTRACT_VERIFY_VISIBILITY_SUCCESSFUL_VALUE)
 end

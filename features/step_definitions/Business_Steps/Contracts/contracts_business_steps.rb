@@ -17,19 +17,40 @@ Then(/^I Should Be Able To Create A New Contract$/i) do
 end
 
 Then(/^I Should Be Able To Search For An Employee Contract$/i) do
-  search_for_an_employee_contract_and_verify(EMP_CONTRACT_SEARCH_ID, EMP_CONTRACT_SEARCH_VALUE, EMP_CONTRACT_SEARCH_BTN, EMP_CONTRACT_SEARCH_RESULT)
+  @contract_details = $daos.get_contract_contractlib
+
+  if @contract_details.nil?
+    puts COLOR_YELLOW + "No contracts found for the criteria, please check manually".upcase
+    skip_this_scenario
+  end
+
+  search_for_an_employee_contract_and_verify(EMP_CONTRACT_SEARCH_ID, @contract_details[:name], EMP_CONTRACT_SEARCH_BTN, @contract_details[:name])
   sleep(1)
 end
 
-When(/^I Search For An Employee Contract$/i) do
-  search_for_an_employee_contract_and_verify(EMP_CONTRACT_SEARCH_ID, EMP_CONTRACT_SEARCH_VALUE, EMP_CONTRACT_SEARCH_BTN, EMP_CONTRACT_SEARCH_RESULT)
+When(/^I Search For An(:? Hidden)? Employee Contract$/i) do | contract_type |
+  if contract_type == ' Hidden'
+    @contract_details = $daos.get_hiddencontract_contractlib
+  else
+    @contract_details = $daos.get_contract_contractlib
+  end
+
+  if @contract_details.nil?
+    puts COLOR_YELLOW + "No contracts found for the criteria, please check manually".upcase
+    skip_this_scenario
+  end
+
+  search_for_an_employee_contract_and_verify(EMP_CONTRACT_SEARCH_ID, @contract_details[:name], EMP_CONTRACT_SEARCH_BTN, @contract_details[:name])
   sleep(1)
 end
 
-Then(/^I Should Be Able To Edit An Employee Contract$/i) do
-  edit_a_client_contract(test_variable)
-end
-
-Then(/^I Should Be Able To Copy An Employee Contract$/i) do
-  copy_a_client_contract()
+Then(/^I Should Be Able To "(\w+)" An Employee Contract$/i) do | action |
+ case action
+  when "Edit"
+   EditEmpContract(@contract_details[:id])
+  when "Copy"
+   CopyEmpContract(@contract_details[:id])
+  when "Hide","Unhide"
+    HideUnhideEmpContract(@contract_details[:id], action)
+ end
 end
