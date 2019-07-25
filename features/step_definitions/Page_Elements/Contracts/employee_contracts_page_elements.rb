@@ -11,7 +11,8 @@ EMP_CONTRACT_CAT_INDEX_ID = "select2-choice"
 EMP_CONTRACT_CAT_RESULT_ID = "select2-result-selectable"
 
 EMP_CONTRACT_SAVE_BTN = "//button[contains(.,'Save')]"
-EMP_CONTRACT_DESC_TEXT_ID = "//textarea[contains(@id,'description_0')]"
+EMP_CONTRACT_DESC_TEXT_ID = "//textarea[contains(@name, 'contractForm[description]')]"
+
 
 EMP_CONTRACT_VERIFY_SAVE_SUCCESSFUL_ID = "//div[contains(@class,'alert alert-success')]"
 

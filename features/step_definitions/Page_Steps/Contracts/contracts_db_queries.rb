@@ -35,6 +35,23 @@ module Database_env
       return contract_placeholders_count[:contract_placeholdersnum]
     end
 
+    def get_contract_contractlib()
+      query = "select id, name
+               from epms_contract
+               where visible = 1
+               and is_deleted = 0
+               order by rand();"
+      @db[query].first
+    end
+
+    def get_hiddencontract_contractlib
+      query = "select id, name
+               from epms_contract
+               where visible = 0
+               and is_deleted = 0
+               order by rand();"
+      @db[query].first
+    end
   end
 
 end

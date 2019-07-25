@@ -5,10 +5,10 @@
 #@ContractTestRailTags
 
 Feature:
-  I want to Test if I can Successfully Manage Contract Library
+  Company Admin Can Manage Contract Library
 
   @employee_contract_add @contracts_high_risk
-  Scenario: [Contracts]Create a New Contract
+  Scenario: [Contracts]Create A New Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
@@ -17,40 +17,40 @@ Feature:
     Then  I Should Be Able To Create A New Contract
 
   @employee_contract_search @contracts_high_risk
-  Scenario: [Contracts]Search an Existing Contract
+  Scenario: [Contracts]Search An Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
     Then  I Should Be Able To Search For An Employee Contract
 
   @employee_contract_edit @contracts_high_risk
-  Scenario: [Contracts]Edit an Existing Contract
+  Scenario: [Contracts]Edit An Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
     When  I Search For An Employee Contract
-    Then  I Should Be Able To Edit An Employee Contract
+    Then  I Should Be Able To "Edit" An Employee Contract
 
   @employee_contract_copy @contracts_low_risk
-  Scenario: [Contracts]Copy an Existing Contract
-    Given I Have Logged In As A ELMO Admin
+  Scenario: [Contracts]Copy An Existing Contract
+    Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
     When I Search For An Employee Contract
-    Then I Should Be Able To Copy An Employee Contract
+    Then I Should Be Able To "Copy" An Employee Contract
 
   @employee_contract_hide @contracts_low_risk
-  Scenario: [Contracts]Hide/Unhide an Existing Contract
+  Scenario: [Contracts]Hide an Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
     When I Search For An Employee Contract
-#    Then I Should Be Able To Hide/Unhide An Employee Contract
+    Then I Should Be Able To "Hide" An Employee Contract
 
-  @employee_contract_delete @contracts_low_risk
-  Scenario: [Contracts]Delete an Existing Contract
+  @employee_contract_unhide @contracts_low_risk
+  Scenario: [Contracts]Delete An Existing Contract
     Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Contract Library" Under "General" Section
-    When I Search For An Employee Contract
-#    Then I Should Be Able To Delete An Employee Contract
+    When I Search For An Hidden Employee Contract
+    Then I Should Be Able To "Unhide" An Employee Contract
