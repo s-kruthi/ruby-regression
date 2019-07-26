@@ -131,7 +131,7 @@ And(/^I Go To The "(.*)" Section$/i) do |menu_type|
       
       when "Menu Reports"
         begin
-          Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[1].click) if $driver.find_elements(:class, "dropdown-toggle")[1].displayed? == true
+          # Sleep_Until($driver.find_elements(:class, "dropdown-toggle")[1].click) if $driver.find_elements(:class, "dropdown-toggle")[1].displayed? == true
           Sleep_Until(GoToNavBarSection(MENU_REPORTS_LINK))
           sleep (1)
         end

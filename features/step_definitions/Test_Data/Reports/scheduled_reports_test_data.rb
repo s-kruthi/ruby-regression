@@ -7,15 +7,15 @@ SCHD_REPORTS_FREQ_VALUE = "Daily"
 SCHD_REPORTS_START_DATE_VALUE = "01/10/2016"
 SCHD_REPORTS_END_DATE_VALUE = "01/10/2018"
 
-REPORTS_NAME_INDEX_VALUE = 17 #Report Name = Learner Report
+REPORTS_NAME_INDEX_VALUE = 13 #Report Name = Learner Report
 
 SCHD_REPORTS_FILTER_INDEX_VALUE = 0 #Scheduled Report Filter - Part time Filter
 
 REPORTS_LEVEL_VALUE = "Course"
 REPORTS_FORMAT_VALUE = "CSV"
 
-RECIPIENT1_INPUT_VALUE = "test1" #First Recipient
-RECIPIENT2_INPUT_VALUE = "test2" #Second Recipient
+RECIPIENT1_INPUT_VALUE = "scriptonce1" #First Recipient
+RECIPIENT2_INPUT_VALUE = "scriptonce" #Second Recipient
 
 SHOW_ALL_DATA_VALUE = "Enabled"
 
