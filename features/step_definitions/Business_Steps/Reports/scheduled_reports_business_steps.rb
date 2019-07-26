@@ -19,7 +19,7 @@ And(/^I Enter Scheduled Report Details$/i) do
   sleep (1)
   selectAReport(REPORT_NAME_INDEX_NAME_ID, 0, REPORT_NAME_RESULT_ID, REPORTS_NAME_INDEX_VALUE)
   sleep(2)
-  selectAScheduledReportFilter(REPORT_NAME_INDEX_NAME_ID, 0, REPORT_NAME_RESULT_ID, SCHD_REPORTS_FILTER_INDEX_VALUE)
+ # selectAScheduledReportFilter(REPORT_NAME_INDEX_NAME_ID, 0, REPORT_NAME_RESULT_ID, SCHD_REPORTS_FILTER_INDEX_VALUE)
   sleep (1)
   selectReportLevel(REPORTS_LEVEL_ID, REPORTS_LEVEL_VALUE)
   selectReportFormat(REPORTS_FORMAT_ID, REPORTS_FORMAT_VALUE)
@@ -34,7 +34,6 @@ Then(/^I Should Be Able To Create A Scheduled Report$/i) do
   sleep (2)
   VerifySuccessAlertMessage(SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_ID, SCHD_REPORT_VERIFY_SAVE_SUCCESSFUL_VALUE)
   sleep(1)
-  $driver.quit
 end
 
 Then(/^I Should Be Able To Search For A Specific Scheduled Report$/i) do

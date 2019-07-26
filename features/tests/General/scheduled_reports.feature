@@ -7,6 +7,7 @@ Feature:
   Scenario: [Reports]Create a Scheduled Report
     Given I Have Logged In As A Company Admin
     And  I Go To The "Menu Reports" Section
+    And  I Click On "Scheduled Reports" Tab
     When I click on Scheduled Report Button
     And  I Enter Scheduled Report Details
     Then I Should Be Able To Create A Scheduled Report
