@@ -25,7 +25,7 @@ MENU_CAREERS_LINK = "//a[contains(@href,'/controlpanel/recruitment/careers/brows
 MENU_CALENDER_LINK = "//a[contains(@href,'/controlpanel/calendar/')]"
 MENU_CONTRACTS_LINK = "//a[contains(@href,'/contract/workflow-management/list')]"
 MENU_SUCCESSION_LINK = "//a[contains(@href,'/succession/calibration/')]"
-MENU_REPORTS_LINK = "//a[@data-testid = 'app.menu.reports']"  #"//a[contains(@href,'/report')]"
+MENU_REPORTS_LINK = "//a[contains(@href,'/report')]"
 
 GENERAL_EXPAND = "//a[@href='#collapseGeneral']"
 USERS_LIST_PATH = "//span[contains(.,'Users')]"

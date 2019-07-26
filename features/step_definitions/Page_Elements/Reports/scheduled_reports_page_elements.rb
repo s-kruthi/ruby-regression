@@ -14,7 +14,7 @@ REPORT_NAME_RESULT_ID = "select2-result-selectable"
 REPORTS_LEVEL_ID =  "//select[@ng-model='report.parameters[parameter.name]']" #Reports like Learner Report needs this defined
 REPORTS_FORMAT_ID =  "//select[contains(@data-ng-model,'report.format')]"
 
-RECIPIENT_FIELD_ID = "s2id_autogen4"
+RECIPIENT_FIELD_ID = "s2id_autogen8"
 SHOW_ALL_DATA_ID =  "//select[contains(@data-ng-model,'report.showAllData')]"
 
 REPORTS_SAVE_BTN_ID = "//button[contains(.,'Save')]"
