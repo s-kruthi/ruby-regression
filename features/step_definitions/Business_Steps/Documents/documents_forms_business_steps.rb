@@ -24,8 +24,8 @@ And(/^I Enter New "(.*)" Form Template Details$/i) do |prefab_form_title|
 end
 
 Then(/^I Should Be Able To Create A Form Template$/i) do
-  createAFormAndVerify(FORM_SAVE_BTN)
-  findIdOfDocumentInstance()
+  ClickOnSaveButton(FORM_SAVE_BTN)
+  FindIdOfDocumentInstance()
 end
 
 When(/^I Search For A Specific Form Template$/i) do
@@ -103,6 +103,6 @@ When(/^I Enter New Form Details$/i) do
 end
 
 Then(/^I Should Be Able To Create A Form$/i) do
-  createAFormAndVerify(FORM_SAVE_BTN)
-  findIdOfFormInstance()
+  ClickOnSaveButton(FORM_SAVE_BTN)
+  FindIdOfFormInstance()
 end

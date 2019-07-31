@@ -19,12 +19,12 @@ def enterDescription(form_temp_desc_txt, index_id)
   UseCkeditorToEnterText(form_temp_desc_txt, index_id)
 end
 
-def createAFormAndVerify(form_temp_save)
+def CreateAFormAndVerify(form_temp_save)
   WaitForAnElementByXpathAndTouch(form_temp_save)
   sleep(3)
 end
 
-def findIdOfDocumentInstance()
+def FindIdOfDocumentInstance()
   sleep(1)
   path_url = $driver.current_url
   path_id = path_url.split('/')[-2]
@@ -33,7 +33,7 @@ def findIdOfDocumentInstance()
   sleep(1)
 end
 
-def findIdOfFormInstance()
+def FindIdOfFormInstance()
   sleep(1)
   path_url = $driver.current_url
   path_id_initial = path_url.split('/').last
