@@ -32,6 +32,6 @@ gem "ruby-jmeter"
 gem "waitutil"
 gem "watir", "~> 6.1"
 gem "sequel"
-gem "rubocop"
 gem "ed25519"
 gem "bcrypt_pbkdf"
+gem 'rubocop', '~> 0.73.0'

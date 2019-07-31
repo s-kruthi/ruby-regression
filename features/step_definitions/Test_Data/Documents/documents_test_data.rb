@@ -23,6 +23,11 @@ FORM_TEMP_TITLE_TXT = "Test Form Template - DO NOT DELETE"
 FORM_TEMP_DESC_TXT = "Test Form Template Description - DO NOT DELETE"
 FORM_ACTION_ITEM = "Hide"
 
+######### Document - Form template page data #############################
+
+FORM_TITLE_TEXT = "Test Form - DO NOT DELETE"
+FORM_DESC_TXT = "Test Form Description - DO NOT DELETE"
+
 ######### Document - Document Categories page data #############################
 
 DOCUMENT_CATEGORY_TITLE_TEXT = "Employee Forms"
@@ -49,3 +54,6 @@ FILE_SEARCH_RESULT = "//td[contains(.,'Test File - DO NOT DELETE')]"
 FILE_ACTION_DELETE = "Delete"
 
 FILE_SAVE_SUCCESSFUL_VALUE = "Save successful"
+
+TOGGLE_ENABLE_VALUE = 'disable'
+TOGGLE_DISABLE_VALUE = 'enable'

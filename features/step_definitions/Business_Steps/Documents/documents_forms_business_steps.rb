@@ -4,38 +4,28 @@
 
 And(/^I Enter New "(.*)" Form Template Details$/i) do |prefab_form_title|
   case prefab_form_title
-    when "default"
+    when 'None (default)'
       begin
         Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
         Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
-        Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
-        Sleep_Until(SingleSelectFromSelect2Dropdown(PREFAB_FORM_ID, PREFAB_FORM_DROPDOWN_SEARCH_CLASS, prefab_form_title, PREFAB_FORM_DROPDOWN_RESULT_CLASS))
+        Sleep_Until(EnterDescription(FORM_TEMP_DESC_TXT, 0))
+        Sleep_Until(SelectFromDropdown(PREFAB_FORM_OPTION, prefab_form_title))
       end
 
-    when "TFN"
+    when 'TFN Declaration Form 0003 (2016)', 'Employee Qualification'
       begin
         Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
         Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
-        Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
-        Sleep_Until(SingleSelectFromSelect2Dropdown(PREFAB_FORM_ID, PREFAB_FORM_DROPDOWN_SEARCH_CLASS, prefab_form_title, PREFAB_FORM_DROPDOWN_RESULT_CLASS))
-        Sleep_Until(PressModalOk())
-      end
-
-    when "Employee Qualification"
-      begin
-        Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
-        Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
-        Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
-        Sleep_Until(SingleSelectFromSelect2Dropdown(PREFAB_FORM_ID, PREFAB_FORM_DROPDOWN_SEARCH_CLASS, prefab_form_title, PREFAB_FORM_DROPDOWN_RESULT_CLASS))
+        Sleep_Until(EnterDescription(FORM_TEMP_DESC_TXT, 0))
+        Sleep_Until(SelectFromDropdown(PREFAB_FORM_OPTION, prefab_form_title))
         Sleep_Until(PressModalOk())
       end
   end
-
 end
 
 Then(/^I Should Be Able To Create A Form Template$/i) do
-  createAFormTemplateAndVerify(FORM_TEMPLATE_SAVE_BTN)
-  findIdOfDocumentInstance()
+  ClickOnSaveButton(SAVE_BTN_ID)
+  FindIdOfDocumentInstance()
 end
 
 When(/^I Search For A Specific Form Template$/i) do
@@ -105,9 +95,14 @@ When(/^I Click On The "(.*)" Button$/i) do |create_btn|
 end
 
 When(/^I Enter New Form Details$/i) do
-  pending # Write code here that turns the phrase above into concrete actions
+  Sleep_Until(EnterFormDetails(FORM_TITLE, FORM_TITLE_TEXT))
+  Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_FORM_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
+  Sleep_Until(EnterDescription(FORM_DESC_TXT, 0))
+  Sleep_Until(SelectFromDropdown(AVAIL_DROPDOWN_OPTION, AVAIL_DROPDOWN_VALUE))
+  Sleep_Until(ToggleGroupEnableDisable(DOCUMENT_FORM_TOGGLE_ID, TOGGLE_ENABLE_VALUE))
 end
 
 Then(/^I Should Be Able To Create A Form$/i) do
-  pending # Write code here that turns the phrase above into concrete actions
+  ClickOnSaveButton(SAVE_BTN_ID)
+  FindIdOfFormInstance()
 end

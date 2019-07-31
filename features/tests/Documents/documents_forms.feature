@@ -27,7 +27,7 @@ Feature:
      And   I Go To Admin Settings
      And   I Go To "Form Templates" Under "Documents" Section
      When  I Click On The "Create Form Template" Button
-     And   I Enter New "default" Form Template Details
+     And   I Enter New "None (default)" Form Template Details
      Then  I Should Be Able To Create A Form Template
 
   @form_template_create @prefab_form_tfn @document_high_risk @work_in_progress
@@ -36,7 +36,7 @@ Feature:
     And   I Go To Admin Settings
     And   I Go To "Form Templates" Under "Documents" Section
     When  I Click On The "Create Form Template" Button
-    And   I Enter New "TFN" Form Template Details
+    And   I Enter New "TFN Declaration Form 0003 (2016)" Form Template Details
     Then  I Should Be Able To Create A Form Template
 
   @form_template_create @prefab_form_employee_qualification @document_high_risk @@work_in_progress

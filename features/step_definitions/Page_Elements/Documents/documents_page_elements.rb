@@ -44,7 +44,6 @@ CREATE_FORM_TEMPLATE_BTN="//a[contains(.,'Create Form Template')]"
 CREATE_FORM_BTN = "//a[contains(., 'Create Form')]"
 
 FORM_TEMP_TITLE = "//input[contains(@id,'title')]"
-FORM_TEMPLATE_SAVE_BTN="//button[contains(.,'Save')]"
 
 DOCUMENT_CATEGORY_ID = "s2id_formTemplateForm_category"
 DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS = "select2-input"
@@ -59,9 +58,13 @@ FORM_TEMP_SEARCH_BOX = "//input[contains(@id,'searchText')]"
 SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 FILE_DROPDOWN = "dropdown-toggle"
 
-PREFAB_FORM_ID = "prefab_picker_prefab_form_id"
-PREFAB_FORM_DROPDOWN_SEARCH_CLASS = "form-control"
-PREFAB_FORM_DROPDOWN_RESULT_CLASS = "form-control"
+PREFAB_FORM_OPTION = "//select[contains(@id,'prefab_picker_prefab_form_id')]"
+
+FORM_TITLE = "//input[contains(@id, 'documentTemplateForm_title')]"
+
+DOCUMENT_FORM_CATEGORY_ID = "s2id_documentTemplateForm_category"
+
+DOCUMENT_FORM_TOGGLE_ID = "documentTemplateForm_uniqueAssignment"
 
 
 ######### Document - Document Categories elements #############################
@@ -96,6 +99,7 @@ FILE_SAVE_SUCCESSFUL_ID = "//div[contains(.,'Save successful')]"
 
 FILE_SEARCH_BOX = "//input[contains(@id,'searchText')]"
 AVAIL_DROPDOWN_OPTION = "//select[@ng-model='selectedAvailability.type']"
+
 ##### Document admin #############
 DOCUMENT_PATH = "//a[@aria-controls='collapseDocuments']"
 DOC_TEXT = 'Documents'

@@ -15,19 +15,25 @@ def enterFormTemplateDetails(form_temp_title, form_temp_title_text)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
 end
 
-def enterDescription(form_temp_desc_txt, index_id)
+def EnterDescription(form_temp_desc_txt, index_id)
   UseCkeditorToEnterText(form_temp_desc_txt, index_id)
 end
 
-def createAFormTemplateAndVerify(form_temp_save)
-  WaitForAnElementByXpathAndTouch(form_temp_save)
-  sleep(3)
-end
-
-def findIdOfDocumentInstance()
+def FindIdOfDocumentInstance()
   sleep(1)
   path_url = $driver.current_url
   path_id = path_url.split('/')[-2]
+  $document_path_id = "/#{path_id}"
+  puts "Document Path ID: #{$document_path_id}"
+  sleep(1)
+end
+
+# This method finds the ID of the Form created
+def FindIdOfFormInstance()
+  sleep(1)
+  path_url = $driver.current_url
+  path_id_initial = path_url.split('/').last
+  path_id = path_id_initial.split('#')[0]
   $document_path_id = "/#{path_id}"
   puts "Document Path ID: #{$document_path_id}"
   sleep(1)
@@ -219,4 +225,8 @@ def GrantBackDocumentViewAccessByUsingJmeterRubyService()
       path: './JMETER_AUTO/apache-jmeter-3.0/bin/',
       file: './JMETER_AUTO/Jmeter_tests/ChangeRoleType.jmx',
       properties: './JMETER_AUTO/apache-jmeter-3.0/bin/jmeter.properties')
+end
+
+def EnterFormDetails(form_title, form_title_text)
+  WaitForAnElementByXpathAndInputValue(form_title, form_title_text)
 end
