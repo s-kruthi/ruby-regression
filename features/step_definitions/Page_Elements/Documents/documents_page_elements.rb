@@ -44,7 +44,6 @@ CREATE_FORM_TEMPLATE_BTN="//a[contains(.,'Create Form Template')]"
 CREATE_FORM_BTN = "//a[contains(., 'Create Form')]"
 
 FORM_TEMP_TITLE = "//input[contains(@id,'title')]"
-FORM_SAVE_BTN="//button[contains(.,'Save')]"
 
 DOCUMENT_CATEGORY_ID = "s2id_formTemplateForm_category"
 DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS = "select2-input"
@@ -60,9 +59,6 @@ SEARCH_BTN_ID = "//button[contains(@type,'submit')]"
 FILE_DROPDOWN = "dropdown-toggle"
 
 PREFAB_FORM_OPTION = "//select[contains(@id,'prefab_picker_prefab_form_id')]"
-# PREFAB_FORM_ID = "prefab_picker_prefab_form_id"
-# PREFAB_FORM_DROPDOWN_CLASS = "form-control"
-# PREFAB_FORM_DROPDOWN_RESULT_CLASS = "form-control"
 
 FORM_TITLE = "//input[contains(@id, 'documentTemplateForm_title')]"
 

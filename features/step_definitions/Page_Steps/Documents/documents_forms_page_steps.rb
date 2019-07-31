@@ -15,13 +15,8 @@ def enterFormTemplateDetails(form_temp_title, form_temp_title_text)
   WaitForAnElementByXpathAndInputValue(form_temp_title, form_temp_title_text)
 end
 
-def enterDescription(form_temp_desc_txt, index_id)
+def EnterDescription(form_temp_desc_txt, index_id)
   UseCkeditorToEnterText(form_temp_desc_txt, index_id)
-end
-
-def CreateAFormAndVerify(form_temp_save)
-  WaitForAnElementByXpathAndTouch(form_temp_save)
-  sleep(3)
 end
 
 def FindIdOfDocumentInstance()
@@ -33,6 +28,7 @@ def FindIdOfDocumentInstance()
   sleep(1)
 end
 
+# This method finds the ID of the Form created
 def FindIdOfFormInstance()
   sleep(1)
   path_url = $driver.current_url

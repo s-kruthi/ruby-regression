@@ -8,7 +8,7 @@ And(/^I Enter New "(.*)" Form Template Details$/i) do |prefab_form_title|
       begin
         Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
         Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
-        Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
+        Sleep_Until(EnterDescription(FORM_TEMP_DESC_TXT, 0))
         Sleep_Until(SelectFromDropdown(PREFAB_FORM_OPTION, prefab_form_title))
       end
 
@@ -16,7 +16,7 @@ And(/^I Enter New "(.*)" Form Template Details$/i) do |prefab_form_title|
       begin
         Sleep_Until(enterFormTemplateDetails(FORM_TEMP_TITLE, FORM_TEMP_TITLE_TXT))
         Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
-        Sleep_Until(enterDescription(FORM_TEMP_DESC_TXT, 0))
+        Sleep_Until(EnterDescription(FORM_TEMP_DESC_TXT, 0))
         Sleep_Until(SelectFromDropdown(PREFAB_FORM_OPTION, prefab_form_title))
         Sleep_Until(PressModalOk())
       end
@@ -24,7 +24,7 @@ And(/^I Enter New "(.*)" Form Template Details$/i) do |prefab_form_title|
 end
 
 Then(/^I Should Be Able To Create A Form Template$/i) do
-  ClickOnSaveButton(FORM_SAVE_BTN)
+  ClickOnSaveButton(SAVE_BTN_ID)
   FindIdOfDocumentInstance()
 end
 
@@ -97,12 +97,12 @@ end
 When(/^I Enter New Form Details$/i) do
   Sleep_Until(EnterFormDetails(FORM_TITLE, FORM_TITLE_TEXT))
   Sleep_Until(SingleSelectFromSelect2Dropdown(DOCUMENT_FORM_CATEGORY_ID, DOCUMENT_CATEGORY_DROPDOWN_SEARCH_CLASS, DOCUMENT_CATEGORY_TITLE_TEXT, DOCUMENT_CATEGORY_DROPDOWN_RESULT_CLASS))
-  Sleep_Until(enterDescription(FORM_DESC_TXT, 0))
+  Sleep_Until(EnterDescription(FORM_DESC_TXT, 0))
   Sleep_Until(SelectFromDropdown(AVAIL_DROPDOWN_OPTION, AVAIL_DROPDOWN_VALUE))
   Sleep_Until(ToggleGroupEnableDisable(DOCUMENT_FORM_TOGGLE_ID, TOGGLE_ENABLE_VALUE))
 end
 
 Then(/^I Should Be Able To Create A Form$/i) do
-  ClickOnSaveButton(FORM_SAVE_BTN)
+  ClickOnSaveButton(SAVE_BTN_ID)
   FindIdOfFormInstance()
 end
