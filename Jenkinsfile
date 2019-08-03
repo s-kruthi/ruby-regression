@@ -57,7 +57,7 @@ sh 'git pull origin ${branch} 2>&1 | tee -a $WORKSPACE/output.txt'
         stage('Test Execution') {
           steps {
             echo 'test execution in progress..'
-            sh 'source ~/.bash_profile 
+            sh 'source ~/.bash_profile'
 	    sh 'cucumber -xgt @smoke_learning1 CHANNEL=headless'
           }
         }
