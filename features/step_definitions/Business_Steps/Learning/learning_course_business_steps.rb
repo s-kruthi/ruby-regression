@@ -677,7 +677,7 @@ And(/^I Go To The Enrolled User Section For That Course "(.*)"$/i) do |course_na
 end
 
 And(/^I See A Filtered List Of Course Enrolment Returning User "(.*)"$/i) do |learner_name|
-  VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
+  VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name}")
 end
 
 And(/^I Go To The Enrolled User Section Of That Randomly Created Course$/i) do
@@ -720,3 +720,5 @@ Then(/^I Should Be Able To Edit A ELMO Module Activity Named "(.*)"$/i) do |acti
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity('Edit', activity_name)
 end
+
+

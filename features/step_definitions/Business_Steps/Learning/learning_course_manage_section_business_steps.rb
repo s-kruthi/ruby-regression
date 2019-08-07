@@ -14,18 +14,18 @@ end
 When(/^I Edit The Section Name Of Course Unique Name$/) do
   ClickSectionButton("Edit")
   EditSectionNameValue(SECTION_NAME_EDIT_INPUT_CSS, SECTION_EDIT_VALUE)
-  ClickSectionButton("Done")
+  Sleep_Until(ClickSectionButton("Done"))
 end
 
 Then(/^I Should Be Able To Modify The Section Name$/) do
-  VerifySectionName(SECTION_NAME_VISIBLE_CSS, SECTION_EDIT_VALUE)
+  Sleep_Until(VerifySectionName(SECTION_NAME_VISIBLE_CSS, SECTION_EDIT_VALUE))
 end
 
 When(/^I Delete The Section Name Of Course Unique Name$/) do
-  ClickSectionButton("Delete")
+  Sleep_Until(ClickSectionButton("Delete"))
   Sleep_Until(WaitForAnElementByCSSAndTouch(DELETE_SECTION_CONFIRM_CSS))
 end
 
 Then(/^I Should Be Able To Delete The Section Name$/) do
-  VerifyCourseSectionNotExist(COURSE_SECTION_CSS)
+  Sleep_Until(VerifyCourseSectionNotExist(COURSE_SECTION_CSS))
 end

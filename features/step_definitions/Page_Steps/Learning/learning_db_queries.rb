@@ -158,7 +158,6 @@ module Database_env
       query = "SELECT id, user_id, title, description, is_active, layout, is_deleted FROM epms_course_certificate_template
       WHERE is_active = 1 AND is_deleted = 0 ORDER BY RAND() DESC LIMIT 1;"
       return @db[query].first[:title]
-
     end
     
     
@@ -224,6 +223,36 @@ module Database_env
                and cm.course = '#{course_id}'
                and mu.name LIKE '%#{activity_name}%';"
       return @db[query].first
+    end
+
+    def get_enrolment_details()
+      query = "select mc.fullname as course_name, elce.course_id as course_id,  concat (first_name,' ',last_name) as name
+               from epms_lms_course_enrolment elce
+               inner join epms_user eu on eu.id = elce.user_id
+               inner join mdl_course mc on mc.id = elce.course_id
+               where elce.isActive = 1
+               and eu.is_active = 1
+               and eu.is_deleted = 0
+               ORDER BY rand();"
+      return @db[query].first
+    end
+
+    def get_coursedetails_noenrolments()
+      query = "select mc.fullname as course_name, mc.id as course_id
+               from mdl_course mc
+               left join epms_lms_course_enrolment elce on mc.id = elce.course_id
+               where mc.visible = 1
+               and elce.course_id is null
+               order by rand();"
+      return @db[query].first
+    end
+
+    # provide the number of enrolments of a course
+    def get_enrolmentcount(course_id)
+      query = "select count(*) as count
+               from epms_lms_course_enrolment
+               where course_id=#{course_id};"
+      return @db[query].first[:count]
     end
 
   end

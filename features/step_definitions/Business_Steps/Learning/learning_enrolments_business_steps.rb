@@ -52,7 +52,7 @@ end
 Then(/^I Should Be Able To Bulk Enrol Users To That Course$/i) do
   GoToEnrolledUserPage()
   BulkEnrolUsersToThatCourse()
-  VerifyAllSelectedUsersGotBulkEnrolledToTheCourse("#{$random_course_id}")
+  VerifyAllSelectedUsersGotBulkEnrolledToTheCourse("#{@details[:course_id]}")
 end
 
 And(/^I Search For The Randomly Created Course Under Enrolment$/i) do
@@ -89,4 +89,44 @@ And(/^I Should See The Course Status Successfully Marked As (.*)$/i) do |course_
   when "Completed"
     Sleep_Until(VerifyAnElementExistByClass(ACTIVITY_REFRESH_STATUS_CO, "Completed"))
   end
+end
+
+And(/^I Have Course and User Details Of Enrolment$/i) do
+ @details = $daos.get_enrolment_details
+ if @details.nil?
+   puts COLOR_YELLOW + "no such course found".upcase
+   skip_this_scenario
+ end
+end
+
+And(/^I Go To The Enrolled User Section Of The Course$/i) do
+  Sleep_Until(GoToSpecificCourseEnrolmentSection(@details[:course_id].to_s))
+end
+
+
+When(/^I Search For The Course With Enrolment$/i) do
+  Sleep_Until(SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @details[:course_name], COURSE_SEARCH_BTN_ID))
+end
+
+And(/^I Select The Enrolled User From Employee Name$/i) do
+  @emp_name = @details[:name]
+  steps %{
+    And I Select "Employee Name" Select2 Dropdown As "#{@emp_name}"}
+end
+
+And(/^I See A Filtered List Of Course Enrolment Returning The User In The User Filter$/i) do
+  steps %{
+      And I See A Filtered List Of Course Enrolment Returning User "#{@emp_name}"}
+end
+
+Given(/^I Have Course With No Enrolments$/i) do
+  @details = $daos.get_coursedetails_noenrolments
+  if @details.nil?
+    puts COLOR_YELLOW + "no such course found".upcase
+    skip_this_scenario
+  end
+end
+
+When(/^I Search For The Course With No Enrolments$/i) do
+  Sleep_Until(SearchACourse(COURSE_LIST_SEARCH_BOX_ID, @details[:course_name], COURSE_SEARCH_BTN_ID))
 end
