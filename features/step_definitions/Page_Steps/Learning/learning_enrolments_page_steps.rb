@@ -86,7 +86,7 @@ end
 def GoToEnrolledUserPage()
   Sleep_Until($driver.navigate.to($site_url))
   enrol_user_url = $driver.current_url.chomp('/dashboard')
-  $driver.navigate.to("#{enrol_user_url}/admin/course/#{$random_course_id}/enrolments")
+  $driver.navigate.to("#{enrol_user_url}/admin/course/#{@details[:course_id]}/enrolments")
 end
 
 def BulkEnrolUsersToThatCourse()
@@ -98,13 +98,8 @@ def BulkEnrolUsersToThatCourse()
 end
 
 def VerifyAllSelectedUsersGotBulkEnrolledToTheCourse(course_id)
-  SearchDatabaseForASpecificData(TMSFULL_DATABASE,FetchBulkEnrolCount(course_id))
-  puts $data_hash['COUNT(*):']
-  if $data_hash['COUNT(*):'] >= '10'
-    puts "All #{$data_hash['COUNT(*):']} users got enrolled".colorize(:green)
-  else
-   fail
-  end
+  count = $daos.get_enrolmentcount(course_id)
+  expect(count).to eq(10)
 end
 
 def FetchBulkEnrolCount(course_id)

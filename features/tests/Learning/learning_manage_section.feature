@@ -1,7 +1,4 @@
 @learning @courses
-  #@learningTestRailTags
-  #C240 C241 C242
-  #@learningTestRailTags
 
 Feature: As a company administrator I want to create course sections so that I can plan course activities in each section of a course
 

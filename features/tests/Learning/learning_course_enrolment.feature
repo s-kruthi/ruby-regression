@@ -1,7 +1,4 @@
 @learning @course_enrolment
-  #@learningTestRailTags
-  #C7952
-  #@learningTestRailTags
 
 Feature: As An User I Would Like To Manage My Enrolments To Courses
 
@@ -46,7 +43,7 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     And   I Should See The Course Status On The Page
     And   I Should See The Course Due Date On The Page
 
-  @smoke_learning7 @course_manual_enrolment  @learning_low_risk  @C794
+  @smoke_learning7 @course_manual_enrolment @learning_low_risk @C794
   Scenario: [Learning]Manually Enrol User To A Particular Course
     Given I Have Logged In As A Automation Company Admin
     And   I Go To Admin Settings
@@ -54,37 +51,24 @@ Feature: As An User I Would Like To Manage My Enrolments To Courses
     When  I Search For A Specific Course Named "course_section_automation_QuizActivity_shanku"
     And   I Re Enrol The Candidate For The Activity
 
-  @smoke_learning7 @course_bulk_enrolment  @learning_high_risk  @C795
+  @smoke_learning7 @course_bulk_enrolment @learning_high_risk @C795
   Scenario: [Learning]Manually Bulk Enrol Users Into A Particular Course
-    Given I Have Logged In As A Automation Company Admin
-    And   I Go To Admin Settings
+    Given I Have Course With No Enrolments
+    And   I Have Logged In As A Company Admin
+    When  I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
-    And   I Create A Random Course For Automation
-    When  I Search For The Randomly Created Course
+    When  I Search For The Course With No Enrolments
     Then  I Should Be Able To Bulk Enrol Users To That Course
 
-  @smoke_learning7 @learning_high_risk @enrolment_filter_create @C796
-  Scenario: [Learning]Learning Admin using a Filter can Fetch Specific User For Course Enrolment
-    Given I Have Logged In As A Automation Company Admin
+  @smoke_learning7 @learning_high_risk @enrolment_filter_create @C797 @C798 @C796
+  Scenario: [Learning]Learning Admin Can Create And Reuse A User Filter For Course Enrolment
+    Given I Have Course and User Details Of Enrolment
+    And   I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
-    And   I Create A Random Course For Automation
-    And   I Search For The Randomly Created Course
-    And   I Go To The Enrolled User Section Of That Randomly Created Course
+    When  I Search For The Course With Enrolment
+    And   I Go To The Enrolled User Section Of The Course
     When  I Click On "Create Filter" Button
-    And   I Select "Employee Name" Select2 Dropdown As "DontTouchAutomationUser"
-    Then  I Should Be Able to Create a Filter
-    And   I See A Filtered List Of Course Enrolment Returning User "DontTouchAutomationUser AARON"
-
-  @smoke_learning8 @learning_high_risk @enrolment_filter_create @C797 @C798
-  Scenario: [Learning]Learning Admin Can Create Save And Reuse A User Filter And Fetch User For Course Enrolment
-    Given I Have Logged In As A Automation Company Admin
-    And   I Go To Admin Settings
-    And   I Go To "Courses" Under "Learning" Section
-    And   I Create A Random Course For Automation
-    When  I Search For The Randomly Created Course
-    And   I Go To The Enrolled User Section Of That Randomly Created Course
-    When  I Click On "Create Filter" Button
-    And   I Select "Employee Name" Select2 Dropdown As "DontTouchAutomationUser"
+    And   I Select The Enrolled User From Employee Name
     Then  I Should Be Able to Save a Filter
-    And   I See A Filtered List Of Course Enrolment Returning User "DontTouchAutomationUser AARON"
+    And   I See A Filtered List Of Course Enrolment Returning The User In The User Filter

@@ -304,11 +304,10 @@ And(/^I Have Interacted With An Assigned quiz Course (.*)$/i) do |course_name|
   Sleep_Until(VerifyAnElementExistByCSS("span[title=\"#{course_name}\"]", course_name))
   FillUpQuizSection(ENROLLED_BUTTON, ACTIVITY_NAME, SUBMIT_QUIZ_BUTTON, QUIZ_ANSWER)
   sleep(2)
-  WaitForAnElementByPartialLinkTextAndTouch(course_name)
+  WaitForAnElementByXpathAndTouch('//a[contains(.,"Back to Course")]')
 end
 
 And(/^I Have Enrolled For An Assigned quiz Course (.*)$/i) do |course_name|
-  #binding.pry
   GoToCourseCatalogueSection(COURSE_CATALOGUE_LTEXT)
   SearchTheAssignedCourse(course_name)
   Sleep_Until(VerifyAnElementExistByCSS("span[title=\"#{course_name}\"]", course_name))
@@ -338,12 +337,9 @@ And(/^I Validate the Status As In Progress$/) do
 end
 
 And(/^I Re Enrol The Candidate For The Activity$/) do
-  ReturnMultipleUserDetails(TMSFULL_DATABASE,DOC_USERNAME,'course_section_automation_QuizActivity_shanku')
-  puts $data_hash['first_name:']
-  puts $data_hash['course_id:']
-  GoToSpecificCourseEnrolmentSection("#{$data_hash['course_id:']}")
+  GoToSpecificCourseEnrolmentSection("17")
   DeleteTheExistingCourseEnrolment()
-  ReEnrolTheCandidateForCourse('Donttouchautomationuser')
+  ReEnrolTheCandidateForCourse('auto1')
 end
 
 # TODO: Safe to delete if no usage is found (So far no usage can be found)
@@ -677,7 +673,7 @@ And(/^I Go To The Enrolled User Section For That Course "(.*)"$/i) do |course_na
 end
 
 And(/^I See A Filtered List Of Course Enrolment Returning User "(.*)"$/i) do |learner_name|
-  VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name.to_s}")
+  VerifyFilterResult(FILTER_RESULT_VERIFY_TABLE_ID, "#{learner_name}")
 end
 
 And(/^I Go To The Enrolled User Section Of That Randomly Created Course$/i) do
@@ -720,3 +716,5 @@ Then(/^I Should Be Able To Edit A ELMO Module Activity Named "(.*)"$/i) do |acti
   ClickOnASubTab(SUB_TAB_SECTION_NAME_ID)
   ModifyACourseActivity('Edit', activity_name)
 end
+
+
