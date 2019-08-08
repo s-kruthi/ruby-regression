@@ -647,8 +647,8 @@ def GoToSpecificCourseEnrolmentSection(course_id)
 end
 
 def DeleteTheExistingCourseEnrolment()
-  Sleep_Until($driver.find_element(:css, '#elmo-table tbody tr td:nth-of-type(2)').text == "DontTouchAutomationUser AARON")
-  $driver.find_element(:css, 'a[data-user="DontTouchAutomationUser AARON"]').click
+  Sleep_Until($driver.find_element(:css, '#elmo-table tbody tr td:nth-of-type(2)').text == "auto1 scriptonce1")
+  $driver.find_element(:css, 'a[data-user="auto1 scriptonce1"]').click
   sleep(1)
   PressConfirm()
   sleep(3)

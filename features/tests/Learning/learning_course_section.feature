@@ -7,7 +7,7 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
 
   @smoke_learning6 @course_assignments  @learning_high_risk @C807
   Scenario: [Learning]View Enrolments For A Particular Course
-    Given I Have Logged In As A Automation Company Admin
+    Given I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
     When  I Search For A Specific Course Named "course_section_automation_QuizActivity_shanku"
@@ -15,10 +15,10 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
 
   @smoke_learning6 @DeleteLastStpAfterFix @f2f_course_refresh @learning_high_risk @C803
   Scenario: [Learning]Refresh Enrolments For Face to Face Course activity And Verify The Course Status
-    Given I Have Logged In As A Specific Automation User
+    Given I Have Logged In As A Automation Employee
     And   I Go To The "Menu Learning" Section
     And   I Have Interacted With An Assigned F2F Course course_section_automation_f2f_shanku
-    When  I Have Logged In As A Automation Company Admin
+    When  I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
     And   I Search For A Specific Course Named "course_section_automation_f2f_shanku"
@@ -28,11 +28,11 @@ Feature: As An Admin I Would Like To View user Enrollment and Refresh The course
 
   @smoke_learning6 @HappyPath @quiz_course_refresh @learning_high_risk @C9222
   Scenario: [Learning]ReEnrolling The Candidates For Quiz activity Post Refresh Enrolments Resets The Status And Opens The Activity
-    Given I Have Logged In As A Specific Automation User
+    Given I Have Logged In As A Automation Employee
     And   I Go To The "Menu Learning" Section
     And   I Have Interacted With An Assigned quiz Course course_section_automation_QuizActivity_shanku
     And   I Validate the Status As In Progress
-    When  I Have Logged In As A Automation Company Admin
+    When  I Have Logged In As A Company Admin
     And   I Go To Admin Settings
     And   I Go To "Courses" Under "Learning" Section
     And   I Search For A Specific Course Named "course_section_automation_QuizActivity_shanku"

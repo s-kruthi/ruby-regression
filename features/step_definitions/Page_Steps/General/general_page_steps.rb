@@ -239,7 +239,11 @@ def GetLoginDetails(login_name)
       when "Automation Company Admin"
         username = AUTO_COMP_ADMIN_NAME
         password = AUTO_COMP_ADMIN_PASSWORD
-      
+
+      when "Automation Employee"
+        username = COMPANY_EMPLOYEE_1_USER
+        password = COMPANY_EMPLOYEE_1_PASS
+
       else
         username = @username
         password = @user_pwd
