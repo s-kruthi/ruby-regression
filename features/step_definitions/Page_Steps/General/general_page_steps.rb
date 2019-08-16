@@ -165,8 +165,8 @@ def GoToAdminSettings(admin_cog)
     Sleep_Until(TouchAdminMenu("elmo-icon-admin"))
   rescue
     STDOUT.puts "slow execution : horizontal navbar mode on, please change it to vertical"
-    WaitForAnElementByClass(admin_cog)
-    TouchAdminMenu(admin_cog)
+    WaitForAnElementByClass('elmo-nav-user__admin-menu__label')
+    TouchAdminMenu('elmo-nav-user__admin-menu__label')
   end
 end
 
