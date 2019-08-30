@@ -33,7 +33,7 @@ Given(/^I Have Logged (In|Out)(:? As A? (.*))?$/i) do |login_action, login_name|
 end
 
 And(/^I Go To Admin Settings$/i) do
-  Sleep_Until(GoToAdminSettings(ADMIN_COG))
+  Sleep_Until(GoToAdminSettings())
 end
 
 And(/^I Go To "(.*)" Under "(.*)" Section$/i) do |menu_type, menu_section|
@@ -150,6 +150,7 @@ Then(/^I Should Be Able To Add "(\d+)" New "(Non-ELMO|ELMO)" Users With "(.*)" A
       @@last_name = arg4 + ".ob." + Time.now.strftime("%Y%m%d%H%M%S") if $add_user_type == "OB"
       @@user_name = @@first_name + "." + @@last_name
       @@email_address = @@user_name + NEW_USER_DETAILS_MAP[:email_suffix_value]
+      NEW_USER_DETAILS_MAP[:employee_number_value] = "EMP" + Time.now.strftime("%Y%m%d%H%M%S").to_s
     
       #Check if user already exists in the database or not. If exists, skip the current creation and continue with the loop. Else, create the user
       user_list_result = $daos.get_userid(@@user_name)
