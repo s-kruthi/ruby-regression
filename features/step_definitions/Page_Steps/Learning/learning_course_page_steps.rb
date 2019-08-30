@@ -841,7 +841,7 @@ def AddSessionTimings(session_status = '')
 end
 
 def FillTitleAndDescriptionFieldAndSave(partial_id)
-  WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS)
+  Sleep_Until(WaitForAnElementByCSSAndTouch(EDIT_ACTIVITY_BUTTON_CSS))
   # Adding sleep to ensure SCORM acitivty edit page is displayed once edit button is clicked
   sleep(1)
   title_id = "input[id*=#{partial_id.to_s}][name*=name]"

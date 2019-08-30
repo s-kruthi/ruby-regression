@@ -159,14 +159,13 @@ def ClickOnASubTab(sub_tab_name_id)
 end
 
 # TODO this new class "elmo-icon-admin needs to be added to classic view, till then please keep the navbar set to vertical menu for faster test execution"
-def GoToAdminSettings(admin_cog)
+def GoToAdminSettings()
   begin
-    Sleep_Until(WaitForAnElementByClass("elmo-icon-admin"))
-    Sleep_Until(TouchAdminMenu("elmo-icon-admin"))
+   Sleep_Until(WaitForAnElementByClass(VERTICALMENU_ADMIN_COG))
+   Sleep_Until(TouchAdminMenu(VERTICALMENU_ADMIN_COG))
   rescue
-    STDOUT.puts "slow execution : horizontal navbar mode on, please change it to vertical"
-    WaitForAnElementByClass(admin_cog)
-    TouchAdminMenu(admin_cog)
+    WaitForAnElementByClass(NEWVERTICALMENU_ADMIN_COG)
+    TouchAdminMenu(NEWVERTICALMENU_ADMIN_COG)
   end
 end
 

@@ -1,7 +1,8 @@
 ADMIN_PROFILE_DROPDOWN = "admin-setting-id"
 
-# NOTE: This is the legacy admin settings icon at the top right in TMS
-ADMIN_COG = "glyphicon-cog"
+# NOTE: This is the legacy vertical admin settings icon at the top right in TMS
+VERTICALMENU_ADMIN_COG = "elmo-icon-admin"
+NEWVERTICALMENU_ADMIN_COG = "elmo-nav-user__admin-menu__label"
 
 
 # NOTE: This is the new admin settings icon at the left panel in TMS

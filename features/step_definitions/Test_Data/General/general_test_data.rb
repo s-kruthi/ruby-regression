@@ -7,7 +7,7 @@ SELECT_TIMEZONE = 1
 USE_ACTIVE_INACTIVE_FILTER = 0
 
 NEW_USER_DETAILS_MAP = {
-    employee_number_value: "EMP" + Time.now.strftime("%Y%m%d%H%M%S").to_s,
+    # employee_number_value: "EMP" + Time.now.strftime("%Y%m%d%H%M%S").to_s,
     email_suffix_value: "@elmodev.com",
     timezone_value: "Sydney",
     country_value: "Australia",
